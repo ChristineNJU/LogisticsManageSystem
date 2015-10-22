@@ -10,17 +10,17 @@ public class UserPO extends PO {
 	private String name;
 	private UserRole role;
 	
-	private ArrayList<String> Ins_DB_LA;
+	private ArrayList<String> Ins_DB_URL;
 	
 	public UserPO(String id, String password, String name, UserRole role,
-					String DB_LA, ArrayList<String> Ins_DB_LA) {
+					String DB_LA, ArrayList<String> Ins_DB_URL) {
 		this.id = id;
 		this.password = password;
 		this.name = name;
 		this.role = role;
 		
-		super.DB_LA = DB_LA;
-		this.Ins_DB_LA = Ins_DB_LA;
+		super.DB_URL = DB_LA;
+		this.Ins_DB_URL = Ins_DB_URL;
 	}
 	
 	public String getName() {
@@ -36,8 +36,8 @@ public class UserPO extends PO {
 		return role;
 	}
 
-	public ArrayList<String> getInsDBLA() {
-		return Ins_DB_LA;
+	public ArrayList<String> getInsDBURL() {
+		return Ins_DB_URL;
 	}
 	
 	@Override

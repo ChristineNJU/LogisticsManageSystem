@@ -4,14 +4,14 @@ import java.io.Serializable;
 
 public abstract class PO implements Serializable {
 
-	protected String DB_LA;
+	protected String DB_URL;
 	
 	public abstract String toString();
 	
-	public void setLA(String LA) {
-		this.DB_LA = LA;
+	public void setURL(String URL) {
+		this.DB_URL = URL;
 	}
-	public String getLA() {
-		return DB_LA;
+	public String getURL() {
+		return DB_URL;
 	}
 }
