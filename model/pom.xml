@@ -5,7 +5,7 @@
   <parent>
     <groupId>edu.nju.expressManageSystem</groupId>
     <artifactId>express-all</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>${project.version}</version>
   </parent>
   
   <artifactId>model</artifactId>
@@ -17,4 +17,22 @@
       <artifactId>junit</artifactId>
     </dependency>
   </dependencies>
+  
+  <reporting>
+  <plugins>
+	  <plugin>
+	  <groupId>org.apache.maven.plugins</groupId>
+	  <artifactId>maven-checkstyle-plugin</artifactId>
+	  <version>2.16</version>
+	  <reportSets>
+	  <reportSet>
+	  <reports>
+	  <report>checkstyle</report>
+	  </reports>
+	  </reportSet>
+	  </reportSets>
+	  </plugin>
+  </plugins>
+  </reporting>
+  
 </project>
