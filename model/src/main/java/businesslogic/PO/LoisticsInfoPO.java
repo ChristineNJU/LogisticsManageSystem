@@ -6,7 +6,9 @@ import businesslogic.State.LogisticsState;
 import businesslogic.State.LogisticsType;
 import businesslogic.State.PackingCharge;
 
-
+/*=================================================================================
+ * 用来保存快递信息的持久化数据格式
+ * */
 
 public class LoisticsInfoPO extends PO {
 	/*
@@ -284,6 +286,14 @@ public class LoisticsInfoPO extends PO {
 		return courier;
 	}
 	
+	/*
+	 * 获取历史轨迹
+	 * 返回ArrayList<String>
+	 * */
+	public ArrayList<String> getHistory() {
+		return history;
+	}
+	
 	/*--------------------------------------------------------------------
 	 * 对LogisticsInfoPO的某些数据进行更改 
 	 * */
@@ -311,7 +321,22 @@ public class LoisticsInfoPO extends PO {
 	 * */
 	public void setReceiveDate(String receive_date) {
 		this.receive_date = receive_date;
-	} 
+	}
+	/*
+	 * 更新历史轨迹
+	 * */
+	public void addHistory(String node) {
+		this.history.add(node);
+	}
+
+	/*------------------------------------------------------------------
+	 * 对数据的格式化
+	 * */
+	
+	/*
+	 * 形成数据库格式
+	 * 返回String
+	 * */
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
