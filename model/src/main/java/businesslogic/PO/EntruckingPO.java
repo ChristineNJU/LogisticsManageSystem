@@ -102,7 +102,7 @@ public class EntruckingPO extends PO {
 	 * 获取审批状态
 	 * 返回boolean
 	 * */
-	public boolean getApproved() {
+	public boolean isApproved() {
 		return isApproved;
 	}
 	
