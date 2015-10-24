@@ -32,7 +32,6 @@ public class EntruckingPO extends PO {
 		this.supercargo_name = supercargo_name;
 		this.bar_code_list = bar_code_list;
 		this.amount = amount;
-		this.isApproved = isApproved;
 	}
 	
 	/*====================================================================================
@@ -85,7 +84,39 @@ public class EntruckingPO extends PO {
 	public String getSupercargoName() {
 		return supercargo_name;
 	}
+	/*
+	 * 获取所有订单编号
+	 * 返回ArrayList<String>
+	 * */
+	public ArrayList<String> getBarCodeList() {
+		return bar_code_list;
+	}
+	/*
+	 * 获取运费
+	 * 返回double
+	 * */
+	public double getAmount() {
+		return amount;
+	}
+	/*
+	 * 获取审批状态
+	 * 返回boolean
+	 * */
+	public boolean getApproved() {
+		return isApproved;
+	}
 	
+	
+	/*---------------------------------------------------------------
+	 * 对EntruckingPO的某些信息进行更新
+	 * */
+	
+	/*
+	 * 更新审批状态
+	 * */
+	public void setApproved(boolean isApproved) {
+		this.isApproved = isApproved;
+	}
 	
 	
 	@Override
