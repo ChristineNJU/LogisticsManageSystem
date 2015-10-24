@@ -1,4 +1,4 @@
-package presentation.userPanel;
+package presentation.userPanel.Repository;
 
 public class RepositoryStorage {
 

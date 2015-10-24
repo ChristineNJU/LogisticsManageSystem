@@ -1,4 +1,4 @@
-package presentation.userPanel;
+package presentation.userPanel.Finance;
 
 public class FinanceAccount {
 
