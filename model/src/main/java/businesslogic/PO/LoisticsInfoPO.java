@@ -58,8 +58,10 @@ public class LoisticsInfoPO extends PO {
 						  	String recipient_telephone, String recipient_mobilephone,
 						  String bar_code, int original_number, double weight, double size, String internal_name,
 						  LogisticsType type, PackingCharge pack, double total_cost, String starting, String destination,
-						  String send_date, String courier) {
+						  String send_date, String courier,
+						  String DB_URL) {
 		// TODO Auto-generated constructor stub
+		super(DB_URL);
 		this.sender_name = sender_name;
 		this.sender_address = sender_address;
 		this.sender_organization = sender_organization;

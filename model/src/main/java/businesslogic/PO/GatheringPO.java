@@ -14,7 +14,9 @@ public class GatheringPO extends PO {
 	private ArrayList<String> bar_code_list = new ArrayList<String>();
 	private boolean isApproved = false;
 	
-	public GatheringPO(String date, double amount, String courier, ArrayList<String> bar_code_list, boolean isApproved) {
+	public GatheringPO(String date, double amount, String courier, ArrayList<String> bar_code_list, boolean isApproved,
+			String DB_URL) {
+		super(DB_URL);
 		this.date = date;
 		this.amount = amount;
 		this.courier = courier;

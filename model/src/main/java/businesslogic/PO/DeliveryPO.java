@@ -13,7 +13,8 @@ public class DeliveryPO extends PO {
 	private String courier = null;
 	private boolean isApproved = false;
 	
-	public DeliveryPO(String date, ArrayList<String> bar_code_list, String courier, boolean isApproved) {
+	public DeliveryPO(String date, ArrayList<String> bar_code_list, String courier, boolean isApproved, String DB_URL) {
+		super(DB_URL);
 		this.date = date;
 		this.bar_code_list = bar_code_list;
 		this.courier = courier;

@@ -13,7 +13,8 @@ public class UserPO extends PO {
 	private ArrayList<String> Ins_DB_URL;
 	
 	public UserPO(String id, String password, String name, UserRole role,
-					String DB_LA, ArrayList<String> Ins_DB_URL) {
+					String DB_LA, ArrayList<String> Ins_DB_URL, String DB_URL) {
+		super(DB_URL);
 		this.id = id;
 		this.password = password;
 		this.name = name;
