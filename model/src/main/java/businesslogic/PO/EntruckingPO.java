@@ -82,7 +82,9 @@ public class EntruckingPO extends PO {
 	 * 获取押运员
 	 * 返回String
 	 * */
-	public String get
+	public String getSupercargoName() {
+		return supercargo_name;
+	}
 	
 	
 	
