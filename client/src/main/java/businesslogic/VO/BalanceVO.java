@@ -2,6 +2,7 @@ package businesslogic.VO;
 
 import businesslogic.State.StorageArea;
 
+
 public class BalanceVO extends VO {
 
 	private String barCode = null;

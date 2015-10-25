@@ -1,6 +1,5 @@
 package businesslogic.PO;
 
-import org.omg.PortableServer.AdapterActivator;
 
 /*========================================================================================
  * 用来保存司机信息的持久化数据格式

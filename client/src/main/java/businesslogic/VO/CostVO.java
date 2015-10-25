@@ -2,6 +2,7 @@ package businesslogic.VO;
 
 import businesslogic.State.CostType;
 
+
 public class CostVO extends VO {
 
 	private String date = null;

@@ -1,7 +1,6 @@
 package businesslogic.PO;
 
 import businesslogic.State.StorageArea;
-import businesslogic.State.TransferType;
 
 public class BalancePO extends PO {
 
