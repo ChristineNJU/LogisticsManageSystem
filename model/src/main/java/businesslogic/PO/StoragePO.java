@@ -3,10 +3,11 @@ package businesslogic.PO;
 import businesslogic.State.StorageArea;
 
 /*========================================================================================
- * 用来保存库存盘点的持久化数据格式
+ * 用来保存入库信息的持久化数据格式
  * */
 
-public class StockTakingPO extends PO {
+public class StoragePO extends PO {
+	
 	private String bar_code = null;
 	private String storage_date = null;
 	private String destination = null;
@@ -14,8 +15,9 @@ public class StockTakingPO extends PO {
 	private int row = 0;
 	private int shelf = 0;
 	private int position = 0;
+	private boolean isApproved = false;
 	
-	public StockTakingPO(String bar_code, String storage_date, String destnation, StorageArea area_code, 
+	public StoragePO(String bar_code, String storage_date, String destnation, StorageArea area_code, 
 			int row, int shelf, int position, String DB_URL) {
 		super(DB_URL);
 		
@@ -33,7 +35,7 @@ public class StockTakingPO extends PO {
 	 * */
 	
 	/*------------------------------------------------------------------------------------
-	 * 对StockTakingePO的数据进行读取
+	 * 对StoragePO的数据进行读取
 	 * */
 	
 	/*
@@ -85,8 +87,25 @@ public class StockTakingPO extends PO {
 	public int getPosition() {
 		return position;
 	}
-
+	/*
+	 * 获取审批状态
+	 * 返回boolean
+	 * */
+	public boolean isApproved() {
+		return isApproved;
+	}
 	
+	
+	/*---------------------------------------------------------------
+	 * 对StoragePO的某些信息进行更新
+	 * */
+	
+	/*
+	 * 更新审批状态
+	 * */
+	public void setApproved(boolean isApproved) {
+		this.isApproved = isApproved;
+	}
 	
 	
 	@Override
@@ -94,4 +113,6 @@ public class StockTakingPO extends PO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	
 }
