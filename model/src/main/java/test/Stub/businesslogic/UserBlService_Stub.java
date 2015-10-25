@@ -1,4 +1,4 @@
-package test.stub;
+package test.Stub.businesslogic;
 
 import businesslogic.State.LoginState;
 import businesslogic.State.ResetState;

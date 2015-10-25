@@ -1,4 +1,4 @@
-package test.stub;
+package test.Stub.businesslogic;
 import java.util.ArrayList;
 
 import data.State.*;
