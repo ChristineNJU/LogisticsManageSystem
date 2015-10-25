@@ -100,6 +100,48 @@ public class BalancePO extends PO {
 	public StorageArea getNewArea() {
 		return new_area;
 	}
+	/*
+	 * 获取新排号
+	 * 返回int
+	 * */
+	public int getNewRow() {
+		return new_row;
+	}
+	/*
+	 * 获取新架号
+	 * 返回int
+	 * */
+	public int getNewShelf() {
+		return new_shelf;
+	}
+	/*
+	 * 获取新位号
+	 * 返回int
+	 * */
+	public int getNewPosition() {
+		return new_position;
+	}
+	/*
+	 * 获取审批状态
+	 * 返回boolean
+	 * */
+	public boolean isApproved() {
+		return isApproved;
+	}
+	
+	
+	/*---------------------------------------------------------------
+	 * 对BalancePO的某些信息进行更新
+	 * */
+	
+	/*
+	 * 更新审批状态
+	 * */
+	public void setApproved(boolean isAppproved) {
+		this.isApproved = isAppproved;
+	} 
+	
+	
 
 	@Override
 	public String toString() {
