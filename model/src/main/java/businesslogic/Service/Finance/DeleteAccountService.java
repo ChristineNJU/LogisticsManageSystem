@@ -1,7 +1,7 @@
 package businesslogic.Service.Finance;
 
 import businesslogic.VO.AccountVO;
-import dataservice.State.DeleteState;
+import data.State.DeleteState;
 
 public interface DeleteAccountService {
 	public DeleteState deleteAccount(AccountVO account);

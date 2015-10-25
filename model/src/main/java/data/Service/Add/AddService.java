@@ -1,10 +1,10 @@
-package dataservice.Service.Add;
+package data.Service.Add;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import businesslogic.PO.PO;
-import dataservice.State.AddState;
+import data.State.AddState;
 
 public interface AddService extends Remote{
 	
