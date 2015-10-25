@@ -4,8 +4,19 @@ import java.util.ArrayList;
 
 public class LogisticsHistoryVO extends VO {
 
-	private String bar_code = null;	
+	private String barCode = null;	
 	private ArrayList<String> history = new ArrayList<String>();
 	
-	public LogisticsHistory
+	public LogisticsHistoryVO(String barCode,ArrayList<String> history){
+		this.barCode = barCode;
+		this.history = history;
+	}
+	
+	public String getBarCode(){
+		return this.barCode;
+	}
+	
+	public ArrayList<String> getHistory(){
+		return this.history;
+	}
 }
