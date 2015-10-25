@@ -3,6 +3,7 @@ package test.Stub.businesslogic;
 import java.util.ArrayList;
 
 import data.State.*;
+import businesslogic.Service.Finance.SearchCostService;
 import businesslogic.Service.Manage.*;
 import businesslogic.State.CostType;
 import businesslogic.State.InstitutionType;

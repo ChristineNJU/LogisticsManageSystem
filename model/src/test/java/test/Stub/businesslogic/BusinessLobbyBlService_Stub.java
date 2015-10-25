@@ -82,7 +82,7 @@ public class BusinessLobbyBlService_Stub {
 	/*-------------------------------------------
 	 删除车辆
 	---------------------------------------------*/
-	public DeleteState seleteCar(CarInfoVO car){
+	public DeleteState deleteCar(CarInfoVO car){
 		System.out.println("删除成功");
 		DeleteState state=DeleteState.SUCCESS;
 		return state;
@@ -118,7 +118,7 @@ public class BusinessLobbyBlService_Stub {
 	/*-------------------------------------------
 	 删除司机
 	---------------------------------------------*/
-	public DeleteState seleteDriver(DriverInfoVO driver){
+	public DeleteState deleteDriver(DriverInfoVO driver){
 		System.out.println("删除成功");
 		DeleteState state=DeleteState.SUCCESS;
 		return state;
