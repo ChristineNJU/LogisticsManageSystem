@@ -3,6 +3,7 @@ package test.Stub.businesslogic;
 import java.util.ArrayList;
 
 import data.State.*;
+import businesslogic.Service.Manage.*;
 import businesslogic.State.CostType;
 import businesslogic.State.InstitutionType;
 import businesslogic.State.SalaryType;
@@ -15,7 +16,12 @@ import businesslogic.VO.SalaryVO;
 import businesslogic.VO.StaffVO;
 import businesslogic.VO.VO;
 
-public class ManageBlService_Stub {
+public class ManageBlService_Stub implements AddConstService,AddInstitutionService,AddStaffService,
+											DeleteInstitutionService,DeleteStaffService,SearchBenefitService,
+											SearchCostService,SearchGatheringService,SearchInstitutionService,
+											SearchStaffService,ShowConstService,ShowReceiptService,
+											ShowSalaryService,UpdateConstService,UpdateInstitutionService,
+											UpdatePaymentService,UpdateReceiptService,UpdateStaffService{
 	/*-------------------------------------------
 	 查看单据
 	---------------------------------------------*/
@@ -34,10 +40,12 @@ public class ManageBlService_Stub {
 	/*-------------------------------------------
 	 修改单据
 	---------------------------------------------*/
-	public UpdateState updateReciept (VO reciept){
+	public UpdateState updateReceipt(VO receipt) {
+		// TODO Auto-generated method stub
 		System.out.println("修改成功");
 		UpdateState state=UpdateState.SUCCESS;
 		return state;
+		
 	}
 	/*-------------------------------------------
 	 添加常量
@@ -196,5 +204,8 @@ public class ManageBlService_Stub {
 		UpdateState state=UpdateState.SUCCESS;
 		return state;
 	}
+	
+	
+	
 	
 }

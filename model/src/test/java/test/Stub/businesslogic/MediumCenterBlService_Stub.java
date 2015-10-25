@@ -20,7 +20,7 @@ public class MediumCenterBlService_Stub {
 	---------------------------------------------*/
 	public ArrayList<String> getNeedEntrucking(){
 		System.out.println("查询成功");
-		ArrayList<String> list = null;
+		ArrayList<String> list = new ArrayList<String>();
 		list.add("1234512345");
 		list.add("1234512346");
 		list.add("1234512347");
@@ -39,7 +39,7 @@ public class MediumCenterBlService_Stub {
 	---------------------------------------------*/
 	public ArrayList<String> getNeedTransfer(){
 		System.out.println("查询成功");
-		ArrayList<String> list = null;
+		ArrayList<String> list = new ArrayList<String>();
 		list.add("1234512345");
 		list.add("1234512346");
 		list.add("1234512347");
