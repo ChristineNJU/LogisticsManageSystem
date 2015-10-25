@@ -6,7 +6,7 @@ public class BenefitVO extends VO {
 	private double costTotal = 0;
 	private double benefitTotal = 0;
 	
-	public BenefitVO(double income,double cost,double benefit){
+	public BenefitVO(double income,double cost){
 		this.incomeTotal = income;
 		this.costTotal = cost;
 		this.benefitTotal = income - cost;
