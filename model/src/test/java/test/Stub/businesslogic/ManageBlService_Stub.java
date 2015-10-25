@@ -41,7 +41,7 @@ public class ManageBlService_Stub implements AddConstService,AddInstitutionServi
 	 修改单据
 	---------------------------------------------*/
 	public UpdateState updateReceipt(VO receipt) {
-		// TODO Auto-generated method stub
+		
 		System.out.println("修改成功");
 		UpdateState state=UpdateState.SUCCESS;
 		return state;

@@ -1,9 +1,11 @@
 package test.Stub.businesslogic;
 
+import businesslogic.Service.User.LoginService;
+import businesslogic.Service.User.ResetPasswordService;
 import businesslogic.State.LoginState;
 import businesslogic.State.ResetState;
 
-public class UserBlService_Stub {
+public class UserBlService_Stub implements LoginService,ResetPasswordService{
 	/*-------------------------------------------
 	 用户确认登录
 	---------------------------------------------*/
@@ -21,4 +23,5 @@ public class UserBlService_Stub {
 		return state;
 		
 	}
+	
 }
