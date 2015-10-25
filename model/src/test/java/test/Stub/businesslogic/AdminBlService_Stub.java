@@ -39,7 +39,7 @@ public class AdminBlService_Stub {
 		System.out.println("查看成功");
 		UserVO vo1=new UserVO("1234512345","刘钦",UserRole.curier);
 		UserVO vo2=new UserVO("1234512346","刘钦",UserRole.admin);
-		ArrayList<UserVO> list=null;
+		ArrayList<UserVO> list=new ArrayList<UserVO>();
 		list.add(vo1);
 		list.add(vo2);
 		return list;

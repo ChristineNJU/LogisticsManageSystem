@@ -12,7 +12,7 @@ public class ReponsitoryBlService_Stub {
 	---------------------------------------------*/
 	public ArrayList<StockTakingVO> stockTaking(){
 		System.out.println("查询成功");
-		ArrayList<StockTakingVO> list = null;
+		ArrayList<StockTakingVO> list = new ArrayList<StockTakingVO>();
 		StockTakingVO stocktaking1=new StockTakingVO("1234512345","2015-10-25","南京",StorageArea.AIR_TRANSPORTATION,1,2,3);
 		StockTakingVO stocktaking2=new StockTakingVO("1234512345","2015-10-25","南京",StorageArea.AIR_TRANSPORTATION,1,2,3);
 		list.add(stocktaking1);
@@ -86,7 +86,7 @@ public class ReponsitoryBlService_Stub {
 		System.out.println("查看成功");
 		VO vo1=new StorageVO("1234512345","2015-10-25","南京",StorageArea.AIR_TRANSPORTATION,1,2,3);
 		VO vo2=new RemovalVO("1234512345","2015-10-25","南京","汽运","025000");
-		ArrayList<VO> list=null;
+		ArrayList<VO> list=new ArrayList<VO>();
 		list.add(vo1);
 		list.add(vo2);
 		return list;

@@ -18,7 +18,7 @@ public class BusinessLobbyBlService_Stub {
 	---------------------------------------------*/
 	public ArrayList<String> getNeedGathering(){
 		System.out.println("查询成功");
-		ArrayList<String> list = null;
+		ArrayList<String> list = new ArrayList<String>();
 		list.add("1234512345");
 		list.add("1234512346");
 		list.add("1234512347");
@@ -37,7 +37,7 @@ public class BusinessLobbyBlService_Stub {
 	---------------------------------------------*/
 	public ArrayList<String> getNeedEntrucking(){
 		System.out.println("查询成功");
-		ArrayList<String> list = null;
+		ArrayList<String> list = new ArrayList<String>();
 		list.add("1234512345");
 		list.add("1234512346");
 		list.add("1234512347");
@@ -56,7 +56,7 @@ public class BusinessLobbyBlService_Stub {
 	---------------------------------------------*/
 	public ArrayList<CarInfoVO> searchCar(String id){
 		System.out.println("查询成功");
-		ArrayList<CarInfoVO> list = null;
+		ArrayList<CarInfoVO> list = new ArrayList<CarInfoVO>();
 		CarInfoVO car1=new CarInfoVO("025000000","苏A00000",2016);
 		CarInfoVO car2=new CarInfoVO("025000001","苏A00001",2016);
 		list.add(car1);
@@ -92,7 +92,7 @@ public class BusinessLobbyBlService_Stub {
 	---------------------------------------------*/
 	public ArrayList<DriverInfoVO> searchDriver (String id){
 		System.out.println("查询成功");
-		ArrayList<DriverInfoVO> list = null;
+		ArrayList<DriverInfoVO> list = new ArrayList<DriverInfoVO>();
 		DriverInfoVO driver1=new DriverInfoVO("025000000","尹子越","2016-1-1","320586201601013456","1234512345123","男",2017);
 		DriverInfoVO driver2=new DriverInfoVO("025000000","尹越子","2016-1-1","320586201601013456","1234512345123","男",2017);
 		list.add(driver1);

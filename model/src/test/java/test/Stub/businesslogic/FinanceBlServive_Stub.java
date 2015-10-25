@@ -13,12 +13,12 @@ public class FinanceBlServive_Stub {
 	---------------------------------------------*/
 	public ArrayList<GatheringVO> searchGathering(String date, String businesslobby){
 		System.out.println("查看成功");
-		ArrayList<String> list0=null;
+		ArrayList<String> list0=new ArrayList<String>();
 		list0.add("1234512345");
 		list0.add("1234512346");
 		GatheringVO vo1=new GatheringVO(date,100,"车辆运费",list0);
 		GatheringVO vo2=new GatheringVO(date,100,"车辆运费",list0);
-		ArrayList<GatheringVO> list=null;
+		ArrayList<GatheringVO> list=new ArrayList<GatheringVO>();
 		list.add(vo1);
 		list.add(vo2);
 		return list;
@@ -37,12 +37,12 @@ public class FinanceBlServive_Stub {
 	public ArrayList<EntruckingVO> getEntrucking(String time_start, String time_end){
 		
 		System.out.println("查看成功");
-		ArrayList<String> list0=null;
+		ArrayList<String> list0=new ArrayList<String>();
 		list0.add("1234512345");
 		list0.add("1234512346");
 		EntruckingVO vo1=new EntruckingVO("2015-10-25","215253","南京","苏A00000","1234512345","1234512345",list0,200);
 		EntruckingVO vo2=new EntruckingVO("2015-10-25","215254","南京","苏A00001","1234512345","1234512345",list0,200);
-		ArrayList<EntruckingVO> list=null;
+		ArrayList<EntruckingVO> list=new ArrayList<EntruckingVO>();
 		list.add(vo1);
 		list.add(vo2);
 		return list;
@@ -52,12 +52,12 @@ public class FinanceBlServive_Stub {
 	---------------------------------------------*/
 	public ArrayList<TransferVO> getTransfer(String time_start, String time_end){
 		System.out.println("查看成功");
-		ArrayList<String> list0=null;
+		ArrayList<String> list0=new ArrayList<String>();
 		list0.add("1234512345");
 		list0.add("1234512346");
 		TransferVO vo1=new TransferVO("2015-10-25","215253","215153","南京","上海","A00000","1234512345",list0,200);
 		TransferVO vo2=new TransferVO("2015-10-25","215253","215153","南京","上海","A00000","1234512345",list0,200);
-		ArrayList<TransferVO> list=null;
+		ArrayList<TransferVO> list=new ArrayList<TransferVO>();
 		list.add(vo1);
 		list.add(vo2);
 		return list;
@@ -67,12 +67,12 @@ public class FinanceBlServive_Stub {
 	---------------------------------------------*/
 	public ArrayList<CostVO> searchCost(String start_time, String end_time){
 	System.out.println("查看成功");
-	ArrayList<String> list0=null;
+	ArrayList<String> list0=new ArrayList<String>();
 	list0.add("1234512345");
 	list0.add("1234512346");
 	CostVO vo1=new CostVO("2015-10-25",100,"尹子越","12345",CostType.rent,"1234512345");
 	CostVO vo2=new CostVO("2015-10-25",100,"张斯栋","12345",CostType.rent,"1234512345");
-	ArrayList<CostVO> list=null;
+	ArrayList<CostVO> list=new ArrayList<CostVO>();
 	list.add(vo1);
 	list.add(vo2);
 	return list;
@@ -100,7 +100,7 @@ public class FinanceBlServive_Stub {
 		System.out.println("查看成功");
 		AccountVO vo1=new AccountVO("吃饭",100);
 		AccountVO vo2=new AccountVO("喝酒",100);
-		ArrayList<AccountVO> list=null;
+		ArrayList<AccountVO> list=new ArrayList<AccountVO>();
 		list.add(vo1);
 		list.add(vo2);
 		return list;
@@ -136,7 +136,7 @@ public class FinanceBlServive_Stub {
 		System.out.println("查看成功");
 		LogVO vo1=new LogVO("2015-10-25","出库","刘钦");
 		LogVO vo2=new LogVO("2015-10-25","入库","刘钦");
-		ArrayList<LogVO> list=null;
+		ArrayList<LogVO> list=new ArrayList<LogVO>();
 		list.add(vo1);
 		list.add(vo2);
 		return list;

@@ -10,7 +10,7 @@ public class InquiryBlService_Stub {
 	---------------------------------------------*/
 	public VO getLogistics(String bar_code){
 		System.out.println("查询成功");
-		ArrayList<String> list = null;
+		ArrayList<String> list = new ArrayList<String>();
 		list.add("到达南京");
 		list.add("到达苏州");
 		list.add("到达上海");

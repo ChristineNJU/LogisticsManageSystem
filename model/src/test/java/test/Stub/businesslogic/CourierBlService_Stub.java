@@ -33,7 +33,7 @@ public class CourierBlService_Stub {
 	---------------------------------------------*/
 	public ArrayList<String> getCity(){
 		System.out.println("查询成功");
-		ArrayList<String> list = null;
+		ArrayList<String> list = new ArrayList<String>();
 		list.add("南京");
 		list.add("苏州");
 		list.add("上海");

@@ -21,12 +21,12 @@ public class ManageBlService_Stub {
 	---------------------------------------------*/
 	public ArrayList<VO> showReceipt(){
 		System.out.println("查看成功");
-		ArrayList<String> list0=null;
+		ArrayList<String> list0=new ArrayList<String>();
 		list0.add("1234512345");
 		list0.add("1234512346");
 		VO vo1=new GatheringVO("2015-10-25",100,"车辆运费",list0);
 		VO vo2=new GatheringVO("2015-10-25",100,"车辆运费",list0);
-		ArrayList<VO> list=null;
+		ArrayList<VO> list=new ArrayList<VO>();
 		list.add( vo1);
 		list.add( vo2);
 		return list;
@@ -61,7 +61,7 @@ public class ManageBlService_Stub {
 	public ArrayList<ConstVO> showConst(){
 		ConstVO vo1=new ConstVO("上海到南京的距离（km）","300");
 		ConstVO vo2=new ConstVO("南京到上海的距离（km）","300");
-		ArrayList<ConstVO> list=null;
+		ArrayList<ConstVO> list=new ArrayList<ConstVO>();
 		list.add( vo1);
 		list.add( vo2);
 		return list;
@@ -71,12 +71,12 @@ public class ManageBlService_Stub {
 	---------------------------------------------*/
 	public ArrayList<CostVO> searchCost(String start_time, String end_time){
 		System.out.println("查看成功");
-		ArrayList<String> list0=null;
+		ArrayList<String> list0=new ArrayList<String>();
 		list0.add("1234512345");
 		list0.add("1234512346");
 		CostVO vo1=new CostVO("2015-10-25",100,"尹子越","12345",CostType.rent,"1234512345");
 		CostVO vo2=new CostVO("2015-10-25",100,"张斯栋","12345",CostType.rent,"1234512345");
-		ArrayList<CostVO> list=null;
+		ArrayList<CostVO> list=new ArrayList<CostVO>();
 		list.add(vo1);
 		list.add(vo2);
 		return list;
@@ -86,12 +86,12 @@ public class ManageBlService_Stub {
 	---------------------------------------------*/
 	public ArrayList<GatheringVO> searchGathering(String date, String businesslobby){
 		System.out.println("查看成功");
-		ArrayList<String> list0=null;
+		ArrayList<String> list0=new ArrayList<String>();
 		list0.add("1234512345");
 		list0.add("1234512346");
 		GatheringVO vo1=new GatheringVO(date,100,"车辆运费",list0);
 		GatheringVO vo2=new GatheringVO(date,100,"车辆运费",list0);
-		ArrayList<GatheringVO> list=null;
+		ArrayList<GatheringVO> list=new ArrayList<GatheringVO>();
 		list.add(vo1);
 		list.add(vo2);
 		return list;
@@ -111,7 +111,7 @@ public class ManageBlService_Stub {
 		System.out.println("查看成功");
 		StaffVO vo1=new StaffVO("刘钦","男",20,"南京鼓楼营业厅","营业厅","1234512345");
 		StaffVO vo2=new StaffVO("刘钦","男",21,"南京鼓楼营业厅","营业厅","1234512346");
-		ArrayList<StaffVO> list=null;
+		ArrayList<StaffVO> list=new ArrayList<StaffVO>();
 		list.add(vo1);
 		list.add(vo2);
 		return list;
@@ -147,7 +147,7 @@ public class ManageBlService_Stub {
 		System.out.println("查看成功");
 		InstitutionVO vo1=new InstitutionVO(InstitutionType.BusinessLobby,"南京","0251000");
 		InstitutionVO vo2=new InstitutionVO(InstitutionType.MediumCenter,"南京","025100");
-		ArrayList<InstitutionVO> list=null;
+		ArrayList<InstitutionVO> list=new ArrayList<InstitutionVO>();
 		list.add(vo1);
 		list.add(vo2);
 		return list;
@@ -183,7 +183,7 @@ public class ManageBlService_Stub {
 		System.out.println("查看成功");
 		SalaryVO vo1=new SalaryVO("王小明",2000,SalaryType.MONTH);
 		SalaryVO vo2=new SalaryVO("王大明",2000,SalaryType.MONTH);
-		ArrayList<SalaryVO> list=null;
+		ArrayList<SalaryVO> list=new ArrayList<SalaryVO>();
 		list.add(vo1);
 		list.add(vo2);
 		return list;

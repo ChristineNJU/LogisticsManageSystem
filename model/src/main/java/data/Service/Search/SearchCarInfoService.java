@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import businesslogic.PO.CarInfoPO;
 
-public interface SearcCarInfoService extends Remote{
+public interface SearchCarInfoService extends Remote{
 	
 	public ArrayList<CarInfoPO> searchCarInfo(String DB_URL, ArrayList<String> requirement) throws RemoteException;
 	
