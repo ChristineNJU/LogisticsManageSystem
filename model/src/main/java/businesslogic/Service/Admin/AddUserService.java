@@ -1,6 +1,5 @@
 package businesslogic.Service.Admin;
 
-
 import dataservice.State.AddState;
 
 public interface AddUserService {
