@@ -6,11 +6,11 @@ public class LogPO extends PO {
 	private String operation = null;
 	private String operator = null;
 	
-	public LogPO(String time, String operateion, String operator, String DB_URL) {
+	public LogPO(String time, String operation, String operator, String DB_URL) {
 		super(DB_URL);
 		// TODO Auto-generated constructor stub
 		this.time = time;
-		this.operation = operateion;
+		this.operation = operation;
 		this.operator = operator;
 	}
 	

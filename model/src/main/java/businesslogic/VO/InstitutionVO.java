@@ -2,6 +2,7 @@ package businesslogic.VO;
 
 import businesslogic.State.InstitutionType;
 
+
 public class InstitutionVO extends VO {
 
 	private InstitutionType type = null;

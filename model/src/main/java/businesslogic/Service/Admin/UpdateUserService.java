@@ -1,5 +1,6 @@
 package businesslogic.Service.Admin;
 
+import businesslogic.VO.UserVO;
 import dataservice.State.UpdateState;
 
 public interface UpdateUserService {

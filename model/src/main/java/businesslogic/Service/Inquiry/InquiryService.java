@@ -1,5 +1,7 @@
 package businesslogic.Service.Inquiry;
 
+import businesslogic.VO.VO;
+
 
 public interface InquiryService {
 	
