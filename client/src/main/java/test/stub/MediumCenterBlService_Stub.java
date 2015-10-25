@@ -1,7 +1,7 @@
 package test.stub;
 import java.util.ArrayList;
 
-import dataservice.State.*;
+import data.State.*;
 import businesslogic.State.*;
 import businesslogic.VO.*;
 public class MediumCenterBlService_Stub {

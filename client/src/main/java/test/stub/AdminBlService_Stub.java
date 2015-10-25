@@ -2,9 +2,7 @@ package test.stub;
 
 import java.util.ArrayList;
 
-import dataservice.State.AddState;
-import dataservice.State.DeleteState;
-import dataservice.State.UpdateState;
+import data.State.*;
 import businesslogic.PO.*;
 import businesslogic.State.UserRole;
 import businesslogic.VO.UserVO;

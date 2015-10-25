@@ -2,9 +2,7 @@ package test.stub;
 
 import java.util.ArrayList;
 
-import dataservice.State.AddState;
-import dataservice.State.DeleteState;
-import dataservice.State.UpdateState;
+import data.State.*;
 import businesslogic.State.CostType;
 import businesslogic.State.InstitutionType;
 import businesslogic.State.SalaryType;

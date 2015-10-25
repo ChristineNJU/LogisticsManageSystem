@@ -2,10 +2,7 @@ package test.stub;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-
-import dataservice.State.AddState;
-import dataservice.State.DeleteState;
-import dataservice.State.UpdateState;
+import data.State.*;
 import businesslogic.PO.*;
 import businesslogic.State.CostType;
 import businesslogic.VO.*;
@@ -137,8 +134,8 @@ public class FinanceBlServive_Stub {
 	---------------------------------------------*/
 	public ArrayList<LogVO> getLog(String time_start, String time_end){
 		System.out.println("查看成功");
-		LogVO vo1=new LogVO("1234512345","刘钦",100);
-		LogVO vo2=new LogVO("喝酒",100);
+		LogVO vo1=new LogVO("2015-10-25","出库","刘钦");
+		LogVO vo2=new LogVO("2015-10-25","入库","刘钦");
 		ArrayList<LogVO> list=null;
 		list.add(vo1);
 		list.add(vo2);
