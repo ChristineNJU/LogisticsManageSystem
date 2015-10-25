@@ -38,7 +38,7 @@ public class BalanceVO extends VO {
 	public String getDate(){
 		return this.date;
 	}
-	public String destination(){
+	public String getDestination(){
 		return this.destination;
 	}
 	public StorageArea getAreaBefore(){
@@ -64,6 +64,40 @@ public class BalanceVO extends VO {
 	}
 	public int getPosition(){
 		return this.position;
+	}
+	
+	public void setBarCode(String barCode){
+		this.barCode = barCode;
+	}
+	public void setDate(String date){
+		this.date = date;
+	}
+	public void setDestination(String destination){
+		this.destination = destination;
+	}
+	public void setAreaBefore(StorageArea area){
+		this.areaBefore = area;
+	}
+	public void setRowBefore(int rowBefore){
+		this.rowBefore = rowBefore;
+	}
+	public void setShelfBefore(int shelfBefore){
+		this.shelfBefore = shelfBefore;
+	}
+	public void setPositionBefore(int positionBefore){
+		this.positionBefore = positionBefore;
+	}
+	public void setAreaCode(StorageArea area){
+		this.areaCode = area;
+	}
+	public void setRow(int row){
+		this.row = row;
+	}
+	public void setShelf(int shelf){
+		this.shelf = shelf;
+	}
+	public void setPosition(int position){
+		this.position = position;
 	}
 	
 }

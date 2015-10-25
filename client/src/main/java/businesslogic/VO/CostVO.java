@@ -40,4 +40,23 @@ public class CostVO extends VO {
 		return this.remark;
 	}
 	
+	public void setDate(String date){
+		this.date = date;
+	}
+	public void setAmount(double amount){
+		this.amount = amount;
+	}
+	public void setPayer(String payer){
+		this.payer = payer;
+	}
+	public void setPayerAccount(String payerAccount){
+		this.payerAccount = payerAccount;
+	}
+	public void setCostType(CostType costType){
+		this.costType = costType;
+	}
+	public void setRemark(String remark){
+		this.remark = remark;
+	}
+
 }

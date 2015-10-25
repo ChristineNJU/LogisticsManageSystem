@@ -29,4 +29,16 @@ public class CarInfoVO extends VO {
 		return useTime;
 	}
 	
+	public void setCarNumber(String carNumber){
+		this.carNumber = carNumber;
+	}
+	
+	public void setCarLicense(String carLicense){
+		this.carLicense = carLicense;
+	}
+	
+	public void setAttendTime(int time){
+		this.attendTime = time;
+	}
+	
 }

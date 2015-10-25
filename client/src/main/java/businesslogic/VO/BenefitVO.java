@@ -9,7 +9,7 @@ public class BenefitVO extends VO {
 	public BenefitVO(double income,double cost,double benefit){
 		this.incomeTotal = income;
 		this.costTotal = cost;
-		this.benefitTotal = benefit;
+		this.benefitTotal = income - cost;
 	}
 	
 	public double getIncome(){
@@ -20,6 +20,13 @@ public class BenefitVO extends VO {
 	}
 	public double getBenefit(){
 		return this.benefitTotal;
+	}
+	
+	public void setIncome(double income){
+		this.incomeTotal = income;
+	}
+	public void setCost(double cost){
+		this.costTotal = cost;
 	}
 	
 }

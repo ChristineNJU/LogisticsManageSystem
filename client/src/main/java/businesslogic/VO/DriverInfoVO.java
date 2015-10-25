@@ -10,7 +10,7 @@ public class DriverInfoVO extends VO {
 	private String sex = null;
 	private int attendTime = 0;
 	
-	public DriverInfoVO(String number,String name,String birthday,String id,String movilephone,String sex,int attendTime){
+	public DriverInfoVO(String number,String name,String birthday,String id,String mobilephone,String sex,int attendTime){
 		this.number = number;
 		this.name = name;
 		this.birthday = birthday;
@@ -41,4 +41,24 @@ public class DriverInfoVO extends VO {
 	public int getAttendTime(){
 		return this.attendTime;
 	}
+	
+	public void setNumber(String number){
+		this.number = number;
+	}
+	public void setBirthday(String birthday){
+		this.birthday = birthday;
+	}
+	public void setId(String id){
+		this.id = id;
+	}
+	public void setMobilephone(String mobilephone){
+		this.mobilephone = mobilephone;
+	}
+	public void setSex(String sex){
+		this.sex = sex;
+	}
+	public void setAttendTime(int attendTime){
+		this.attendTime = attendTime;
+	}
+
 }

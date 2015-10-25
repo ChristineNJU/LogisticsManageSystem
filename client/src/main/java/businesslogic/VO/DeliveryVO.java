@@ -6,12 +6,12 @@ package businesslogic.VO;
 public class DeliveryVO extends VO {
 
 	private String arrivalDate = null;
-	private String id = null;
+	private String barCode = null;
 	private String people = null;
 	
 	public DeliveryVO(String arrivalDate,String id,String people){
 		this.arrivalDate = arrivalDate;
-		this.id = id;
+		this.barCode = id;
 		this.people = people;
 	}
 	
@@ -20,10 +20,21 @@ public class DeliveryVO extends VO {
 	}
 	
 	public String getId(){
-		return id;
+		return barCode;
 	}
 	
 	public String getPeople(){
 		return people;
 	}
+
+	public void setArrivalDate(String date){
+		this.arrivalDate = date;
+	}
+	public void setBarCode(String barCode){
+		this.barCode = barCode;
+	}
+	public void setpeople(String people){
+		this.people = people;
+	}
+	
 }

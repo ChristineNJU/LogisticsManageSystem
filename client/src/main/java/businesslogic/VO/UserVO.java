@@ -23,4 +23,14 @@ public class UserVO extends VO {
 	public UserRole getRole(){
 		return this.role;
 	}
+	
+	public void setId(String id){
+		this.id = id;
+	}
+	public void setName(String name){
+		this.name = name;
+	}
+	public void setRole(UserRole role){
+		this.role = role;
+	}
 }
