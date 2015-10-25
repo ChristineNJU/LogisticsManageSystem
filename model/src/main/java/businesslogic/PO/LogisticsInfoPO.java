@@ -10,7 +10,7 @@ import businesslogic.State.PackingCharge;
  * 用来保存快递信息的持久化数据格式
  * */
 
-public class LoisticsInfoPO extends PO {
+public class LogisticsInfoPO extends PO {
 	/*
 	 * 寄件人信息
 	 * */
@@ -52,7 +52,7 @@ public class LoisticsInfoPO extends PO {
 	 * */
 	private ArrayList<String> history = new ArrayList<String>();
 	
-	public LoisticsInfoPO(String sender_name, String sender_address, String sender_organization,
+	public LogisticsInfoPO(String sender_name, String sender_address, String sender_organization,
 							String sender_telephone, String sender_mobilephone,
 						  String recipient_name, String recipient_address, String recipient_organization,
 						  	String recipient_telephone, String recipient_mobilephone,

@@ -4,8 +4,10 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import businesslogic.PO.InstitutionPO;
+
 public interface SearchInstitutionInfoService extends Remote{
 	
-	public ArrayList<InstitutionInfoPO> searchInstitutionInfo(ArrayList<String> requirement) throws RemoteException;
+	public ArrayList<InstitutionPO> searchInstitutionInfo(ArrayList<String> requirement) throws RemoteException;
 
 }
