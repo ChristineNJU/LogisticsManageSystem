@@ -25,6 +25,7 @@ import businesslogic.Service.Finance.SearchAccountService;
 import businesslogic.Service.Finance.SearchCostService;
 import businesslogic.Service.Finance.SearchGatheringService;
 import businesslogic.Service.Manage.SearchStaffService;
+import businesslogic.State.UserRole;
 import businesslogic.VO.AccountVO;
 import businesslogic.VO.CostVO;
 import businesslogic.VO.GatheringVO;
@@ -60,20 +61,38 @@ public class SearchService_Stub implements SearchLogisticsService, SearchGatheri
 	public ArrayList<UserPO> searchUser(ArrayList<String> requirement)
 			throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		ArrayList<String> ins = new ArrayList<String>();
+		ins.add("0251001_gathering");
+		ins.add("0251001_delivery");
+		ins.add("0251001_arrival");
+		ins.add("0251001_carInfo");
+		ins.add("0251001_driverInfo");
+		
+		UserPO user = new UserPO("025100001", "12345678", "张晨剑", UserRole.businessAgent,
+				 ins, "staff_info");
+		
+		ArrayList<UserPO> list = new ArrayList<UserPO>();
+		list.add(user);
+		
+		return list;
 	}
 
 	@Override
 	public ArrayList<ConstPO> searchConst(ArrayList<String> requirement)
 			throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		
+		ConstPO con = new ConstPO("标准快递", 28, "const_info");		
+		ArrayList<ConstPO> list = new ArrayList<ConstPO>();
+		list.add(con);
+		return list;
 	}
 
 	@Override
 	public ArrayList<SalaryPO> searchSalary(ArrayList<String> requirement)
 			throws RemoteException {
 		// TODO Auto-generated method stub
+		
 		return null;
 	}
 

@@ -13,14 +13,14 @@ public class UserPO extends PO {
 	private ArrayList<String> Ins_DB_URL;
 	
 	public UserPO(String id, String password, String name, UserRole role,
-					String DB_LA, ArrayList<String> Ins_DB_URL, String DB_URL) {
+					 ArrayList<String> Ins_DB_URL, String DB_URL) {
 		super(DB_URL);
 		this.id = id;
 		this.password = password;
 		this.name = name;
 		this.role = role;
 		
-		super.DB_URL = DB_LA;
+		super.DB_URL = DB_URL;
 		this.Ins_DB_URL = Ins_DB_URL;
 	}
 	

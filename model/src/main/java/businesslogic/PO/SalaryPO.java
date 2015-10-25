@@ -1,15 +1,16 @@
 package businesslogic.PO;
 
 import businesslogic.State.SalaryType;
+import businesslogic.State.UserRole;
 
 public class SalaryPO extends PO {
 
-	private String staff = null;
+	private UserRole staff = null;
 	private double salary = 0;
 	private SalaryType type = null;
 	
 	
-	public SalaryPO(String staff, double salary, SalaryType type, String DB_URL) {
+	public SalaryPO(UserRole staff, double salary, SalaryType type, String DB_URL) {
 		super(DB_URL);
 		// TODO Auto-generated constructor stub
 		this.staff = staff;
@@ -26,9 +27,9 @@ public class SalaryPO extends PO {
 	 * */
 	/*
 	 * 获取工作人员
-	 * 返回String
+	 * 返回UserRole
 	 * */
-	public String getStaff() {
+	public UserRole getStaff() {
 		return staff;
 	}
 	/*
