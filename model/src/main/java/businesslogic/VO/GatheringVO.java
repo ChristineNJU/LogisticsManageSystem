@@ -2,6 +2,8 @@ package businesslogic.VO;
 
 import java.util.ArrayList;
 
+import businesslogic.PO.GatheringPO;
+
 public class GatheringVO extends VO {
 
 	private String date = null;
@@ -14,6 +16,12 @@ public class GatheringVO extends VO {
 		this.money = money;
 		this.name = name;
 		this.barCodeList = barCodeList;
+	}
+	public GatheringVO(GatheringPO po) {
+		this.date = po.getDate();
+		this.money = po.getAmount();
+		this.name = po.getCourier();
+		this.barCodeList = po.getBarCodeList();
 	}
 	
 	public String getDate(){

@@ -1,5 +1,6 @@
 package businesslogic.VO;
 
+import businesslogic.PO.ArrivalPO;
 import businesslogic.State.LogisticsState;
 
 public class ArrivalVO extends VO {
@@ -15,6 +16,12 @@ public class ArrivalVO extends VO {
 		this.listId = listId;
 		this.departure = departure;
 		this.itemState = itemState;
+	}
+	public ArrivalVO(ArrivalPO po) {
+		this.date = po.getArrivalDate();
+		this.listId = po.getBarCode();
+		this.departure = po.getStarting();
+		this.itemState = po.getState();
 	}
 	
 	public String getDate(){

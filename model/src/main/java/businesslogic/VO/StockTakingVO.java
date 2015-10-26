@@ -1,5 +1,6 @@
 package businesslogic.VO;
 
+import businesslogic.PO.StockTakingPO;
 import businesslogic.State.StorageArea;
 
 public class StockTakingVO extends VO {
@@ -20,6 +21,15 @@ public class StockTakingVO extends VO {
 		this.row = row;
 		this.shelf = shelf;
 		this.position = position;
+	}
+	public StockTakingVO(StockTakingPO po) {
+		this.barCode = po.getBarCode();
+		this.storageDate = po.getDate();
+		this.destination = po.getDestination();
+		this.areaCode = po.getAreaCode();
+		this.row = po.getRow();
+		this.shelf = po.getShelf();
+		this.position = po.getPosition();
 	}
 	
 	public String getBarCode(){

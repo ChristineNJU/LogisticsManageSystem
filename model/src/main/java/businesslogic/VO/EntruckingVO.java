@@ -2,6 +2,8 @@ package businesslogic.VO;
 
 import java.util.ArrayList;
 
+import businesslogic.PO.EntruckingPO;
+
 public class EntruckingVO extends VO {
 
 	private String date = null;
@@ -23,6 +25,15 @@ public class EntruckingVO extends VO {
 		this.supercargoName = supercargo_name;
 		this.barCodeList = bar_code_list;
 		this.amount = amount;
+	}
+	public EntruckingVO(EntruckingPO po) {
+		this.date = po.getDate();
+		this.institutionrNumber = po.getTransferNumber();
+		this.destination = po.getDestination();
+		this.guardName = po.getGuardName();
+		this.supercargoName = po.getSupercargoName();
+		this.barCodeList = po.getBarCodeList();
+		this.amount = po.getAmount();
 	}
 	
 	public String getDate(){
