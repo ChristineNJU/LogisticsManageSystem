@@ -5,7 +5,7 @@
   <parent>
     <groupId>edu.nju.expressManageSystem</groupId>
     <artifactId>express-all</artifactId>
-    <version>${project.version}</version>
+    <version>1.0-SNAPSHOT</version>
   </parent>
   
   <artifactId>model</artifactId>
@@ -36,4 +36,5 @@
     </reporting>
 
   
+  	  <groupId>edu.nju.model</groupId>
 </project>

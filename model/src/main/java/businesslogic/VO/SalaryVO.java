@@ -1,5 +1,6 @@
 package businesslogic.VO;
 
+import businesslogic.PO.SalaryPO;
 import businesslogic.State.SalaryType;
 
 public class SalaryVO extends VO {
@@ -13,6 +14,7 @@ public class SalaryVO extends VO {
 		this.salary = salary;
 		this.salaryType = salaryType;
 	}
+
 	
 	public String getName(){
 		return this.name;

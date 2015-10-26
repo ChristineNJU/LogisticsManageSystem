@@ -1,5 +1,7 @@
 package businesslogic.VO;
 
+import businesslogic.PO.RemovalPO;
+
 public class RemovalVO extends VO {
 
 	private String barCode = null;
@@ -16,6 +18,7 @@ public class RemovalVO extends VO {
 		this.transferWay = transferWay;
 		this.transferCode = transferCode;
 	}
+	
 	
 	public String getBarCode(){
 		return this.barCode;

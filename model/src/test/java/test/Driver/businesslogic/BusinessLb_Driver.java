@@ -13,7 +13,12 @@ public class BusinessLb_Driver {
 	 
 	  public void drive(BusinessLobbyBlService_Stub businessLBbl){
 		  ArrayList<ArrivalVO> arrivalList = new ArrayList<ArrivalVO>();
+
 		  arrivalList.add(0, new ArrivalVO("2015/10/25","1111111","南京",LogisticsState.LOST));
+
+		  
+		  arrivalList.add(new ArrivalVO("2015/10/25","1111111","南京",LogisticsState.LOST));
+
 		  System.out.println(businessLBbl.arrival(arrivalList));
 		  
 		  ArrayList<String> gatheringList = businessLBbl.getNeedGathering();

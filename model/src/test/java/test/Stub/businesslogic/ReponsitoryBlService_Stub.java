@@ -1,23 +1,40 @@
 package test.Stub.businesslogic;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import data.State.*;
-import businesslogic.State.*;
-import businesslogic.VO.*;
+import test.Stub.data.SearchService_Stub;
+import businesslogic.PO.StockTakingPO;
+import businesslogic.State.OutputState;
+import businesslogic.State.StorageArea;
+import businesslogic.State.StorageState;
+import businesslogic.VO.BalanceVO;
+import businesslogic.VO.RemovalVO;
+import businesslogic.VO.StockTakingVO;
+import businesslogic.VO.StorageVO;
+import businesslogic.VO.VO;
+import data.State.AddState;
 
 public class ReponsitoryBlService_Stub {
+	SearchService_Stub sss = new SearchService_Stub();
 	/*-------------------------------------------
 	 显示当天库存信息
 	---------------------------------------------*/
 	public ArrayList<StockTakingVO> stockTaking(){
 		System.out.println("查询成功");
-		ArrayList<StockTakingVO> list = new ArrayList<StockTakingVO>();
-		StockTakingVO stocktaking1=new StockTakingVO("1234512345","2015-10-25","南京",StorageArea.AIR_TRANSPORTATION,1,2,3);
-		StockTakingVO stocktaking2=new StockTakingVO("1234512345","2015-10-25","南京",StorageArea.AIR_TRANSPORTATION,1,2,3);
-		list.add(stocktaking1);
-		list.add(stocktaking2);
-		return list;		
+		ArrayList<String> requirement = new ArrayList<String>();
+		ArrayList<StockTakingVO> listResult = new ArrayList<StockTakingVO>();
+		ArrayList<StockTakingPO> listSource = null;
+		try{
+			listSource = sss.searchStockTaking(null, requirement);
+			for (int i = 0; i < listSource.size();i++){
+				listResult.add(null);
+			}
+		}catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return listResult;		
 	}
 	/*-------------------------------------------
 	 确认库存盘点信息

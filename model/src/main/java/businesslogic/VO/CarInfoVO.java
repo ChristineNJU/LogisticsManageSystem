@@ -1,5 +1,7 @@
 package businesslogic.VO;
 
+import businesslogic.PO.CarInfoPO;
+
 /*==================================================================
  * 用来在界面层显示的车辆信息
  * */
@@ -15,6 +17,12 @@ public class CarInfoVO extends VO {
 		this.carLicense = car_license;
 		this.attendTime = attend_time;
 		useTime = 2015 - attend_time;
+	}
+	public CarInfoVO(CarInfoPO po) {
+		this.carNumber = po.getCarNumber();
+		this.carLicense = po.getCarLicense();
+		this.attendTime = po.getAttendTime();
+		useTime = 2015 - attendTime;			//??????????
 	}
 	
 	public String getCarNumber(){

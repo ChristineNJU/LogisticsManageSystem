@@ -1,5 +1,7 @@
 package businesslogic.VO;
 
+import businesslogic.PO.AccountPO;
+
 public class AccountVO extends VO {
 
 	private String name = null;
@@ -8,6 +10,11 @@ public class AccountVO extends VO {
 	public AccountVO(String name,double money){
 		this.name = name;
 		this.money = money;
+	}
+	
+	public AccountVO(AccountPO po) {
+		this.name = po.getAccountName();
+		this.money = po.getAmount();
 	}
 	
 	public String getName(){

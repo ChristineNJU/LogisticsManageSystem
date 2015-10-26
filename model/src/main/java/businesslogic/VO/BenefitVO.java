@@ -1,5 +1,7 @@
 package businesslogic.VO;
 
+import businesslogic.PO.BenefitPO;
+
 public class BenefitVO extends VO {
 
 	private double incomeTotal = 0;
@@ -10,6 +12,11 @@ public class BenefitVO extends VO {
 		this.incomeTotal = income;
 		this.costTotal = cost;
 		this.benefitTotal = income - cost;
+	}
+	public BenefitVO(BenefitPO po) {
+		this.incomeTotal = po.getIncome();
+		this.costTotal = po.getExpend();
+		this.benefitTotal = po.getBenefit();
 	}
 	
 	public double getIncome(){
