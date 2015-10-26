@@ -51,6 +51,9 @@ public class TransferVO extends VO {
 	public String getDeparture(){
 		return this.departure;
 	}
+	public String getDestination(){
+		return this.destination;
+	}
 	public String getArrival(){
 		return this.destination;
 	}

@@ -3,8 +3,11 @@ package test.Stub.businesslogic;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import test.Stub.data.SearchService_Stub;
+
+import businesslogic.PO.BalancePO;
+import businesslogic.PO.RemovalPO;
 import businesslogic.PO.StockTakingPO;
+import businesslogic.PO.StoragePO;
 import businesslogic.State.OutputState;
 import businesslogic.State.StorageArea;
 import businesslogic.State.StorageState;
@@ -15,33 +18,51 @@ import businesslogic.VO.StorageVO;
 import businesslogic.VO.VO;
 import data.State.AddState;
 
+import test.Stub.data.AddService_Stub;
+import test.Stub.data.DeleteService_Stub;
+import test.Stub.data.SearchService_Stub;
+import test.Stub.data.UpdateService_Stub;
+
 public class ReponsitoryBlService_Stub {
-	SearchService_Stub sss = new SearchService_Stub();
+	AddService_Stub addSev = new AddService_Stub();
+	DeleteService_Stub deleteSev = new DeleteService_Stub();
+	SearchService_Stub searchSev = new SearchService_Stub();
+	UpdateService_Stub updateSev = new UpdateService_Stub();
+
 	/*-------------------------------------------
 	 显示当天库存信息
 	---------------------------------------------*/
 	public ArrayList<StockTakingVO> stockTaking(){
 		System.out.println("查询成功");
-		ArrayList<String> requirement = new ArrayList<String>();
-		ArrayList<StockTakingVO> listResult = new ArrayList<StockTakingVO>();
-		ArrayList<StockTakingPO> listSource = null;
-		try{
-			listSource = sss.searchStockTaking(null, requirement);
-			for (int i = 0; i < listSource.size();i++){
-				listResult.add(null);
-			}
-		}catch (RemoteException e) {
+
+		ArrayList<StockTakingPO> list = new ArrayList<StockTakingPO>();
+		ArrayList<StockTakingVO> voList = null;
+		try {
+			list = searchSev.searchStockTaking(null, null);
+		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return listResult;		
+		for (int i = 0; i < list.size() ; i++){
+			StockTakingPO po = list.get(i);
+			voList.add(new StockTakingVO(po.getBarCode(), po.getDate(), po.getDestination(), po.getAreaCode(), 
+					po.getRow(), po.getShelf(), po.getPosition()));
+		}
+		return voList;	
+
 	}
 	/*-------------------------------------------
 	 确认库存盘点信息
 	---------------------------------------------*/
 	public AddState stockTakingConfirm(){
 		System.out.println("确认库存盘点成功");
-		AddState state=AddState.SUCCESS;
+		AddState state = AddState.FAIL;
+		try {
+			state = addSev.add(null);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return state;
 	}
 	/*-------------------------------------------
@@ -55,16 +76,33 @@ public class ReponsitoryBlService_Stub {
 	/*-------------------------------------------
 	 返回需要入库的快递
 	---------------------------------------------*/
-	public String getNeedStorage(){
+	public ArrayList<String> getNeedStorage(){
 		System.out.println("返回成功");
-		return "1234512345";
+		ArrayList<StoragePO> po = null;
+		try {
+			 po = searchSev.searchStorage(null,null);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ArrayList<String> list = new ArrayList<String>();
+		for(int i = 0; i < po.size();i++){
+			list.add(po.get(i).toString());
+		}
+		return list;
 	}
 	/*-------------------------------------------
 	 生成入库信息并储存
 	---------------------------------------------*/
-	public StorageState storage(ArrayList<StorageVO> Storage){
+	public AddState storage(ArrayList<StorageVO> Storage){
 		System.out.println("生成，储存入库信息成功");
-		StorageState state=StorageState.SUCCESS;
+		AddState state=AddState.SUCCESS;
+		try {
+			state = addSev.add(null);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return state;
 	}
 	/*-------------------------------------------
@@ -72,7 +110,18 @@ public class ReponsitoryBlService_Stub {
 	---------------------------------------------*/
 	public String getNeedRemoval(){
 		System.out.println("返回成功");
-		return "1234512345";
+		ArrayList<RemovalPO> po = null;
+		try {
+			 po = searchSev.searchRemoval(null,null);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ArrayList<String> list = new ArrayList<String>();
+		for(int i = 0; i < po.size();i++){
+			list.add(po.get(i).toString());
+		}
+		return po.get(0).toString();
 	}
 	/*-------------------------------------------
 	 生成出库信息确认并存储
@@ -80,14 +129,27 @@ public class ReponsitoryBlService_Stub {
 	public AddState removal(ArrayList<RemovalVO> removal){
 		System.out.println("生成，储存入库信息成功");
 		AddState state=AddState.SUCCESS;
+		try {
+			state = addSev.add(null);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return state;
 		}
 	/*-------------------------------------------
 	 存储库存调整信息
 	---------------------------------------------*/
-	public StorageState balance(BalanceVO balance){
+	public AddState balance(BalanceVO balance){
 		System.out.println("存储库存调整信息成功");
-		StorageState state=StorageState.SUCCESS;
+		AddState state=AddState.SUCCESS;
+		try {
+			state = addSev.add(new BalancePO(null, null, null, null, 0, 0, 0, null, 0, 0, 0, null));
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return state;
 	}
 	/*-------------------------------------------
