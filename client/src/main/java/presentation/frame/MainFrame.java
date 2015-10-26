@@ -28,6 +28,10 @@ public class MainFrame {
 		this.init();
 	}
 	
+	public static void main(String[] args) {
+		new MainFrame();
+	}
+	
 	private void instance(){
 		frame = new JFrame();
 		startPanel = new JPanel();
@@ -45,7 +49,7 @@ public class MainFrame {
 		ok.setBounds(10,50,100,20);
 		startPanel.add(ok);
 		ok.addActionListener(new myListener(this));
-		
+		frame.setVisible(true);
 	}
 	
 	private void showInfo(){
