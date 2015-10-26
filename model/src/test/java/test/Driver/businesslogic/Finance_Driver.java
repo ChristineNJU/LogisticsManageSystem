@@ -110,8 +110,6 @@ public class Finance_Driver {
 		
 	}
 	
-	public static void main(String[] args){
-		new Finance_Driver().drive(new FinanceBlService_Stub());
-	}
+	
 }
 

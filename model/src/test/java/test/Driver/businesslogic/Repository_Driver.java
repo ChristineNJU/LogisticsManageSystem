@@ -7,11 +7,6 @@ import businesslogic.VO.VO;
 import test.Stub.businesslogic.ReponsitoryBlService_Stub;
 
 public class Repository_Driver {
-
-	public static void main(String [] args){
-		Repository_Driver drive=new Repository_Driver();
-		drive.drive(new ReponsitoryBlService_Stub());
-	}
 	
 	public void drive(ReponsitoryBlService_Stub repositorybl){
 		

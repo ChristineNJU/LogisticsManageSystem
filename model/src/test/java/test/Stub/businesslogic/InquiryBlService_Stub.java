@@ -1,20 +1,32 @@
 package test.Stub.businesslogic;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import businesslogic.VO.*;
+import test.Stub.data.SearchService_Stub;
+import businesslogic.PO.LogisticsInfoPO;
+import businesslogic.VO.LogisticsHistoryVO;
+import businesslogic.VO.VO;
 
 public class InquiryBlService_Stub {
 	/*-------------------------------------------
 	 查询快递信息
 	---------------------------------------------*/
 	public VO getLogistics(String bar_code){
-		System.out.println("查询成功");
-		ArrayList<String> list = new ArrayList<String>();
-		list.add("到达南京");
-		list.add("到达苏州");
-		list.add("到达上海");
-		VO inquiryvo=new LogisticsHistoryVO(bar_code,list);
-		return inquiryvo;
+		System.out.println("Logic_Stub "+"查询成功");
+		ArrayList<VO> list = new ArrayList<VO>();
+		ArrayList<String> requirement=new ArrayList<String>();
+		requirement.add(bar_code);
+		try{
+			ArrayList<LogisticsInfoPO> lpo=new SearchService_Stub().searchLogisticsInfo(requirement);
+			for(int i=0;i<lpo.size();i++){
+				LogisticsHistoryVO log=new LogisticsHistoryVO(lpo.get(i).getBarCode(),lpo.get(i).getHistory());
+				list.add(log);
+			}
+		} catch(RemoteException e){
+			e.printStackTrace();
+		}
+		
+		return list.get(0);
 	}
 }

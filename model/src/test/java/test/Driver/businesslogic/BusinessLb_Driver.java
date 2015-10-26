@@ -10,14 +10,10 @@ import test.Stub.businesslogic.BusinessLobbyBlService_Stub;
 
 public class BusinessLb_Driver {
 
-	  public static void main(String [] args){
-		  BusinessLb_Driver driver=new BusinessLb_Driver();
-		  driver.drive(new BusinessLobbyBlService_Stub());
-	  }
-	  
+	 
 	  public void drive(BusinessLobbyBlService_Stub businessLBbl){
 		  ArrayList<ArrivalVO> arrivalList = new ArrayList<ArrivalVO>();
-		  arrivalList.set(0, new ArrivalVO("2015/10/25","1111111","南京",LogisticsState.LOST));
+		  arrivalList.add(0, new ArrivalVO("2015/10/25","1111111","南京",LogisticsState.LOST));
 		  System.out.println(businessLBbl.arrival(arrivalList));
 		  
 		  ArrayList<String> gatheringList = businessLBbl.getNeedGathering();

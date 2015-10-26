@@ -12,7 +12,4 @@ public class Inquiry_Driver {
 		
 	}
 	
-	public static void main(String[] args){
-		new Inquiry_Driver().drive(new InquiryBlService_Stub());
-	}
 }
