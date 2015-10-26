@@ -15,7 +15,7 @@ public class TransferVO extends VO {
 	private double transferCharge = 0;
 	
 	public TransferVO(String date,String listId,String transferId,String departure,String destination,
-			String containerNumber,String guardNam,ArrayList<String> itemid,double transferCharge){
+			String containerNumber,String guardName,ArrayList<String> itemId,double transferCharge){
 		this.date = date;
 		this.listId = listId;
 		this.transferId = transferId;
