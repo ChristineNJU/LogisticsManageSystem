@@ -22,6 +22,11 @@
       <artifactId>model</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
+    <dependency>
+    	<groupId>edu.nju.expressManageSystem</groupId>
+    	<artifactId>server</artifactId>
+    	<version>1.0-SNAPSHOT</version>
+    </dependency>
   </dependencies>
   
   	  <reporting>
@@ -41,4 +46,7 @@
       </plugins>
     </reporting>
 
+  	  <properties>
+  	  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  	  </properties>
 </project>

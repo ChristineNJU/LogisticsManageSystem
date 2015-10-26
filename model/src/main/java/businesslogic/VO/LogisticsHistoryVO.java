@@ -2,6 +2,8 @@ package businesslogic.VO;
 
 import java.util.ArrayList;
 
+import businesslogic.PO.LogisticsInfoPO;
+
 public class LogisticsHistoryVO extends VO {
 
 	private String barCode = null;	
@@ -10,6 +12,11 @@ public class LogisticsHistoryVO extends VO {
 	public LogisticsHistoryVO(String barCode,ArrayList<String> history){
 		this.barCode = barCode;
 		this.history = history;
+	}
+	
+	public LogisticsHistoryVO(LogisticsInfoPO po) {
+		this.barCode = po.getBarCode();
+		this.history = po.getHistory();
 	}
 	
 	public String getBarCode(){
