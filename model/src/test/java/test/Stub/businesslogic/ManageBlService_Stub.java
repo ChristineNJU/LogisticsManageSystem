@@ -1,8 +1,20 @@
 package test.Stub.businesslogic;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import test.Stub.data.AddService_Stub;
+import test.Stub.data.DeleteService_Stub;
+import test.Stub.data.SearchService_Stub;
+import test.Stub.data.UpdateService_Stub;
 import data.State.*;
+import businesslogic.PO.BenefitPO;
+import businesslogic.PO.ConstPO;
+import businesslogic.PO.CostPO;
+import businesslogic.PO.GatheringPO;
+import businesslogic.PO.InstitutionPO;
+import businesslogic.PO.SalaryPO;
+import businesslogic.PO.UserPO;
 import businesslogic.Service.Finance.SearchCostService;
 import businesslogic.Service.Manage.*;
 import businesslogic.State.CostType;
@@ -15,6 +27,7 @@ import businesslogic.VO.GatheringVO;
 import businesslogic.VO.InstitutionVO;
 import businesslogic.VO.SalaryVO;
 import businesslogic.VO.StaffVO;
+import businesslogic.VO.UserVO;
 import businesslogic.VO.VO;
 
 public class ManageBlService_Stub implements AddConstService,AddInstitutionService,AddStaffService,
@@ -29,13 +42,22 @@ public class ManageBlService_Stub implements AddConstService,AddInstitutionServi
 	public ArrayList<VO> showReceipt(){
 		System.out.println("查看成功");
 		ArrayList<String> list0=new ArrayList<String>();
-		list0.add("1234512345");
-		list0.add("1234512346");
-		VO vo1=new GatheringVO("2015-10-25",100,"车辆运费",list0);
-		VO vo2=new GatheringVO("2015-10-25",100,"车辆运费",list0);
+		list0.add(null);
+	
 		ArrayList<VO> list=new ArrayList<VO>();
-		list.add( vo1);
-		list.add( vo2);
+		ArrayList<GatheringPO> listpo;
+		try {
+			listpo = new SearchService_Stub().searchGathering(null, list0);
+		
+		for(int i=0;i<listpo.size();i++){
+			GatheringVO vo=new GatheringVO(listpo.get(i));
+			list.add(vo);
+			
+		}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return list;
 	}
 	/*-------------------------------------------
@@ -44,6 +66,13 @@ public class ManageBlService_Stub implements AddConstService,AddInstitutionServi
 	public UpdateState updateReceipt(VO receipt) {
 		
 		System.out.println("修改成功");
+		ConstPO constpo=new ConstPO(null,1,null);
+		try {
+			System.out.println("Update_Stub"+new UpdateService_Stub().update(constpo, null,null));
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		UpdateState state=UpdateState.SUCCESS;
 		return state;
 		
@@ -53,6 +82,14 @@ public class ManageBlService_Stub implements AddConstService,AddInstitutionServi
 	---------------------------------------------*/
 	public AddState addConst (ConstVO c ){
 		System.out.println("添加成功");
+		ConstPO constpo=new ConstPO(c.getName(),c.getValue(),null);
+		
+		try {
+			System.out.println("Add_Stub"+new AddService_Stub().add(constpo));
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		AddState state=AddState.SUCCESS;
 		return state;	
 	}
@@ -61,6 +98,13 @@ public class ManageBlService_Stub implements AddConstService,AddInstitutionServi
 	---------------------------------------------*/
 	public UpdateState updateConst (ConstVO c, String field, String value){
 		System.out.println("修改成功");
+		ConstPO constpo=new ConstPO(c.getName(),c.getValue(),null);
+		try {
+			System.out.println("Update_Stub"+new UpdateService_Stub().update(constpo, field, value));
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		UpdateState state=UpdateState.SUCCESS;
 		return state;
 	}
@@ -68,11 +112,24 @@ public class ManageBlService_Stub implements AddConstService,AddInstitutionServi
 	 查看常量
 	---------------------------------------------*/
 	public ArrayList<ConstVO> showConst(){
+
 		ConstVO vo1=new ConstVO("上海到南京的距离（km）",300);
 		ConstVO vo2=new ConstVO("南京到上海的距离（km）",300);
+
 		ArrayList<ConstVO> list=new ArrayList<ConstVO>();
-		list.add( vo1);
-		list.add( vo2);
+		ArrayList<ConstPO> listpo;
+		try {
+			listpo = new SearchService_Stub().searchConst(null);
+		
+		for(int i=0;i<listpo.size();i++){
+			ConstVO user=new ConstVO(listpo.get(i).getName(),listpo.get(i).getValue());
+			list.add(user);
+			
+		}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return list;
 	}
 	/*-------------------------------------------
@@ -81,14 +138,24 @@ public class ManageBlService_Stub implements AddConstService,AddInstitutionServi
 	public ArrayList<CostVO> searchCost(String start_time, String end_time){
 		System.out.println("查看成功");
 		ArrayList<String> list0=new ArrayList<String>();
-		list0.add("1234512345");
-		list0.add("1234512346");
-		CostVO vo1=new CostVO("2015-10-25",100,"尹子越","12345",CostType.rent,"1234512345");
-		CostVO vo2=new CostVO("2015-10-25",100,"张斯栋","12345",CostType.rent,"1234512345");
+		list0.add(start_time);
+		list0.add(end_time);
 		ArrayList<CostVO> list=new ArrayList<CostVO>();
-		list.add(vo1);
-		list.add(vo2);
+		ArrayList<CostPO> listpo;
+		try {
+			listpo = new SearchService_Stub().searchCost(list0);
+		
+		for(int i=0;i<listpo.size();i++){
+			CostVO user=new CostVO(listpo.get(i));
+			list.add(user);
+			
+		}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return list;
+		
 	}
 	/*-------------------------------------------
 	 查看出款单
@@ -96,13 +163,22 @@ public class ManageBlService_Stub implements AddConstService,AddInstitutionServi
 	public ArrayList<GatheringVO> searchGathering(String date, String businesslobby){
 		System.out.println("查看成功");
 		ArrayList<String> list0=new ArrayList<String>();
-		list0.add("1234512345");
-		list0.add("1234512346");
-		GatheringVO vo1=new GatheringVO(date,100,"车辆运费",list0);
-		GatheringVO vo2=new GatheringVO(date,100,"车辆运费",list0);
+		list0.add(date);
+		list0.add(businesslobby);
 		ArrayList<GatheringVO> list=new ArrayList<GatheringVO>();
-		list.add(vo1);
-		list.add(vo2);
+		ArrayList<GatheringPO> listpo;
+		try {
+			listpo = new SearchService_Stub().searchGathering(null, list0);
+		
+		for(int i=0;i<listpo.size();i++){
+			GatheringVO vo=new GatheringVO(listpo.get(i));
+			list.add(vo);
+			
+		}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return list;
 	}
 	/*-------------------------------------------
@@ -110,19 +186,45 @@ public class ManageBlService_Stub implements AddConstService,AddInstitutionServi
 	---------------------------------------------*/
 	public BenefitVO searchBenefit(String time_end){
 		System.out.println("查看成功");
-		BenefitVO vo=new  BenefitVO(20000,10000);
-		return vo;
+		ArrayList<String> list0=new ArrayList<String>();
+		
+		list0.add(time_end);
+		try {
+			ArrayList<BenefitPO> listpo=new SearchService_Stub().searchBenefit(list0);
+			BenefitVO vo=new BenefitVO(listpo.get(1));
+			
+			return vo;
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+		
+		
+		
 	}
 	/*-------------------------------------------
 	查询人员
 	---------------------------------------------*/
 	public ArrayList<StaffVO> searchStaff (String id){
 		System.out.println("查看成功");
-		StaffVO vo1=new StaffVO("刘钦","男",20,"南京鼓楼营业厅","营业厅","1234512345");
-		StaffVO vo2=new StaffVO("刘钦","男",21,"南京鼓楼营业厅","营业厅","1234512346");
+		ArrayList<String> list0=new ArrayList<String>();
+		list0.add(id);
+	
 		ArrayList<StaffVO> list=new ArrayList<StaffVO>();
-		list.add(vo1);
-		list.add(vo2);
+		ArrayList<UserPO> listpo;
+		try {
+			listpo = new SearchService_Stub().searchUser(list0);
+		
+		for(int i=0;i<listpo.size();i++){
+			StaffVO vo=new StaffVO(listpo.get(i).getName(),null,1,null,null,null);
+			list.add(vo);
+			
+		}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return list;
 	}
 	/*-------------------------------------------
@@ -130,6 +232,13 @@ public class ManageBlService_Stub implements AddConstService,AddInstitutionServi
 	---------------------------------------------*/
 	public UpdateState updateStaff (StaffVO staff, String field, String value){
 		System.out.println("修改成功");
+		UserPO userpo=new UserPO(staff.getSystemId(), staff.getName(),null, null, null, value);
+		try {
+			System.out.println("Update_Stub"+new UpdateService_Stub().update(userpo, field, value));
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		UpdateState state=UpdateState.SUCCESS;
 		return state;
 	}
@@ -138,6 +247,13 @@ public class ManageBlService_Stub implements AddConstService,AddInstitutionServi
 	---------------------------------------------*/
 	public AddState addStaff (StaffVO staff){
 		System.out.println("添加成功");
+		UserPO userpo=new UserPO(staff.getSystemId(), staff.getName(),null, null, null, null);
+		try {
+			System.out.println("Add_Stub"+new AddService_Stub().add(userpo) );
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		AddState state=AddState.SUCCESS;
 		return state;	
 	}
@@ -146,6 +262,13 @@ public class ManageBlService_Stub implements AddConstService,AddInstitutionServi
 	---------------------------------------------*/
 	public DeleteState DeleteStaff (String id){
 		System.out.println("删除成功");
+		UserPO userpo=new UserPO(id, null,null, null, null, null);
+		try {
+			System.out.println("Delete_Stub"+new DeleteService_Stub().delete(userpo) );
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		DeleteState state=DeleteState.SUCCESS;
 		return state;	
 	}
@@ -154,11 +277,23 @@ public class ManageBlService_Stub implements AddConstService,AddInstitutionServi
 	---------------------------------------------*/
 	public ArrayList<InstitutionVO> searchInstitution (String id){
 		System.out.println("查看成功");
-		InstitutionVO vo1=new InstitutionVO(InstitutionType.BusinessLobby,"南京","0251000");
-		InstitutionVO vo2=new InstitutionVO(InstitutionType.MediumCenter,"南京","025100");
+		ArrayList<String> list0=new ArrayList<String>();
+		list0.add(id);
+	
 		ArrayList<InstitutionVO> list=new ArrayList<InstitutionVO>();
-		list.add(vo1);
-		list.add(vo2);
+		ArrayList<InstitutionPO> listpo;
+		try {
+			listpo = new SearchService_Stub().searchInstitutionInfo(list0);
+		
+		for(int i=0;i<listpo.size();i++){
+			InstitutionVO vo=new InstitutionVO(null,listpo.get(i).getCity(),listpo.get(i).getInstitutionNumber());
+			list.add(vo);
+			
+		}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return list;
 	}
 	/*-------------------------------------------
@@ -166,6 +301,14 @@ public class ManageBlService_Stub implements AddConstService,AddInstitutionServi
 	---------------------------------------------*/
 	public UpdateState UpdateInstitution (InstitutionVO institution, String field,String value){
 		System.out.println("修改成功");
+		InstitutionPO userpo=new InstitutionPO(null, institution.getCity(), institution.getCode(), null);
+		try {
+			System.out.println("Update_Stub"+new UpdateService_Stub().update(userpo, field, value));
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		UpdateState state=UpdateState.SUCCESS;
 		return state;
 	}
@@ -174,6 +317,13 @@ public class ManageBlService_Stub implements AddConstService,AddInstitutionServi
 	---------------------------------------------*/
 	public AddState addInstitution (InstitutionVO insititution){
 		System.out.println("添加成功");
+		InstitutionPO userpo=new InstitutionPO(null, insititution.getCity(), insititution.getCode(), null);
+		try {
+			System.out.println("Add_Stub"+new AddService_Stub().add(userpo) );
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		AddState state=AddState.SUCCESS;
 		return state;	
 	}
@@ -182,6 +332,13 @@ public class ManageBlService_Stub implements AddConstService,AddInstitutionServi
 	---------------------------------------------*/
 	public DeleteState deleteInstitution (InstitutionVO insitiution){
 		System.out.println("删除成功");
+		InstitutionPO userpo=new InstitutionPO(null, insitiution.getCity(), insitiution.getCode(), null);
+		try {
+			System.out.println("Delete_Stub"+new DeleteService_Stub().delete(userpo) );
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		DeleteState state=DeleteState.SUCCESS;
 		return state;	
 	}
@@ -190,11 +347,23 @@ public class ManageBlService_Stub implements AddConstService,AddInstitutionServi
 	---------------------------------------------*/
 	public ArrayList<SalaryVO> showSalary(){
 		System.out.println("查看成功");
-		SalaryVO vo1=new SalaryVO("王小明",2000,SalaryType.MONTH);
-		SalaryVO vo2=new SalaryVO("王大明",2000,SalaryType.MONTH);
+		ArrayList<String> list0=new ArrayList<String>();
+		list0.add(null);
+	
 		ArrayList<SalaryVO> list=new ArrayList<SalaryVO>();
-		list.add(vo1);
-		list.add(vo2);
+		ArrayList<SalaryPO> listpo;
+		try {
+			listpo = new SearchService_Stub().searchSalary(list0);
+		
+		for(int i=0;i<listpo.size();i++){
+			SalaryVO vo=new SalaryVO(null,listpo.get(i).getSalary(),null);
+			list.add(vo);
+			
+		}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return list;
 	}
 	/*-------------------------------------------
@@ -202,6 +371,14 @@ public class ManageBlService_Stub implements AddConstService,AddInstitutionServi
 	---------------------------------------------*/
 	public UpdateState updatePayment (SalaryVO salary, String field, String value){
 		System.out.println("修改成功");
+		SalaryPO userpo=new SalaryPO(null, 0, null, value);
+		try {
+			System.out.println("Update_Stub"+new UpdateService_Stub().update(userpo, field, value));
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		UpdateState state=UpdateState.SUCCESS;
 		return state;
 	}
