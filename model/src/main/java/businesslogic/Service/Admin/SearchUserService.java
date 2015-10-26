@@ -4,6 +4,6 @@ import java.util.ArrayList;
 
 import businesslogic.VO.UserVO;
 
-public interface SearchUserSearch {
+public interface SearchUserService {
 	public ArrayList<UserVO> searchUser(String id);
 }

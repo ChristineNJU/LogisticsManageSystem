@@ -1,11 +1,18 @@
 package test.Stub.businesslogic;
 
 import java.util.ArrayList;
-import data.State.*;
-import businesslogic.State.*;
-import businesslogic.VO.VO;
 
-public class CourierBlService_Stub {
+import businesslogic.Service.Courier.AddLogisticsService;
+import businesslogic.Service.Courier.GetAmountService;
+import businesslogic.Service.Courier.GetCityService;
+import businesslogic.Service.Courier.ReceiveConfirmService;
+import businesslogic.State.LogisticsType;
+import businesslogic.State.PackingCharge;
+import businesslogic.VO.VO;
+import data.State.AddState;
+import data.State.UpdateState;
+
+public class CourierBlService_Stub implements AddLogisticsService, GetAmountService, GetCityService, ReceiveConfirmService{
 	/*-------------------------------------------
 	 输入快递信息
 	---------------------------------------------*/
