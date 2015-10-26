@@ -1,5 +1,6 @@
 package businesslogic.VO;
 
+import businesslogic.PO.LogisticsInfoPO;
 import businesslogic.State.LogisticsState;
 import businesslogic.State.LogisticsType;
 import businesslogic.State.PackingCharge;
@@ -75,6 +76,141 @@ public class LogisticsInputVO extends VO {
 		this.destination = destination;
 		this.send_date = send_date;
 		this.courier = courier;
-}
+	}
+	
+	public LogisticsInputVO(LogisticsInfoPO po) {
+		this.sender_name = po.getSenderName();
+		this.sender_address = po.getSenderAddress();
+		this.sender_organization = po.getSenderOrganization();
+		this.sender_telephone = po.getSenderTelephone();
+		this.sender_mobilephone = po.getSenderMobilephone();
+		
+		this.recipient_name = po.getRecipientName();
+		this.recipient_address = po.getRecipientAddress();
+		this.recipient_organization = po.getRecipientOrganization();
+		this.recipient_telephone = po.getRecipientTelephone();
+		this.recipient_mobilephone = po.getRecipientMobilephone();
+		
+		this.bar_code = po.getBarCode();
+		this.original_number = po.getOriginalNumber();
+		this.weight = po.getWeight();
+		this.size = po.getSize();
+		this.internal_name = po.getInternalName();
+		this.type = po.getType();
+		this.pack = po.getPack();
+		this.total_cost = po.getTotalCost();
+		this.starting = po.getStarting();
+		this.destination = po.getDestination();
+		this.send_date = po.getSendDate();
+		this.courier = po.getCourier();
+	}
+	
+	public String getSender_name() {
+		return sender_name;
+	}
+
+	public String getSender_address() {
+		return sender_address;
+	}
+
+	public String getSender_organization() {
+		return sender_organization;
+	}
+
+	public String getSender_telephone() {
+		return sender_telephone;
+	}
+
+	public String getSender_mobilephone() {
+		return sender_mobilephone;
+	}
+
+	public String getRecipient_name() {
+		return recipient_name;
+	}
+
+	public String getRecipient_address() {
+		return recipient_address;
+	}
+
+	public String getRecipient_organization() {
+		return recipient_organization;
+	}
+
+	public String getRecipient_telephone() {
+		return recipient_telephone;
+	}
+
+	public String getRecipient_mobilephone() {
+		return recipient_mobilephone;
+	}
+
+	public String getActual_recipient_name() {
+		return actual_recipient_name;
+	}
+
+	public String getBar_code() {
+		return bar_code;
+	}
+
+	public int getOriginal_number() {
+		return original_number;
+	}
+
+	public double getWeight() {
+		return weight;
+	}
+
+	public double getSize() {
+		return size;
+	}
+
+	public String getInternal_name() {
+		return internal_name;
+	}
+
+	public LogisticsType getType() {
+		return type;
+	}
+
+	public PackingCharge getPack() {
+		return pack;
+	}
+
+	public double getTotal_cost() {
+		return total_cost;
+	}
+
+	public String getStarting() {
+		return starting;
+	}
+
+	public String getDestination() {
+		return destination;
+	}
+
+	public boolean isApproved() {
+		return isApproved;
+	}
+
+	public LogisticsState getState() {
+		return state;
+	}
+
+	public boolean isReceived() {
+		return isReceived;
+	}
+
+	public String getSend_date() {
+		return send_date;
+	}
+
+	public String getReceive_date() {
+		return receive_date;
+	}
+
+	public String getCourier() {
+		return courier;
+	}
 	
 }
