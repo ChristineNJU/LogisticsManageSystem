@@ -5,7 +5,7 @@
   <parent>
     <groupId>edu.nju.expressManageSystem</groupId>
     <artifactId>express-all</artifactId>
-    <version>${project.version}</version>
+    <version>1.0-SNAPSHOT</version>
   </parent>
   
   <artifactId>server</artifactId>
@@ -18,9 +18,9 @@
     </dependency>
     
     <dependency>
-      <groupId>edu.nju.expressManageSystem</groupId>
-      <artifactId>model</artifactId>
-      <version>1.0-SNAPSHOT</version>
+    	<groupId>edu.nju.model</groupId>
+    	<artifactId>model</artifactId>
+    	<version>1.0-SNAPSHOT</version>
     </dependency>
   </dependencies>
 
@@ -41,4 +41,6 @@
       </plugins>
     </reporting>
   
+  	  <groupId>edu.nju.server</groupId>
+  	  <version>1.0-SNAPSHOT</version>
 </project>

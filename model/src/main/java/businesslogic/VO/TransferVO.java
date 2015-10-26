@@ -2,6 +2,8 @@ package businesslogic.VO;
 
 import java.util.ArrayList;
 
+import businesslogic.PO.TransferPO;
+
 public class TransferVO extends VO {
 
 	private String date = null;
@@ -25,6 +27,16 @@ public class TransferVO extends VO {
 		this.guardName = guardName;
 		this.itemId = itemId;
 		this.transferCharge = transferCharge;
+	}
+	public TransferVO(TransferPO po) {
+		this.date = po.getDate();
+		this.listId = po.getTranferNumber();
+		this.departure = po.getStarting();
+		this.destination = po.getDestination();
+		this.containerNumber = po.getContainerNumber();
+		this.guardName = po.getGuardName();
+		this.itemId = po.getBarCodeList();
+		this.transferCharge = po.getAmount();
 	}
 	
 	public String getDate(){

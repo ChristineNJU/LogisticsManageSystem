@@ -1,5 +1,7 @@
 package businesslogic.VO;
 
+import businesslogic.PO.UserPO;
+
 public class StaffVO extends VO {
 
 	private String name = null;

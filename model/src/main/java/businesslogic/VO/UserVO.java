@@ -1,5 +1,6 @@
 package businesslogic.VO;
 
+import businesslogic.PO.UserPO;
 import businesslogic.State.UserRole;
 
 public class UserVO extends VO {
@@ -12,6 +13,11 @@ public class UserVO extends VO {
 		this.id = id;
 		this.name = name;
 		this.role = role;
+	}
+	public UserVO(UserPO po) {
+		this.id = po.getID();
+		this.name = po.getName();
+		this.role = po.getRole();
 	}
 	
 	public String getId(){

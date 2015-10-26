@@ -73,8 +73,4 @@ public class Manage_Driver {
 		System.out.println(managebl.updatePayment(null, null, null));
   }
   
-  public static void main(String [] args){
-	  Manage_Driver drive=new Manage_Driver();
-	  drive.drive(new ManageBlService_Stub());
-  }
 }

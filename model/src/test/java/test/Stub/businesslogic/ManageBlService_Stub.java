@@ -68,8 +68,8 @@ public class ManageBlService_Stub implements AddConstService,AddInstitutionServi
 	 查看常量
 	---------------------------------------------*/
 	public ArrayList<ConstVO> showConst(){
-		ConstVO vo1=new ConstVO("上海到南京的距离（km）","300");
-		ConstVO vo2=new ConstVO("南京到上海的距离（km）","300");
+		ConstVO vo1=new ConstVO("上海到南京的距离（km）",300);
+		ConstVO vo2=new ConstVO("南京到上海的距离（km）",300);
 		ArrayList<ConstVO> list=new ArrayList<ConstVO>();
 		list.add( vo1);
 		list.add( vo2);

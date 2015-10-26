@@ -1,5 +1,7 @@
 package businesslogic.VO;
 
+import businesslogic.PO.LogPO;
+
 public class LogVO extends VO{
 	
 	private String time = null;
@@ -10,6 +12,11 @@ public class LogVO extends VO{
 		this.time = time;
 		this.operation = operation;
 		this.operator = operator;
+	}
+	public LogVO(LogPO po) {
+		this.time = po.getTime();
+		this.operation = po.getOperation();
+		this.operator = po.getOperator();
 	}
 	
 	public String getTime() {

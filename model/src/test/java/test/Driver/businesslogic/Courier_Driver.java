@@ -27,8 +27,5 @@ public class Courier_Driver {
 		
 		
 	}
-	
-	public static void main(String[] args){
-		new Courier_Driver().drive(new CourierBlService_Stub());
-	}
+
 }

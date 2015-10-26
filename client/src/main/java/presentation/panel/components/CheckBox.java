@@ -1,4 +1,4 @@
-package presentation.components;
+package presentation.panel.components;
 
 import javax.swing.JCheckBox;
 

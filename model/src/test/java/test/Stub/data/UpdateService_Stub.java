@@ -15,7 +15,7 @@ public class UpdateService_Stub implements UpdateService {
 	public UpdateState update(PO statistics, String field, String value)
 			throws RemoteException {
 		// TODO Auto-generated method stub
-		System.out.println("更新成功！");
+		System.out.println("Data_Stub "+"更新成功！");
 		return UpdateState.SUCCESS;
 	}
 

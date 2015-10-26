@@ -1,5 +1,7 @@
 package businesslogic.VO;
 
+import businesslogic.PO.DriverInfoPO;
+
 public class DriverInfoVO extends VO {
 
 	private String number = null;
@@ -18,6 +20,15 @@ public class DriverInfoVO extends VO {
 		this.mobilephone = mobilephone;
 		this.sex = sex;
 		this.attendTime = attendTime;
+	}
+	public DriverInfoVO(DriverInfoPO po) {
+		this.number = po.getDriverNumber();
+		this.name = po.getDriverName();
+		this.birthday = po.getDriverBirthday();
+		this.id = po.getDriverId();
+		this.mobilephone = po.getDriverMobilephone();
+		this.sex = po.getDriverSex();
+		this.attendTime = po.getAttendTime();
 	}
 	
 	public String getNumber(){

@@ -24,6 +24,7 @@ public class UserPO extends PO {
 		this.Ins_DB_URL = Ins_DB_URL;
 	}
 	
+
 	public String getName() {
 		return name;
 	}

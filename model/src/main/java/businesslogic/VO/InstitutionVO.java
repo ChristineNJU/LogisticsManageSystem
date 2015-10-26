@@ -1,5 +1,6 @@
 package businesslogic.VO;
 
+import businesslogic.PO.InstitutionPO;
 import businesslogic.State.InstitutionType;
 
 
@@ -14,6 +15,7 @@ public class InstitutionVO extends VO {
 		this.city = city;
 		this.code = code;
 	}
+
 	
 	public InstitutionType getType(){
 		return this.type;

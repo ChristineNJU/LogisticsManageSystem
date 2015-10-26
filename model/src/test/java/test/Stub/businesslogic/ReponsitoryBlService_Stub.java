@@ -3,6 +3,7 @@ package test.Stub.businesslogic;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+
 import businesslogic.PO.BalancePO;
 import businesslogic.PO.RemovalPO;
 import businesslogic.PO.StockTakingPO;
@@ -16,6 +17,7 @@ import businesslogic.VO.StockTakingVO;
 import businesslogic.VO.StorageVO;
 import businesslogic.VO.VO;
 import data.State.AddState;
+
 import test.Stub.data.AddService_Stub;
 import test.Stub.data.DeleteService_Stub;
 import test.Stub.data.SearchService_Stub;
@@ -26,11 +28,13 @@ public class ReponsitoryBlService_Stub {
 	DeleteService_Stub deleteSev = new DeleteService_Stub();
 	SearchService_Stub searchSev = new SearchService_Stub();
 	UpdateService_Stub updateSev = new UpdateService_Stub();
+
 	/*-------------------------------------------
 	 显示当天库存信息
 	---------------------------------------------*/
 	public ArrayList<StockTakingVO> stockTaking(){
 		System.out.println("查询成功");
+
 		ArrayList<StockTakingPO> list = new ArrayList<StockTakingPO>();
 		ArrayList<StockTakingVO> voList = null;
 		try {
@@ -45,6 +49,7 @@ public class ReponsitoryBlService_Stub {
 					po.getRow(), po.getShelf(), po.getPosition()));
 		}
 		return voList;	
+
 	}
 	/*-------------------------------------------
 	 确认库存盘点信息

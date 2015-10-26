@@ -9,8 +9,4 @@ public class User_Driver {
 	  System.out.println(userbl.reset(null, null, null));
   }
   
-  public static void main(String[] args){
-	  User_Driver driver=new User_Driver();
-	  driver.drive(new UserBlService_Stub());
-  }
 }

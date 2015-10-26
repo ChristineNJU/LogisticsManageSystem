@@ -1,5 +1,6 @@
 package businesslogic.VO;
 
+import businesslogic.PO.CostPO;
 import businesslogic.State.CostType;
 
 
@@ -20,6 +21,14 @@ public class CostVO extends VO {
 		this.payerAccount = payerAccount;
 		this.costType = costType;
 		this.remark = remark;
+	}
+	public CostVO(CostPO po) {
+		this.date = po.getCostDate();
+		this.amount = po.getCostAmount();
+		this.payer = po.getCostName();
+		this.payerAccount = po.getAccountName();
+		this.costType = po.getType();
+		this.remark = po.getRemark();
 	}
 	
 	public String getDate(){

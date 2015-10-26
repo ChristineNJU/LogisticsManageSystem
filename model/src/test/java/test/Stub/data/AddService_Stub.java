@@ -15,7 +15,7 @@ public class AddService_Stub implements AddService {
 	@Override
 	public AddState add(PO statistics) throws RemoteException {
 		// TODO Auto-generated method stub
-		System.out.println("添加成功！");
+		System.out.println("Data_Stub "+"添加成功！");
 		return AddState.SUCCESS;
 	}
 

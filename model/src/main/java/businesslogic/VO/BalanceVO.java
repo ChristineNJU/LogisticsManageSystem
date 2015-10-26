@@ -1,5 +1,6 @@
 package businesslogic.VO;
 
+import businesslogic.PO.BalancePO;
 import businesslogic.State.StorageArea;
 
 
@@ -31,6 +32,19 @@ public class BalanceVO extends VO {
 		this.row = row;
 		this.shelf = shelf;
 		this.position = position;
+	}
+	public BalanceVO(BalancePO po) {
+		this.barCode = po.getBarCode();
+		this.date = po.getStorageDate();
+		this.destination = po.getDestination();
+		this.areaBefore = po.getOldArea();
+		this.row = po.getOldRow();
+		this.shelfBefore = po.getOldShelf();
+		this.positionBefore = po.getOldPosition();
+		this.areaCode = po.getNewArea();
+		this.row = po.getNewRow();
+		this.shelf = po.getNewShelf();
+		this.position = po.getNewPosition();
 	}
 	
 	public String getBarCode(){

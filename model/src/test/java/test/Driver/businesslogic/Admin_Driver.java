@@ -32,7 +32,5 @@ public class Admin_Driver {
 		
 	}
 	
-	public static void main(String[] args){
-		new Admin_Driver().drive(new AdminBlService_Stub());
-	}
+	
 }

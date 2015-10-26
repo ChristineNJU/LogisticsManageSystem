@@ -1,0 +1,9 @@
+diff a/model/src/main/java/businesslogic/VO/DeliveryVO.java b/model/src/main/java/businesslogic/VO/DeliveryVO.java	(rejected hunks)
+@@ -1,5 +1,7 @@
+ package businesslogic.VO;
+ 
++import businesslogic.PO.DeliveryPO;
++
+ /*========================================================================================
+  * ç”¨æ¥åœ¨ç•Œé¢å±‚æ˜¾ç¤ºçš„æ´¾ä»¶ä¿¡æ¯
+  * */
