@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import businesslogic.VO.LogisticsHistoryVO;
+import test.Driver.businesslogic.BusinessLb_Driver;
+import test.Stub.businesslogic.BusinessLobbyBlService_Stub;
 import test.Stub.businesslogic.InquiryBlService_Stub;
 
 public class MainFrame {
@@ -22,6 +24,10 @@ public class MainFrame {
 	LogisticsHistoryVO ligisticsHistory = null;
 	ArrayList<JLabel> logisticsInfoLabels = null;
 	InquiryBlService_Stub inquiry = null;
+	
+	public static void main(String [] args){
+		MainFrame frame = new MainFrame();
+	  }
 	
 	public MainFrame(){
 		this.instance();
