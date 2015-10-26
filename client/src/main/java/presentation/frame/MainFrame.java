@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import businesslogic.Service.Inquiry.InquiryService;
 import businesslogic.VO.LogisticsHistoryVO;
 import test.Driver.businesslogic.BusinessLb_Driver;
 import test.Stub.businesslogic.BusinessLobbyBlService_Stub;
@@ -23,7 +24,7 @@ public class MainFrame {
 	JButton ok = null;
 	LogisticsHistoryVO ligisticsHistory = null;
 	ArrayList<JLabel> logisticsInfoLabels = null;
-	InquiryBlService_Stub inquiry = null;
+	InquiryService inquiry = null;
 	
 	public MainFrame(){
 		this.instance();
@@ -40,7 +41,7 @@ public class MainFrame {
 		barCode = new JTextField();
 		ok = new JButton("确定");
 		
-		inquiry = new InquiryBlService_Stub();
+		inquiry = (InquiryService) new InquiryBlService_Stub();
 	}
 	
 	private void init(){
