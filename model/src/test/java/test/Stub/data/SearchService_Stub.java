@@ -276,6 +276,8 @@ public class SearchService_Stub implements SearchLogisticsService, SearchGatheri
 				"1000000000", 2, 4, 5, "鼠标", LogisticsType.STANDARD,
 				PackingCharge.COURISE_BAG, 20, "南京", "北京", 
 				"2015-10-25", "王五", "logistics_info");
+		logistics_info.addHistory("快递员收件");
+		logistics_info.addHistory("到达南京鼓楼营业厅");
 		ArrayList<LogisticsInfoPO> list = new ArrayList<LogisticsInfoPO>();
 		list.add(logistics_info);
 		return list;
