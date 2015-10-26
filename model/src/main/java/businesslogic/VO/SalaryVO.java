@@ -14,7 +14,7 @@ public class SalaryVO extends VO {
 		this.salary = salary;
 		this.salaryType = salaryType;
 	}
-}
+
 	
 	public String getName(){
 		return this.name;
