@@ -5,10 +5,11 @@ import java.util.ArrayList;
 
 import test.Stub.data.SearchService_Stub;
 import businesslogic.PO.LogisticsInfoPO;
+import businesslogic.Service.Inquiry.InquiryService;
 import businesslogic.VO.LogisticsHistoryVO;
 import businesslogic.VO.VO;
 
-public class InquiryBlService_Stub {
+public class InquiryBlService_Stub implements InquiryService{
 	/*-------------------------------------------
 	 查询快递信息
 	---------------------------------------------*/

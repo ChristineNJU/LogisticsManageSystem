@@ -12,8 +12,6 @@ import javax.swing.JTextField;
 
 import businesslogic.Service.Inquiry.InquiryService;
 import businesslogic.VO.LogisticsHistoryVO;
-import test.Driver.businesslogic.BusinessLb_Driver;
-import test.Stub.businesslogic.BusinessLobbyBlService_Stub;
 import test.Stub.businesslogic.InquiryBlService_Stub;
 
 public class MainFrame {
