@@ -2,26 +2,25 @@ package test.Stub.businesslogic;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Date;
 
-
+import test.Stub.data.AddService_Stub;
+import test.Stub.data.DeleteService_Stub;
+import test.Stub.data.SearchService_Stub;
+import test.Stub.data.UpdateService_Stub;
 import businesslogic.PO.BalancePO;
 import businesslogic.PO.RemovalPO;
 import businesslogic.PO.StockTakingPO;
 import businesslogic.PO.StoragePO;
 import businesslogic.State.OutputState;
 import businesslogic.State.StorageArea;
-import businesslogic.State.StorageState;
+import businesslogic.State.TransferType;
 import businesslogic.VO.BalanceVO;
 import businesslogic.VO.RemovalVO;
 import businesslogic.VO.StockTakingVO;
 import businesslogic.VO.StorageVO;
 import businesslogic.VO.VO;
 import data.State.AddState;
-
-import test.Stub.data.AddService_Stub;
-import test.Stub.data.DeleteService_Stub;
-import test.Stub.data.SearchService_Stub;
-import test.Stub.data.UpdateService_Stub;
 
 public class ReponsitoryBlService_Stub {
 	AddService_Stub addSev = new AddService_Stub();
@@ -163,8 +162,8 @@ public class ReponsitoryBlService_Stub {
 	---------------------------------------------*/
 	public ArrayList<VO> see(String time_start, String time_end){
 		System.out.println("查看成功");
-		VO vo1=new StorageVO("1234512345","2015-10-25","南京",StorageArea.AIR_TRANSPORTATION,1,2,3);
-		VO vo2=new RemovalVO("1234512345","2015-10-25","南京","汽运","025000");
+		VO vo1=new StorageVO("1234512345",new Date(),"南京",StorageArea.AIR_TRANSPORTATION,1,2,3);
+		VO vo2=new RemovalVO("1234512345",new Date(),"南京",TransferType.AIR,"025000");
 		ArrayList<VO> list=new ArrayList<VO>();
 		list.add(vo1);
 		list.add(vo2);

@@ -1,12 +1,13 @@
 package businesslogic.VO;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import businesslogic.PO.TransferPO;
 
 public class TransferVO extends VO {
 
-	private String date = null;
+	private Date date = null;
 	private String listId = null;
 	private String transferId = null;
 	private String departure = null;
@@ -16,7 +17,7 @@ public class TransferVO extends VO {
 	private ArrayList<String> itemId = null;
 	private double transferCharge = 0;
 	
-	public TransferVO(String date,String listId,String transferId,String departure,String destination,
+	public TransferVO(Date date,String listId,String transferId,String departure,String destination,
 			String containerNumber,String guardName,ArrayList<String> itemId,double transferCharge){
 		this.date = date;
 		this.listId = listId;
@@ -39,7 +40,7 @@ public class TransferVO extends VO {
 		this.transferCharge = po.getAmount();
 	}
 	
-	public String getDate(){
+	public Date getDate(){
 		return this.date;
 	}
 	public String getList(){

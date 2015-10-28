@@ -1,21 +1,22 @@
 package businesslogic.PO;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class PeriodPO extends PO {
 
-	private int number = 0;
+	private Date date = null;
 	private int institution_size = 0;
 	private int staff_size = 0;
 	private int car_size = 0;
 	private int storage_size = 0;
 	private ArrayList<AccountPO> account = new ArrayList<AccountPO>();
 	
-	public PeriodPO(int number, int institution_size, int staff_size, int car_size, int storage_size, 
+	public PeriodPO(Date date, int institution_size, int staff_size, int car_size, int storage_size, 
 			ArrayList<AccountPO> account, String DB_URL) {
 		super(DB_URL);
 		// TODO Auto-generated constructor stub
-		this.number = number;
+		this.date = date;
 		this.institution_size = institution_size;
 		this.staff_size = staff_size;
 		this.car_size = car_size;
@@ -31,11 +32,11 @@ public class PeriodPO extends PO {
 	 * 对PeriodPO的数据进行读取
 	 * */
 	/*
-	 * 获取序号
-	 * 返回int
+	 * 获取时间
+	 * 返回Date
 	 * */
-	public int getNumber() {
-		return number;
+	public Date getDate() {
+		return date;
 	}
 	/*
 	 * 获取机构数量

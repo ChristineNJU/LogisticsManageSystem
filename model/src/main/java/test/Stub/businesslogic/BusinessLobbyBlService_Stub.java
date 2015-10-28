@@ -1,9 +1,15 @@
 package test.Stub.businesslogic;
 import java.util.ArrayList;
+import java.util.Date;
 
-import data.State.*;
-import businesslogic.State.*;
-import businesslogic.VO.*;
+import businesslogic.VO.ArrivalVO;
+import businesslogic.VO.CarInfoVO;
+import businesslogic.VO.DriverInfoVO;
+import businesslogic.VO.EntruckingVO;
+import businesslogic.VO.GatheringVO;
+import data.State.AddState;
+import data.State.DeleteState;
+import data.State.UpdateState;
 public class BusinessLobbyBlService_Stub {
 	/*-------------------------------------------
 	 选择到达操作
@@ -93,8 +99,8 @@ public class BusinessLobbyBlService_Stub {
 	public ArrayList<DriverInfoVO> searchDriver (String id){
 		System.out.println("查询成功");
 		ArrayList<DriverInfoVO> list = new ArrayList<DriverInfoVO>();
-		DriverInfoVO driver1=new DriverInfoVO("025000000","尹子越","2016-1-1","320586201601013456","1234512345123","男",2017);
-		DriverInfoVO driver2=new DriverInfoVO("025000000","尹越子","2016-1-1","320586201601013456","1234512345123","男",2017);
+		DriverInfoVO driver1=new DriverInfoVO("025000000","尹子越",new Date(),"320586201601013456","1234512345123","男",2017);
+		DriverInfoVO driver2=new DriverInfoVO("025000000","尹越子",new Date(),"320586201601013456","1234512345123","男",2017);
 		list.add(driver1);
 		list.add(driver2);
 		return list;

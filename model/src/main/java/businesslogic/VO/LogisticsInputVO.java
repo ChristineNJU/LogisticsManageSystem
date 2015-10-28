@@ -1,5 +1,7 @@
 package businesslogic.VO;
 
+import java.util.Date;
+
 import businesslogic.PO.LogisticsInfoPO;
 import businesslogic.State.LogisticsState;
 import businesslogic.State.LogisticsType;
@@ -39,8 +41,8 @@ public class LogisticsInputVO extends VO {
 	private boolean isApproved = false;						//审批状态
 	private LogisticsState state = LogisticsState.INTACT;	//快递状态
 	private boolean isReceived = false;						//收件状态
-	private String send_date = null;						//发件日期
-	private String receive_date = null;						//收件日期
+	private Date send_date = null;							//发件日期
+	private Date receive_date = null;						//收件日期
 	private String courier = null;			
 	
 	public LogisticsInputVO(String sender_name, String sender_address, String sender_organization,
@@ -49,7 +51,7 @@ public class LogisticsInputVO extends VO {
 		  	String recipient_telephone, String recipient_mobilephone,
 		  String bar_code, int original_number, double weight, double size, String internal_name,
 		  LogisticsType type, PackingCharge pack, double total_cost, String starting, String destination,
-		  String send_date, String courier,
+		  Date send_date, Date receive_date, String courier,
 		  String DB_URL) {
 		
 		this.sender_name = sender_name;
@@ -75,6 +77,7 @@ public class LogisticsInputVO extends VO {
 		this.starting = starting;
 		this.destination = destination;
 		this.send_date = send_date;
+		this.receive_date = receive_date;
 		this.courier = courier;
 	}
 	
@@ -201,11 +204,11 @@ public class LogisticsInputVO extends VO {
 		return isReceived;
 	}
 
-	public String getSend_date() {
+	public Date getSend_date() {
 		return send_date;
 	}
 
-	public String getReceive_date() {
+	public Date getReceive_date() {
 		return receive_date;
 	}
 

@@ -67,7 +67,7 @@ public class Manage_Driver {
 		ArrayList<SalaryVO> list7=new ArrayList<SalaryVO>();	
 		list7=managebl.showSalary();
 		for(int i=0;i<list7.size();i++){
-			System.out.println(list7.get(i).getName());
+			System.out.println(list7.get(i).getRole());
 		}
 		
 		System.out.println(managebl.updatePayment(null, null, null));

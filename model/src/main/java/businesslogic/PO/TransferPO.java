@@ -1,6 +1,7 @@
 package businesslogic.PO;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /*======================================================================
  * 用来保存中转单的持久化数据格式
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 
 public class TransferPO extends PO {
 	
-	private String date = null;
+	private Date date = null;
 	private String transfer_number = null;
 	private String transport_id = null;
 	private String starting = null;
@@ -19,7 +20,7 @@ public class TransferPO extends PO {
 	private double amount = 0;
 	private boolean isApproved = false;
 	
-	public TransferPO(String date, String transfer_number, String transport_id, String starting, String destination,
+	public TransferPO(Date date, String transfer_number, String transport_id, String starting, String destination,
 			String container_number, String guard_name, ArrayList<String> bar_code_list, double amount, 
 			String DB_URL) {
 		super(DB_URL);
@@ -45,9 +46,9 @@ public class TransferPO extends PO {
 	
 	/*
 	 * 获取装车日期
-	 * 返回String
+	 * 返回Date
 	 * */
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 	/*

@@ -1,17 +1,19 @@
 package businesslogic.VO;
 
+import java.util.Date;
+
 import businesslogic.PO.ArrivalPO;
 import businesslogic.State.LogisticsState;
 
 public class ArrivalVO extends VO {
 
 	private String barCode = null;
-	private String date = null;
+	private Date date = null;
 	private String listId = null;
 	private String departure = null;
 	private LogisticsState itemState = null;
 	
-	public ArrivalVO(String barCode,String date,String listId,String departure,
+	public ArrivalVO(String barCode,Date date,String listId,String departure,
 			LogisticsState itemState){
 		this.barCode = barCode;
 		this.date = date;
@@ -29,7 +31,7 @@ public class ArrivalVO extends VO {
 	public String getBarCode(){
 		return this.barCode;
 	}
-	public String getDate(){
+	public Date getDate(){
 		return this.date;
 	}
 	public String getListId(){
@@ -42,7 +44,7 @@ public class ArrivalVO extends VO {
 		return this.itemState;
 	}
 	
-	public void setDate(String date){
+	public void setDate(Date date){
 		this.date = date;
 	}
 	public void setListId(String listId){

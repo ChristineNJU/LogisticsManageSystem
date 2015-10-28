@@ -23,7 +23,7 @@ public class UserBlService_Stub implements LoginService,ResetPasswordService{
 	---------------------------------------------*/
 	public ResetState reset(String account, String oldPassword, String newPassword){
 		System.out.println("修改成功");
-		UserPO user=new UserPO(account, oldPassword, null, null, null, null);
+		UserPO user=new UserPO(account, newPassword, null, null, 20, null, null, null, "user_info");
 		
 		try {
 			System.out.println("Update_Stub"+new UpdateService_Stub().update(user, "password", newPassword));

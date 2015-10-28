@@ -1,14 +1,16 @@
 package businesslogic.VO;
 
+import java.util.Date;
+
 import businesslogic.PO.LogPO;
 
 public class LogVO extends VO{
 	
-	private String time = null;
+	private Date time = null;
 	private String operation = null;
 	private String operator = null;
 	
-	public LogVO(String time, String operation, String operator){
+	public LogVO(Date time, String operation, String operator){
 		this.time = time;
 		this.operation = operation;
 		this.operator = operator;
@@ -19,7 +21,7 @@ public class LogVO extends VO{
 		this.operator = po.getOperator();
 	}
 	
-	public String getTime() {
+	public Date getTime() {
 		return time;
 	}
 	
@@ -31,7 +33,7 @@ public class LogVO extends VO{
 		return operator;
 	}
 	
-	public void setTime(String time){
+	public void setTime(Date time){
 		this.time=time;
 	}
 	

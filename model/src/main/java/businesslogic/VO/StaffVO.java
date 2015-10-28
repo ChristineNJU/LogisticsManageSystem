@@ -1,18 +1,19 @@
 package businesslogic.VO;
 
 import businesslogic.PO.UserPO;
+import businesslogic.State.InstitutionType;
 
 public class StaffVO extends VO {
 
 	private String name = null;
 	private String sex = null;
 	private int age = 0;
-	private String institution = null;
+	private InstitutionType institution = null;
 	private String position =  null;
 	private String systemId = null;
 	
 	public StaffVO(String name,String sex,int age,
-			String institution,String position,String systemId){
+			InstitutionType institution,String position,String systemId){
 		this.name = name;
 		this.sex = sex;
 		this.age = age;
@@ -20,6 +21,14 @@ public class StaffVO extends VO {
 		this.position = position;
 		this.systemId = systemId;
 	}
+	public StaffVO(UserPO po) {
+		this.name = po.getName();
+		this.sex = po.getSex();
+		this.age = po.getAge();
+		this.institution = po.getInstitution();
+		this.position = po.getCity();
+		this.systemId = po.getID();
+	} 
 	
 	public String getName(){
 		return this.name;
@@ -30,7 +39,7 @@ public class StaffVO extends VO {
 	public int getAge(){
 		return this.age;
 	}
-	public String getInsitution(){
+	public InstitutionType getInsitution(){
 		return this.institution;
 	}
 	public String getPosition(){

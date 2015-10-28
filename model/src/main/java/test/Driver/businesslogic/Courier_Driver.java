@@ -7,7 +7,8 @@ import businesslogic.VO.LogisticsInputVO;
 
 public class Courier_Driver {
 	public void drive(CourierBlService_Stub Courier){
-		LogisticsInputVO logisticsInfo=new LogisticsInputVO(null, null, null, null, null, null, null, null, null, null, null, 0, 0, 0, null, null, null, 0, null, null, null, null, null);
+		LogisticsInputVO logisticsInfo=new LogisticsInputVO(null, null, null, null, null, null, null, null, null, 
+				null, null, 0, 0, 0, null, null, null, 0, null, null, null, null, null, null);
 		System.out.println(Courier.addLogistics(logisticsInfo));
 		System.out.println();
 		

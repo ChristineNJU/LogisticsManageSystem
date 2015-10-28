@@ -1,12 +1,13 @@
 package businesslogic.VO;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import businesslogic.PO.EntruckingPO;
 
 public class EntruckingVO extends VO {
 
-	private String date = null;
+	private Date date = null;
 	private String institutionrNumber = null;
 	private String destination = null;
 	private String carNumber = null;
@@ -15,9 +16,9 @@ public class EntruckingVO extends VO {
 	private ArrayList<String> barCodeList = new ArrayList<String>();
 	private double amount = 0;
 	
-	public EntruckingVO(String data, String transfer_number, String destination, String car_number,
+	public EntruckingVO(Date date, String transfer_number, String destination, String car_number,
 			String guard_name, String supercargo_name, ArrayList<String> bar_code_list, double amount) {
-		this.date = data;
+		this.date = date;
 		this.institutionrNumber = transfer_number;
 		this.destination = destination;
 		this.carNumber = car_number;
@@ -36,7 +37,7 @@ public class EntruckingVO extends VO {
 		this.amount = po.getAmount();
 	}
 	
-	public String getDate(){
+	public Date getDate(){
 		return this.date;
 	}
 	public String getInstitutioNumber(){

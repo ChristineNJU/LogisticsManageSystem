@@ -2,26 +2,30 @@ package businesslogic.PO;
 
 import java.util.ArrayList;
 
+import businesslogic.State.InstitutionType;
 import businesslogic.State.UserRole;
 
 public class UserPO extends PO {
 	private String id;
 	private String password;
 	private String name;
+	private String sex;
+	private int age;
+	private InstitutionType institution;
+	private String city;
 	private UserRole role;
-	
-	private ArrayList<String> Ins_DB_URL;
-	
-	public UserPO(String id, String password, String name, UserRole role,
-					 ArrayList<String> Ins_DB_URL, String DB_URL) {
+		
+	public UserPO(String id, String password, String name, String sex, int age, 
+			InstitutionType institution, String city, UserRole role, String DB_URL) {
 		super(DB_URL);
 		this.id = id;
 		this.password = password;
 		this.name = name;
-		this.role = role;
-		
-		super.DB_URL = DB_URL;
-		this.Ins_DB_URL = Ins_DB_URL;
+		this.sex = sex;
+		this.age = age;
+		this.institution = institution;
+		this.city = city;
+		this.role = role;		
 	}
 	
 
@@ -34,13 +38,22 @@ public class UserPO extends PO {
 	public String getPassword() {
 		return name;
 	}
+	public String getSex() {
+		return sex;
+	}
+	public int getAge() {
+		return age;
+	}
+	public InstitutionType getInstitution() {
+		return institution;
+	}
+	public String getCity() {
+		return city;
+	}
 	public UserRole getRole() {
 		return role;
 	}
 
-	public ArrayList<String> getInsDBURL() {
-		return Ins_DB_URL;
-	}
 	
 	@Override
 	public String toString() {

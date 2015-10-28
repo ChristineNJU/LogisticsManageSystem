@@ -1,6 +1,7 @@
 package businesslogic.PO;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /*======================================================================
  * 用来保存收款信息的持久化数据格式
@@ -8,13 +9,13 @@ import java.util.ArrayList;
 
 public class GatheringPO extends PO {
 	
-	private String date = null;
+	private Date date = null;
 	private double amount = 0;
 	private String courier = null;
 	private ArrayList<String> bar_code_list = new ArrayList<String>();
 	private boolean isApproved = false;
 	
-	public GatheringPO(String date, double amount, String courier, ArrayList<String> bar_code_list,
+	public GatheringPO(Date date, double amount, String courier, ArrayList<String> bar_code_list,
 			String DB_URL) {
 		super(DB_URL);
 		this.date = date;
@@ -33,9 +34,9 @@ public class GatheringPO extends PO {
 	
 	/*
 	 * 获取收款时间
-	 * 返回String
+	 * 返回Date
 	 * */
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 	/*

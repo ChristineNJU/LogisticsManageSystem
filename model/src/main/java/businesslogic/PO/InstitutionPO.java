@@ -2,17 +2,21 @@ package businesslogic.PO;
 
 import java.util.ArrayList;
 
+import businesslogic.State.InstitutionType;
+
 public class InstitutionPO extends PO {
 	
 	private String institution_name = null;
+	private InstitutionType institution_type = null;
 	private String city = null;
 	private String institution_number = null;
 	
-	public InstitutionPO(String institution_name, String city, String institution_number, 
+	public InstitutionPO(String institution_name, InstitutionType institution_type, String city, String institution_number, 
 			 String DB_URL) {
 		super(DB_URL);
 		// TODO Auto-generated constructor stub
 		this.institution_name = institution_name;
+		this.institution_type = institution_type;
 		this.city = city;
 		this.institution_number = institution_number;
 	}
@@ -30,6 +34,13 @@ public class InstitutionPO extends PO {
 	 * */
 	public String getInstitutionName() {
 		return institution_name;
+	}
+	/*
+	 * 获取机构类型
+	 * 返回InstitutionType
+	 * */
+	public InstitutionType getInstitutionType() {
+		return institution_type;
 	}
 	/*
 	 * 获取机构所在城市

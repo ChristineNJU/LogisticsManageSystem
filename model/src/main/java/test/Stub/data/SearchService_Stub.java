@@ -2,6 +2,7 @@ package test.Stub.data;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import businesslogic.PO.AccountPO;
 import businesslogic.PO.ArrivalPO;
@@ -25,6 +26,7 @@ import businesslogic.PO.StoragePO;
 import businesslogic.PO.TransferPO;
 import businesslogic.PO.UserPO;
 import businesslogic.State.CostType;
+import businesslogic.State.InstitutionType;
 import businesslogic.State.LogisticsState;
 import businesslogic.State.LogisticsType;
 import businesslogic.State.PackingCharge;
@@ -75,8 +77,8 @@ public class SearchService_Stub implements SearchLogisticsService, SearchGatheri
 		ins.add("0251001_carInfo");
 		ins.add("0251001_driverInfo");
 		
-		UserPO user = new UserPO("025100001", "12345678", "张晨剑", UserRole.businessAgent,
-				 ins, "staff_info");
+		UserPO user = new UserPO("025100001", "12345678", "张晨剑", "男", 20, InstitutionType.BusinessLobby, 
+				"南京", UserRole.businessAgent, "staff_info");
 		
 		ArrayList<UserPO> list = new ArrayList<UserPO>();
 		list.add(user);
@@ -111,7 +113,7 @@ public class SearchService_Stub implements SearchLogisticsService, SearchGatheri
 			ArrayList<String> requirement) throws RemoteException {
 		// TODO Auto-generated method stub
 		
-		InstitutionPO institution = new InstitutionPO("南京鼓楼营业厅", "南京", "0251001", "institution_info");
+		InstitutionPO institution = new InstitutionPO("南京鼓楼营业厅", InstitutionType.BusinessLobby,  "南京", "0251001", "institution_info");
 		ArrayList<InstitutionPO> list = new ArrayList<InstitutionPO>();
 		list.add(institution);
 		return list;
@@ -121,7 +123,7 @@ public class SearchService_Stub implements SearchLogisticsService, SearchGatheri
 	public ArrayList<LogPO> searchLog(ArrayList<String> requirement)
 			throws RemoteException {
 		// TODO Auto-generated method stub
-		LogPO log = new LogPO("2015-10-25", "删除账号", "张晨剑", "log_info");
+		LogPO log = new LogPO(new Date(), "删除账号", "张晨剑", "log_info");
 		ArrayList<LogPO> list = new ArrayList<LogPO>();
 		list.add(log);
 		return list;
@@ -135,7 +137,7 @@ public class SearchService_Stub implements SearchLogisticsService, SearchGatheri
 		AccountPO account = new AccountPO(1, "中国银行", 100000, "account_info");
 		list_1.add(account);
 		
-		PeriodPO period = new PeriodPO(1, 20, 200, 20, 1000, list_1, "period_info");
+		PeriodPO period = new PeriodPO(new Date(), 20, 200, 20, 1000, list_1, "period_info");
 		ArrayList<PeriodPO> list = new ArrayList<PeriodPO>();
 		list.add(period);
 		return list;
@@ -156,7 +158,7 @@ public class SearchService_Stub implements SearchLogisticsService, SearchGatheri
 	public ArrayList<BalancePO> searchBalannce(String DB_URL,
 			ArrayList<String> requirement) throws RemoteException {
 		// TODO Auto-generated method stub
-		BalancePO balance = new BalancePO("1000000000", "2015-10-25", "南京", StorageArea.RAIL_TRANSPORTATION,
+		BalancePO balance = new BalancePO("1000000000", new Date(), "南京", StorageArea.RAILWAT_TRANSPORTATION,
 				2, 2, 10, StorageArea.MANOEUVERING_AREA, 2, 3, 2, "025001_balance");
 		ArrayList<BalancePO> list = new ArrayList<BalancePO>();
 		list.add(balance);
@@ -167,7 +169,7 @@ public class SearchService_Stub implements SearchLogisticsService, SearchGatheri
 	public ArrayList<RemovalPO> searchRemoval(String DB_URL,
 			ArrayList<String> requirement) throws RemoteException {
 		// TODO Auto-generated method stub
-		RemovalPO removal = new RemovalPO("1000000000", "2015-10-25", "南京", TransferType.AIR,
+		RemovalPO removal = new RemovalPO("1000000000", new Date(), "南京", TransferType.AIR,
 				"0250012015102500001", "025001_removal");
 		ArrayList<RemovalPO> list = new ArrayList<RemovalPO>();
 		list.add(removal);
@@ -178,7 +180,7 @@ public class SearchService_Stub implements SearchLogisticsService, SearchGatheri
 	public ArrayList<StoragePO> searchStorage(String DB_URL,
 			ArrayList<String> requirement) throws RemoteException {
 		// TODO Auto-generated method stub
-		StoragePO storage = new StoragePO("1000000000", "2015-10-25", "南京", StorageArea.CAR_TRANSPORTATION,
+		StoragePO storage = new StoragePO("1000000000", new Date(), "南京", StorageArea.CAR_TRANSPORTATION,
 				2, 4, 5, "025001_storage");
 		ArrayList<StoragePO> list = new ArrayList<StoragePO>();
 		list.add(storage);
@@ -189,7 +191,7 @@ public class SearchService_Stub implements SearchLogisticsService, SearchGatheri
 	public ArrayList<StockTakingPO> searchStockTaking(String DB_URL,
 			ArrayList<String> requirement) throws RemoteException {
 		// TODO Auto-generated method stub
-		StockTakingPO stock_taking = new StockTakingPO("1000000000", "2015-10-25", "南京", 
+		StockTakingPO stock_taking = new StockTakingPO("1000000000", new Date(), "南京", 
 				StorageArea.CAR_TRANSPORTATION, 2, 4, 10, "025001_stockTaking");
 		ArrayList<StockTakingPO> list = new ArrayList<StockTakingPO>();
 		list.add(stock_taking);
@@ -202,7 +204,7 @@ public class SearchService_Stub implements SearchLogisticsService, SearchGatheri
 		// TODO Auto-generated method stub
 		ArrayList<String> list_1 = new ArrayList<String>();
 		list_1.add("1000000000");
-		EntruckingPO entrucking = new EntruckingPO("2015-10-25", "02500120151025000001", "南京", "00001", "珠峰", "张晨", list_1, 
+		EntruckingPO entrucking = new EntruckingPO(new Date(), "02500120151025000001", "南京", "00001", "珠峰", "张晨", list_1, 
 				100, "025001_entrucking");
 		ArrayList<EntruckingPO> list = new ArrayList<EntruckingPO>();
 		list.add(entrucking);
@@ -215,7 +217,7 @@ public class SearchService_Stub implements SearchLogisticsService, SearchGatheri
 		// TODO Auto-generated method stub
 		ArrayList<String> list_1 = new ArrayList<String>();
 		list_1.add("1000000000");
-		TransferPO transfer = new TransferPO("2015-10-25", "0250012015102500001",
+		TransferPO transfer = new TransferPO(new Date(), "0250012015102500001",
 				"D2142", "南京", "北京", "302", "张三",list_1, 1004, "025001_transfer");
 		ArrayList<TransferPO> list = new ArrayList<TransferPO>();
 		list.add(transfer);
@@ -226,7 +228,7 @@ public class SearchService_Stub implements SearchLogisticsService, SearchGatheri
 	public ArrayList<ArrivalPO> searchArrival(String DB_URL,
 			ArrayList<String> requirement) throws RemoteException {
 		// TODO Auto-generated method stub
-		ArrivalPO arrival = new ArrivalPO("1000000000", "2015-10-25", "0250012015102500001", "南京",
+		ArrivalPO arrival = new ArrivalPO("1000000000", new Date(), "0250012015102500001", "南京",
 				LogisticsState.INTACT, "025001_arrival");
 		ArrayList<ArrivalPO> list = new ArrayList<ArrivalPO>();
 		list.add(arrival);
@@ -237,7 +239,7 @@ public class SearchService_Stub implements SearchLogisticsService, SearchGatheri
 	public ArrayList<DriverInfoPO> searchDriverInfo(String DB_URL,
 			ArrayList<String> requirement) throws RemoteException {
 		// TODO Auto-generated method stub
-		DriverInfoPO driverInfo = new DriverInfoPO("025001001", "张三", "1994-02-21", 
+		DriverInfoPO driverInfo = new DriverInfoPO("025001001", "张三", new Date(), 
 				"321002199402210242", "1111111111111", "男", 10, "0251001_driverInfo");
 		ArrayList<DriverInfoPO> list = new ArrayList<DriverInfoPO>();
 		list.add(driverInfo);
@@ -260,7 +262,7 @@ public class SearchService_Stub implements SearchLogisticsService, SearchGatheri
 		// TODO Auto-generated method stub
 		ArrayList<String> list_1 = new ArrayList<String>();
 		list_1.add("1000000000");
-		DeliveryPO delivery = new DeliveryPO("2015-10-25", list_1, "张三", "0251001_delivery");
+		DeliveryPO delivery = new DeliveryPO(new Date(), list_1, "张三", "0251001_delivery");
 		ArrayList<DeliveryPO> list = new ArrayList<DeliveryPO>();
 		list.add(delivery);
 		return list;
@@ -275,7 +277,7 @@ public class SearchService_Stub implements SearchLogisticsService, SearchGatheri
 				"李四", "无", "无", "99999999", "222222222222", 
 				"1000000000", 2, 4, 5, "鼠标", LogisticsType.STANDARD,
 				PackingCharge.COURISE_BAG, 20, "南京", "北京", 
-				"2015-10-25", "王五", "logistics_info");
+				new Date(), new Date(),  "王五", "logistics_info");
 		logistics_info.addHistory("快递员收件");
 		logistics_info.addHistory("到达南京鼓楼营业厅");
 		ArrayList<LogisticsInfoPO> list = new ArrayList<LogisticsInfoPO>();
@@ -310,7 +312,7 @@ public class SearchService_Stub implements SearchLogisticsService, SearchGatheri
 		// TODO Auto-generated method stub
 		ArrayList<String> list_1 = new ArrayList<String>();
 		list_1.add("1000000000");
-		GatheringPO gathering = new GatheringPO("2015-10-25", 20, "王五", list_1, "0251001_gathering");
+		GatheringPO gathering = new GatheringPO(new Date(), 20, "王五", list_1, "0251001_gathering");
 		ArrayList<GatheringPO> list = new ArrayList<GatheringPO>();
 		list.add(gathering);
 		return list;

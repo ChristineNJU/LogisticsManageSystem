@@ -22,7 +22,8 @@ public class CourierBlService_Stub implements AddLogisticsService, GetAmountServ
 	---------------------------------------------*/
 	public AddState addLogistics(VO logistics_info){
 		System.out.println("Logic_Stub "+"添加成功");
-		LogisticsInfoPO lvo=new LogisticsInfoPO(null, null, null, null, null, null, null, null, null, null, null, 0, 0, 0, null, null, null, 0, null, null, null, null, null);
+		LogisticsInfoPO lvo=new LogisticsInfoPO(null, null, null, null, null, null, null, null, null, null,
+				null, 0, 0, 0, null, null, null, 0, null, null, null, null, null, null);
 		try {
 			System.out.println("Data_Stub "+new AddService_Stub().add(lvo));
 		} catch (RemoteException e) {
@@ -37,7 +38,8 @@ public class CourierBlService_Stub implements AddLogisticsService, GetAmountServ
 	---------------------------------------------*/
 	public UpdateState receiveConfirm(VO logistics_info, String field, String value){
 		System.out.println("Logic_Stub "+"更新成功");
-		LogisticsInfoPO lvo=new LogisticsInfoPO(null, null, null, null, null, null, null, null, null, null, null, 0, 0, 0, null, null, null, 0, null, null, null, null, null);
+		LogisticsInfoPO lvo=new LogisticsInfoPO(null, null, null, null, null, null, null, null, null, null,
+				null, 0, 0, 0, null, null, null, 0, null, null, null, null, null, null);
 		try {
 			System.out.println("Data_Stub "+new UpdateService_Stub().update(lvo,field,value));
 		} catch (RemoteException e) {

@@ -1,17 +1,19 @@
 package businesslogic.PO;
 
+import java.util.Date;
+
 import businesslogic.State.TransferType;
 
 public class RemovalPO extends PO {
 
 	private String bar_code = null;
-	private String removal_date = null;
+	private Date removal_date = null;
 	private String destination = null;
 	private TransferType type = null;
 	private String transfer_number = null;
 	private boolean isApproved = false;
 	
-	public RemovalPO(String bar_code, String removal_date, String destination, TransferType type,
+	public RemovalPO(String bar_code, Date removal_date, String destination, TransferType type,
 			String transfer_number, String DB_URL) {
 		super(DB_URL);
 		// TODO Auto-generated constructor stub
@@ -39,9 +41,9 @@ public class RemovalPO extends PO {
 	}
 	/*
 	 * 获取出库日期
-	 * 返回String
+	 * 返回Date
 	 * */
-	public String getRemovalDate() {
+	public Date getRemovalDate() {
 		return removal_date;
 	}
 	/*

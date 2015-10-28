@@ -1,5 +1,7 @@
 package businesslogic.PO;
 
+import java.util.Date;
+
 import businesslogic.State.StorageArea;
 
 /*========================================================================================
@@ -8,14 +10,14 @@ import businesslogic.State.StorageArea;
 
 public class StockTakingPO extends PO {
 	private String bar_code = null;
-	private String storage_date = null;
+	private Date storage_date = null;
 	private String destination = null;
 	private StorageArea area_code = null;
 	private int row = 0;
 	private int shelf = 0;
 	private int position = 0;
 	
-	public StockTakingPO(String bar_code, String storage_date, String destnation, StorageArea area_code, 
+	public StockTakingPO(String bar_code, Date storage_date, String destnation, StorageArea area_code, 
 			int row, int shelf, int position, String DB_URL) {
 		super(DB_URL);
 		
@@ -45,9 +47,9 @@ public class StockTakingPO extends PO {
 	}
 	/*
 	 * 获取入库日期
-	 * 返回String
+	 * 返回Date
 	 * */
-	public String getDate() {
+	public Date getDate() {
 		return storage_date;
 	}
 	/*

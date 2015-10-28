@@ -1,5 +1,7 @@
 package businesslogic.PO;
 
+import java.util.Date;
+
 
 /*========================================================================================
  * 用来保存司机信息的持久化数据格式
@@ -9,13 +11,13 @@ public class DriverInfoPO extends PO {
 	
 	private String driver_number = null;
 	private String driver_name = null;
-	private String driver_birthday = null;
+	private Date driver_birthday = null;
 	private String driver_id = null;
 	private String driver_mobilephone = null;
 	private String driver_sex = null;
 	private int attend_time = 0;
 	
-	public DriverInfoPO(String driver_number, String driver_name, String driver_birthday, String driver_id,
+	public DriverInfoPO(String driver_number, String driver_name, Date driver_birthday, String driver_id,
 			String driver_mobilephone, String driver_sex, int attend_time, String DB_URL) {
 		super(DB_URL);
 		this.driver_number = driver_number;
@@ -51,9 +53,9 @@ public class DriverInfoPO extends PO {
 	}
 	/*
 	 * 获取司机生日
-	 * 返回String
+	 * 返回Date
 	 * */
-	public String getDriverBirthday() {
+	public Date getDriverBirthday() {
 		return driver_birthday;
 	}
 	/*
@@ -105,7 +107,7 @@ public class DriverInfoPO extends PO {
 	/*
 	 * 更新司机生日
 	 * */
-	public void setDriverBirthday(String driver_birthday) {
+	public void setDriverBirthday(Date driver_birthday) {
 		this.driver_birthday = driver_birthday;
 	}
 	/*

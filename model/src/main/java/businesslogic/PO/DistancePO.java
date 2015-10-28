@@ -5,13 +5,15 @@ public class DistancePO extends PO {
 	private String city_1 = null;
 	private String city_2 = null;
 	private double distance = 0;
+	private double time = 0;
 	
-	public DistancePO(String city_1, String city_2, double distance, String DB_URL) {
+	public DistancePO(String city_1, String city_2, double distance, double time, String DB_URL) {
 		super(DB_URL);
 		// TODO Auto-generated constructor stub
 		this.city_1 = city_1;
 		this.city_2 = city_2;
 		this.distance = distance;
+		this.time = time;
 	}
 	
 	/*===============================================================
@@ -42,6 +44,13 @@ public class DistancePO extends PO {
 	public double getDistance() {
 		return distance;
 	}
+	/*
+	 * 获取时间
+	 * 返回double
+	 * */
+	public double getTime() {
+		return time;
+	}
 	
 	/*---------------------------------------------------------------
 	 * 对DistancePO的数据进行更新
@@ -52,7 +61,13 @@ public class DistancePO extends PO {
 	public void setDistance(double distance) {
 		this.distance = distance;
 	}
-
+	/*
+	 * 更新时间
+	 * */
+	public void setTime(double time) {
+		this.time = time;
+	}
+	
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub

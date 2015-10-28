@@ -1,19 +1,21 @@
 package businesslogic.VO;
 
+import java.util.Date;
+
 import businesslogic.PO.StoragePO;
 import businesslogic.State.StorageArea;
 
 public class StorageVO extends VO {
 	
 	private String barCode = null;
-	private String storageDate = null;
+	private Date storageDate = null;
 	private String destination = null;
 	private StorageArea areaCode = null;
 	private int row = 0;
 	private int shelf = 0;
 	private int position = 0;
 	
-	public StorageVO(String barCode, String storageDate, String destnation, StorageArea areaCode, 
+	public StorageVO(String barCode, Date storageDate, String destnation, StorageArea areaCode, 
 			int row, int shelf, int position) {
 		this.barCode = barCode;
 		this.storageDate = storageDate;
@@ -36,7 +38,7 @@ public class StorageVO extends VO {
 	public String getBarCode(){
 		return this.barCode;
 	}
-	public String getStorageDate(){
+	public Date getStorageDate(){
 		return this.storageDate;
 	}
 	public String getDestination(){

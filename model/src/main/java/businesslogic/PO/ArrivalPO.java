@@ -1,5 +1,7 @@
 package businesslogic.PO;
 
+import java.util.Date;
+
 import businesslogic.State.LogisticsState;
 
 /*========================================================================================
@@ -9,13 +11,13 @@ import businesslogic.State.LogisticsState;
 public class ArrivalPO extends PO {
 
 	private String bar_code = null;
-	private String arrival_date = null;
+	private Date arrival_date = null;
 	private String transfer_number = null;
 	private String starting = null;
 	private LogisticsState state = null;
 	private boolean isApproved = false;
 	
-	public ArrivalPO(String bar_code, String arrival_date, String transfer_number, String starting,
+	public ArrivalPO(String bar_code, Date arrival_date, String transfer_number, String starting,
 			LogisticsState state, String DB_URL) {
 		super(DB_URL);
 		this.bar_code = bar_code;
@@ -42,9 +44,9 @@ public class ArrivalPO extends PO {
 	}
 	/*
 	 * 获取到达日期
-	 * 返回String
+	 * 返回Date
 	 * */
-	public String getArrivalDate() {
+	public Date getArrivalDate() {
 		return arrival_date;
 	}
 	/*

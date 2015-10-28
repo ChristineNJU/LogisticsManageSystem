@@ -12,6 +12,7 @@ import businesslogic.Service.Admin.AddUserService;
 import businesslogic.Service.Admin.DeleteUserService;
 import businesslogic.Service.Admin.SearchUserService;
 import businesslogic.Service.Admin.UpdateUserService;
+import businesslogic.State.InstitutionType;
 import businesslogic.State.UserRole;
 import businesslogic.VO.UserVO;
 import data.State.AddState;
@@ -25,7 +26,8 @@ public class AdminBlService_Stub implements AddUserService, DeleteUserService, S
 	public AddState addUser(UserVO user){
 		System.out.println("Logic_Stub "+"添加成功");
 	
-		UserPO upo=new UserPO(user.getId(),null,user.getName(),user.getRole(),null,null);
+		UserPO upo = new UserPO(user.getId(), "102412412", user.getName(), "男", 30, InstitutionType.BusinessLobby, "南京", 
+				UserRole.curier, "user_info");
 		
 		try {
 			System.out.println("Data_Stub "+new AddService_Stub().add(upo));
@@ -42,7 +44,8 @@ public class AdminBlService_Stub implements AddUserService, DeleteUserService, S
 	---------------------------------------------*/
 	public UpdateState updateUser(UserVO user, String field, String value){
 		System.out.println("Logic_Stub "+"更新成功");
-		UserPO upo=new UserPO(user.getId(),null,user.getName(),user.getRole(),null, null);
+		UserPO upo=new UserPO(user.getId(), "102412412", user.getName(), "男", 30, InstitutionType.BusinessLobby, "南京", 
+				UserRole.curier, "user_info");
 		try {
 			System.out.println("Data_Stub"+new UpdateService_Stub().update(upo, field, value));
 		} catch (RemoteException e) {
@@ -57,7 +60,8 @@ public class AdminBlService_Stub implements AddUserService, DeleteUserService, S
 	---------------------------------------------*/
 	public DeleteState deleteUser(UserVO user){
 		System.out.println("Logic_Stub "+"删除成功");
-		UserPO upo=new UserPO(user.getId(),null,user.getName(),user.getRole(),null, null);
+		UserPO upo=new UserPO(user.getId(), "102412412", user.getName(), "男", 30, InstitutionType.BusinessLobby, "南京", 
+				UserRole.curier, "user_info");
 		try {
 			System.out.println("Data_Stub"+new DeleteService_Stub().delete(upo));
 		} catch (RemoteException e) {

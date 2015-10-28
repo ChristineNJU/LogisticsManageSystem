@@ -1,6 +1,7 @@
 package businesslogic.PO;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /*========================================================================================
  * 用来保存派送信息的持久化数据格式
@@ -8,12 +9,12 @@ import java.util.ArrayList;
 
 public class DeliveryPO extends PO {
 
-	private String date = null;
+	private Date date = null;
 	private ArrayList<String> bar_code_list = new ArrayList<String>();	
 	private String courier = null;
 	private boolean isApproved = false;
 	
-	public DeliveryPO(String date, ArrayList<String> bar_code_list, String courier, String DB_URL) {
+	public DeliveryPO(Date date, ArrayList<String> bar_code_list, String courier, String DB_URL) {
 		super(DB_URL);
 		this.date = date;
 		this.bar_code_list = bar_code_list;
@@ -30,9 +31,9 @@ public class DeliveryPO extends PO {
 	
 	/*
 	 * 获取到达日期
-	 * 返回String
+	 * 返回Date
 	 * */
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 	/*

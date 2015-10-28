@@ -1,11 +1,13 @@
 package businesslogic.PO;
 
+import java.util.Date;
+
 import businesslogic.State.StorageArea;
 
 public class BalancePO extends PO {
 
 	private String bar_code = null;
-	private String storage_date = null;
+	private Date storage_date = null;
 	private String destination = null;
 	private StorageArea old_area = null;
 	private int old_row = 0;
@@ -17,7 +19,7 @@ public class BalancePO extends PO {
 	private int new_position = 0;
 	private boolean isApproved = false;
 	
-	public BalancePO(String bar_code, String storage_date, String destination, StorageArea old_area, 
+	public BalancePO(String bar_code, Date storage_date, String destination, StorageArea old_area, 
 			int old_row, int old_shelf, int old_position, StorageArea new_area, int new_row, int new_shelf,
 			int new_position, String DB_URL) {
 		super(DB_URL);
@@ -52,9 +54,9 @@ public class BalancePO extends PO {
 	}
 	/*
 	 * 获取入库日期
-	 * 返回String
+	 * 返回Date
 	 * */
-	public String getStorageDate() {
+	public Date getStorageDate() {
 		return storage_date;
 	}
 	/*

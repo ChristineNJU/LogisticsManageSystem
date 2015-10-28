@@ -1,5 +1,8 @@
 package businesslogic.VO;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 import businesslogic.PO.DeliveryPO;
 
 /*========================================================================================
@@ -7,33 +10,38 @@ import businesslogic.PO.DeliveryPO;
  * */
 public class DeliveryVO extends VO {
 
-	private String arrivalDate = null;
-	private String barCode = null;
+	private Date arrivalDate = null;
+	private ArrayList<String> barCodeList = null;
 	private String people = null;
 	
-	public DeliveryVO(String arrivalDate,String id,String people){
+	public DeliveryVO(Date arrivalDate,ArrayList<String> id,String people){
 		this.arrivalDate = arrivalDate;
-		this.barCode = id;
+		this.barCodeList = id;
 		this.people = people;
 	}
+	public DeliveryVO(DeliveryPO po) {
+		this.arrivalDate = po.getDate();
+		this.barCodeList = po.getBarCodeList();
+		this.people = po.getCourier();
+	}
 	
-	public String getArrivalDate(){
+	public Date getArrivalDate(){
 		return this.arrivalDate;
 	}
 	
-	public String getId(){
-		return barCode;
+	public ArrayList<String> getBarCodeList(){
+		return barCodeList;
 	}
 	
 	public String getPeople(){
 		return people;
 	}
 
-	public void setArrivalDate(String date){
+	public void setArrivalDate(Date date){
 		this.arrivalDate = date;
 	}
-	public void setBarCode(String barCode){
-		this.barCode = barCode;
+	public void setBarCode(ArrayList<String> barCodeList){
+		this.barCodeList = barCodeList;
 	}
 	public void setpeople(String people){
 		this.people = people;

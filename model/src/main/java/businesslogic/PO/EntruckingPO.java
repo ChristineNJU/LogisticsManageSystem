@@ -1,6 +1,7 @@
 package businesslogic.PO;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 
 /*========================================================================================
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 
 public class EntruckingPO extends PO {
 	
-	private String date = null;
+	private Date date = null;
 	private String transfer_number = null;
 	private String destination = null;
 	private String car_number = null;
@@ -19,12 +20,12 @@ public class EntruckingPO extends PO {
 	private double amount = 0;
 	private boolean isApproved = false;
 	
-	public EntruckingPO(String data, String transfer_number, String destination, String car_number,
+	public EntruckingPO(Date date, String transfer_number, String destination, String car_number,
 			String guard_name, String supercargo_name, ArrayList<String> bar_code_list, double amount,
 			String DB_URL) {
 		super(DB_URL);
 		// TODO Auto-generated constructor stub
-		this.date = data;
+		this.date = date;
 		this.transfer_number = transfer_number;
 		this.destination = destination;
 		this.car_number = car_number;
@@ -44,9 +45,9 @@ public class EntruckingPO extends PO {
 	
 	/*
 	 * 获取装车日期
-	 * 返回String
+	 * 返回Date
 	 * */
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 	/*

@@ -1,5 +1,7 @@
 package businesslogic.VO;
 
+import java.util.Date;
+
 import businesslogic.PO.BalancePO;
 import businesslogic.State.StorageArea;
 
@@ -7,7 +9,7 @@ import businesslogic.State.StorageArea;
 public class BalanceVO extends VO {
 
 	private String barCode = null;
-	private String date = null;
+	private Date date = null;
 	private String destination = null;
 	private StorageArea areaBefore = null;
 	private int rowBefore = 0;
@@ -18,7 +20,7 @@ public class BalanceVO extends VO {
 	private int shelf = 0;
 	private int position = 0;
 	
-	public BalanceVO(String barCode,String date,String destination,
+	public BalanceVO(String barCode,Date date,String destination,
 			StorageArea areaBefore,int rowBefore,int shelfBefore,int positionBefore,
 			StorageArea areaCode,int row,int shelf,int position){
 		this.barCode = barCode;
@@ -50,7 +52,7 @@ public class BalanceVO extends VO {
 	public String getBarCode(){
 		return this.barCode;
 	}
-	public String getDate(){
+	public Date getDate(){
 		return this.date;
 	}
 	public String getDestination(){
@@ -84,7 +86,7 @@ public class BalanceVO extends VO {
 	public void setBarCode(String barCode){
 		this.barCode = barCode;
 	}
-	public void setDate(String date){
+	public void setDate(Date date){
 		this.date = date;
 	}
 	public void setDestination(String destination){

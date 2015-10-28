@@ -1,12 +1,13 @@
 package test.Driver.businesslogic;
 
 import java.util.ArrayList;
+import java.util.Date;
 
+import test.Stub.businesslogic.BusinessLobbyBlService_Stub;
 import businesslogic.State.LogisticsState;
 import businesslogic.VO.ArrivalVO;
 import businesslogic.VO.CarInfoVO;
 import businesslogic.VO.DriverInfoVO;
-import test.Stub.businesslogic.BusinessLobbyBlService_Stub;
 
 public class BusinessLb_Driver {
 
@@ -14,10 +15,10 @@ public class BusinessLb_Driver {
 	  public void drive(BusinessLobbyBlService_Stub businessLBbl){
 		  ArrayList<ArrivalVO> arrivalList = new ArrayList<ArrivalVO>();
 
-		  arrivalList.add(0, new ArrivalVO("2015/10/25","1111111","南京",null, LogisticsState.LOST));
+		  arrivalList.add(0, new ArrivalVO("1111111",new Date(),"南京",null, LogisticsState.LOST));
 
 		  
-		  arrivalList.add(new ArrivalVO("2015/10/25","1111111","南京",null, LogisticsState.LOST));
+		  arrivalList.add(new ArrivalVO("1111111",new Date(),"南京",null, LogisticsState.LOST));
 
 		  System.out.println(businessLBbl.arrival(arrivalList));
 		  

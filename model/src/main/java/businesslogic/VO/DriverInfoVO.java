@@ -1,18 +1,20 @@
 package businesslogic.VO;
 
+import java.util.Date;
+
 import businesslogic.PO.DriverInfoPO;
 
 public class DriverInfoVO extends VO {
 
 	private String number = null;
 	private String name = null;
-	private String birthday = null;
+	private Date birthday = null;
 	private String id = null;
 	private String mobilephone = null;
 	private String sex = null;
 	private int attendTime = 0;
 	
-	public DriverInfoVO(String number,String name,String birthday,String id,String mobilephone,String sex,int attendTime){
+	public DriverInfoVO(String number,String name,Date birthday,String id,String mobilephone,String sex,int attendTime){
 		this.number = number;
 		this.name = name;
 		this.birthday = birthday;
@@ -37,7 +39,7 @@ public class DriverInfoVO extends VO {
 	public String getName(){
 		return this.name;
 	}
-	public String getBirthday(){
+	public Date getBirthday(){
 		return this.birthday;
 	}
 	public String getId(){
@@ -56,7 +58,7 @@ public class DriverInfoVO extends VO {
 	public void setNumber(String number){
 		this.number = number;
 	}
-	public void setBirthday(String birthday){
+	public void setBirthday(Date birthday){
 		this.birthday = birthday;
 	}
 	public void setId(String id){

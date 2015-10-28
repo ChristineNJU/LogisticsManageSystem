@@ -1,6 +1,7 @@
 package businesslogic.PO;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import businesslogic.State.LogisticsState;
 import businesslogic.State.LogisticsType;
@@ -44,8 +45,8 @@ public class LogisticsInfoPO extends PO {
 	private boolean isApproved = false;						//审批状态
 	private LogisticsState state = LogisticsState.INTACT;	//快递状态
 	private boolean isReceived = false;						//收件状态
-	private String send_date = null;						//发件日期
-	private String receive_date = null;						//收件日期
+	private Date send_date = null;							//发件日期
+	private Date receive_date = null;						//收件日期
 	private String courier = null;							//快递员
 	/*
 	 * 历史轨迹
@@ -58,7 +59,7 @@ public class LogisticsInfoPO extends PO {
 						  	String recipient_telephone, String recipient_mobilephone,
 						  String bar_code, int original_number, double weight, double size, String internal_name,
 						  LogisticsType type, PackingCharge pack, double total_cost, String starting, String destination,
-						  String send_date, String courier,
+						  Date send_date, Date receive_date, String courier,
 						  String DB_URL) {
 		// TODO Auto-generated constructor stub
 		super(DB_URL);
@@ -85,6 +86,7 @@ public class LogisticsInfoPO extends PO {
 		this.starting = starting;
 		this.destination = destination;
 		this.send_date = send_date;
+		this.receive_date = receive_date;
 		this.courier = courier;
 	}
 	
@@ -268,16 +270,16 @@ public class LogisticsInfoPO extends PO {
 	}
 	/*
 	 * 获取发件日期
-	 * 返回String
+	 * 返回Date
 	 * */
-	public String getSendDate() {
+	public Date getSendDate() {
 		return send_date;
 	}
 	/*
 	 * 获取收件日期
-	 * 返回String
+	 * 返回Date
 	 * */
-	public String getReceiveDate() {
+	public Date getReceiveDate() {
 		return receive_date;
 	}
 	/*
@@ -321,7 +323,7 @@ public class LogisticsInfoPO extends PO {
 	/*
 	 * 更新收件日期
 	 * */
-	public void setReceiveDate(String receive_date) {
+	public void setReceiveDate(Date receive_date) {
 		this.receive_date = receive_date;
 	}
 	/*

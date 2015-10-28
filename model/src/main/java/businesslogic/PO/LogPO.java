@@ -1,12 +1,14 @@
 package businesslogic.PO;
 
+import java.util.Date;
+
 public class LogPO extends PO {
 
-	private String time = null;
+	private Date time = null;
 	private String operation = null;
 	private String operator = null;
 	
-	public LogPO(String time, String operation, String operator, String DB_URL) {
+	public LogPO(Date time, String operation, String operator, String DB_URL) {
 		super(DB_URL);
 		// TODO Auto-generated constructor stub
 		this.time = time;
@@ -23,9 +25,9 @@ public class LogPO extends PO {
 	 * */
 	/*
 	 * 获取操作时间
-	 * 返回String
+	 * 返回Date
 	 * */
-	public String getTime() {
+	public Date getTime() {
 		return time;
 	}
 	/*

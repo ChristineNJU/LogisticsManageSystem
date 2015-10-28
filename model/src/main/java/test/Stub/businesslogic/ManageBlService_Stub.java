@@ -20,6 +20,7 @@ import businesslogic.Service.Manage.*;
 import businesslogic.State.CostType;
 import businesslogic.State.InstitutionType;
 import businesslogic.State.SalaryType;
+import businesslogic.State.UserRole;
 import businesslogic.VO.BenefitVO;
 import businesslogic.VO.ConstVO;
 import businesslogic.VO.CostVO;
@@ -232,7 +233,8 @@ public class ManageBlService_Stub implements AddConstService,AddInstitutionServi
 	---------------------------------------------*/
 	public UpdateState updateStaff (StaffVO staff, String field, String value){
 		System.out.println("修改成功");
-		UserPO userpo=new UserPO(staff.getSystemId(), staff.getName(),null, null, null, value);
+		UserPO userpo=new UserPO(staff.getSystemId(), "120514214", staff.getName(),
+				staff.getSex(), staff.getAge(), staff.getInsitution(), "南京", UserRole.admin, "user_info");
 		try {
 			System.out.println("Update_Stub"+new UpdateService_Stub().update(userpo, field, value));
 		} catch (RemoteException e) {
@@ -247,7 +249,8 @@ public class ManageBlService_Stub implements AddConstService,AddInstitutionServi
 	---------------------------------------------*/
 	public AddState addStaff (StaffVO staff){
 		System.out.println("添加成功");
-		UserPO userpo=new UserPO(staff.getSystemId(), staff.getName(),null, null, null, null);
+		UserPO userpo=new UserPO(staff.getName(), "102412412", staff.getName(), "男", 30, InstitutionType.BusinessLobby, "南京", 
+				UserRole.curier, "user_info");
 		try {
 			System.out.println("Add_Stub"+new AddService_Stub().add(userpo) );
 		} catch (RemoteException e) {
@@ -262,7 +265,8 @@ public class ManageBlService_Stub implements AddConstService,AddInstitutionServi
 	---------------------------------------------*/
 	public DeleteState DeleteStaff (String id){
 		System.out.println("删除成功");
-		UserPO userpo=new UserPO(id, null,null, null, null, null);
+		UserPO userpo=new UserPO(id, "102412412", "n", "男", 30, InstitutionType.BusinessLobby, "南京", 
+				UserRole.curier, "user_info");
 		try {
 			System.out.println("Delete_Stub"+new DeleteService_Stub().delete(userpo) );
 		} catch (RemoteException e) {
@@ -286,7 +290,7 @@ public class ManageBlService_Stub implements AddConstService,AddInstitutionServi
 			listpo = new SearchService_Stub().searchInstitutionInfo(list0);
 		
 		for(int i=0;i<listpo.size();i++){
-			InstitutionVO vo=new InstitutionVO(null,listpo.get(i).getCity(),listpo.get(i).getInstitutionNumber());
+			InstitutionVO vo = new InstitutionVO(null, InstitutionType.BusinessLobby, "南京", "102051512");
 			list.add(vo);
 			
 		}
@@ -301,7 +305,7 @@ public class ManageBlService_Stub implements AddConstService,AddInstitutionServi
 	---------------------------------------------*/
 	public UpdateState UpdateInstitution (InstitutionVO institution, String field,String value){
 		System.out.println("修改成功");
-		InstitutionPO userpo=new InstitutionPO(null, institution.getCity(), institution.getCode(), null);
+		InstitutionPO userpo=new InstitutionPO(null, institution.getType(), institution.getCity(), null, null);
 		try {
 			System.out.println("Update_Stub"+new UpdateService_Stub().update(userpo, field, value));
 		} catch (RemoteException e) {
@@ -315,9 +319,9 @@ public class ManageBlService_Stub implements AddConstService,AddInstitutionServi
 	/*-------------------------------------------
 	新增机构
 	---------------------------------------------*/
-	public AddState addInstitution (InstitutionVO insititution){
+	public AddState addInstitution (InstitutionVO institution){
 		System.out.println("添加成功");
-		InstitutionPO userpo=new InstitutionPO(null, insititution.getCity(), insititution.getCode(), null);
+		InstitutionPO userpo=new InstitutionPO(null, institution.getType(), institution.getCity(), null, null);
 		try {
 			System.out.println("Add_Stub"+new AddService_Stub().add(userpo) );
 		} catch (RemoteException e) {
@@ -330,9 +334,9 @@ public class ManageBlService_Stub implements AddConstService,AddInstitutionServi
 	/*-------------------------------------------
 	删除机构
 	---------------------------------------------*/
-	public DeleteState deleteInstitution (InstitutionVO insitiution){
+	public DeleteState deleteInstitution (InstitutionVO institution){
 		System.out.println("删除成功");
-		InstitutionPO userpo=new InstitutionPO(null, insitiution.getCity(), insitiution.getCode(), null);
+		InstitutionPO userpo=new InstitutionPO(null, institution.getType(), institution.getCity(), null, null);
 		try {
 			System.out.println("Delete_Stub"+new DeleteService_Stub().delete(userpo) );
 		} catch (RemoteException e) {
