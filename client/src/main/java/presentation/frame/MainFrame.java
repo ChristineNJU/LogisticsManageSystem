@@ -39,7 +39,7 @@ public class MainFrame {
 		barCode = new JTextField();
 		ok = new JButton("确定");
 		
-		inquiry = (InquiryService) new InquiryBlService_Stub();
+		inquiry = new InquiryBlService_Stub();
 	}
 	
 	private void init(){
