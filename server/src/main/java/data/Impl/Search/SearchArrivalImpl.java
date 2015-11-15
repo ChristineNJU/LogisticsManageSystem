@@ -1,12 +1,18 @@
 package data.Impl.Search;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import businesslogic.PO.ArrivalPO;
 import data.Service.Search.SearchArrivalService;
 
-public class SearchArrivalImpl implements SearchArrivalService {
+public class SearchArrivalImpl extends UnicastRemoteObject implements SearchArrivalService {
+
+	public SearchArrivalImpl() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public ArrayList<ArrivalPO> searchArrival(String DB_URL,

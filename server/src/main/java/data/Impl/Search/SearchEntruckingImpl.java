@@ -1,12 +1,18 @@
 package data.Impl.Search;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import businesslogic.PO.EntruckingPO;
 import data.Service.Search.SearchEntruckingService;
 
-public class SearchEntruckingImpl implements SearchEntruckingService {
+public class SearchEntruckingImpl extends UnicastRemoteObject implements SearchEntruckingService {
+
+	public SearchEntruckingImpl() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public ArrayList<EntruckingPO> searchEntrucking(String DB_URL,

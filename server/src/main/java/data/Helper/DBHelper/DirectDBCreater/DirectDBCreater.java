@@ -1,11 +1,11 @@
-package data.Helper.DBHelper.DBCreater;
+package data.Helper.DBHelper.DirectDBCreater;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class DBCreater {
+public class DirectDBCreater {
 	
 	private static final String db_name = "LogisticsManageSystemDataBase";
 	

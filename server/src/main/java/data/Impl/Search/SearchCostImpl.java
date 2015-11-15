@@ -1,12 +1,18 @@
 package data.Impl.Search;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import businesslogic.PO.CostPO;
 import data.Service.Search.SearchCostService;
 
-public class SearchCostImpl implements SearchCostService {
+public class SearchCostImpl extends UnicastRemoteObject implements SearchCostService {
+
+	public SearchCostImpl() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public ArrayList<CostPO> searchCost(ArrayList<String> requirement)
