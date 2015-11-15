@@ -2,6 +2,6 @@ package businesslogic.Service.Reponsitory;
 
 import businesslogic.State.OutputState;
 
-public interface stockTakingExcelService {
+public interface StockTakingExcelService {
 	public OutputState stockTakingExcel();
 }

@@ -21,10 +21,10 @@ import businesslogic.Service.Finance.DeleteAccountService;
 import businesslogic.Service.Finance.GetEntruckingService;
 import businesslogic.Service.Finance.GetLogService;
 import businesslogic.Service.Finance.GetTransferService;
-import businesslogic.Service.Finance.SearchAccountService;
-import businesslogic.Service.Finance.SearchBenefitService;
-import businesslogic.Service.Finance.SearchCostService;
-import businesslogic.Service.Finance.SearchGatheringService;
+import businesslogic.Service.Finance.GetAccountService;
+import businesslogic.Service.Finance.GetBenefitService;
+import businesslogic.Service.Finance.GetCostService;
+import businesslogic.Service.Finance.GetGatheringService;
 import businesslogic.Service.Finance.UpdateAccountService;
 import businesslogic.VO.AccountVO;
 import businesslogic.VO.BenefitVO;
@@ -38,8 +38,8 @@ import data.State.DeleteState;
 import data.State.UpdateState;
 
 public class FinanceBlService_Stub implements AddAccountService, AddBenefitService, AddCostService, DeleteAccountService, GetEntruckingService,
-                                              GetLogService, GetTransferService, SearchAccountService, SearchBenefitService, SearchCostService,
-                                              SearchGatheringService, UpdateAccountService{
+                                              GetLogService, GetTransferService, GetAccountService, GetBenefitService, GetCostService,
+                                              GetGatheringService, UpdateAccountService{
 	/*-------------------------------------------
 	 查看收款单
 	---------------------------------------------*/

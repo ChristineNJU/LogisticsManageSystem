@@ -4,6 +4,6 @@ import java.util.ArrayList;
 
 import businesslogic.VO.AccountVO;
 
-public interface SearchAccountService {
+public interface GetAccountService {
 	public ArrayList<AccountVO> searchAccount(String name);
 }

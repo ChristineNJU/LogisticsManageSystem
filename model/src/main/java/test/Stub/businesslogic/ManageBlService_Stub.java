@@ -15,7 +15,7 @@ import businesslogic.PO.GatheringPO;
 import businesslogic.PO.InstitutionPO;
 import businesslogic.PO.SalaryPO;
 import businesslogic.PO.UserPO;
-import businesslogic.Service.Finance.SearchCostService;
+import businesslogic.Service.Finance.GetCostService;
 import businesslogic.Service.Manage.*;
 import businesslogic.State.CostType;
 import businesslogic.State.InstitutionType;
@@ -33,7 +33,7 @@ import businesslogic.VO.VO;
 
 public class ManageBlService_Stub implements AddConstService,AddInstitutionService,AddStaffService,
 											DeleteInstitutionService,DeleteStaffService,SearchBenefitService,
-											SearchCostService,SearchGatheringService,SearchInstitutionService,
+											GetCostService,SearchGatheringService,SearchInstitutionService,
 											SearchStaffService,ShowConstService,ShowReceiptService,
 											ShowSalaryService,UpdateConstService,UpdateInstitutionService,
 											UpdatePaymentService,UpdateReceiptService,UpdateStaffService{
