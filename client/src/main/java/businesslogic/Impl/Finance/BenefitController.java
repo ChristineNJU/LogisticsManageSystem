@@ -7,18 +7,18 @@ import businesslogic.VO.BenefitVO;
 
 public class BenefitController implements AddBenefitService, GetBenefitService{
 	
-	AddBenefitImpl addBenefit=new AddBenefitImpl();
-	GetBenefitImpl getBenefit=new GetBenefitImpl();
 	
 	@Override
 	public BenefitVO searchBenefit(String time_end) {
 		// TODO Auto-generated method stub
+		GetBenefitImpl getBenefit=new GetBenefitImpl();
 		return getBenefit.searchBenefit(time_end);
 	}
 
 	@Override
 	public AddState addBenefit(BenefitVO benefit) {
 		// TODO Auto-generated method stub
+		AddBenefitImpl addBenefit=new AddBenefitImpl();
 		return addBenefit.addBenefit(benefit);
 	}
 

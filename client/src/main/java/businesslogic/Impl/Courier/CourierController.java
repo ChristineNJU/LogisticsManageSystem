@@ -14,16 +14,14 @@ import businesslogic.VO.VO;
 
 public class CourierController implements AddLogisticsService, GetAmountService, GetCityService, ReceiveConfirmService{
 	
-	AddLogisticsImpl addLogistics=new AddLogisticsImpl();
-	GetAmountImpl getAmount=new GetAmountImpl();
-	GetCityImpl getCity=new GetCityImpl();
-	ReceiveConfirmImpl receiveConfirm=new ReceiveConfirmImpl();
+	
 	
 	@Override
 	public UpdateState receiveConfirm(VO logistics_info, String field,
 			String value) {
 		// TODO Auto-generated method stub
 		
+		ReceiveConfirmImpl receiveConfirm=new ReceiveConfirmImpl();
 		return receiveConfirm.receiveConfirm(logistics_info, field, value);
 		
 	}
@@ -31,6 +29,7 @@ public class CourierController implements AddLogisticsService, GetAmountService,
 	@Override
 	public ArrayList<String> getCity() {
 		// TODO Auto-generated method stub
+		GetCityImpl getCity=new GetCityImpl();
 		return getCity.getCity();
 	}
 
@@ -39,12 +38,14 @@ public class CourierController implements AddLogisticsService, GetAmountService,
 			LogisticsType type, PackingCharge charge, double weight,
 			double size) {
 		// TODO Auto-generated method stub
+		GetAmountImpl getAmount=new GetAmountImpl();
 		return getAmount.getAmount(starting, destination, type, charge, weight, size);
 	}
 
 	@Override
 	public AddState addLogistics(VO logistics_info) {
 		// TODO Auto-generated method stub
+		AddLogisticsImpl addLogistics=new AddLogisticsImpl();
 		return addLogistics.addLogistics(logistics_info);
 	}
 	

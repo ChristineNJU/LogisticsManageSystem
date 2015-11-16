@@ -13,20 +13,18 @@ import businesslogic.VO.TransferVO;
 
 public class SundryController implements GetEntruckingService, GetGatheringService,GetTransferService,GetLogService{
 
-	GetEntruckingImpl getEntrucking=new GetEntruckingImpl();
-	GetGatheringImpl getGathering=new GetGatheringImpl();
-	GetTransferImpl getTransfer=new GetTransferImpl();
-	GetLogImpl getLog=new GetLogImpl();
 	
 	@Override
 	public ArrayList<LogVO> getLog(String time_start, String time_end) {
 		// TODO Auto-generated method stub
+		GetLogImpl getLog=new GetLogImpl();
 		return getLog.getLog(time_start, time_end);
 	}
 
 	@Override
 	public ArrayList<TransferVO> getTransfer(String time_start, String time_end) {
 		// TODO Auto-generated method stub
+		GetTransferImpl getTransfer=new GetTransferImpl();
 		return getTransfer.getTransfer(time_start, time_end);
 	}
 
@@ -34,6 +32,7 @@ public class SundryController implements GetEntruckingService, GetGatheringServi
 	public ArrayList<GatheringVO> searchGathering(String date,
 			String businesslobby) {
 		// TODO Auto-generated method stub
+		GetGatheringImpl getGathering=new GetGatheringImpl();
 		return getGathering.searchGathering(date, businesslobby);
 	}
 
@@ -41,6 +40,7 @@ public class SundryController implements GetEntruckingService, GetGatheringServi
 	public ArrayList<EntruckingVO> getEntrucking(String time_start,
 			String time_end) {
 		// TODO Auto-generated method stub
+		GetEntruckingImpl getEntrucking=new GetEntruckingImpl();
 		return getEntrucking.getEntrucking(time_start, time_end);
 	}
 
