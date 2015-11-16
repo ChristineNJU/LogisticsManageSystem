@@ -17,7 +17,7 @@ public class UserController implements LoginService, ResetPasswordService{
 		
 		ResetState state = login.reset(userName, oldPassword, newPassword);
 		
-		return null;
+		return state;
 	}
 
 	@Override
@@ -26,7 +26,7 @@ public class UserController implements LoginService, ResetPasswordService{
 		
 		LoginState state = rpi.login(userName, password);
 		
-		return null;
+		return state;
 	}
 
 }
