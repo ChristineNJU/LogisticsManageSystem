@@ -15,6 +15,9 @@ import businesslogic.Service.Finance.AddAccountService;
 import businesslogic.Service.Finance.AddBenefitService;
 import businesslogic.Service.Finance.AddCostService;
 import businesslogic.Service.Finance.DeleteAccountService;
+import businesslogic.Service.Finance.GetAccountService;
+import businesslogic.Service.Finance.GetBenefitService;
+import businesslogic.Service.Finance.GetCostService;
 import businesslogic.Service.Finance.GetEntruckingService;
 import businesslogic.Service.Finance.GetLogService;
 import businesslogic.Service.Finance.GetTransferService;
@@ -269,6 +272,11 @@ public class FinanceBlService_Stub implements AddAccountService, AddBenefitServi
 			e.printStackTrace();
 		}
 		return list;
+	}
+	@Override
+	public ArrayList<String> getNeedGathering() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	
