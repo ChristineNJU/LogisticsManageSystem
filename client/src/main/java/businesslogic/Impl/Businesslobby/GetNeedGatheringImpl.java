@@ -1,5 +1,15 @@
 package businesslogic.Impl.Businesslobby;
 
-public class GetNeedGatheringImpl {
+import java.util.ArrayList;
+
+import businesslogic.Service.BusinessLobby.GetNeedGatheringService;
+
+public class GetNeedGatheringImpl implements GetNeedGatheringService{
+
+	@Override
+	public ArrayList<String> getNeedGathering() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
