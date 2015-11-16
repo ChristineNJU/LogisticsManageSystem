@@ -38,58 +38,59 @@ public class ManageController implements ShowConstService,UpdateConstService,Add
 										UpdatePaymentService,AddStaffService,UpdateStaffService,
 										SearchStaffService,DeleteStaffService{
 
-	ManageConst manageConst=new ManageConst();
-	ManageFinance manageFinance=new ManageFinance();
-	ManageInstitution manageInstitution=new ManageInstitution();
-	ManageReceipt manageReceipt=new ManageReceipt();
-	ManageSalary manageSalary=new ManageSalary();
-	ManageStaff manageStaff=new ManageStaff();
-	
 	@Override
 	public DeleteState DeleteStaff(String id) {
 		// TODO Auto-generated method stub
+		ManageStaff manageStaff=new ManageStaff();
 		return manageStaff.DeleteStaff(id);
 	}
 
 	@Override
 	public ArrayList<StaffVO> searchStaff(String id) {
 		// TODO Auto-generated method stub
+		ManageStaff manageStaff=new ManageStaff();
 		return manageStaff.searchStaff(id);
 	}
 
 	@Override
 	public UpdateState updateStaff(StaffVO staff, String field, String value) {
 		// TODO Auto-generated method stub
+		ManageStaff manageStaff=new ManageStaff();
 		return manageStaff.updateStaff(staff, field, value);
 	}
 
 	@Override
 	public AddState addStaff(StaffVO staff) {
 		// TODO Auto-generated method stub
+		ManageStaff manageStaff=new ManageStaff();
 		return manageStaff.addStaff(staff);
 	}
 
 	@Override
 	public UpdateState updatePayment(SalaryVO salary, String field, String value) {
 		// TODO Auto-generated method stub
+		ManageSalary manageSalary=new ManageSalary();
 		return manageSalary.updatePayment(salary, field, value);
 	}
 
 	@Override
 	public ArrayList<SalaryVO> showSalary() {
 		// TODO Auto-generated method stub
+		ManageSalary manageSalary=new ManageSalary();
 		return manageSalary.showSalary();
 	}
 
 	@Override
 	public UpdateState updateReceipt(VO receipt) {
 		// TODO Auto-generated method stub
+		ManageReceipt manageReceipt=new ManageReceipt();
 		return manageReceipt.updateReceipt(receipt);
 	}
 
 	@Override
 	public ArrayList<VO> showReceipt() {
 		// TODO Auto-generated method stub
+		ManageReceipt manageReceipt=new ManageReceipt();
 		return manageReceipt.showReceipt();
 	}
 
@@ -97,30 +98,35 @@ public class ManageController implements ShowConstService,UpdateConstService,Add
 	public ArrayList<GatheringVO> searchGathering(String date,
 			String businesslobby) {
 		// TODO Auto-generated method stub
+		ManageFinance manageFinance=new ManageFinance();
 		return manageFinance.searchGathering(date, businesslobby);
 	}
 
 	@Override
 	public ArrayList<CostVO> searchCost(String time_start, String time_end) {
 		// TODO Auto-generated method stub
+		ManageFinance manageFinance=new ManageFinance();
 		return manageFinance.searchCost(time_start, time_end);
 	}
 
 	@Override
 	public BenefitVO searchBenefit(String time_end) {
 		// TODO Auto-generated method stub
+		ManageFinance manageFinance=new ManageFinance();
 		return manageFinance.searchBenefit(time_end);
 	}
 
 	@Override
 	public ArrayList<InstitutionVO> searchInstitution(String id) {
 		// TODO Auto-generated method stub
+		ManageInstitution manageInstitution=new ManageInstitution();
 		return manageInstitution.searchInstitution(id);
 	}
 
 	@Override
 	public DeleteState deleteInstitution(InstitutionVO insitiution) {
 		// TODO Auto-generated method stub
+		ManageInstitution manageInstitution=new ManageInstitution();
 		return manageInstitution.deleteInstitution(insitiution);
 	}
 
@@ -128,12 +134,21 @@ public class ManageController implements ShowConstService,UpdateConstService,Add
 	public UpdateState UpdateInstitution(InstitutionVO institution,
 			String field, String value) {
 		// TODO Auto-generated method stub
+		ManageInstitution manageInstitution=new ManageInstitution();
 		return manageInstitution.UpdateInstitution(institution, field, value);
+	}
+	
+	@Override
+	public AddState addInstitution(InstitutionVO institution) {
+		// TODO Auto-generated method stub
+		ManageInstitution manageInstitution=new ManageInstitution();
+		return manageInstitution.addInstitution(institution);
 	}
 
 	@Override
 	public UpdateState updateConst(ConstVO constant, String field, String value) {
 		// TODO Auto-generated method stub
+		ManageConst manageConst=new ManageConst();
 		return manageConst.updateConst(constant, field, value);
 		
 	}
@@ -141,13 +156,11 @@ public class ManageController implements ShowConstService,UpdateConstService,Add
 	@Override
 	public ArrayList<ConstVO> showConst() {
 		// TODO Auto-generated method stub
+		ManageConst manageConst=new ManageConst();
 		return manageConst.showConst();
 	}
 
-	@Override
-	public AddState addInstitution(InstitutionVO institution) {
-		// TODO Auto-generated method stub
-		return manageInstitution.addInstitution(institution);
-	}
+	
+	
 
 }
