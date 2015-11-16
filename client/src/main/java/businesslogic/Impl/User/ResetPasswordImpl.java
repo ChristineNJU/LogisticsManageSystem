@@ -1,10 +1,11 @@
 package businesslogic.Impl.User;
 
-import businesslogic.State.LoginState;
+import businesslogic.State.ResetState;
 
 public class ResetPasswordImpl {
-	
-	public LoginState login(String userName, String password) {
+
+	public ResetState reset(String userName, String oldPassword,
+			String newPassword) {
 		
 		return null;
 	}

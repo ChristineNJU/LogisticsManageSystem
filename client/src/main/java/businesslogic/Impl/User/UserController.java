@@ -7,15 +7,14 @@ import businesslogic.State.ResetState;
 
 public class UserController implements LoginService, ResetPasswordService{
 	
-	private LoginImpl login = new LoginImpl();
-	private ResetPasswordImpl rpi = new ResetPasswordImpl();
 	
 	@Override
 	public ResetState reset(String userName, String oldPassword,
 			String newPassword) {
 		// TODO Auto-generated method stub
 		
-		ResetState state = login.reset(userName, oldPassword, newPassword);
+		ResetPasswordImpl rpi = new ResetPasswordImpl();
+		ResetState state = rpi.reset(userName, oldPassword, newPassword);
 		
 		return state;
 	}
@@ -24,7 +23,8 @@ public class UserController implements LoginService, ResetPasswordService{
 	public LoginState login(String userName, String password) {
 		// TODO Auto-generated method stub
 		
-		LoginState state = rpi.login(userName, password);
+		LoginImpl login = new LoginImpl();
+		LoginState state = login.login(userName, password);
 		
 		return state;
 	}
