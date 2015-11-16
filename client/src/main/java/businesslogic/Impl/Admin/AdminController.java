@@ -16,29 +16,29 @@ public class AdminController implements AddUserService,DeleteUserService,SearchU
 	@Override
 	public UpdateState updateUser(UserVO user, String field, String value) {
 		// TODO Auto-generated method stub
-		UpdateUserImpl updateUser=new UpdateUserImpl();
-		return updateUser.updateUser(user, field, value);
+		AdminImpl adminUser=new AdminImpl();
+		return adminUser.updateUser(user, field, value);
 	}
 
 	@Override
 	public ArrayList<UserVO> searchUser(String id) {
 		// TODO Auto-generated method stub
-		SearchUserImpl searchUser=new SearchUserImpl();
-		return searchUser.searchUser(id);
+		AdminImpl adminUser=new AdminImpl();
+		return adminUser.searchUser(id);
 	}
 
 	@Override
 	public DeleteState deleteUser(UserVO user) {
 		// TODO Auto-generated method stub
-		DeleteUserImpl deleteUser=new DeleteUserImpl();
-		return deleteUser.deleteUser(user);
+		AdminImpl adminUser=new AdminImpl();
+		return adminUser.deleteUser(user);
 	}
 
 	@Override
 	public AddState addUser(UserVO user) {
 		// TODO Auto-generated method stub
-		AddUserImpl addUser=new AddUserImpl();
-		return addUser.addUser(user);
+		AdminImpl adminUser=new AdminImpl();
+		return adminUser.addUser(user);
 	}
 
 }

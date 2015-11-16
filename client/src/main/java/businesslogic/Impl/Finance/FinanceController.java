@@ -31,75 +31,75 @@ public class FinanceController implements AddAccountService,AddBenefitService,Ad
 	public UpdateState updateAccount(AccountVO account, String field,
 			String value) {
 		// TODO Auto-generated method stub
-		AccountController accountC=new AccountController();
+		AccountImpl accountC=new AccountImpl();
 		return accountC.updateAccount(account, field, value);
 	}
 	@Override
 	public ArrayList<TransferVO> getTransfer(String time_start, String time_end) {
 		// TODO Auto-generated method stub
-		SundryController sundryC=new SundryController();
+		SundryImpl sundryC=new SundryImpl();
 		return sundryC.getTransfer(time_start, time_end);
 	}
 	@Override
 	public ArrayList<LogVO> getLog(String time_start, String time_end) {
 		// TODO Auto-generated method stub
-		SundryController sundryC=new SundryController();
+		SundryImpl sundryC=new SundryImpl();
 		return sundryC.getLog(time_start, time_end);
 	}
 	@Override
 	public ArrayList<GatheringVO> searchGathering(String date,
 			String businesslobby) {
 		// TODO Auto-generated method stub
-		SundryController sundryC=new SundryController();
+		SundryImpl sundryC=new SundryImpl();
 		return sundryC.searchGathering(date, businesslobby);
 	}
 	@Override
 	public ArrayList<EntruckingVO> getEntrucking(String time_start,
 			String time_end) {
 		// TODO Auto-generated method stub
-		SundryController sundryC=new SundryController();
+		SundryImpl sundryC=new SundryImpl();
 		return sundryC.getEntrucking(time_start, time_end);
 	}
 	@Override
 	public ArrayList<CostVO> searchCost(String time_start, String time_end) {
 		// TODO Auto-generated method stub
-		CostController costC=new CostController();
+		CostImpl costC=new CostImpl();
 		return costC.searchCost(time_start, time_end);
 	}
 	@Override
 	public BenefitVO searchBenefit(String time_end) {
 		// TODO Auto-generated method stub
-		BenefitController benefitC=new BenefitController();
+		BenefitImpl benefitC=new BenefitImpl();
 		return benefitC.searchBenefit(time_end);
 	}
 	@Override
 	public ArrayList<AccountVO> searchAccount(String name) {
 		// TODO Auto-generated method stub
-		AccountController accountC=new AccountController();
+		AccountImpl accountC=new AccountImpl();
 		return accountC.searchAccount(name);
 	}
 	@Override
 	public DeleteState deleteAccount(AccountVO account) {
 		// TODO Auto-generated method stub
-		AccountController accountC=new AccountController();
+		AccountImpl accountC=new AccountImpl();
 		return accountC.deleteAccount(account);
 	}
 	@Override
 	public AddState addCost(CostVO cost) {
 		// TODO Auto-generated method stub
-		CostController costC=new CostController();
+		CostImpl costC=new CostImpl();
 		return costC.addCost(cost);
 	}
 	@Override
 	public AddState addBenefit(BenefitVO benefit) {
 		// TODO Auto-generated method stub
-		BenefitController benefitC=new BenefitController();
+		BenefitImpl benefitC=new BenefitImpl();
 		return benefitC.addBenefit(benefit);
 	}
 	@Override
 	public AddState addAccount(AccountVO account) {
 		// TODO Auto-generated method stub
-		AccountController accountC=new AccountController();
+		AccountImpl accountC=new AccountImpl();
 		return accountC.addAccount(account);
 	}
 	

@@ -12,41 +12,33 @@ import businesslogic.State.LogisticsType;
 import businesslogic.State.PackingCharge;
 import businesslogic.VO.VO;
 
-public class CourierController implements AddLogisticsService, GetAmountService, GetCityService, ReceiveConfirmService{
-	
-	
-	
+public class CourierImpl implements AddLogisticsService,GetAmountService,GetCityService,ReceiveConfirmService{
+
 	@Override
 	public UpdateState receiveConfirm(VO logistics_info, String field,
 			String value) {
 		// TODO Auto-generated method stub
-		
-		CourierImpl courier=new CourierImpl();
-		return courier.receiveConfirm(logistics_info, field, value);
-		
+		return null;
 	}
 
 	@Override
 	public ArrayList<String> getCity() {
 		// TODO Auto-generated method stub
-		CourierImpl courier=new CourierImpl();
-		return courier.getCity();
+		return null;
 	}
 
 	@Override
 	public double getAmount(String starting, String destination,
 			LogisticsType type, PackingCharge charge, double weight,
-			double size) {
+			double height) {
 		// TODO Auto-generated method stub
-		CourierImpl courier=new CourierImpl();
-		return courier.getAmount(starting, destination, type, charge, weight, size);
+		return 0;
 	}
 
 	@Override
 	public AddState addLogistics(VO logistics_info) {
 		// TODO Auto-generated method stub
-		CourierImpl courier=new CourierImpl();
-		return courier.addLogistics(logistics_info);
+		return null;
 	}
-	
+
 }

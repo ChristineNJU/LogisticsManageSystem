@@ -2,38 +2,34 @@ package businesslogic.Mock.Admin;
 
 import java.util.ArrayList;
 
-import businesslogic.Impl.Admin.AdminController;
-import businesslogic.VO.UserVO;
 import data.State.AddState;
 import data.State.DeleteState;
 import data.State.UpdateState;
+import businesslogic.Impl.Admin.AdminImpl;
+import businesslogic.VO.UserVO;
 
-public class MockAdminController extends AdminController{
+public class MockAdmin extends AdminImpl{
 	@Override
 	public UpdateState updateUser(UserVO user, String field, String value) {
 		// TODO Auto-generated method stub
-		MockAdmin adminUser=new MockAdmin();
-		return adminUser.updateUser(user, field, value);
+		return UpdateState.FAIL;
 	}
 
 	@Override
 	public ArrayList<UserVO> searchUser(String id) {
 		// TODO Auto-generated method stub
-		MockAdmin adminUser=new MockAdmin();
-		return adminUser.searchUser(id);
+		return new ArrayList<UserVO>();
 	}
 
 	@Override
 	public DeleteState deleteUser(UserVO user) {
 		// TODO Auto-generated method stub
-		MockAdmin adminUser=new MockAdmin();
-		return adminUser.deleteUser(user);
+		return DeleteState.FAIL;
 	}
 
 	@Override
 	public AddState addUser(UserVO user) {
 		// TODO Auto-generated method stub
-		MockAdmin adminUser=new MockAdmin();
-		return adminUser.addUser(user);
+		return AddState.FAIL;
 	}
 }

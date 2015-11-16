@@ -2,45 +2,38 @@ package businesslogic.Mock.Courier;
 
 import java.util.ArrayList;
 
-import businesslogic.Impl.Courier.CourierController;
+import data.State.AddState;
+import data.State.UpdateState;
+import businesslogic.Impl.Courier.CourierImpl;
 import businesslogic.State.LogisticsType;
 import businesslogic.State.PackingCharge;
 import businesslogic.VO.VO;
-import data.State.AddState;
-import data.State.UpdateState;
 
-public class MockCourierController extends CourierController{
+public class MockCourier extends CourierImpl{
 	@Override
 	public UpdateState receiveConfirm(VO logistics_info, String field,
 			String value) {
 		// TODO Auto-generated method stub
-		
-		MockCourier courier=new MockCourier();
-		return courier.receiveConfirm(logistics_info, field, value);
-		
+		return UpdateState.FAIL;
 	}
 
 	@Override
 	public ArrayList<String> getCity() {
 		// TODO Auto-generated method stub
-		MockCourier courier=new MockCourier();
-		return courier.getCity();
+		return new ArrayList<String>();
 	}
 
 	@Override
 	public double getAmount(String starting, String destination,
 			LogisticsType type, PackingCharge charge, double weight,
-			double size) {
+			double height) {
 		// TODO Auto-generated method stub
-		MockCourier courier=new MockCourier();
-		return courier.getAmount(starting, destination, type, charge, weight, size);
+		return 0;
 	}
 
 	@Override
 	public AddState addLogistics(VO logistics_info) {
 		// TODO Auto-generated method stub
-		MockCourier courier=new MockCourier();
-		return courier.addLogistics(logistics_info);
+		return AddState.FAIL;
 	}
-	
 }
