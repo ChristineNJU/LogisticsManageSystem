@@ -1,8 +1,7 @@
 package businesslogic.Impl.Businesslobby;
 
-import data.State.DeleteState;
-import businesslogic.Service.BusinessLobby.DeleteDriverService;
 import businesslogic.VO.DriverInfoVO;
+import data.State.DeleteState;
 
 public class DeleteDriverImpl implements DeleteDriverService {
 
