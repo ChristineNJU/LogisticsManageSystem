@@ -12,8 +12,8 @@ import businesslogic.VO.DriverInfoVO;
 import businesslogic.VO.EntruckingVO;
 import businesslogic.VO.GatheringVO;
 
-public class BussinessLobbyController implements AddCarService,AddDriverService,ArrivalService,DeleteCarService,
-												EntruckingService,GatheringService,GetNeedEntruckingService,
+public class BusinessLobbyController implements AddCarService,AddDriverService,ArrivalService,DeleteCarService,
+												DeleteDriverService,EntruckingService,GatheringService,GetNeedEntruckingService,
 												GetNeedGatheringService,SearchCarService,SearchDriverService,
 												UpdateCarService,UpdateDriverService{
 	
@@ -100,6 +100,13 @@ public class BussinessLobbyController implements AddCarService,AddDriverService,
 		// TODO Auto-generated method stub
 		AddCarImpl addCar=new AddCarImpl();
 		return addCar.addCar(car);
+	}
+
+	@Override
+	public DeleteState deleteDriver(DriverInfoVO driver) {
+		// TODO Auto-generated method stub
+		DeleteDriverImpl deleteDriver=new DeleteDriverImpl();
+		return deleteDriver.deleteDriver(driver);
 	}
 	
 	

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import data.State.AddState;
 import data.State.DeleteState;
 import data.State.UpdateState;
+import businesslogic.Service.Manage.AddConstService;
 import businesslogic.Service.Manage.AddInstitutionService;
 import businesslogic.Service.Manage.AddStaffService;
 import businesslogic.Service.Manage.DeleteInstitutionService;
@@ -31,7 +32,7 @@ import businesslogic.VO.SalaryVO;
 import businesslogic.VO.StaffVO;
 import businesslogic.VO.VO;
 
-public class ManageController implements ShowConstService,UpdateConstService,AddInstitutionService,
+public class ManageController implements ShowConstService,AddConstService,UpdateConstService,AddInstitutionService,
 										UpdateInstitutionService,DeleteInstitutionService,SearchInstitutionService,
 										SearchBenefitService, SearchCostService,SearchGatheringService ,
 										ShowReceiptService, UpdateReceiptService,ShowSalaryService,
@@ -158,6 +159,13 @@ public class ManageController implements ShowConstService,UpdateConstService,Add
 		// TODO Auto-generated method stub
 		ManageConst manageConst=new ManageConst();
 		return manageConst.showConst();
+	}
+
+	@Override
+	public AddState addConst(ConstVO constant) {
+		// TODO Auto-generated method stub
+		ManageConst manageConst=new ManageConst();
+		return manageConst.addConst(constant);
 	}
 
 	
