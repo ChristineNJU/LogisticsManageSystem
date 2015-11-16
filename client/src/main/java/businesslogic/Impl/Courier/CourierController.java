@@ -37,9 +37,9 @@ public class CourierController implements AddLogisticsService, GetAmountService,
 	@Override
 	public double getAmount(String starting, String destination,
 			LogisticsType type, PackingCharge charge, double weight,
-			double height) {
+			double size) {
 		// TODO Auto-generated method stub
-		return getAmount.getAmount(starting, destination, type, charge, weight, height);
+		return getAmount.getAmount(starting, destination, type, charge, weight, size);
 	}
 
 	@Override

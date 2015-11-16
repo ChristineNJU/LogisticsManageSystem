@@ -9,7 +9,7 @@ public class GetAmountImpl implements GetAmountService{
 	@Override
 	public double getAmount(String starting, String destination,
 			LogisticsType type, PackingCharge charge, double weight,
-			double height) {
+			double size) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
