@@ -10,9 +10,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import businesslogic.Service.Inquiry.InquiryService;
-import businesslogic.VO.LogisticsHistoryVO;
 import test.Stub.businesslogic.InquiryBlService_Stub;
+import VO.LogisticsHistoryVO;
+import businesslogic.Service.Inquiry.InquiryService;
 
 public class MainFrame {
 
