@@ -1,6 +1,6 @@
 package businesslogic.Service.User;
 
-import businesslogic.State.LoginState;
+import data.State.LoginState;
 
 public interface LoginService {
 	public LoginState login(String userName, String password);

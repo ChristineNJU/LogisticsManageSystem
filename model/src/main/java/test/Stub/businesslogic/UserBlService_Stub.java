@@ -6,8 +6,8 @@ import test.Stub.data.UpdateService_Stub;
 import PO.UserPO;
 import businesslogic.Service.User.LoginService;
 import businesslogic.Service.User.ResetPasswordService;
-import businesslogic.State.LoginState;
 import businesslogic.State.ResetState;
+import data.State.LoginState;
 
 public class UserBlService_Stub implements LoginService,ResetPasswordService{
 	/*-------------------------------------------

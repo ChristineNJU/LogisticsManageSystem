@@ -2,7 +2,7 @@ package businesslogic.test.User;
 
 import junit.framework.TestCase;
 import businesslogic.Impl.User.UserController;
-import businesslogic.State.LoginState;
+import data.State.LoginState;
 
 public class TestLogin extends TestCase {
 	

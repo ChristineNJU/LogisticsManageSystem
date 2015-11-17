@@ -1,6 +1,6 @@
 package businesslogic.Impl.User;
 
-import businesslogic.State.LoginState;
+import data.State.LoginState;
 
 public class LoginImpl {
 	
