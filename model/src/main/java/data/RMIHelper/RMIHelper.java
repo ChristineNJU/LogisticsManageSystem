@@ -1,4 +1,4 @@
-package data.Helper.RMIHelper;
+package data.RMIHelper;
 
 public class RMIHelper {
 	
