@@ -7,11 +7,12 @@ import data.State.DeleteState;
 import data.State.UpdateState;
 import VO.UserVO;
 import businesslogic.Service.Admin.AddUserService;
+import businesslogic.Service.Admin.AdminService;
 import businesslogic.Service.Admin.DeleteUserService;
 import businesslogic.Service.Admin.SearchUserService;
 import businesslogic.Service.Admin.UpdateUserService;
 
-public class AdminController implements AddUserService,DeleteUserService,SearchUserService,UpdateUserService{
+public class AdminController implements AdminService{
 	
 	@Override
 	public UpdateState updateUser(UserVO user, String field, String value) {

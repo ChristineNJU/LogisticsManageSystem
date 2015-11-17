@@ -12,10 +12,7 @@ import VO.EntruckingVO;
 import VO.GatheringVO;
 import businesslogic.Service.BusinessLobby.*;
 
-public class BusinessLobbyController implements AddCarService,AddDriverService,ArrivalService,DeleteCarService,
-												DeleteDriverService,EntruckingService,GatheringService,GetNeedEntruckingService,
-												GetNeedGatheringService,SearchCarService,SearchDriverService,
-												UpdateCarService,UpdateDriverService{
+public class BusinessLobbyController implements BsLbService{
 	
 	@Override
 	public UpdateState updateDriver(DriverInfoVO driver, String field,

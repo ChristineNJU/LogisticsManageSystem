@@ -8,8 +8,7 @@ import VO.EntruckingVO;
 import VO.TransferVO;
 import businesslogic.Service.MediumCenter.*;
 
-public class MediumCenterController implements ArrivalService,EntruckingService,GetNeedEntruckingService,
-											GetNeedTransferService,TransferService{
+public class MediumCenterController implements MCService{
 
 	@Override
 	public AddState transfer(TransferVO transfer) {

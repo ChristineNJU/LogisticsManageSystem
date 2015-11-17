@@ -11,6 +11,7 @@ import businesslogic.Service.Reponsitory.BalanceService;
 import businesslogic.Service.Reponsitory.GetNeedRemovalService;
 import businesslogic.Service.Reponsitory.GetNeedStorageService;
 import businesslogic.Service.Reponsitory.RemovalService;
+import businesslogic.Service.Reponsitory.ReponsitoryService;
 import businesslogic.Service.Reponsitory.SeeService;
 import businesslogic.Service.Reponsitory.StockTakingConfirmService;
 import businesslogic.Service.Reponsitory.StockTakingExcelService;
@@ -20,10 +21,7 @@ import businesslogic.State.OutputState;
 import businesslogic.State.StorageState;
 import data.State.AddState;
 
-public class ReponsitoryController implements GetNeedStorageService,StockTakingConfirmService,
-												StockTakingExcelService,StockTakingService, GetNeedRemovalService,
-												SeeService, RemovalService, StorageService,
-												AlarmService, BalanceService{
+public class ReponsitoryController implements ReponsitoryService{
 
 	
 	@Override

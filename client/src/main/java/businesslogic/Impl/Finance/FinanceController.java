@@ -13,6 +13,7 @@ import businesslogic.Service.Finance.AddAccountService;
 import businesslogic.Service.Finance.AddBenefitService;
 import businesslogic.Service.Finance.AddCostService;
 import businesslogic.Service.Finance.DeleteAccountService;
+import businesslogic.Service.Finance.FinanceService;
 import businesslogic.Service.Finance.GetAccountService;
 import businesslogic.Service.Finance.GetBenefitService;
 import businesslogic.Service.Finance.GetCostService;
@@ -25,7 +26,7 @@ import data.State.AddState;
 import data.State.DeleteState;
 import data.State.UpdateState;
 
-public class FinanceController implements AddAccountService,AddBenefitService,AddCostService,DeleteAccountService,GetAccountService,GetBenefitService,GetCostService,GetEntruckingService,GetGatheringService,GetLogService,GetTransferService,UpdateAccountService{
+public class FinanceController implements FinanceService{
 	
 	@Override
 	public UpdateState updateAccount(AccountVO account, String field,

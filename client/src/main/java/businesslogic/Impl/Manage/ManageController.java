@@ -18,6 +18,7 @@ import businesslogic.Service.Manage.AddInstitutionService;
 import businesslogic.Service.Manage.AddStaffService;
 import businesslogic.Service.Manage.DeleteInstitutionService;
 import businesslogic.Service.Manage.DeleteStaffService;
+import businesslogic.Service.Manage.ManageService;
 import businesslogic.Service.Manage.SearchBenefitService;
 import businesslogic.Service.Manage.SearchCostService;
 import businesslogic.Service.Manage.SearchGatheringService;
@@ -32,12 +33,7 @@ import businesslogic.Service.Manage.UpdatePaymentService;
 import businesslogic.Service.Manage.UpdateReceiptService;
 import businesslogic.Service.Manage.UpdateStaffService;
 
-public class ManageController implements ShowConstService,AddConstService,UpdateConstService,AddInstitutionService,
-										UpdateInstitutionService,DeleteInstitutionService,SearchInstitutionService,
-										SearchBenefitService, SearchCostService,SearchGatheringService ,
-										ShowReceiptService, UpdateReceiptService,ShowSalaryService,
-										UpdatePaymentService,AddStaffService,UpdateStaffService,
-										SearchStaffService,DeleteStaffService{
+public class ManageController implements ManageService{
 
 	@Override
 	public DeleteState DeleteStaff(String id) {
