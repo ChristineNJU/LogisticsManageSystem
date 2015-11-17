@@ -2,8 +2,8 @@ package businesslogic.Impl.Businesslobby;
 
 import java.util.ArrayList;
 
+import VO.CarInfoVO;
 import businesslogic.Service.BusinessLobby.SearchCarService;
-import businesslogic.VO.CarInfoVO;
 
 public class SearchCarImpl implements SearchCarService{
 

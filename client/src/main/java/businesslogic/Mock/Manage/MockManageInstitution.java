@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import data.State.AddState;
 import data.State.DeleteState;
 import data.State.UpdateState;
+import VO.InstitutionVO;
 import businesslogic.Impl.Manage.ManageInstitution;
-import businesslogic.VO.InstitutionVO;
 import data.State.*;
 
 public class MockManageInstitution extends ManageInstitution{

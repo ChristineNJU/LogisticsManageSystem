@@ -2,7 +2,7 @@ package test.Stub.data;
 
 import java.rmi.RemoteException;
 
-import businesslogic.PO.PO;
+import PO.PO;
 import data.Service.Add.AddService;
 import data.State.AddState;
 

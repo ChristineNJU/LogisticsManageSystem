@@ -4,7 +4,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import businesslogic.PO.ConstPO;
+import PO.ConstPO;
 
 public interface SearchConstService extends Remote{
 	

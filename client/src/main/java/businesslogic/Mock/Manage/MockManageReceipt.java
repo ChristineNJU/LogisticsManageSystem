@@ -3,8 +3,8 @@ package businesslogic.Mock.Manage;
 import java.util.ArrayList;
 
 import data.State.UpdateState;
+import VO.VO;
 import businesslogic.Impl.Manage.ManageReceipt;
-import businesslogic.VO.VO;
 import data.State.*;
 public class MockManageReceipt extends ManageReceipt {
 	

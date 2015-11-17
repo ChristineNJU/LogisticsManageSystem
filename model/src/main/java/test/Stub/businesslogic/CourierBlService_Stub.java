@@ -5,14 +5,14 @@ import java.util.ArrayList;
 
 import test.Stub.data.AddService_Stub;
 import test.Stub.data.UpdateService_Stub;
-import businesslogic.PO.LogisticsInfoPO;
+import PO.LogisticsInfoPO;
+import VO.VO;
 import businesslogic.Service.Courier.AddLogisticsService;
 import businesslogic.Service.Courier.GetAmountService;
 import businesslogic.Service.Courier.GetCityService;
 import businesslogic.Service.Courier.ReceiveConfirmService;
 import businesslogic.State.LogisticsType;
 import businesslogic.State.PackingCharge;
-import businesslogic.VO.VO;
 import data.State.AddState;
 import data.State.UpdateState;
 

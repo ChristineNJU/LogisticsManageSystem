@@ -1,6 +1,6 @@
 package businesslogic.Service.BusinessLobby;
 
-import businesslogic.VO.DriverInfoVO;
+import VO.DriverInfoVO;
 import data.State.AddState;
 
 public interface AddDriverService {

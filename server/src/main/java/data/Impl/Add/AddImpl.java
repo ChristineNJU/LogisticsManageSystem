@@ -3,7 +3,7 @@ package data.Impl.Add;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-import businesslogic.PO.PO;
+import PO.PO;
 import data.Service.Add.AddService;
 import data.State.AddState;
 

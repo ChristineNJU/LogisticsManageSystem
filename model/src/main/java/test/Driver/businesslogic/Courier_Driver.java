@@ -3,7 +3,7 @@ package test.Driver.businesslogic;
 import java.util.ArrayList;
 
 import test.Stub.businesslogic.CourierBlService_Stub;
-import businesslogic.VO.LogisticsInputVO;
+import VO.LogisticsInputVO;
 
 public class Courier_Driver {
 	public void drive(CourierBlService_Stub Courier){

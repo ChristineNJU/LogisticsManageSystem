@@ -1,6 +1,6 @@
 package businesslogic.Service.Finance;
 
-import businesslogic.VO.AccountVO;
+import VO.AccountVO;
 import data.State.UpdateState;
 
 public interface UpdateAccountService {

@@ -6,6 +6,7 @@ import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 
+import data.Helper.DBHelper.DirectDBCreater.DBHelper;
 import data.Helper.RMIHelper.RMIHelper;
 import data.Impl.Add.AddImpl;
 import data.Impl.Delete.DeleteImpl;
@@ -179,6 +180,8 @@ public class MainServer {
 			System.out.println("RMI远程端口绑定失败");
 			e.printStackTrace();
 		}
+		
+		DBHelper db_helper = new DBHelper();
 	}
 	
 	private static void print(String object_name) {

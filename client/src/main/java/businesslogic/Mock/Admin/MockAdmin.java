@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import data.State.AddState;
 import data.State.DeleteState;
 import data.State.UpdateState;
+import VO.UserVO;
 import businesslogic.Impl.Admin.AdminImpl;
-import businesslogic.VO.UserVO;
 
 public class MockAdmin extends AdminImpl{
 	@Override

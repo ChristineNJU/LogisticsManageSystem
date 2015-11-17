@@ -1,6 +1,6 @@
 package businesslogic.Service.Manage;
 
-import businesslogic.VO.InstitutionVO;
+import VO.InstitutionVO;
 import data.State.UpdateState;
 
 public interface UpdateInstitutionService {

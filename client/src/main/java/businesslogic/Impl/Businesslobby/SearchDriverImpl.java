@@ -2,8 +2,8 @@ package businesslogic.Impl.Businesslobby;
 
 import java.util.ArrayList;
 
+import VO.DriverInfoVO;
 import businesslogic.Service.BusinessLobby.SearchDriverService;
-import businesslogic.VO.DriverInfoVO;
 
 public class SearchDriverImpl implements SearchDriverService {
 

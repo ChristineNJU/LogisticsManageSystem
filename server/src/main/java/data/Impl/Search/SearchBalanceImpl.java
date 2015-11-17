@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-import businesslogic.PO.BalancePO;
+import PO.BalancePO;
 import data.Service.Search.SearchBalanceService;
 
 public class SearchBalanceImpl extends UnicastRemoteObject implements SearchBalanceService {

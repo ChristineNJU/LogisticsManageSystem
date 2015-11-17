@@ -1,7 +1,7 @@
 package businesslogic.Impl.Inquiry;
 
+import VO.VO;
 import businesslogic.Service.Inquiry.InquiryService;
-import businesslogic.VO.VO;
 
 public class InquiryController implements InquiryService{
 	

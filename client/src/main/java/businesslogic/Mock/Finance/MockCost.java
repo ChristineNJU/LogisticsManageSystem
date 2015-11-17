@@ -3,8 +3,8 @@ package businesslogic.Mock.Finance;
 import java.util.ArrayList;
 
 import data.State.AddState;
+import VO.CostVO;
 import businesslogic.Impl.Finance.CostImpl;
-import businesslogic.VO.CostVO;
 
 public class MockCost extends CostImpl{
 	@Override

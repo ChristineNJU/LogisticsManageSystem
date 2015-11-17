@@ -2,8 +2,8 @@ package businesslogic.Impl.Reponsitory;
 
 import java.util.ArrayList;
 
+import VO.VO;
 import businesslogic.Service.Reponsitory.SeeService;
-import businesslogic.VO.VO;
 
 public class SeeImpl implements SeeService {
 

@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-import businesslogic.PO.StoragePO;
+import PO.StoragePO;
 import data.Service.Search.SearchStorageService;
 
 public class SearchStorageImpl extends UnicastRemoteObject implements SearchStorageService {

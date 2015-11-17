@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import data.State.AddState;
 import data.State.DeleteState;
 import data.State.UpdateState;
+import VO.InstitutionVO;
 import businesslogic.Service.Manage.AddInstitutionService;
 import businesslogic.Service.Manage.DeleteInstitutionService;
 import businesslogic.Service.Manage.SearchInstitutionService;
 import businesslogic.Service.Manage.UpdateInstitutionService;
-import businesslogic.VO.InstitutionVO;
 
 public class ManageInstitution implements AddInstitutionService,UpdateInstitutionService,
 											DeleteInstitutionService,SearchInstitutionService{

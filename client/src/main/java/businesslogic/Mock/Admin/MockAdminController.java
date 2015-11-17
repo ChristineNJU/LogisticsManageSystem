@@ -2,8 +2,8 @@ package businesslogic.Mock.Admin;
 
 import java.util.ArrayList;
 
+import VO.UserVO;
 import businesslogic.Impl.Admin.AdminController;
-import businesslogic.VO.UserVO;
 import data.State.AddState;
 import data.State.DeleteState;
 import data.State.UpdateState;

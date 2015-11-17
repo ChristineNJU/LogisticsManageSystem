@@ -3,10 +3,10 @@ package businesslogic.Impl.MediumCenter;
 import java.util.ArrayList;
 
 import data.State.AddState;
+import VO.ArrivalVO;
+import VO.EntruckingVO;
+import VO.TransferVO;
 import businesslogic.Service.MediumCenter.*;
-import businesslogic.VO.ArrivalVO;
-import businesslogic.VO.EntruckingVO;
-import businesslogic.VO.TransferVO;
 
 public class MediumCenterController implements ArrivalService,EntruckingService,GetNeedEntruckingService,
 											GetNeedTransferService,TransferService{

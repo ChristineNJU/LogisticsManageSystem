@@ -2,7 +2,7 @@ package businesslogic.Service.BusinessLobby;
 
 import java.util.ArrayList;
 
-import businesslogic.VO.ArrivalVO;
+import VO.ArrivalVO;
 import data.State.AddState;
 
 public interface ArrivalService {

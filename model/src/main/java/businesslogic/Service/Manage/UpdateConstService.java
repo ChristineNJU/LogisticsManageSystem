@@ -1,6 +1,6 @@
 package businesslogic.Service.Manage;
 
-import businesslogic.VO.ConstVO;
+import VO.ConstVO;
 import data.State.UpdateState;
 
 public interface UpdateConstService {

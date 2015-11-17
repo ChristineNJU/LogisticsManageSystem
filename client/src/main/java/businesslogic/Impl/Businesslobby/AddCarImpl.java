@@ -2,8 +2,8 @@ package businesslogic.Impl.Businesslobby;
 
 
 import data.State.AddState;
+import VO.CarInfoVO;
 import businesslogic.Service.BusinessLobby.AddCarService;
-import businesslogic.VO.CarInfoVO;
 
 public class AddCarImpl implements AddCarService {
 

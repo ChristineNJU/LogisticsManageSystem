@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import data.State.AddState;
 import data.State.DeleteState;
 import data.State.UpdateState;
+import VO.StaffVO;
 import businesslogic.Service.Manage.AddStaffService;
 import businesslogic.Service.Manage.DeleteStaffService;
 import businesslogic.Service.Manage.SearchStaffService;
 import businesslogic.Service.Manage.UpdateStaffService;
-import businesslogic.VO.StaffVO;
 
 public class ManageStaff implements AddStaffService,UpdateStaffService,
 									SearchStaffService,DeleteStaffService{

@@ -1,6 +1,6 @@
 package businesslogic.Mock.MediumCenter;
+import VO.EntruckingVO;
 import businesslogic.Impl.MediumCenter.EntruckingImpl;
-import businesslogic.VO.EntruckingVO;
 import data.State.*;
 
 public class MockEntruckingImpl extends EntruckingImpl{

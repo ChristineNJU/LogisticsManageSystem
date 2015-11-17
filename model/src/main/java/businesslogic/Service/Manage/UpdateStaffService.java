@@ -1,6 +1,6 @@
 package businesslogic.Service.Manage;
 
-import businesslogic.VO.StaffVO;
+import VO.StaffVO;
 import data.State.UpdateState;
 
 public interface UpdateStaffService {

@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-import businesslogic.PO.SalaryPO;
+import PO.SalaryPO;
 import data.Service.Search.SearchSalaryService;
 
 public class SearchSalaryImpl extends UnicastRemoteObject implements SearchSalaryService {

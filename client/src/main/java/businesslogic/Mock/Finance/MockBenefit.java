@@ -1,7 +1,7 @@
 package businesslogic.Mock.Finance;
 
+import VO.BenefitVO;
 import businesslogic.Impl.Finance.BenefitImpl;
-import businesslogic.VO.BenefitVO;
 import data.State.AddState;
 
 public class MockBenefit extends BenefitImpl{

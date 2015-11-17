@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import data.State.AddState;
 import data.State.DeleteState;
 import data.State.UpdateState;
+import VO.StaffVO;
 import businesslogic.Impl.Manage.ManageStaff;
-import businesslogic.VO.StaffVO;
 import data.State.*;
 public class MockManageStaff extends ManageStaff {
 	@Override

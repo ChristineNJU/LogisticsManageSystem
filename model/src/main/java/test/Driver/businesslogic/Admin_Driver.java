@@ -3,7 +3,7 @@ package test.Driver.businesslogic;
 import java.util.ArrayList;
 
 import test.Stub.businesslogic.AdminBlService_Stub;
-import businesslogic.VO.UserVO;
+import VO.UserVO;
 
 public class Admin_Driver {
 	

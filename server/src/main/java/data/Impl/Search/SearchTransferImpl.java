@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-import businesslogic.PO.TransferPO;
+import PO.TransferPO;
 import data.Service.Search.SearchTransferService;
 
 public class SearchTransferImpl extends UnicastRemoteObject implements SearchTransferService {

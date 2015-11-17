@@ -2,8 +2,8 @@ package test.Driver.businesslogic;
 
 import java.util.ArrayList;
 
-import businesslogic.VO.StockTakingVO;
-import businesslogic.VO.VO;
+import VO.StockTakingVO;
+import VO.VO;
 import test.Stub.businesslogic.ReponsitoryBlService_Stub;
 
 public class Repository_Driver {

@@ -1,6 +1,6 @@
 package businesslogic.Service.MediumCenter;
 
-import businesslogic.VO.EntruckingVO;
+import VO.EntruckingVO;
 import data.State.AddState;
 
 public interface EntruckingService {

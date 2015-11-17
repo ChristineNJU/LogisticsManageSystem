@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import data.State.AddState;
 import data.State.DeleteState;
 import data.State.UpdateState;
+import VO.AccountVO;
 import businesslogic.Impl.Finance.AccountImpl;
-import businesslogic.VO.AccountVO;
 
 public class MockAccount extends AccountImpl{
 	

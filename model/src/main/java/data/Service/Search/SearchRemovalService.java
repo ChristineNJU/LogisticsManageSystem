@@ -4,7 +4,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import businesslogic.PO.RemovalPO;
+import PO.RemovalPO;
 
 public interface SearchRemovalService extends Remote{
 	

@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-import businesslogic.PO.ConstPO;
+import PO.ConstPO;
 import data.Service.Search.SearchDistanceService;
 
 public class SearchDistanceImpl extends UnicastRemoteObject implements SearchDistanceService {

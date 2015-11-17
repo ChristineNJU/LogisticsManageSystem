@@ -2,10 +2,10 @@ package businesslogic.Mock.Courier;
 
 import java.util.ArrayList;
 
+import VO.VO;
 import businesslogic.Impl.Courier.CourierController;
 import businesslogic.State.LogisticsType;
 import businesslogic.State.PackingCharge;
-import businesslogic.VO.VO;
 import data.State.AddState;
 import data.State.UpdateState;
 

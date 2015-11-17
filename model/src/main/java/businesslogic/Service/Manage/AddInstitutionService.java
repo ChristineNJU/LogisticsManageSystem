@@ -1,7 +1,7 @@
 package businesslogic.Service.Manage;
 
-import businesslogic.VO.InstitutionVO;
-import businesslogic.VO.StaffVO;
+import VO.InstitutionVO;
+import VO.StaffVO;
 import data.State.AddState;
 import data.State.UpdateState;
 

@@ -4,7 +4,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import businesslogic.PO.DeliveryPO;
+import PO.DeliveryPO;
 
 public interface SearchDeliveryService extends Remote {	
 	public ArrayList<DeliveryPO> searchDelivery(String DB_URL, 

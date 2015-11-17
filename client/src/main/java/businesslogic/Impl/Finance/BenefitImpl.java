@@ -1,9 +1,9 @@
 package businesslogic.Impl.Finance;
 
 import data.State.AddState;
+import VO.BenefitVO;
 import businesslogic.Service.Finance.AddBenefitService;
 import businesslogic.Service.Finance.GetBenefitService;
-import businesslogic.VO.BenefitVO;
 
 public class BenefitImpl implements AddBenefitService,GetBenefitService{
 

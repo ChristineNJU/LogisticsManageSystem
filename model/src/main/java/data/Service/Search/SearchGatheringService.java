@@ -4,7 +4,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import businesslogic.PO.GatheringPO;
+import PO.GatheringPO;
 
 public interface SearchGatheringService extends Remote{
 	

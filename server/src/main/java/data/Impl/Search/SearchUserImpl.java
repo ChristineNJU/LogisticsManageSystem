@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-import businesslogic.PO.UserPO;
+import PO.UserPO;
 import data.Service.Search.SearchUserService;
 
 public class SearchUserImpl extends UnicastRemoteObject implements SearchUserService {

@@ -2,6 +2,10 @@ package businesslogic.Impl.Reponsitory;
 
 import java.util.ArrayList;
 
+import VO.RemovalVO;
+import VO.StockTakingVO;
+import VO.StorageVO;
+import VO.VO;
 import businesslogic.Service.Reponsitory.AlarmService;
 import businesslogic.Service.Reponsitory.BalanceService;
 import businesslogic.Service.Reponsitory.GetNeedRemovalService;
@@ -14,10 +18,6 @@ import businesslogic.Service.Reponsitory.StockTakingService;
 import businesslogic.Service.Reponsitory.StorageService;
 import businesslogic.State.OutputState;
 import businesslogic.State.StorageState;
-import businesslogic.VO.RemovalVO;
-import businesslogic.VO.StockTakingVO;
-import businesslogic.VO.StorageVO;
-import businesslogic.VO.VO;
 import data.State.AddState;
 
 public class ReponsitoryController implements GetNeedStorageService,StockTakingConfirmService,

@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-import businesslogic.PO.LogPO;
+import PO.LogPO;
 import data.Service.Search.SearchLogService;
 
 public class SearchLogImpl extends UnicastRemoteObject implements SearchLogService {

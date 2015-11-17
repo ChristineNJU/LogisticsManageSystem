@@ -3,8 +3,8 @@ package businesslogic.Impl.MediumCenter;
 import java.util.ArrayList;
 
 import data.State.AddState;
+import VO.ArrivalVO;
 import businesslogic.Service.BusinessLobby.ArrivalService;
-import businesslogic.VO.ArrivalVO;
 
 public class ArrivalImpl implements ArrivalService{
 

@@ -1,6 +1,6 @@
 package businesslogic.Service.BusinessLobby;
 
-import businesslogic.VO.GatheringVO;
+import VO.GatheringVO;
 import data.State.AddState;
 
 public interface GatheringService {

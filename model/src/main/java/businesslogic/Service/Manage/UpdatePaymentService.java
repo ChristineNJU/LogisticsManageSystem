@@ -1,6 +1,6 @@
 package businesslogic.Service.Manage;
 
-import businesslogic.VO.SalaryVO;
+import VO.SalaryVO;
 import data.State.UpdateState;
 
 public interface UpdatePaymentService {

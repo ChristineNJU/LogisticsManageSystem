@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 import data.State.AddState;
 import data.State.UpdateState;
+import VO.VO;
 import businesslogic.Impl.Courier.CourierImpl;
 import businesslogic.State.LogisticsType;
 import businesslogic.State.PackingCharge;
-import businesslogic.VO.VO;
 
 public class MockCourier extends CourierImpl{
 	@Override

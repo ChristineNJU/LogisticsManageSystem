@@ -2,11 +2,11 @@ package test.Stub.businesslogic;
 import java.util.ArrayList;
 import java.util.Date;
 
-import businesslogic.VO.ArrivalVO;
-import businesslogic.VO.CarInfoVO;
-import businesslogic.VO.DriverInfoVO;
-import businesslogic.VO.EntruckingVO;
-import businesslogic.VO.GatheringVO;
+import VO.ArrivalVO;
+import VO.CarInfoVO;
+import VO.DriverInfoVO;
+import VO.EntruckingVO;
+import VO.GatheringVO;
 import data.State.AddState;
 import data.State.DeleteState;
 import data.State.UpdateState;

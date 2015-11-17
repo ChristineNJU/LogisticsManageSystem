@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-import businesslogic.PO.EntruckingPO;
+import PO.EntruckingPO;
 import data.Service.Search.SearchEntruckingService;
 
 public class SearchEntruckingImpl extends UnicastRemoteObject implements SearchEntruckingService {

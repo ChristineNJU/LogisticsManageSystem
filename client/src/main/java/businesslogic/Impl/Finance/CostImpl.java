@@ -3,9 +3,9 @@ package businesslogic.Impl.Finance;
 import java.util.ArrayList;
 
 import data.State.AddState;
+import VO.CostVO;
 import businesslogic.Service.Finance.AddCostService;
 import businesslogic.Service.Finance.GetCostService;
-import businesslogic.VO.CostVO;
 
 public class CostImpl implements AddCostService,GetCostService{
 

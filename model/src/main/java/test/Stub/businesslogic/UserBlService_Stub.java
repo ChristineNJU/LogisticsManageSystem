@@ -3,7 +3,7 @@ package test.Stub.businesslogic;
 import java.rmi.RemoteException;
 
 import test.Stub.data.UpdateService_Stub;
-import businesslogic.PO.UserPO;
+import PO.UserPO;
 import businesslogic.Service.User.LoginService;
 import businesslogic.Service.User.ResetPasswordService;
 import businesslogic.State.LoginState;

@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-import businesslogic.PO.DriverInfoPO;
+import PO.DriverInfoPO;
 import data.Service.Search.SearchDriverInfoService;
 
 public class SearchDriverInfoImpl extends UnicastRemoteObject implements SearchDriverInfoService {

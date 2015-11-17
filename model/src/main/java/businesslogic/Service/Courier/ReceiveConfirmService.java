@@ -1,6 +1,6 @@
 package businesslogic.Service.Courier;
 
-import businesslogic.VO.VO;
+import VO.VO;
 import data.State.UpdateState;
 
 public interface ReceiveConfirmService {

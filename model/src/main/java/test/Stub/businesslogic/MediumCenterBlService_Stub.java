@@ -2,12 +2,12 @@ package test.Stub.businesslogic;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import businesslogic.PO.ArrivalPO;
-import businesslogic.PO.EntruckingPO;
-import businesslogic.PO.TransferPO;
-import businesslogic.VO.ArrivalVO;
-import businesslogic.VO.EntruckingVO;
-import businesslogic.VO.TransferVO;
+import PO.ArrivalPO;
+import PO.EntruckingPO;
+import PO.TransferPO;
+import VO.ArrivalVO;
+import VO.EntruckingVO;
+import VO.TransferVO;
 import data.State.AddState;
 import test.Stub.data.AddService_Stub;
 import test.Stub.data.DeleteService_Stub;

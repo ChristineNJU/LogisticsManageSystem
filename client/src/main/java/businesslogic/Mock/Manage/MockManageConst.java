@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import data.State.AddState;
 import data.State.UpdateState;
+import VO.ConstVO;
 import businesslogic.Impl.Manage.ManageConst;
-import businesslogic.VO.ConstVO;
 import data.State.*;
 
 public class MockManageConst extends ManageConst{

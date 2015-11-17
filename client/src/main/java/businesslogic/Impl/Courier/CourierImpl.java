@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 import data.State.AddState;
 import data.State.UpdateState;
+import VO.VO;
 import businesslogic.Service.Courier.AddLogisticsService;
 import businesslogic.Service.Courier.GetAmountService;
 import businesslogic.Service.Courier.GetCityService;
 import businesslogic.Service.Courier.ReceiveConfirmService;
 import businesslogic.State.LogisticsType;
 import businesslogic.State.PackingCharge;
-import businesslogic.VO.VO;
 
 public class CourierImpl implements AddLogisticsService,GetAmountService,GetCityService,ReceiveConfirmService{
 

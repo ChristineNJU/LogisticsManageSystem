@@ -3,7 +3,7 @@ package data.Service.Delete;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
-import businesslogic.PO.PO;
+import PO.PO;
 import data.State.DeleteState;
 
 public interface DeleteService extends Remote{

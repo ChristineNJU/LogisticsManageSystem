@@ -8,18 +8,18 @@ import test.Stub.data.AddService_Stub;
 import test.Stub.data.DeleteService_Stub;
 import test.Stub.data.SearchService_Stub;
 import test.Stub.data.UpdateService_Stub;
-import businesslogic.PO.BalancePO;
-import businesslogic.PO.RemovalPO;
-import businesslogic.PO.StockTakingPO;
-import businesslogic.PO.StoragePO;
+import PO.BalancePO;
+import PO.RemovalPO;
+import PO.StockTakingPO;
+import PO.StoragePO;
+import VO.BalanceVO;
+import VO.RemovalVO;
+import VO.StockTakingVO;
+import VO.StorageVO;
+import VO.VO;
 import businesslogic.State.OutputState;
 import businesslogic.State.StorageArea;
 import businesslogic.State.TransferType;
-import businesslogic.VO.BalanceVO;
-import businesslogic.VO.RemovalVO;
-import businesslogic.VO.StockTakingVO;
-import businesslogic.VO.StorageVO;
-import businesslogic.VO.VO;
 import data.State.AddState;
 
 public class ReponsitoryBlService_Stub {

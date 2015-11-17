@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-import businesslogic.PO.StockTakingPO;
+import PO.StockTakingPO;
 import data.Service.Search.SearchStockTakingService;
 
 public class SearchStockTakingImpl extends UnicastRemoteObject implements SearchStockTakingService {
