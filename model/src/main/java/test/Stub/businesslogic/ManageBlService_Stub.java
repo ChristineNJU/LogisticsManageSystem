@@ -33,6 +33,7 @@ import businesslogic.Service.Manage.AddInstitutionService;
 import businesslogic.Service.Manage.AddStaffService;
 import businesslogic.Service.Manage.DeleteInstitutionService;
 import businesslogic.Service.Manage.DeleteStaffService;
+import businesslogic.Service.Manage.ManageService;
 import businesslogic.Service.Manage.SearchBenefitService;
 import businesslogic.Service.Manage.SearchGatheringService;
 import businesslogic.Service.Manage.SearchInstitutionService;
@@ -46,12 +47,7 @@ import businesslogic.Service.Manage.UpdatePaymentService;
 import businesslogic.Service.Manage.UpdateReceiptService;
 import businesslogic.Service.Manage.UpdateStaffService;
 
-public class ManageBlService_Stub implements AddConstService,AddInstitutionService,AddStaffService,
-											DeleteInstitutionService,DeleteStaffService,SearchBenefitService,
-											GetCostService,SearchGatheringService,SearchInstitutionService,
-											SearchStaffService,ShowConstService,ShowReceiptService,
-											ShowSalaryService,UpdateConstService,UpdateInstitutionService,
-											UpdatePaymentService,UpdateReceiptService,UpdateStaffService{
+public class ManageBlService_Stub implements ManageService{
 	/*-------------------------------------------
 	 查看单据
 	---------------------------------------------*/

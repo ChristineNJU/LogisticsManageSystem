@@ -15,11 +15,12 @@ import State.UpdateState;
 import State.UserRole;
 import VO.UserVO;
 import businesslogic.Service.Admin.AddUserService;
+import businesslogic.Service.Admin.AdminService;
 import businesslogic.Service.Admin.DeleteUserService;
 import businesslogic.Service.Admin.SearchUserService;
 import businesslogic.Service.Admin.UpdateUserService;
 
-public class AdminBlService_Stub implements AddUserService, DeleteUserService, SearchUserService, UpdateUserService{
+public class AdminBlService_Stub implements AdminService{
 	/*-------------------------------------------
 	 将传入的用户数据存入数据库
 	---------------------------------------------*/

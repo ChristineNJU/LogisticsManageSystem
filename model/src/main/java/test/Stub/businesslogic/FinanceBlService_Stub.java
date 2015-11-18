@@ -25,6 +25,7 @@ import businesslogic.Service.Finance.AddAccountService;
 import businesslogic.Service.Finance.AddBenefitService;
 import businesslogic.Service.Finance.AddCostService;
 import businesslogic.Service.Finance.DeleteAccountService;
+import businesslogic.Service.Finance.FinanceService;
 import businesslogic.Service.Finance.GetAccountService;
 import businesslogic.Service.Finance.GetBenefitService;
 import businesslogic.Service.Finance.GetCostService;
@@ -37,9 +38,7 @@ import test.Stub.data.DeleteService_Stub;
 import test.Stub.data.SearchService_Stub;
 import test.Stub.data.UpdateService_Stub;
 
-public class FinanceBlService_Stub implements AddAccountService, AddBenefitService, AddCostService, DeleteAccountService, GetEntruckingService,
-                                              GetLogService, GetTransferService, GetAccountService, GetBenefitService, GetCostService,
-                                              GetNeedGatheringService, UpdateAccountService{
+public class FinanceBlService_Stub implements FinanceService{
 	/*-------------------------------------------
 	 查看收款单
 	---------------------------------------------*/
@@ -273,12 +272,7 @@ public class FinanceBlService_Stub implements AddAccountService, AddBenefitServi
 		}
 		return list;
 	}
-	@Override
-	public ArrayList<String> getNeedGathering() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
+
 	
 	
 	
