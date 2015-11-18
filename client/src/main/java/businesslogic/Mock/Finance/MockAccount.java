@@ -2,9 +2,9 @@ package businesslogic.Mock.Finance;
 
 import java.util.ArrayList;
 
-import data.State.AddState;
-import data.State.DeleteState;
-import data.State.UpdateState;
+import State.AddState;
+import State.DeleteState;
+import State.UpdateState;
 import VO.AccountVO;
 import businesslogic.Impl.Finance.AccountImpl;
 
@@ -14,7 +14,7 @@ public class MockAccount extends AccountImpl{
 	public UpdateState updateAccount(AccountVO account, String field,
 			String value) {
 		// TODO Auto-generated method stub
-		return UpdateState.FAIL;
+		return UpdateState.NOTFOUND;
 	}
 
 	@Override

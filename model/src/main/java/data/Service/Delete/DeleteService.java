@@ -4,7 +4,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import PO.PO;
-import data.State.DeleteState;
+import State.DeleteState;
 
 public interface DeleteService extends Remote{
 	

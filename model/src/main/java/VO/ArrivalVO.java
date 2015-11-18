@@ -3,7 +3,7 @@ package VO;
 import java.util.Date;
 
 import PO.ArrivalPO;
-import businesslogic.State.LogisticsState;
+import State.LogisticsState;
 
 public class ArrivalVO extends VO {
 

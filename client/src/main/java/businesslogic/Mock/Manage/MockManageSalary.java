@@ -2,10 +2,9 @@ package businesslogic.Mock.Manage;
 
 import java.util.ArrayList;
 
-import data.State.UpdateState;
+import State.UpdateState;
 import VO.SalaryVO;
 import businesslogic.Impl.Manage.ManageSalary;
-import data.State.*;
 
 public class MockManageSalary extends ManageSalary{
 	

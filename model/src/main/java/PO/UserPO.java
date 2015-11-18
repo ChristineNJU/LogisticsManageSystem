@@ -1,9 +1,7 @@
 package PO;
 
-import java.util.ArrayList;
-
-import businesslogic.State.InstitutionType;
-import businesslogic.State.UserRole;
+import State.InstitutionType;
+import State.UserRole;
 
 public class UserPO extends PO {
 	private String id;

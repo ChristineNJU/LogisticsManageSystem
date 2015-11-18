@@ -2,12 +2,11 @@ package businesslogic.Mock.Manage;
 
 import java.util.ArrayList;
 
-import data.State.AddState;
-import data.State.DeleteState;
-import data.State.UpdateState;
+import State.AddState;
+import State.DeleteState;
+import State.UpdateState;
 import VO.InstitutionVO;
 import businesslogic.Impl.Manage.ManageInstitution;
-import data.State.*;
 
 public class MockManageInstitution extends ManageInstitution{
 

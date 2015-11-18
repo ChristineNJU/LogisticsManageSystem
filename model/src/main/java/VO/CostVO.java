@@ -1,7 +1,7 @@
 package VO;
 
 import PO.CostPO;
-import businesslogic.State.CostType;
+import State.CostType;
 
 
 public class CostVO extends VO {

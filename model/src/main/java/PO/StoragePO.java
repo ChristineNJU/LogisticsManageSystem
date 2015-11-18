@@ -2,7 +2,7 @@ package PO;
 
 import java.util.Date;
 
-import businesslogic.State.StorageArea;
+import State.StorageArea;
 
 /*========================================================================================
  * 用来保存入库信息的持久化数据格式

@@ -2,7 +2,7 @@ package PO;
 
 import java.util.Date;
 
-import businesslogic.State.TransferType;
+import State.TransferType;
 
 public class RemovalPO extends PO {
 

@@ -12,15 +12,15 @@ import PO.BalancePO;
 import PO.RemovalPO;
 import PO.StockTakingPO;
 import PO.StoragePO;
+import State.AddState;
+import State.OutputState;
+import State.StorageArea;
+import State.TransferType;
 import VO.BalanceVO;
 import VO.RemovalVO;
 import VO.StockTakingVO;
 import VO.StorageVO;
 import VO.VO;
-import businesslogic.State.OutputState;
-import businesslogic.State.StorageArea;
-import businesslogic.State.TransferType;
-import data.State.AddState;
 
 public class ReponsitoryBlService_Stub {
 	AddService_Stub addSev = new AddService_Stub();

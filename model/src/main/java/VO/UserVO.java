@@ -1,7 +1,7 @@
 package VO;
 
 import PO.UserPO;
-import businesslogic.State.UserRole;
+import State.UserRole;
 
 public class UserVO extends VO {
 

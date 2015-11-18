@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import test.Stub.businesslogic.BusinessLobbyBlService_Stub;
+import State.LogisticsState;
 import VO.ArrivalVO;
 import VO.CarInfoVO;
 import VO.DriverInfoVO;
-import businesslogic.State.LogisticsState;
 
 public class BusinessLb_Driver {
 

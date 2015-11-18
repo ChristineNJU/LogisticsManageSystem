@@ -3,9 +3,9 @@ package businesslogic.Service.Admin;
 import java.util.ArrayList;
 
 import VO.UserVO;
-import data.State.AddState;
-import data.State.DeleteState;
-import data.State.UpdateState;
+import State.AddState;
+import State.DeleteState;
+import State.UpdateState;
 
 public interface AdminService {
 	

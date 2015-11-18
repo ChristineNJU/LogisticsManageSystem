@@ -1,6 +1,6 @@
 package businesslogic.Impl.Finance;
 
-import data.State.AddState;
+import State.AddState;
 import VO.BenefitVO;
 import businesslogic.Service.Finance.AddBenefitService;
 import businesslogic.Service.Finance.GetBenefitService;

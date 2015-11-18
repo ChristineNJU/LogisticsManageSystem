@@ -2,6 +2,9 @@ package businesslogic.Service.Manage;
 
 import java.util.ArrayList;
 
+import State.AddState;
+import State.DeleteState;
+import State.UpdateState;
 import VO.BenefitVO;
 import VO.ConstVO;
 import VO.CostVO;
@@ -10,9 +13,6 @@ import VO.InstitutionVO;
 import VO.SalaryVO;
 import VO.StaffVO;
 import VO.VO;
-import data.State.AddState;
-import data.State.DeleteState;
-import data.State.UpdateState;
 
 public interface ManageService {
 	

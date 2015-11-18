@@ -2,7 +2,7 @@ package PO;
 
 import java.util.Date;
 
-import businesslogic.State.StorageArea;
+import State.StorageArea;
 
 /*========================================================================================
  * 用来保存库存盘点的持久化数据格式

@@ -2,9 +2,9 @@ package businesslogic.Mock.Admin;
 
 import java.util.ArrayList;
 
-import data.State.AddState;
-import data.State.DeleteState;
-import data.State.UpdateState;
+import State.AddState;
+import State.DeleteState;
+import State.UpdateState;
 import VO.UserVO;
 import businesslogic.Impl.Admin.AdminImpl;
 
@@ -12,7 +12,7 @@ public class MockAdmin extends AdminImpl{
 	@Override
 	public UpdateState updateUser(UserVO user, String field, String value) {
 		// TODO Auto-generated method stub
-		return UpdateState.FAIL;
+		return UpdateState.NOTFOUND;
 	}
 
 	@Override

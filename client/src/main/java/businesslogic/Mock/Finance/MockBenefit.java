@@ -1,8 +1,8 @@
 package businesslogic.Mock.Finance;
 
+import State.AddState;
 import VO.BenefitVO;
 import businesslogic.Impl.Finance.BenefitImpl;
-import data.State.AddState;
 
 public class MockBenefit extends BenefitImpl{
 	@Override

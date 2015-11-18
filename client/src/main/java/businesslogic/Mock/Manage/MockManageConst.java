@@ -2,11 +2,10 @@ package businesslogic.Mock.Manage;
 
 import java.util.ArrayList;
 
-import data.State.AddState;
-import data.State.UpdateState;
+import State.AddState;
+import State.UpdateState;
 import VO.ConstVO;
 import businesslogic.Impl.Manage.ManageConst;
-import data.State.*;
 
 public class MockManageConst extends ManageConst{
 	

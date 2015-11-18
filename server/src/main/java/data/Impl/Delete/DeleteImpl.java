@@ -4,8 +4,8 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
 import PO.PO;
+import State.DeleteState;
 import data.Service.Delete.DeleteService;
-import data.State.DeleteState;
 
 public class DeleteImpl extends UnicastRemoteObject implements DeleteService {
 

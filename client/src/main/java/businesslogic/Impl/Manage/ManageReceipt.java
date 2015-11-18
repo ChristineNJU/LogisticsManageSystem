@@ -2,7 +2,7 @@ package businesslogic.Impl.Manage;
 
 import java.util.ArrayList;
 
-import data.State.UpdateState;
+import State.UpdateState;
 import VO.VO;
 import businesslogic.Service.Manage.ShowReceiptService;
 import businesslogic.Service.Manage.UpdateReceiptService;

@@ -1,4 +1,4 @@
-package businesslogic.State;
+package State;
 
 public enum JudgeState {
 	PASS,UNPASS

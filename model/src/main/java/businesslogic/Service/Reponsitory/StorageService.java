@@ -2,8 +2,8 @@ package businesslogic.Service.Reponsitory;
 
 import java.util.ArrayList;
 
+import State.StorageState;
 import VO.StorageVO;
-import businesslogic.State.StorageState;
 
 public interface StorageService {
 	

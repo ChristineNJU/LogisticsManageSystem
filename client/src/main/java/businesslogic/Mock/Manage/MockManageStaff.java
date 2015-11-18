@@ -1,12 +1,11 @@
 package businesslogic.Mock.Manage;
 import java.util.ArrayList;
 
-import data.State.AddState;
-import data.State.DeleteState;
-import data.State.UpdateState;
+import State.AddState;
+import State.DeleteState;
+import State.UpdateState;
 import VO.StaffVO;
 import businesslogic.Impl.Manage.ManageStaff;
-import data.State.*;
 public class MockManageStaff extends ManageStaff {
 	@Override
 	public DeleteState DeleteStaff(String id) {

@@ -4,10 +4,10 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import PO.ConstPO;
+import PO.DistancePO;
 
 public interface SearchDistanceService extends Remote{
 	
-	public ArrayList<ConstPO> searchConst(ArrayList<String> requirement) throws RemoteException;
+	public ArrayList<DistancePO> searchDistance(ArrayList<String> requirement) throws RemoteException;
 	
 }

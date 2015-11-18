@@ -3,7 +3,7 @@ package VO;
 import java.util.Date;
 
 import PO.StockTakingPO;
-import businesslogic.State.StorageArea;
+import State.StorageArea;
 
 public class StockTakingVO extends VO {
 	private String barCode = null;

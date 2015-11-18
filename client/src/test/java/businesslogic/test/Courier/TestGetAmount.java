@@ -1,8 +1,8 @@
 package businesslogic.test.Courier;
 
+import State.LogisticsType;
+import State.PackingCharge;
 import businesslogic.Impl.Courier.CourierController;
-import businesslogic.State.LogisticsType;
-import businesslogic.State.PackingCharge;
 import junit.framework.TestCase;
 
 public class TestGetAmount extends TestCase {

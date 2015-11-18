@@ -2,7 +2,7 @@ package PO;
 
 import java.util.Date;
 
-import businesslogic.State.StorageArea;
+import State.StorageArea;
 
 public class BalancePO extends PO {
 

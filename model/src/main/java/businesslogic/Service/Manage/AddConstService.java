@@ -1,7 +1,7 @@
 package businesslogic.Service.Manage;
 
+import State.AddState;
 import VO.ConstVO;
-import data.State.AddState;
 
 public interface AddConstService {
 	public AddState addConst(ConstVO constant);

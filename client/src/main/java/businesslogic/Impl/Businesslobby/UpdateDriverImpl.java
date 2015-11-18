@@ -1,6 +1,6 @@
 package businesslogic.Impl.Businesslobby;
 
-import data.State.UpdateState;
+import State.UpdateState;
 import VO.DriverInfoVO;
 import businesslogic.Service.BusinessLobby.UpdateDriverService;
 

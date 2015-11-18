@@ -1,7 +1,7 @@
 package businesslogic.Mock.User;
 
+import State.LoginState;
 import businesslogic.Impl.User.LoginImpl;
-import data.State.LoginState;
 
 public class MockLoginImpl extends LoginImpl {
 	

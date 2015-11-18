@@ -1,7 +1,7 @@
 package businesslogic.Service.MediumCenter;
 
+import State.AddState;
 import VO.TransferVO;
-import data.State.AddState;
 
 public interface TransferService {
 	public AddState transfer(TransferVO transfer);

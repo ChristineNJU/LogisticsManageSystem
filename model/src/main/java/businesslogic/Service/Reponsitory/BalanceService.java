@@ -1,6 +1,6 @@
 package businesslogic.Service.Reponsitory;
 
-import data.State.AddState;
+import State.AddState;
 
 public interface BalanceService {
 	

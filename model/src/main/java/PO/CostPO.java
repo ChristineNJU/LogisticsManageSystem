@@ -1,6 +1,6 @@
 package PO;
 
-import businesslogic.State.CostType;
+import State.CostType;
 
 public class CostPO extends PO {
 

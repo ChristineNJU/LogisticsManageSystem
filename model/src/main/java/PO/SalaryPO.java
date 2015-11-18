@@ -1,7 +1,7 @@
 package PO;
 
-import businesslogic.State.SalaryType;
-import businesslogic.State.UserRole;
+import State.SalaryType;
+import State.UserRole;
 
 public class SalaryPO extends PO {
 

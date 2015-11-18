@@ -1,4 +1,4 @@
-package data.State;
+package State;
 
 public enum DeleteState {
 	SUCCESS,FAIL

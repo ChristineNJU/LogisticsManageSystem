@@ -3,7 +3,7 @@ package VO;
 import java.util.Date;
 
 import PO.RemovalPO;
-import businesslogic.State.TransferType;
+import State.TransferType;
 
 public class RemovalVO extends VO {
 

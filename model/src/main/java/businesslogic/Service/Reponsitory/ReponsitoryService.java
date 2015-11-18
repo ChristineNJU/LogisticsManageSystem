@@ -2,13 +2,13 @@ package businesslogic.Service.Reponsitory;
 
 import java.util.ArrayList;
 
-import businesslogic.State.OutputState;
-import businesslogic.State.StorageState;
+import State.AddState;
+import State.OutputState;
+import State.StorageState;
 import VO.RemovalVO;
 import VO.StockTakingVO;
 import VO.StorageVO;
 import VO.VO;
-import data.State.AddState;
 
 public interface ReponsitoryService {
 	

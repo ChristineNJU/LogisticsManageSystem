@@ -3,7 +3,7 @@ package VO;
 import java.util.Date;
 
 import PO.StoragePO;
-import businesslogic.State.StorageArea;
+import State.StorageArea;
 
 public class StorageVO extends VO {
 	

@@ -1,9 +1,9 @@
 package businesslogic.Impl.User;
 
+import State.LoginState;
+import State.ResetState;
 import businesslogic.Service.User.LoginService;
 import businesslogic.Service.User.ResetPasswordService;
-import businesslogic.State.ResetState;
-import data.State.LoginState;
 
 public class UserController implements LoginService, ResetPasswordService{
 	

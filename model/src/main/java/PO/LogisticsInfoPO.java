@@ -3,9 +3,9 @@ package PO;
 import java.util.ArrayList;
 import java.util.Date;
 
-import businesslogic.State.LogisticsState;
-import businesslogic.State.LogisticsType;
-import businesslogic.State.PackingCharge;
+import State.LogisticsState;
+import State.LogisticsType;
+import State.PackingCharge;
 
 /*=================================================================================
  * 用来保存快递信息的持久化数据格式

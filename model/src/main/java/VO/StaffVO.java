@@ -1,7 +1,7 @@
 package VO;
 
 import PO.UserPO;
-import businesslogic.State.InstitutionType;
+import State.InstitutionType;
 
 public class StaffVO extends VO {
 

@@ -1,8 +1,6 @@
 package PO;
 
-import java.util.ArrayList;
-
-import businesslogic.State.InstitutionType;
+import State.InstitutionType;
 
 public class InstitutionPO extends PO {
 	

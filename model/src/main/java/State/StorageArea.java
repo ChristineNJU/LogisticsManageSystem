@@ -1,4 +1,4 @@
-package businesslogic.State;
+package State;
 
 public enum StorageArea {
 	AIR_TRANSPORTATION, RAILWAT_TRANSPORTATION, CAR_TRANSPORTATION, MANOEUVERING_AREA

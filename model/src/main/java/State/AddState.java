@@ -1,4 +1,4 @@
-package data.State;
+package State;
 
 public enum AddState {
 	SUCCESS,FAIL

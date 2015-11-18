@@ -4,7 +4,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import PO.PO;
-import data.State.AddState;
+import State.AddState;
 
 public interface AddService extends Remote{
 	

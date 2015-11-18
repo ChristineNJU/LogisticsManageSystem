@@ -1,7 +1,7 @@
 package VO;
 
 import PO.InstitutionPO;
-import businesslogic.State.InstitutionType;
+import State.InstitutionType;
 
 
 public class InstitutionVO extends VO {

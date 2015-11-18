@@ -3,9 +3,9 @@ package VO;
 import java.util.Date;
 
 import PO.LogisticsInfoPO;
-import businesslogic.State.LogisticsState;
-import businesslogic.State.LogisticsType;
-import businesslogic.State.PackingCharge;
+import State.LogisticsState;
+import State.LogisticsType;
+import State.PackingCharge;
 
 public class LogisticsInputVO extends VO {
 	/*

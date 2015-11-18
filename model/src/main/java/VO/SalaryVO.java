@@ -1,8 +1,8 @@
 package VO;
 
 import PO.SalaryPO;
-import businesslogic.State.SalaryType;
-import businesslogic.State.UserRole;
+import State.SalaryType;
+import State.UserRole;
 
 public class SalaryVO extends VO {
 

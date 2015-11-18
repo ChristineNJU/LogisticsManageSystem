@@ -2,7 +2,7 @@ package PO;
 
 import java.util.Date;
 
-import businesslogic.State.LogisticsState;
+import State.LogisticsState;
 
 /*========================================================================================
  * 用来保存到达单的持久化数据格式

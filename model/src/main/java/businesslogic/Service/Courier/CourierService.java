@@ -2,11 +2,11 @@ package businesslogic.Service.Courier;
 
 import java.util.ArrayList;
 
-import businesslogic.State.LogisticsType;
-import businesslogic.State.PackingCharge;
+import State.AddState;
+import State.LogisticsType;
+import State.PackingCharge;
+import State.UpdateState;
 import VO.VO;
-import data.State.AddState;
-import data.State.UpdateState;
 
 public interface CourierService {
 	

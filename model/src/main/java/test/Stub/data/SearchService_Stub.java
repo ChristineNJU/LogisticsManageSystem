@@ -25,15 +25,16 @@ import PO.StockTakingPO;
 import PO.StoragePO;
 import PO.TransferPO;
 import PO.UserPO;
-import businesslogic.State.CostType;
-import businesslogic.State.InstitutionType;
-import businesslogic.State.LogisticsState;
-import businesslogic.State.LogisticsType;
-import businesslogic.State.PackingCharge;
-import businesslogic.State.SalaryType;
-import businesslogic.State.StorageArea;
-import businesslogic.State.TransferType;
-import businesslogic.State.UserRole;
+import State.CostType;
+import State.InstitutionType;
+import State.LogisticsState;
+import State.LogisticsType;
+import State.PackingCharge;
+import State.SalaryType;
+import State.StorageArea;
+import State.TransferType;
+import State.UserRole;
+import PO.DistancePO;
 import data.Service.Search.SearchAccountService;
 import data.Service.Search.SearchArrivalService;
 import data.Service.Search.SearchBalanceService;
@@ -316,6 +317,13 @@ public class SearchService_Stub implements SearchLogisticsService, SearchGatheri
 		ArrayList<GatheringPO> list = new ArrayList<GatheringPO>();
 		list.add(gathering);
 		return list;
+	}
+
+	@Override
+	public ArrayList<DistancePO> searchDistance(ArrayList<String> requirement)
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

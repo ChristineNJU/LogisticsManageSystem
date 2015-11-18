@@ -1,4 +1,4 @@
-package businesslogic.State;
+package State;
 
 public enum LogisticsState {
 	INTACT, LOST, DAMAGED

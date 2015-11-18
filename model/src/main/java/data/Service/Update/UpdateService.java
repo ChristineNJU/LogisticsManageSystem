@@ -4,7 +4,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import PO.PO;
-import data.State.UpdateState;
+import State.UpdateState;
 
 public interface UpdateService extends Remote{
 	

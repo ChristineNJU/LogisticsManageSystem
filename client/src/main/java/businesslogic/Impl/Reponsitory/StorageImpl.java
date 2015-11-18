@@ -2,9 +2,9 @@ package businesslogic.Impl.Reponsitory;
 
 import java.util.ArrayList;
 
+import State.StorageState;
 import VO.StorageVO;
 import businesslogic.Service.Reponsitory.StorageService;
-import businesslogic.State.StorageState;
 
 public class StorageImpl implements StorageService {
 

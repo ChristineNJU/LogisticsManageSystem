@@ -2,19 +2,19 @@ package businesslogic.Mock.Courier;
 
 import java.util.ArrayList;
 
-import data.State.AddState;
-import data.State.UpdateState;
+import State.AddState;
+import State.LogisticsType;
+import State.PackingCharge;
+import State.UpdateState;
 import VO.VO;
 import businesslogic.Impl.Courier.CourierImpl;
-import businesslogic.State.LogisticsType;
-import businesslogic.State.PackingCharge;
 
 public class MockCourier extends CourierImpl{
 	@Override
 	public UpdateState receiveConfirm(VO logistics_info, String field,
 			String value) {
 		// TODO Auto-generated method stub
-		return UpdateState.FAIL;
+		return UpdateState.NOTFOUND;
 	}
 
 	@Override

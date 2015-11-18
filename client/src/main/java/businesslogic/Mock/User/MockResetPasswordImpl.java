@@ -1,7 +1,7 @@
 package businesslogic.Mock.User;
 
+import State.ResetState;
 import businesslogic.Impl.User.ResetPasswordImpl;
-import businesslogic.State.ResetState;
 
 public class MockResetPasswordImpl extends ResetPasswordImpl {
 	

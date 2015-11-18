@@ -2,10 +2,9 @@ package businesslogic.Mock.Manage;
 
 import java.util.ArrayList;
 
-import data.State.UpdateState;
+import State.UpdateState;
 import VO.VO;
 import businesslogic.Impl.Manage.ManageReceipt;
-import data.State.*;
 public class MockManageReceipt extends ManageReceipt {
 	
 	@Override
