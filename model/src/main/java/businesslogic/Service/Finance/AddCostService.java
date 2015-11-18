@@ -1,7 +1,7 @@
 package businesslogic.Service.Finance;
 
-import businesslogic.VO.CostVO;
-import data.State.AddState;
+import State.AddState;
+import VO.CostVO;
 
 public interface AddCostService {
 	public AddState addCost(CostVO cost);

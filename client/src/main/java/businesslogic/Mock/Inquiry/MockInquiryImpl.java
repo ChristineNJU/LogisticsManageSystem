@@ -1,7 +1,7 @@
 package businesslogic.Mock.Inquiry;
 
+import VO.LogisticsInputVO;
 import businesslogic.Impl.Inquiry.InquiryImpl;
-import businesslogic.VO.LogisticsInputVO;
 
 public class MockInquiryImpl extends InquiryImpl{
 	

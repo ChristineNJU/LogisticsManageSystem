@@ -2,7 +2,7 @@ package test.Driver.businesslogic;
 
 import java.util.ArrayList;
 
-import businesslogic.VO.*;
+import VO.*;
 import test.Stub.businesslogic.ManageBlService_Stub;
 
 public class Manage_Driver {

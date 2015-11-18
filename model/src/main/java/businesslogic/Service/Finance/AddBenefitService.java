@@ -1,7 +1,7 @@
 package businesslogic.Service.Finance;
 
-import businesslogic.VO.BenefitVO;
-import data.State.AddState;
+import State.AddState;
+import VO.BenefitVO;
 
 public interface AddBenefitService {
 	public AddState addBenefit(BenefitVO benefit);

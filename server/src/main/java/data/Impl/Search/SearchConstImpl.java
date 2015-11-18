@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-import businesslogic.PO.ConstPO;
+import PO.ConstPO;
 import data.Service.Search.SearchConstService;
 
 public class SearchConstImpl extends UnicastRemoteObject implements SearchConstService {

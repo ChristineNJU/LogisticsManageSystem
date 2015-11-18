@@ -2,28 +2,16 @@ package businesslogic.Impl.Reponsitory;
 
 import java.util.ArrayList;
 
-import businesslogic.Service.Reponsitory.AlarmService;
-import businesslogic.Service.Reponsitory.BalanceService;
-import businesslogic.Service.Reponsitory.GetNeedRemovalService;
-import businesslogic.Service.Reponsitory.GetNeedStorageService;
-import businesslogic.Service.Reponsitory.RemovalService;
-import businesslogic.Service.Reponsitory.SeeService;
-import businesslogic.Service.Reponsitory.StockTakingConfirmService;
-import businesslogic.Service.Reponsitory.StockTakingExcelService;
-import businesslogic.Service.Reponsitory.StockTakingService;
-import businesslogic.Service.Reponsitory.StorageService;
-import businesslogic.State.OutputState;
-import businesslogic.State.StorageState;
-import businesslogic.VO.RemovalVO;
-import businesslogic.VO.StockTakingVO;
-import businesslogic.VO.StorageVO;
-import businesslogic.VO.VO;
-import data.State.AddState;
+import State.AddState;
+import State.OutputState;
+import State.StorageState;
+import VO.RemovalVO;
+import VO.StockTakingVO;
+import VO.StorageVO;
+import VO.VO;
+import businesslogic.Service.Reponsitory.ReponsitoryService;
 
-public class ReponsitoryController implements GetNeedStorageService,StockTakingConfirmService,
-												StockTakingExcelService,StockTakingService, GetNeedRemovalService,
-												SeeService, RemovalService, StorageService,
-												AlarmService, BalanceService{
+public class ReponsitoryController implements ReponsitoryService{
 
 	
 	@Override

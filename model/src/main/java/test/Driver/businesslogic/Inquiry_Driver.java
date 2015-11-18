@@ -1,7 +1,7 @@
 package test.Driver.businesslogic;
 
 import test.Stub.businesslogic.InquiryBlService_Stub;
-import businesslogic.VO.LogisticsHistoryVO;
+import VO.LogisticsHistoryVO;
 
 public class Inquiry_Driver {
 	public void drive(InquiryBlService_Stub inquiry){

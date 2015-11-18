@@ -1,7 +1,7 @@
 package businesslogic.Service.Manage;
 
-import businesslogic.VO.VO;
-import data.State.UpdateState;
+import State.UpdateState;
+import VO.VO;
 
 public interface UpdateReceiptService {
 	public UpdateState updateReceipt(VO receipt);

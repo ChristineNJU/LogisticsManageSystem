@@ -2,8 +2,8 @@ package businesslogic.Service.Reponsitory;
 
 import java.util.ArrayList;
 
-import businesslogic.VO.RemovalVO;
-import data.State.AddState;
+import State.AddState;
+import VO.RemovalVO;
 
 public interface RemovalService {
 	

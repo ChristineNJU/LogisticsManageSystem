@@ -1,4 +1,4 @@
-package data.Helper.DBHelper.DirectDBCreater;
+	package data.Helper.DBHelper.DirectDBCreater;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -54,5 +54,5 @@ public class DirectDBCreater {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}	
+	}
 }

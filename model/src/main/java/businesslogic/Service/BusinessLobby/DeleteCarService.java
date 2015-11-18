@@ -1,7 +1,7 @@
 package businesslogic.Service.BusinessLobby;
 
-import businesslogic.VO.CarInfoVO;
-import data.State.DeleteState;
+import State.DeleteState;
+import VO.CarInfoVO;
 
 public interface DeleteCarService {
 	public DeleteState deleteCar(CarInfoVO car);

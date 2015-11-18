@@ -4,7 +4,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import businesslogic.PO.StockTakingPO;
+import PO.StockTakingPO;
 
 public interface SearchStockTakingService extends Remote{
 	

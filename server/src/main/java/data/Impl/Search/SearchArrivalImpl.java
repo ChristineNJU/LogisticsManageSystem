@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-import businesslogic.PO.ArrivalPO;
+import PO.ArrivalPO;
 import data.Service.Search.SearchArrivalService;
 
 public class SearchArrivalImpl extends UnicastRemoteObject implements SearchArrivalService {

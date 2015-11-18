@@ -4,7 +4,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import businesslogic.PO.StoragePO;
+import PO.StoragePO;
 
 public interface SearchStorageService extends Remote{
 	

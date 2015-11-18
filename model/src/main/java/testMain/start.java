@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import test.Stub.businesslogic.InquiryBlService_Stub;
-import businesslogic.VO.LogisticsHistoryVO;
+import VO.LogisticsHistoryVO;
 
 public class start {
 

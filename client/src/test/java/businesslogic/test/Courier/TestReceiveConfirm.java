@@ -1,7 +1,7 @@
 package businesslogic.test.Courier;
 
-import data.State.UpdateState;
 import junit.framework.TestCase;
+import State.UpdateState;
 import businesslogic.Impl.Courier.CourierController;
 
 public class TestReceiveConfirm extends TestCase {
@@ -10,6 +10,6 @@ public class TestReceiveConfirm extends TestCase {
 		
 		CourierController courier = new CourierController();
 		
-		assertEquals(UpdateState.FAIL, courier.receiveConfirm(null, "sender", "hy"));
+		assertEquals(UpdateState.NOTFOUND, courier.receiveConfirm(null, "sender", "hy"));
 	}
 }

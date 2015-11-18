@@ -1,9 +1,8 @@
 package businesslogic.Mock.MediumCenter;
 
-import data.State.AddState;
+import State.AddState;
+import VO.TransferVO;
 import businesslogic.Impl.MediumCenter.TransferImpl;
-import businesslogic.VO.TransferVO;
-import data.State.*;
 
 public class MockTransferImpl extends TransferImpl{
 	

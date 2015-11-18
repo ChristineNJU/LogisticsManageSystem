@@ -1,7 +1,7 @@
 package businesslogic.Service.BusinessLobby;
 
-import businesslogic.VO.DriverInfoVO;
-import data.State.UpdateState;
+import State.UpdateState;
+import VO.DriverInfoVO;
 
 public interface UpdateDriverService {
 	public UpdateState updateDriver(DriverInfoVO driver, String field, String value);

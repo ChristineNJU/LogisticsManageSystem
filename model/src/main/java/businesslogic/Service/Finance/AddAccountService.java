@@ -1,7 +1,7 @@
 package businesslogic.Service.Finance;
 
-import businesslogic.VO.AccountVO;
-import data.State.AddState;
+import State.AddState;
+import VO.AccountVO;
 
 public interface AddAccountService {
 	public AddState addAccount(AccountVO account);

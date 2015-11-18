@@ -1,8 +1,8 @@
 package businesslogic.Impl.MediumCenter;
 
-import data.State.AddState;
+import State.AddState;
+import VO.TransferVO;
 import businesslogic.Service.MediumCenter.TransferService;
-import businesslogic.VO.TransferVO;
 
 public class TransferImpl implements TransferService{
 

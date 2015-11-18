@@ -4,7 +4,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import businesslogic.PO.TransferPO;
+import PO.TransferPO;
 
 public interface SearchTransferService extends Remote{
 	

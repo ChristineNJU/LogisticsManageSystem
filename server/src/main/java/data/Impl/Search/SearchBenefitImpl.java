@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-import businesslogic.PO.BenefitPO;
+import PO.BenefitPO;
 import data.Service.Search.SearchBenefitService;
 
 public class SearchBenefitImpl extends UnicastRemoteObject implements SearchBenefitService {

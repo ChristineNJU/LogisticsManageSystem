@@ -2,9 +2,9 @@ package test.Stub.data;
 
 import java.rmi.RemoteException;
 
-import businesslogic.PO.PO;
+import PO.PO;
+import State.DeleteState;
 import data.Service.Delete.DeleteService;
-import data.State.DeleteState;
 
 public class DeleteService_Stub implements DeleteService {
 

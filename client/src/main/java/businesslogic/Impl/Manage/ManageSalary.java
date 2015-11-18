@@ -2,10 +2,10 @@ package businesslogic.Impl.Manage;
 
 import java.util.ArrayList;
 
-import data.State.UpdateState;
+import State.UpdateState;
+import VO.SalaryVO;
 import businesslogic.Service.Manage.ShowSalaryService;
 import businesslogic.Service.Manage.UpdatePaymentService;
-import businesslogic.VO.SalaryVO;
 
 public class ManageSalary implements ShowSalaryService,UpdatePaymentService{
 

@@ -3,11 +3,11 @@ package test.Stub.businesslogic;
 import java.rmi.RemoteException;
 
 import test.Stub.data.UpdateService_Stub;
-import businesslogic.PO.UserPO;
+import PO.UserPO;
+import State.LoginState;
+import State.ResetState;
 import businesslogic.Service.User.LoginService;
 import businesslogic.Service.User.ResetPasswordService;
-import businesslogic.State.LoginState;
-import businesslogic.State.ResetState;
 
 public class UserBlService_Stub implements LoginService,ResetPasswordService{
 	/*-------------------------------------------

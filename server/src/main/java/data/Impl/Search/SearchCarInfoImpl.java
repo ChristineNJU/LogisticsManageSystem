@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-import businesslogic.PO.CarInfoPO;
+import PO.CarInfoPO;
 import data.Service.Search.SearchCarInfoService;
 
 public class SearchCarInfoImpl extends UnicastRemoteObject implements SearchCarInfoService {

@@ -3,7 +3,8 @@ package businesslogic.Service.Reponsitory;
 import java.util.ArrayList;
 
 
-import businesslogic.VO.StockTakingVO;
+
+import VO.StockTakingVO;
 
 
 

@@ -1,6 +1,6 @@
 package businesslogic.Impl.Inquiry;
 
-import businesslogic.VO.LogisticsInputVO;
+import VO.LogisticsInputVO;
 
 public class InquiryImpl {
 	

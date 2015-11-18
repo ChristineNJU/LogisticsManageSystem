@@ -1,8 +1,12 @@
 package businesslogic.Impl.Inquiry;
 
+import VO.VO;
 import businesslogic.Service.Inquiry.InquiryService;
+<<<<<<< HEAD
 import businesslogic.VO.LogisticsHistoryVO;
 import businesslogic.VO.VO;
+=======
+>>>>>>> origin/master
 
 public class InquiryController implements InquiryService{
 	

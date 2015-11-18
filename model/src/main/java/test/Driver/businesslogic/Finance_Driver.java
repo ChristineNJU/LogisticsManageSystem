@@ -3,13 +3,13 @@ package test.Driver.businesslogic;
 import java.util.ArrayList;
 
 import test.Stub.businesslogic.FinanceBlService_Stub;
-import businesslogic.VO.AccountVO;
-import businesslogic.VO.BenefitVO;
-import businesslogic.VO.CostVO;
-import businesslogic.VO.EntruckingVO;
-import businesslogic.VO.GatheringVO;
-import businesslogic.VO.LogVO;
-import businesslogic.VO.TransferVO;
+import VO.AccountVO;
+import VO.BenefitVO;
+import VO.CostVO;
+import VO.EntruckingVO;
+import VO.GatheringVO;
+import VO.LogVO;
+import VO.TransferVO;
 
 public class Finance_Driver {
 	public void drive(FinanceBlService_Stub finance){

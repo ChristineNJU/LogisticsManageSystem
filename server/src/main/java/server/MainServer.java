@@ -6,7 +6,7 @@ import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 
-import data.Helper.RMIHelper.RMIHelper;
+import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Impl.Add.AddImpl;
 import data.Impl.Delete.DeleteImpl;
 import data.Impl.Search.SearchAccountImpl;
@@ -32,6 +32,7 @@ import data.Impl.Search.SearchStorageImpl;
 import data.Impl.Search.SearchTransferImpl;
 import data.Impl.Search.SearchUserImpl;
 import data.Impl.Update.UpdateImpl;
+import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
 import data.Service.Delete.DeleteService;
 import data.Service.Search.SearchAccountService;
@@ -179,6 +180,8 @@ public class MainServer {
 			System.out.println("RMI远程端口绑定失败");
 			e.printStackTrace();
 		}
+		
+		DBHelper db_helper = new DBHelper();
 	}
 	
 	private static void print(String object_name) {

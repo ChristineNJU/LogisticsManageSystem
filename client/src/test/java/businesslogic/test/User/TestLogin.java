@@ -1,8 +1,8 @@
 package businesslogic.test.User;
 
 import junit.framework.TestCase;
+import State.LoginState;
 import businesslogic.Impl.User.UserController;
-import businesslogic.State.LoginState;
 
 public class TestLogin extends TestCase {
 	
@@ -10,6 +10,6 @@ public class TestLogin extends TestCase {
 		
 		UserController user = new UserController();
 		
-		assertEquals(LoginState.FAIL, user.login("025100101", "12345678"));
+		assertEquals(LoginState.SUCCESS, user.login("025100101", "12345678"));
 	}
 }

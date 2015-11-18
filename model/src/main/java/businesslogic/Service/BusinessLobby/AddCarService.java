@@ -1,7 +1,7 @@
 package businesslogic.Service.BusinessLobby;
 
-import businesslogic.VO.CarInfoVO;
-import data.State.AddState;
+import State.AddState;
+import VO.CarInfoVO;
 
 public interface AddCarService {
 	public AddState addCar(CarInfoVO car);

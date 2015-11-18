@@ -2,7 +2,7 @@ package businesslogic.Service.Reponsitory;
 
 import java.util.ArrayList;
 
-import businesslogic.VO.VO;
+import VO.VO;
 
 public interface SeeService {
 	

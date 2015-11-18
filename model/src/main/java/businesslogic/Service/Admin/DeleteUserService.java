@@ -1,7 +1,7 @@
 package businesslogic.Service.Admin;
 
-import businesslogic.VO.UserVO;
-import data.State.DeleteState;
+import State.DeleteState;
+import VO.UserVO;
 
 public interface DeleteUserService {
 	public DeleteState deleteUser(UserVO user);

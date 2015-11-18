@@ -1,7 +1,7 @@
 package businesslogic.Service.Manage;
 
-import businesslogic.VO.InstitutionVO;
-import data.State.DeleteState;
+import State.DeleteState;
+import VO.InstitutionVO;
 
 public interface DeleteInstitutionService {
 	public DeleteState deleteInstitution (InstitutionVO insitiution);

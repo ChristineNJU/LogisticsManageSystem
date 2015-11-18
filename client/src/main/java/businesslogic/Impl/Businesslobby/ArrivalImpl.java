@@ -2,9 +2,9 @@ package businesslogic.Impl.Businesslobby;
 
 import java.util.ArrayList;
 
-import data.State.AddState;
+import State.AddState;
+import VO.ArrivalVO;
 import businesslogic.Service.BusinessLobby.ArrivalService;
-import businesslogic.VO.ArrivalVO;
 
 public class ArrivalImpl implements ArrivalService{
 

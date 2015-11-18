@@ -4,10 +4,10 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import test.Stub.data.SearchService_Stub;
-import businesslogic.PO.LogisticsInfoPO;
+import PO.LogisticsInfoPO;
+import VO.LogisticsHistoryVO;
+import VO.VO;
 import businesslogic.Service.Inquiry.InquiryService;
-import businesslogic.VO.LogisticsHistoryVO;
-import businesslogic.VO.VO;
 
 public class InquiryBlService_Stub implements InquiryService{
 	/*-------------------------------------------

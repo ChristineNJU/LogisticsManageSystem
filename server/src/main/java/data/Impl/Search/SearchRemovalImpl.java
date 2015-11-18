@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-import businesslogic.PO.RemovalPO;
+import PO.RemovalPO;
 import data.Service.Search.SearchRemovalService;
 
 public class SearchRemovalImpl extends UnicastRemoteObject implements SearchRemovalService {

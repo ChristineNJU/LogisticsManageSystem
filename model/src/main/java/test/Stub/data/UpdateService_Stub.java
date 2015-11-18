@@ -2,9 +2,9 @@ package test.Stub.data;
 
 import java.rmi.RemoteException;
 
-import businesslogic.PO.PO;
+import PO.PO;
+import State.UpdateState;
 import data.Service.Update.UpdateService;
-import data.State.UpdateState;
 
 public class UpdateService_Stub implements UpdateService {
 	

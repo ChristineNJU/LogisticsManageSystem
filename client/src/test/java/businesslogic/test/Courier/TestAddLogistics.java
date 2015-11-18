@@ -1,6 +1,6 @@
 package businesslogic.test.Courier;
 
-import data.State.AddState;
+import State.AddState;
 import businesslogic.Impl.Courier.CourierController;
 import junit.framework.TestCase;
 

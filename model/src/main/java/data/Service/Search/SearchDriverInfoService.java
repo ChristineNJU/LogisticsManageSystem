@@ -4,7 +4,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import businesslogic.PO.DriverInfoPO;
+import PO.DriverInfoPO;
 
 public interface SearchDriverInfoService extends Remote{
 	

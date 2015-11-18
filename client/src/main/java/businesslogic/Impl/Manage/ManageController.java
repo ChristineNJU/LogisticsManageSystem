@@ -2,14 +2,23 @@ package businesslogic.Impl.Manage;
 
 import java.util.ArrayList;
 
-import data.State.AddState;
-import data.State.DeleteState;
-import data.State.UpdateState;
+import State.AddState;
+import State.DeleteState;
+import State.UpdateState;
+import VO.BenefitVO;
+import VO.ConstVO;
+import VO.CostVO;
+import VO.GatheringVO;
+import VO.InstitutionVO;
+import VO.SalaryVO;
+import VO.StaffVO;
+import VO.VO;
 import businesslogic.Service.Manage.AddConstService;
 import businesslogic.Service.Manage.AddInstitutionService;
 import businesslogic.Service.Manage.AddStaffService;
 import businesslogic.Service.Manage.DeleteInstitutionService;
 import businesslogic.Service.Manage.DeleteStaffService;
+import businesslogic.Service.Manage.ManageService;
 import businesslogic.Service.Manage.SearchBenefitService;
 import businesslogic.Service.Manage.SearchCostService;
 import businesslogic.Service.Manage.SearchGatheringService;
@@ -23,21 +32,8 @@ import businesslogic.Service.Manage.UpdateInstitutionService;
 import businesslogic.Service.Manage.UpdatePaymentService;
 import businesslogic.Service.Manage.UpdateReceiptService;
 import businesslogic.Service.Manage.UpdateStaffService;
-import businesslogic.VO.BenefitVO;
-import businesslogic.VO.ConstVO;
-import businesslogic.VO.CostVO;
-import businesslogic.VO.GatheringVO;
-import businesslogic.VO.InstitutionVO;
-import businesslogic.VO.SalaryVO;
-import businesslogic.VO.StaffVO;
-import businesslogic.VO.VO;
 
-public class ManageController implements ShowConstService,AddConstService,UpdateConstService,AddInstitutionService,
-										UpdateInstitutionService,DeleteInstitutionService,SearchInstitutionService,
-										SearchBenefitService, SearchCostService,SearchGatheringService ,
-										ShowReceiptService, UpdateReceiptService,ShowSalaryService,
-										UpdatePaymentService,AddStaffService,UpdateStaffService,
-										SearchStaffService,DeleteStaffService{
+public class ManageController implements ManageService{
 
 	@Override
 	public DeleteState DeleteStaff(String id) {

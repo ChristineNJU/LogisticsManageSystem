@@ -3,8 +3,8 @@ package data.Service.Update;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
-import businesslogic.PO.PO;
-import data.State.UpdateState;
+import PO.PO;
+import State.UpdateState;
 
 public interface UpdateService extends Remote{
 	

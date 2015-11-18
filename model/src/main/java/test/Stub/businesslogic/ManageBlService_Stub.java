@@ -7,36 +7,47 @@ import test.Stub.data.AddService_Stub;
 import test.Stub.data.DeleteService_Stub;
 import test.Stub.data.SearchService_Stub;
 import test.Stub.data.UpdateService_Stub;
-import data.State.*;
-import businesslogic.PO.BenefitPO;
-import businesslogic.PO.ConstPO;
-import businesslogic.PO.CostPO;
-import businesslogic.PO.GatheringPO;
-import businesslogic.PO.InstitutionPO;
-import businesslogic.PO.SalaryPO;
-import businesslogic.PO.UserPO;
+import PO.BenefitPO;
+import PO.ConstPO;
+import PO.CostPO;
+import PO.GatheringPO;
+import PO.InstitutionPO;
+import PO.SalaryPO;
+import PO.UserPO;
+import State.AddState;
+import State.DeleteState;
+import State.InstitutionType;
+import State.UpdateState;
+import State.UserRole;
+import VO.BenefitVO;
+import VO.ConstVO;
+import VO.CostVO;
+import VO.GatheringVO;
+import VO.InstitutionVO;
+import VO.SalaryVO;
+import VO.StaffVO;
+import VO.VO;
 import businesslogic.Service.Finance.GetCostService;
-import businesslogic.Service.Manage.*;
-import businesslogic.State.CostType;
-import businesslogic.State.InstitutionType;
-import businesslogic.State.SalaryType;
-import businesslogic.State.UserRole;
-import businesslogic.VO.BenefitVO;
-import businesslogic.VO.ConstVO;
-import businesslogic.VO.CostVO;
-import businesslogic.VO.GatheringVO;
-import businesslogic.VO.InstitutionVO;
-import businesslogic.VO.SalaryVO;
-import businesslogic.VO.StaffVO;
-import businesslogic.VO.UserVO;
-import businesslogic.VO.VO;
+import businesslogic.Service.Manage.AddConstService;
+import businesslogic.Service.Manage.AddInstitutionService;
+import businesslogic.Service.Manage.AddStaffService;
+import businesslogic.Service.Manage.DeleteInstitutionService;
+import businesslogic.Service.Manage.DeleteStaffService;
+import businesslogic.Service.Manage.ManageService;
+import businesslogic.Service.Manage.SearchBenefitService;
+import businesslogic.Service.Manage.SearchGatheringService;
+import businesslogic.Service.Manage.SearchInstitutionService;
+import businesslogic.Service.Manage.SearchStaffService;
+import businesslogic.Service.Manage.ShowConstService;
+import businesslogic.Service.Manage.ShowReceiptService;
+import businesslogic.Service.Manage.ShowSalaryService;
+import businesslogic.Service.Manage.UpdateConstService;
+import businesslogic.Service.Manage.UpdateInstitutionService;
+import businesslogic.Service.Manage.UpdatePaymentService;
+import businesslogic.Service.Manage.UpdateReceiptService;
+import businesslogic.Service.Manage.UpdateStaffService;
 
-public class ManageBlService_Stub implements AddConstService,AddInstitutionService,AddStaffService,
-											DeleteInstitutionService,DeleteStaffService,SearchBenefitService,
-											GetCostService,SearchGatheringService,SearchInstitutionService,
-											SearchStaffService,ShowConstService,ShowReceiptService,
-											ShowSalaryService,UpdateConstService,UpdateInstitutionService,
-											UpdatePaymentService,UpdateReceiptService,UpdateStaffService{
+public class ManageBlService_Stub implements ManageService{
 	/*-------------------------------------------
 	 查看单据
 	---------------------------------------------*/

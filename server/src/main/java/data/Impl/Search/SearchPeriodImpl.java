@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-import businesslogic.PO.PeriodPO;
+import PO.PeriodPO;
 import data.Service.Search.SearchPeriodService;
 
 public class SearchPeriodImpl extends UnicastRemoteObject implements SearchPeriodService {

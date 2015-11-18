@@ -2,12 +2,12 @@ package businesslogic.Mock.Courier;
 
 import java.util.ArrayList;
 
+import State.AddState;
+import State.LogisticsType;
+import State.PackingCharge;
+import State.UpdateState;
+import VO.VO;
 import businesslogic.Impl.Courier.CourierController;
-import businesslogic.State.LogisticsType;
-import businesslogic.State.PackingCharge;
-import businesslogic.VO.VO;
-import data.State.AddState;
-import data.State.UpdateState;
 
 public class MockCourierController extends CourierController{
 	@Override
@@ -15,16 +15,16 @@ public class MockCourierController extends CourierController{
 			String value) {
 		// TODO Auto-generated method stub
 		
-		MockReceiveConfirm receiveConfirm=new MockReceiveConfirm();
-		return receiveConfirm.receiveConfirm(logistics_info, field, value);
+		MockCourier courier=new MockCourier();
+		return courier.receiveConfirm(logistics_info, field, value);
 		
 	}
 
 	@Override
 	public ArrayList<String> getCity() {
 		// TODO Auto-generated method stub
-		MockGetCity getCity=new MockGetCity();
-		return getCity.getCity();
+		MockCourier courier=new MockCourier();
+		return courier.getCity();
 	}
 
 	@Override
@@ -32,14 +32,15 @@ public class MockCourierController extends CourierController{
 			LogisticsType type, PackingCharge charge, double weight,
 			double size) {
 		// TODO Auto-generated method stub
-		MockGetAmount getAmount=new MockGetAmount();
-		return getAmount.getAmount(starting, destination, type, charge, weight, size);
+		MockCourier courier=new MockCourier();
+		return courier.getAmount(starting, destination, type, charge, weight, size);
 	}
 
 	@Override
 	public AddState addLogistics(VO logistics_info) {
 		// TODO Auto-generated method stub
-		MockAddLogistics addLogistics=new MockAddLogistics();
-		return addLogistics.addLogistics(logistics_info);
+		MockCourier courier=new MockCourier();
+		return courier.addLogistics(logistics_info);
 	}
+	
 }

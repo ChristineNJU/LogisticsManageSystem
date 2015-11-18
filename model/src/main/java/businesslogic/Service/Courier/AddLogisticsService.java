@@ -1,7 +1,7 @@
 package businesslogic.Service.Courier;
 
-import businesslogic.VO.VO;
-import data.State.AddState;
+import State.AddState;
+import VO.VO;
 
 public interface AddLogisticsService {
 	public AddState addLogistics(VO logistics_info);

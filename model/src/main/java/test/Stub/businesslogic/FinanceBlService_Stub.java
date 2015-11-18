@@ -3,18 +3,29 @@ package test.Stub.businesslogic;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import businesslogic.PO.AccountPO;
-import businesslogic.PO.BenefitPO;
-import businesslogic.PO.CostPO;
-import businesslogic.PO.EntruckingPO;
-import businesslogic.PO.GatheringPO;
-import businesslogic.PO.LogPO;
-import businesslogic.PO.TransferPO;
+import PO.AccountPO;
+import PO.BenefitPO;
+import PO.CostPO;
+import PO.EntruckingPO;
+import PO.GatheringPO;
+import PO.LogPO;
+import PO.TransferPO;
+import State.AddState;
+import State.DeleteState;
+import State.UpdateState;
+import VO.AccountVO;
+import VO.BenefitVO;
+import VO.CostVO;
+import VO.EntruckingVO;
+import VO.GatheringVO;
+import VO.LogVO;
+import VO.TransferVO;
 import businesslogic.Service.BusinessLobby.GetNeedGatheringService;
 import businesslogic.Service.Finance.AddAccountService;
 import businesslogic.Service.Finance.AddBenefitService;
 import businesslogic.Service.Finance.AddCostService;
 import businesslogic.Service.Finance.DeleteAccountService;
+import businesslogic.Service.Finance.FinanceService;
 import businesslogic.Service.Finance.GetAccountService;
 import businesslogic.Service.Finance.GetBenefitService;
 import businesslogic.Service.Finance.GetCostService;
@@ -22,24 +33,12 @@ import businesslogic.Service.Finance.GetEntruckingService;
 import businesslogic.Service.Finance.GetLogService;
 import businesslogic.Service.Finance.GetTransferService;
 import businesslogic.Service.Finance.UpdateAccountService;
-import businesslogic.VO.AccountVO;
-import businesslogic.VO.BenefitVO;
-import businesslogic.VO.CostVO;
-import businesslogic.VO.EntruckingVO;
-import businesslogic.VO.GatheringVO;
-import businesslogic.VO.LogVO;
-import businesslogic.VO.TransferVO;
-import data.State.AddState;
-import data.State.DeleteState;
-import data.State.UpdateState;
 import test.Stub.data.AddService_Stub;
 import test.Stub.data.DeleteService_Stub;
 import test.Stub.data.SearchService_Stub;
 import test.Stub.data.UpdateService_Stub;
 
-public class FinanceBlService_Stub implements AddAccountService, AddBenefitService, AddCostService, DeleteAccountService, GetEntruckingService,
-                                              GetLogService, GetTransferService, GetAccountService, GetBenefitService, GetCostService,
-                                              GetNeedGatheringService, UpdateAccountService{
+public class FinanceBlService_Stub implements FinanceService{
 	/*-------------------------------------------
 	 查看收款单
 	---------------------------------------------*/
@@ -273,12 +272,16 @@ public class FinanceBlService_Stub implements AddAccountService, AddBenefitServi
 		}
 		return list;
 	}
+<<<<<<< HEAD
 	@Override
 	public ArrayList<GatheringVO> getNeedGathering() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
+=======
+
+>>>>>>> origin/master
 	
 	
 	
