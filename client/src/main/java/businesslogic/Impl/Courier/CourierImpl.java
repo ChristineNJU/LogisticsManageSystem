@@ -11,6 +11,7 @@ import PO.ConstPO;
 import State.AddState;
 import State.LogisticsType;
 import State.PackingCharge;
+import State.StateSwitch;
 import State.UpdateState;
 import businesslogic.Service.Courier.AddLogisticsService;
 import businesslogic.Service.Courier.GetAmountService;
@@ -97,10 +98,10 @@ public class CourierImpl implements AddLogisticsService,GetAmountService,GetCity
 			double distance=distanceResult.get(0).getDistance();
 			//----------------------------------------------------------
 			ArrayList<String> requirementLogisCons=new ArrayList<String>();
-			//requirementLogisCons.add(type);
-			//ArrayList<ConstPO> constResult=constSearch.searchConst(requirementDisCons);
+			requirementLogisCons.add("name="+StateSwitch.switchToStr(type));
+			ArrayList<ConstPO> constResult=constSearch.searchConst(requirementLogisCons);
+			double fee=constResult.get(0).getValue();
 			
-			//constSearch.searchConst(requirementDisCons);
 			
 			
 		} catch(Exception ex){
