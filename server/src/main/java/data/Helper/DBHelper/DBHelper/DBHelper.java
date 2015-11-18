@@ -1,4 +1,4 @@
-package data.Helper.DBHelper.DirectDBCreater;
+package data.Helper.DBHelper.DBHelper;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -29,4 +29,9 @@ public class DBHelper {
 	public static Connection getConnection() {
 		return conn;
 	}
+	
+	public static String SEARCH(String table, String target) {
+		return "SEARCH * FROM "+table+" WHERE "+target;
+	}
+	
 }

@@ -6,7 +6,7 @@ import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 
-import data.Helper.DBHelper.DirectDBCreater.DBHelper;
+import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Impl.Add.AddImpl;
 import data.Impl.Delete.DeleteImpl;
 import data.Impl.Search.SearchAccountImpl;
