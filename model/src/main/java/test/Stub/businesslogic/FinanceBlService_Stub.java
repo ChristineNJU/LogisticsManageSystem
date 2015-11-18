@@ -274,7 +274,7 @@ public class FinanceBlService_Stub implements AddAccountService, AddBenefitServi
 		return list;
 	}
 	@Override
-	public ArrayList<String> getNeedGathering() {
+	public ArrayList<GatheringVO> getNeedGathering() {
 		// TODO Auto-generated method stub
 		return null;
 	}

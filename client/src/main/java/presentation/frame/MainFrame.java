@@ -1,5 +1,6 @@
 package presentation.frame;
 
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -12,70 +13,31 @@ import javax.swing.JTextField;
 
 import businesslogic.Service.Inquiry.InquiryService;
 import businesslogic.VO.LogisticsHistoryVO;
+import presentation.userPanel.start.Inquiry;
 import test.Stub.businesslogic.InquiryBlService_Stub;
 
 public class MainFrame {
+	public static final int FRAME_WIDTH = 1200;
+	public static final int FRAME_HEIGHT = 800;
+	
+	public static final int FRAME_X = (Toolkit.getDefaultToolkit().getScreenSize().width - FRAME_WIDTH) / 2;
+	public static final int FRAME_Y = (Toolkit.getDefaultToolkit().getScreenSize().height - FRAME_HEIGHT) / 2 - 32;
 
-	JFrame frame = null;
-	JPanel startPanel = null;
-	JTextField barCode = null;
-	JButton ok = null;
-	LogisticsHistoryVO ligisticsHistory = null;
-	ArrayList<JLabel> logisticsInfoLabels = null;
-	InquiryService inquiry = null;
-	
+	private JFrame frame = new JFrame();
+	private Inquiry inquiry;
 	public MainFrame(){
-		this.instance();
-		this.init();
-	}
-	
-	public static void main(String[] args) {
-		new MainFrame();
-	}
-	
-	private void instance(){
-		frame = new JFrame();
-		startPanel = new JPanel();
-		barCode = new JTextField();
-		ok = new JButton("确定");
+		frame.setTitle("Logistics Management System");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(FRAME_WIDTH,FRAME_HEIGHT);
+		frame.setLayout(null);
+		frame.setUndecorated(true);
+		frame.setLocation(FRAME_X,FRAME_Y);
 		
-		inquiry = new InquiryBlService_Stub();
+		inquiry = new Inquiry(this);
+		frame.setContentPane(inquiry.getPanel());
 	}
 	
-	private void init(){
-		frame.setBounds(100, 100, 800, 600);
-		frame.add(startPanel);
-		barCode.setBounds(10, 10, 100, 20);
-		startPanel.add(barCode);
-		ok.setBounds(10,50,100,20);
-		startPanel.add(ok);
-		ok.addActionListener(new myListener(this));
-		frame.setVisible(true);
+	public JFrame getFrame(){
+		return frame;
 	}
-	
-	private void showInfo(){
-		ArrayList<JLabel> logisticsInfoLabels = new ArrayList<JLabel>();
-		for(int i = 0;i < ligisticsHistory.getHistory().size();i++){
-			logisticsInfoLabels.set(i, new JLabel(ligisticsHistory.getHistory().get(i)));
-			logisticsInfoLabels.get(i).setBounds(10,100,100,30);
-			this.startPanel.add(logisticsInfoLabels.get(i));
-		}
-		this.startPanel.repaint();
-		
-	}
-	
-	public class myListener implements ActionListener{
-		
-		MainFrame frame = null;
-		public myListener(MainFrame frame){
-			this.frame = frame;
-		}
-		
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			frame.ligisticsHistory  = (LogisticsHistoryVO) inquiry.getLogistics(barCode.getText());
-			frame.showInfo();
-		}
-	};
-	
 }
