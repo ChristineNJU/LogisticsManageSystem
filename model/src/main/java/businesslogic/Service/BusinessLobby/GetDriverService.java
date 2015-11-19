@@ -4,6 +4,6 @@ import java.util.ArrayList;
 
 import VO.DriverInfoVO;
 
-public interface SearchDriverService {
+public interface GetDriverService {
 	public ArrayList<DriverInfoVO> searchDriver(String id);
 }

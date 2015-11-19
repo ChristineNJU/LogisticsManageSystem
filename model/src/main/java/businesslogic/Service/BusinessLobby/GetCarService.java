@@ -4,6 +4,6 @@ import java.util.ArrayList;
 
 import VO.CarInfoVO;
 
-public interface SearchCarService {
+public interface GetCarService {
 	public ArrayList<CarInfoVO> searchCar(String id);
 }

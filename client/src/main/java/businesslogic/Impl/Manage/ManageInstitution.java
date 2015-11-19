@@ -8,11 +8,11 @@ import State.UpdateState;
 import VO.InstitutionVO;
 import businesslogic.Service.Manage.AddInstitutionService;
 import businesslogic.Service.Manage.DeleteInstitutionService;
-import businesslogic.Service.Manage.SearchInstitutionService;
+import businesslogic.Service.Manage.GetInstitutionService;
 import businesslogic.Service.Manage.UpdateInstitutionService;
 
 public class ManageInstitution implements AddInstitutionService,UpdateInstitutionService,
-											DeleteInstitutionService,SearchInstitutionService{
+											DeleteInstitutionService,GetInstitutionService{
 
 	@Override
 	public ArrayList<InstitutionVO> searchInstitution(String id) {

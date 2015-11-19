@@ -5,6 +5,6 @@ import java.util.ArrayList;
 import VO.ConstVO;
 import VO.CostVO;
 
-public interface SearchCostService {
+public interface GetCostService {
 	public ArrayList<CostVO> searchCost(String time_start, String time_end);
 }
