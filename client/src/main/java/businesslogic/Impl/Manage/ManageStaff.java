@@ -125,6 +125,7 @@ public class ManageStaff implements AddStaffService,UpdateStaffService,
 		try {
 			AddService addService=(AddService) Naming.lookup(RMIHelper.ADD_IMPL);
 			UserPO requirement=new UserPO(staff);
+			result=addService.add(requirement);
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
 			result=AddState.FAIL;
