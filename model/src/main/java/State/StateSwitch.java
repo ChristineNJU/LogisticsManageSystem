@@ -40,6 +40,18 @@ public class StateSwitch {
 		return result;
 	}
 	
+	public static String switchToStr(LogisticsState state){
+		String result="";
+		
+		switch (state){
+		case DAMAGED: result="DAMAGED"; break;
+		case INTACT: result="INTACT"; break;
+		case LOST: result="LOST"; break;
+		}
+		
+		return result;
+	}
+	
 	//--------------------------------------------------------------
 	
 	public static LoginState switchLoginStateToState(String str){
@@ -75,6 +87,18 @@ public class StateSwitch {
 		case "PAPER_CASE": state=PackingCharge.PAPER_CASE;
 		case "WOODEN_CASE": state=PackingCharge.WOODEN_CASE;
 		case "OTHERS": state=PackingCharge.OTHERS;
+		}
+		
+		return state;
+	}
+	
+	public static LogisticsState switchLogisticsStateToState(String str){
+		LogisticsState state=LogisticsState.DAMAGED;
+		
+		switch (str){
+		case "DAMAGED": state=LogisticsState.DAMAGED; break;
+		case "INTACT": state=LogisticsState.INTACT; break;
+		case "LOST": state=LogisticsState.LOST; break;
 		}
 		
 		return state;

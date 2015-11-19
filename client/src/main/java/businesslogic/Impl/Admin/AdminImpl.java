@@ -10,10 +10,11 @@ import State.UpdateState;
 import VO.UserVO;
 import businesslogic.Service.Admin.AddUserService;
 import businesslogic.Service.Admin.DeleteUserService;
-import data.Service.Search.*;
-import businesslogic.Service.Admin.UpdateUserService;
 import businesslogic.Service.Admin.GetUserService;
+import businesslogic.Service.Admin.UpdateUserService;
 import data.RMIHelper.RMIHelper;
+import data.Service.Delete.DeleteService;
+import data.Service.Search.SearchUserService;
 import data.Service.Update.UpdateService;
 
 public class AdminImpl implements AddUserService,DeleteUserService,GetUserService,UpdateUserService{
@@ -31,7 +32,7 @@ public class AdminImpl implements AddUserService,DeleteUserService,GetUserServic
 			requirement.add("id="+user.getId());
 			ArrayList<UserPO> result=userSearch.searchUser(requirement);
 			for(int i=0;i<result.size();i++){
-				
+				state=updateService.update(result.get(i), field, value);
 			}
 			
 		} catch(Exception ex){
@@ -46,19 +47,67 @@ public class AdminImpl implements AddUserService,DeleteUserService,GetUserServic
 	@Override
 	public ArrayList<UserVO> searchUser(ArrayList<String> requirement) {
 		// TODO Auto-generated method stub
-		return null;
+		ArrayList<UserVO> result=new ArrayList<UserVO>();
+		
+		try{
+			
+			SearchUserService userSearch=(SearchUserService) Naming.lookup(RMIHelper.SEARCH_USER_IMPL);
+			ArrayList<String> requirementID=new ArrayList<String>();
+			ArrayList<String> requirementName=new ArrayList<String>();
+			for(int i=0;i<requirement.size();i++){
+				requirementID.add("id="+requirement.get(i));
+				requirementName.add("name="+requirement.get(i));
+			}
+			ArrayList<UserPO> userList=userSearch.searchUser(requirement);
+			for(int i=0;i<userList.size();i++){
+				result.add(new UserVO(userList.get(i)));
+			}
+			
+		} catch(Exception ex){
+			System.out.println(ex.getMessage());
+			ex.printStackTrace();
+		}
+		
+		return result;
 	}
 
 	@Override
 	public DeleteState deleteUser(UserVO user) {
 		// TODO Auto-generated method stub
-		return null;
+		DeleteState state=DeleteState.SUCCESS;
+		try{
+			
+			SearchUserService userSearch=(SearchUserService) Naming.lookup(RMIHelper.SEARCH_USER_IMPL);
+			ArrayList<String> requirement=new ArrayList<String>();
+			requirement.add("id="+user.getId());
+			ArrayList<UserPO> userList=userSearch.searchUser(requirement); 
+			DeleteService userDelete=(DeleteService) Naming.lookup(RMIHelper.DELETE_IMPL);
+			for(int i=0;i<userList.size();i++){
+				state=userDelete.delete(userList.get(i));
+			}
+			
+		} catch (Exception ex){
+			state=DeleteState.CONNECTERROR;
+			System.out.println(ex.getMessage());
+			ex.printStackTrace();
+		}
+		return state;
 	}
 
 	@Override
 	public AddState addUser(UserVO user) {
 		// TODO Auto-generated method stub
-		return null;
+		AddState state=AddState.SUCCESS;
+		
+		try{
+			
+		} catch(Exception ex){
+			state=AddState.CONNECTERROR;
+			System.out.println(ex.getMessage());
+			ex.printStackTrace();
+		}
+		
+		return state;
 	}
 
 	

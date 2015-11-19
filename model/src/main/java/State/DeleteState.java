@@ -1,5 +1,5 @@
 package State;
 
 public enum DeleteState {
-	SUCCESS,FAIL
+	SUCCESS,FAIL,CONNECTERROR
 }

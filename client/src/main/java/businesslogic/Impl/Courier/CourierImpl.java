@@ -43,10 +43,10 @@ public class CourierImpl implements AddLogisticsService,GetAmountService,GetCity
 				UpdateService update=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
 			
 				for(int i=0;i<result.size();i++){
-					update.update(result.get(i), field, value);
+					state=update.update(result.get(i), field, value);
 				}
 				
-				state=UpdateState.SUCCESS;
+				
 			}
 		} catch(Exception ex){
 			state=UpdateState.CONNECTERROR;
