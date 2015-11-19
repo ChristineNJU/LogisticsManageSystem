@@ -26,6 +26,7 @@ public class DirectDBCreater {
 				
 //				createTable_User();
 				createTable_Logistics();
+//				insert_User();
 //				deleteTable(URLHelper.getLogisticsURL());
 				
 			} catch (InstantiationException | IllegalAccessException
@@ -67,6 +68,21 @@ public class DirectDBCreater {
 		}
 	}
 	
+	public static void insert_User() {
+		String table_name = URLHelper.getUserURL();
+		
+		try {
+			s = conn.createStatement();
+			boolean mark = s.execute("INSERT INTO "+table_name+" VALUES('admin', 'admin', '黄勇', '男', 20, "
+					+ "'管理员', '南京', '管理员')");
+			conn.commit();
+			System.out.println("insert into "+table_name);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public static void createTable_Logistics() {
 		String table_name = URLHelper.getLogisticsURL();
 		
@@ -80,7 +96,7 @@ public class DirectDBCreater {
 					+ "logistics_size double, internal_name varchar(50), logistics_type varchar(20), packing_charge varchar(20), "
 					+ "total_cost double, starting varchar(20), destination varchar(20), "
 					+ "logistics_state varchar(20), send_date varchar(25), receive_date varchar(25), "
-					+ "courier_id varchar(20), is_approved varchar(5), is_received varchar(5))");
+					+ "courier_id varchar(20), is_approved varchar(5), is_received varchar(5), history varchar(255))");
 			conn.commit();
 			
 			System.out.println("create table "+table_name);
