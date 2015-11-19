@@ -260,5 +260,6 @@ public class FinanceBlService_Stub implements FinanceService{
 		}
 		return list;
 	}
+
 	
 }

@@ -34,7 +34,7 @@ public class Inquiry{
 	private JTextField input;
 	private JButton confirm;
 	
-	private ArrayList<LogisticsHistoryVO> info;
+	private LogisticsHistoryVO info;
 	private ArrayList<JLabel> history;
 	
 	InquiryBlService_Stub inquiryService = new InquiryBlService_Stub();

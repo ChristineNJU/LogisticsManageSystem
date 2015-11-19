@@ -8,9 +8,10 @@ import State.UpdateState;
 import VO.CarInfoVO;
 import businesslogic.Service.BusinessLobby.AddCarService;
 import businesslogic.Service.BusinessLobby.DeleteCarService;
+import businesslogic.Service.BusinessLobby.GetCarService;
 import businesslogic.Service.BusinessLobby.UpdateCarService;
 
-public class CarMgt implements UpdateCarService,SearchCarService,DeleteCarService,AddCarService{
+public class CarMgt implements UpdateCarService,GetCarService,DeleteCarService,AddCarService{
 
 	@Override
 	public AddState addCar(CarInfoVO car) {

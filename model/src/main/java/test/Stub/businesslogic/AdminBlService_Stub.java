@@ -14,11 +14,7 @@ import State.InstitutionType;
 import State.UpdateState;
 import State.UserRole;
 import VO.UserVO;
-import businesslogic.Service.Admin.AddUserService;
 import businesslogic.Service.Admin.AdminService;
-import businesslogic.Service.Admin.DeleteUserService;
-import businesslogic.Service.Admin.GetUserService;
-import businesslogic.Service.Admin.UpdateUserService;
 
 public class AdminBlService_Stub implements AdminService{
 	/*-------------------------------------------
@@ -75,11 +71,13 @@ public class AdminBlService_Stub implements AdminService{
 	/*-------------------------------------------
 	查找数据库中用户数据
 	---------------------------------------------*/
-	public ArrayList<UserVO> searchUser(String id){
+	public ArrayList<UserVO> searchUser(ArrayList<String> requirement){
 		System.out.println("Logic_Stub "+"查看成功");
 		ArrayList<String> string=new ArrayList<String>();
 		ArrayList<UserVO> list=new ArrayList<UserVO>();
-		string.add(id);
+		for(int i=0;i<requirement.size();i++){
+			string.add(requirement.get(i));
+		}
 		try {
 			ArrayList<UserPO> polist=new SearchService_Stub().searchUser(string);
 			for(int i=0;i<polist.size();i++){

@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 
 import presentation.userPanel.start.Inquiry;
 
+
 public class MainFrame {
 	public static final int FRAME_WIDTH = 1200;
 	public static final int FRAME_HEIGHT = 800;

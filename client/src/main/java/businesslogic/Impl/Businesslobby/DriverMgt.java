@@ -8,10 +8,10 @@ import State.UpdateState;
 import VO.DriverInfoVO;
 import businesslogic.Service.BusinessLobby.AddDriverService;
 import businesslogic.Service.BusinessLobby.DeleteDriverService;
-import businesslogic.Service.BusinessLobby.SearchDriverService;
+import businesslogic.Service.BusinessLobby.GetDriverService;
 import businesslogic.Service.BusinessLobby.UpdateDriverService;
 
-public class DriverMgt implements AddDriverService,DeleteDriverService,UpdateDriverService,SearchDriverService{
+public class DriverMgt implements AddDriverService,DeleteDriverService,UpdateDriverService,GetDriverService{
 
 	@Override
 	public ArrayList<DriverInfoVO> searchDriver(String id) {
