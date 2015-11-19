@@ -25,13 +25,29 @@ public class DirectDBCreater {
 				conn.setAutoCommit(false);
 				
 //				createTable_User();
-//				createTable_Logistics();
-			
+				createTable_Logistics();
+//				deleteTable(URLHelper.getLogisticsURL());
+				
 			} catch (InstantiationException | IllegalAccessException
 					| ClassNotFoundException | SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+	}
+	
+	public static void deleteTable(String url) {
+		String table_name = url;
+		
+		try {
+			s = conn.createStatement();
+			s.execute("DROP TABLE "+table_name);
+			conn.commit();
+			
+			System.out.println("Delete table "+table_name);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public static void createTable_User() {
@@ -59,10 +75,10 @@ public class DirectDBCreater {
 			s.execute("CREATE TABLE "+table_name+" (bar_code varchar(20), sender_name varchar(20), sender_address varchar(100), "
 					+ "sender_organization varchar(50), sender_telephone varchar(25), "
 					+ "sender_mobilephone varchar(25), recipient_name varchar(20), recipient_address varchar(100), "
-					+ "recipient_organization varchar(50), recipient_telephone varchar(25), "
+					+ "recipient_organization varchar(50), recipient_telephone varchar(25), recipient_mobilephone varchar(25), "
 					+ "actual_recipient_name varchar(20), original_number int, logistics_weight double, "
 					+ "logistics_size double, internal_name varchar(50), logistics_type varchar(20), packing_charge varchar(20), "
-					+ "total_cost double, time_starting varchar(20), time_destination varchar(20), "
+					+ "total_cost double, starting varchar(20), destination varchar(20), "
 					+ "logistics_state varchar(20), send_date varchar(25), receive_date varchar(25), "
 					+ "courier_id varchar(20), is_approved varchar(5), is_received varchar(5))");
 			conn.commit();
