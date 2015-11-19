@@ -15,6 +15,7 @@ import State.DeleteState;
 import State.UpdateState;
 import VO.StaffVO;
 import data.Service.Search.SearchUserService;
+import data.Service.Update.UpdateService;
 import businesslogic.Service.Manage.AddStaffService;
 import businesslogic.Service.Manage.DeleteStaffService;
 import businesslogic.Service.Manage.GetStaffService;
@@ -74,6 +75,16 @@ public class ManageStaff implements AddStaffService,UpdateStaffService,
 	@Override
 	public UpdateState updateStaff(StaffVO staff, String field, String value) {
 		// TODO Auto-generated method stub
+		UpdateState result=UpdateState.NOTFOUND;
+		try {
+			UpdateService updateService=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
+			
+			
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			// TODO Auto-generated catch block
+			result=UpdateState.CONNECTERROR;
+			e.printStackTrace();
+		}
 		return null;
 	}
 
