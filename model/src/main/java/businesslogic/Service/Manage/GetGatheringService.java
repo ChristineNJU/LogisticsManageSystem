@@ -4,6 +4,6 @@ import java.util.ArrayList;
 
 import VO.GatheringVO;
 
-public interface SearchGatheringService {
+public interface GetGatheringService {
 	public ArrayList<GatheringVO> searchGathering(String date, String businesslobby);
 }

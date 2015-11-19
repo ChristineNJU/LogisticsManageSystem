@@ -17,12 +17,12 @@ import VO.StaffVO;
 import data.Service.Search.SearchUserService;
 import businesslogic.Service.Manage.AddStaffService;
 import businesslogic.Service.Manage.DeleteStaffService;
-import businesslogic.Service.Manage.SearchStaffService;
+import businesslogic.Service.Manage.GetStaffService;
 import businesslogic.Service.Manage.UpdateStaffService;
 import businesslogic.URLHelper.URLHelper;
 
 public class ManageStaff implements AddStaffService,UpdateStaffService,
-									SearchStaffService,DeleteStaffService{
+									GetStaffService,DeleteStaffService{
 
 	@Override
 	public DeleteState DeleteStaff(StaffVO staff) {

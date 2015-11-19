@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import VO.BenefitVO;
 import VO.CostVO;
 import VO.GatheringVO;
-import businesslogic.Service.Manage.SearchBenefitService;
-import businesslogic.Service.Manage.SearchCostService;
-import businesslogic.Service.Manage.SearchGatheringService;
+import businesslogic.Service.Manage.GetBenefitService;
+import businesslogic.Service.Manage.GetCostService;
+import businesslogic.Service.Manage.GetGatheringService;
 
-public class ManageFinance implements SearchBenefitService, SearchCostService,SearchGatheringService {
+public class ManageFinance implements GetBenefitService, GetCostService,GetGatheringService {
 
 	@Override
 	public ArrayList<GatheringVO> searchGathering(String date,

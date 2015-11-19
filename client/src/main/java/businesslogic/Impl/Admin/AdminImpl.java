@@ -3,18 +3,20 @@ package businesslogic.Impl.Admin;
 import java.rmi.Naming;
 import java.util.ArrayList;
 
+import PO.UserPO;
 import State.AddState;
 import State.DeleteState;
 import State.UpdateState;
 import VO.UserVO;
 import businesslogic.Service.Admin.AddUserService;
 import businesslogic.Service.Admin.DeleteUserService;
-import businesslogic.Service.Admin.SearchUserService;
+import data.Service.Search.*;
 import businesslogic.Service.Admin.UpdateUserService;
+import businesslogic.Service.Admin.GetUserService;
+import data.RMIHelper.RMIHelper;
 import data.Service.Update.UpdateService;
-import data.RMIHelper.*;
 
-public class AdminImpl implements AddUserService,DeleteUserService,SearchUserService,UpdateUserService{
+public class AdminImpl implements AddUserService,DeleteUserService,GetUserService,UpdateUserService{
 
 	@Override
 	public UpdateState updateUser(UserVO user, String field, String value) {
@@ -23,8 +25,14 @@ public class AdminImpl implements AddUserService,DeleteUserService,SearchUserSer
 		
 		try{
 			
+			SearchUserService userSearch=(SearchUserService) Naming.lookup(RMIHelper.SEARCH_USER_IMPL);
 			UpdateService updateService=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
-			
+			ArrayList<String> requirement=new ArrayList<String>();
+			requirement.add("id="+user.getId());
+			ArrayList<UserPO> result=userSearch.searchUser(requirement);
+			for(int i=0;i<result.size();i++){
+				
+			}
 			
 		} catch(Exception ex){
 			state=UpdateState.CONNECTERROR;
@@ -36,7 +44,7 @@ public class AdminImpl implements AddUserService,DeleteUserService,SearchUserSer
 	}
 
 	@Override
-	public ArrayList<UserVO> searchUser(String id) {
+	public ArrayList<UserVO> searchUser(ArrayList<String> requirement) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -52,5 +60,7 @@ public class AdminImpl implements AddUserService,DeleteUserService,SearchUserSer
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
 
 }

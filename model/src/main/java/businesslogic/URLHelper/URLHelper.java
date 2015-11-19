@@ -2,28 +2,28 @@ package businesslogic.URLHelper;
 
 public class URLHelper {
 	
-	private static final String DB_Logistics = "Logistics";
+	private static final String DB_Logistics = "Logistics_info";
 	
-	private static final String DB_BsLb_Gathering = "_BsLb_Gathering";
-	private static final String DB_BsLb_Delivery = "_BsLb_Delivery";
-	private static final String DB_BsLb_CarInfo = "_BsLb_CarInfo";
-	private static final String DB_BsLb_DriverInfo = "_BsLb_DriverInfo";
+	private static final String DB_BsLb_Gathering = "_BsLb_Gathering_info";
+	private static final String DB_BsLb_Delivery = "_BsLb_Delivery_info";
+	private static final String DB_BsLb_CarInfo = "_BsLb_CarInfo_info";
+	private static final String DB_BsLb_DriverInfo = "_BsLb_DriverInfo_info";
 	
-	private static final String DB_Arrival = "_Arrival";
-	private static final String DB_Entrucking = "_Entrucking";	
+	private static final String DB_Arrival = "_Arrival_info";
+	private static final String DB_Entrucking = "_Entrucking_info";	
 
-	private static final String DB_MC_Transfer = "_MC_Transfer";
+	private static final String DB_MC_Transfer = "_MC_Transfer_info";
 	
-	private static final String DB_Repo_Balance = "_Repo_Balance";
-	private static final String DB_Repo_Storage = "_Repo_Storage";
-	private static final String DB_Repo_Removal = "_Repo_Removal";
-	private static final String DB_Repo_StockTaking = "_DB_Repo_StockTaking";
+	private static final String DB_Repo_Balance = "_Repo_Balance_info";
+	private static final String DB_Repo_Storage = "_Repo_Storage_info";
+	private static final String DB_Repo_Removal = "_Repo_Removal_info";
+	private static final String DB_Repo_StockTaking = "_DB_Repo_StockTaking_info";
 
-	private static final String DB_Cost = "Cost";
-	private static final String DB_Const = "Const";
-	private static final String DB_Period = "Period";
-	private static final String DB_User = "User";
-	private static final String DB_Institution = "Institution";
+	private static final String DB_Cost = "Cost_info";
+	private static final String DB_Const = "Const_info";
+	private static final String DB_Period = "Period_info";
+	private static final String DB_User = "User_info";
+	private static final String DB_Institution = "Institution_info";
 	
 	public static String getLogisticsURL() {
 		return DB_Logistics;

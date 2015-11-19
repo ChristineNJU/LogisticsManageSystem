@@ -2,6 +2,6 @@ package businesslogic.Service.Manage;
 
 import VO.BenefitVO;
 
-public interface SearchBenefitService {
+public interface GetBenefitService {
 	public BenefitVO searchBenefit(String time_end);
 }

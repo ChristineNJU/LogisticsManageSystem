@@ -9,7 +9,7 @@ import VO.UserVO;
 import businesslogic.Service.Admin.AddUserService;
 import businesslogic.Service.Admin.AdminService;
 import businesslogic.Service.Admin.DeleteUserService;
-import businesslogic.Service.Admin.SearchUserService;
+import businesslogic.Service.Admin.GetUserService;
 import businesslogic.Service.Admin.UpdateUserService;
 
 public class AdminController implements AdminService{
