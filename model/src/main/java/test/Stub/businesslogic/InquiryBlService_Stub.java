@@ -6,28 +6,24 @@ import java.util.ArrayList;
 import test.Stub.data.SearchService_Stub;
 import PO.LogisticsInfoPO;
 import VO.LogisticsHistoryVO;
-import VO.VO;
 import businesslogic.Service.Inquiry.InquiryService;
 
 public class InquiryBlService_Stub implements InquiryService{
 	/*-------------------------------------------
 	 查询快递信息
 	---------------------------------------------*/
-	public ArrayList<LogisticsHistoryVO> getLogistics(String bar_code){
+	public LogisticsHistoryVO getLogistics(String bar_code){
 		System.out.println("Logic_Stub "+"查询成功");
-		ArrayList<LogisticsHistoryVO> list = new ArrayList<LogisticsHistoryVO>();
+		LogisticsHistoryVO result=new LogisticsHistoryVO(null);
 		ArrayList<String> requirement=new ArrayList<String>();
 		requirement.add(bar_code);
 		try{
 			ArrayList<LogisticsInfoPO> lpo=new SearchService_Stub().searchLogisticsInfo(requirement);
-			for(int i=0;i<lpo.size();i++){
-				LogisticsHistoryVO log=new LogisticsHistoryVO(lpo.get(i).getBarCode(),lpo.get(i).getHistory());
-				list.add(log);
-			}
+			result=new LogisticsHistoryVO(lpo.get(0));
 		} catch(RemoteException e){
 			e.printStackTrace();
 		}
 		
-		return list;
+		return result;
 	}
 }

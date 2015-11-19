@@ -6,11 +6,7 @@ import State.AddState;
 import State.DeleteState;
 import State.UpdateState;
 import VO.UserVO;
-import businesslogic.Service.Admin.AddUserService;
 import businesslogic.Service.Admin.AdminService;
-import businesslogic.Service.Admin.DeleteUserService;
-import businesslogic.Service.Admin.GetUserService;
-import businesslogic.Service.Admin.UpdateUserService;
 
 public class AdminController implements AdminService{
 	
@@ -22,10 +18,10 @@ public class AdminController implements AdminService{
 	}
 
 	@Override
-	public ArrayList<UserVO> searchUser(String id) {
+	public ArrayList<UserVO> searchUser(ArrayList<String> requirement) {
 		// TODO Auto-generated method stub
 		AdminImpl adminUser=new AdminImpl();
-		return adminUser.searchUser(id);
+		return adminUser.searchUser(requirement);
 	}
 
 	@Override

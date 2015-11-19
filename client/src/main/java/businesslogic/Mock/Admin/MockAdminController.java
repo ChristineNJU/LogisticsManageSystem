@@ -17,10 +17,10 @@ public class MockAdminController extends AdminController{
 	}
 
 	@Override
-	public ArrayList<UserVO> searchUser(String id) {
+	public ArrayList<UserVO> searchUser(ArrayList<String> requirement) {
 		// TODO Auto-generated method stub
 		MockAdmin adminUser=new MockAdmin();
-		return adminUser.searchUser(id);
+		return adminUser.searchUser(requirement);
 	}
 
 	@Override

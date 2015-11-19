@@ -1,10 +1,10 @@
 package businesslogic.Impl.Inquiry;
 
-import VO.LogisticsInputVO;
+import VO.LogisticsHistoryVO;
 
 public class InquiryImpl {
 	
-	public LogisticsInputVO getLogistics(String bar_code) {
+	public LogisticsHistoryVO getLogistics(String bar_code) {
 		
 		return null;
 	}

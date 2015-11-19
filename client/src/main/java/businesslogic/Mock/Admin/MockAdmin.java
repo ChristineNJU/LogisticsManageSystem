@@ -16,7 +16,7 @@ public class MockAdmin extends AdminImpl{
 	}
 
 	@Override
-	public ArrayList<UserVO> searchUser(String id) {
+	public ArrayList<UserVO> searchUser(ArrayList<String> requirement) {
 		// TODO Auto-generated method stub
 		return new ArrayList<UserVO>();
 	}

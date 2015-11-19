@@ -19,7 +19,7 @@ public class start {
 		JPanel startPanel = null;
 		JTextField barCode = null;
 		JButton ok = null;
-		LogisticsHistoryVO ligisticsHistory = null;
+		LogisticsHistoryVO logisticsHistory = null;
 		ArrayList<JLabel> logisticsInfoLabels = null;
 		JLabel error = null;
 		InquiryBlService_Stub inquiry = null;
@@ -56,8 +56,8 @@ public class start {
 		
 		private void showInfo(){
 			ArrayList<JLabel> logisticsInfoLabels = new ArrayList<JLabel>();
-			for(int i = 0;i < ligisticsHistory.getHistory().size();i++){
-				logisticsInfoLabels.add(i, new JLabel(ligisticsHistory.getHistory().get(i)));
+			for(int i = 0;i < logisticsHistory.getHistory().size();i++){
+				logisticsInfoLabels.add(i, new JLabel(logisticsHistory.getHistory().get(i)));
 				logisticsInfoLabels.get(i).setBounds(10,100*(i+1),100,30);
 				this.startPanel.add(logisticsInfoLabels.get(i));
 			}
@@ -93,7 +93,7 @@ public class start {
 				}
 				
 				if(legal){
-					frame.ligisticsHistory  = (LogisticsHistoryVO) inquiry.getLogistics(code);
+					frame.logisticsHistory = inquiry.getLogistics(code);
 					frame.showInfo();
 				}else{
 					System.out.println("error!");

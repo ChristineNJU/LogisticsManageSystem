@@ -272,18 +272,7 @@ public class FinanceBlService_Stub implements FinanceService{
 		}
 		return list;
 	}
-<<<<<<< HEAD
-	@Override
-	public ArrayList<GatheringVO> getNeedGathering() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-=======
 
->>>>>>> origin/master
-	
-	
 	
 	
 }

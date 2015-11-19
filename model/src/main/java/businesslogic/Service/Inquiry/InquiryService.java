@@ -1,13 +1,7 @@
 package businesslogic.Service.Inquiry;
 
-<<<<<<< HEAD
-import java.util.ArrayList;
 
-import businesslogic.VO.LogisticsHistoryVO;
-import businesslogic.VO.VO;
-=======
-import VO.VO;
->>>>>>> origin/master
+import VO.LogisticsHistoryVO;
 
 
 public interface InquiryService {
