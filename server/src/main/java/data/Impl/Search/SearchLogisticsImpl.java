@@ -15,6 +15,7 @@ import PO.LogisticsInfoPO;
 import State.LogisticsState;
 import State.LogisticsType;
 import State.PackingCharge;
+import State.StateSwitch;
 import businesslogic.URLHelper.URLHelper;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Search.SearchLogisticsService;
@@ -66,12 +67,12 @@ public class SearchLogisticsImpl extends UnicastRemoteObject implements SearchLo
 				double weight = rs.getDouble(14);
 				double size = rs.getDouble(15);
 				String internal_name = rs.getString(16);
-				LogisticsType type = null;
-				PackingCharge pack = null;
+				LogisticsType type = StateSwitch.switchLogisticsTypeToState(rs.getString(17));
+				PackingCharge pack = StateSwitch.switchPackChargeToState(rs.getString(18));
 				double total_cost = rs.getDouble(19);
 				String starting = rs.getString(20);
 				String destination = rs.getString(21);
-				LogisticsState state = null;			
+				LogisticsState state = StateSwitch.switchLogisticsStateToState(rs.getString(22));			
 				
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				
@@ -112,6 +113,7 @@ public class SearchLogisticsImpl extends UnicastRemoteObject implements SearchLo
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+//			e.printStackTrace();
 			System.out.println("从数据库提取UserPO对象失败");
 			return result;
 		}

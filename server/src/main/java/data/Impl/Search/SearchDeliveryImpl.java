@@ -40,34 +40,38 @@ public class SearchDeliveryImpl extends UnicastRemoteObject implements SearchDel
 			String target = requirement.get(0);
 			
 			ResultSet rs = s.executeQuery(DBHelper.SEARCH(URLHelper.getDeliveryURL(DB_URL), target));
-			
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			
-			Date date;
-			try {
-				date = sdf.parse(rs.getString(1));
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				date = null;
-				System.out.println(DB_URL+"时间未正确初始化");
+		
+			while(rs.next()){				
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				
+				Date date;
+				try {
+					date = sdf.parse(rs.getString(1));
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					date = null;
+					System.out.println(DB_URL+"时间未正确初始化");
+				}
+				
+				String[] list = rs.getString(2).split(",");
+				ArrayList<String> bar_code_list = new ArrayList<String>();
+				for(int i=0;i<list.length;i++){
+					bar_code_list.add(list[i]);
+				}
+				
+				String courier = rs.getString(3);
+				boolean isApproved = rs.getString(4).equals("true");
+				
+				DeliveryPO delivery = new DeliveryPO(date, bar_code_list, courier, DB_URL);
+				
+				delivery.setApproved(isApproved);
+				
+				result.add(delivery);
 			}
 			
-			String[] list = rs.getString(2).split(",");
-			ArrayList<String> bar_code_list = new ArrayList<String>();
-			for(int i=0;i<list.length;i++){
-				bar_code_list.add(list[i]);
-			}
-			
-			String courier = rs.getString(3);
-			boolean isApproved = rs.getString(4).equals("true");
-					
-			DeliveryPO delivery = new DeliveryPO(date, bar_code_list, courier, DB_URL);
-			
-			delivery.setApproved(isApproved);
-			
-			result.add(delivery);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+//			e.printStackTrace();
 			System.out.println("从数据库提取DeliveryPO对象失败");
 			return result;
 		}

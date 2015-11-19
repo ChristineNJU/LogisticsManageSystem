@@ -26,10 +26,13 @@ public class DirectDBCreater {
 				
 //				createTable_User();
 //				createTable_Logistics();
+//				createTable_Const();
 //				insert_User();
-				insert_Logistics();
+//				insert_Logistics();
+				insert_Const();
 //				deleteTable(URLHelper.getLogisticsURL());
 //				deleteTable(URLHelper.getUserURL());
+//				deleteTable(URLHelper.getConstURL());
 				
 			} catch (InstantiationException | IllegalAccessException
 					| ClassNotFoundException | SQLException e) {
@@ -119,6 +122,47 @@ public class DirectDBCreater {
 					+ "'2015-11-11 12:20:20', '2015-11-19 20:20:20', '刘钦', 'true', 'true', "
 					+ "'南京栖霞区收件-南京栖霞区正在派件-收件人已收件')");
 			conn.commit();
+			System.out.println("insert into "+table_name);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void createTable_Const() {
+		String table_name = URLHelper.getConstURL();
+		
+		try {
+			s = conn.createStatement();
+			s.execute("CREATE TABLE "+table_name+" (name varchar(50) PRIMARY key, value double)");
+			conn.commit();
+			
+			System.out.println("create table "+table_name);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void insert_Const() {
+		String table_name = URLHelper.getConstURL();
+		
+		try {
+			s = conn.createStatement();
+			boolean mark;
+			
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('plane', 20)");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('train', 0.2)");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('car', 2)");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('economic', 18)");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('standard', 23)");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('express', 25)");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('wooden_case', 10)");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('courise_bag', 1)");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('paper_case', 5)");
+			
+			conn.commit();
+			
 			System.out.println("insert into "+table_name);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
