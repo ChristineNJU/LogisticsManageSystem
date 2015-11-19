@@ -18,40 +18,40 @@ public class BusinessLobbyController implements BsLbService{
 	public UpdateState updateDriver(DriverInfoVO driver, String field,
 			String value) {
 		// TODO Auto-generated method stub
-		UpdateDriverImpl updateDriver=new UpdateDriverImpl();
+		DriverMgt updateDriver=new DriverMgt();
 		return updateDriver.updateDriver(driver, field, value);
 	}
 	
 	@Override
 	public UpdateState updateCar(CarInfoVO car, String field, String value) {
 		// TODO Auto-generated method stub
-		UpdateCarImpl updateCar=new UpdateCarImpl();
+		CarMgt updateCar=new CarMgt();
 		return updateCar.updateCar(car, field, value);
 	}
 	
 	@Override
 	public ArrayList<DriverInfoVO> searchDriver(String id) {
 		// TODO Auto-generated method stub
-		SearchDriverImpl searchDriver=new SearchDriverImpl();
+		DriverMgt searchDriver=new DriverMgt();
 		return searchDriver.searchDriver(id);
 	}
 	
 	@Override
 	public ArrayList<CarInfoVO> searchCar(String id) {
 		// TODO Auto-generated method stub
-		SearchCarImpl searchCar=new SearchCarImpl();
+		CarMgt searchCar=new CarMgt();
 		return searchCar.searchCar(id);
 	}
 	
 	@Override
-	public ArrayList<String> getNeedGathering() {
+	public ArrayList<GatheringVO> getNeedGathering() {
 		// TODO Auto-generated method stub
 		GetNeedGatheringImpl getNeedGathering=new GetNeedGatheringImpl();
 		return getNeedGathering.getNeedGathering();
 	}
 	
 	@Override
-	public ArrayList<String> getNeedEntrucking() {
+	public ArrayList<EntruckingVO> getNeedEntrucking() {
 		// TODO Auto-generated method stub
 		GetNeedEntruckingImpl getNeedEntrucking=new GetNeedEntruckingImpl();
 		return getNeedEntrucking.getNeedEntrucking();
@@ -74,7 +74,7 @@ public class BusinessLobbyController implements BsLbService{
 	@Override
 	public DeleteState deleteCar(CarInfoVO car) {
 		// TODO Auto-generated method stub
-		DeleteCarImpl deleteCar=new DeleteCarImpl();
+		CarMgt deleteCar=new CarMgt();
 		return deleteCar.deleteCar(car);
 	}
 	
@@ -88,21 +88,21 @@ public class BusinessLobbyController implements BsLbService{
 	@Override
 	public AddState AddDriver(DriverInfoVO driver) {
 		// TODO Auto-generated method stub
-		AddDriverImpl addDriver=new AddDriverImpl();
+		DriverMgt addDriver=new DriverMgt();
 		return addDriver.AddDriver(driver);
 	}
 	
 	@Override
 	public AddState addCar(CarInfoVO car) {
 		// TODO Auto-generated method stub
-		AddCarImpl addCar=new AddCarImpl();
+		CarMgt addCar=new CarMgt();
 		return addCar.addCar(car);
 	}
 
 	@Override
 	public DeleteState deleteDriver(DriverInfoVO driver) {
 		// TODO Auto-generated method stub
-		DeleteDriverImpl deleteDriver=new DeleteDriverImpl();
+		DriverMgt deleteDriver=new DriverMgt();
 		return deleteDriver.deleteDriver(driver);
 	}
 	

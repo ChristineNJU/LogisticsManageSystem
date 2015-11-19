@@ -1,5 +1,5 @@
 package State;
 
 public enum AddState {
-	SUCCESS,FAIL
+	SUCCESS,CONNECTERROR,FAIL
 }

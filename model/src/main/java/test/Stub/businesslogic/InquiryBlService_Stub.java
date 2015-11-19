@@ -13,9 +13,9 @@ public class InquiryBlService_Stub implements InquiryService{
 	/*-------------------------------------------
 	 查询快递信息
 	---------------------------------------------*/
-	public VO getLogistics(String bar_code){
+	public ArrayList<LogisticsHistoryVO> getLogistics(String bar_code){
 		System.out.println("Logic_Stub "+"查询成功");
-		ArrayList<VO> list = new ArrayList<VO>();
+		ArrayList<LogisticsHistoryVO> list = new ArrayList<LogisticsHistoryVO>();
 		ArrayList<String> requirement=new ArrayList<String>();
 		requirement.add(bar_code);
 		try{
@@ -28,6 +28,6 @@ public class InquiryBlService_Stub implements InquiryService{
 			e.printStackTrace();
 		}
 		
-		return list.get(0);
+		return list;
 	}
 }
