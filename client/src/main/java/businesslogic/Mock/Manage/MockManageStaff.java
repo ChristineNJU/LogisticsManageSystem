@@ -8,7 +8,7 @@ import VO.StaffVO;
 import businesslogic.Impl.Manage.ManageStaff;
 public class MockManageStaff extends ManageStaff {
 	@Override
-	public DeleteState DeleteStaff(String id) {
+	public DeleteState DeleteStaff(StaffVO staff) {
 		// TODO Auto-generated method stub
 		return DeleteState.SUCCESS;
 	}

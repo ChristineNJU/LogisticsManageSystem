@@ -2,9 +2,9 @@ package businesslogic.Mock.Repository;
 
 import java.util.ArrayList;
 
+import State.StorageState;
+import VO.StorageVO;
 import businesslogic.Impl.Reponsitory.StorageImpl;
-import businesslogic.State.StorageState;
-import businesslogic.VO.StorageVO;
 
 public class MockStorage extends StorageImpl{
 

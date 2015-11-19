@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import test.Stub.data.SearchService_Stub;
 import PO.LogisticsInfoPO;
 import VO.LogisticsHistoryVO;
-import VO.VO;
 import businesslogic.Service.Inquiry.InquiryService;
 
 public class InquiryBlService_Stub implements InquiryService{

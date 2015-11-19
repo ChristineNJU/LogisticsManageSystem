@@ -1,25 +1,10 @@
 package presentation.frame;
 
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 
-<<<<<<< HEAD
-import businesslogic.Service.Inquiry.InquiryService;
-import businesslogic.VO.LogisticsHistoryVO;
 import presentation.userPanel.start.Inquiry;
-=======
->>>>>>> origin/master
-import test.Stub.businesslogic.InquiryBlService_Stub;
-import VO.LogisticsHistoryVO;
-import businesslogic.Service.Inquiry.InquiryService;
 
 public class MainFrame {
 	public static final int FRAME_WIDTH = 1200;

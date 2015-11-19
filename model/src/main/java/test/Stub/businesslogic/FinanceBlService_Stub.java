@@ -3,6 +3,10 @@ package test.Stub.businesslogic;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import test.Stub.data.AddService_Stub;
+import test.Stub.data.DeleteService_Stub;
+import test.Stub.data.SearchService_Stub;
+import test.Stub.data.UpdateService_Stub;
 import PO.AccountPO;
 import PO.BenefitPO;
 import PO.CostPO;
@@ -20,23 +24,7 @@ import VO.EntruckingVO;
 import VO.GatheringVO;
 import VO.LogVO;
 import VO.TransferVO;
-import businesslogic.Service.BusinessLobby.GetNeedGatheringService;
-import businesslogic.Service.Finance.AddAccountService;
-import businesslogic.Service.Finance.AddBenefitService;
-import businesslogic.Service.Finance.AddCostService;
-import businesslogic.Service.Finance.DeleteAccountService;
 import businesslogic.Service.Finance.FinanceService;
-import businesslogic.Service.Finance.GetAccountService;
-import businesslogic.Service.Finance.GetBenefitService;
-import businesslogic.Service.Finance.GetCostService;
-import businesslogic.Service.Finance.GetEntruckingService;
-import businesslogic.Service.Finance.GetLogService;
-import businesslogic.Service.Finance.GetTransferService;
-import businesslogic.Service.Finance.UpdateAccountService;
-import test.Stub.data.AddService_Stub;
-import test.Stub.data.DeleteService_Stub;
-import test.Stub.data.SearchService_Stub;
-import test.Stub.data.UpdateService_Stub;
 
 public class FinanceBlService_Stub implements FinanceService{
 	/*-------------------------------------------
@@ -272,18 +260,5 @@ public class FinanceBlService_Stub implements FinanceService{
 		}
 		return list;
 	}
-<<<<<<< HEAD
-	@Override
-	public ArrayList<GatheringVO> getNeedGathering() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-=======
-
->>>>>>> origin/master
-	
-	
-	
 	
 }

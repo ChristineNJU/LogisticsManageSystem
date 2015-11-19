@@ -2,8 +2,8 @@ package businesslogic.Service.BusinessLobby;
 
 import java.util.ArrayList;
 
-import businesslogic.VO.GatheringVO;
+import VO.GatheringVO;
 
 public interface GetNeedGatheringService {
-	public ArrayList<GatheringVO> getNeedGathering();
+	public ArrayList<String> getNeedGathering();
 }

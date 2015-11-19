@@ -1,7 +1,7 @@
 package businesslogic.Mock.Repository;
 
+import State.AddState;
 import businesslogic.Impl.Reponsitory.StockTakingConfirmImpl;
-import data.State.AddState;
 
 public class MockStockTaking extends StockTakingConfirmImpl{
 

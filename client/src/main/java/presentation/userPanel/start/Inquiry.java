@@ -12,13 +12,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import businesslogic.VO.LogisticsHistoryVO;
-import businesslogic.VO.VO;
 import presentation.frame.MainFrame;
 import presentation.main.ColorPallet;
 import presentation.main.FontSet;
 import presentation.panel.components.ButtonFrame;
 import test.Stub.businesslogic.InquiryBlService_Stub;
+import VO.LogisticsHistoryVO;
 
 public class Inquiry{
 

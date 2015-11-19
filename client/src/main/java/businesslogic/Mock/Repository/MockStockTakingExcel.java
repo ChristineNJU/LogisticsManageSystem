@@ -1,7 +1,7 @@
 package businesslogic.Mock.Repository;
 
+import State.OutputState;
 import businesslogic.Impl.Reponsitory.StockTakingExcelImpl;
-import businesslogic.State.OutputState;
 
 public class MockStockTakingExcel extends StockTakingExcelImpl{
 

@@ -1,7 +1,6 @@
 package businesslogic.test.Inquiry;
 
 import junit.framework.TestCase;
-import VO.VO;
 import businesslogic.Impl.Inquiry.InquiryController;
 
 public class TestGetLogistics extends TestCase {

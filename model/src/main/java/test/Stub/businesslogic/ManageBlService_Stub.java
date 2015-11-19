@@ -274,9 +274,9 @@ public class ManageBlService_Stub implements ManageService{
 	/*-------------------------------------------
 	删除人员
 	---------------------------------------------*/
-	public DeleteState DeleteStaff (String id){
+	public DeleteState DeleteStaff (StaffVO staff){
 		System.out.println("删除成功");
-		UserPO userpo=new UserPO(id, "102412412", "n", "男", 30, InstitutionType.BusinessLobby, "南京", 
+		UserPO userpo=new UserPO(staff.getSystemId(), "102412412", "n", "男", 30, InstitutionType.BusinessLobby, "南京", 
 				UserRole.curier, "user_info");
 		try {
 			System.out.println("Delete_Stub"+new DeleteService_Stub().delete(userpo) );
