@@ -4,6 +4,7 @@ public class RMIHelper {
 	
 	public static final int REGISTRY = 8888;
 	public static final String URL = "rmi://127.0.0.1:"+REGISTRY+"/";
+//	public static final String URL = "rmi://127.0.0.1:"
 	
 	public static final String ADD_IMPL = URL+"AddImpl";
 	public static final String UPDATE_IMPL = URL+"UpdateImpl";

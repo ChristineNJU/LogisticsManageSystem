@@ -25,9 +25,11 @@ public class DirectDBCreater {
 				conn.setAutoCommit(false);
 				
 //				createTable_User();
-				createTable_Logistics();
+//				createTable_Logistics();
 //				insert_User();
+				insert_Logistics();
 //				deleteTable(URLHelper.getLogisticsURL());
+//				deleteTable(URLHelper.getUserURL());
 				
 			} catch (InstantiationException | IllegalAccessException
 					| ClassNotFoundException | SQLException e) {
@@ -56,9 +58,9 @@ public class DirectDBCreater {
 		
 		try {
 			s = conn.createStatement();
-			s.execute("CREATE TABLE "+table_name+" (User_ID varchar(20), User_Password varchar(20), User_Name varchar(20),"
-					+ " User_Sex varchar(5), User_Age int, User_InstitutionType varchar(15), User_City varchar(20),"
-					+ " User_UserRole varchar(15))");
+			s.execute("CREATE TABLE "+table_name+" (ID varchar(20), Password varchar(20), Name varchar(20),"
+					+ " Sex varchar(5), Age int, Institution varchar(15), City varchar(20),"
+					+ " Role varchar(15))");
 			conn.commit();
 			
 			System.out.println("create table "+table_name);
@@ -92,14 +94,32 @@ public class DirectDBCreater {
 					+ "sender_organization varchar(50), sender_telephone varchar(25), "
 					+ "sender_mobilephone varchar(25), recipient_name varchar(20), recipient_address varchar(100), "
 					+ "recipient_organization varchar(50), recipient_telephone varchar(25), recipient_mobilephone varchar(25), "
-					+ "actual_recipient_name varchar(20), original_number int, logistics_weight double, "
-					+ "logistics_size double, internal_name varchar(50), logistics_type varchar(20), packing_charge varchar(20), "
+					+ "actual_recipient_name varchar(20), original_number int, weight double, "
+					+ "size double, internal_name varchar(50), type varchar(20), pack varchar(20), "
 					+ "total_cost double, starting varchar(20), destination varchar(20), "
-					+ "logistics_state varchar(20), send_date varchar(25), receive_date varchar(25), "
-					+ "courier_id varchar(20), is_approved varchar(5), is_received varchar(5), history varchar(255))");
+					+ "state varchar(20), send_date varchar(25), receive_date varchar(25), "
+					+ "courier varchar(20), isApproved varchar(5), isReceived varchar(5), history varchar(1000))");
 			conn.commit();
 			
 			System.out.println("create table "+table_name);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void insert_Logistics() {
+		String table_name = URLHelper.getLogisticsURL();
+		
+		try {
+			s = conn.createStatement();
+			boolean mark = s.execute("INSERT INTO "+table_name+" VALUES('0000000001', '黄勇', '南京大学仙林校区1B-434-1', '南京大学', "
+					+ "'22222222', '13851988941', '张晨剑', '南京大学仙林校区1B-434-2', '南京大学', '22222222', '13851988941', "
+					+ "'张晨剑', 1, 2, 2, 'iPhone 6S Plus', 'ECONOMIC', 'COURISE_BAG', 6, '南京', '南京', 'DAMAGED', "
+					+ "'2015-11-11 12:20:20', '2015-11-19 20:20:20', '刘钦', 'true', 'true', "
+					+ "'南京栖霞区收件-南京栖霞区正在派件-收件人已收件')");
+			conn.commit();
+			System.out.println("insert into "+table_name);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

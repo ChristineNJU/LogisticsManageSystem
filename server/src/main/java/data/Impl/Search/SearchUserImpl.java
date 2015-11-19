@@ -39,7 +39,11 @@ public class SearchUserImpl extends UnicastRemoteObject implements SearchUserSer
 			
 			String target = requirement.get(0);
 			
+			System.out.println(DBHelper.SEARCH(URLHelper.getUserURL(), target));
+			
 			ResultSet rs = s.executeQuery(DBHelper.SEARCH(URLHelper.getUserURL(), target));
+			
+			rs.next();
 			
 			String id = rs.getString(1);
 			String password = rs.getString(2);
@@ -56,6 +60,7 @@ public class SearchUserImpl extends UnicastRemoteObject implements SearchUserSer
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
 			System.out.println("从数据库提取UserPO对象失败");
 			return result;
 		}

@@ -353,6 +353,12 @@ public class LogisticsInfoPO extends PO {
 		this.receive_date = receive_date;
 	}
 	/*
+	 * 更新实际收件人
+	 * */
+	public void setActualRecipientName(String name) {
+		this.actual_recipient_name = name;
+	}
+	/*
 	 * 更新历史轨迹
 	 * */
 	public void addHistory(String node) {
