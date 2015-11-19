@@ -3,9 +3,11 @@ package PO;
 import java.util.ArrayList;
 import java.util.Date;
 
+import businesslogic.URLHelper.URLHelper;
 import State.LogisticsState;
 import State.LogisticsType;
 import State.PackingCharge;
+import VO.LogisticsInputVO;
 
 /*=================================================================================
  * 用来保存快递信息的持久化数据格式
@@ -88,6 +90,30 @@ public class LogisticsInfoPO extends PO {
 		this.send_date = send_date;
 		this.receive_date = receive_date;
 		this.courier = courier;
+	}
+	
+	public LogisticsInfoPO(LogisticsInputVO logisticsInfo){
+		
+		super(URLHelper.getLogisticsURL());
+		this.sender_name=logisticsInfo.getSender_name();
+		this.sender_address=logisticsInfo.getSender_address();
+		this.sender_organization=logisticsInfo.getSender_organization();
+		this.sender_telephone=logisticsInfo.getSender_telephone();
+		this.sender_mobilephone=logisticsInfo.getSender_mobilephone();
+		
+		this.bar_code=logisticsInfo.getBar_code();
+		this.original_number=logisticsInfo.getOriginal_number();
+		this.weight=logisticsInfo.getWeight();
+		this.size=logisticsInfo.getSize();
+		this.internal_name=logisticsInfo.getInternal_name();
+		this.type=logisticsInfo.getType();
+		this.pack=logisticsInfo.getPack();
+		this.total_cost=logisticsInfo.getTotal_cost();
+		this.starting=logisticsInfo.getStarting();
+		this.destination=logisticsInfo.getDestination();
+		this.send_date=logisticsInfo.getSend_date();
+		this.receive_date=logisticsInfo.getReceive_date();
+		this.courier=logisticsInfo.getCourier();
 	}
 	
 	/*==========================================================================
