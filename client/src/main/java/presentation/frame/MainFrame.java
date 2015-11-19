@@ -4,6 +4,7 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
+
 public class MainFrame {
 	public static final int FRAME_WIDTH = 1200;
 	public static final int FRAME_HEIGHT = 800;

@@ -36,10 +36,10 @@ import businesslogic.Service.Manage.UpdateStaffService;
 public class ManageController implements ManageService{
 
 	@Override
-	public DeleteState DeleteStaff(String id) {
+	public DeleteState DeleteStaff(StaffVO staff) {
 		// TODO Auto-generated method stub
 		ManageStaff manageStaff=new ManageStaff();
-		return manageStaff.DeleteStaff(id);
+		return manageStaff.DeleteStaff(staff);
 	}
 
 	@Override

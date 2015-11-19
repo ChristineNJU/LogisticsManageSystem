@@ -20,7 +20,7 @@ public interface ManageService {
 	public AddState addInstitution (InstitutionVO institution);
 	public AddState addStaff (StaffVO staff);
 	public DeleteState deleteInstitution (InstitutionVO insitiution);
-	public DeleteState DeleteStaff (String id);
+	public DeleteState DeleteStaff (StaffVO staff);
 	public BenefitVO searchBenefit(String time_end);
 	public ArrayList<CostVO> searchCost(String time_start, String time_end);
 	public ArrayList<GatheringVO> searchGathering(String date, String businesslobby);

@@ -2,11 +2,11 @@ package businesslogic.Mock.Businesslobby;
 
 import java.util.ArrayList;
 
+import State.AddState;
+import State.DeleteState;
+import State.UpdateState;
+import VO.CarInfoVO;
 import businesslogic.Impl.Businesslobby.CarMgt;
-import businesslogic.VO.CarInfoVO;
-import data.State.AddState;
-import data.State.DeleteState;
-import data.State.UpdateState;
 
 public class MockCarMgt extends CarMgt{
 	@Override
@@ -30,6 +30,6 @@ public class MockCarMgt extends CarMgt{
 	@Override
 	public UpdateState updateCar(CarInfoVO car, String field, String value) {
 		// TODO Auto-generated method stub
-		return UpdateState.FAIL;
+		return UpdateState.NOTFOUND;
 	}
 }

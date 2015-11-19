@@ -1,8 +1,8 @@
 package businesslogic.Mock.Businesslobby;
 
+import State.AddState;
+import VO.GatheringVO;
 import businesslogic.Impl.Businesslobby.GatheringImpl;
-import businesslogic.VO.GatheringVO;
-import data.State.AddState;
 
 public class MockGathering extends GatheringImpl{
 

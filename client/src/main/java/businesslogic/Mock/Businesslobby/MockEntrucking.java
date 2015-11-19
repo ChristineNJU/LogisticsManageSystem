@@ -1,8 +1,8 @@
 package businesslogic.Mock.Businesslobby;
 
+import State.AddState;
+import VO.EntruckingVO;
 import businesslogic.Impl.Businesslobby.EntruckingImpl;
-import businesslogic.VO.EntruckingVO;
-import data.State.AddState;
 
 public class MockEntrucking extends EntruckingImpl{
 

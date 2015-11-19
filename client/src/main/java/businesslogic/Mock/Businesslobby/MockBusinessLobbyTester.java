@@ -2,8 +2,7 @@ package businesslogic.Mock.Businesslobby;
 
 import java.util.ArrayList;
 
-import businesslogic.VO.ArrivalVO;
-import businesslogic.VO.CarInfoVO;
+import VO.ArrivalVO;
 
 public class MockBusinessLobbyTester {
 
