@@ -31,24 +31,33 @@ public class ManageInstitution implements AddInstitutionService,UpdateInstitutio
 		ArrayList<InstitutionVO> result=new ArrayList<InstitutionVO>();
 		try {
 			SearchInstitutionInfoService searchInstitution=(SearchInstitutionInfoService) Naming.lookup(RMIHelper.SEARCH_INSTITUTION_IMPL);
-			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("id="+id);
-			ArrayList<InstitutionPO> searchresult=searchInstitution.searchInstitutionInfo(requirement);
+			ArrayList<String> requirementId=new ArrayList<String>();
+			requirementId.add("Institution_Number="+id);
+			ArrayList<InstitutionPO> searchResultId=searchInstitution.searchInstitutionInfo(requirementId);
 			
-			if(searchresult.isEmpty()){
+			ArrayList<String> requirementName=new ArrayList<String>();
+			requirementName.add("Institution_Name"+id);
+			ArrayList<InstitutionPO> searchResultName=searchInstitution.searchInstitutionInfo(requirementName);
+			
+			for(int i=0;i<searchResultName.size();i++)
+				searchResultId.add(searchResultName.get(i));
+			
+			
+			if(searchResultId.isEmpty()){
 				System.out.println("not found");
 				return null;
 			}
 			
 			else{
-				for(int i=0;i<searchresult.size();i++){
-					InstitutionVO temp=new InstitutionVO(searchresult.get(i));
+				for(int i=0;i<searchResultId.size();i++){
+					InstitutionVO temp=new InstitutionVO(searchResultId.get(i));
 					result.add(temp);
 				}
 			}
 			
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
+			System.out.println("Exception");
 			e.printStackTrace();
 		}
 		
@@ -56,16 +65,24 @@ public class ManageInstitution implements AddInstitutionService,UpdateInstitutio
 	}
 
 	@Override
-	public DeleteState deleteInstitution(InstitutionVO insitiution) {
+	public DeleteState deleteInstitution(InstitutionVO instiution) {
 		// TODO Auto-generated method stub
 		DeleteState result=DeleteState.FAIL;
 		try {
 			DeleteService deleteService=(DeleteService) Naming.lookup(RMIHelper.DELETE_IMPL);
-			InstitutionPO requirement=new InstitutionPO(insitiution.getName(), insitiution.getType(),
-											insitiution.getCity(), insitiution.getCode(), URLHelper.getInstitutionURL());
-			result=deleteService.delete(requirement);			
+			SearchInstitutionInfoService searchInstitution=(SearchInstitutionInfoService) Naming.lookup(RMIHelper.SEARCH_INSTITUTION_IMPL);
+			
+			ArrayList<String> requirement=new ArrayList<String>();
+			requirement.add("Institution_Number="+instiution.getCode());
+			ArrayList<InstitutionPO> searchResult=searchInstitution.searchInstitutionInfo(requirement);			
+			
+			for(int i=0;i<searchResult.size();i++)
+				result=deleteService.delete(searchResult.get(i));
+			
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
+			result=DeleteState.FAIL;
+			System.out.println("Exception");
 			e.printStackTrace();
 		}
 		
@@ -79,16 +96,22 @@ public class ManageInstitution implements AddInstitutionService,UpdateInstitutio
 		UpdateState result=UpdateState.NOTFOUND;
 		try {
 			UpdateService updateService=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
-			InstitutionPO requirement=new InstitutionPO(institution.getName(), institution.getType(),
-										institution.getCity(), institution.getCode(), URLHelper.getInstitutionURL());
-			result=updateService.update(requirement, field, value);
+			SearchInstitutionInfoService searchInstitution=(SearchInstitutionInfoService) Naming.lookup(RMIHelper.SEARCH_INSTITUTION_IMPL);
+			
+			ArrayList<String> requirement=new ArrayList<String>();
+			requirement.add("Institution_Number="+institution.getCode());
+			ArrayList<InstitutionPO> searchResult=searchInstitution.searchInstitutionInfo(requirement);			
+			
+			for(int i=0;i<searchResult.size();i++)
+				result=updateService.update(searchResult.get(i), field, value);
+			
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
 			result=UpdateState.CONNECTERROR;
+			System.out.println("Exception");
 			e.printStackTrace();
 		}
-		
-		
+			
 		return result;
 	}
 
@@ -98,11 +121,12 @@ public class ManageInstitution implements AddInstitutionService,UpdateInstitutio
 		AddState result=AddState.FAIL;
 		try {
 			AddService addService=(AddService) Naming.lookup(RMIHelper.ADD_IMPL);
-			InstitutionPO requirement=new InstitutionPO(institution.getName(), institution.getType(),
-								institution.getCity(), institution.getCode(), URLHelper.getInstitutionURL());
+			InstitutionPO requirement=new InstitutionPO(institution);
 			result=addService.add(requirement);
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
+			result=AddState.FAIL;
+			System.out.println("Exception");
 			e.printStackTrace();
 		}
 		

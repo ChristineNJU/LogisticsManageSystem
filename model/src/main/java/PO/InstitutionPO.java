@@ -1,6 +1,8 @@
 package PO;
 
+import businesslogic.URLHelper.URLHelper;
 import State.InstitutionType;
+import VO.InstitutionVO;
 
 public class InstitutionPO extends PO {
 	
@@ -19,6 +21,13 @@ public class InstitutionPO extends PO {
 		this.institution_number = institution_number;
 	}
 	
+	public InstitutionPO(InstitutionVO institution){
+		super(URLHelper.getInstitutionURL());
+		this.institution_name = institution.getName();
+		this.institution_type = institution.getType();
+		this.city = institution.getCity();
+		this.institution_number = institution.getCode();
+	}
 	/*===============================================================
 	 * Public方法
 	 * */

@@ -7,6 +7,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import data.RMIHelper.RMIHelper;
+import data.Service.Add.AddService;
 import data.Service.Delete.DeleteService;
 import PO.InstitutionPO;
 import PO.UserPO;
@@ -31,11 +32,23 @@ public class ManageStaff implements AddStaffService,UpdateStaffService,
 		DeleteState result=DeleteState.FAIL;
 		try {
 			DeleteService deleteService=(DeleteService) Naming.lookup(RMIHelper.DELETE_IMPL);
+			SearchUserService searchUser=(SearchUserService) Naming.lookup(RMIHelper.SEARCH_USER_IMPL);
+			ArrayList<String> requirement=new ArrayList<String>();
+			requirement.add("User_ID="+staff.getSystemId());
+			
+			ArrayList<UserPO> searchResult=searchUser.searchUser(requirement);
+			
+			for(int i=0;i<searchResult.size();i++)
+				result=deleteService.delete(searchResult.get(i));
+			
+			
 //			UserPO requirement=new UserPO(staff.getSystemId(),null,staff.getName(),staff.getSex(),staff.getAge()
 //										staff.getInsitution(),staff.)
 			//result=deleteService.delete(requirement);			
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
+			System.out.println("error");
+			result=DeleteState.FAIL;
 			e.printStackTrace();
 		}
 		
@@ -49,24 +62,33 @@ public class ManageStaff implements AddStaffService,UpdateStaffService,
 		ArrayList<StaffVO> result=new ArrayList<StaffVO>();
 		try {
 			SearchUserService searchUser=(SearchUserService) Naming.lookup(RMIHelper.SEARCH_USER_IMPL);
-			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("id="+id);
-			ArrayList<UserPO> searchResult=searchUser.searchUser(requirement);
 			
-			if(!searchResult.isEmpty()){
+			ArrayList<String> requirementId=new ArrayList<String>();
+			requirementId.add("User_ID="+id);
+			ArrayList<UserPO> searchResultId=searchUser.searchUser(requirementId);
+			
+			ArrayList<String> requirementName=new ArrayList<String>();
+			requirementName.add("User_Name="+id);
+			ArrayList<UserPO> searchResultName=searchUser.searchUser(requirementName);
+			
+			for(int i=0;i<searchResultName.size();i++)
+				searchResultId.add(searchResultName.get(i));
+			
+			if(!searchResultId.isEmpty()){
 				System.out.println("not found");
 				return null;
 			}
 			
 			else{
-				for(int i=0;i<searchResult.size();i++){
-				StaffVO temp=new StaffVO(searchResult.get(i));
+				for(int i=0;i<searchResultId.size();i++){
+				StaffVO temp=new StaffVO(searchResultId.get(i));
 				result.add(temp);
 				}
 			}
 			
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
+			System.out.println("error");
 			e.printStackTrace();
 		}
 		return result;
@@ -79,19 +101,38 @@ public class ManageStaff implements AddStaffService,UpdateStaffService,
 		try {
 			UpdateService updateService=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
 			
+			SearchUserService searchUser=(SearchUserService) Naming.lookup(RMIHelper.SEARCH_USER_IMPL);
+			ArrayList<String> requirement=new ArrayList<String>();
+			requirement.add("User_ID="+staff.getSystemId());
+			ArrayList<UserPO> searchResult=searchUser.searchUser(requirement);
+			
+			
+			for(int i=0;i<searchResult.size();i++)
+				result=updateService.update(searchResult.get(i), field, value);
 			
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
 			result=UpdateState.CONNECTERROR;
 			e.printStackTrace();
 		}
-		return null;
+		return result;
 	}
 
 	@Override
 	public AddState addStaff(StaffVO staff) {
 		// TODO Auto-generated method stub
-		return null;
+		AddState result=AddState.FAIL;
+		try {
+			AddService addService=(AddService) Naming.lookup(RMIHelper.ADD_IMPL);
+			UserPO requirement=new UserPO(staff);
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			// TODO Auto-generated catch block
+			result=AddState.FAIL;
+			System.out.println("error");
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 
 }
