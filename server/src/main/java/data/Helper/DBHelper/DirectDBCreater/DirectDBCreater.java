@@ -27,7 +27,7 @@ public class DirectDBCreater {
 //				createTable_User();
 //				createTable_Logistics();
 //				createTable_Const();
-				insert_User();
+//				insert_User();
 //				insert_Logistics();
 //				insert_Const();
 //				deleteTable(URLHelper.getLogisticsURL());
@@ -120,7 +120,7 @@ public class DirectDBCreater {
 					+ "'22222222', '13851988941', '张晨剑', '南京大学仙林校区1B-434-2', '南京大学', '22222222', '13851988941', "
 					+ "'张晨剑', 1, 2, 2, 'iPhone 6S Plus', 'ECONOMIC', 'COURISE_BAG', 6, '南京', '南京', 'DAMAGED', "
 					+ "'2015-11-11 12:20:20', '2015-11-19 20:20:20', '刘钦', 'true', 'true', "
-					+ "'南京栖霞区收件-南京栖霞区正在派件-收件人已收件')");
+					+ "'南京栖霞区收件,2015-11-12 12:00:00>>南京栖霞区正在派件,2015-11-18 12:00:00>>收件人已收件,2015-11-19 20:20:20')");
 			conn.commit();
 			System.out.println("insert into "+table_name);
 		} catch (SQLException e) {

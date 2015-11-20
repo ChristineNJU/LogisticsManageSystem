@@ -21,7 +21,7 @@ public class InquiryImpl {
 		try {
 			SearchLogisticsService searchLogistic=(SearchLogisticsService) Naming.lookup(RMIHelper.SEARCH_LOGISTICS_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("bar_code="+bar_code);
+			requirement.add("bar_code='"+bar_code+"'");
 			ArrayList<LogisticsInfoPO> result=searchLogistic.searchLogisticsInfo(requirement);
 			
 			if(result.isEmpty()){

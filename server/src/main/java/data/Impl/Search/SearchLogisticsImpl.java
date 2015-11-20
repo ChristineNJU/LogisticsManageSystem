@@ -92,7 +92,7 @@ public class SearchLogisticsImpl extends UnicastRemoteObject implements SearchLo
 				boolean is_approved = rs.getString(26).equals("true");
 				boolean is_received = rs.getString(27).equals("true");
 				
-				String[] history = rs.getString(28).split("-");
+				String[] history = rs.getString(28).split(">>");
 				
 				LogisticsInfoPO logistics = new LogisticsInfoPO(sender_name, sender_address, sender_organization,
 						sender_telephone, sender_mobilephone, recipient_name, recipient_address, 
