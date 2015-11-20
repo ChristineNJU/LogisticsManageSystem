@@ -34,7 +34,7 @@ public class ManageStaff implements AddStaffService,UpdateStaffService,
 			DeleteService deleteService=(DeleteService) Naming.lookup(RMIHelper.DELETE_IMPL);
 			SearchUserService searchUser=(SearchUserService) Naming.lookup(RMIHelper.SEARCH_USER_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("User_ID="+staff.getSystemId());
+			requirement.add("'User_ID='"+staff.getSystemId());
 			
 			ArrayList<UserPO> searchResult=searchUser.searchUser(requirement);
 			
@@ -67,11 +67,11 @@ public class ManageStaff implements AddStaffService,UpdateStaffService,
 			SearchUserService searchUser=(SearchUserService) Naming.lookup(RMIHelper.SEARCH_USER_IMPL);
 			
 			ArrayList<String> requirementId=new ArrayList<String>();
-			requirementId.add("User_ID="+id);
+			requirementId.add("'User_ID='"+id);
 			ArrayList<UserPO> searchResultId=searchUser.searchUser(requirementId);
 			
 			ArrayList<String> requirementName=new ArrayList<String>();
-			requirementName.add("User_Name="+id);
+			requirementName.add("'User_Name='"+id);
 			ArrayList<UserPO> searchResultName=searchUser.searchUser(requirementName);
 			
 			for(int i=0;i<searchResultName.size();i++)
@@ -106,7 +106,7 @@ public class ManageStaff implements AddStaffService,UpdateStaffService,
 			
 			SearchUserService searchUser=(SearchUserService) Naming.lookup(RMIHelper.SEARCH_USER_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("User_ID="+staff.getSystemId());
+			requirement.add("'User_ID='"+staff.getSystemId());
 			ArrayList<UserPO> searchResult=searchUser.searchUser(requirement);
 			
 			if(searchResult.isEmpty()){

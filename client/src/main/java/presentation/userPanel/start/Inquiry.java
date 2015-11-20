@@ -104,7 +104,7 @@ public class Inquiry{
 		confirm.addActionListener(listener);
 		inquiryPanel.add(confirm);
 		
-		input.setFont(FontSet.fontTips);
+		input.setFont(FontSet.fontTipsBig);
 		input.setForeground(ColorPallet.GrayLight);
 		input.setBorder(BorderFactory.createLineBorder(ColorPallet.Pink));
 //		input.setOpaque(false);
@@ -121,6 +121,9 @@ public class Inquiry{
 	
 	private void show(String bar_code){
 		info = inquiryService.getLogistics(bar_code);
+		if(info == null){
+			showNotFound();
+		}
 //		ArrayList<String> historyString = new ArrayList<String>();
 //		historyString.add("已签收，签收是本人");
 //		historyString.add("到达仙林营业厅");
@@ -130,9 +133,6 @@ public class Inquiry{
 //		info = new LogisticsHistoryVO(bar_code, historyString);
 		history = info.getHistory();
 		historyLabel = new ArrayList<HistoryLabel>();
-		if(history.isEmpty()){
-			showNotFound();
-		}
 		for(int i = 0 ; i < history.size();i++){
 			historyLabel.add(new HistoryLabel(history.get(i),history.get(i),i));
 			inquiryPanel.add(historyLabel.get(i));
