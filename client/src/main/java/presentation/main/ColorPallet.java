@@ -7,6 +7,7 @@ public class ColorPallet {
 	public static Color Purple = new Color(114,102,186);
 	public static Color backGround = new Color(240,240,240);
 	public static Color GrayLight = new Color(220,220,220);
+	public static Color GrayMedium = new Color(200,200,200);
 	public static Color GrayDark = new Color(160,160,160);
 	
 }

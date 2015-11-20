@@ -2,6 +2,8 @@ package presentation.userPanel.start;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -12,15 +14,18 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import VO.LogisticsHistoryVO;
+import businesslogic.Impl.Inquiry.InquiryController;
+import businesslogic.Service.Inquiry.InquiryService;
 import presentation.frame.MainFrame;
 import presentation.main.ColorPallet;
 import presentation.main.FontSet;
 import presentation.panel.components.ButtonFrame;
-import test.Stub.businesslogic.InquiryBlService_Stub;
-import VO.LogisticsHistoryVO;
 
 public class Inquiry{
 
+	private LogIn logInDialog;
+	
 	private MainFrame mainFrame;
 	private JPanel inquiryPanel;
 	
@@ -30,14 +35,16 @@ public class Inquiry{
 	private JButton logIn;
 	
 	private JLabel error;
+	private JLabel notFound;
 	
 	private JTextField input;
 	private JButton confirm;
 	
 	private LogisticsHistoryVO info;
-	private ArrayList<JLabel> history;
+	private ArrayList<HistoryLabel> historyLabel;
+	private ArrayList<String> history;
 	
-	InquiryBlService_Stub inquiryService = new InquiryBlService_Stub();
+	InquiryService inquiryService = new InquiryController();
 	
 	private Listener listener;
 	
@@ -55,6 +62,8 @@ public class Inquiry{
 		title = new JLabel(iconTitle);
 		Icon iconError = new ImageIcon("src/graphics/Tips/errorBarCode.png");
 		error = new JLabel(iconError);
+		Icon iconNotFound = new ImageIcon("src/graphics/Tips/notFoundBarCode.png");
+		notFound = new JLabel(iconNotFound);
 		logIn = new JButton();
 		input = new JTextField("输入订单编号");
 		confirm = new JButton();
@@ -82,6 +91,7 @@ public class Inquiry{
 		logIn.setRolloverIcon(new ImageIcon("src/graphics/Button/logIn2.png"));
 		logIn.setPressedIcon(new ImageIcon("src/graphics/Button/logIn2.png"));
 		logIn.setBounds(830, 2, 128, 63);
+		logIn.addActionListener(listener);
 		inquiryPanel.add(logIn);
 		
 		confirm.setBorderPainted(false);
@@ -100,18 +110,51 @@ public class Inquiry{
 //		input.setOpaque(false);
 		input.setBounds(300,240,300,40);
 		input.addActionListener(listener);
+		input.addFocusListener(listener);
 		inquiryPanel.add(input);
 		
 		error.setBounds(300, 170, 300, 70);
+		notFound.setBounds(300,170,340,70);
 //		inquiryPanel.add(error);
 		
 	}
 	
 	private void show(String bar_code){
 		info = inquiryService.getLogistics(bar_code);
-		for(int i = 0 ; i < info.size();i++){
-			history.add(new JLabel());
+//		ArrayList<String> historyString = new ArrayList<String>();
+//		historyString.add("已签收，签收是本人");
+//		historyString.add("到达仙林营业厅");
+//		historyString.add("到达上海中转中心");
+//		historyString.add("从浦口营业厅出发");
+//		historyString.add("快递员揽件");
+//		info = new LogisticsHistoryVO(bar_code, historyString);
+		history = info.getHistory();
+		historyLabel = new ArrayList<HistoryLabel>();
+		if(history.isEmpty()){
+			showNotFound();
 		}
+		for(int i = 0 ; i < history.size();i++){
+			historyLabel.add(new HistoryLabel(history.get(i),history.get(i),i));
+			inquiryPanel.add(historyLabel.get(i));
+			System.out.println(i);
+		}
+		inquiryPanel.repaint();
+	}
+	
+	private void showLogIn(){
+		logInDialog = new LogIn();
+		logInDialog.getDialog().setVisible(true);
+//		System.out.println("in method");
+	}
+	
+	private void showNotFound(){
+		inquiryPanel.add(notFound);
+		inquiryPanel.repaint();
+	}
+	
+	private void removeNotFound(){
+		inquiryPanel.remove(notFound);
+		inquiryPanel.repaint();
 	}
 	
 	private void showError(){
@@ -120,8 +163,8 @@ public class Inquiry{
 	}
 	
 	private void removeError(){
-//		inquiryPanel.remove(error);
-		error.setVisible(false);
+		inquiryPanel.remove(error);
+//		error.setVisible(false);
 		inquiryPanel.repaint();
 	}
 	
@@ -140,7 +183,37 @@ public class Inquiry{
 		return inquiryPanel;
 	}
 	
-	public class Listener implements ActionListener{
+	public class HistoryLabel extends JLabel{
+		
+		JLabel detailL;
+		JLabel timeL;
+		public HistoryLabel(String detail,String time,int i) {
+
+			
+			detailL = new JLabel(detail);
+			detailL.setBounds(60,6,300,25);
+			detailL.setFont(FontSet.fontOk);
+			
+			timeL = new JLabel(time);
+			timeL.setBounds(60,30,300,25);
+			timeL.setFont(FontSet.fontTips);
+			
+			if(i == 0){
+				detailL.setForeground(ColorPallet.Pink);
+				timeL.setForeground(ColorPallet.Pink);
+			}else{
+				detailL.setForeground(ColorPallet.Purple);
+				timeL.setForeground(ColorPallet.Purple);
+			}
+			
+			this.add(detailL);
+			this.add(timeL);
+			setBounds(300,320+i*66,450,66);
+		}
+		
+	}
+	
+	public class Listener implements ActionListener, FocusListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -158,8 +231,28 @@ public class Inquiry{
 					showError();
 				}
 			}
+			if(e.getSource().equals(logIn)){
+				showLogIn();
+//				System.out.println("in listener");
+			}
+			
+		}
+
+		@Override
+		public void focusGained(FocusEvent e) {
+			// TODO Auto-generated method stub
 			if(e.getSource().equals(input)){
+				input.setText("");
 				removeError();
+				removeNotFound();
+			}
+		}
+
+		@Override
+		public void focusLost(FocusEvent e) {
+			// TODO Auto-generated method stub
+			if(e.getSource().equals(input)){
+//				removeError();
 			}
 		}
 		
