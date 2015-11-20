@@ -1,5 +1,5 @@
 package State;
 
 public enum UserRole {
-	curier, businessAgent, mediumAgent, reponsitory, finance, manager, admin;
+	courier, businessAgent, mediumAgent, repository, finance, manager, admin;
 }

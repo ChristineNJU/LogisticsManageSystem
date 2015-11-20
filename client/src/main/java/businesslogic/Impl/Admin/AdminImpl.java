@@ -13,6 +13,7 @@ import businesslogic.Service.Admin.DeleteUserService;
 import businesslogic.Service.Admin.GetUserService;
 import businesslogic.Service.Admin.UpdateUserService;
 import data.RMIHelper.RMIHelper;
+import data.Service.Add.AddService;
 import data.Service.Delete.DeleteService;
 import data.Service.Search.SearchUserService;
 import data.Service.Update.UpdateService;
@@ -58,9 +59,13 @@ public class AdminImpl implements AddUserService,DeleteUserService,GetUserServic
 				requirementID.add("id="+requirement.get(i));
 				requirementName.add("name="+requirement.get(i));
 			}
-			ArrayList<UserPO> userList=userSearch.searchUser(requirement);
-			for(int i=0;i<userList.size();i++){
-				result.add(new UserVO(userList.get(i)));
+			ArrayList<UserPO> userListID=userSearch.searchUser(requirementID);
+			ArrayList<UserPO> userListName=userSearch.searchUser(requirementName);
+			for(int i=0;i<userListID.size();i++){
+				result.add(new UserVO(userListID.get(i)));
+			}
+			for(int i=0;i<userListName.size();i++){
+				result.add(new UserVO(userListName.get(i)));
 			}
 			
 		} catch(Exception ex){
@@ -100,7 +105,8 @@ public class AdminImpl implements AddUserService,DeleteUserService,GetUserServic
 		AddState state=AddState.SUCCESS;
 		
 		try{
-			
+			AddService userAdd=(AddService) Naming.lookup(RMIHelper.ADD_IMPL);
+			state=userAdd.add(new UserPO(user));
 		} catch(Exception ex){
 			state=AddState.CONNECTERROR;
 			System.out.println(ex.getMessage());

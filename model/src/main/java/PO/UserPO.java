@@ -1,9 +1,10 @@
 package PO;
 
-import businesslogic.URLHelper.URLHelper;
 import State.InstitutionType;
 import State.UserRole;
 import VO.StaffVO;
+import VO.UserVO;
+import businesslogic.URLHelper.URLHelper;
 
 public class UserPO extends PO {
 	private String id;
@@ -38,6 +39,18 @@ public class UserPO extends PO {
 		this.institution = staff.getInsitution();
 		this.city = staff.getCity();
 		this.role = staff.getPosition();	
+	}
+	
+	public UserPO(UserVO user){
+		super(URLHelper.getUserURL());
+		this.id=user.getId();
+		this.password=user.getId();//the default password is same as ID
+		this.name=user.getName();
+		this.sex=user.getSex();
+		this.age=user.getAge();
+		this.institution=user.getInstitution();
+		this.city=user.getCity();
+		this.role=user.getRole();
 	}
 
 	public String getName() {
