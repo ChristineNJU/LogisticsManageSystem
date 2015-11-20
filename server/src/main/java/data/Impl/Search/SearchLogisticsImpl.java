@@ -113,7 +113,7 @@ public class SearchLogisticsImpl extends UnicastRemoteObject implements SearchLo
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-//			e.printStackTrace();
+			e.printStackTrace();
 			System.out.println("从数据库提取UserPO对象失败");
 			return result;
 		}

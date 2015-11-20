@@ -25,7 +25,7 @@ public class DirectDBCreater {
 				conn.setAutoCommit(false);
 				
 //				createTable_User();
-//				createTable_Logistics();
+				createTable_Logistics();
 //				createTable_Const();
 //				insert_User();
 //				insert_Logistics();
