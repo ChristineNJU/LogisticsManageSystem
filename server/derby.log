@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Fri Nov 20 16:12:24 CST 2015:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance a816c00e-0151-23f3-90c9-000000aeaa00 
+Fri Nov 20 16:15:30 CST 2015:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance a816c00e-0151-23f6-6a66-000000ae9228 
 on database directory E:\soursetree\LogisticsManageSystem\server\LogisticsManageSystemDataBase with class loader sun.misc.Launcher$AppClassLoader@e2f2a 
 Loaded from file:/E:/soursetree/LogisticsManageSystem/server/lib/derby.jar
 java.vendor=Oracle Corporation

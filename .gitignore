@@ -10,4 +10,5 @@ bc.zip
 log.txt
 *.ipr
 *.iws
+server/LogisticsManageSystemDataBase/
 kerby-server
