@@ -3,11 +3,19 @@ package presentation.listener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class CancelListener implements MouseListener {
+import presentation.panel.components.ButtonTotal;
 
+public class RollListener implements MouseListener {
+
+	ButtonTotal source;
+	public RollListener(ButtonTotal button){
+		source = button;
+	}
+	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
+		source.click();
+		System.out.println("in listener");
 
 	}
 
@@ -25,13 +33,13 @@ public class CancelListener implements MouseListener {
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
+		source.rolled();
 
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
+		source.unRolled();
 
 	}
 

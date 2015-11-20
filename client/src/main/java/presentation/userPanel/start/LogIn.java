@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -75,8 +77,8 @@ public class LogIn{
 		id.addFocusListener(focusListener);
 		password.addFocusListener(focusListener);
 		
-		cancel.addActionListener(listener);
-		confirm.addActionListener(listener);
+		cancel.addMouseListener(listener);
+		confirm.addMouseListener(listener);
 		
 		line.setBackground(ColorPallet.Purple);
 		line.setOpaque(true);
@@ -142,18 +144,43 @@ public class LogIn{
 		container.repaint();
 	}
 	
-	public class Listener implements ActionListener{
+	public class Listener implements MouseListener{
+
 
 		@Override
-		public void actionPerformed(ActionEvent e) {
-			if(e.getSource().equals(cancel)){
-				logIn.dispose();
-			}
+		public void mouseClicked(MouseEvent e) {
 			if(e.getSource().equals(confirm)){
 				logIn();
 //				wrongId();
 //				wrongPW();
 			}
+			if(e.getSource().equals(cancel)){
+				logIn.dispose();
+			}
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
 		}
 		
 	}
