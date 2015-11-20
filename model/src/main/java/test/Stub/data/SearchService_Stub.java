@@ -103,7 +103,7 @@ public class SearchService_Stub implements SearchLogisticsService, SearchGatheri
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		
-		SalaryPO salary = new SalaryPO(UserRole.curier, 1000, SalaryType.MONTH, "salary_info");
+		SalaryPO salary = new SalaryPO(UserRole.courier, 1000, SalaryType.MONTH, "salary_info");
 		ArrayList<SalaryPO> list = new ArrayList<SalaryPO>();
 		list.add(salary);
 		return list;
@@ -159,7 +159,7 @@ public class SearchService_Stub implements SearchLogisticsService, SearchGatheri
 	public ArrayList<BalancePO> searchBalannce(String DB_URL,
 			ArrayList<String> requirement) throws RemoteException {
 		// TODO Auto-generated method stub
-		BalancePO balance = new BalancePO("1000000000", new Date(), "南京", StorageArea.RAILWAT_TRANSPORTATION,
+		BalancePO balance = new BalancePO("1000000000", new Date(), "南京", StorageArea.RAILWAY_TRANSPORTATION,
 				2, 2, 10, StorageArea.MANOEUVERING_AREA, 2, 3, 2, "025001_balance");
 		ArrayList<BalancePO> list = new ArrayList<BalancePO>();
 		list.add(balance);

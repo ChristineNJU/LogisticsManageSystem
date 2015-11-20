@@ -57,7 +57,7 @@ public class ManageConst implements ShowConstService,UpdateConstService,AddConst
 			
 			SearchConstService searchConst=(SearchConstService) Naming.lookup(RMIHelper.SEARCH_CONST_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("name="+constant.getName());
+			requirement.add("'name='"+constant.getName());
 			ArrayList<ConstPO> searchResult=searchConst.searchConst(requirement);
 			
 			if(searchResult.isEmpty()){

@@ -24,7 +24,7 @@ public class AdminBlService_Stub implements AdminService{
 		System.out.println("Logic_Stub "+"添加成功");
 	
 		UserPO upo = new UserPO(user.getId(), "102412412", user.getName(), "男", 30, InstitutionType.BusinessLobby, "南京", 
-				UserRole.curier, "user_info");
+				UserRole.courier, "user_info");
 		
 		try {
 			System.out.println("Data_Stub "+new AddService_Stub().add(upo));
@@ -42,7 +42,7 @@ public class AdminBlService_Stub implements AdminService{
 	public UpdateState updateUser(UserVO user, String field, String value){
 		System.out.println("Logic_Stub "+"更新成功");
 		UserPO upo=new UserPO(user.getId(), "102412412", user.getName(), "男", 30, InstitutionType.BusinessLobby, "南京", 
-				UserRole.curier, "user_info");
+				UserRole.courier, "user_info");
 		try {
 			System.out.println("Data_Stub"+new UpdateService_Stub().update(upo, field, value));
 		} catch (RemoteException e) {
@@ -58,7 +58,7 @@ public class AdminBlService_Stub implements AdminService{
 	public DeleteState deleteUser(UserVO user){
 		System.out.println("Logic_Stub "+"删除成功");
 		UserPO upo=new UserPO(user.getId(), "102412412", user.getName(), "男", 30, InstitutionType.BusinessLobby, "南京", 
-				UserRole.curier, "user_info");
+				UserRole.courier, "user_info");
 		try {
 			System.out.println("Data_Stub"+new DeleteService_Stub().delete(upo));
 		} catch (RemoteException e) {
