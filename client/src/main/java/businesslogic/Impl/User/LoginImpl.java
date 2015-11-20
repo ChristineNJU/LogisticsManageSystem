@@ -15,7 +15,7 @@ public class LoginImpl {
 		try{
 			SearchUserService searchUser=(SearchUserService)Naming.lookup(RMIHelper.SEARCH_USER_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("name="+userName);
+			requirement.add("name='"+userName+"'");
 			ArrayList<UserPO> result=searchUser.searchUser(requirement);
 			
 			if(result.isEmpty()){

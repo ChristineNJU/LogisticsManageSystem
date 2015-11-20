@@ -30,7 +30,7 @@ public class AdminImpl implements AddUserService,DeleteUserService,GetUserServic
 			SearchUserService userSearch=(SearchUserService) Naming.lookup(RMIHelper.SEARCH_USER_IMPL);
 			UpdateService updateService=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("id="+user.getId());
+			requirement.add("id='"+user.getId()+"'");
 			ArrayList<UserPO> result=userSearch.searchUser(requirement);
 			for(int i=0;i<result.size();i++){
 				state=updateService.update(result.get(i), field, value);
@@ -56,8 +56,8 @@ public class AdminImpl implements AddUserService,DeleteUserService,GetUserServic
 			ArrayList<String> requirementID=new ArrayList<String>();
 			ArrayList<String> requirementName=new ArrayList<String>();
 			for(int i=0;i<requirement.size();i++){
-				requirementID.add("id="+requirement.get(i));
-				requirementName.add("name="+requirement.get(i));
+				requirementID.add("id='"+requirement.get(i)+"'");
+				requirementName.add("name='"+requirement.get(i)+"'");
 			}
 			ArrayList<UserPO> userListID=userSearch.searchUser(requirementID);
 			ArrayList<UserPO> userListName=userSearch.searchUser(requirementName);
@@ -84,7 +84,7 @@ public class AdminImpl implements AddUserService,DeleteUserService,GetUserServic
 			
 			SearchUserService userSearch=(SearchUserService) Naming.lookup(RMIHelper.SEARCH_USER_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("id="+user.getId());
+			requirement.add("id='"+user.getId()+"'");
 			ArrayList<UserPO> userList=userSearch.searchUser(requirement); 
 			DeleteService userDelete=(DeleteService) Naming.lookup(RMIHelper.DELETE_IMPL);
 			for(int i=0;i<userList.size();i++){
