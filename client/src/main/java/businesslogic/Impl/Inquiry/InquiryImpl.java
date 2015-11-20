@@ -17,6 +17,7 @@ public class InquiryImpl {
 	
 	public LogisticsHistoryVO getLogistics(String bar_code) {
 		LogisticsHistoryVO  logisticsVO = null ;
+		System.out.println(bar_code);
 		try {
 			SearchLogisticsService searchLogistic=(SearchLogisticsService) Naming.lookup(RMIHelper.SEARCH_LOGISTICS_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
