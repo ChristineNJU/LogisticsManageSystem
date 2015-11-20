@@ -1,6 +1,7 @@
 package VO;
 
 import PO.UserPO;
+import State.InstitutionType;
 import State.UserRole;
 
 public class UserVO extends VO {
@@ -8,6 +9,10 @@ public class UserVO extends VO {
 	private String id = null;
 	private String name = null;
 	private UserRole role = null;
+	private String sex;
+	private int age;
+	private InstitutionType institution;
+	private String city;
 	
 	public UserVO(String id,String name,UserRole role){
 		this.id = id;
@@ -19,7 +24,6 @@ public class UserVO extends VO {
 		this.name = po.getName();
 		this.role = po.getRole();
 	}
-	
 	public String getId(){
 		return this.id;
 	}
@@ -28,6 +32,22 @@ public class UserVO extends VO {
 	}
 	public UserRole getRole(){
 		return this.role;
+	}
+	public String getSex() {
+		// TODO Auto-generated method stub
+		return this.sex;
+	}
+	public int getAge() {
+		// TODO Auto-generated method stub
+		return this.age;
+	}
+	public InstitutionType getInstitution() {
+		// TODO Auto-generated method stub
+		return this.institution;
+	}
+	public String getCity() {
+		// TODO Auto-generated method stub
+		return this.city;
 	}
 	
 	public void setId(String id){
@@ -39,4 +59,17 @@ public class UserVO extends VO {
 	public void setRole(UserRole role){
 		this.role = role;
 	}
+	public void setSex(String sex){
+		this.sex=sex;
+	}
+	public void setAge(int age){
+		this.age=age;
+	}
+	public void setIstitution(InstitutionType institution){
+		this.institution=institution;
+	}
+	public void setCity(String city){
+		this.city=city;
+	}
+	
 }
