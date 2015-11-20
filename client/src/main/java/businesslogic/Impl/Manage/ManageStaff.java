@@ -38,13 +38,16 @@ public class ManageStaff implements AddStaffService,UpdateStaffService,
 			
 			ArrayList<UserPO> searchResult=searchUser.searchUser(requirement);
 			
-			for(int i=0;i<searchResult.size();i++)
-				result=deleteService.delete(searchResult.get(i));
+			if(searchResult.isEmpty()){
+				System.out.println("not found");
+				return DeleteState.FAIL;
+				}
 			
+			else{
+				for(int i=0;i<searchResult.size();i++)
+					result=deleteService.delete(searchResult.get(i));
 			
-//			UserPO requirement=new UserPO(staff.getSystemId(),null,staff.getName(),staff.getSex(),staff.getAge()
-//										staff.getInsitution(),staff.)
-			//result=deleteService.delete(requirement);			
+			}			
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
 			System.out.println("error");
@@ -74,9 +77,9 @@ public class ManageStaff implements AddStaffService,UpdateStaffService,
 			for(int i=0;i<searchResultName.size();i++)
 				searchResultId.add(searchResultName.get(i));
 			
-			if(!searchResultId.isEmpty()){
+			if(searchResultId.isEmpty()){
 				System.out.println("not found");
-				return null;
+				return result;
 			}
 			
 			else{
@@ -106,10 +109,14 @@ public class ManageStaff implements AddStaffService,UpdateStaffService,
 			requirement.add("User_ID="+staff.getSystemId());
 			ArrayList<UserPO> searchResult=searchUser.searchUser(requirement);
 			
-			
-			for(int i=0;i<searchResult.size();i++)
-				result=updateService.update(searchResult.get(i), field, value);
-			
+			if(searchResult.isEmpty()){
+				System.out.println("not found");
+				return UpdateState.NOTFOUND;
+				}
+			else{
+				for(int i=0;i<searchResult.size();i++)
+					result=updateService.update(searchResult.get(i), field, value);
+				}
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
 			result=UpdateState.CONNECTERROR;

@@ -2,6 +2,7 @@ package VO;
 
 import PO.UserPO;
 import State.InstitutionType;
+import State.UserRole;
 
 public class StaffVO extends VO {
 
@@ -9,25 +10,31 @@ public class StaffVO extends VO {
 	private String sex = null;
 	private int age = 0;
 	private InstitutionType institution = null;
-	private String position =  null;
+	private UserRole role =  null;
 	private String systemId = null;
+	private String city=null;
+	private String password=null;
 	
 	public StaffVO(String name,String sex,int age,
-			InstitutionType institution,String position,String systemId){
+			InstitutionType institution,UserRole role,String systemId,String city,String password){
 		this.name = name;
 		this.sex = sex;
 		this.age = age;
 		this.institution = institution;
-		this.position = position;
+		this.role = role;
 		this.systemId = systemId;
+		this.city=city;
+		this.password=password;
 	}
 	public StaffVO(UserPO po) {
 		this.name = po.getName();
 		this.sex = po.getSex();
 		this.age = po.getAge();
 		this.institution = po.getInstitution();
-		this.position = po.getCity();
+		this.role = po.getRole();
 		this.systemId = po.getID();
+		this.city=po.getCity();
+		this.password=po.getPassword();
 	} 
 	
 	public String getName(){
@@ -42,11 +49,16 @@ public class StaffVO extends VO {
 	public InstitutionType getInsitution(){
 		return this.institution;
 	}
-	public String getPosition(){
-		return this.position;
+	public UserRole getPosition(){
+		return this.role;
 	}
 	public String getSystemId(){
 		return this.systemId;
 	}
-	
+	public String getCity(){
+		return this.city;
+	}
+	public String getPassword(){
+		return this.password;
+	}
 }

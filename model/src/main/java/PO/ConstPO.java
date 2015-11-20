@@ -1,5 +1,8 @@
 package PO;
 
+import businesslogic.URLHelper.URLHelper;
+import VO.ConstVO;
+
 public class ConstPO extends PO {
 
 	private String name = null;
@@ -13,6 +16,12 @@ public class ConstPO extends PO {
 		this.value = value;
 	}
 	
+	public ConstPO(ConstVO constant){
+		super(URLHelper.getConstURL());
+		
+		this.name=constant.getName();
+		this.value=constant.getValue();
+	}
 	/*===============================================================
 	 * Public方法
 	 * */

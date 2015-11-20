@@ -31,13 +31,13 @@ public class UserPO extends PO {
 	public UserPO(StaffVO staff){
 		super(URLHelper.getUserURL());
 		this.id = staff.getSystemId();
-		//this.password = password;
+		this.password = staff.getPassword();
 		this.name = staff.getName();
 		this.sex = staff.getSex();
 		this.age = staff.getAge();
 		this.institution = staff.getInsitution();
-		this.city = staff.getPosition();
-		//this.role = role;	
+		this.city = staff.getCity();
+		this.role = staff.getPosition();	
 	}
 
 	public String getName() {

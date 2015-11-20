@@ -13,7 +13,7 @@ public class BenefitPO extends PO {
 		this.number = number;
 		this.income = income;
 		this.expend = expend;
-		this.benefit = income - benefit;
+		this.benefit = income - expend;
 	}
 
 	/*====================================================================================

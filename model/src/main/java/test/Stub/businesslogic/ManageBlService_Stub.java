@@ -229,7 +229,7 @@ public class ManageBlService_Stub implements ManageService{
 			listpo = new SearchService_Stub().searchUser(list0);
 		
 		for(int i=0;i<listpo.size();i++){
-			StaffVO vo=new StaffVO(listpo.get(i).getName(),null,1,null,null,null);
+			StaffVO vo=new StaffVO(listpo.get(i).getName(),null,1,null,null,null, id, id);
 			list.add(vo);
 			
 		}

@@ -45,7 +45,7 @@ public class ManageInstitution implements AddInstitutionService,UpdateInstitutio
 			
 			if(searchResultId.isEmpty()){
 				System.out.println("not found");
-				return null;
+				return result;
 			}
 			
 			else{
@@ -76,9 +76,14 @@ public class ManageInstitution implements AddInstitutionService,UpdateInstitutio
 			requirement.add("Institution_Number="+instiution.getCode());
 			ArrayList<InstitutionPO> searchResult=searchInstitution.searchInstitutionInfo(requirement);			
 			
-			for(int i=0;i<searchResult.size();i++)
-				result=deleteService.delete(searchResult.get(i));
-			
+			if(searchResult.isEmpty()){
+				System.out.println("not found");
+				return DeleteState.FAIL;
+				}
+			else{
+				for(int i=0;i<searchResult.size();i++)
+					result=deleteService.delete(searchResult.get(i));
+			}
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
 			result=DeleteState.FAIL;
@@ -100,10 +105,16 @@ public class ManageInstitution implements AddInstitutionService,UpdateInstitutio
 			
 			ArrayList<String> requirement=new ArrayList<String>();
 			requirement.add("Institution_Number="+institution.getCode());
-			ArrayList<InstitutionPO> searchResult=searchInstitution.searchInstitutionInfo(requirement);			
+			ArrayList<InstitutionPO> searchResult=searchInstitution.searchInstitutionInfo(requirement);		
 			
-			for(int i=0;i<searchResult.size();i++)
-				result=updateService.update(searchResult.get(i), field, value);
+			if(searchResult.isEmpty()){
+				System.out.println("not found");
+				return UpdateState.NOTFOUND;
+				}
+			else{
+				for(int i=0;i<searchResult.size();i++)
+					result=updateService.update(searchResult.get(i), field, value);
+			}
 			
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
