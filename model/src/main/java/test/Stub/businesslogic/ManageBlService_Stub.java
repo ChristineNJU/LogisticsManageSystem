@@ -261,7 +261,7 @@ public class ManageBlService_Stub implements ManageService{
 	public AddState addStaff (StaffVO staff){
 		System.out.println("添加成功");
 		UserPO userpo=new UserPO(staff.getName(), "102412412", staff.getName(), "男", 30, InstitutionType.BusinessLobby, "南京", 
-				UserRole.curier, "user_info");
+				UserRole.courier, "user_info");
 		try {
 			System.out.println("Add_Stub"+new AddService_Stub().add(userpo) );
 		} catch (RemoteException e) {
@@ -277,7 +277,7 @@ public class ManageBlService_Stub implements ManageService{
 	public DeleteState DeleteStaff (StaffVO staff){
 		System.out.println("删除成功");
 		UserPO userpo=new UserPO(staff.getSystemId(), "102412412", "n", "男", 30, InstitutionType.BusinessLobby, "南京", 
-				UserRole.curier, "user_info");
+				UserRole.courier, "user_info");
 		try {
 			System.out.println("Delete_Stub"+new DeleteService_Stub().delete(userpo) );
 		} catch (RemoteException e) {
