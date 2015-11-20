@@ -27,9 +27,9 @@ public class DirectDBCreater {
 //				createTable_User();
 //				createTable_Logistics();
 //				createTable_Const();
-//				insert_User();
+				insert_User();
 //				insert_Logistics();
-				insert_Const();
+//				insert_Const();
 //				deleteTable(URLHelper.getLogisticsURL());
 //				deleteTable(URLHelper.getUserURL());
 //				deleteTable(URLHelper.getConstURL());
@@ -61,7 +61,7 @@ public class DirectDBCreater {
 		
 		try {
 			s = conn.createStatement();
-			s.execute("CREATE TABLE "+table_name+" (ID varchar(20), Password varchar(20), Name varchar(20),"
+			s.execute("CREATE TABLE "+table_name+" (ID varchar(20) PRIMARY key, Password varchar(20), Name varchar(20),"
 					+ " Sex varchar(5), Age int, Institution varchar(15), City varchar(20),"
 					+ " Role varchar(15))");
 			conn.commit();
@@ -93,7 +93,7 @@ public class DirectDBCreater {
 		
 		try {
 			s = conn.createStatement();
-			s.execute("CREATE TABLE "+table_name+" (bar_code varchar(20), sender_name varchar(20), sender_address varchar(100), "
+			s.execute("CREATE TABLE "+table_name+" (bar_code varchar(20) PRIMARY key, sender_name varchar(20), sender_address varchar(100), "
 					+ "sender_organization varchar(50), sender_telephone varchar(25), "
 					+ "sender_mobilephone varchar(25), recipient_name varchar(20), recipient_address varchar(100), "
 					+ "recipient_organization varchar(50), recipient_telephone varchar(25), recipient_mobilephone varchar(25), "
