@@ -156,7 +156,7 @@ public class StateSwitch {
 		return type;
 	}
 	
-	public static LogisticsType switchToLogisticsTypee(String str){
+	public static LogisticsType switchToLogisticsType(String str){
 		LogisticsType type=LogisticsType.ECONOMIC;
 		
 		switch (str){

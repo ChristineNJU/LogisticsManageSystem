@@ -67,12 +67,12 @@ public class SearchLogisticsImpl extends UnicastRemoteObject implements SearchLo
 				double weight = rs.getDouble(14);
 				double size = rs.getDouble(15);
 				String internal_name = rs.getString(16);
-				LogisticsType type = StateSwitch.switchLogisticsTypeToState(rs.getString(17));
-				PackingCharge pack = StateSwitch.switchPackChargeToState(rs.getString(18));
+				LogisticsType type = StateSwitch.switchToLogisticsType(rs.getString(17));
+				PackingCharge pack = StateSwitch.switchToPackCharge(rs.getString(18));
 				double total_cost = rs.getDouble(19);
 				String starting = rs.getString(20);
 				String destination = rs.getString(21);
-				LogisticsState state = StateSwitch.switchLogisticsStateToState(rs.getString(22));			
+				LogisticsState state = StateSwitch.switchToLogisticsState(rs.getString(22));			
 				
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				
