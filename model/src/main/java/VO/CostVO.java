@@ -1,12 +1,17 @@
 package VO;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import PO.CostPO;
 import State.CostType;
 
 
 public class CostVO extends VO {
 
-	private String date = null;
+	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+	private Date date = null;
 	private double amount = 0;
 	private String payer = null;
 	private String payerAccount = null;
@@ -15,7 +20,12 @@ public class CostVO extends VO {
 	
 	public CostVO(String date,double amount,String payer,String payerAccount,
 			CostType costType,String remark){
-		this.date = date;
+		try {
+			this.date = sdf.parse(date);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		this.amount = amount;
 		this.payer = payer;
 		this.payerAccount = payerAccount;
@@ -31,7 +41,7 @@ public class CostVO extends VO {
 		this.remark = po.getRemark();
 	}
 	
-	public String getDate(){
+	public Date getDate(){
 		return this.date;
 	}
 	public double getAmount(){
@@ -51,7 +61,12 @@ public class CostVO extends VO {
 	}
 	
 	public void setDate(String date){
-		this.date = date;
+		try {
+			this.date = sdf.parse(date);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	public void setAmount(double amount){
 		this.amount = amount;

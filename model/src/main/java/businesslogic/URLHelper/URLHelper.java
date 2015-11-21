@@ -20,6 +20,7 @@ public class URLHelper {
 	private static final String DB_Repo_StockTaking = "_DB_Repo_StockTaking_info";
 
 	private static final String DB_Account = "Account_info";
+	private static final String DB_Benefit = "Benefit_info";
 	private static final String DB_Cost = "Cost_info";
 	private static final String DB_Const = "Const_info";
 	private static final String DB_Period = "Period_info";
@@ -76,6 +77,10 @@ public class URLHelper {
 	
 	public static String getAccountURL() {
 		return DB_Account;
+	}
+	
+	public static String getBenefitURL(){
+		return DB_Benefit;
 	}
 	
 	public static String getCostURL() {

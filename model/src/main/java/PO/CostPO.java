@@ -1,10 +1,17 @@
 package PO;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import businesslogic.URLHelper.URLHelper;
 import State.CostType;
+import VO.CostVO;
 
 public class CostPO extends PO {
-
-	private String cost_date = null;
+	
+	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+	private Date cost_date = null;
 	private double cost_amount = 0;
 	private String cost_name = null;
 	private String account_name = null;
@@ -16,7 +23,12 @@ public class CostPO extends PO {
 			CostType type, String remark, String DB_URL) {
 		super(DB_URL);
 		// TODO Auto-generated constructor stub
-		this.cost_date = cost_date;
+		try {
+			this.cost_date = sdf.parse(cost_date);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		this.cost_amount = cost_amount;
 		this.cost_name = cost_name;
 		this.account_name = account_name;
@@ -24,6 +36,16 @@ public class CostPO extends PO {
 		this.remark = remark;
 	}
 	
+	public CostPO(CostVO cvo){
+		super(URLHelper.getCostURL());
+		this.account_name=cvo.getPayerAccount();
+		this.cost_amount=cvo.getAmount();
+		this.cost_date=cvo.getDate();
+		this.cost_name=cvo.getPayer();
+		this.remark=cvo.getRemark();
+		this.type=cvo.getType();
+		this.isApproved=false;
+	}
 	/*====================================================================================
 	 * Public方法
 	 * */
@@ -35,7 +57,7 @@ public class CostPO extends PO {
 	 * 获取付款日期
 	 * 返回String
 	 * */
-	public String getCostDate() {
+	public Date getCostDate() {
 		return cost_date;
 	}
 	/*
