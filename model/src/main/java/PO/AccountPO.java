@@ -69,4 +69,10 @@ public class AccountPO extends PO {
 		return null;
 	}
 
+	@Override
+	public String getPrimaryKey() {
+		// TODO Auto-generated method stub
+		return "account_id = '"+account_id+"'";
+	}
+
 }

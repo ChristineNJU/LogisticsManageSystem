@@ -73,5 +73,11 @@ public class DistancePO extends PO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public String getPrimaryKey() {
+		// TODO Auto-generated method stub
+		return "city_1 = '"+city_1+"' AND city_2 = '"+city_2+"'";
+	}
 	
 }

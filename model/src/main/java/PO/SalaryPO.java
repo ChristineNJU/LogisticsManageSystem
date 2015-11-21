@@ -1,6 +1,7 @@
 package PO;
 
 import State.SalaryType;
+import State.StateSwitch;
 import State.UserRole;
 
 public class SalaryPO extends PO {
@@ -70,6 +71,12 @@ public class SalaryPO extends PO {
 	public String toString() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String getPrimaryKey() {
+		// TODO Auto-generated method stub
+		return "staff = '"+StateSwitch.switchToStr(staff)+"'";
 	}
 
 }

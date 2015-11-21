@@ -26,7 +26,7 @@ public class SearchConstImpl extends UnicastRemoteObject implements SearchConstS
 		// TODO Auto-generated method stub
 		ArrayList<ConstPO> result = new ArrayList<ConstPO>();
 		
-		if(requirement.isEmpty()){
+		if(requirement.isEmpty()||requirement==null){
 			return result;
 		}
 		

@@ -150,4 +150,10 @@ public class BalancePO extends PO {
 		return null;
 	}
 
+	@Override
+	public String getPrimaryKey() {
+		// TODO Auto-generated method stub
+		return "bar_code = '"+bar_code+"'";
+	}
+
 }

@@ -115,6 +115,12 @@ public class StoragePO extends PO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public String getPrimaryKey() {
+		// TODO Auto-generated method stub
+		return "bar_code = '"+bar_code+"'";
+	}
 	
 	
 }
