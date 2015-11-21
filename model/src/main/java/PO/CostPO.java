@@ -121,5 +121,11 @@ public class CostPO extends PO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public String getPrimaryKey() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

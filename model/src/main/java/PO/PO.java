@@ -12,6 +12,8 @@ public abstract class PO implements Serializable {
 	
 	public abstract String toString();
 	
+	public abstract String getPrimaryKey();
+	
 	public void setURL(String URL) {
 		this.DB_URL = URL;
 	}

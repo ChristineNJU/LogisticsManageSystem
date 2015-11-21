@@ -137,5 +137,11 @@ public class DriverInfoPO extends PO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public String getPrimaryKey() {
+		// TODO Auto-generated method stub
+		return "driver_number = '"+driver_number+"'";
+	}
 	
 }

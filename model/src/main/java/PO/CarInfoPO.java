@@ -85,4 +85,10 @@ public class CarInfoPO extends PO {
 		return null;
 	}
 
+	@Override
+	public String getPrimaryKey() {
+		// TODO Auto-generated method stub
+		return "car_number = '"+car_number+"'";
+	}
+
 }

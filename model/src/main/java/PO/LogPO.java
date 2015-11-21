@@ -1,5 +1,6 @@
 package PO;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class LogPO extends PO {
@@ -50,6 +51,13 @@ public class LogPO extends PO {
 	public String toString() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String getPrimaryKey() {
+		// TODO Auto-generated method stub
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+		return "time = '"+sdf.format(time)+"'";
 	}
 	
 }

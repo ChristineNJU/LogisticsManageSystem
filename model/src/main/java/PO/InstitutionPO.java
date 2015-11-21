@@ -82,5 +82,11 @@ public class InstitutionPO extends PO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public String getPrimaryKey() {
+		// TODO Auto-generated method stub
+		return "institution_number = '"+institution_number+"'";
+	}
 	
 }

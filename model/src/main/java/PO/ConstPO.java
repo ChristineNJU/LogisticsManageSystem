@@ -61,5 +61,11 @@ public class ConstPO extends PO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public String getPrimaryKey() {
+		// TODO Auto-generated method stub
+		return "name = '"+name+"'";
+	}
 	
 }
