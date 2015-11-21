@@ -23,6 +23,9 @@ public class URLHelper {
 	private static final String DB_Benefit = "Benefit_info";
 	private static final String DB_Cost = "Cost_info";
 	private static final String DB_Const = "Const_info";
+	private static final String DB_Distance = "Distance_info";
+	private static final String DB_Salary = "Salary_info";
+	private static final String DB_Log = "Log_info";
 	private static final String DB_Period = "Period_info";
 	private static final String DB_User = "User_info";
 	private static final String DB_Institution = "Institution_info";
@@ -89,6 +92,18 @@ public class URLHelper {
 	
 	public static String getConstURL() {
 		return DB_Const;
+	}
+	
+	public static String getDistanceURL() {
+		return DB_Distance;
+	}
+	
+	public static String getLogURL() {
+		return DB_Log;
+	}
+	
+	public static String getSalaryURL() {
+		return DB_Salary;
 	}
 	
 	public static String getPeriodURL() {

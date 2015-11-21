@@ -9,13 +9,13 @@ import businesslogic.URLHelper.URLHelper;
 
 public class BenefitPO extends PO {
 	
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
 	private int number = 0;
 	private double income = 0;
 	private double expend = 0;
 	private double benefit = 0;
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-	private Date startDate=null;
-	private Date endDate=null;
+	private Date start_date=null;
+	private Date end_date=null;
 	
 	public BenefitPO(int number, double income, double expend, String DB_URL,String start,String end) {
 		super(DB_URL);
@@ -25,11 +25,14 @@ public class BenefitPO extends PO {
 		this.expend = expend;
 		this.benefit = income - expend;
 		try {
-			startDate=sdf.parse(start);
-			endDate=sdf.parse(end);
+			start_date=sdf.parse(start);
+			end_date=sdf.parse(end);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			start_date = null;
+			end_date = null;
+			System.out.println("时间对象创建失败");
+//			e.printStackTrace();
 		}
 	}
 	
@@ -39,8 +42,8 @@ public class BenefitPO extends PO {
 		this.income=bvo.getIncome();
 		this.expend=bvo.getCost();
 		this.benefit=bvo.getBenefit();
-		this.startDate=bvo.getStartDate();
-		this.endDate=bvo.getEndDate();
+		this.start_date=bvo.getStartDate();
+		this.end_date=bvo.getEndDate();
 	}
 
 	/*====================================================================================
@@ -81,11 +84,11 @@ public class BenefitPO extends PO {
 	}
 	
 	public Date getStartDate(){
-		return startDate;
+		return start_date;
 	}
 	
 	public Date getEndDate(){
-		return endDate;
+		return end_date;
 	}
 	
 	/*---------------------------------------------------------------
@@ -109,7 +112,7 @@ public class BenefitPO extends PO {
 	
 	public void setStartDate(String startDate){
 		try {
-			this.startDate=sdf.parse(startDate);
+			this.start_date=sdf.parse(startDate);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -118,7 +121,7 @@ public class BenefitPO extends PO {
 	
 	public void setEndDate(String endDate){
 		try{
-			this.endDate=sdf.parse(endDate);
+			this.end_date=sdf.parse(endDate);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -129,6 +132,12 @@ public class BenefitPO extends PO {
 	public String toString() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String getPrimaryKey() {
+		// TODO Auto-generated method stub
+		return "number = "+number;
 	}
 	
 
