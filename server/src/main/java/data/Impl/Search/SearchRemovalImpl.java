@@ -51,7 +51,7 @@ public class SearchRemovalImpl extends UnicastRemoteObject implements SearchRemo
 			while(rs.next()){
 				String bar_code = rs.getString(1);
 				
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				Date removal_date;
 				try {
 					removal_date = sdf.parse(rs.getString(2));

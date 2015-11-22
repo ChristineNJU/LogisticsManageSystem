@@ -48,7 +48,7 @@ public class SearchLogImpl extends UnicastRemoteObject implements SearchLogServi
 			
 			ResultSet rs = s.executeQuery(DBHelper.SEARCH(URLHelper.getLogURL(), target));
 			while(rs.next()){
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				Date time;
 				try {
 					time = sdf.parse(rs.getString(1));

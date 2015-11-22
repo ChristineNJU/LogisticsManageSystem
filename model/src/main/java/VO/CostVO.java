@@ -10,7 +10,7 @@ import State.CostType;
 
 public class CostVO extends VO {
 
-	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	private Date date = null;
 	private double amount = 0;
 	private String payer = null;
