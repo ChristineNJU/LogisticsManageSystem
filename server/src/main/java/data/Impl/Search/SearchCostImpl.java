@@ -8,8 +8,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import businesslogic.URLHelper.URLHelper;
 import PO.CostPO;
+import State.CostType;
+import State.StateSwitch;
+import businesslogic.URLHelper.URLHelper;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Search.SearchCostService;
 
@@ -36,18 +38,41 @@ public class SearchCostImpl extends UnicastRemoteObject implements SearchCostSer
 		try {
 			Statement s = conn.createStatement();
 
-			String target = requirement.get(0);
+			String target = "";
+			for(int i=0;i<requirement.size();i++){
+				if(i!=requirement.size()-1){
+					target = target + requirement.get(i) + " AND ";
+				}else{
+					target = target + requirement.get(i);
+				}
+			}
 			
 			ResultSet rs = s.executeQuery(DBHelper.SEARCH(URLHelper.getCostURL(), target));
 			
+			while(rs.next()){
+				String cost_date = rs.getString(1);
+				double cost_amount = rs.getDouble(2);
+				String cost_name = rs.getString(3);
+				String account_name = rs.getString(4);
+				CostType type = StateSwitch.switchToCostType(rs.getString(5));
+				String remark = rs.getString(6);
+				boolean isApproved = rs.getString(7).equals("true");
+				
+				CostPO cost = new CostPO(cost_date, cost_amount, cost_name, account_name, type,
+						remark, URLHelper.getCostURL());
+				
+				cost.setApproved(isApproved);
+				
+				result.add(cost);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+//			e.printStackTrace();
+			System.out.println("从数据库提取CostPO对象失败");
+			return result;
 		}
 		
-		
-		
-		return null;
+		return result;
 	}
 
 }

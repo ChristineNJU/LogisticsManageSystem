@@ -43,7 +43,14 @@ public class SearchLogisticsImpl extends UnicastRemoteObject implements SearchLo
 		try {
 			Statement s = conn.createStatement();
 			
-			String target = requirement.get(0);
+			String target = "";
+			for(int i=0;i<requirement.size();i++){
+				if(i!=requirement.size()-1){
+					target = target + requirement.get(i) + " AND ";
+				}else{
+					target = target + requirement.get(i);
+				}
+			}
 			
 			ResultSet rs = s.executeQuery(DBHelper.SEARCH(URLHelper.getLogisticsURL(), target));
 			

@@ -125,7 +125,7 @@ public class CostPO extends PO {
 	@Override
 	public String getPrimaryKey() {
 		// TODO Auto-generated method stub
-		return null;
+		return "cost_date = '"+cost_date+"'";
 	}
 	
 }

@@ -29,7 +29,7 @@ public class SearchUserImpl extends UnicastRemoteObject implements SearchUserSer
 		// TODO Auto-generated method stub
 		ArrayList<UserPO> result = new ArrayList<UserPO>();
 		
-		if(requirement.isEmpty()){
+		if(requirement==null||requirement.isEmpty()){
 			return result;
 		}
 		
@@ -37,7 +37,14 @@ public class SearchUserImpl extends UnicastRemoteObject implements SearchUserSer
 		try {
 			Statement s = conn.createStatement();
 			
-			String target = requirement.get(0);
+			String target = "";
+			for(int i=0;i<requirement.size();i++){
+				if(i!=requirement.size()-1){
+					target = target + requirement.get(i) + " AND ";
+				}else{
+					target = target + requirement.get(i);
+				}
+			}
 			
 //			System.out.println(DBHelper.SEARCH(URLHelper.getUserURL(), target));
 			

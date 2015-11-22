@@ -24,27 +24,45 @@ public class SearchCarInfoImpl extends UnicastRemoteObject implements SearchCarI
 			ArrayList<String> requirement) throws RemoteException {
 		// TODO Auto-generated method stub
 		
-		ArrayList<CarInfoPO> car_info = new ArrayList<CarInfoPO>();
+		ArrayList<CarInfoPO> result = new ArrayList<CarInfoPO>();
 		
 		if(requirement.isEmpty()){
-			return car_info;
+			return result;
 		}
 		
 		Connection conn = DBHelper.getConnection();
 		try {
 			Statement s = conn.createStatement();
 			
-			String target = requirement.get(0);
+			String target = "";
+			for(int i=0;i<requirement.size();i++){
+				if(i!=requirement.size()-1){
+					target = target + requirement.get(i) + " AND ";
+				}else{
+					target = target + requirement.get(i);
+				}
+			}
 			
 			ResultSet rs = s.executeQuery(DBHelper.SEARCH(DB_URL, target));
 			
+			while(rs.next()){
+				String car_number = rs.getString(1);
+				String car_license = rs.getString(2);
+				int attend_time = rs.getInt(3);
+				
+				CarInfoPO car = new CarInfoPO(car_number, car_license, attend_time, DB_URL);
+				
+				result.add(car);
+			}
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+//			e.printStackTrace();
+			System.out.println("从数据库提取CarInfoPO对象失败");
+			return result;
 		}
 		
-		return null;
+		return result;
 	}
 
 }
