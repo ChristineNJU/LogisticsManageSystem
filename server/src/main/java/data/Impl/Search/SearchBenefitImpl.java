@@ -46,9 +46,7 @@ public class SearchBenefitImpl extends UnicastRemoteObject implements SearchBene
 				}
 			}
 			
-<<<<<<< HEAD
-			ResultSet rs = s.executeQuery(DBHelper.SEARCH(table, target));
-=======
+
 			ResultSet rs = s.executeQuery(DBHelper.SEARCH(URLHelper.getBenefitURL(), target));
 			
 			while(rs.next()){
@@ -63,8 +61,7 @@ public class SearchBenefitImpl extends UnicastRemoteObject implements SearchBene
 				
 				result.add(benefit);
 			}
->>>>>>> d26ce7a269704ab2d2f228ed0c0c30a51442303d
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 //			e.printStackTrace();
