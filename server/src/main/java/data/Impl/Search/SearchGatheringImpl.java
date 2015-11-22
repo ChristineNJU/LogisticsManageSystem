@@ -47,7 +47,7 @@ public class SearchGatheringImpl extends UnicastRemoteObject implements SearchGa
 			
 			ResultSet rs = s.executeQuery(DBHelper.SEARCH(DB_URL, target));
 			while(rs.next()){
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				Date date;
 				try {
 					date = sdf.parse(rs.getString(1));

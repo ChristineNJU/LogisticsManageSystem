@@ -6,6 +6,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import PO.LogisticsInfoPO;
 import data.RMIHelper.RMIHelper;
@@ -26,9 +27,11 @@ public class SearchLogistics_Driver {
 			
 			LogisticsInfoPO logistics = list.get(0);
 			
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 			
-			System.out.println(logistics.getSenderName()+" "+logistics.getType()+" "+sdf.format(logistics.getSendDate()));
+			String day = sdf.format(logistics.getSendDate());
+			
+			System.out.println(logistics.getSenderName()+" "+logistics.getType()+" "+logistics.getSendDate()+" "+day);
 			
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block

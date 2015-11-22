@@ -51,7 +51,7 @@ public class SearchStorageImpl extends UnicastRemoteObject implements SearchStor
 			while(rs.next()){
 				String bar_code = rs.getString(1);
 				
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				Date storage_date;
 				try {
 					storage_date = sdf.parse(rs.getString(2));

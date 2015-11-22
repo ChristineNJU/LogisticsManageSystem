@@ -52,7 +52,7 @@ public class SearchArrivalImpl extends UnicastRemoteObject implements SearchArri
 			while(rs.next()){
 				String bar_code = rs.getString(1);
 				
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				Date arrival_date;
 				
 				try {

@@ -49,7 +49,7 @@ public class SearchDriverInfoImpl extends UnicastRemoteObject implements SearchD
 			while(rs.next()){
 				String driver_number = rs.getString(1);
 				String driver_name = rs.getString(2);
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 				Date driver_birthday;
 				try {
 					driver_birthday = sdf.parse(rs.getString(3));

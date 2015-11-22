@@ -11,7 +11,7 @@ public class BenefitVO extends VO {
 	private double incomeTotal = 0;
 	private double costTotal = 0;
 	private double benefitTotal = 0;
-	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	private Date startDate=null;
 	private Date endDate=null;
 	

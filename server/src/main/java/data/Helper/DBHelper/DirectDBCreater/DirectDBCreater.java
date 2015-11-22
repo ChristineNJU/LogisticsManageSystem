@@ -27,12 +27,23 @@ public class DirectDBCreater {
 //				createTable_User();
 //				createTable_Logistics();
 //				createTable_Const();
+//				createTable_Institution();
+//				createTable_Account();
+//				createTable_Log();
+//				createTable_Salary();
+//				createTable_Distance();
 //				insert_User();
 //				insert_Logistics();
 //				insert_Const();
+//				insert_Institution();
+//				insert_Account();
+//				insert_Log();
+//				insert_Salary();
+//				insert_Distance();
 //				deleteTable(URLHelper.getLogisticsURL());
 //				deleteTable(URLHelper.getUserURL());
 //				deleteTable(URLHelper.getConstURL());
+//				deleteTable(URLHelper.getInstitutionURL());
 				
 			} catch (InstantiationException | IllegalAccessException
 					| ClassNotFoundException | SQLException e) {
@@ -161,6 +172,168 @@ public class DirectDBCreater {
 			mark = s.execute("INSERT INTO "+table_name+" VALUES('courise_bag', 1)");
 			mark = s.execute("INSERT INTO "+table_name+" VALUES('paper_case', 5)");
 			
+			conn.commit();
+			
+			System.out.println("insert into "+table_name);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void createTable_Institution() {
+		String table_name = URLHelper.getInstitutionURL();
+		
+		try {
+			s = conn.createStatement();
+			s.execute("CREATE TABLE "+table_name+" (institution_name varchar(200), institution_type varchar(20),"
+					+ " city varchar(20), institution_number varchar(25) PRIMARY key)");
+			conn.commit();
+		
+			System.out.println("create table "+table_name);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void insert_Institution() {
+		String table_name = URLHelper.getInstitutionURL();
+		
+		try {
+			s = conn.createStatement();
+			boolean mark;
+//			mark = s.execute("INSERT INTO "+table_name+" VALUES('南京市鼓楼营业厅', 'BusinessLobby', "
+//					+ "'南京', '025000')");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('南京市中转中心仓库', 'Repository', "
+					+ "'南京', '02500')");
+			conn.commit();
+			
+			System.out.println("insert into "+table_name);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void createTable_Account() {
+		String table_name = URLHelper.getAccountURL();
+		
+		try {
+			s = conn.createStatement();
+			s.execute("CREATE TABLE "+table_name+" (account_id int PRIMARY key, account_name varchar(50), "
+					+ "amount double)");
+			conn.commit();
+			
+			System.out.println("create table "+table_name);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void insert_Account() {
+		String table_name = URLHelper.getAccountURL();
+		
+		try {
+			s = conn.createStatement();
+			boolean mark = s.execute("INSERT INTO "+table_name+" VALUES(1, '中国银行南京分行', 2403495.03)");
+			conn.commit();
+			
+			System.out.println("insert into "+table_name);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void createTable_Log() {
+		String table_name = URLHelper.getLogURL();
+		
+		try {
+			s = conn.createStatement();
+			s.execute("CREATE TABLE "+table_name+" (time varchar(30) PRIMARY key, operation varchar(50), operator varchar(20))");
+			conn.commit();
+			
+			System.out.println("create table "+table_name);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void insert_Log() {
+		String table_name = URLHelper.getLogURL();
+		
+		try {
+			s = conn.createStatement();
+			boolean mark = s.execute("INSERT INTO "+table_name+" VALUES('2015-11-22 12:22:02', '创建数据库表', '黄勇')");
+			conn.commit();
+			
+			System.out.println("insert into "+table_name);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void createTable_Salary() {
+		String table_name = URLHelper.getSalaryURL();
+		
+		try {
+			s = conn.createStatement();
+			s.execute("CREATE TABLE "+table_name+" (staff varchar(20), salary double, type varchar(20))");
+			conn.commit();
+			
+			System.out.println("create table "+table_name);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void insert_Salary() {
+		String table_name = URLHelper.getSalaryURL();
+		
+		try {
+			s = conn.createStatement();
+			boolean mark = s.execute("INSERT INTO "+table_name+" VALUES('admin', 3000, 'MONTH')");
+			conn.commit();
+			
+			System.out.println("insert into "+table_name);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void createTable_Distance() {
+		String table_name = URLHelper.getDistanceURL();
+		
+		try {
+			s = conn.createStatement();
+			s.execute("CREATE TABLE "+table_name+" (city_1 varchar(20), city_2 varchar(20), distance double, time double)");
+			conn.commit();
+			
+			System.out.println("create table "+table_name);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void insert_Distance() {
+		String table_name = URLHelper.getDistanceURL();
+		
+		try {
+			s = conn.createStatement();
+			boolean mark;
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('北京', '上海', 1064.7, 0)");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('北京', '广州', 1888.8, 0)");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('北京', '南京', 900, 0)");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('上海', '广州', 1213, 0)");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('上海', '南京', 266, 0)");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('广州', '南京', 1132, 0)");
 			conn.commit();
 			
 			System.out.println("insert into "+table_name);
