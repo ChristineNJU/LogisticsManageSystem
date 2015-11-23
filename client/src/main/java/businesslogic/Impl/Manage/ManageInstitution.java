@@ -36,11 +36,11 @@ public class ManageInstitution implements AddInstitutionService,UpdateInstitutio
 			
 			//show  when id==null
 			if(id!=null){
-			requirementId.add("Institution_Number='"+id+"'");
-			requirementName.add("Institution_Name'"+id+"'");
+			requirementId.add("institution_number='"+id+"'");
+			requirementName.add("institution_name'"+id+"'");
 			}
 			else{
-				requirementId.add("Institution_Number like '%%'");
+				requirementId.add("institution_number like '%%'");
 			}
 			
 			
@@ -81,7 +81,7 @@ public class ManageInstitution implements AddInstitutionService,UpdateInstitutio
 			SearchInstitutionInfoService searchInstitution=(SearchInstitutionInfoService) Naming.lookup(RMIHelper.SEARCH_INSTITUTION_IMPL);
 			
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("Institution_Number='"+instiution.getCode()+"'");
+			requirement.add("institution_number='"+instiution.getCode()+"'");
 			ArrayList<InstitutionPO> searchResult=searchInstitution.searchInstitutionInfo(requirement);			
 			
 			if(searchResult.isEmpty()){
@@ -112,7 +112,7 @@ public class ManageInstitution implements AddInstitutionService,UpdateInstitutio
 			SearchInstitutionInfoService searchInstitution=(SearchInstitutionInfoService) Naming.lookup(RMIHelper.SEARCH_INSTITUTION_IMPL);
 			
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("Institution_Number='"+institution.getCode()+"'");
+			requirement.add("institution_number='"+institution.getCode()+"'");
 			ArrayList<InstitutionPO> searchResult=searchInstitution.searchInstitutionInfo(requirement);		
 			
 			if(searchResult.isEmpty()){

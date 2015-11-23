@@ -53,7 +53,7 @@ public class ManageFinance implements GetBenefitService, GetCostService,GetGathe
 					}
 					else{
 						for(int j=0;j<searchResult.size();j++){
-							GatheringVO temp=new GatheringVO(searchResult.get(i));
+							GatheringVO temp=new GatheringVO(searchResult.get(j));
 							result.add(temp);
 						}
 					}
