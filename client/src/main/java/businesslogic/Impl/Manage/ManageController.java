@@ -78,10 +78,10 @@ public class ManageController implements ManageService{
 	}
 
 	@Override
-	public UpdateState updateReceipt(VO receipt) {
+	public UpdateState updateReceipt(VO receipt,String field,String value) {
 		// TODO Auto-generated method stub
 		ManageReceipt manageReceipt=new ManageReceipt();
-		return manageReceipt.updateReceipt(receipt);
+		return manageReceipt.updateReceipt(receipt,field,value);
 	}
 
 	@Override

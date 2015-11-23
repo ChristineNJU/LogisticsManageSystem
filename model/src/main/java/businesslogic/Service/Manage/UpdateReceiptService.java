@@ -4,5 +4,5 @@ import State.UpdateState;
 import VO.VO;
 
 public interface UpdateReceiptService {
-	public UpdateState updateReceipt(VO receipt);
+	public UpdateState updateReceipt(VO receipt,String field, String value);
 }

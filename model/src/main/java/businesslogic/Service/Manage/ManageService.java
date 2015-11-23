@@ -32,7 +32,7 @@ public interface ManageService {
 	public UpdateState updateConst(ConstVO constant, String field, String value);
 	public UpdateState UpdateInstitution (InstitutionVO institution, String field,String value);
 	public UpdateState updatePayment (SalaryVO salary, String field, String value);
-	public UpdateState updateReceipt(VO receipt);
+	public UpdateState updateReceipt(VO receipt,String field,String value);
 	public UpdateState updateStaff (StaffVO staff, String field, String value);
 	
 }
