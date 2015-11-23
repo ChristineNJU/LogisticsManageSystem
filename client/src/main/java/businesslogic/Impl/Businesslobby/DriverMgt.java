@@ -1,7 +1,11 @@
 package businesslogic.Impl.Businesslobby;
 
+import java.rmi.Naming;
 import java.util.ArrayList;
 
+import data.RMIHelper.RMIHelper;
+import data.Service.Add.AddService;
+import PO.DriverInfoPO;
 import State.AddState;
 import State.DeleteState;
 import State.UpdateState;
@@ -34,7 +38,18 @@ public class DriverMgt implements AddDriverService,DeleteDriverService,UpdateDri
 	@Override
 	public AddState AddDriver(DriverInfoVO driver) {
 		// TODO Auto-generated method stub
-		return null;
+				AddState state=AddState.SUCCESS;
+				
+				try{
+					AddService driverAdd=(AddService) Naming.lookup(RMIHelper.ADD_IMPL);
+					state=driverAdd.add(new DriverInfoPO(driver));
+				} catch (Exception ex){
+					state=AddState.CONNECTERROR;
+					System.out.println(ex.getMessage());
+					ex.printStackTrace();
+				}
+				
+				return state;
 	}
 
 }

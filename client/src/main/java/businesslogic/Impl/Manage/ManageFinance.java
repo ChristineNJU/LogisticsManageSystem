@@ -16,6 +16,7 @@ import VO.GatheringVO;
 import businesslogic.Service.Manage.GetBenefitService;
 import businesslogic.Service.Manage.GetCostService;
 import businesslogic.Service.Manage.GetGatheringService;
+import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
 import data.Service.Search.SearchBenefitService;
 import data.Service.Search.SearchCostService;

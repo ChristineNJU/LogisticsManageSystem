@@ -2,6 +2,9 @@ package PO;
 
 import java.util.Date;
 
+import VO.DriverInfoVO;
+import businesslogic.URLHelper.URLHelper;
+
 
 /*========================================================================================
  * 用来保存司机信息的持久化数据格式
@@ -16,7 +19,7 @@ public class DriverInfoPO extends PO {
 	private String driver_mobilephone = null;
 	private String driver_sex = null;
 	private int attend_time = 0;
-	
+
 	public DriverInfoPO(String driver_number, String driver_name, Date driver_birthday, String driver_id,
 			String driver_mobilephone, String driver_sex, int attend_time, String DB_URL) {
 		super(DB_URL);
@@ -27,6 +30,19 @@ public class DriverInfoPO extends PO {
 		this.driver_id = driver_id;
 		this.driver_sex = driver_sex;
 		this.attend_time = attend_time;
+
+	}
+	
+	public DriverInfoPO(DriverInfoVO driver){
+		super(URLHelper.getDriverInfoURL(driver.getId().substring(0, driver.getId().length()-3)));
+		this.driver_number=driver.getNumber();
+		this.driver_name=driver.getName();
+		this.driver_birthday=driver.getBirthday();
+		this.driver_mobilephone=driver.getMobilephone();
+		this.driver_id=driver.getId();
+		this.driver_sex=driver.getSex();
+		this.attend_time=driver.getAttendTime();	
+		
 	}
 	
 	/*=======================================================================================
@@ -128,8 +144,6 @@ public class DriverInfoPO extends PO {
 	public void setAttendTime(int attend_time) {
 		this.attend_time = attend_time;
 	}
-	
-	
 	
 	
 	@Override

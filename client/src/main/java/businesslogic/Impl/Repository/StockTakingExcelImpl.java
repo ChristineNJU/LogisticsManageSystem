@@ -1,7 +1,7 @@
-package businesslogic.Impl.Reponsitory;
+package businesslogic.Impl.Repository;
 
 import State.OutputState;
-import businesslogic.Service.Reponsitory.StockTakingExcelService;
+import businesslogic.Service.Repository.StockTakingExcelService;
 
 public class StockTakingExcelImpl implements StockTakingExcelService{
 
