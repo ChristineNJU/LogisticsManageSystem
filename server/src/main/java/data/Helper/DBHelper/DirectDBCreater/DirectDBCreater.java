@@ -32,6 +32,7 @@ public class DirectDBCreater {
 //				createTable_Log();
 //				createTable_Salary();
 //				createTable_Distance();
+//				createTable_Driver();
 //				insert_User();
 //				insert_Logistics();
 //				insert_Const();
@@ -205,6 +206,8 @@ public class DirectDBCreater {
 			boolean mark;
 //			mark = s.execute("INSERT INTO "+table_name+" VALUES('南京市鼓楼营业厅', 'BusinessLobby', "
 //					+ "'南京', '025000')");
+//			mark = s.execute("INSERT INTO "+table_name+" VALUES('南京市中转中心', 'MediumCenter', "
+//					+ "'南京', '0250')");
 			mark = s.execute("INSERT INTO "+table_name+" VALUES('南京市中转中心仓库', 'Repository', "
 					+ "'南京', '02500')");
 			conn.commit();
@@ -337,6 +340,22 @@ public class DirectDBCreater {
 			conn.commit();
 			
 			System.out.println("insert into "+table_name);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void createTable_Driver() {
+		String table_name = URLHelper.getDriverInfoURL("025000");
+		
+		try {
+			s = conn.createStatement();
+			s.execute("CREATE TABLE "+table_name+" (driver_number varchar(20), driver_name varchar(20), driver_birthday varchar(20), "
+					+ "driver_id varchar(20), driver_mobilephone varchar(20), driver_sex varchar(10), attend_time int)");
+			conn.commit();
+			
+			System.out.println("create table "+table_name);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

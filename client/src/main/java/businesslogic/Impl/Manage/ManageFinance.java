@@ -16,7 +16,6 @@ import VO.GatheringVO;
 import businesslogic.Service.Manage.GetBenefitService;
 import businesslogic.Service.Manage.GetCostService;
 import businesslogic.Service.Manage.GetGatheringService;
-import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
 import data.Service.Search.SearchBenefitService;
 import data.Service.Search.SearchCostService;
@@ -112,8 +111,7 @@ public class ManageFinance implements GetBenefitService, GetCostService,GetGathe
 			ArrayList<BenefitPO> searchResult=searchBenefit.searchBenefit(requirement);
 			
 			if(searchResult.isEmpty()){
-				System.out.println("not found");
-				return new BenefitVO(0,0,"0","0");
+				return null;
 			}
 			else{
 				for(int i=0;i<searchResult.size();i++){
@@ -125,6 +123,7 @@ public class ManageFinance implements GetBenefitService, GetCostService,GetGathe
 			// TODO Auto-generated catch block
 			System.out.println("error");
 			e.printStackTrace();
+			return null;
 		}
 		
 		BenefitVO result=new BenefitVO(income,cost,"2015-12-22-10:44:20" ,time_end);

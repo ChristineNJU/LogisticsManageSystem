@@ -32,4 +32,6 @@ public class RMIHelper {
 	public static final String SEARCH_STORAGE_IMPL = URL+"ServiceStorageImpl";
 	public static final String SEARCH_TRANSFER_IMPL = URL+"ServiceTransferImpl";
 	public static final String SEARCH_USER_IMPL = URL+"ServiceUserImpl";
+
+	public static final String WAREHOUSE_IMPL = URL+"WareHouseImpl";
 }

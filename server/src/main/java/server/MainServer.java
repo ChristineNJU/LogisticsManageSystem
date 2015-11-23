@@ -31,6 +31,7 @@ import data.Impl.Search.SearchStockTakingImpl;
 import data.Impl.Search.SearchStorageImpl;
 import data.Impl.Search.SearchTransferImpl;
 import data.Impl.Search.SearchUserImpl;
+import data.Impl.Sundry.WareHouseImpl;
 import data.Impl.Update.UpdateImpl;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
@@ -57,6 +58,7 @@ import data.Service.Search.SearchStockTakingService;
 import data.Service.Search.SearchStorageService;
 import data.Service.Search.SearchTransferService;
 import data.Service.Search.SearchUserService;
+import data.Service.Sundry.WareHouseService;
 import data.Service.Update.UpdateService;
 
 public class MainServer {
@@ -65,6 +67,7 @@ public class MainServer {
 		AddService add_service = null;
 		DeleteService delete_service = null;
 		UpdateService update_service = null;
+		
 		SearchAccountService search_account_service = null;
 		SearchArrivalService search_arrival_service = null;
 		SearchBalanceService search_balance_service = null;
@@ -88,6 +91,7 @@ public class MainServer {
 		SearchTransferService search_transfer_service = null;
 		SearchUserService search_user_service = null;
 		
+		WareHouseService ware_house_service = null;
 		try {
 			add_service = new AddImpl();
 			delete_service = new DeleteImpl();
@@ -116,6 +120,7 @@ public class MainServer {
 			search_transfer_service = new SearchTransferImpl();
 			search_user_service = new SearchUserImpl();
 			
+			ware_house_service = new WareHouseImpl();
 		} catch (RemoteException e1) {
 			// TODO Auto-generated catch block
 			System.out.println("接口实现创建失败");
@@ -175,6 +180,8 @@ public class MainServer {
 			print("SearchTransferImpl");
 			Naming.bind(RMIHelper.SEARCH_USER_IMPL, search_user_service);
 			print("SearchUserImpl");
+			Naming.bind(RMIHelper.WAREHOUSE_IMPL, ware_house_service);
+			print("WareHouseImpl");
 		} catch (RemoteException | MalformedURLException | AlreadyBoundException e) {
 			// TODO Auto-generated catch block
 			System.out.println("RMI远程端口绑定失败");

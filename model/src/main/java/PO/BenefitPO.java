@@ -14,8 +14,8 @@ public class BenefitPO extends PO {
 	private double income = 0;
 	private double expend = 0;
 	private double benefit = 0;
-	private Date start_date=null;
-	private Date end_date=null;
+	private Date startDate=null;
+	private Date endDate=null;
 	
 	public BenefitPO(int number, double income, double expend, String DB_URL,String start,String end) {
 		super(DB_URL);
@@ -25,12 +25,12 @@ public class BenefitPO extends PO {
 		this.expend = expend;
 		this.benefit = income - expend;
 		try {
-			start_date=sdf.parse(start);
-			end_date=sdf.parse(end);
+			startDate=sdf.parse(start);
+			endDate=sdf.parse(end);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
-			start_date = null;
-			end_date = null;
+			startDate = null;
+			endDate = null;
 			System.out.println("时间对象创建失败");
 //			e.printStackTrace();
 		}
@@ -42,8 +42,8 @@ public class BenefitPO extends PO {
 		this.income=bvo.getIncome();
 		this.expend=bvo.getCost();
 		this.benefit=bvo.getBenefit();
-		this.start_date=bvo.getStartDate();
-		this.end_date=bvo.getEndDate();
+		this.startDate=bvo.getStartDate();
+		this.endDate=bvo.getEndDate();
 	}
 
 	/*====================================================================================
@@ -84,11 +84,11 @@ public class BenefitPO extends PO {
 	}
 	
 	public Date getStartDate(){
-		return start_date;
+		return startDate;
 	}
 	
 	public Date getEndDate(){
-		return end_date;
+		return endDate;
 	}
 	
 	/*---------------------------------------------------------------
@@ -112,7 +112,7 @@ public class BenefitPO extends PO {
 	
 	public void setStartDate(String startDate){
 		try {
-			this.start_date=sdf.parse(startDate);
+			this.startDate=sdf.parse(startDate);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -121,7 +121,7 @@ public class BenefitPO extends PO {
 	
 	public void setEndDate(String endDate){
 		try{
-			this.end_date=sdf.parse(endDate);
+			this.endDate=sdf.parse(endDate);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

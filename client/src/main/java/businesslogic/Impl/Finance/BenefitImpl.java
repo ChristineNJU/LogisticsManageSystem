@@ -40,7 +40,7 @@ public class BenefitImpl implements AddBenefitService,GetBenefitService{
 		try{
 			SearchBenefitService benefitSearch=(SearchBenefitService) Naming.lookup(RMIHelper.SEARCH_BENEFIT_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("endDate='"+time_end+"'");
+			requirement.add("endDate<='"+time_end+"'");
 			ArrayList<BenefitPO> benefitList=new ArrayList<BenefitPO>();
 			benefitList=benefitSearch.searchBenefit(requirement);
 			benefit=new BenefitVO(benefitList.get(0));
