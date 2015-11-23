@@ -91,7 +91,7 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 				}
 				else{
 					for(int i=0;i<searchResult.size();i++){
-						updateService.update(searchResult.get(i), field, value);
+						result=updateService.update(searchResult.get(i), field, value);
 					}
 				}
 			}
@@ -114,7 +114,7 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 				}
 				else{
 					for(int i=0;i<searchResult.size();i++){
-						updateService.update(searchResult.get(i), field, value);
+						result=updateService.update(searchResult.get(i), field, value);
 					}
 				}
 			}
@@ -132,7 +132,7 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 				}
 				else{
 					for(int i=0;i<searchResult.size();i++){
-						updateService.update(searchResult.get(i), field, value);
+						result=updateService.update(searchResult.get(i), field, value);
 					}
 				}
 			}
@@ -160,7 +160,7 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 				}
 				else{
 					for(int i=0;i<searchResult.size();i++){
-						updateService.update(searchResult.get(i), field, value);
+						result=updateService.update(searchResult.get(i), field, value);
 					}
 				}
 			}
@@ -189,7 +189,7 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 				}
 				else{
 					for(int i=0;i<searchResult.size();i++){
-						updateService.update(searchResult.get(i), field, value);
+						result=updateService.update(searchResult.get(i), field, value);
 					}
 				}
 			}
@@ -212,7 +212,7 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 				}
 				else{
 					for(int i=0;i<searchResult.size();i++){
-						updateService.update(searchResult.get(i), field, value);
+						result=updateService.update(searchResult.get(i), field, value);
 					}
 				}
 			}
@@ -237,7 +237,7 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 				}
 				else{
 					for(int i=0;i<searchResult.size();i++){
-						updateService.update(searchResult.get(i), field, value);
+						result=updateService.update(searchResult.get(i), field, value);
 					}
 				}
 				
@@ -262,7 +262,7 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 				}
 				else{
 					for(int i=0;i<searchResult.size();i++){
-						updateService.update(searchResult.get(i), field, value);
+						result=updateService.update(searchResult.get(i), field, value);
 					}
 				}
 			}
@@ -286,7 +286,7 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 				}
 				else{
 					for(int i=0;i<searchResult.size();i++){
-						updateService.update(searchResult.get(i), field, value);
+						result=updateService.update(searchResult.get(i), field, value);
 					}
 				}
 			}
