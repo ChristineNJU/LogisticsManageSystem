@@ -1,10 +1,10 @@
-package businesslogic.Impl.Reponsitory;
+package businesslogic.Impl.Repository;
 
 import java.util.ArrayList;
 
 import State.AddState;
 import VO.RemovalVO;
-import businesslogic.Service.Reponsitory.RemovalService;
+import businesslogic.Service.Repository.RemovalService;
 
 public class RemovalImpl implements RemovalService{
 

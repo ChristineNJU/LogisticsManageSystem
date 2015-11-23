@@ -1,4 +1,4 @@
-package businesslogic.Service.Reponsitory;
+package businesslogic.Service.Repository;
 
 import State.AddState;
 

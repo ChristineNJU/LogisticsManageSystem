@@ -1,6 +1,6 @@
-package businesslogic.Impl.Reponsitory;
+package businesslogic.Impl.Repository;
 
-import businesslogic.Service.Reponsitory.GetNeedStorageService;
+import businesslogic.Service.Repository.GetNeedStorageService;
 
 public class GetNeedStorageImpl implements GetNeedStorageService {
 

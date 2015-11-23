@@ -1,4 +1,4 @@
-package businesslogic.Service.Reponsitory;
+package businesslogic.Service.Repository;
 
 public interface AlarmService {
 	

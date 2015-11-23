@@ -1,4 +1,4 @@
-package businesslogic.Impl.Reponsitory;
+package businesslogic.Impl.Repository;
 
 import java.util.ArrayList;
 
@@ -9,9 +9,9 @@ import VO.RemovalVO;
 import VO.StockTakingVO;
 import VO.StorageVO;
 import VO.VO;
-import businesslogic.Service.Reponsitory.ReponsitoryService;
+import businesslogic.Service.Repository.ReponsitoryService;
 
-public class ReponsitoryController implements ReponsitoryService{
+public class RepositoryController implements ReponsitoryService{
 
 	
 	@Override

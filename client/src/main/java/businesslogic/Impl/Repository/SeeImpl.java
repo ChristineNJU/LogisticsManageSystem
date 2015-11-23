@@ -1,9 +1,9 @@
-package businesslogic.Impl.Reponsitory;
+package businesslogic.Impl.Repository;
 
 import java.util.ArrayList;
 
 import VO.VO;
-import businesslogic.Service.Reponsitory.SeeService;
+import businesslogic.Service.Repository.SeeService;
 
 public class SeeImpl implements SeeService {
 

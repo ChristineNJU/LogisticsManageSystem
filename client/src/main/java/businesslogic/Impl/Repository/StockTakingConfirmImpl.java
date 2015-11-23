@@ -1,7 +1,7 @@
-package businesslogic.Impl.Reponsitory;
+package businesslogic.Impl.Repository;
 
 import State.AddState;
-import businesslogic.Service.Reponsitory.StockTakingConfirmService;
+import businesslogic.Service.Repository.StockTakingConfirmService;
 
 public class StockTakingConfirmImpl implements StockTakingConfirmService{
 
