@@ -9,7 +9,7 @@ import presentation.userPanel.start.Inquiry;
 
 public class MainFrame {
 	public static final int FRAME_WIDTH = 1200;
-	public static final int FRAME_HEIGHT = 800;
+	public static final int FRAME_HEIGHT = 600;
 	
 	public static final int FRAME_X = (Toolkit.getDefaultToolkit().getScreenSize().width - FRAME_WIDTH) / 2;
 	public static final int FRAME_Y = (Toolkit.getDefaultToolkit().getScreenSize().height - FRAME_HEIGHT) / 2 - 32;
@@ -45,9 +45,11 @@ public class MainFrame {
 		while(height>5){
 			height = 600.0/62500.0*Math.pow((tmp-250), 2);
 			frame.setBounds((int)((x-width)/2), (int)((y-height)/2)-32, (int)width, (int)height);
+//			frame.getContentPane().setBounds((int)((x-width)/2), (int)((y-height)/2)-32, (int)width, (int)height);
+//			frame.repaint();
 			
 			try {
-				Thread.sleep(1);
+				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
