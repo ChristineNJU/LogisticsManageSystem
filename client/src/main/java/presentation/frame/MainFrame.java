@@ -9,7 +9,7 @@ import presentation.userPanel.start.Inquiry;
 
 public class MainFrame {
 	public static final int FRAME_WIDTH = 1200;
-	public static final int FRAME_HEIGHT = 600;
+	public static final int FRAME_HEIGHT = 800;
 	
 	public static final int FRAME_X = (Toolkit.getDefaultToolkit().getScreenSize().width - FRAME_WIDTH) / 2;
 	public static final int FRAME_Y = (Toolkit.getDefaultToolkit().getScreenSize().height - FRAME_HEIGHT) / 2 - 32;
