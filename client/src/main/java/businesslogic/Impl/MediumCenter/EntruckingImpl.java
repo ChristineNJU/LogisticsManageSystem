@@ -19,7 +19,7 @@ public class EntruckingImpl implements EntruckingService{
 		AddState result=AddState.FAIL;
 		try {
 			AddService addService=(AddService) Naming.lookup(RMIHelper.ADD_IMPL);
-			//EntruckingPO
+			
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
 			result=AddState.CONNECTERROR;

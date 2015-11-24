@@ -44,14 +44,14 @@ public class BusinessLobbyController implements BsLbService{
 	}
 	
 	@Override
-	public ArrayList<String> getNeedGathering() {
+	public ArrayList<GatheringVO> getNeedGathering() {
 		// TODO Auto-generated method stub
 		GetNeedGatheringImpl getNeedGathering=new GetNeedGatheringImpl();
 		return getNeedGathering.getNeedGathering();
 	}
 	
 	@Override
-	public ArrayList<String> getNeedEntrucking() {
+	public ArrayList<EntruckingVO> getNeedEntrucking() {
 		// TODO Auto-generated method stub
 		GetNeedEntruckingImpl getNeedEntrucking=new GetNeedEntruckingImpl();
 		return getNeedEntrucking.getNeedEntrucking();

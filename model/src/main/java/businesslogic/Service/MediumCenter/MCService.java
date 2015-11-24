@@ -11,7 +11,7 @@ public interface MCService {
 	
 	public AddState arrival(ArrayList<ArrivalVO> arrival);
 	public AddState entrucking(EntruckingVO entrucking);
-	public ArrayList<String> getNeedEntrucking();
-	public ArrayList<String> getNeedTransfer();
+	public ArrayList<EntruckingVO> getNeedEntrucking();
+	public ArrayList<TransferVO> getNeedTransfer();
 	public AddState transfer(TransferVO transfer);
 }

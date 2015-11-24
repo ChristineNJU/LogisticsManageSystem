@@ -20,8 +20,8 @@ public interface BsLbService {
 	public DeleteState deleteDriver(DriverInfoVO driver);
 	public AddState entrucking(EntruckingVO entrucking);
 	public AddState gathering(GatheringVO gathering);
-	public ArrayList<String> getNeedEntrucking();
-	public ArrayList<String> getNeedGathering();
+	public ArrayList<EntruckingVO> getNeedEntrucking();
+	public ArrayList<GatheringVO> getNeedGathering();
 	public ArrayList<CarInfoVO> searchCar(String id);
 	public ArrayList<DriverInfoVO> searchDriver(String id);
 	public UpdateState updateCar(CarInfoVO car, String field, String value);
