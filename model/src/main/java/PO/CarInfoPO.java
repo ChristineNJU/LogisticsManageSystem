@@ -20,7 +20,7 @@ public class CarInfoPO extends PO {
 	}
 	
 	public CarInfoPO(CarInfoVO car) {
-		super(URLHelper.getCarInfoURL(car.g));
+		super(URLHelper.getCarInfoURL(car.getCarNumber().substring(0, car.getCarNumber().length()-3)));
 		// TODO Auto-generated constructor stub
 		this.car_number = car.getCarNumber();
 		this.car_license = car.getCarLicense();
