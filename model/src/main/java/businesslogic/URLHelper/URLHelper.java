@@ -17,8 +17,8 @@ public class URLHelper {
 	private static final String DB_Repo_Balance = "Repo_Balance_info_";
 	private static final String DB_Repo_Storage = "Repo_Storage_info_";
 	private static final String DB_Repo_Removal = "Repo_Removal_info_";
-	private static final String DB_Repo_StockTaking = "DB_Repo_StockTaking_info_";
-	private static final String DB_Repo_WareHouse = "DB_Repo_WareHouse_";
+	private static final String DB_Repo_StockTaking = "Repo_StockTaking_info_";
+	private static final String DB_Repo_WareHouse = "Repo_WareHouse_";
 	
 	private static final String DB_Account = "Account_info";
 	private static final String DB_Benefit = "Benefit_info";

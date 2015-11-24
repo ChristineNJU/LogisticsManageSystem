@@ -56,7 +56,7 @@ public class LogPO extends PO {
 	@Override
 	public String getPrimaryKey() {
 		// TODO Auto-generated method stub
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return "time = '"+sdf.format(time)+"'";
 	}
 	

@@ -99,7 +99,7 @@ public class GatheringPO extends PO {
 	@Override
 	public String getPrimaryKey() {
 		// TODO Auto-generated method stub
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return "date = '"+sdf.format(date)+"' AND courier = '"+courier+"'";
 	}
 	

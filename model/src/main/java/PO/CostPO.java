@@ -10,7 +10,7 @@ import VO.CostVO;
 
 public class CostPO extends PO {
 	
-	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	private Date cost_date = null;
 	private double cost_amount = 0;
 	private String cost_name = null;

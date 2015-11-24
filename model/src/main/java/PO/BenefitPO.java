@@ -9,7 +9,7 @@ import businesslogic.URLHelper.URLHelper;
 
 public class BenefitPO extends PO {
 	
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	private int number = 0;
 	private double income = 0;
 	private double expend = 0;
