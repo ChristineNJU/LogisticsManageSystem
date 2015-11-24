@@ -1,6 +1,6 @@
 package businesslogic.Mock.Repository;
 
-import businesslogic.Impl.Reponsitory.AlarmImpl;
+import businesslogic.Impl.Repository.AlarmImpl;
 
 public class MockAlarm extends AlarmImpl{
 

@@ -7,11 +7,7 @@ import State.LogisticsType;
 import State.PackingCharge;
 import State.UpdateState;
 import VO.VO;
-import businesslogic.Service.Courier.AddLogisticsService;
 import businesslogic.Service.Courier.CourierService;
-import businesslogic.Service.Courier.GetAmountService;
-import businesslogic.Service.Courier.GetCityService;
-import businesslogic.Service.Courier.ReceiveConfirmService;
 
 public class CourierController implements CourierService{
 	

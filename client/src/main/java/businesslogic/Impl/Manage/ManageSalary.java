@@ -26,7 +26,7 @@ public class ManageSalary implements ShowSalaryService,UpdatePaymentService{
 			
 			SearchSalaryService searchSalary=(SearchSalaryService) Naming.lookup(RMIHelper.SEARCH_SALARY_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("Salary_Type like '%%'");
+			requirement.add("type like '%%'");
 			ArrayList<SalaryPO> searchResult=searchSalary.searchSalary(requirement);
 			
 			if(searchResult.isEmpty()){
@@ -55,7 +55,7 @@ public class ManageSalary implements ShowSalaryService,UpdatePaymentService{
 		try {
 			SearchSalaryService searchSalary=(SearchSalaryService) Naming.lookup(RMIHelper.SEARCH_SALARY_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("Salary_Name like '%%'");
+			requirement.add("type like '%%'");
 			ArrayList<SalaryPO> searchResult=searchSalary.searchSalary(requirement);
 			
 			if(searchResult.isEmpty()){

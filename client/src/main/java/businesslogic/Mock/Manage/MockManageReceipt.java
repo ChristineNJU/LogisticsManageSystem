@@ -8,7 +8,7 @@ import businesslogic.Impl.Manage.ManageReceipt;
 public class MockManageReceipt extends ManageReceipt {
 	
 	@Override
-	public UpdateState updateReceipt(VO receipt) {
+	public UpdateState updateReceipt(VO receipts,String field,String value) {
 		// TODO Auto-generated method stub
 		return UpdateState.SUCCESS;
 	}

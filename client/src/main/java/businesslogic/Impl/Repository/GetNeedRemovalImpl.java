@@ -1,8 +1,8 @@
-package businesslogic.Impl.Reponsitory;
+package businesslogic.Impl.Repository;
 
 import java.util.ArrayList;
 
-import businesslogic.Service.Reponsitory.GetNeedRemovalService;
+import businesslogic.Service.Repository.GetNeedRemovalService;
 
 public class GetNeedRemovalImpl implements GetNeedRemovalService {
 

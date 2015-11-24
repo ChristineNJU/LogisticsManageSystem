@@ -34,7 +34,7 @@ public class ManageStaff implements AddStaffService,UpdateStaffService,
 			DeleteService deleteService=(DeleteService) Naming.lookup(RMIHelper.DELETE_IMPL);
 			SearchUserService searchUser=(SearchUserService) Naming.lookup(RMIHelper.SEARCH_USER_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("User_ID='"+staff.getSystemId()+"'");
+			requirement.add("id='"+staff.getSystemId()+"'");
 			
 			ArrayList<UserPO> searchResult=searchUser.searchUser(requirement);
 			
@@ -71,10 +71,10 @@ public class ManageStaff implements AddStaffService,UpdateStaffService,
 			
 			//show when id==null
 			if(id!=null){
-				requirementId.add("User_ID='"+id+"'");
-				requirementName.add("User_Name='"+id+"'");
+				requirementId.add("id='"+id+"'");
+				requirementName.add("name='"+id+"'");
 			}else{
-				requirementId.add("User_ID like '%%'");
+				requirementId.add("id like '%%'");
 			}
 			
 			ArrayList<UserPO> searchResultId=searchUser.searchUser(requirementId);
@@ -112,7 +112,7 @@ public class ManageStaff implements AddStaffService,UpdateStaffService,
 			
 			SearchUserService searchUser=(SearchUserService) Naming.lookup(RMIHelper.SEARCH_USER_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("User_ID='"+staff.getSystemId()+"'");
+			requirement.add("id='"+staff.getSystemId()+"'");
 			ArrayList<UserPO> searchResult=searchUser.searchUser(requirement);
 			
 			if(searchResult.isEmpty()){

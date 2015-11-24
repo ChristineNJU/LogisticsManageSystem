@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import State.StorageState;
 import VO.StorageVO;
-import businesslogic.Impl.Reponsitory.StorageImpl;
+import businesslogic.Impl.Repository.StorageImpl;
 
 public class MockStorage extends StorageImpl{
 

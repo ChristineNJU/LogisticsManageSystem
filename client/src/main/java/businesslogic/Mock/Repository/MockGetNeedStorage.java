@@ -1,6 +1,6 @@
 package businesslogic.Mock.Repository;
 
-import businesslogic.Impl.Reponsitory.GetNeedStorageImpl;
+import businesslogic.Impl.Repository.GetNeedStorageImpl;
 
 public class MockGetNeedStorage extends GetNeedStorageImpl{
 

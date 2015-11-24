@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import State.AddState;
 import VO.RemovalVO;
-import businesslogic.Impl.Reponsitory.RemovalImpl;
+import businesslogic.Impl.Repository.RemovalImpl;
 
 public class MockRemoval extends RemovalImpl{
 

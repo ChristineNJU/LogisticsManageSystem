@@ -16,6 +16,7 @@ import VO.GatheringVO;
 import businesslogic.Service.Manage.GetBenefitService;
 import businesslogic.Service.Manage.GetCostService;
 import businesslogic.Service.Manage.GetGatheringService;
+import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
 import data.Service.Search.SearchBenefitService;
 import data.Service.Search.SearchCostService;
@@ -52,7 +53,7 @@ public class ManageFinance implements GetBenefitService, GetCostService,GetGathe
 					}
 					else{
 						for(int j=0;j<searchResult.size();j++){
-							GatheringVO temp=new GatheringVO(searchResult.get(i));
+							GatheringVO temp=new GatheringVO(searchResult.get(j));
 							result.add(temp);
 						}
 					}

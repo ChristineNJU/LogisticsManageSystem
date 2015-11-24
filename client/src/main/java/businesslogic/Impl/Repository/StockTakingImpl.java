@@ -1,9 +1,9 @@
-package businesslogic.Impl.Reponsitory;
+package businesslogic.Impl.Repository;
 
 import java.util.ArrayList;
 
 import VO.StockTakingVO;
-import businesslogic.Service.Reponsitory.StockTakingService;
+import businesslogic.Service.Repository.StockTakingService;
 
 public class StockTakingImpl implements StockTakingService{
 

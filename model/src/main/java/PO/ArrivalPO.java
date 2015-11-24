@@ -3,6 +3,8 @@ package PO;
 import java.util.Date;
 
 import State.LogisticsState;
+import VO.ArrivalVO;
+import businesslogic.URLHelper.URLHelper;
 
 /*========================================================================================
  * 用来保存到达单的持久化数据格式
@@ -25,6 +27,15 @@ public class ArrivalPO extends PO {
 		this.transfer_number = transfer_number;
 		this.starting = starting;
 		this.state = state;
+	}
+	
+	public ArrivalPO(ArrivalVO arrival,String institutionID){
+		super(URLHelper.getArrivalURL(institutionID));
+		this.arrival_date=arrival.getDate();
+		this.bar_code=arrival.getBarCode();
+		this.transfer_number=arrival.getListId();
+		this.state=arrival.getLogisticsState();
+		this.starting=arrival.getDeparture();
 	}
 	
 	/*====================================================================================
