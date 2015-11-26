@@ -14,7 +14,7 @@ public class Manage_Driver {
 		ArrayList<VO> list1=new ArrayList<VO>();	
 		list1=(managebl.showReceipt());
 
-		System.out.println(managebl.updateReceipt(null));
+		System.out.println(managebl.updateReceipt(null,null,null));
 		
 		System.out.println(managebl.addConst(null));
 	
