@@ -30,6 +30,8 @@ public class DeleteImpl extends UnicastRemoteObject implements DeleteService {
 		try {
 			Statement s = conn.createStatement();
 			boolean mark = s.execute("DELETE FROM "+statistics.getURL()+" WHERE "+statistics.getPrimaryKey());
+			
+			conn.commit();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

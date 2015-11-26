@@ -34,8 +34,10 @@ public class UpdateImpl extends UnicastRemoteObject implements UpdateService {
 			boolean mark;
 			
 			mark = s.execute("DELETE FROM "+statistics.getURL()+" WHERE "+statistics.getPrimaryKey());
-			mark = s.execute("INSERT INTO "+statistics.getURL()+" VALUES("+statistics.toString()+")");
+			conn.commit();
 			
+			mark = s.execute("INSERT INTO "+statistics.getURL()+" VALUES("+statistics.toString()+")");
+			conn.commit();
 //			if(mark==false){
 //				return UpdateState.NOTFOUND;
 //			}

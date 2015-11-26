@@ -11,6 +11,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import presentation.AnimationEasing.AnimationEasing;
 import presentation.frame.MainFrame;
 import presentation.main.ColorPallet;
 import presentation.main.FontSet;
@@ -193,8 +194,17 @@ public class LogIn{
 			}
 			if(e.getSource().equals(cancel)){
 //				logIn.dispose();
-				container.setVisible(false);
-				parent.getLogin().setVisible(true);
+				Thread t = new Thread(new MovingFunction());
+				t.start();
+				
+//				container.setVisible(false);
+//				try {
+//					Thread.sleep(1000);
+//				} catch (InterruptedException e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				}
+//				parent.getLogin().setVisible(true);
 			}
 		}
 
@@ -239,5 +249,33 @@ public class LogIn{
 			
 		}
 		
+	}
+	
+	class MovingFunction implements Runnable {
+
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			double time = 4;
+			while(time>=0){
+				int i = (int)AnimationEasing.easeInElastic(0, time, 0, 200, 10);
+//				System.out.println(i);
+				getPanel().setSize(320, i);
+				getLine().setBounds(0, 194, 320, i-194);
+				try {
+					Thread.sleep(10);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace(); 
+				}
+				time = time - 0.1;
+//				parent.getPanel().repaint();
+//				System.out.println("in method");
+			}
+			
+			container.setVisible(false);
+			parent.getLogin().setVisible(true);
+			parent.getPanel().repaint();
+		}
 	}
 }

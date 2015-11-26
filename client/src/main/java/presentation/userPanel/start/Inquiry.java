@@ -1,5 +1,6 @@
 package presentation.userPanel.start;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -12,16 +13,19 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
 
-import VO.LogisticsHistoryVO;
-import businesslogic.Impl.Inquiry.InquiryController;
-import businesslogic.Service.Inquiry.InquiryService;
 import presentation.AnimationEasing.AnimationEasing;
 import presentation.frame.MainFrame;
 import presentation.main.ColorPallet;
 import presentation.main.FontSet;
 import presentation.panel.components.ButtonFrame;
+import presentation.panel.components.FlatScrollPane;
+import VO.LogisticsHistoryVO;
+import businesslogic.Impl.Inquiry.InquiryController;
+import businesslogic.Service.Inquiry.InquiryService;
 
 public class Inquiry{
 
@@ -29,6 +33,8 @@ public class Inquiry{
 	
 	private MainFrame mainFrame;
 	private JPanel inquiryPanel;
+	
+	private JScrollPane scrollPane;
 	
 	private JButton mini;
 	private JButton close;
@@ -57,6 +63,7 @@ public class Inquiry{
 	
 	private void componentsInstantiation(){
 		inquiryPanel = new JPanel();
+		scrollPane = new FlatScrollPane();
 		mini = new ButtonFrame("mini");
 		close = new ButtonFrame("close");
 		Icon iconTitle = new ImageIcon("src/graphics/Title/logIn.png");
@@ -82,6 +89,13 @@ public class Inquiry{
 		inquiryPanel.add(mini);
 		inquiryPanel.add(close);
 		
+		scrollPane.setBounds(300, 320, 450, 500);
+		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setOpaque(false);
+		scrollPane.getViewport().setOpaque(false);
+		scrollPane.setBorder(new LineBorder(Color.black, 0));
+		inquiryPanel.add(scrollPane);
 		
 		title.setBounds(300,0,400,63);
 		inquiryPanel.add(title);
@@ -134,19 +148,21 @@ public class Inquiry{
 //		historyString.add("从浦口营业厅出发");
 //		historyString.add("快递员揽件");
 //		info = new LogisticsHistoryVO(bar_code, historyString);
-		history = info.getHistory();
+		history = info.getHistory();		
 		historyLabel = new ArrayList<HistoryLabel>();
 		for(int i = 0 ; i < history.size();i++){
 			String[] input = history.get(i).split(",");
 			if(input.length>=2){				
-				historyLabel.add(new HistoryLabel(input[0], input[1],i));
+				historyLabel.add(new HistoryLabel(input[0], input[1],history.size()-i-1));
 			}else{
 				historyLabel.add(new HistoryLabel(input[0], "",i));
 			}
-			inquiryPanel.add(historyLabel.get(i));
+//			inquiryPanel.add(historyLabel.get(i));
+			scrollPane.add(historyLabel.get(i));
 			System.out.println(i);
 		}
-		inquiryPanel.repaint();
+//		inquiryPanel.repaint();
+		scrollPane.repaint();
 	}
 	
 	private void showLogIn(){
@@ -230,7 +246,8 @@ public class Inquiry{
 			
 			this.add(detailL);
 			this.add(timeL);
-			setBounds(300,320+i*66,450,66);
+//			setBounds(300,320+i*66,450,66);
+			setBounds(0, i*66, 450, 66);
 		}
 		
 	}
