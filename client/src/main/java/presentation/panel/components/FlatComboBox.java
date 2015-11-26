@@ -11,6 +11,9 @@ import javax.swing.ComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.border.LineBorder;
 
+import presentation.main.ColorPallet;
+import presentation.main.FontSet;
+
 public class FlatComboBox extends JComboBox {
 	public FlatComboBox() {
 		super();
@@ -30,7 +33,8 @@ public class FlatComboBox extends JComboBox {
 	}
 	
 	public void init() {
-		setFont(new Font("微软雅黑", 1, 20));
+		setFont(FontSet.twelve);
+		setForeground(ColorPallet.GrayDark);
 		setOpaque(false);
 		setUI(new FlatComboBoxUI());
 		setRenderer(new FlatComboBoxRenderer());

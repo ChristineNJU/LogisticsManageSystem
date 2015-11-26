@@ -9,11 +9,30 @@ public class UserVO extends VO {
 	private String id = null;
 	private String name = null;
 	private UserRole role = null;
-	private String sex;
+	private String sex = null;
 	private int age;
 	private InstitutionType institution;
 	private String city;
 	
+<<<<<<< HEAD
+	public UserVO(String id,String name,UserRole role,String sex,int age,InstitutionType type){
+		this.id = id;
+		this.name = name;
+		this.id = id;
+		this.name = name;
+		this.role = role;
+		this.sex = sex;
+		this.age = age;
+		this.institution = type;
+		
+	}
+	public UserVO(String id,String name,UserRole role){
+		this.id = id;
+		this.name = name;
+		this.role = role;
+	}
+=======
+>>>>>>> 8f25826eaeaaf5b15588f57f017d6fd7e7e7eb1a
 
 	public UserVO(String id,String name,UserRole role,String sex,int age, InstitutionType institution,String city){
 

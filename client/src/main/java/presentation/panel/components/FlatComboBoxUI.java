@@ -11,6 +11,7 @@ import java.awt.Rectangle;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.ComboBoxEditor;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -18,22 +19,24 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ListCellRenderer;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import javax.swing.plaf.basic.BasicComboBoxUI;
 import javax.swing.plaf.basic.BasicComboPopup;
 import javax.swing.plaf.basic.ComboPopup;
 
+import presentation.main.ColorPallet;
 import presentation.main.FontSet;
 
 public class FlatComboBoxUI extends BasicComboBoxUI {
 	
 	private JButton arrow;
 	private boolean boundsLight = false;	
-	private Font font = FontSet.twelve;
+	private Font font = FontSet.fourteen;
 	
 	private EditorFocusListener efl = new EditorFocusListener();
 	
-	private Color popup_border = new Color(255, 255, 255);
+	private Color popup_border = ColorPallet.GrayDark;
 	
 	private Color background_focusLost = new Color(240, 240, 240);
 	
@@ -148,7 +151,7 @@ public class FlatComboBoxUI extends BasicComboBoxUI {
 	}
 	
 	public ComboPopup createPopup() {
-		System.out.println("create popup");
+//		System.out.println("create popup");
 		
 		ComboPopup popup = new BasicComboPopup(comboBox){
 			protected JScrollPane createScroller() {
@@ -157,11 +160,12 @@ public class FlatComboBoxUI extends BasicComboBoxUI {
 						ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 				
 				sp.setHorizontalScrollBar(null);
-				sp.setBorder(null);
+				sp.setBorder(BorderFactory.createEmptyBorder());
 				return sp;
 			}
 		};
-				
+			
+		((BasicComboPopup) popup).setBorder(BorderFactory.createLineBorder(popup_border));
 		return popup;
 	}
 	
@@ -182,21 +186,21 @@ public class FlatComboBoxUI extends BasicComboBoxUI {
 		@Override
 		public void focusGained(FocusEvent e) {
 			// TODO Auto-generated method stub		
-			System.out.println("my focus gained");
+//			System.out.println("my focus gained");
 			ComboBoxEditor comboBoxEditor =comboBox.getEditor();
 			JTextField theEditor = (JTextField)comboBoxEditor.getEditorComponent();
 			theEditor.setHorizontalAlignment(JTextField.LEFT);
 			theEditor.setBackground(Color.white);
-			comboBox.setBorder(new LineBorder(Color.blue, 2));
+//			comboBox.setBorder(new LineBorder(Color.blue, 2));
 		}
 
 		@Override
 		public void focusLost(FocusEvent e) {
 			// TODO Auto-generated method stub
-			System.out.println("my focus lost");
+//			System.out.println("my focus lost");
 			ComboBoxEditor comboBoxEditor = comboBox.getEditor();
 			JTextField theEditor = (JTextField)comboBoxEditor.getEditorComponent();
-			theEditor.setHorizontalAlignment(JTextField.CENTER);
+			theEditor.setHorizontalAlignment(JTextField.LEFT);
 			theEditor.setBackground(background_focusLost);
 			comboBox.setBorder(new LineBorder(Color.gray, 1));
 		}
