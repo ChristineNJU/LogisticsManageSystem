@@ -11,6 +11,6 @@ public class TestUpdateCar extends TestCase {
 		BusinessLobbyController businessLobbyController=new BusinessLobbyController();
 		
 		CarInfoVO car=new CarInfoVO("025000010", "苏A 12346", 2015); 
-		assertEquals(UpdateState.SUCCESS,businessLobbyController.updateCar(car, "carLicense", "苏A 12346"));
+		assertEquals(UpdateState.SUCCESS,businessLobbyController.updateCar(car));
 	}
 }

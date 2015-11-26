@@ -104,7 +104,7 @@ public class ManageStaff implements AddStaffService,UpdateStaffService,
 	}
 
 	@Override
-	public UpdateState updateStaff(StaffVO staff, String field, String value) {
+	public UpdateState updateStaff(StaffVO staff) {
 		// TODO Auto-generated method stub
 		UpdateState result=UpdateState.NOTFOUND;
 		try {
@@ -121,7 +121,7 @@ public class ManageStaff implements AddStaffService,UpdateStaffService,
 				}
 			else{
 				for(int i=0;i<searchResult.size();i++)
-					result=updateService.update(searchResult.get(i), field, value);
+					result=updateService.update(searchResult.get(i));
 				}
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block

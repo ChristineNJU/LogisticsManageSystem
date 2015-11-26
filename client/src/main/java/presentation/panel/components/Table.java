@@ -5,7 +5,6 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
-import javax.swing.BorderFactory;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComponent;
 import javax.swing.JTable;
@@ -29,7 +28,8 @@ public class Table extends JTable {
         this.setGridColor(ColorPallet.GrayLight);
         this.setShowVerticalLines(false);
         this.setForeground(ColorPallet.GrayDark);
-        this.setDefaultRenderer(getColumnClass(0), render);
+//        this.setDefaultRenderer(getColumnClass(0), new RendererGeneral());
+        this.setDefaultRenderer(getColumnClass(0), new colorTableRender());
         this.setDefaultEditor(getColumnClass(0), new DefaultCellEditor(editor));
 	}
 	
@@ -68,6 +68,22 @@ public class Table extends JTable {
 			this.setBorder(new DownBorder(1));
 		}
 	}
+	
+	public class colorTableRender extends DefaultTableCellRenderer {
+		 
+        public Component getTableCellRendererComponent(JTable table,
+                Object value, boolean isSelected, boolean hasFocus, int row,
+                int column) {
+            Component cell = super.getTableCellRendererComponent(table, value,
+                    isSelected, hasFocus, row, column);
+            
+            setForeground(ColorPallet.GrayDark);
+    		setFont(FontSet.fourteen);
+    		setBorder(null);
+            return cell;
+ 
+        }
+    }
 	
 	public class DownBorder extends SoftBevelBorder {
 

@@ -15,18 +15,17 @@ import businesslogic.Service.BusinessLobby.BsLbService;
 public class BusinessLobbyController implements BsLbService{
 	
 	@Override
-	public UpdateState updateDriver(DriverInfoVO driver, String field,
-			String value) {
+	public UpdateState updateDriver(DriverInfoVO driver) {
 		// TODO Auto-generated method stub
 		DriverMgt updateDriver=new DriverMgt();
-		return updateDriver.updateDriver(driver, field, value);
+		return updateDriver.updateDriver(driver);
 	}
 	
 	@Override
-	public UpdateState updateCar(CarInfoVO car, String field, String value) {
+	public UpdateState updateCar(CarInfoVO car) {
 		// TODO Auto-generated method stub
 		CarMgt updateCar=new CarMgt();
-		return updateCar.updateCar(car, field, value);
+		return updateCar.updateCar(car);
 	}
 	
 	@Override

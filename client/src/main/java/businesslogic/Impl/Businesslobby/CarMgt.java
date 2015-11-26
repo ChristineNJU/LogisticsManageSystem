@@ -123,7 +123,7 @@ public class CarMgt implements UpdateCarService,GetCarService,DeleteCarService,A
 	}
 
 	@Override
-	public UpdateState updateCar(CarInfoVO car, String field, String value) {
+	public UpdateState updateCar(CarInfoVO car) {
 		// TODO Auto-generated method stub
 		UpdateState result=UpdateState.NOTFOUND;
 		try {
@@ -141,18 +141,21 @@ public class CarMgt implements UpdateCarService,GetCarService,DeleteCarService,A
 			}
 			
 			else{
-				
-					result=updateService.update(new CarInfoPO(car), field, value);
+
+				for(int i=0;i<searchResult.size();i++){
+					result=updateService.update(new CarInfoPO(car));
+
 				}
 			
 			
-		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+		} 
+		}catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
 			result=UpdateState.CONNECTERROR;
 			System.out.println("error");
 			e.printStackTrace();
 		}
 		return result;
+	
 	}
-
 }

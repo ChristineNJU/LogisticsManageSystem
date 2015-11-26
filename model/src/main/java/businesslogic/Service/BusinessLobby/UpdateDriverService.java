@@ -4,5 +4,5 @@ import State.UpdateState;
 import VO.DriverInfoVO;
 
 public interface UpdateDriverService {
-	public UpdateState updateDriver(DriverInfoVO driver, String field, String value);
+	public UpdateState updateDriver(DriverInfoVO driver);
 }

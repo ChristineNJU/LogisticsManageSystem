@@ -11,10 +11,10 @@ import businesslogic.Service.Admin.AdminService;
 public class AdminController implements AdminService{
 	
 	@Override
-	public UpdateState updateUser(UserVO user, String field, String value) {
+	public UpdateState updateUser(UserVO user) {
 		// TODO Auto-generated method stub
 		AdminImpl adminUser=new AdminImpl();
-		return adminUser.updateUser(user, field, value);
+		return adminUser.updateUser(user);
 	}
 
 	@Override

@@ -19,7 +19,7 @@ public class UpdateImpl extends UnicastRemoteObject implements UpdateService {
 	}
 
 	@Override
-	public UpdateState update(PO statistics, String field, String value)
+	public UpdateState update(PO statistics)
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		

@@ -49,7 +49,8 @@ public class ResetPasswordImpl {
 						
 						
 						UpdateService update =(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
-						update.update(newUser, "password", newPassword);
+						UserPO temp=new UserPO(newUser.getID(),newPassword,newUser.getName(),newUser.getSex(),newUser.getAge(),newUser.getInstitution(),newUser.getCity(),newUser.getRole(),newUser.getURL());
+						update.update(temp);
 						state=ResetState.SUCCESS;
 						
 						

@@ -27,8 +27,7 @@ import data.Service.Update.UpdateService;
 public class CourierImpl implements AddLogisticsService,GetAmountService,GetCityService,ReceiveConfirmService{
 
 	@Override
-	public UpdateState receiveConfirm(VO logistics_info, String field,
-			String value) {
+	public UpdateState receiveConfirm(VO logistics_info) {
 		UpdateState state=UpdateState.SUCCESS;
 		// TODO Auto-generated method stub
 		try{
@@ -43,7 +42,7 @@ public class CourierImpl implements AddLogisticsService,GetAmountService,GetCity
 				UpdateService update=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
 			
 				for(int i=0;i<result.size();i++){
-					state=update.update(result.get(i), field, value);
+					state=update.update(result.get(i));
 				}
 				
 				
