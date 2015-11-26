@@ -1,19 +1,22 @@
 package presentation.userPanel.start;
 
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import State.LoginState;
-import businesslogic.Impl.User.LoginImpl;
+import VO.UserVO;
+import businesslogic.Impl.Admin.AdminController;
+import businesslogic.Impl.User.UserController;
+import businesslogic.Service.Admin.AdminService;
+import businesslogic.Service.User.LoginService;
 import presentation.frame.MainFrame;
 import presentation.main.ColorPallet;
 import presentation.main.FontSet;
@@ -38,10 +41,13 @@ public class LogIn{
 	private JLabel feedback= new JLabel();
 	private JLabel success = new JLabel("登录成功，请等待跳转");
 	
-	private LoginImpl loginService = new LoginImpl();
+	private LoginService loginService = new UserController();
+	private AdminService adminService = new AdminController();
 	
-	public LogIn(){
+	MainFrame frame;
+	public LogIn(MainFrame frame){
 		initComponents();
+		this.frame = frame;
 	}
 	
 	private void initComponents(){
@@ -60,11 +66,11 @@ public class LogIn{
 		logIn.setContentPane(container);
 //		System.out.println("logInDalogInit");
 		
-		idLabel.setFont(FontSet.fontTipsBig);
+		idLabel.setFont(FontSet.fourteen);
 		idLabel.setForeground(ColorPallet.GrayLight);
 		idLabel.setHorizontalAlignment(JLabel.LEFT);
 		idLabel.setBounds(35,35,80,30);
-		passwordLabel.setFont(FontSet.fontTipsBig);
+		passwordLabel.setFont(FontSet.fourteen);
 		passwordLabel.setForeground(ColorPallet.GrayLight);
 		passwordLabel.setHorizontalAlignment(JLabel.LEFT);
 		passwordLabel.setBounds(35,80,80,30);
@@ -85,12 +91,12 @@ public class LogIn{
 		line.setBounds(0,194,320,6);
 		
 		feedback.setForeground(ColorPallet.Pink);
-		feedback.setFont(FontSet.fontTipsBig);
+		feedback.setFont(FontSet.fourteen);
 		feedback.setHorizontalAlignment(JLabel.LEFT);
 		feedback.setBounds(110, 10, 180, 20);
 		
 		success.setForeground(Color.green);
-		success.setFont(FontSet.fontTipsBig);
+		success.setFont(FontSet.fourteen);
 		success.setHorizontalAlignment(JLabel.LEFT);
 		success.setBounds(110, 10, 180, 20);
 		
@@ -108,9 +114,21 @@ public class LogIn{
 	}
 	
 	public void logIn(){
-		LoginState state = loginService.login(id.getText(), password.getText());
+		String userId = id.getText();
+		String userPassword = password.getText();
+		LoginState state = loginService.login(userId,userPassword);
+		
 		if(state.equals(LoginState.SUCCESS)){
 			container.add(success);
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			ArrayList<String> keyword = new ArrayList<String>();
+			keyword.add(userId);
+			ArrayList<UserVO> user = adminService.searchUser(keyword);
+			frame.changeToUserPane(user.get(0));
 		}
 		if(state.equals(LoginState.WRONGID)){
 			id.setError();

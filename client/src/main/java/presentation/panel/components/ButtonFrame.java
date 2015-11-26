@@ -19,7 +19,6 @@ public class ButtonFrame extends JButton {
 			this.setBounds(66,0,36,23);
 		else
 			this.setBounds(108,0,36,23);;
-
 	}
 	
 }

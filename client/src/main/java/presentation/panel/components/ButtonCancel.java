@@ -21,7 +21,7 @@ public class ButtonCancel extends ButtonTotal {
 		setHorizontalAlignment(CENTER);
 //		setBorderPainted(false);
 
-		setFont(FontSet.fontOk);
+		setFont(FontSet.twenty);
 		setSize(135,40);
 		
 		listener = new RollListener(this);

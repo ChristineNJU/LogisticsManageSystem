@@ -72,6 +72,7 @@ public class Inquiry{
 	}
 	
 	private void initComponents(){
+		inquiryPanel.setBounds(0,0,1200,800);
 		inquiryPanel.setLayout(null);
 		inquiryPanel.setBackground(ColorPallet.backGround);
 
@@ -104,7 +105,7 @@ public class Inquiry{
 		confirm.addActionListener(listener);
 		inquiryPanel.add(confirm);
 		
-		input.setFont(FontSet.fontTipsBig);
+		input.setFont(FontSet.fourteen);
 		input.setForeground(ColorPallet.GrayLight);
 		input.setBorder(BorderFactory.createLineBorder(ColorPallet.Pink));
 //		input.setOpaque(false);
@@ -123,6 +124,7 @@ public class Inquiry{
 		info = inquiryService.getLogistics(bar_code);
 		if(info == null){
 			showNotFound();
+			return;
 		}
 //		ArrayList<String> historyString = new ArrayList<String>();
 //		historyString.add("已签收，签收是本人");
@@ -142,7 +144,7 @@ public class Inquiry{
 	}
 	
 	private void showLogIn(){
-		logInDialog = new LogIn();
+		logInDialog = new LogIn(mainFrame);
 		logInDialog.getDialog().setVisible(true);
 //		System.out.println("in method");
 	}
@@ -192,11 +194,11 @@ public class Inquiry{
 			
 			detailL = new JLabel(detail);
 			detailL.setBounds(60,6,300,25);
-			detailL.setFont(FontSet.fontOk);
+			detailL.setFont(FontSet.twenty);
 			
 			timeL = new JLabel(time);
 			timeL.setBounds(60,30,300,25);
-			timeL.setFont(FontSet.fontTips);
+			timeL.setFont(FontSet.twelve);
 			
 			if(i == 0){
 				detailL.setForeground(ColorPallet.Pink);
