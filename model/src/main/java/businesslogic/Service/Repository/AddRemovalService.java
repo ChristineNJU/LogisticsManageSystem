@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import State.AddState;
 import VO.RemovalVO;
 
-public interface RemovalService {
+public interface AddRemovalService {
 	
-	public AddState removal(ArrayList<RemovalVO> re);
+	public AddState addRemoval(ArrayList<RemovalVO> re);
 }

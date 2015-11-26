@@ -2,7 +2,9 @@ package PO;
 
 import java.util.Date;
 
+import businesslogic.URLHelper.URLHelper;
 import State.TransferType;
+import VO.RemovalVO;
 
 public class RemovalPO extends PO {
 
@@ -22,6 +24,15 @@ public class RemovalPO extends PO {
 		this.destination = destination;
 		this.type = type;
 		this.transfer_number = transfer_number;
+	}
+	
+	public RemovalPO(RemovalVO removal,String institutionID){
+		super(URLHelper.getRemovalURL(institutionID));
+		this.bar_code=removal.getBarCode();
+		this.removal_date=removal.getOutDate();
+		this.destination=removal.getDestination();
+		this.transfer_number=removal.getTransferCode();
+		this.type=removal.getTransferWay();
 	}
 
 	/*====================================================================================

@@ -3,6 +3,8 @@ package PO;
 import java.util.Date;
 
 import State.StorageArea;
+import VO.StorageVO;
+import businesslogic.URLHelper.URLHelper;
 
 /*========================================================================================
  * 用来保存入库信息的持久化数据格式
@@ -30,6 +32,17 @@ public class StoragePO extends PO {
 		this.row = row;
 		this.shelf = shelf;
 		this.position = position;
+	}
+	
+	public StoragePO(StorageVO storage, String institutionID){
+		super(URLHelper.getStorageURL(institutionID));
+		this.bar_code=storage.getBarCode();
+		this.storage_date=storage.getStorageDate();
+		this.destination=storage.getDestination();
+		this.area_code=storage.getAreaCode();
+		this.row=storage.getRow();
+		this.shelf=storage.getShelf();
+		this.position=storage.getPosition();
 	}
 
 	/*====================================================================================
