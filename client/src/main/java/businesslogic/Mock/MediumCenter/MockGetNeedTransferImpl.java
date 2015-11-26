@@ -2,13 +2,14 @@ package businesslogic.Mock.MediumCenter;
 
 import java.util.ArrayList;
 
+import VO.TransferVO;
 import businesslogic.Impl.MediumCenter.GetNeedTransferImpl;
 
 public class MockGetNeedTransferImpl extends GetNeedTransferImpl{
 
 	@Override
-	public ArrayList<String> getNeedTransfer() {
+	public ArrayList<TransferVO> getNeedTransfer() {
 		// TODO Auto-generated method stub
-		return new ArrayList<String>();
+		return new ArrayList<TransferVO>();
 	}
 }

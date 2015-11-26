@@ -75,12 +75,12 @@ public class ManageBlService_Stub implements ManageService{
 	/*-------------------------------------------
 	 修改单据
 	---------------------------------------------*/
-	public UpdateState updateReceipt(VO receipt) {
+	public UpdateState updateReceipt(VO receipt, String field, String value) {
 		
 		System.out.println("修改成功");
 		ConstPO constpo=new ConstPO(null,1,null);
 		try {
-			System.out.println("Update_Stub"+new UpdateService_Stub().update(constpo, null,null));
+			System.out.println("Update_Stub"+new UpdateService_Stub().update(constpo, field,value));
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -397,6 +397,7 @@ public class ManageBlService_Stub implements ManageService{
 		UpdateState state=UpdateState.SUCCESS;
 		return state;
 	}
+	
 	
 	
 	

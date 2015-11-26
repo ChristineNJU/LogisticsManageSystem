@@ -1,6 +1,8 @@
 package test.Stub.businesslogic;
 
 import java.rmi.RemoteException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import test.Stub.data.AddService_Stub;
@@ -118,7 +120,7 @@ public class FinanceBlService_Stub implements FinanceService{
 	---------------------------------------------*/
 	public ArrayList<CostVO> searchCost(String start_time, String end_time){
 	System.out.println("Logic_Stub "+"查看成功");
-
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	/*ArrayList<String> list0=new ArrayList<String>();
 	list0.add("1234512345");
 	list0.add("1234512346");
@@ -131,7 +133,7 @@ public class FinanceBlService_Stub implements FinanceService{
 	try{
 		ArrayList<CostPO> cpo=new SearchService_Stub().searchCost(requirement);
 		for(int i=0;i<cpo.size();i++){
-			CostVO cost=new CostVO(cpo.get(i).getCostDate(),cpo.get(i).getCostAmount(),cpo.get(i).getCostName(),cpo.get(i).getAccountName(),cpo.get(i).getType(),null);
+			CostVO cost=new CostVO(sdf.format(cpo.get(i).getCostDate()),cpo.get(i).getCostAmount(),cpo.get(i).getCostName(),cpo.get(i).getAccountName(),cpo.get(i).getType(),null);
 			list.add(cost);
 		}
 	} catch(RemoteException e){
@@ -144,7 +146,7 @@ public class FinanceBlService_Stub implements FinanceService{
 	---------------------------------------------*/
 	public AddState addBenefit(BenefitVO benefit){
 		System.out.println("Logic_Stub "+"添加成功");
-		BenefitPO bpo=new BenefitPO(0, 0, 0, null);
+		BenefitPO bpo=new BenefitPO(0, 0, 0, null, null, null);
 		try {
 			System.out.println("Data_Stub"+" "+new AddService_Stub().add(bpo));
 		} catch (RemoteException e) {
@@ -165,7 +167,7 @@ public class FinanceBlService_Stub implements FinanceService{
 		try{
 			ArrayList<BenefitPO> bpo=new SearchService_Stub().searchBenefit(requirement);
 			for(int i=0;i<bpo.size();i++){
-				BenefitVO bene=new BenefitVO(bpo.get(i).getIncome(),bpo.get(i).getExpend());
+				BenefitVO bene=new BenefitVO(bpo.get(i).getIncome(),bpo.get(i).getExpend(),"2015-11-26-10:11",time_end);
 				bvo.add(bene);
 			}
 		}catch (RemoteException e){
