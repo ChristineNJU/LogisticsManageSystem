@@ -61,7 +61,7 @@ public class MainFrame {
 		return frame;
 	}
 	
-<<<<<<< HEAD
+
 	public void changeToUserPane(UserVO user){
 		this.user = user;
 		UserRole role = user.getRole();
@@ -124,7 +124,7 @@ public class MainFrame {
 	}
 	public static JPanel getMainPanel(){
 		return panel;
-=======
+	}
 	public void frameClose() {
 				
 		double width = FRAME_WIDTH;
@@ -165,6 +165,6 @@ public class MainFrame {
 		}
 		
 		System.exit(0);
->>>>>>> a3a850185a1d33de90a090d114abcf5aedca3057
+
 	}
 }
