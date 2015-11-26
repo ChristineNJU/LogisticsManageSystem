@@ -15,12 +15,13 @@ public class ButtonOk extends ButtonTotal {
 	private RollListener listener;
 	
 	public ButtonOk(String s){
+		super();
 		setText(s);
 		setForeground(ColorPallet.Pink);
 		setHorizontalAlignment(CENTER);
 		setBorder(BorderFactory.createLineBorder(ColorPallet.Pink));
 
-		setFont(FontSet.fontOk);
+		setFont(FontSet.twenty);
 		setSize(s.length()*25+30,40);
 		
 		listener = new RollListener(this);
@@ -33,16 +34,16 @@ public class ButtonOk extends ButtonTotal {
 		setBackground(ColorPallet.Pink);
 	}
 	
-	public void unRolled(){
+	public void setUnRolled(){
 		setForeground(ColorPallet.Pink);
+//		setBackground(Color.black);
 		setOpaque(false);
-
+		this.repaint();
 	}
 	
 	public void click(){
 		setOpaque(true);
 		setForeground(Color.white);
 		setBackground(ColorPallet.Pink);
-		System.out.println("button Ok ");
 	}
 }
