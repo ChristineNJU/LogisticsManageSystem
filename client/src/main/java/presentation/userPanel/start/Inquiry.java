@@ -308,10 +308,10 @@ public class Inquiry{
 			// TODO Auto-generated method stub
 			double time = 0;
 			while(time<=8){
-				int i = (int)AnimationEasing.easeInElastic(0, time, 0, 200, 10);
+				int i = (int)AnimationEasing.easeInElastic(0, time, 0, LogIn.login_height, 10);
 //				System.out.println(i);
-				logInDialog.getPanel().setSize(320, i);
-				logInDialog.getLine().setBounds(0, 194, 320, i-194);
+				logInDialog.getPanel().setSize(LogIn.login_width, i);
+				logInDialog.getLine().setBounds(0, LogIn.login_height-6, LogIn.login_width, i-(LogIn.login_height-6));
 				try {
 					Thread.sleep(10);
 				} catch (InterruptedException e) {
