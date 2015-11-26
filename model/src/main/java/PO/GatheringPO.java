@@ -105,7 +105,28 @@ public class GatheringPO extends PO {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return null;
+		
+		String result = "";
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		result = result + "'" + sdf.format(date) + "', ";
+		
+		result = result + amount + ", ";
+		result = result + "'" + courier + "', ";
+		
+		result = result + "'";
+		for(int i=0;i<bar_code_list.size();i++){
+			if(i!=bar_code_list.size()-1){
+				result = result + bar_code_list.get(i) + ",";				
+			}else{
+				result = result + bar_code_list.get(i) + "',";
+			}
+		}
+		
+		result = result + "'" + isApproved + "'";
+		
+		System.out.println(result);
+		return result;
 	}
 
 	@Override

@@ -1,7 +1,9 @@
 package PO;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import State.StateSwitch;
 import State.StorageArea;
 import VO.BalanceVO;
 import businesslogic.URLHelper.URLHelper;
@@ -164,7 +166,27 @@ public class BalancePO extends PO {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return null;
+		
+		String result = "";
+		
+		result = result + "'" + bar_code + "', ";
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		result = result + "'" + sdf.format(storage_date) + "', ";
+		
+		result = result + "'" + destination + "', ";
+		result = result + "'" + StateSwitch.switchToStr(old_area) + "', ";
+		result = result + old_row + ", ";
+		result = result + old_shelf + ", ";
+		result = result + old_position + ", ";
+		result = result + "'" + StateSwitch.switchToStr(new_area) + "', ";
+		result = result + new_row + ", ";
+		result = result + new_shelf + ", ";
+		result = result + new_position + ", ";
+		result = result + "'" + isApproved + "'";
+		
+		System.out.println(result);
+		return result;
 	}
 
 	@Override

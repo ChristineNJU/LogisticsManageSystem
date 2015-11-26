@@ -1,5 +1,9 @@
 package businesslogic.Service.Repository;
 
+import java.util.ArrayList;
+
+import VO.StorageVO;
+
 public interface GetNeedStorageService {
-	public String getNeedStorage();
+	public ArrayList<StorageVO> getNeedStorage(String destination);
 }

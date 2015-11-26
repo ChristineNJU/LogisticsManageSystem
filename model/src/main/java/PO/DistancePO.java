@@ -71,7 +71,16 @@ public class DistancePO extends PO {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return null;
+		
+		String result = "";
+		
+		result = result + "'" + city_1 + "', ";
+		result = result + "'" + city_2 + "', ";
+		result = result + distance + ", ";
+		result = result + time + "";
+		
+		System.out.println(result);
+		return result;
 	}
 
 	@Override

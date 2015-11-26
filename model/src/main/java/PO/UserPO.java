@@ -1,6 +1,7 @@
 package PO;
 
 import State.InstitutionType;
+import State.StateSwitch;
 import State.UserRole;
 import VO.StaffVO;
 import VO.UserVO;
@@ -82,7 +83,20 @@ public class UserPO extends PO {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "'"+id+"', '"+password+"', '"+name+"', '"+"'";
+		
+		String result = "";
+		
+		result = result + "'" + id + "', ";
+		result = result + "'" + password + "', ";
+		result = result + "'" + name + "', ";
+		result = result + "'" + sex + "', ";
+		result = result + age + ", ";
+		result = result + "'" + StateSwitch.switchToStr(institution) + "', ";
+		result = result + "'" + city + "', ";
+		result = result + "'" + StateSwitch.switchToStr(role) + "'";
+		
+		System.out.println(result);
+		return result;
 	}
 
 	@Override

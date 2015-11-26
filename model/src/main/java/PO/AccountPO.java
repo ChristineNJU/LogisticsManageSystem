@@ -76,7 +76,15 @@ public class AccountPO extends PO {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return null;
+		String result = "";
+		
+		result = result + account_id + ", ";
+		result = result + "'" + account_name +"', ";
+		result = result + amount + "";
+		
+		System.out.println(result);
+		
+		return result;
 	}
 
 	@Override

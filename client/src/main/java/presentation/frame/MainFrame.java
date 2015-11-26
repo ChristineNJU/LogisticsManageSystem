@@ -5,6 +5,7 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import presentation.AnimationEasing.AnimationEasing;
 import State.UserRole;
 import VO.UserVO;
 import presentation.main.Navigation;
@@ -46,15 +47,15 @@ public class MainFrame {
 		frame.setContentPane(panel);
 		panel.setLayout(null);
 		
-//		inquiry = new Inquiry(this);
-//		frame.add(inquiry.getPanel());
+		inquiry = new Inquiry(this);
+		frame.add(inquiry.getPanel());
 //		changeToCourier();
 //		changeToBusinesslobby();
 //		changeToFinance();
 //		changeToManager();
 //		changeToMediumCenter();
 //		changeToRepository();
-		changeToAdmin();
+//		changeToAdmin();
 	}
 	
 	public JFrame getFrame(){
@@ -136,21 +137,28 @@ public class MainFrame {
 		double tmp = 0;
 		
 		while(height>5){
-			height = 600.0/62500.0*Math.pow((tmp-250), 2);
+//			height = 600.0/62500.0*Math.pow((tmp-250), 2);
+			height = height - AnimationEasing.easeInElastic(0, tmp, 3, 5, 2);
 			frame.setBounds((int)((x-width)/2), (int)((y-height)/2)-32, (int)width, (int)height);
 //			frame.getContentPane().setBounds((int)((x-width)/2), (int)((y-height)/2)-32, (int)width, (int)height);
 //			frame.repaint();
 			
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(1);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
-			tmp = tmp + 1;
+			tmp = tmp + 0.2;
 		}
 		
+		try {
+			Thread.sleep(70);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		while(width>5){
 			width = width - 10;

@@ -3,6 +3,7 @@ package businesslogic.Impl.Admin;
 import java.rmi.Naming;
 import java.util.ArrayList;
 
+import test.Stub.data.SearchService_Stub;
 import PO.UserPO;
 import State.AddState;
 import State.DeleteState;
@@ -51,8 +52,8 @@ public class AdminImpl implements AddUserService,DeleteUserService,GetUserServic
 		ArrayList<UserVO> result=new ArrayList<UserVO>();
 		
 		try{
-			
 			SearchUserService userSearch=(SearchUserService) Naming.lookup(RMIHelper.SEARCH_USER_IMPL);
+			
 			ArrayList<String> requirementID=new ArrayList<String>();
 			ArrayList<String> requirementName=new ArrayList<String>();
 			for(int i=0;i<requirement.size();i++){

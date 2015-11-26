@@ -6,15 +6,15 @@ import java.util.ArrayList;
 import PO.BalancePO;
 import State.AddState;
 import VO.BalanceVO;
-import businesslogic.Service.Repository.BalanceService;
+import businesslogic.Service.Repository.AddBalanceService;
 import businesslogic.SystemLog.SystemLog;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
 
-public class BalanceImpl implements BalanceService {
+public class BalanceImpl implements AddBalanceService {
 
 	@Override
-	public AddState balance(ArrayList<BalanceVO> balance) {
+	public AddState addBalance(ArrayList<BalanceVO> balance) {
 		// TODO Auto-generated method stub
 		AddState state=AddState.SUCCESS;
 		try{

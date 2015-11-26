@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import State.AddState;
 import VO.BalanceVO;
 
-public interface BalanceService {
+public interface AddBalanceService {
 	
-	public AddState balance(ArrayList<BalanceVO> balance);
+	public AddState addBalance(ArrayList<BalanceVO> balance);
 }

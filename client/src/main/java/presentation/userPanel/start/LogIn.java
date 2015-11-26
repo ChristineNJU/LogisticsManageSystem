@@ -11,21 +11,24 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import State.LoginState;
-import VO.UserVO;
-import businesslogic.Impl.Admin.AdminController;
-import businesslogic.Impl.User.UserController;
-import businesslogic.Service.Admin.AdminService;
-import businesslogic.Service.User.LoginService;
+import presentation.AnimationEasing.AnimationEasing;
 import presentation.frame.MainFrame;
 import presentation.main.ColorPallet;
 import presentation.main.FontSet;
 import presentation.panel.components.ButtonCancel;
 import presentation.panel.components.ButtonOk;
 import presentation.panel.components.TextField;
+import State.LoginState;
+import VO.UserVO;
+import businesslogic.Impl.Admin.AdminController;
+import businesslogic.Impl.User.UserController;
+import businesslogic.Service.Admin.AdminService;
+import businesslogic.Service.User.LoginService;
 
 public class LogIn{
 
+	private Inquiry parent = null;
+	
 	private JDialog logIn= new JDialog();
 	private JLabel idLabel = new JLabel("用户名：");
 	private JLabel passwordLabel = new JLabel("密   码：");
@@ -50,6 +53,11 @@ public class LogIn{
 		this.frame = frame;
 	}
 	
+	public LogIn(Inquiry parent) {
+		this.parent = parent;
+		initComponents();
+	}
+	
 	private void initComponents(){
 		logIn.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		logIn.setUndecorated(true); 
@@ -57,13 +65,16 @@ public class LogIn{
 //		logIn.setBackground(Color.blue);
 		logIn.setSize(320,200);
 		logIn.setLocation(MainFrame.FRAME_X+750,MainFrame.FRAME_Y);
-		logIn.setAlwaysOnTop(true); 
+//		logIn.setAlwaysOnTop(true); 
 		logIn.setLayout(null);
-		logIn.setModal(true);
+//		logIn.setModal(true);
 		
 		container.setLayout(null);
 		container.setBackground(Color.white);
-		logIn.setContentPane(container);
+//		container.setLocation(MainFrame.FRAME_X+750,MainFrame.FRAME_Y);
+		container.setBounds(750, 0, 320, 200);
+//		logIn.getContentPane().add(container);
+//		logIn.setContentPane(container);
 //		System.out.println("logInDalogInit");
 		
 		idLabel.setFont(FontSet.fourteen);
@@ -107,10 +118,19 @@ public class LogIn{
 		container.add(cancel);
 		container.add(confirm);
 		container.add(line);
+
 	}
 	
 	public JDialog getDialog(){
 		return logIn;
+	}
+	
+	public JPanel getPanel() {
+		return container;
+	}
+	
+	public JLabel getLine() {
+		return line;
 	}
 	
 	public void logIn(){
@@ -173,7 +193,18 @@ public class LogIn{
 //				wrongPW();
 			}
 			if(e.getSource().equals(cancel)){
-				logIn.dispose();
+//				logIn.dispose();
+				Thread t = new Thread(new MovingFunction());
+				t.start();
+				
+//				container.setVisible(false);
+//				try {
+//					Thread.sleep(1000);
+//				} catch (InterruptedException e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				}
+//				parent.getLogin().setVisible(true);
 			}
 		}
 
@@ -218,5 +249,33 @@ public class LogIn{
 			
 		}
 		
+	}
+	
+	class MovingFunction implements Runnable {
+
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			double time = 4;
+			while(time>=0){
+				int i = (int)AnimationEasing.easeInElastic(0, time, 0, 200, 10);
+//				System.out.println(i);
+				getPanel().setSize(320, i);
+				getLine().setBounds(0, 194, 320, i-194);
+				try {
+					Thread.sleep(10);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace(); 
+				}
+				time = time - 0.1;
+//				parent.getPanel().repaint();
+//				System.out.println("in method");
+			}
+			
+			container.setVisible(false);
+			parent.getLogin().setVisible(true);
+			parent.getPanel().repaint();
+		}
 	}
 }

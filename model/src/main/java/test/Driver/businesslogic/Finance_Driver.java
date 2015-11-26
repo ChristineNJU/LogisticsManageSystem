@@ -71,8 +71,9 @@ public class Finance_Driver {
 			System.out.println(costlist.get(i).getType());
 		}
 		System.out.println();
-		
-		BenefitVO benefit=new BenefitVO(0, 0);
+
+		BenefitVO benefit=new BenefitVO(0, 0,"0","0");
+
 		System.out.println(finance.addBenefit(benefit));
 		System.out.println();
 		

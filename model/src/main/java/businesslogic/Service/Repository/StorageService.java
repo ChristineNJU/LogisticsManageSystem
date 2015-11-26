@@ -8,4 +8,5 @@ import VO.StorageVO;
 public interface StorageService {
 	
 	public StorageState storage(ArrayList<StorageVO> storage);
+	
 }

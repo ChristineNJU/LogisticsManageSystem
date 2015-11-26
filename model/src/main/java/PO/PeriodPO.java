@@ -107,7 +107,27 @@ public class PeriodPO extends PO {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return null;
+		
+		String result = "";
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		result = result + "'" + sdf.format(date) + "', ";
+		result = result + institution_size + ", ";
+		result = result + staff_size + ", ";
+		result = result + car_size + ", ";
+		result = result + storage_size + ", ";
+		
+		result = result + "'";
+		for(int i=0;i<account.size();i++){
+			if(i!=account.size()-1){
+				result = result + account.get(i).getAccountID() + ",";				
+			}else{
+				result = result + account.get(i).getAccountID() + "'";
+			}
+		}
+		
+		System.out.println(result);
+		return result;
 	}
 
 	@Override

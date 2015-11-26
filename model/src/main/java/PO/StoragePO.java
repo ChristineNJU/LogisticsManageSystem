@@ -1,8 +1,12 @@
 package PO;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import State.StateSwitch;
 import State.StorageArea;
+import VO.StorageVO;
+import businesslogic.URLHelper.URLHelper;
 
 /*========================================================================================
  * 用来保存入库信息的持久化数据格式
@@ -30,6 +34,17 @@ public class StoragePO extends PO {
 		this.row = row;
 		this.shelf = shelf;
 		this.position = position;
+	}
+	
+	public StoragePO(StorageVO storage, String institutionID){
+		super(URLHelper.getStorageURL(institutionID));
+		this.bar_code=storage.getBarCode();
+		this.storage_date=storage.getStorageDate();
+		this.destination=storage.getDestination();
+		this.area_code=storage.getAreaCode();
+		this.row=storage.getRow();
+		this.shelf=storage.getShelf();
+		this.position=storage.getPosition();
 	}
 
 	/*====================================================================================
@@ -113,7 +128,22 @@ public class StoragePO extends PO {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return null;
+		
+		String result = "";
+		
+		result = result + "'" + bar_code + "', ";
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		result = result + "'" + sdf.format(storage_date) + "', ";
+		result = result + "'" + destination + "', ";
+		result = result + "'" + StateSwitch.switchToStr(area_code) + "', ";
+		result = result + row + ", ";
+		result = result + shelf + ", ";
+		result = result + position + ", ";
+		result = result + "'" + isApproved + "'";
+		
+		System.out.println(result);
+		return result;
 	}
 
 	@Override
