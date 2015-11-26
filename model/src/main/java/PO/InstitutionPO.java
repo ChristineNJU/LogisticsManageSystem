@@ -2,6 +2,7 @@ package PO;
 
 import businesslogic.URLHelper.URLHelper;
 import State.InstitutionType;
+import State.StateSwitch;
 import VO.InstitutionVO;
 
 public class InstitutionPO extends PO {
@@ -80,7 +81,16 @@ public class InstitutionPO extends PO {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return null;
+		
+		String result = "";
+		
+		result = result + "'" + institution_name + "', ";
+		result = result + "'" + StateSwitch.switchToStr(institution_type) + "', ";
+		result = result + "'" + city + "', ";
+		result = result + "'" + institution_number + "'";
+		
+		System.out.println(result);
+		return result;
 	}
 
 	@Override

@@ -131,7 +131,19 @@ public class BenefitPO extends PO {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return null;
+		
+		String result = "";
+		
+		result = result + number + ", ";
+		result = result + income + ", ";
+		result = result + expend + ", ";
+		result = result + benefit + ", ";
+		
+		result = result + "'" + sdf.format(startDate) + "', ";
+		result = result + "'" + sdf.format(endDate) + "'";
+		
+		System.out.println(result);
+		return result;
 	}
 
 	@Override

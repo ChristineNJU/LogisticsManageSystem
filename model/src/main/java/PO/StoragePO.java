@@ -1,7 +1,9 @@
 package PO;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import State.StateSwitch;
 import State.StorageArea;
 
 /*========================================================================================
@@ -113,7 +115,22 @@ public class StoragePO extends PO {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return null;
+		
+		String result = "";
+		
+		result = result + "'" + bar_code + "', ";
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		result = result + "'" + sdf.format(storage_date) + "', ";
+		result = result + "'" + destination + "', ";
+		result = result + "'" + StateSwitch.switchToStr(area_code) + "', ";
+		result = result + row + ", ";
+		result = result + shelf + ", ";
+		result = result + position + ", ";
+		result = result + "'" + isApproved + "'";
+		
+		System.out.println(result);
+		return result;
 	}
 
 	@Override

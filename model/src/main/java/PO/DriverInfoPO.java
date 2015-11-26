@@ -1,5 +1,6 @@
 package PO;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import VO.DriverInfoVO;
@@ -149,7 +150,22 @@ public class DriverInfoPO extends PO {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return null;
+		
+		String result = "";
+		
+		result = result + "'" + driver_number + "', ";
+		result = result + "'" + driver_name + "', ";
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		result = result + "'" + sdf.format(driver_birthday) + "', ";
+		
+		result = result + "'" + driver_id + "', ";
+		result = result + "'" + driver_mobilephone + "', ";
+		result = result + "'" + driver_sex + "', ";
+		result = result + attend_time + "";
+		
+		System.out.println(result);
+		return result;
 	}
 
 	@Override

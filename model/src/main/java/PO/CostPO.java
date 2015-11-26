@@ -6,6 +6,7 @@ import java.util.Date;
 
 import businesslogic.URLHelper.URLHelper;
 import State.CostType;
+import State.StateSwitch;
 import VO.CostVO;
 
 public class CostPO extends PO {
@@ -119,7 +120,19 @@ public class CostPO extends PO {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return null;
+		
+		String result = "";
+		
+		result = result + "'" + sdf.format(cost_date) + "', ";
+		result = result + cost_amount + ",";
+		result = result + "'" + cost_name + "', ";
+		result = result + "'" + account_name + "', ";
+		result = result + "'" + StateSwitch.switchToStr(type) + "', ";
+		result = result + "'" + remark + "', ";
+		result = result + "'" + isApproved + "'";
+		
+		System.out.println(result);
+		return result;
 	}
 
 	@Override

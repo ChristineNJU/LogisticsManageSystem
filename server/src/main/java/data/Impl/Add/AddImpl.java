@@ -33,14 +33,20 @@ public class AddImpl extends UnicastRemoteObject implements AddService {
 			
 			boolean mark = s.execute("INSERT INTO "+statistics.getURL()+" VALUES("+statistics.toString()+")");
 			
-			if(mark==false){
-				return AddState.FAIL;
-			}
+//			if(mark==false){
+//				return AddState.FAIL;
+//			}
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 //			e.printStackTrace();
 			System.out.println("插入PO对象失败");
+			
+			if(e.getSQLState().equals("23505")){
+				
+			}else{
+				e.printStackTrace();
+			}
 			return AddState.FAIL;
 		}
 		

@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 import VO.LogisticsHistoryVO;
 import businesslogic.Impl.Inquiry.InquiryController;
 import businesslogic.Service.Inquiry.InquiryService;
+import presentation.AnimationEasing.AnimationEasing;
 import presentation.frame.MainFrame;
 import presentation.main.ColorPallet;
 import presentation.main.FontSet;
@@ -134,7 +135,12 @@ public class Inquiry{
 		history = info.getHistory();
 		historyLabel = new ArrayList<HistoryLabel>();
 		for(int i = 0 ; i < history.size();i++){
-			historyLabel.add(new HistoryLabel(history.get(i),history.get(i),i));
+			String[] input = history.get(i).split(",");
+			if(input.length>=2){				
+				historyLabel.add(new HistoryLabel(input[0], input[1],i));
+			}else{
+				historyLabel.add(new HistoryLabel(input[0], "",i));
+			}
 			inquiryPanel.add(historyLabel.get(i));
 			System.out.println(i);
 		}
@@ -142,9 +148,19 @@ public class Inquiry{
 	}
 	
 	private void showLogIn(){
-		logInDialog = new LogIn();
-		logInDialog.getDialog().setVisible(true);
-//		System.out.println("in method");
+		logInDialog = new LogIn(this);
+//		logInDialog.getDialog().setVisible(true);
+		JPanel lg = logInDialog.getPanel();
+		
+		inquiryPanel.add(lg);
+		
+		lg.setVisible(true);
+		logIn.setVisible(false);
+		
+		Thread t = new Thread(new MovingFunction());
+		t.start();
+		
+//		logInDialog.getDialog().setModal(true);
 	}
 	
 	private void showNotFound(){
@@ -181,6 +197,10 @@ public class Inquiry{
 	
 	public JPanel getPanel(){
 		return inquiryPanel;
+	}
+	
+	public JButton getLogin() {
+		return logIn;
 	}
 	
 	public class HistoryLabel extends JLabel{
@@ -253,9 +273,35 @@ public class Inquiry{
 		public void focusLost(FocusEvent e) {
 			// TODO Auto-generated method stub
 			if(e.getSource().equals(input)){
+				if(input.getText().equals("")){
+					input.setText("输入订单编号");
+				}
 //				removeError();
 			}
 		}
 		
+	}
+
+	class MovingFunction implements Runnable {
+
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			double time = 0;
+			while(time<=8){
+				int i = (int)AnimationEasing.easeInElastic(0, time, 0, 200, 10);
+//				System.out.println(i);
+				logInDialog.getPanel().setSize(320, i);
+				logInDialog.getLine().setBounds(0, 194, 320, i-194);
+				try {
+					Thread.sleep(10);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				time = time + 0.1;
+//				System.out.println("in method");
+			}
+		}
 	}
 }

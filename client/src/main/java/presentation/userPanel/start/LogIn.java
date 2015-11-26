@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 
 import State.LoginState;
 import businesslogic.Impl.User.LoginImpl;
+import presentation.AnimationEasing.AnimationEasing;
 import presentation.frame.MainFrame;
 import presentation.main.ColorPallet;
 import presentation.main.FontSet;
@@ -23,6 +24,8 @@ import presentation.panel.components.TextField;
 
 public class LogIn{
 
+	private Inquiry parent = null;
+	
 	private JDialog logIn= new JDialog();
 	private JLabel idLabel = new JLabel("用户名：");
 	private JLabel passwordLabel = new JLabel("密   码：");
@@ -44,6 +47,11 @@ public class LogIn{
 		initComponents();
 	}
 	
+	public LogIn(Inquiry parent) {
+		this.parent = parent;
+		initComponents();
+	}
+	
 	private void initComponents(){
 		logIn.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		logIn.setUndecorated(true); 
@@ -51,13 +59,16 @@ public class LogIn{
 //		logIn.setBackground(Color.blue);
 		logIn.setSize(320,200);
 		logIn.setLocation(MainFrame.FRAME_X+750,MainFrame.FRAME_Y);
-		logIn.setAlwaysOnTop(true); 
+//		logIn.setAlwaysOnTop(true); 
 		logIn.setLayout(null);
-		logIn.setModal(true);
+//		logIn.setModal(true);
 		
 		container.setLayout(null);
 		container.setBackground(Color.white);
-		logIn.setContentPane(container);
+//		container.setLocation(MainFrame.FRAME_X+750,MainFrame.FRAME_Y);
+		container.setBounds(750, 0, 320, 200);
+//		logIn.getContentPane().add(container);
+//		logIn.setContentPane(container);
 //		System.out.println("logInDalogInit");
 		
 		idLabel.setFont(FontSet.fontTipsBig);
@@ -101,10 +112,19 @@ public class LogIn{
 		container.add(cancel);
 		container.add(confirm);
 		container.add(line);
+
 	}
 	
 	public JDialog getDialog(){
 		return logIn;
+	}
+	
+	public JPanel getPanel() {
+		return container;
+	}
+	
+	public JLabel getLine() {
+		return line;
 	}
 	
 	public void logIn(){
@@ -155,7 +175,9 @@ public class LogIn{
 //				wrongPW();
 			}
 			if(e.getSource().equals(cancel)){
-				logIn.dispose();
+//				logIn.dispose();
+				container.setVisible(false);
+				parent.getLogin().setVisible(true);
 			}
 		}
 

@@ -1,5 +1,6 @@
 package PO;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -7,6 +8,7 @@ import businesslogic.URLHelper.URLHelper;
 import State.LogisticsState;
 import State.LogisticsType;
 import State.PackingCharge;
+import State.StateSwitch;
 import VO.LogisticsInputVO;
 
 /*=================================================================================
@@ -376,7 +378,50 @@ public class LogisticsInfoPO extends PO {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return null;
+		
+		String result = "";
+		
+		result = result + "'" + bar_code + "', ";
+		result = result + "'" + sender_name + "', ";
+		result = result + "'" + sender_address + "', ";
+		result = result + "'" + sender_organization + "', ";
+		result = result + "'" + sender_telephone + "', ";
+		result = result + "'" + sender_mobilephone + "', ";
+		result = result + "'" + recipient_name + "', ";
+		result = result + "'" + recipient_address + "', ";
+		result = result + "'" + recipient_organization + "', ";
+		result = result + "'" + recipient_telephone + "', ";
+		result = result + "'" + recipient_mobilephone + "', ";
+		result = result + "'" + actual_recipient_name + "', ";
+		result = result + original_number + ", ";
+		result = result + weight + ", ";
+		result = result + size + ", ";
+		result = result + "'" + internal_name + "', ";
+		result = result + "'" + StateSwitch.switchToStr(type) + "', ";
+		result = result + "'" + StateSwitch.switchToStr(pack) + "', ";
+		result = result + total_cost + ", ";
+		result = result + "'" + starting + "', ";
+		result = result + "'" + destination + "', ";
+		result = result + "'" + StateSwitch.switchToStr(state) + "', ";
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		result = result + "'" + sdf.format(send_date) + "', ";
+		result = result + "'" + sdf.format(receive_date) + "', ";
+		result = result + "'" + courier + "'";
+		result = result + "'" + isApproved + "'";
+		result = result + "'" + isReceived + "'";
+		
+		result = result + "'";
+		for(int i=0;i<history.size();i++){
+			if(i!=history.size()-1){
+				result = result + history.get(i) + ">>";				
+			}else{
+				result = result + history.get(i) + "'";
+			}
+		}
+		
+		System.out.println(result);
+ 		return result;
 	}
 
 	@Override

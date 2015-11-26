@@ -1,10 +1,11 @@
 package PO;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import businesslogic.URLHelper.URLHelper;
 import VO.EntruckingVO;
+import businesslogic.URLHelper.URLHelper;
 
 
 /*========================================================================================
@@ -139,7 +140,32 @@ public class EntruckingPO extends PO {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return null;
+		
+		String result = "";
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		result = result + "'" + sdf.format(date) + "', ";
+		
+		result = result + "'" + transfer_number + "', ";
+		result = result + "'" + destination + "', ";
+		result = result + "'" + car_number + "', ";
+		result = result + "'" + guard_name + "', ";
+		result = result + "'" + supercargo_name + "', ";
+		
+		result = result + "'";
+		for(int i=0;i<bar_code_list.size();i++){
+			if(i!=bar_code_list.size()-1){
+				result = result + bar_code_list.get(i) + ",";				
+			}else{
+				result = result + bar_code_list.get(i) + "',";
+			}
+		}
+		
+		result = result + amount + ", ";
+		result = result + "'" + isApproved + "'";
+		
+		System.out.println(result);
+		return result;
 	}
 
 	@Override
