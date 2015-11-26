@@ -14,20 +14,9 @@ public class UserVO extends VO {
 	private InstitutionType institution;
 	private String city;
 	
-<<<<<<< HEAD
-	public UserVO(String id,String name,UserRole role,String sex,int age,InstitutionType type){
-		this.id = id;
-		this.name = name;
-		this.role = role;
-		this.sex = sex;
-		this.age = age;
-		this.institution = type;
-		
-	}
-	public UserVO(String id,String name,UserRole role){
-=======
+
 	public UserVO(String id,String name,UserRole role,String sex,int age, InstitutionType institution,String city){
->>>>>>> a3a850185a1d33de90a090d114abcf5aedca3057
+
 		this.id = id;
 		this.name = name;
 		this.role = role;
