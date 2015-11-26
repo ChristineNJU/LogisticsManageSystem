@@ -9,7 +9,7 @@ public class Admin_Driver {
 	
 	public void drive(AdminBlService_Stub Admin){
 		
-		UserVO user=new UserVO(null, null, null);
+		UserVO user=new UserVO(null, null, null, null, 0, null, null);
 		System.out.println(Admin.addUser(user));
 		System.out.println();
 		
