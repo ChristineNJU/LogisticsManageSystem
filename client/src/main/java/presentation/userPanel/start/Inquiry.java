@@ -223,7 +223,8 @@ public class Inquiry{
 				mainFrame.getFrame().setExtendedState(1);
 			}
 			if(e.getSource().equals(close)){
-				System.exit(0);
+//				System.exit(0);
+				mainFrame.frameClose();
 			}
 			if(e.getSource().equals(confirm)){
 				String bar_code = input.getText();

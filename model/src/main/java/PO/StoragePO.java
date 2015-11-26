@@ -19,13 +19,13 @@ public class StoragePO extends PO {
 	private int position = 0;
 	private boolean isApproved = false;
 	
-	public StoragePO(String bar_code, Date storage_date, String destnation, StorageArea area_code, 
+	public StoragePO(String bar_code, Date storage_date, String destination, StorageArea area_code, 
 			int row, int shelf, int position, String DB_URL) {
 		super(DB_URL);
 		
 		this.bar_code = bar_code;
 		this.storage_date = storage_date;
-		this.destination = destnation;
+		this.destination = destination;
 		this.area_code = area_code;
 		this.row = row;
 		this.shelf = shelf;
@@ -114,6 +114,12 @@ public class StoragePO extends PO {
 	public String toString() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String getPrimaryKey() {
+		// TODO Auto-generated method stub
+		return "bar_code = '"+bar_code+"'";
 	}
 	
 	

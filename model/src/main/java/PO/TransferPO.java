@@ -3,6 +3,9 @@ package PO;
 import java.util.ArrayList;
 import java.util.Date;
 
+import businesslogic.URLHelper.URLHelper;
+import VO.TransferVO;
+
 /*======================================================================
  * 用来保存中转单的持久化数据格式
  * */
@@ -35,6 +38,19 @@ public class TransferPO extends PO {
 		this.bar_code_list = bar_code_list;
 		this.amount = amount;	
 	}
+	public TransferPO(TransferVO transfer, String institutionId) {
+		// TODO Auto-generated constructor stub
+		super(URLHelper.getGatheringURL(institutionId));
+		this.date=transfer.getDate();
+		this.transfer_number=transfer.getList();
+		this.transport_id=transfer.getTransferId();
+		this.starting=transfer.getDeparture();
+		this.destination=transfer.getDestination();
+		this.container_number=transfer.getContainerNumber();
+		this.guard_name=transfer.getGuardName();
+		this.bar_code_list=transfer.getItemId();
+		this.amount=transfer.getTransferCharge();
+	}
 
 	/*====================================================================================
 	 * Public方法
@@ -43,6 +59,7 @@ public class TransferPO extends PO {
 	/*------------------------------------------------------------------------------------
 	 * 对TransferPO的数据进行读取
 	 * */
+	
 	
 	/*
 	 * 获取装车日期
@@ -134,6 +151,10 @@ public class TransferPO extends PO {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
+
+	@Override
+	public String getPrimaryKey() {
+		// TODO Auto-generated method stub
+		return "transfer_number = '"+transfer_number+"'";
+	}
 }

@@ -10,4 +10,6 @@ bc.zip
 log.txt
 *.ipr
 *.iws
+server/LogisticsManageSystemDataBase/
+derby.log
 kerby-server

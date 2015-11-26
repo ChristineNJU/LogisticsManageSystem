@@ -34,7 +34,7 @@ public class CourierImpl implements AddLogisticsService,GetAmountService,GetCity
 		try{
 			SearchLogisticsService searchLogistics=(SearchLogisticsService) Naming.lookup(RMIHelper.SEARCH_LOGISTICS_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("bar_code="+((LogisticsInputVO)logistics_info).getBar_code());
+			requirement.add("bar_code='"+((LogisticsInputVO)logistics_info).getBar_code()+"'");
 			ArrayList<LogisticsInfoPO> result=searchLogistics.searchLogisticsInfo(requirement);
 			if(result.isEmpty()){
 				state=UpdateState.NOTFOUND;
@@ -95,7 +95,7 @@ public class CourierImpl implements AddLogisticsService,GetAmountService,GetCity
 			SearchConstService constSearch=(SearchConstService) Naming.lookup(RMIHelper.SEARCH_CONST_IMPL);
 			SearchDistanceService distanceSearch=(SearchDistanceService) Naming.lookup(RMIHelper.SEARCH_DISTANCE_IMPL);
 			ArrayList<String> requirementDis=new ArrayList<String>();
-			requirementDis.add("city1="+starting+" AND "+"city2="+destination);
+			requirementDis.add("city1='"+starting+"' AND "+"city2='"+destination+"'");
 			
 			ArrayList<DistancePO> distanceResult=distanceSearch.searchDistance(requirementDis);
 			

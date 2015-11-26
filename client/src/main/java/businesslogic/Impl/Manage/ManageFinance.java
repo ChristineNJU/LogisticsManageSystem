@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 import PO.BenefitPO;
 import PO.CostPO;
+import PO.GatheringPO;
+import PO.InstitutionPO;
 import VO.BenefitVO;
 import VO.CostVO;
 import VO.GatheringVO;
@@ -19,6 +21,7 @@ import data.RMIHelper.RMIHelper;
 import data.Service.Search.SearchBenefitService;
 import data.Service.Search.SearchCostService;
 import data.Service.Search.SearchGatheringService;
+import data.Service.Search.SearchInstitutionInfoService;
 
 public class ManageFinance implements GetBenefitService, GetCostService,GetGatheringService {
 
@@ -28,24 +31,43 @@ public class ManageFinance implements GetBenefitService, GetCostService,GetGathe
 		ArrayList<GatheringVO> result=new ArrayList<GatheringVO>();
 		try {
 			SearchGatheringService searchGathering=(SearchGatheringService) Naming.lookup(RMIHelper.SEARCH_GATHERING_IMPL);
-			ArrayList<String> requirementDate=new ArrayList<String>();
-			ArrayList<String> requirementBusinesslobby=new ArrayList<String>();
-			ArrayList<GatheringVO> searchResultDate=new ArrayList<GatheringVO>();
-			ArrayList<GatheringVO> searchResultBusinesslobby=new ArrayList<GatheringVO>();
+			SearchInstitutionInfoService searchInstitution=(SearchInstitutionInfoService) Naming.lookup(RMIHelper.SEARCH_INSTITUTION_IMPL);
 			
-//			if(date!=null){
-//				requirementDate.add("date"+date);
-//				searchResultDate=searchGathering.searchGathering(URLHelper.getGatheringURL(institution_id), requirement);
-//			}
-//			
-//			requirement.add("businesslobby");
+			ArrayList<String> requirement=new ArrayList<String>();
+			requirement.add("date='"+date+"'");
+			
+			ArrayList<GatheringPO> searchResult=new ArrayList<GatheringPO>();
+			
+			ArrayList<String> requirementBusinesslobby=new ArrayList<String>();
+			requirementBusinesslobby.add("id='"+businesslobby+"'");
+			ArrayList<InstitutionPO> searchResultBusinesslobby=searchInstitution.searchInstitutionInfo(requirementBusinesslobby);
+			
+			if(searchResultBusinesslobby.isEmpty()){
+				System.out.println("not found");
+			}
+			else{
+				for(int i=0;i<searchResultBusinesslobby.size();i++){
+					searchResult=searchGathering.searchGathering(URLHelper.getGatheringURL(searchResultBusinesslobby.get(i).getInstitutionNumber()) ,requirement);
+					if(searchResult.isEmpty()){
+						System.out.println("Gathering not found");
+					}
+					else{
+						for(int j=0;j<searchResult.size();j++){
+							GatheringVO temp=new GatheringVO(searchResult.get(j));
+							result.add(temp);
+						}
+					}
+				}
+			}
+			
+
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
 			System.out.println("error");
 			e.printStackTrace();
 		}
 		// TODO Auto-generated method stub
-		return null;
+		return result;
 	}
 
 	@Override
@@ -55,7 +77,7 @@ public class ManageFinance implements GetBenefitService, GetCostService,GetGathe
 		try {
 			SearchCostService searchCost=(SearchCostService) Naming.lookup(RMIHelper.SEARCH_COST_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("'between'"+time_start+"'and'"+time_end);
+			requirement.add("between'"+time_start+"'and'"+time_end+"'");
 			ArrayList<CostPO> searchResult=searchCost.searchCost(requirement);
 			
 			if(searchResult.isEmpty()){
@@ -82,16 +104,15 @@ public class ManageFinance implements GetBenefitService, GetCostService,GetGathe
 	public BenefitVO searchBenefit(String time_end) {
 		// TODO Auto-generated method stub
 		double income=0,cost=0;
-		double time_start=0;
+		String time_start="2015-12-22-10:44:20";
 		try {
 			SearchBenefitService searchBenefit=(SearchBenefitService) Naming.lookup(RMIHelper.SEARCH_BENEFIT_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("'between'"+time_start+"'and'"+time_end);
+			requirement.add("between'"+time_start+"'and'"+time_end+"'");
 			ArrayList<BenefitPO> searchResult=searchBenefit.searchBenefit(requirement);
 			
 			if(searchResult.isEmpty()){
-				System.out.println("not found");
-				return new BenefitVO(0,0);
+				return null;
 			}
 			else{
 				for(int i=0;i<searchResult.size();i++){
@@ -103,9 +124,10 @@ public class ManageFinance implements GetBenefitService, GetCostService,GetGathe
 			// TODO Auto-generated catch block
 			System.out.println("error");
 			e.printStackTrace();
+			return null;
 		}
 		
-		BenefitVO result=new BenefitVO(income,cost);
+		BenefitVO result=new BenefitVO(income,cost,"2015-12-22-10:44:20" ,time_end);
 		return result;
 	}
 

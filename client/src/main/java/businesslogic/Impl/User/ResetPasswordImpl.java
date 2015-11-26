@@ -22,7 +22,7 @@ public class ResetPasswordImpl {
 			
 			ArrayList<String> requirement=new ArrayList<String>();
 			
-			requirement.add("id ="+userName);
+			requirement.add("id='"+userName+"'");
 			
 			ArrayList<UserPO> result=searchUser.searchUser(requirement);
 			

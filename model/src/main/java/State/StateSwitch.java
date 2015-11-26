@@ -59,6 +59,7 @@ public class StateSwitch {
 		case BusinessLobby: result="BusinessLobby"; break;
 		case MediumCenter: result="MediumCenter"; break;
 		case Repository: result="Repository"; break;
+		case Other: result="Other"; break;
 		}
 		
 		return result;
@@ -200,6 +201,7 @@ public class StateSwitch {
 		case "BusinessLobby": type=InstitutionType.BusinessLobby; break;
 		case "MediumCenter": type=InstitutionType.MediumCenter; break;
 		case "Repository": type=InstitutionType.Repository; break;
+		case "Other": type=InstitutionType.Repository; break;
 		}
 		
 		return type;

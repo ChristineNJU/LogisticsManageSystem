@@ -8,5 +8,5 @@ package State;
  *
  */
 public enum InstitutionType {
-	BusinessLobby,MediumCenter,Repository;
+	BusinessLobby,MediumCenter,Repository,Other;
 }

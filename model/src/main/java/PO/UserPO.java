@@ -84,4 +84,10 @@ public class UserPO extends PO {
 		// TODO Auto-generated method stub
 		return "'"+id+"', '"+password+"', '"+name+"', '"+"'";
 	}
+
+	@Override
+	public String getPrimaryKey() {
+		// TODO Auto-generated method stub
+		return "id = '"+id+"'";
+	}
 }

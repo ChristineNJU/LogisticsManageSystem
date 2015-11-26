@@ -20,7 +20,7 @@ import presentation.userPanel.start.Inquiry;
 
 public class MainFrame {
 	public static final int FRAME_WIDTH = 1200;
-	public static final int FRAME_HEIGHT = 800;
+	public static final int FRAME_HEIGHT = 600;
 	
 	public static final int FRAME_X = (Toolkit.getDefaultToolkit().getScreenSize().width - FRAME_WIDTH) / 2;
 	public static final int FRAME_Y = (Toolkit.getDefaultToolkit().getScreenSize().height - FRAME_HEIGHT) / 2 - 32;
@@ -61,6 +61,7 @@ public class MainFrame {
 		return frame;
 	}
 	
+<<<<<<< HEAD
 	public void changeToUserPane(UserVO user){
 		this.user = user;
 		UserRole role = user.getRole();
@@ -123,5 +124,47 @@ public class MainFrame {
 	}
 	public static JPanel getMainPanel(){
 		return panel;
+=======
+	public void frameClose() {
+				
+		double width = FRAME_WIDTH;
+		double height = FRAME_HEIGHT;
+		
+		int x = Toolkit.getDefaultToolkit().getScreenSize().width;
+		int y = Toolkit.getDefaultToolkit().getScreenSize().height;
+		
+		double tmp = 0;
+		
+		while(height>5){
+			height = 600.0/62500.0*Math.pow((tmp-250), 2);
+			frame.setBounds((int)((x-width)/2), (int)((y-height)/2)-32, (int)width, (int)height);
+//			frame.getContentPane().setBounds((int)((x-width)/2), (int)((y-height)/2)-32, (int)width, (int)height);
+//			frame.repaint();
+			
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			tmp = tmp + 1;
+		}
+		
+		
+		while(width>5){
+			width = width - 10;
+			frame.setBounds((int)((x-width)/2), (int)((y-height)/2)-32, (int)width, (int)height);
+			
+			try {
+				Thread.sleep(1);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		System.exit(0);
+>>>>>>> a3a850185a1d33de90a090d114abcf5aedca3057
 	}
 }

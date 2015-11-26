@@ -3,6 +3,9 @@ package PO;
 import java.util.ArrayList;
 import java.util.Date;
 
+import businesslogic.URLHelper.URLHelper;
+import VO.EntruckingVO;
+
 
 /*========================================================================================
  * 用来保存装车单的持久化数据格式
@@ -34,7 +37,18 @@ public class EntruckingPO extends PO {
 		this.bar_code_list = bar_code_list;
 		this.amount = amount;
 	}
-	
+	public EntruckingPO(EntruckingVO entrucking, String institutionId) {
+		// TODO Auto-generated constructor stub
+		super(URLHelper.getEntruckingURL(institutionId));
+		this.date = entrucking.getDate();
+		this.transfer_number = entrucking.getInstitutioNumber();
+		this.destination = entrucking.getDestination();
+		this.car_number = entrucking.getCarNumber();
+		this.guard_name = entrucking.getguardNumber();
+		this.supercargo_name = entrucking.getSupercargoName();
+		this.bar_code_list = entrucking.getBarCodeList();
+		this.amount = entrucking.getAmount();
+	}
 	/*====================================================================================
 	 * Public方法
 	 * */
@@ -43,6 +57,8 @@ public class EntruckingPO extends PO {
 	 * 对EntruckingPO的数据进行读取
 	 * */
 	
+	
+
 	/*
 	 * 获取装车日期
 	 * 返回Date
@@ -124,6 +140,12 @@ public class EntruckingPO extends PO {
 	public String toString() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String getPrimaryKey() {
+		// TODO Auto-generated method stub
+		return "transfer_number = '"+transfer_number+"'";
 	}
 	
 }

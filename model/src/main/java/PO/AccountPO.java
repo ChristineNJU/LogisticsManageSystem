@@ -1,5 +1,8 @@
 package PO;
 
+import VO.AccountVO;
+import businesslogic.URLHelper.URLHelper;
+
 public class AccountPO extends PO {
 
 	private int account_id = 0;
@@ -12,6 +15,13 @@ public class AccountPO extends PO {
 		this.account_id = account_id;
 		this.account_name = account_name;
 		this.amount = amount;
+	}
+	
+	public AccountPO(AccountVO avo){
+		super(URLHelper.getAccountURL());
+		this.account_id=avo.getID();
+		this.account_name=avo.getName();
+		this.amount=avo.getMoney();
 	}
 	
 	/*====================================================================================
@@ -67,6 +77,12 @@ public class AccountPO extends PO {
 	public String toString() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String getPrimaryKey() {
+		// TODO Auto-generated method stub
+		return "account_id = '"+account_id+"'";
 	}
 
 }

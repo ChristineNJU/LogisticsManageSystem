@@ -3,6 +3,8 @@ package PO;
 import java.util.Date;
 
 import State.StorageArea;
+import VO.BalanceVO;
+import businesslogic.URLHelper.URLHelper;
 
 public class BalancePO extends PO {
 
@@ -35,6 +37,21 @@ public class BalancePO extends PO {
 		this.new_row = new_row;
 		this.new_shelf = new_shelf;
 		this.new_position = new_position;
+	}
+	
+	public BalancePO(BalanceVO balance,String institutionID){
+		super(URLHelper.getBalanceURL(institutionID));
+		this.bar_code=balance.getBarCode();
+		this.storage_date=balance.getDate();
+		this.destination=balance.getDestination();
+		this.old_area=balance.getAreaBefore();
+		this.old_row=balance.getRowBefore();
+		this.old_shelf=balance.getShelfBefore();
+		this.old_position=balance.getPositionBefore();
+		this.new_area=balance.getAreaCode();
+		this.new_row=balance.getRow();
+		this.new_shelf=balance.getShelf();
+		this.new_position=balance.getPosition();
 	}
 	
 	/*====================================================================================
@@ -148,6 +165,12 @@ public class BalancePO extends PO {
 	public String toString() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String getPrimaryKey() {
+		// TODO Auto-generated method stub
+		return "bar_code = '"+bar_code+"'";
 	}
 
 }

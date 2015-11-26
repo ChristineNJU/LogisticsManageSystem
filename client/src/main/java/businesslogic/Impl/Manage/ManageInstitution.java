@@ -32,11 +32,19 @@ public class ManageInstitution implements AddInstitutionService,UpdateInstitutio
 		try {
 			SearchInstitutionInfoService searchInstitution=(SearchInstitutionInfoService) Naming.lookup(RMIHelper.SEARCH_INSTITUTION_IMPL);
 			ArrayList<String> requirementId=new ArrayList<String>();
-			requirementId.add("'Institution_Number='"+id);
-			ArrayList<InstitutionPO> searchResultId=searchInstitution.searchInstitutionInfo(requirementId);
-			
 			ArrayList<String> requirementName=new ArrayList<String>();
-			requirementName.add("'Institution_Name'"+id);
+			
+			//show  when id==null
+			if(id!=null){
+			requirementId.add("institution_number='"+id+"'");
+			requirementName.add("institution_name'"+id+"'");
+			}
+			else{
+				requirementId.add("institution_number like '%%'");
+			}
+			
+			
+			ArrayList<InstitutionPO> searchResultId=searchInstitution.searchInstitutionInfo(requirementId);
 			ArrayList<InstitutionPO> searchResultName=searchInstitution.searchInstitutionInfo(requirementName);
 			
 			for(int i=0;i<searchResultName.size();i++)
@@ -73,7 +81,7 @@ public class ManageInstitution implements AddInstitutionService,UpdateInstitutio
 			SearchInstitutionInfoService searchInstitution=(SearchInstitutionInfoService) Naming.lookup(RMIHelper.SEARCH_INSTITUTION_IMPL);
 			
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("'Institution_Number='"+instiution.getCode());
+			requirement.add("institution_number='"+instiution.getCode()+"'");
 			ArrayList<InstitutionPO> searchResult=searchInstitution.searchInstitutionInfo(requirement);			
 			
 			if(searchResult.isEmpty()){
@@ -104,7 +112,7 @@ public class ManageInstitution implements AddInstitutionService,UpdateInstitutio
 			SearchInstitutionInfoService searchInstitution=(SearchInstitutionInfoService) Naming.lookup(RMIHelper.SEARCH_INSTITUTION_IMPL);
 			
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("'Institution_Number='"+institution.getCode());
+			requirement.add("institution_number='"+institution.getCode()+"'");
 			ArrayList<InstitutionPO> searchResult=searchInstitution.searchInstitutionInfo(requirement);		
 			
 			if(searchResult.isEmpty()){

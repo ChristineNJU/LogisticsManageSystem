@@ -1,5 +1,8 @@
 package PO;
 
+import businesslogic.URLHelper.URLHelper;
+import VO.CarInfoVO;
+
 /*==================================================================
  * 用来保存车辆信息的持久化数据格式
  * */
@@ -16,6 +19,13 @@ public class CarInfoPO extends PO {
 		this.attend_time = attend_time;
 	}
 	
+	public CarInfoPO(CarInfoVO car) {
+		super(URLHelper.getCarInfoURL(car.getCarNumber().substring(0, car.getCarNumber().length()-3)));
+		// TODO Auto-generated constructor stub
+		this.car_number = car.getCarNumber();
+		this.car_license = car.getCarLicense();
+		this.attend_time = car.getUseTime();
+	}
 	/*===============================================================
 	 * Public方法
 	 * */
@@ -24,6 +34,8 @@ public class CarInfoPO extends PO {
 	 * 对CarInfoPO的数据进行读取
 	 * */
 	
+	
+
 	/*
 	 * 获取车辆代号
 	 * 返回String
@@ -83,6 +95,12 @@ public class CarInfoPO extends PO {
 	public String toString() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String getPrimaryKey() {
+		// TODO Auto-generated method stub
+		return "car_number = '"+car_number+"'";
 	}
 
 }

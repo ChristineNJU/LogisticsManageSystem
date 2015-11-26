@@ -18,14 +18,14 @@ public class MediumCenterController implements MCService{
 	}
 
 	@Override
-	public ArrayList<String> getNeedTransfer() {
+	public ArrayList<TransferVO> getNeedTransfer() {
 		// TODO Auto-generated method stub
 		GetNeedTransferImpl getNeedTransfer=new GetNeedTransferImpl();
 		return getNeedTransfer.getNeedTransfer();
 	}
 
 	@Override
-	public ArrayList<String> getNeedEntrucking() {
+	public ArrayList<EntruckingVO> getNeedEntrucking() {
 		// TODO Auto-generated method stub
 		GetNeedEntruckingImpl getNeedEntrucking =new GetNeedEntruckingImpl();
 		return getNeedEntrucking.getNeedEntrucking();

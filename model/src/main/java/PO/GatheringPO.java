@@ -1,7 +1,11 @@
 package PO;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+
+import businesslogic.URLHelper.URLHelper;
+import VO.GatheringVO;
 
 /*======================================================================
  * 用来保存收款信息的持久化数据格式
@@ -23,7 +27,14 @@ public class GatheringPO extends PO {
 		this.courier = courier;
 		this.bar_code_list = bar_code_list;
 	}
-	
+	public GatheringPO(GatheringVO gathering, String institutionId) {
+		// TODO Auto-generated constructor stub
+		super(URLHelper.getGatheringURL(institutionId));
+		this.date=gathering.getDate();
+		this.amount=gathering.getMoney();
+		this.courier=gathering.getName();
+		this.bar_code_list=gathering.id();
+	}
 	/*==================================================================
 	 * Public方法
 	 * */
@@ -32,6 +43,8 @@ public class GatheringPO extends PO {
 	 * 对GatheringPO的数据进行读取
 	 * */
 	
+	
+
 	/*
 	 * 获取收款时间
 	 * 返回Date
@@ -93,6 +106,13 @@ public class GatheringPO extends PO {
 	public String toString() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String getPrimaryKey() {
+		// TODO Auto-generated method stub
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		return "date = '"+sdf.format(date)+"' AND courier = '"+courier+"'";
 	}
 	
 }
