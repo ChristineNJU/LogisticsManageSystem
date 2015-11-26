@@ -1,8 +1,13 @@
 package PO;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
 import businesslogic.URLHelper.URLHelper;
+
+import State.StateSwitch;
+
 import State.TransferType;
 import VO.RemovalVO;
 
@@ -103,7 +108,20 @@ public class RemovalPO extends PO {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return null;
+		
+		String result = "";
+		
+		result = result + "'" + bar_code + "', ";
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		result = result + "'" + sdf.format(removal_date) + "', ";
+		result = result + "'" + destination + "', ";
+		result = result + "'" + StateSwitch.switchToStr(type) + "', ";
+		result = result + "'" + transfer_number + "', ";
+		result = result + "'" + isApproved + "'";
+		
+		System.out.println(result);
+		return result;
 	}
 
 	@Override

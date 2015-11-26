@@ -70,7 +70,15 @@ public class SalaryPO extends PO {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return null;
+		
+		String result = "";
+		
+		result = result + "'" + StateSwitch.switchToStr(staff) + "', ";
+		result = result + salary + ", ";
+		result = result + "'" + StateSwitch.switchToStr(type) + "'";
+		
+		System.out.println(result);
+		return result;
 	}
 
 	@Override

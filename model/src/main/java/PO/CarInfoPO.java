@@ -94,7 +94,15 @@ public class CarInfoPO extends PO {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return null;
+		
+		String result = "";
+		
+		result = result + "'" + car_number + "', ";
+		result = result + "'" + car_license + "', ";
+		result = result + attend_time + "";
+		
+		System.out.println(result);
+		return result;
 	}
 
 	@Override

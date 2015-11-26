@@ -1,8 +1,10 @@
 package PO;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import State.LogisticsState;
+import State.StateSwitch;
 import VO.ArrivalVO;
 import businesslogic.URLHelper.URLHelper;
 
@@ -108,7 +110,21 @@ public class ArrivalPO extends PO {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return null;
+		
+		String result = "";
+		
+		result = result + "'" + bar_code + "', ";
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		result = result + "'" + sdf.format(arrival_date) + "', ";
+		
+		result = result + "'" + transfer_number + "', ";
+		result = result + "'" + starting + "', ";
+		result = result + "'" + StateSwitch.switchToStr(state) + "', ";
+		result = result + "'" + isApproved + "'";
+		
+		System.out.println(result);
+		return result;
 	}
 
 	@Override

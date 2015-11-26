@@ -59,7 +59,14 @@ public class ConstPO extends PO {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return null;
+		
+		String result = "";
+		
+		result = result + "'" + name + "', ";
+		result = result + value + "";
+		
+		System.out.println(result);
+		return result;
 	}
 
 	@Override
