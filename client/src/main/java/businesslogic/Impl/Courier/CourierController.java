@@ -14,12 +14,11 @@ public class CourierController implements CourierService{
 	
 	
 	@Override
-	public UpdateState receiveConfirm(VO logistics_info, String field,
-			String value) {
+	public UpdateState receiveConfirm(VO logistics_info) {
 		// TODO Auto-generated method stub
 		
 		CourierImpl courier=new CourierImpl();
-		return courier.receiveConfirm(logistics_info, field, value);
+		return courier.receiveConfirm(logistics_info);
 		
 	}
 

@@ -122,7 +122,7 @@ public class CarMgt implements UpdateCarService,GetCarService,DeleteCarService,A
 	}
 
 	@Override
-	public UpdateState updateCar(CarInfoVO car, String field, String value) {
+	public UpdateState updateCar(CarInfoVO car) {
 		// TODO Auto-generated method stub
 		UpdateState result=UpdateState.NOTFOUND;
 		try {
@@ -141,7 +141,7 @@ public class CarMgt implements UpdateCarService,GetCarService,DeleteCarService,A
 			
 			else{
 				for(int i=0;i<searchResult.size();i++){
-					result=updateService.update(new CarInfoPO(car), field, value);
+					result=updateService.update(new CarInfoPO(car));
 				}
 			}
 			

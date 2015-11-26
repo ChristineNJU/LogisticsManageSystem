@@ -17,11 +17,10 @@ import businesslogic.Service.Finance.FinanceService;
 public class FinanceController implements FinanceService{
 	
 	@Override
-	public UpdateState updateAccount(AccountVO account, String field,
-			String value) {
+	public UpdateState updateAccount(AccountVO account) {
 		// TODO Auto-generated method stub
 		AccountImpl accountC=new AccountImpl();
-		return accountC.updateAccount(account, field, value);
+		return accountC.updateAccount(account);
 	}
 	@Override
 	public ArrayList<TransferVO> getTransfer(String time_start, String time_end) {

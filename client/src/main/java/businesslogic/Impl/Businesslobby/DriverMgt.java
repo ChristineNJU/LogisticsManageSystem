@@ -67,7 +67,7 @@ public class DriverMgt implements AddDriverService,DeleteDriverService,UpdateDri
 	}
 
 	@Override
-	public UpdateState updateDriver(DriverInfoVO driver, String field, String value) {
+	public UpdateState updateDriver(DriverInfoVO driver) {
 		// TODO Auto-generated method stub
 		UpdateState result=UpdateState.NOTFOUND;
 		try {
@@ -86,7 +86,7 @@ public class DriverMgt implements AddDriverService,DeleteDriverService,UpdateDri
 			
 			else{
 				for(int i=0;i<searchResult.size();i++){
-					result=updateService.update(new DriverInfoPO(driver), field, value);
+					result=updateService.update(new DriverInfoPO(driver));
 				}
 			}
 			

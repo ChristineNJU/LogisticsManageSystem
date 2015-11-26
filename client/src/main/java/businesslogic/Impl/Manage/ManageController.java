@@ -50,10 +50,10 @@ public class ManageController implements ManageService{
 	}
 
 	@Override
-	public UpdateState updateStaff(StaffVO staff, String field, String value) {
+	public UpdateState updateStaff(StaffVO staff) {
 		// TODO Auto-generated method stub
 		ManageStaff manageStaff=new ManageStaff();
-		return manageStaff.updateStaff(staff, field, value);
+		return manageStaff.updateStaff(staff);
 	}
 
 	@Override
@@ -64,10 +64,10 @@ public class ManageController implements ManageService{
 	}
 
 	@Override
-	public UpdateState updatePayment(SalaryVO salary, String field, String value) {
+	public UpdateState updatePayment(SalaryVO salary) {
 		// TODO Auto-generated method stub
 		ManageSalary manageSalary=new ManageSalary();
-		return manageSalary.updatePayment(salary, field, value);
+		return manageSalary.updatePayment(salary);
 	}
 
 	@Override
@@ -78,10 +78,10 @@ public class ManageController implements ManageService{
 	}
 
 	@Override
-	public UpdateState updateReceipt(VO receipt,String field,String value) {
+	public UpdateState updateReceipt(VO receipt) {
 		// TODO Auto-generated method stub
 		ManageReceipt manageReceipt=new ManageReceipt();
-		return manageReceipt.updateReceipt(receipt,field,value);
+		return manageReceipt.updateReceipt(receipt);
 	}
 
 	@Override
@@ -128,11 +128,10 @@ public class ManageController implements ManageService{
 	}
 
 	@Override
-	public UpdateState UpdateInstitution(InstitutionVO institution,
-			String field, String value) {
+	public UpdateState UpdateInstitution(InstitutionVO institution) {
 		// TODO Auto-generated method stub
 		ManageInstitution manageInstitution=new ManageInstitution();
-		return manageInstitution.UpdateInstitution(institution, field, value);
+		return manageInstitution.UpdateInstitution(institution);
 	}
 	
 	@Override
@@ -143,10 +142,10 @@ public class ManageController implements ManageService{
 	}
 
 	@Override
-	public UpdateState updateConst(ConstVO constant, String field, String value) {
+	public UpdateState updateConst(ConstVO constant) {
 		// TODO Auto-generated method stub
 		ManageConst manageConst=new ManageConst();
-		return manageConst.updateConst(constant, field, value);
+		return manageConst.updateConst(constant);
 		
 	}
 

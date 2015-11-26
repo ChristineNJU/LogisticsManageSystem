@@ -14,5 +14,5 @@ public interface CourierService {
 	public double getAmount(String starting, String destination, 
 			LogisticsType type, PackingCharge charge, double weight, double height);
 	public ArrayList<String> getCity();
-	public UpdateState receiveConfirm(VO logistics_info, String field, String value);
+	public UpdateState receiveConfirm(VO logistics_info);
 }

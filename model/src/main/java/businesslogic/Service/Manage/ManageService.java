@@ -29,10 +29,10 @@ public interface ManageService {
 	public ArrayList<ConstVO> showConst();
 	public ArrayList<VO> showReceipt();
 	public ArrayList<SalaryVO> showSalary();
-	public UpdateState updateConst(ConstVO constant, String field, String value);
-	public UpdateState UpdateInstitution (InstitutionVO institution, String field,String value);
-	public UpdateState updatePayment (SalaryVO salary, String field, String value);
-	public UpdateState updateReceipt(VO receipt,String field,String value);
-	public UpdateState updateStaff (StaffVO staff, String field, String value);
+	public UpdateState updateConst(ConstVO constant);
+	public UpdateState UpdateInstitution (InstitutionVO institution);
+	public UpdateState updatePayment (SalaryVO salary);
+	public UpdateState updateReceipt(VO receipt);
+	public UpdateState updateStaff (StaffVO staff);
 	
 }
