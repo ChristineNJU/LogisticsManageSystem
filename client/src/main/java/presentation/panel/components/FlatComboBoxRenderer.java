@@ -9,19 +9,23 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
+import presentation.main.ColorPallet;
+import presentation.main.FontSet;
+
 public class FlatComboBoxRenderer implements ListCellRenderer {
 
 	private DefaultListCellRenderer defaultCellRender = new DefaultListCellRenderer();
 	
-	private Font font = new Font("微软雅黑", 1, 20);
+	private Font font = FontSet.fourteen;
 	
-	private Color background_select = new Color(0, 0, 0);
-	private Color background_unselect = new Color(255, 255, 255);
-	private Color foreground_select = new Color(255, 255, 255);
+	private Color background_select = ColorPallet.GrayMedium;
+	private Color background_unselect = Color.white;
+	private Color foreground_select = Color.white;
 	private Color list_select = new Color(240, 240, 240);
 	
 	public FlatComboBoxRenderer() {
 		super();
+		
 	}
 	
 	@Override
@@ -41,7 +45,7 @@ public class FlatComboBoxRenderer implements ListCellRenderer {
 			renderer.setBackground(background_unselect);
 		}
 		
-		renderer.setHorizontalAlignment(JLabel.CENTER);
+		renderer.setHorizontalAlignment(JLabel.LEFT);
 		
 		list.setSelectionBackground(list_select);
 		list.setBorder(null);

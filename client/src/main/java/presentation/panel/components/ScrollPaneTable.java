@@ -1,11 +1,10 @@
 package presentation.panel.components;
 
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Image;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
@@ -13,19 +12,29 @@ public class ScrollPaneTable extends JScrollPane{
 
 	Image image = new ImageIcon("src/graphics/tableBackgroung.png").getImage();
 	JTable content;
+	JButton addRow;
 	public ScrollPaneTable(JTable table){
 		super(table);
 		content = table;
 		setBorder(null);
 		setOpaque(false);
 		getViewport().setOpaque(false);
-		setBounds(120,150,770,400);
+		int row = table.getRowCount();
+		if(row > 18){
+			setBounds(120,150,770,400);
+		}else{
+			setBounds(120,150,770,row*30);
+		}
+		
 		setBorder(BorderFactory.createEmptyBorder());
 		setViewportBorder(null);
 		getVerticalScrollBar().setUI(new FlatScrollBarUI());
 		getHorizontalScrollBar().setUI(new FlatScrollBarUI());
 		getVerticalScrollBar().setUI(new FlatScrollBarUI());
 		getHorizontalScrollBar().setUI(new FlatScrollBarUI());
+		addRow = new JButton("增加新行");
+		addRow.setBounds(0,row*30+5,100,40);
+		this.add(addRow);
 	}
 	
 //	public void paintComponent(Graphics g)  

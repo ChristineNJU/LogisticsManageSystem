@@ -9,13 +9,14 @@ public class UserVO extends VO {
 	private String id = null;
 	private String name = null;
 	private UserRole role = null;
-	private String sex;
+	private String sex = null;
 	private int age;
 	private InstitutionType institution;
 	private String city;
 	
-<<<<<<< HEAD
 	public UserVO(String id,String name,UserRole role,String sex,int age,InstitutionType type){
+		this.id = id;
+		this.name = name;
 		this.id = id;
 		this.name = name;
 		this.role = role;
@@ -25,9 +26,13 @@ public class UserVO extends VO {
 		
 	}
 	public UserVO(String id,String name,UserRole role){
-=======
+		this.id = id;
+		this.name = name;
+		this.role = role;
+	}
+
 	public UserVO(String id,String name,UserRole role,String sex,int age, InstitutionType institution,String city){
->>>>>>> a3a850185a1d33de90a090d114abcf5aedca3057
+
 		this.id = id;
 		this.name = name;
 		this.role = role;

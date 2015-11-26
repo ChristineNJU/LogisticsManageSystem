@@ -25,6 +25,7 @@ public class ButtonSearch extends ButtonTotal{
 	public void unRolled(){
 		this.setForeground(ColorPallet.GrayDark);
 		this.setOpaque(false);
+		this.repaint();
 	}
 	public void click(){
 		setOpaque(true);
