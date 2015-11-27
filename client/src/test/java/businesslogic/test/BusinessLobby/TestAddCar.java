@@ -10,7 +10,7 @@ public class TestAddCar extends TestCase {
 	public void testAddCar(){
 		BusinessLobbyController businessLobbyController=new BusinessLobbyController();
 		
-		CarInfoVO car=new CarInfoVO("025000010", "苏A 12345", 2015); 
+		CarInfoVO car=new CarInfoVO("025000010", "苏A 12346", 2015); 
 		assertEquals(AddState.SUCCESS,businessLobbyController.addCar(car));
 	}
 }

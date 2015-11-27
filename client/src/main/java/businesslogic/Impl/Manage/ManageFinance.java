@@ -39,7 +39,7 @@ public class ManageFinance implements GetBenefitService, GetCostService,GetGathe
 			ArrayList<GatheringPO> searchResult=new ArrayList<GatheringPO>();
 			
 			ArrayList<String> requirementBusinesslobby=new ArrayList<String>();
-			requirementBusinesslobby.add("id='"+businesslobby+"'");
+			requirementBusinesslobby.add("Institution_Number='"+businesslobby+"'");
 			ArrayList<InstitutionPO> searchResultBusinesslobby=searchInstitution.searchInstitutionInfo(requirementBusinesslobby);
 			
 			if(searchResultBusinesslobby.isEmpty()){

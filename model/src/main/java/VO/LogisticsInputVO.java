@@ -51,8 +51,7 @@ public class LogisticsInputVO extends VO {
 		  	String recipient_telephone, String recipient_mobilephone,
 		  String bar_code, int original_number, double weight, double size, String internal_name,
 		  LogisticsType type, PackingCharge pack, double total_cost, String starting, String destination,
-		  Date send_date, Date receive_date, String courier,
-		  String DB_URL) {
+		  Date send_date, Date receive_date, String courier) {
 		
 		this.sender_name = sender_name;
 		this.sender_address = sender_address;

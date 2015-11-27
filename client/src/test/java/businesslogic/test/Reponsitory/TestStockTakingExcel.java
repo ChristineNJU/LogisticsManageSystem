@@ -1,13 +1,13 @@
 package businesslogic.test.Reponsitory;
 
-import businesslogic.Impl.Reponsitory.ReponsitoryController;
 import junit.framework.TestCase;
+import businesslogic.Impl.Repository.RepositoryController;
 
 public class TestStockTakingExcel extends TestCase {
 		
 	public void testStockTakingExcel() {
 		
-		ReponsitoryController rc = new ReponsitoryController();
+		RepositoryController rc = new RepositoryController();
 		
 		assertEquals(null, rc.stockTakingExcel());
 	}

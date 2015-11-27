@@ -14,7 +14,7 @@ public class UserVO extends VO {
 	private InstitutionType institution;
 	private String city;
 	
-<<<<<<< HEAD
+
 	public UserVO(String id,String name,UserRole role,String sex,int age,InstitutionType type){
 		this.id = id;
 		this.name = name;
@@ -31,9 +31,6 @@ public class UserVO extends VO {
 		this.name = name;
 		this.role = role;
 	}
-=======
->>>>>>> 8f25826eaeaaf5b15588f57f017d6fd7e7e7eb1a
-
 	public UserVO(String id,String name,UserRole role,String sex,int age, InstitutionType institution,String city){
 
 		this.id = id;

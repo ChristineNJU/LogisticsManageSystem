@@ -6,5 +6,5 @@ import PO.WareHousePO;
 import VO.StockTakingVO;
 
 public interface GetStockTakingService {
-	public ArrayList<StockTakingVO> getStockTaking(ArrayList<WareHousePO> repository);
+	public ArrayList<StockTakingVO> getStockTaking();
 }

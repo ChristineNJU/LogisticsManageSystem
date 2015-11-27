@@ -149,7 +149,7 @@ public class MainServer {
 			Naming.bind(RMIHelper.SEARCH_BENEFIT_IMPL, search_benefit_service);
 			print("SearchBenefitImpl");
 			Naming.bind(RMIHelper.SEARCH_CARINFO_IMPL, search_carInfo_service);
-			print("SearchCarInfoImpl");
+			print("SearchCarInfoImpl");	
 			Naming.bind(RMIHelper.SEARCH_CONST_IMPL, search_const_service);
 			print("SearchConstImpl");
 			Naming.bind(RMIHelper.SEARCH_COST_IMPL, search_cost_service);

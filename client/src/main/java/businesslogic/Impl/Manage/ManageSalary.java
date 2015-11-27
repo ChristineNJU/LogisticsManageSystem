@@ -26,16 +26,16 @@ public class ManageSalary implements ShowSalaryService,UpdatePaymentService{
 			
 			SearchSalaryService searchSalary=(SearchSalaryService) Naming.lookup(RMIHelper.SEARCH_SALARY_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("type like '%%'");
+			requirement.add("staff like '%%'");
 			ArrayList<SalaryPO> searchResult=searchSalary.searchSalary(requirement);
 			
 			if(searchResult.isEmpty()){
 				System.out.println("not found");
-				return UpdateState.CONNECTERROR;
+				return UpdateState.NOTFOUND;
 			}
 			else{
-				for(int i=0;i<searchResult.size();i++)
-					result=updateService.update(searchResult.get(i));
+				
+					result=updateService.update(new SalaryPO(salary));
 			}
 			
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
@@ -55,7 +55,7 @@ public class ManageSalary implements ShowSalaryService,UpdatePaymentService{
 		try {
 			SearchSalaryService searchSalary=(SearchSalaryService) Naming.lookup(RMIHelper.SEARCH_SALARY_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("type like '%%'");
+			requirement.add("staff like '%%'");
 			ArrayList<SalaryPO> searchResult=searchSalary.searchSalary(requirement);
 			
 			if(searchResult.isEmpty()){

@@ -5,11 +5,13 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
-import data.RMIHelper.RMIHelper;
-import data.Service.Add.AddService;
+import PO.EntruckingPO;
 import State.AddState;
 import VO.EntruckingVO;
 import businesslogic.Service.MediumCenter.EntruckingService;
+import businesslogic.SystemLog.SystemLog;
+import data.RMIHelper.RMIHelper;
+import data.Service.Add.AddService;
 
 public class EntruckingImpl implements EntruckingService{
 
@@ -19,7 +21,7 @@ public class EntruckingImpl implements EntruckingService{
 		AddState result=AddState.FAIL;
 		try {
 			AddService addService=(AddService) Naming.lookup(RMIHelper.ADD_IMPL);
-			
+			result=addService.add(new EntruckingPO(entrucking,SystemLog.getInstitutionId()));
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
 			result=AddState.CONNECTERROR;

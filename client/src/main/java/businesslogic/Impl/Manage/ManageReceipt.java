@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import PO.ArrivalPO;
 import PO.BalancePO;
+import PO.BenefitPO;
 import PO.CostPO;
 import PO.DeliveryPO;
 import PO.EntruckingPO;
@@ -29,6 +30,7 @@ import VO.TransferVO;
 import VO.VO;
 import businesslogic.Service.Manage.ShowReceiptService;
 import businesslogic.Service.Manage.UpdateReceiptService;
+import businesslogic.SystemLog.SystemLog;
 import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
 import data.Service.Search.SearchArrivalService;
@@ -90,9 +92,9 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					for(int i=0;i<searchResult.size();i++){
-						result=updateService.update(searchResult.get(i));
-					}
+					
+						result=updateService.update(new ArrivalPO((ArrivalVO)receipt,SystemLog.getInstitutionId()));
+					
 				}
 			}
 			
@@ -113,9 +115,9 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					for(int i=0;i<searchResult.size();i++){
-						result=updateService.update(searchResult.get(i));
-					}
+					
+						result=updateService.update(new BenefitPO((BenefitVO)receipt,));
+					
 				}
 			}
 			
@@ -131,9 +133,9 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					for(int i=0;i<searchResult.size();i++){
-						result=updateService.update(searchResult.get(i));
-					}
+					
+						result=updateService.update(new CostPO((CostVO) receipt));
+					
 				}
 			}
 			
@@ -159,9 +161,9 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					for(int i=0;i<searchResult.size();i++){
-						result=updateService.update(searchResult.get(i));
-					}
+					
+						result=updateService.update(new DeliveryPO((DeliveryVO)receipt,SystemLog.getInstitutionId()));
+					
 				}
 			}
 			
@@ -188,9 +190,9 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					for(int i=0;i<searchResult.size();i++){
-						result=updateService.update(searchResult.get(i));
-					}
+				
+						result=updateService.update(new EntruckingPO((EntruckingVO)receipt, SystemLog.getInstitutionId()));
+					
 				}
 			}
 			
@@ -211,9 +213,9 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					for(int i=0;i<searchResult.size();i++){
-						result=updateService.update(searchResult.get(i));
-					}
+					
+						result=updateService.update(new GatheringPO((GatheringVO)receipt,SystemLog.getInstitutionId()));
+					
 				}
 			}
 			
@@ -236,9 +238,9 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					for(int i=0;i<searchResult.size();i++){
-						result=updateService.update(searchResult.get(i));
-					}
+					
+						result=updateService.update(new RemovalPO((RemovalVO)receipt,SystemLog.getInstitutionId()));
+					
 				}
 				
 			}
@@ -261,9 +263,9 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					for(int i=0;i<searchResult.size();i++){
-						result=updateService.update(searchResult.get(i));
-					}
+					
+						result=updateService.update(new StoragePO((StorageVO)receipt,SystemLog.getInstitutionId()));
+					
 				}
 			}
 			
@@ -285,9 +287,9 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					for(int i=0;i<searchResult.size();i++){
-						result=updateService.update(searchResult.get(i));
-					}
+					
+						result=updateService.update(new TransferPO((TransferVO)receipt,SystemLog.getInstitutionId()));
+					
 				}
 			}
 			

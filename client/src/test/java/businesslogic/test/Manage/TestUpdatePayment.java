@@ -1,13 +1,19 @@
 package businesslogic.test.Manage;
 
-import businesslogic.Impl.Manage.ManageController;
 import junit.framework.TestCase;
+import State.SalaryType;
+import State.UpdateState;
+import State.UserRole;
+import VO.SalaryVO;
+import businesslogic.Impl.Manage.ManageController;
 
 public class TestUpdatePayment extends TestCase {
 
 	public void testUpdatePayment(){
 		ManageController manageController=new ManageController();
 		
-		assertEquals(null,manageController.updatePayment(null, null, null));
+		SalaryVO salary=new SalaryVO(UserRole.businessAgent,10000 , SalaryType.MONTH);
+		
+		assertEquals(UpdateState.SUCCESS,manageController.updatePayment(salary));
 	}
 }

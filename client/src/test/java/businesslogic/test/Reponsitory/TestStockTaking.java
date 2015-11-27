@@ -1,14 +1,16 @@
 package businesslogic.test.Reponsitory;
 
-import businesslogic.Impl.Reponsitory.ReponsitoryController;
 import junit.framework.TestCase;
+import State.StorageArea;
+import State.StorageState;
+import businesslogic.Impl.Repository.RepositoryController;
 
 public class TestStockTaking extends TestCase {
 	
 	public void testStockTaking() {
 		
-		ReponsitoryController rc = new ReponsitoryController();
+		RepositoryController rc = new RepositoryController();
 		
-		assertEquals(null, rc.stockTaking());
+		assertEquals(StorageArea.AIR_TRANSPORTATION, rc.getStockTaking().get(0).getAreaCode());
 	}
 }

@@ -66,8 +66,8 @@ public class ManageConst implements ShowConstService,UpdateConstService,AddConst
 				return UpdateState.NOTFOUND;
 				}
 			else{
-				for(int i=0;i<searchResult.size();i++)
-					result=updateService.update(searchResult.get(i));
+				
+					result=updateService.update(new ConstPO(constant));
 			}
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block

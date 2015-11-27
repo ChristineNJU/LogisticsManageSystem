@@ -120,8 +120,8 @@ public class ManageStaff implements AddStaffService,UpdateStaffService,
 				return UpdateState.NOTFOUND;
 				}
 			else{
-				for(int i=0;i<searchResult.size();i++)
-					result=updateService.update(searchResult.get(i));
+				
+					result=updateService.update(new UserPO(staff));
 				}
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block

@@ -56,7 +56,7 @@ public class SearchAccountImpl extends UnicastRemoteObject implements SearchAcco
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-//			e.printStackTrace();
+			e.printStackTrace();
 			System.out.println("从数据库提取AccountPO对象失败");
 			return result;
 		}

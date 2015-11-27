@@ -1,8 +1,10 @@
 package PO;
 
+import businesslogic.URLHelper.URLHelper;
 import State.SalaryType;
 import State.StateSwitch;
 import State.UserRole;
+import VO.SalaryVO;
 
 public class SalaryPO extends PO {
 
@@ -19,6 +21,12 @@ public class SalaryPO extends PO {
 		this.type = type;
 	}
 	
+	public SalaryPO(SalaryVO salary){
+		super(URLHelper.getSalaryURL());
+		this.staff = salary.getRole();
+		this.salary = salary.getSalary();
+		this.type = salary.getType();
+	}
 	/*==================================================================
 	 * Public方法
 	 * */

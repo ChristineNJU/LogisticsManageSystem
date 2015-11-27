@@ -8,6 +8,6 @@ public class TestUpdateReceipt extends TestCase {
 	public void testUpdateReceipt(){
 		ManageController manageController=new ManageController();
 	
-		assertEquals(null,manageController.updateConst(null, "南京到上海的距离","200km"));
+		assertEquals(null,manageController.updateReceipt(null));
 	}
 }
