@@ -35,6 +35,7 @@ public class Inquiry{
 	private JPanel inquiryPanel;
 	
 	private JScrollPane scrollPane;
+	private JPanel scrollPanePanel;
 	
 	private JButton mini;
 	private JButton close;
@@ -63,7 +64,8 @@ public class Inquiry{
 	
 	private void componentsInstantiation(){
 		inquiryPanel = new JPanel();
-		scrollPane = new FlatScrollPane();
+		scrollPanePanel = new JPanel();
+		scrollPane = new FlatScrollPane(scrollPanePanel);
 		mini = new ButtonFrame("mini");
 		close = new ButtonFrame("close");
 		Icon iconTitle = new ImageIcon("src/graphics/Title/logIn.png");
@@ -89,12 +91,14 @@ public class Inquiry{
 		inquiryPanel.add(mini);
 		inquiryPanel.add(close);
 		
-		scrollPane.setBounds(300, 320, 450, 500);
+		scrollPane.setBounds(300, 320, 441, 100);
 		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		scrollPane.setOpaque(false);
 		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setBorder(new LineBorder(Color.black, 0));
+		scrollPanePanel.setLayout(null);
+		scrollPanePanel.setBounds(0, 0, 441, 100);
 		inquiryPanel.add(scrollPane);
 		
 		title.setBounds(300,0,400,63);
@@ -158,8 +162,19 @@ public class Inquiry{
 				historyLabel.add(new HistoryLabel(input[0], "",i));
 			}
 //			inquiryPanel.add(historyLabel.get(i));
-			scrollPane.add(historyLabel.get(i));
+//			scrollPanePanel.add(historyLabel.get(i));
 			System.out.println(i);
+		}
+		
+		int w = 300;
+		int h = 66;
+		
+		for(int i=0;i<history.size();i++){
+			
+			h = h+66;
+			
+			scrollPanePanel.add(historyLabel.get(i));
+			scrollPanePanel.setSize(300, h);
 		}
 //		inquiryPanel.repaint();
 		scrollPane.repaint();
