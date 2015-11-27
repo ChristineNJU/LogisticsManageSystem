@@ -4,6 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import businesslogic.URLHelper.URLHelper;
+import VO.DeliveryVO;
+
 /*========================================================================================
  * 用来保存派送信息的持久化数据格式
  * */
@@ -21,7 +24,13 @@ public class DeliveryPO extends PO {
 		this.bar_code_list = bar_code_list;
 		this.courier = courier;
 	}
-	
+	public DeliveryPO(DeliveryVO delivery,String institution_id) {
+		// TODO Auto-generated constructor stub
+		super(URLHelper.getDeliveryURL(institution_id));
+		this.date =delivery.getArrivalDate() ;
+		this.bar_code_list = delivery.getBarCodeList();
+		this.courier = delivery.getPeople();
+	}
 	/*=====================================================================================
 	 * Public方法
 	 * */
@@ -30,6 +39,8 @@ public class DeliveryPO extends PO {
 	 * 对DeliveryPO的数据进行读取
 	 * */
 	
+	
+
 	/*
 	 * 获取到达日期
 	 * 返回Date

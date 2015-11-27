@@ -6,21 +6,23 @@ import java.util.ArrayList;
 
 import junit.framework.TestCase;
 import State.AddState;
-import VO.EntruckingVO;
+import VO.DeliveryVO;
 import businesslogic.Impl.Businesslobby.BusinessLobbyController;
+import businesslogic.URLHelper.URLHelper;
 
-public class TestEntrucking extends TestCase {
+public class TestDelivery extends TestCase {
 	/**
 	 * need System log
 	 */
-	public void testEntrucking(){
+	public void testDelivery(){
 		BusinessLobbyController businessLobbyController=new BusinessLobbyController();
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-mm-dd hh-mm-ss");
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
 		ArrayList<String> barCodeList=new ArrayList<String>();
 		barCodeList.add("0000000002");
 		try {
-			EntruckingVO entrucking=new EntruckingVO(sdf.parse("2015-11-27 10:34:23"), "02502015112300000","南京", "苏A 12345", "张斯栋", "张斯栋",barCodeList ,12);
-		assertEquals(AddState.SUCCESS,businessLobbyController.entrucking(entrucking));
+			DeliveryVO delivery=new DeliveryVO(sdf.parse("2015-11-27 11:22:22"), barCodeList, "苏蛋紫");
+			
+			assertEquals(AddState.SUCCESS,businessLobbyController.delivery(delivery));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -28,4 +30,5 @@ public class TestEntrucking extends TestCase {
 		
 		
 	}
-}
+	}
+

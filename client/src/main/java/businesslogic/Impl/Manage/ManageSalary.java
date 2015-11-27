@@ -34,8 +34,8 @@ public class ManageSalary implements ShowSalaryService,UpdatePaymentService{
 				return UpdateState.CONNECTERROR;
 			}
 			else{
-				for(int i=0;i<searchResult.size();i++)
-					result=updateService.update(searchResult.get(i));
+				
+					result=updateService.update(new SalaryPO(salary));
 			}
 			
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {

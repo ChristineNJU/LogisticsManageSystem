@@ -119,8 +119,8 @@ public class ManageInstitution implements AddInstitutionService,UpdateInstitutio
 				return UpdateState.NOTFOUND;
 				}
 			else{
-				for(int i=0;i<searchResult.size();i++)
-					result=updateService.update(searchResult.get(i));
+				
+					result=updateService.update(new InstitutionPO(institution));
 			}
 			
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {

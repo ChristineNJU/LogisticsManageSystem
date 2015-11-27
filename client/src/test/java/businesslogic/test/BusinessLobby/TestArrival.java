@@ -12,6 +12,9 @@ import businesslogic.Impl.Businesslobby.BusinessLobbyController;
 
 public class TestArrival extends TestCase {
 
+	/**
+	 * need System log
+	 */
 	public void testArrival(){
 		BusinessLobbyController businessLobbyController=new BusinessLobbyController();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

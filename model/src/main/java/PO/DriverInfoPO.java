@@ -35,7 +35,7 @@ public class DriverInfoPO extends PO {
 	}
 	
 	public DriverInfoPO(DriverInfoVO driver){
-		super(URLHelper.getDriverInfoURL(driver.getId().substring(0, driver.getId().length()-3)));
+		super(URLHelper.getDriverInfoURL(driver.getNumber().substring(0, driver.getNumber().length()-3)));
 		this.driver_number=driver.getNumber();
 		this.driver_name=driver.getName();
 		this.driver_birthday=driver.getBirthday();
