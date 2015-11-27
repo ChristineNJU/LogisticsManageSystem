@@ -24,6 +24,6 @@ public interface BsLbService {
 	public ArrayList<GatheringVO> getNeedGathering();
 	public ArrayList<CarInfoVO> searchCar(String id);
 	public ArrayList<DriverInfoVO> searchDriver(String id);
-	public UpdateState updateCar(CarInfoVO car, String field, String value);
-	public UpdateState updateDriver(DriverInfoVO driver, String field, String value);
+	public UpdateState updateCar(CarInfoVO car);
+	public UpdateState updateDriver(DriverInfoVO driver);
 }

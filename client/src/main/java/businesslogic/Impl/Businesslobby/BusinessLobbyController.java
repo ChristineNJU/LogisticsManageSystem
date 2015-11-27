@@ -11,22 +11,30 @@ import VO.DriverInfoVO;
 import VO.EntruckingVO;
 import VO.GatheringVO;
 import businesslogic.Service.BusinessLobby.BsLbService;
+import businesslogic.SystemLog.SystemLog;
 
 public class BusinessLobbyController implements BsLbService{
 	
 	@Override
-	public UpdateState updateDriver(DriverInfoVO driver, String field,
-			String value) {
+	public UpdateState updateDriver(DriverInfoVO driver) {
 		// TODO Auto-generated method stub
 		DriverMgt updateDriver=new DriverMgt();
-		return updateDriver.updateDriver(driver, field, value);
+		UpdateState state = updateDriver.updateDriver(driver);
+		if(state==UpdateState.SUCCESS){
+			SystemLog.addLog("更新司机信息");
+		}
+		return state;
 	}
 	
 	@Override
-	public UpdateState updateCar(CarInfoVO car, String field, String value) {
+	public UpdateState updateCar(CarInfoVO car) {
 		// TODO Auto-generated method stub
 		CarMgt updateCar=new CarMgt();
-		return updateCar.updateCar(car, field, value);
+		UpdateState state = updateCar.updateCar(car);
+		if(state==UpdateState.SUCCESS){
+			SystemLog.addLog("更新车辆信息");
+		}
+		return state;
 	}
 	
 	@Override
@@ -61,49 +69,77 @@ public class BusinessLobbyController implements BsLbService{
 	public AddState gathering(GatheringVO gathering) {
 		// TODO Auto-generated method stub
 		GatheringImpl Gathering=new GatheringImpl();
-		return Gathering.gathering(gathering);
+		AddState state = Gathering.gathering(gathering);
+		if(state==AddState.SUCCESS){
+			SystemLog.addLog("添加收款单信息");
+		}
+		return state;
 	}
 	
 	@Override
 	public AddState entrucking(EntruckingVO entrucking) {
 		// TODO Auto-generated method stub
 		EntruckingImpl Entrucking =new EntruckingImpl();
-		return Entrucking.entrucking(entrucking);
+		AddState state = Entrucking.entrucking(entrucking);
+		if(state==AddState.SUCCESS){
+			SystemLog.addLog("添加装车单信息");
+		}
+		return state;
 	}
 	
 	@Override
 	public DeleteState deleteCar(CarInfoVO car) {
 		// TODO Auto-generated method stub
 		CarMgt deleteCar=new CarMgt();
-		return deleteCar.deleteCar(car);
+		DeleteState state = deleteCar.deleteCar(car);
+		if(state==DeleteState.SUCCESS){
+			SystemLog.addLog("删除车辆信息");
+		}
+		return state;
 	}
 	
 	@Override
 	public AddState arrival(ArrayList<ArrivalVO> arrival) {
 		// TODO Auto-generated method stub
 		ArrivalImpl Arrival=new ArrivalImpl();
-		return Arrival.arrival(arrival);
+		AddState state = Arrival.arrival(arrival);
+		if(state==AddState.SUCCESS){
+			SystemLog.addLog("添加到达单信息");
+		}
+		return state;
 	}
 	
 	@Override
 	public AddState AddDriver(DriverInfoVO driver) {
 		// TODO Auto-generated method stub
 		DriverMgt addDriver=new DriverMgt();
-		return addDriver.AddDriver(driver);
+		AddState state = addDriver.AddDriver(driver);
+		if(state==AddState.SUCCESS){
+			SystemLog.addLog("添加司机信息");
+		}
+		return state;
 	}
 	
 	@Override
 	public AddState addCar(CarInfoVO car) {
 		// TODO Auto-generated method stub
 		CarMgt addCar=new CarMgt();
-		return addCar.addCar(car);
+		AddState state = addCar.addCar(car);
+		if(state==AddState.SUCCESS){
+			SystemLog.addLog("添加车辆信息");
+		}
+		return state;
 	}
 
 	@Override
 	public DeleteState deleteDriver(DriverInfoVO driver) {
 		// TODO Auto-generated method stub
 		DriverMgt deleteDriver=new DriverMgt();
-		return deleteDriver.deleteDriver(driver);
+		DeleteState state = deleteDriver.deleteDriver(driver);
+		if(state==DeleteState.SUCCESS){
+			SystemLog.addLog("删除司机信息");
+		}
+		return state;
 	}
 	
 	

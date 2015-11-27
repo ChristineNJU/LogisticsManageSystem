@@ -26,6 +26,6 @@ public interface FinanceService {
 	public ArrayList<GatheringVO> searchGathering(String date, String businesslobby);
 	public ArrayList<LogVO> getLog(String time_start, String time_end);
 	public ArrayList<TransferVO> getTransfer(String time_start, String time_end);
-	public UpdateState updateAccount(AccountVO account, String field, String value);
+	public UpdateState updateAccount(AccountVO account);
 	
 }

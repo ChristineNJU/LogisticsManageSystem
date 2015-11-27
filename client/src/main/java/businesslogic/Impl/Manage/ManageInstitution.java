@@ -103,8 +103,7 @@ public class ManageInstitution implements AddInstitutionService,UpdateInstitutio
 	}
 
 	@Override
-	public UpdateState UpdateInstitution(InstitutionVO institution,
-			String field, String value) {
+	public UpdateState UpdateInstitution(InstitutionVO institution) {
 		// TODO Auto-generated method stub
 		UpdateState result=UpdateState.NOTFOUND;
 		try {
@@ -121,7 +120,7 @@ public class ManageInstitution implements AddInstitutionService,UpdateInstitutio
 				}
 			else{
 				for(int i=0;i<searchResult.size();i++)
-					result=updateService.update(searchResult.get(i), field, value);
+					result=updateService.update(searchResult.get(i));
 			}
 			
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {

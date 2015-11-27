@@ -22,7 +22,7 @@ import data.Service.Update.UpdateService;
 public class AdminImpl implements AddUserService,DeleteUserService,GetUserService,UpdateUserService{
 
 	@Override
-	public UpdateState updateUser(UserVO user, String field, String value) {
+	public UpdateState updateUser(UserVO user) {
 		// TODO Auto-generated method stub
 		UpdateState state=UpdateState.SUCCESS;
 		
@@ -33,8 +33,11 @@ public class AdminImpl implements AddUserService,DeleteUserService,GetUserServic
 			ArrayList<String> requirement=new ArrayList<String>();
 			requirement.add("id='"+user.getId()+"'");
 			ArrayList<UserPO> result=userSearch.searchUser(requirement);
+			if(result.isEmpty()){
+				return UpdateState.NOTFOUND;
+			}
 			for(int i=0;i<result.size();i++){
-				state=updateService.update(result.get(i), field, value);
+				state=updateService.update(result.get(i));
 			}
 			
 		} catch(Exception ex){
@@ -62,6 +65,7 @@ public class AdminImpl implements AddUserService,DeleteUserService,GetUserServic
 			}
 			ArrayList<UserPO> userListID=userSearch.searchUser(requirementID);
 			ArrayList<UserPO> userListName=userSearch.searchUser(requirementName);
+			
 			for(int i=0;i<userListID.size();i++){
 				result.add(new UserVO(userListID.get(i)));
 			}
@@ -87,6 +91,9 @@ public class AdminImpl implements AddUserService,DeleteUserService,GetUserServic
 			ArrayList<String> requirement=new ArrayList<String>();
 			requirement.add("id='"+user.getId()+"'");
 			ArrayList<UserPO> userList=userSearch.searchUser(requirement); 
+			if(userList.isEmpty()){
+				return DeleteState.FAIL;
+			}
 			DeleteService userDelete=(DeleteService) Naming.lookup(RMIHelper.DELETE_IMPL);
 			for(int i=0;i<userList.size();i++){
 				state=userDelete.delete(userList.get(i));

@@ -13,15 +13,19 @@ import VO.GatheringVO;
 import VO.LogVO;
 import VO.TransferVO;
 import businesslogic.Service.Finance.FinanceService;
+import businesslogic.SystemLog.SystemLog;
 
 public class FinanceController implements FinanceService{
 	
 	@Override
-	public UpdateState updateAccount(AccountVO account, String field,
-			String value) {
+	public UpdateState updateAccount(AccountVO account) {
 		// TODO Auto-generated method stub
 		AccountImpl accountC=new AccountImpl();
-		return accountC.updateAccount(account, field, value);
+		UpdateState state = accountC.updateAccount(account);
+		if(state==UpdateState.SUCCESS){
+			SystemLog.addLog("更新银行账户");
+		}
+		return state;
 	}
 	@Override
 	public ArrayList<TransferVO> getTransfer(String time_start, String time_end) {
@@ -71,25 +75,41 @@ public class FinanceController implements FinanceService{
 	public DeleteState deleteAccount(AccountVO account) {
 		// TODO Auto-generated method stub
 		AccountImpl accountC=new AccountImpl();
-		return accountC.deleteAccount(account);
+		DeleteState state = accountC.deleteAccount(account);
+		if(state==DeleteState.SUCCESS){
+			SystemLog.addLog("删除银行账户");
+		}
+		return state;
 	}
 	@Override
 	public AddState addCost(CostVO cost) {
 		// TODO Auto-generated method stub
 		CostImpl costC=new CostImpl();
-		return costC.addCost(cost);
+		AddState state = costC.addCost(cost);
+		if(state==AddState.SUCCESS){
+			SystemLog.addLog("添加出款单信息");
+		}
+		return state;
 	}
 	@Override
 	public AddState addBenefit(BenefitVO benefit) {
 		// TODO Auto-generated method stub
 		BenefitImpl benefitC=new BenefitImpl();
-		return benefitC.addBenefit(benefit);
+		AddState state = benefitC.addBenefit(benefit);
+		if(state==AddState.SUCCESS){
+			SystemLog.addLog("添加收益信息");
+		}
+		return state;
 	}
 	@Override
 	public AddState addAccount(AccountVO account) {
 		// TODO Auto-generated method stub
 		AccountImpl accountC=new AccountImpl();
-		return accountC.addAccount(account);
+		AddState state = accountC.addAccount(account);
+		if(state==AddState.SUCCESS){
+			SystemLog.addLog("添加银行账户");
+		}
+		return state;
 	}
 	
 	

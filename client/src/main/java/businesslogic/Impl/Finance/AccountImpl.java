@@ -21,8 +21,7 @@ import data.Service.Update.UpdateService;
 public class AccountImpl implements AddAccountService, DeleteAccountService, GetAccountService, UpdateAccountService{
 
 	@Override
-	public UpdateState updateAccount(AccountVO account, String field,
-			String value) {
+	public UpdateState updateAccount(AccountVO account) {
 		// TODO Auto-generated method stub
 		UpdateState state=UpdateState.SUCCESS;
 		try{
@@ -32,7 +31,7 @@ public class AccountImpl implements AddAccountService, DeleteAccountService, Get
 			requirement.add("name='"+account.getName()+"'");
 			ArrayList<AccountPO> accountList=accountGet.searchAccount(requirement);
 			for(int i=0;i<accountList.size();i++){
-				state=accountUpdate.update(accountList.get(i), field, value);
+				state=accountUpdate.update(accountList.get(i));
 			}
 		} catch(Exception ex){
 			state=UpdateState.CONNECTERROR;

@@ -26,10 +26,13 @@ import businesslogic.Service.Admin.AdminService;
 import businesslogic.Service.User.LoginService;
 
 public class LogIn{
+	
+	public static final int login_width = 320;
+	public static final int login_height = 200;
 
 	private Inquiry parent = null;
 	
-	private JDialog logIn= new JDialog();
+//	private JDialog logIn= new JDialog();
 	private JLabel idLabel = new JLabel("用户名：");
 	private JLabel passwordLabel = new JLabel("密   码：");
 	private TextField id = new TextField();
@@ -59,20 +62,20 @@ public class LogIn{
 	}
 	
 	private void initComponents(){
-		logIn.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		logIn.setUndecorated(true); 
+//		logIn.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+//		logIn.setUndecorated(true); 
 //		AWTUtilities.setWindowOpaque(logIn, false); 
 //		logIn.setBackground(Color.blue);
-		logIn.setSize(320,200);
-		logIn.setLocation(MainFrame.FRAME_X+750,MainFrame.FRAME_Y);
+//		logIn.setSize(320,200);
+//		logIn.setLocation(MainFrame.FRAME_X+750,MainFrame.FRAME_Y);
 //		logIn.setAlwaysOnTop(true); 
-		logIn.setLayout(null);
+//		logIn.setLayout(null);
 //		logIn.setModal(true);
 		
 		container.setLayout(null);
 		container.setBackground(Color.white);
 //		container.setLocation(MainFrame.FRAME_X+750,MainFrame.FRAME_Y);
-		container.setBounds(750, 0, 320, 200);
+		container.setBounds(750, 0, login_width, login_height);
 //		logIn.getContentPane().add(container);
 //		logIn.setContentPane(container);
 //		System.out.println("logInDalogInit");
@@ -99,7 +102,7 @@ public class LogIn{
 		
 		line.setBackground(ColorPallet.Purple);
 		line.setOpaque(true);
-		line.setBounds(0,194,320,6);
+		line.setBounds(0,login_height-6,login_width,6);
 		
 		feedback.setForeground(ColorPallet.Pink);
 		feedback.setFont(FontSet.fourteen);
@@ -121,9 +124,9 @@ public class LogIn{
 
 	}
 	
-	public JDialog getDialog(){
-		return logIn;
-	}
+//	public JDialog getDialog(){
+//		return logIn;
+//	}
 	
 	public JPanel getPanel() {
 		return container;
@@ -258,10 +261,10 @@ public class LogIn{
 			// TODO Auto-generated method stub
 			double time = 4;
 			while(time>=0){
-				int i = (int)AnimationEasing.easeInElastic(0, time, 0, 200, 10);
+				int i = (int)AnimationEasing.easeInElastic(0, time, 0, login_height, 10);
 //				System.out.println(i);
-				getPanel().setSize(320, i);
-				getLine().setBounds(0, 194, 320, i-194);
+				getPanel().setSize(login_width, i);
+				getLine().setBounds(0, login_height-6, login_width, i-(login_height-6));
 				try {
 					Thread.sleep(10);
 				} catch (InterruptedException e) {

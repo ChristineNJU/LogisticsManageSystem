@@ -8,6 +8,6 @@ import State.UpdateState;
 
 public interface UpdateService extends Remote{
 	
-	public UpdateState update(PO statistics, String field, String value) throws RemoteException;
+	public UpdateState update(PO statistics) throws RemoteException;
 
 }

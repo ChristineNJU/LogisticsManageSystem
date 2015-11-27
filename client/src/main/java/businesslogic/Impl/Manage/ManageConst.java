@@ -50,7 +50,7 @@ public class ManageConst implements ShowConstService,UpdateConstService,AddConst
 	}
 
 	@Override
-	public UpdateState updateConst(ConstVO constant, String field, String value) {
+	public UpdateState updateConst(ConstVO constant) {
 		// TODO Auto-generated method stub
 		UpdateState result=UpdateState.NOTFOUND;
 		try {
@@ -67,7 +67,7 @@ public class ManageConst implements ShowConstService,UpdateConstService,AddConst
 				}
 			else{
 				for(int i=0;i<searchResult.size();i++)
-					result=updateService.update(searchResult.get(i), field, value);
+					result=updateService.update(searchResult.get(i));
 			}
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block

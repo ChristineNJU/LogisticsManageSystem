@@ -18,7 +18,7 @@ import data.Service.Update.UpdateService;
 public class ManageSalary implements ShowSalaryService,UpdatePaymentService{
 
 	@Override
-	public UpdateState updatePayment(SalaryVO salary, String field, String value) {
+	public UpdateState updatePayment(SalaryVO salary) {
 		// TODO Auto-generated method stub
 		UpdateState result=UpdateState.NOTFOUND;
 		try {
@@ -35,7 +35,7 @@ public class ManageSalary implements ShowSalaryService,UpdatePaymentService{
 			}
 			else{
 				for(int i=0;i<searchResult.size();i++)
-					result=updateService.update(searchResult.get(i), field, value);
+					result=updateService.update(searchResult.get(i));
 			}
 			
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {

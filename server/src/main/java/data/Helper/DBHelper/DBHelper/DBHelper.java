@@ -10,7 +10,9 @@ public class DBHelper {
 	
 	private static Connection conn = null;
 	
-	public DBHelper() {
+	public static DBHelper db = null;
+	
+	private DBHelper() {
 		try {
 			Class.forName("org.apache.derby.jdbc.EmbeddedDriver").newInstance();
 			System.out.println("Load the embedded driver");
@@ -24,6 +26,14 @@ public class DBHelper {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public static DBHelper createDBHelper() {
+		if(db==null){
+			return db=new DBHelper();
+		}else{
+			return db;
+		}	
 	}
 	
 	public static Connection getConnection() {

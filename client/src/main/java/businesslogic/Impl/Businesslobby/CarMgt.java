@@ -52,10 +52,10 @@ public class CarMgt implements UpdateCarService,GetCarService,DeleteCarService,A
 		DeleteState result=DeleteState.FAIL;
 		try {
 			DeleteService deleteService=(DeleteService) Naming.lookup(RMIHelper.DELETE_IMPL);
-			SearchCarInfoService searchCar=(SearchCarInfoService) Naming.lookup(RMIHelper.SEARCH_DRIVERINFO_IMPL);
+			SearchCarInfoService searchCar=(SearchCarInfoService) Naming.lookup(RMIHelper.SEARCH_CARINFO_IMPL);
 			
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("id='"+car.getCarNumber()+"'");
+			requirement.add("CAR_NUMBER='"+car.getCarNumber()+"'");
 			
 			ArrayList<CarInfoPO> searchResult=searchCar.searchCarInfo(URLHelper.getCarInfoURL(car.getCarNumber().substring(0, car.getCarNumber().length()-3)), requirement);
 			
@@ -66,6 +66,7 @@ public class CarMgt implements UpdateCarService,GetCarService,DeleteCarService,A
 			
 			else{
 				for(int i=0;i<searchResult.size();i++){
+					
 					result=deleteService.delete(new CarInfoPO(car));
 				}
 			}
@@ -88,7 +89,7 @@ public class CarMgt implements UpdateCarService,GetCarService,DeleteCarService,A
 			SearchCarInfoService searchCar=(SearchCarInfoService) Naming.lookup(RMIHelper.SEARCH_CARINFO_IMPL);
 			
 			ArrayList<String> requirementId=new ArrayList<String>();
-			requirementId.add("id='"+id+"'");
+			requirementId.add("CAR_NUMBER='"+id+"'");
 			
 			ArrayList<String> requirementName=new ArrayList<String>();
 			requirementName.add("name='"+id+"'");
@@ -122,15 +123,15 @@ public class CarMgt implements UpdateCarService,GetCarService,DeleteCarService,A
 	}
 
 	@Override
-	public UpdateState updateCar(CarInfoVO car, String field, String value) {
+	public UpdateState updateCar(CarInfoVO car) {
 		// TODO Auto-generated method stub
 		UpdateState result=UpdateState.NOTFOUND;
 		try {
 			UpdateService updateService=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
-			SearchCarInfoService searchCar=(SearchCarInfoService) Naming.lookup(RMIHelper.SEARCH_DRIVERINFO_IMPL);
+			SearchCarInfoService searchCar=(SearchCarInfoService) Naming.lookup(RMIHelper.SEARCH_CARINFO_IMPL);
 			
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("id='"+car.getCarNumber()+"'");
+			requirement.add("CAR_NUMBER='"+car.getCarNumber()+"'");
 			
 			ArrayList<CarInfoPO> searchResult=searchCar.searchCarInfo(URLHelper.getCarInfoURL(car.getCarNumber().substring(0, car.getCarNumber().length()-3)), requirement);
 			
@@ -140,18 +141,21 @@ public class CarMgt implements UpdateCarService,GetCarService,DeleteCarService,A
 			}
 			
 			else{
+
 				for(int i=0;i<searchResult.size();i++){
-					result=updateService.update(new CarInfoPO(car), field, value);
+					result=updateService.update(new CarInfoPO(car));
+
 				}
-			}
 			
-		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			
+		} 
+		}catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
 			result=UpdateState.CONNECTERROR;
 			System.out.println("error");
 			e.printStackTrace();
 		}
 		return result;
+	
 	}
-
 }
