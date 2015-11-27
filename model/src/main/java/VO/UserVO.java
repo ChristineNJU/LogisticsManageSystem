@@ -31,8 +31,6 @@ public class UserVO extends VO {
 		this.name = name;
 		this.role = role;
 	}
-
-
 	public UserVO(String id,String name,UserRole role,String sex,int age, InstitutionType institution,String city){
 
 		this.id = id;

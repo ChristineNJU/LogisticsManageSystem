@@ -24,7 +24,10 @@ public class BenefitImpl implements AddBenefitService,GetBenefitService{
 			requirement.add("number like '%%'");
 			ArrayList<BenefitPO> benefitList=benefitSearch.searchBenefit(requirement);
 			AddService benefitAdd=(AddService) Naming.lookup(RMIHelper.ADD_IMPL);
-			state=benefitAdd.add(new BenefitPO(benefit,benefitList.get(benefitList.size()-1).getNumber()+1));
+			if(!benefitList.isEmpty())
+				state=benefitAdd.add(new BenefitPO(benefit,benefitList.get(benefitList.size()-1).getNumber()+1));
+			else
+				state=benefitAdd.add(new BenefitPO(benefit,0));
 		} catch(Exception ex){
 			state=AddState.CONNECTERROR;
 			System.out.println(ex.getMessage());

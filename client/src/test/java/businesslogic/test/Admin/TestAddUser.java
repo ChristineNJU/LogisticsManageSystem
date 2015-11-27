@@ -13,6 +13,6 @@ public class TestAddUser extends TestCase {
 		
 		AdminController admin = new AdminController();
 		
-		assertEquals(AddState.SUCCESS, admin.addUser(new UserVO("025100003", "yh", UserRole.courier,"男" ,10 ,InstitutionType.BusinessLobby, "南京")));
+		assertEquals(AddState.SUCCESS, admin.addUser(new UserVO("025100004", "yh", UserRole.courier,"男" ,10 ,InstitutionType.BusinessLobby, "南京")));
 	}
 }

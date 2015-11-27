@@ -1,7 +1,10 @@
 package businesslogic.test.Finance;
 
-import businesslogic.Impl.Finance.FinanceController;
 import junit.framework.TestCase;
+import State.AddState;
+import State.CostType;
+import VO.CostVO;
+import businesslogic.Impl.Finance.FinanceController;
 
 public class TestAddCost extends TestCase{
 	
@@ -9,7 +12,8 @@ public class TestAddCost extends TestCase{
 			
 			FinanceController finance = new FinanceController();
 			
-			assertEquals(null, finance.addCost(null));
+			assertEquals(AddState.SUCCESS, finance.addCost(new CostVO("2015-10-25", 23, "张三", "中国工商银行", 
+				CostType.salary, "无")));
 		}
 
 }
