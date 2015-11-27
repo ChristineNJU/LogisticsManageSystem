@@ -1,13 +1,16 @@
 package businesslogic.test.Manage;
 
-import businesslogic.Impl.Manage.ManageController;
 import junit.framework.TestCase;
+import State.UpdateState;
+import VO.ConstVO;
+import businesslogic.Impl.Manage.ManageController;
 
 public class TestUpdateConst extends TestCase {
 
 	public void testUpdateConst(){
 		ManageController manageController=new ManageController();
 		
-		assertEquals(null,manageController.updateConst(null, null, null));
+		ConstVO constvo=new ConstVO("上海到南京的距离", 20);
+		assertEquals(UpdateState.SUCCESS,manageController.updateConst(constvo));
 	}
 }

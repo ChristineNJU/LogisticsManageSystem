@@ -17,7 +17,7 @@ public class TestEntrucking extends TestCase {
 		
 		MediumCenterController mcc = new MediumCenterController();
 		
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-mm-dd hh-mm-ss");
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		ArrayList<String> barCodeList=new ArrayList<String>();
 		barCodeList.add("0000000002");
 		try {

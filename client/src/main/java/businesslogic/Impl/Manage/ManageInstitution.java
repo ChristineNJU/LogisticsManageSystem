@@ -10,6 +10,7 @@ import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
 import data.Service.Delete.DeleteService;
 import data.Service.Search.SearchInstitutionInfoService;
+import data.Service.Sundry.TableOperationService;
 import data.Service.Update.UpdateService;
 import PO.InstitutionPO;
 import State.AddState;
@@ -73,15 +74,16 @@ public class ManageInstitution implements AddInstitutionService,UpdateInstitutio
 	}
 
 	@Override
-	public DeleteState deleteInstitution(InstitutionVO instiution) {
+	public DeleteState deleteInstitution(InstitutionVO institution) {
 		// TODO Auto-generated method stub
 		DeleteState result=DeleteState.FAIL;
 		try {
 			DeleteService deleteService=(DeleteService) Naming.lookup(RMIHelper.DELETE_IMPL);
 			SearchInstitutionInfoService searchInstitution=(SearchInstitutionInfoService) Naming.lookup(RMIHelper.SEARCH_INSTITUTION_IMPL);
+			TableOperationService operationInstitution=(TableOperationService) Naming.lookup(RMIHelper.TABLE_OPERATION_IMPL);
 			
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("institution_number='"+instiution.getCode()+"'");
+			requirement.add("institution_number='"+institution.getCode()+"'");
 			ArrayList<InstitutionPO> searchResult=searchInstitution.searchInstitutionInfo(requirement);			
 			
 			if(searchResult.isEmpty()){
@@ -89,8 +91,10 @@ public class ManageInstitution implements AddInstitutionService,UpdateInstitutio
 				return DeleteState.FAIL;
 				}
 			else{
-				for(int i=0;i<searchResult.size();i++)
+				for(int i=0;i<searchResult.size();i++){
 					result=deleteService.delete(searchResult.get(i));
+					operationInstitution.deleteInstitutionTable(institution.getCode(), institution.getType());
+				}
 			}
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
@@ -139,8 +143,10 @@ public class ManageInstitution implements AddInstitutionService,UpdateInstitutio
 		AddState result=AddState.FAIL;
 		try {
 			AddService addService=(AddService) Naming.lookup(RMIHelper.ADD_IMPL);
+			TableOperationService operationInstitution=(TableOperationService) Naming.lookup(RMIHelper.TABLE_OPERATION_IMPL);
 			InstitutionPO requirement=new InstitutionPO(institution);
 			result=addService.add(requirement);
+			operationInstitution.createInstitutionTable(institution.getCode(), institution.getType());
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
 			result=AddState.FAIL;
