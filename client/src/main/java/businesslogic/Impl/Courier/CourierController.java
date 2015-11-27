@@ -8,6 +8,7 @@ import State.PackingCharge;
 import State.UpdateState;
 import VO.VO;
 import businesslogic.Service.Courier.CourierService;
+import businesslogic.SystemLog.SystemLog;
 
 public class CourierController implements CourierService{
 	
@@ -18,7 +19,11 @@ public class CourierController implements CourierService{
 		// TODO Auto-generated method stub
 		
 		CourierImpl courier=new CourierImpl();
-		return courier.receiveConfirm(logistics_info);
+		UpdateState state = courier.receiveConfirm(logistics_info);
+		if(state==UpdateState.SUCCESS){
+			SystemLog.addLog("更新收件信息");
+		}
+		return state;
 		
 	}
 
@@ -42,7 +47,11 @@ public class CourierController implements CourierService{
 	public AddState addLogistics(VO logistics_info) {
 		// TODO Auto-generated method stub
 		CourierImpl courier=new CourierImpl();
-		return courier.addLogistics(logistics_info);
+		AddState state = courier.addLogistics(logistics_info);
+		if(state==AddState.SUCCESS){
+			SystemLog.addLog("添加快递信息");
+		}
+		return state;
 	}
 	
 }

@@ -652,6 +652,7 @@ public class DirectDBCreater {
 			s.execute("CREATE TABLE "+table_name+" (bar_code varchar(20) PRIMARY key, storage_date varchar(20), "
 					+ "destination varchar(20), area_code varchar(20), row int, shelf int, "
 					+ "position int, isApproved varchar(10))");
+			conn.commit();
 		
 			System.out.println("create table "+table_name);
 		} catch (SQLException e) {
@@ -684,6 +685,7 @@ public class DirectDBCreater {
 			s.execute("CREATE TABLE "+table_name+" (bar_cod varchar(20) PRIMARY key, removal_date varchar(20), "
 					+ "destination varchar(20), type varchar(15), transfer_number varchar(20), "
 					+ "isApproved varchar(10))");
+			conn.commit();
 			
 			System.out.println("create table "+table_name);
 		} catch (SQLException e) {
