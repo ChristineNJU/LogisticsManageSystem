@@ -34,4 +34,5 @@ public class RMIHelper {
 	public static final String SEARCH_USER_IMPL = URL+"ServiceUserImpl";
 
 	public static final String WAREHOUSE_IMPL = URL+"WareHouseImpl";
+	public static final String TABLE_OPERATION_IMPL = URL+"TableOperationImpl";
 }

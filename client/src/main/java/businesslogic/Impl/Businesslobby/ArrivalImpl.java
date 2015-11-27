@@ -1,8 +1,10 @@
 package businesslogic.Impl.Businesslobby;
 
 import java.rmi.Naming;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import test.Stub.data.AddService_Stub;
 import PO.ArrivalPO;
 import State.AddState;
 import VO.ArrivalVO;
@@ -28,6 +30,7 @@ public class ArrivalImpl implements ArrivalService{
 			System.out.println(ex.getMessage());
 			ex.printStackTrace();
 		}
+		
 		return state;
 	}
 

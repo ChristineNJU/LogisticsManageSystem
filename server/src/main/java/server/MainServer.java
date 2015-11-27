@@ -31,6 +31,7 @@ import data.Impl.Search.SearchStockTakingImpl;
 import data.Impl.Search.SearchStorageImpl;
 import data.Impl.Search.SearchTransferImpl;
 import data.Impl.Search.SearchUserImpl;
+import data.Impl.Sundry.TableOperationImpl;
 import data.Impl.Sundry.WareHouseImpl;
 import data.Impl.Update.UpdateImpl;
 import data.RMIHelper.RMIHelper;
@@ -58,6 +59,7 @@ import data.Service.Search.SearchStockTakingService;
 import data.Service.Search.SearchStorageService;
 import data.Service.Search.SearchTransferService;
 import data.Service.Search.SearchUserService;
+import data.Service.Sundry.TableOperationService;
 import data.Service.Sundry.WareHouseService;
 import data.Service.Update.UpdateService;
 
@@ -92,6 +94,7 @@ public class MainServer {
 		SearchUserService search_user_service = null;
 		
 		WareHouseService ware_house_service = null;
+		TableOperationService table_operation_service = null;
 		try {
 			add_service = new AddImpl();
 			delete_service = new DeleteImpl();
@@ -121,6 +124,7 @@ public class MainServer {
 			search_user_service = new SearchUserImpl();
 			
 			ware_house_service = new WareHouseImpl();
+			table_operation_service = new TableOperationImpl();
 		} catch (RemoteException e1) {
 			// TODO Auto-generated catch block
 			System.out.println("接口实现创建失败");
@@ -182,13 +186,15 @@ public class MainServer {
 			print("SearchUserImpl");
 			Naming.bind(RMIHelper.WAREHOUSE_IMPL, ware_house_service);
 			print("WareHouseImpl");
+			Naming.bind(RMIHelper.TABLE_OPERATION_IMPL, table_operation_service);
+			print("TableOperationImpl");
 		} catch (RemoteException | MalformedURLException | AlreadyBoundException e) {
 			// TODO Auto-generated catch block
 			System.out.println("RMI远程端口绑定失败");
 			e.printStackTrace();
 		}
 		
-		DBHelper db_helper = new DBHelper();
+		DBHelper db_helper = DBHelper.createDBHelper();
 	}
 	
 	private static void print(String object_name) {

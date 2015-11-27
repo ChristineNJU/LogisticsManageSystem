@@ -47,15 +47,15 @@ public class MainFrame {
 		frame.setContentPane(panel);
 		panel.setLayout(null);
 		
-		inquiry = new Inquiry(this);
-		frame.add(inquiry.getPanel());
+//		inquiry = new Inquiry(this);
+//		frame.add(inquiry.getPanel());
 //		changeToCourier();
 //		changeToBusinesslobby();
 //		changeToFinance();
 //		changeToManager();
 //		changeToMediumCenter();
 //		changeToRepository();
-//		changeToAdmin();
+		changeToAdmin();
 	}
 	
 	public JFrame getFrame(){

@@ -11,6 +11,7 @@ import VO.RemovalVO;
 import VO.StockTakingVO;
 import VO.StorageVO;
 import businesslogic.Service.Repository.ReponsitoryService;
+import businesslogic.SystemLog.SystemLog;
 
 public class RepositoryController implements ReponsitoryService{
 
@@ -26,14 +27,22 @@ public class RepositoryController implements ReponsitoryService{
 	public OutputState stockTakingExcel() {
 		// TODO Auto-generated method stub
 		StockTakingExcelImpl stockTakingExcel=new StockTakingExcelImpl();
-		return stockTakingExcel.stockTakingExcel();
+		OutputState state = stockTakingExcel.stockTakingExcel();
+		if(state==OutputState.SUCCESS){
+			SystemLog.addLog("导出盘点信息");
+		}
+		return state;
 	}
 
 	@Override
 	public AddState stockTakingConfirm(ArrayList<StockTakingVO> stockList) {
 		// TODO Auto-generated method stub
 		StockTakingConfirmImpl stockTakingConfirm=new StockTakingConfirmImpl();
-		return stockTakingConfirm.stockTakingConfirm(stockList);
+		AddState state = stockTakingConfirm.stockTakingConfirm(stockList);
+		if(state==AddState.SUCCESS){
+			SystemLog.addLog("添加盘点信息");
+		}
+		return state;
 	}
 
 	@Override
@@ -47,7 +56,11 @@ public class RepositoryController implements ReponsitoryService{
 	public AddState addBalance(ArrayList<BalanceVO> balanceList) {
 		// TODO Auto-generated method stub
 		BalanceImpl balance = new BalanceImpl();
-		return balance.addBalance(balanceList);
+		AddState state = balance.addBalance(balanceList);
+		if(state==AddState.SUCCESS){
+			SystemLog.addLog("添加库存调整信息");
+		}
+		return state;
 	}
 
 	@Override
@@ -61,7 +74,11 @@ public class RepositoryController implements ReponsitoryService{
 	public StorageState storage(ArrayList<StorageVO> storage) {
 		// TODO Auto-generated method stub
 		StorageImpl s = new StorageImpl();
-		return s.storage(storage);
+		StorageState state = s.storage(storage);
+		if(state!=StorageState.FAIL){
+			SystemLog.addLog("添加入库单信息");
+		}
+		return state;
 	}
 
 	@Override
@@ -88,7 +105,11 @@ public class RepositoryController implements ReponsitoryService{
 	public AddState addRemoval(ArrayList<RemovalVO> re) {
 		// TODO Auto-generated method stub
 		RemovalImpl removal = new RemovalImpl();
-		return removal.addRemoval(re);
+		AddState state = removal.addRemoval(re);
+		if(state==AddState.SUCCESS){
+			SystemLog.addLog("添加出库单信息");
+		}
+		return state;
 	}
 
 }

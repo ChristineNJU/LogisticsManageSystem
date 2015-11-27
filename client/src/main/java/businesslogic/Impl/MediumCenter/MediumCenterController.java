@@ -7,6 +7,7 @@ import VO.ArrivalVO;
 import VO.EntruckingVO;
 import VO.TransferVO;
 import businesslogic.Service.MediumCenter.MCService;
+import businesslogic.SystemLog.SystemLog;
 
 public class MediumCenterController implements MCService{
 
@@ -14,7 +15,11 @@ public class MediumCenterController implements MCService{
 	public AddState transfer(TransferVO transfer) {
 		// TODO Auto-generated method stub
 		TransferImpl Transfer=new TransferImpl();
-		return Transfer.transfer(transfer);
+		AddState state = Transfer.transfer(transfer);
+		if(state==AddState.SUCCESS){
+			SystemLog.addLog("添加中转单信息");
+		}
+		return state;
 	}
 
 	@Override
@@ -35,14 +40,22 @@ public class MediumCenterController implements MCService{
 	public AddState entrucking(EntruckingVO entrucking) {
 		// TODO Auto-generated method stub
 		EntruckingImpl Entrucking=new EntruckingImpl();
-		return Entrucking.entrucking(entrucking);
+		AddState state = Entrucking.entrucking(entrucking);
+		if(state==AddState.SUCCESS){
+			SystemLog.addLog("添加装车单信息");
+		}
+		return state;
 	}
 
 	@Override
 	public AddState arrival(ArrayList<ArrivalVO> arrival) {
 		// TODO Auto-generated method stub
 		ArrivalImpl Arrival=new ArrivalImpl();
-		return Arrival.arrival(arrival);
+		AddState state = Arrival.arrival(arrival);
+		if(state==AddState.SUCCESS){
+			SystemLog.addLog("添加到达单信息");
+		}
+		return state;
 	}
 
 }

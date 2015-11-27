@@ -1,8 +1,8 @@
 package presentation.userPanel.Medium;
 
 import VO.UserVO;
+import presentation.components.ButtonNav;
 import presentation.main.Navigation;
-import presentation.panel.components.ButtonNav;
 
 public class NavigationMediumCenter extends Navigation{
 

@@ -32,6 +32,7 @@ import businesslogic.Service.Manage.UpdateInstitutionService;
 import businesslogic.Service.Manage.UpdatePaymentService;
 import businesslogic.Service.Manage.UpdateReceiptService;
 import businesslogic.Service.Manage.UpdateStaffService;
+import businesslogic.SystemLog.SystemLog;
 
 public class ManageController implements ManageService{
 
@@ -39,7 +40,11 @@ public class ManageController implements ManageService{
 	public DeleteState DeleteStaff(StaffVO staff) {
 		// TODO Auto-generated method stub
 		ManageStaff manageStaff=new ManageStaff();
-		return manageStaff.DeleteStaff(staff);
+		DeleteState state = manageStaff.DeleteStaff(staff);
+		if(state==DeleteState.SUCCESS){
+			SystemLog.addLog("删除员工信息");
+		}
+		return state;
 	}
 
 	@Override
@@ -53,21 +58,33 @@ public class ManageController implements ManageService{
 	public UpdateState updateStaff(StaffVO staff) {
 		// TODO Auto-generated method stub
 		ManageStaff manageStaff=new ManageStaff();
-		return manageStaff.updateStaff(staff);
+		UpdateState state = manageStaff.updateStaff(staff);
+		if(state==UpdateState.SUCCESS){
+			SystemLog.addLog("更新员工信息");
+		}
+		return state;
 	}
 
 	@Override
 	public AddState addStaff(StaffVO staff) {
 		// TODO Auto-generated method stub
 		ManageStaff manageStaff=new ManageStaff();
-		return manageStaff.addStaff(staff);
+		AddState state = manageStaff.addStaff(staff);
+		if(state==AddState.SUCCESS){
+			SystemLog.addLog("添加员工信息");
+		}
+		return state;
 	}
 
 	@Override
 	public UpdateState updatePayment(SalaryVO salary) {
 		// TODO Auto-generated method stub
 		ManageSalary manageSalary=new ManageSalary();
-		return manageSalary.updatePayment(salary);
+		UpdateState state = manageSalary.updatePayment(salary);
+		if(state==UpdateState.SUCCESS){
+			SystemLog.addLog("更新出款信息");
+		}
+		return state;
 	}
 
 	@Override
@@ -81,7 +98,11 @@ public class ManageController implements ManageService{
 	public UpdateState updateReceipt(VO receipt) {
 		// TODO Auto-generated method stub
 		ManageReceipt manageReceipt=new ManageReceipt();
-		return manageReceipt.updateReceipt(receipt);
+		UpdateState state = manageReceipt.updateReceipt(receipt);
+		if(state==UpdateState.SUCCESS){
+			SystemLog.addLog("更新单据信息");
+		}
+		return state;
 	}
 
 	@Override
@@ -124,28 +145,44 @@ public class ManageController implements ManageService{
 	public DeleteState deleteInstitution(InstitutionVO insitiution) {
 		// TODO Auto-generated method stub
 		ManageInstitution manageInstitution=new ManageInstitution();
-		return manageInstitution.deleteInstitution(insitiution);
+		DeleteState state = manageInstitution.deleteInstitution(insitiution);
+		if(state==DeleteState.SUCCESS){
+			SystemLog.addLog("删除机构信息");
+		}
+		return state;
 	}
 
 	@Override
 	public UpdateState UpdateInstitution(InstitutionVO institution) {
 		// TODO Auto-generated method stub
 		ManageInstitution manageInstitution=new ManageInstitution();
-		return manageInstitution.UpdateInstitution(institution);
+		UpdateState state = manageInstitution.UpdateInstitution(institution);
+		if(state==UpdateState.SUCCESS){
+			SystemLog.addLog("更新机构信息");
+		}
+		return state;
 	}
 	
 	@Override
 	public AddState addInstitution(InstitutionVO institution) {
 		// TODO Auto-generated method stub
 		ManageInstitution manageInstitution=new ManageInstitution();
-		return manageInstitution.addInstitution(institution);
+		AddState state = manageInstitution.addInstitution(institution);
+		if(state==AddState.SUCCESS){
+			SystemLog.addLog("添加机构信息");
+		}
+		return state;
 	}
 
 	@Override
 	public UpdateState updateConst(ConstVO constant) {
 		// TODO Auto-generated method stub
 		ManageConst manageConst=new ManageConst();
-		return manageConst.updateConst(constant);
+		UpdateState state = manageConst.updateConst(constant);
+		if(state==UpdateState.SUCCESS){
+			SystemLog.addLog("更新常量信息");
+		}
+		return state;
 		
 	}
 
@@ -160,7 +197,11 @@ public class ManageController implements ManageService{
 	public AddState addConst(ConstVO constant) {
 		// TODO Auto-generated method stub
 		ManageConst manageConst=new ManageConst();
-		return manageConst.addConst(constant);
+		AddState state = manageConst.addConst(constant);
+		if(state==AddState.SUCCESS){
+			SystemLog.addLog("添加常量信息");
+		}
+		return state;
 	}
 
 	

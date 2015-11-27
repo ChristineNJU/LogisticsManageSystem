@@ -1,8 +1,8 @@
 package presentation.userPanel.Repository;
 
 import VO.UserVO;
+import presentation.components.ButtonNav;
 import presentation.main.Navigation;
-import presentation.panel.components.ButtonNav;
 
 public class NavigationRepository extends Navigation{
 

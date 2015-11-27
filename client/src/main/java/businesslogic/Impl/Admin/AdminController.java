@@ -7,6 +7,7 @@ import State.DeleteState;
 import State.UpdateState;
 import VO.UserVO;
 import businesslogic.Service.Admin.AdminService;
+import businesslogic.SystemLog.SystemLog;
 
 public class AdminController implements AdminService{
 	
@@ -14,7 +15,11 @@ public class AdminController implements AdminService{
 	public UpdateState updateUser(UserVO user) {
 		// TODO Auto-generated method stub
 		AdminImpl adminUser=new AdminImpl();
-		return adminUser.updateUser(user);
+		UpdateState state = adminUser.updateUser(user);
+		if(state==UpdateState.SUCCESS){
+			SystemLog.addLog("更新系统账户");
+		}
+		return state;
 	}
 
 	@Override
@@ -28,14 +33,22 @@ public class AdminController implements AdminService{
 	public DeleteState deleteUser(UserVO user) {
 		// TODO Auto-generated method stub
 		AdminImpl adminUser=new AdminImpl();
-		return adminUser.deleteUser(user);
+		DeleteState state = adminUser.deleteUser(user);
+		if(state==DeleteState.SUCCESS){
+			SystemLog.addLog("删除系统账户");
+		}
+		return state;
 	}
 
 	@Override
 	public AddState addUser(UserVO user) {
 		// TODO Auto-generated method stub
 		AdminImpl adminUser=new AdminImpl();
-		return adminUser.addUser(user);
+		AddState state = adminUser.addUser(user);
+		if(state==AddState.SUCCESS){
+			SystemLog.addLog("添加系统账户");
+		}
+		return state;
 	}
 
 }
