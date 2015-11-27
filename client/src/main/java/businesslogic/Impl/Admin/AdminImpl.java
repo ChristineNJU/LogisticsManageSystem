@@ -58,21 +58,29 @@ public class AdminImpl implements AddUserService,DeleteUserService,GetUserServic
 			SearchUserService userSearch=(SearchUserService) Naming.lookup(RMIHelper.SEARCH_USER_IMPL);
 			
 			ArrayList<String> requirementID=new ArrayList<String>();
-			ArrayList<String> requirementName=new ArrayList<String>();
-			for(int i=0;i<requirement.size();i++){
-				requirementID.add("id='"+requirement.get(i)+"'");
-				requirementName.add("name='"+requirement.get(i)+"'");
+			if(!requirement.get(0).equals("%%")){
+				ArrayList<String> requirementName=new ArrayList<String>();
+				for(int i=0;i<requirement.size();i++){
+					requirementID.add("id='"+requirement.get(i)+"'");
+					requirementName.add("name='"+requirement.get(i)+"'");
+				}
+				ArrayList<UserPO> userListID=userSearch.searchUser(requirementID);
+				ArrayList<UserPO> userListName=userSearch.searchUser(requirementName);
+				
+				for(int i=0;i<userListID.size();i++){
+					result.add(new UserVO(userListID.get(i)));
+				}
+				for(int i=0;i<userListName.size();i++){
+					result.add(new UserVO(userListName.get(i)));
+				}
 			}
-			ArrayList<UserPO> userListID=userSearch.searchUser(requirementID);
-			ArrayList<UserPO> userListName=userSearch.searchUser(requirementName);
-			
-			for(int i=0;i<userListID.size();i++){
-				result.add(new UserVO(userListID.get(i)));
+			else {
+				requirementID.add("id like '%%'");
+				ArrayList<UserPO> userList=new ArrayList<UserPO>();
+				for(int i=0;i<userList.size();i++){
+					result.add(new UserVO(userList.get(i)));
+				}
 			}
-			for(int i=0;i<userListName.size();i++){
-				result.add(new UserVO(userListName.get(i)));
-			}
-			
 		} catch(Exception ex){
 			System.out.println(ex.getMessage());
 			ex.printStackTrace();

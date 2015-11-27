@@ -1,13 +1,13 @@
 package businesslogic.test.Reponsitory;
 
-import businesslogic.Impl.Reponsitory.ReponsitoryController;
 import junit.framework.TestCase;
+import businesslogic.Impl.Repository.RepositoryController;
 
 public class TestAlarm extends TestCase {
 	
 	public void testAlarm() {
 		
-		ReponsitoryController rc = new ReponsitoryController();
+		RepositoryController rc = new RepositoryController();
 		
 		assertEquals(null, rc.alarm());
 	}

@@ -10,17 +10,16 @@ import VO.BalanceVO;
 import VO.RemovalVO;
 import VO.StockTakingVO;
 import VO.StorageVO;
-import VO.VO;
 import businesslogic.Service.Repository.ReponsitoryService;
 
 public class RepositoryController implements ReponsitoryService{
 
 	
 	@Override
-	public ArrayList<StockTakingVO> getStockTaking(ArrayList<WareHousePO> warehouse) {
+	public ArrayList<StockTakingVO> getStockTaking() {
 		// TODO Auto-generated method stub
 		GetStockTakingImpl stockTaking=new GetStockTakingImpl();
-		return stockTaking.getStockTaking(warehouse);
+		return stockTaking.getStockTaking();
 	}
 
 	@Override

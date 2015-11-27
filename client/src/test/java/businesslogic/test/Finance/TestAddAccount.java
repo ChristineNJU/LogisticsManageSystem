@@ -1,6 +1,8 @@
 package businesslogic.test.Finance;
 
 import junit.framework.TestCase;
+import State.AddState;
+import VO.AccountVO;
 import businesslogic.Impl.Finance.FinanceController;
 
 public class TestAddAccount extends TestCase{
@@ -9,7 +11,7 @@ public class TestAddAccount extends TestCase{
 		
 		FinanceController finance = new FinanceController();
 		
-		assertEquals(null, finance.addAccount(null));
+		assertEquals(AddState.SUCCESS, finance.addAccount(new AccountVO("中国银行", 1412414.23)));
 	}
 	
 }

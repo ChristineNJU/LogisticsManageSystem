@@ -8,6 +8,6 @@ public class TestGetAccount extends TestCase{
 			
 			FinanceController finance = new FinanceController();
 			
-			assertEquals(null, finance.searchAccount(null));
+			assertEquals(1412414.23, finance.searchAccount("中国银行").get(0).getMoney());
 		}
 }

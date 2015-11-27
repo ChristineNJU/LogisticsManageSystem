@@ -14,14 +14,14 @@ public class TestSearchUser extends TestCase {
 		
 		AdminController admin = new AdminController();
 		ArrayList<String> requirement=new ArrayList<String>();
-		requirement.add("admin");
-		ArrayList<UserVO> user=new ArrayList<UserVO>();
+		requirement.add("025100003");
+//		ArrayList<UserVO> user=new ArrayList<UserVO>();
 //		user.add(new UserVO("admin", "永煌", UserRole.courier,"男" ,10 ,InstitutionType.BusinessLobby, "南京"));
 		
 		UserVO u = admin.searchUser(requirement).get(0);
 		
 		System.out.println(u.getAge()+u.getCity());
 		
-		assertEquals("admin", admin.searchUser(requirement).get(0).getId());
+		assertEquals("025100003", admin.searchUser(requirement).get(0).getId());
 	}
 }

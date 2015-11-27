@@ -8,6 +8,6 @@ public class TestGetEntrucking extends TestCase{
 		
 		FinanceController finance = new FinanceController();
 		
-		assertEquals(null, finance.getEntrucking(null, null));
+		assertEquals(null, finance.getEntrucking("2015-10-01 00:00:00", "2015-11-01 00:00:00"));
 	}
 }
