@@ -18,11 +18,11 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
 import presentation.AnimationEasing.AnimationEasing;
+import presentation.components.ButtonFrame;
+import presentation.components.FlatScrollPane;
 import presentation.frame.MainFrame;
 import presentation.main.ColorPallet;
 import presentation.main.FontSet;
-import presentation.panel.components.ButtonFrame;
-import presentation.panel.components.FlatScrollPane;
 import VO.LogisticsHistoryVO;
 import businesslogic.Impl.Inquiry.InquiryController;
 import businesslogic.Service.Inquiry.InquiryService;
@@ -178,7 +178,7 @@ public class Inquiry{
 		Thread t = new Thread(new MovingFunction());
 		t.start();
 		
-//		logInDialog.getDialog().setModal(true);
+		logInDialog.getDialog().setModal(true);
 	}
 	
 	private void showNotFound(){

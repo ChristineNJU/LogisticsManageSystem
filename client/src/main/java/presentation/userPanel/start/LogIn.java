@@ -12,12 +12,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import presentation.AnimationEasing.AnimationEasing;
+import presentation.components.ButtonCancel;
+import presentation.components.ButtonOk;
+import presentation.components.TextField;
 import presentation.frame.MainFrame;
 import presentation.main.ColorPallet;
 import presentation.main.FontSet;
-import presentation.panel.components.ButtonCancel;
-import presentation.panel.components.ButtonOk;
-import presentation.panel.components.TextField;
 import State.LoginState;
 import VO.UserVO;
 import businesslogic.Impl.Admin.AdminController;
