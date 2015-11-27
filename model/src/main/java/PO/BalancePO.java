@@ -10,14 +10,14 @@ import businesslogic.URLHelper.URLHelper;
 
 public class BalancePO extends PO {
 
-	private String bar_code = null;
-	private Date storage_date = null;
-	private String destination = null;
-	private StorageArea old_area = null;
+	private String bar_code = "";
+	private Date storage_date;
+	private String destination = "";
+	private StorageArea old_area;
 	private int old_row = 0;
 	private int old_shelf = 0;
 	private int old_position = 0;
-	private StorageArea new_area = null;
+	private StorageArea new_area;
 	private int new_row = 0;
 	private int new_shelf = 0;
 	private int new_position = 0;

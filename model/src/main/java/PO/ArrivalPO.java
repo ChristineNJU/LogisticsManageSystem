@@ -14,11 +14,11 @@ import businesslogic.URLHelper.URLHelper;
 
 public class ArrivalPO extends PO {
 
-	private String bar_code = null;
-	private Date arrival_date = null;
-	private String transfer_number = null;
-	private String starting = null;
-	private LogisticsState state = null;
+	private String bar_code = "";
+	private Date arrival_date;
+	private String transfer_number = "";
+	private String starting = "";
+	private LogisticsState state;
 	private boolean isApproved = false;
 	
 	public ArrivalPO(String bar_code, Date arrival_date, String transfer_number, String starting,

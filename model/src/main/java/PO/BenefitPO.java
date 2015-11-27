@@ -14,8 +14,8 @@ public class BenefitPO extends PO {
 	private double income = 0;
 	private double expend = 0;
 	private double benefit = 0;
-	private Date startDate=null;
-	private Date endDate=null;
+	private Date startDate;
+	private Date endDate;
 	
 	public BenefitPO(int number, double income, double expend, String DB_URL,String start,String end) {
 		super(DB_URL);

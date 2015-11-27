@@ -5,9 +5,9 @@ import java.util.Date;
 
 public class LogPO extends PO {
 
-	private Date time = null;
-	private String operation = null;
-	private String operator = null;
+	private Date time;
+	private String operation = "";
+	private String operator = "";
 	
 	public LogPO(Date time, String operation, String operator, String DB_URL) {
 		super(DB_URL);
@@ -50,7 +50,14 @@ public class LogPO extends PO {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return null;
+		
+		String result = "";
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		result = result + "'" + sdf.format(time) + "', ";
+		result = result + "'" + operation + "', ";
+		result = result + "'" + operator + "'";
+		return result;
 	}
 
 	@Override

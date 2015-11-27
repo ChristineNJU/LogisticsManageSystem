@@ -14,12 +14,12 @@ import businesslogic.URLHelper.URLHelper;
 
 public class EntruckingPO extends PO {
 	
-	private Date date = null;
-	private String transfer_number = null;
-	private String destination = null;
-	private String car_number = null;
-	private String guard_name = null;
-	private String supercargo_name = null;
+	private Date date;
+	private String transfer_number = "";
+	private String destination = "";
+	private String car_number = "";
+	private String guard_name = "";
+	private String supercargo_name = "";
 	private ArrayList<String> bar_code_list = new ArrayList<String>();
 	private double amount = 0;
 	private boolean isApproved = false;
@@ -157,9 +157,10 @@ public class EntruckingPO extends PO {
 			if(i!=bar_code_list.size()-1){
 				result = result + bar_code_list.get(i) + ",";				
 			}else{
-				result = result + bar_code_list.get(i) + "',";
+				result = result + bar_code_list.get(i);
 			}
 		}
+		result = result + "', ";
 		
 		result = result + amount + ", ";
 		result = result + "'" + isApproved + "'";

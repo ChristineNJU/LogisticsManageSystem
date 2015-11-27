@@ -167,14 +167,14 @@ public class Inquiry{
 		}
 		
 		int w = 300;
-		int h = 66;
+		int h = 0;
 		
 		for(int i=0;i<history.size();i++){
 			
 			h = h+66;
 			
 			scrollPanePanel.add(historyLabel.get(i));
-			scrollPanePanel.setSize(300, h);
+			scrollPanePanel.setSize(w, h);
 		}
 //		inquiryPanel.repaint();
 		scrollPane.repaint();
@@ -193,7 +193,7 @@ public class Inquiry{
 		Thread t = new Thread(new MovingFunction());
 		t.start();
 		
-		logInDialog.getDialog().setModal(true);
+//		logInDialog.getDialog().setModal(true);
 	}
 	
 	private void showNotFound(){

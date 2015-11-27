@@ -34,11 +34,8 @@ public class FlatScrollBarUI extends BasicScrollBarUI {
 		
 		FlatArrowButton fb = new FlatArrowButton(orientation);
 		fb.setFocusable(isFocusable);
-<<<<<<< HEAD:client/src/main/java/presentation/panel/components/FlatScrollBarUI.java
 //		fb.setVisible(false);
-=======
 		fb.setVisible(true);
->>>>>>> d320bb84080127b3e11e63ee1dfd122d5858d8e5:client/src/main/java/presentation/components/FlatScrollBarUI.java
 		return fb;
 	}
 	
@@ -47,11 +44,8 @@ public class FlatScrollBarUI extends BasicScrollBarUI {
 //		System.out.println(isFocusable);
 		FlatArrowButton fb = new FlatArrowButton(orientation);
 		fb.setFocusable(isFocusable);
-<<<<<<< HEAD:client/src/main/java/presentation/panel/components/FlatScrollBarUI.java
 //		fb.setVisible(false);
-=======
 		fb.setVisible(true);
->>>>>>> d320bb84080127b3e11e63ee1dfd122d5858d8e5:client/src/main/java/presentation/components/FlatScrollBarUI.java
 		return fb;
 	}
 	

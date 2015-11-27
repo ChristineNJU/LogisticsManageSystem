@@ -6,7 +6,7 @@ import businesslogic.URLHelper.URLHelper;
 public class AccountPO extends PO {
 
 	private int account_id = 0;
-	private String account_name = null;
+	private String account_name = "";
 	private double amount = 0;
 	
 	public AccountPO(int account_id, String account_name, double amount, String DB_URL) {

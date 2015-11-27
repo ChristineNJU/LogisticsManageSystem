@@ -8,8 +8,8 @@ import VO.CarInfoVO;
  * */
 public class CarInfoPO extends PO {
 
-	private String car_number = null;
-	private String car_license = null;
+	private String car_number = "";
+	private String car_license = "";
 	private int attend_time = 0;
 	
 	public CarInfoPO(String car_number, String car_license, int attend_time, String DB_URL) {

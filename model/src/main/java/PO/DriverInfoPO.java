@@ -13,12 +13,12 @@ import businesslogic.URLHelper.URLHelper;
 
 public class DriverInfoPO extends PO {
 	
-	private String driver_number = null;
-	private String driver_name = null;
-	private Date driver_birthday = null;
-	private String driver_id = null;
-	private String driver_mobilephone = null;
-	private String driver_sex = null;
+	private String driver_number = "";
+	private String driver_name = "";
+	private Date driver_birthday;
+	private String driver_id = "";
+	private String driver_mobilephone = "";
+	private String driver_sex = "";
 	private int attend_time = 0;
 
 	public DriverInfoPO(String driver_number, String driver_name, Date driver_birthday, String driver_id,

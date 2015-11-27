@@ -13,9 +13,9 @@ import VO.DeliveryVO;
 
 public class DeliveryPO extends PO {
 
-	private Date date = null;
+	private Date date;
 	private ArrayList<String> bar_code_list = new ArrayList<String>();	
-	private String courier = null;
+	private String courier = "";
 	private boolean isApproved = false;
 	
 	public DeliveryPO(Date date, ArrayList<String> bar_code_list, String courier, String DB_URL) {
@@ -104,9 +104,10 @@ public class DeliveryPO extends PO {
 			if(i!=bar_code_list.size()-1){
 				result = result + bar_code_list.get(i) + ",";				
 			}else{
-				result = result + bar_code_list.get(i) + "',";
+				result = result + bar_code_list.get(i);
 			}
 		}
+		result = result + "', ";
 		
 		result = result + "'" + courier + "', ";
 		result = result + "'" + isApproved + "'";
