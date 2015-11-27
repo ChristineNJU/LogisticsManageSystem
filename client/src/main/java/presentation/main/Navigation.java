@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 import State.UserRole;
 import VO.UserVO;
-import presentation.panel.components.ButtonNav;
-import presentation.panel.components.PanelNavigation;
+import presentation.components.ButtonNav;
+import presentation.components.PanelNavigation;
 
 public class Navigation {
 

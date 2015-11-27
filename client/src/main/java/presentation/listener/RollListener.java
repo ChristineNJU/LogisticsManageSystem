@@ -3,7 +3,7 @@ package presentation.listener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import presentation.panel.components.ButtonTotal;
+import presentation.components.ButtonTotal;
 
 public class RollListener implements MouseListener {
 

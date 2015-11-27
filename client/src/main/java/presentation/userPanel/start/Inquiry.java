@@ -18,11 +18,11 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
 import presentation.AnimationEasing.AnimationEasing;
+import presentation.components.ButtonFrame;
+import presentation.components.FlatScrollPane;
 import presentation.frame.MainFrame;
 import presentation.main.ColorPallet;
 import presentation.main.FontSet;
-import presentation.panel.components.ButtonFrame;
-import presentation.panel.components.FlatScrollPane;
 import VO.LogisticsHistoryVO;
 import businesslogic.Impl.Inquiry.InquiryController;
 import businesslogic.Service.Inquiry.InquiryService;
@@ -178,7 +178,7 @@ public class Inquiry{
 		Thread t = new Thread(new MovingFunction());
 		t.start();
 		
-//		logInDialog.getDialog().setModal(true);
+		logInDialog.getDialog().setModal(true);
 	}
 	
 	private void showNotFound(){
@@ -308,10 +308,10 @@ public class Inquiry{
 			// TODO Auto-generated method stub
 			double time = 0;
 			while(time<=8){
-				int i = (int)AnimationEasing.easeInElastic(0, time, 0, 200, 10);
+				int i = (int)AnimationEasing.easeInElastic(0, time, 0, LogIn.login_height, 10);
 //				System.out.println(i);
-				logInDialog.getPanel().setSize(320, i);
-				logInDialog.getLine().setBounds(0, 194, 320, i-194);
+				logInDialog.getPanel().setSize(LogIn.login_width, i);
+				logInDialog.getLine().setBounds(0, LogIn.login_height-6, LogIn.login_width, i-(LogIn.login_height-6));
 				try {
 					Thread.sleep(10);
 				} catch (InterruptedException e) {
