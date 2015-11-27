@@ -9,7 +9,7 @@ public class TestGetCost extends TestCase{
 			
 			FinanceController finance = new FinanceController();
 			
-			assertEquals(23, finance.searchCost("2015-10-24 00:00:00", "2015-11-01 00:00:00").get(0).getAmount());
+			assertEquals(23.0, finance.searchCost("2015-10-24 00:00:00", "2015-11-01 00:00:00").get(0).getAmount());
 		}
 
 }

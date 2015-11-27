@@ -8,6 +8,6 @@ public class TestGetBenefit extends TestCase{
 			
 			FinanceController finance = new FinanceController();
 			
-			assertEquals(1294324, finance.searchBenefit("2015-11-26 10:30:00").getCost());
+			assertEquals(1294324.0, finance.searchBenefit("2015-11-26 10:30:00").getIncome());
 		}
 }

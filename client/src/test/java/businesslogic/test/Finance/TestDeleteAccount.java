@@ -10,6 +10,6 @@ public class TestDeleteAccount extends TestCase{
 			
 			FinanceController finance = new FinanceController();
 			
-			assertEquals(DeleteState.SUCCESS, finance.deleteAccount(new AccountVO("中国银行", 1412414.23)));
+			assertEquals(DeleteState.SUCCESS, finance.deleteAccount(new AccountVO("中国银行",10)));
 		}
 }

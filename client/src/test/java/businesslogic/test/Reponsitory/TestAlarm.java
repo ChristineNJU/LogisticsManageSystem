@@ -9,6 +9,6 @@ public class TestAlarm extends TestCase {
 		
 		RepositoryController rc = new RepositoryController();
 		
-		assertEquals(null, rc.alarm());
+		assertEquals(false, rc.alarm());
 	}
 }

@@ -37,7 +37,7 @@ public class AdminImpl implements AddUserService,DeleteUserService,GetUserServic
 				return UpdateState.NOTFOUND;
 			}
 			for(int i=0;i<result.size();i++){
-				state=updateService.update(result.get(i));
+				state=updateService.update(new UserPO(user));
 			}
 			
 		} catch(Exception ex){

@@ -15,7 +15,7 @@ public class TestReceiveConfirm extends TestCase {
 		
 		CourierController courier = new CourierController();
 		
-		assertEquals(UpdateState.NOTFOUND, courier.receiveConfirm(new LogisticsInputVO("张三", "无", "无", "88888888", "1111111111111", 
+		assertEquals(UpdateState.SUCCESS, courier.receiveConfirm(new LogisticsInputVO("张三", "无", "无", "88888888", "1111111111111", 
 				"李四", "无", "无", "99999999", "222222222222", 
 				"1000000000", 2, 4, 5, "鼠标", LogisticsType.STANDARD,
 				PackingCharge.COURISE_BAG, 20, "南京", "北京", 

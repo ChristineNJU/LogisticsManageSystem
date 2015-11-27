@@ -21,6 +21,7 @@ public class RemovalImpl implements AddRemovalService{
 			AddService removalAdd=(AddService) Naming.lookup(RMIHelper.ADD_IMPL);
 			for(int i=0;i<re.size();i++){
 				state=removalAdd.add(new RemovalPO(re.get(i),SystemLog.getInstitutionId()));
+//				state=removalAdd.add(new RemovalPO(re.get(i),"02500"));
 			}
 		} catch (Exception ex){
 			state=AddState.CONNECTERROR;
