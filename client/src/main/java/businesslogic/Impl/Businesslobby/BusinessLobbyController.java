@@ -7,6 +7,7 @@ import State.DeleteState;
 import State.UpdateState;
 import VO.ArrivalVO;
 import VO.CarInfoVO;
+import VO.DeliveryVO;
 import VO.DriverInfoVO;
 import VO.EntruckingVO;
 import VO.GatheringVO;
@@ -140,6 +141,14 @@ public class BusinessLobbyController implements BsLbService{
 			SystemLog.addLog("删除司机信息");
 		}
 		return state;
+	}
+
+	@Override
+	public AddState delivery(DeliveryVO delivery) {
+		// TODO Au
+		DeliveryImpl deliveryImpl=new DeliveryImpl();
+		
+		return deliveryImpl.delivery(delivery);
 	}
 	
 	

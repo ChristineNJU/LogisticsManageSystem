@@ -12,6 +12,7 @@ public class TestShowConst extends TestCase {
 			
 			ManageController manageController=new ManageController();
 			
+			
 			assertEquals(null,manageController.showConst());
 			
 			

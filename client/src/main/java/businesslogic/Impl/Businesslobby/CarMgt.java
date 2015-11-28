@@ -92,13 +92,13 @@ public class CarMgt implements UpdateCarService,GetCarService,DeleteCarService,A
 			requirementId.add("CAR_NUMBER='"+id+"'");
 			
 			ArrayList<String> requirementName=new ArrayList<String>();
-			requirementName.add("name='"+id+"'");
+			requirementName.add("Car_License='"+id+"'");
 			
 			ArrayList<CarInfoPO> searchResultId=new ArrayList<CarInfoPO>();
 			ArrayList<CarInfoPO> searchResultName=new ArrayList<CarInfoPO>();
 			
-			searchResultId=searchCar.searchCarInfo(SystemLog.getInstitutionId(), requirementId);
-			searchResultName=searchCar.searchCarInfo(SystemLog.getInstitutionId(), requirementName);
+			searchResultId=searchCar.searchCarInfo(URLHelper.getCarInfoURL(SystemLog.getInstitutionId()), requirementId);
+			searchResultName=searchCar.searchCarInfo(URLHelper.getCarInfoURL(SystemLog.getInstitutionId()), requirementName);
 			
 			for(int i=0;i<searchResultName.size();i++)
 				searchResultId.add(searchResultName.get(i));

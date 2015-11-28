@@ -75,7 +75,7 @@ public class SearchRemovalImpl extends UnicastRemoteObject implements SearchRemo
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-//			e.printStackTrace();
+			e.printStackTrace();
 			System.out.println("从数据库提取RemovalPO对象失败");
 			return result;
 		}

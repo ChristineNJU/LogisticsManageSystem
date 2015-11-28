@@ -4,15 +4,18 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import businesslogic.URLHelper.URLHelper;
+import VO.DeliveryVO;
+
 /*========================================================================================
  * 用来保存派送信息的持久化数据格式
  * */
 
 public class DeliveryPO extends PO {
 
-	private Date date = null;
+	private Date date;
 	private ArrayList<String> bar_code_list = new ArrayList<String>();	
-	private String courier = null;
+	private String courier = "";
 	private boolean isApproved = false;
 	
 	public DeliveryPO(Date date, ArrayList<String> bar_code_list, String courier, String DB_URL) {
@@ -21,7 +24,13 @@ public class DeliveryPO extends PO {
 		this.bar_code_list = bar_code_list;
 		this.courier = courier;
 	}
-	
+	public DeliveryPO(DeliveryVO delivery,String institution_id) {
+		// TODO Auto-generated constructor stub
+		super(URLHelper.getDeliveryURL(institution_id));
+		this.date =delivery.getArrivalDate() ;
+		this.bar_code_list = delivery.getBarCodeList();
+		this.courier = delivery.getPeople();
+	}
 	/*=====================================================================================
 	 * Public方法
 	 * */
@@ -30,6 +39,8 @@ public class DeliveryPO extends PO {
 	 * 对DeliveryPO的数据进行读取
 	 * */
 	
+	
+
 	/*
 	 * 获取到达日期
 	 * 返回Date
@@ -93,9 +104,10 @@ public class DeliveryPO extends PO {
 			if(i!=bar_code_list.size()-1){
 				result = result + bar_code_list.get(i) + ",";				
 			}else{
-				result = result + bar_code_list.get(i) + "',";
+				result = result + bar_code_list.get(i);
 			}
 		}
+		result = result + "', ";
 		
 		result = result + "'" + courier + "', ";
 		result = result + "'" + isApproved + "'";

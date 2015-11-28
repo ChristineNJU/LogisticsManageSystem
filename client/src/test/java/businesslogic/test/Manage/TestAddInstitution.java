@@ -1,13 +1,18 @@
 package businesslogic.test.Manage;
 
-import businesslogic.Impl.Manage.ManageController;
 import junit.framework.TestCase;
+import State.AddState;
+import State.InstitutionType;
+import VO.InstitutionVO;
+import businesslogic.Impl.Manage.ManageController;
 
 public class TestAddInstitution extends TestCase {
 
 	public void testAddInstitution(){
 		ManageController manageController=new ManageController();
 		
-		assertEquals(null,manageController.addInstitution(null));
+		InstitutionVO institution=new InstitutionVO("南京仙林营业厅", InstitutionType.BusinessLobby, "南京", "025001");
+		
+		assertEquals(AddState.SUCCESS,manageController.addInstitution(institution));
 	}
 }

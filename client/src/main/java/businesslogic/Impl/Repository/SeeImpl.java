@@ -43,8 +43,9 @@ public class SeeImpl implements SeeService {
 				try{
 					SearchRemovalService removalSearch=(SearchRemovalService) Naming.lookup(RMIHelper.SEARCH_REMOVAL_IMPL);
 					ArrayList<String> requirement=new ArrayList<String>();
-					requirement.add("outDate between '"+time_start+"' and '"+time_end+"'");
-					ArrayList<RemovalPO> removalList=removalSearch.searchRemoval(URLHelper.getRemovalURL(SystemLog.getInstitutionId()), requirement);
+					requirement.add("removal_date between '"+time_start+"' and '"+time_end+"'");
+//					ArrayList<RemovalPO> removalList=removalSearch.searchRemoval(URLHelper.getRemovalURL(SystemLog.getInstitutionId()), requirement);
+					ArrayList<RemovalPO> removalList=removalSearch.searchRemoval(URLHelper.getRemovalURL("02500"), requirement);
 					for(int i=0;i<removalList.size();i++){
 						removal.add(new RemovalVO(removalList.get(i)));
 					}

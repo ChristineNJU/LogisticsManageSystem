@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class PeriodPO extends PO {
 
-	private Date date = null;
+	private Date date;
 	private int institution_size = 0;
 	private int staff_size = 0;
 	private int car_size = 0;
@@ -122,9 +122,10 @@ public class PeriodPO extends PO {
 			if(i!=account.size()-1){
 				result = result + account.get(i).getAccountID() + ",";				
 			}else{
-				result = result + account.get(i).getAccountID() + "'";
+				result = result + account.get(i).getAccountID();
 			}
 		}
+		result = result + "'";
 		
 		System.out.println(result);
 		return result;

@@ -12,12 +12,12 @@ import VO.CostVO;
 public class CostPO extends PO {
 	
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	private Date cost_date = null;
+	private Date cost_date;
 	private double cost_amount = 0;
-	private String cost_name = null;
-	private String account_name = null;
-	private CostType type = null;
-	private	String remark = null;
+	private String cost_name = "";
+	private String account_name = "";
+	private CostType type;
+	private	String remark = "";
 	private boolean isApproved = false;
 	
 	public CostPO(String cost_date, double cost_amount, String cost_name, String account_name, 

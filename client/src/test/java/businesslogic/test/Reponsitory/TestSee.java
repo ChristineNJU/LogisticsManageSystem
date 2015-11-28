@@ -1,14 +1,16 @@
 package businesslogic.test.Reponsitory;
 
-import businesslogic.Impl.Reponsitory.ReponsitoryController;
 import junit.framework.TestCase;
+import businesslogic.Impl.Repository.RepositoryController;
 
 public class TestSee extends TestCase {
 	
 	public void testSee() {
 		
-		ReponsitoryController rc = new ReponsitoryController();
+		RepositoryController rc = new RepositoryController();
 		
-		assertEquals(null, rc.see("2015-2-2", "2015-11-11"));
+		assertEquals("1000000000", rc.seeRemoval("2015-2-2 00:00:00", "2015-11-11 00:00:00").get(0).getBarCode());
+		
+		
 	}
 }

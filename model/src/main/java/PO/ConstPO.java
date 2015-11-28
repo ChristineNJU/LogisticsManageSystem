@@ -5,7 +5,7 @@ import VO.ConstVO;
 
 public class ConstPO extends PO {
 
-	private String name = null;
+	private String name = "";
 	private double value = 0;
 	
 	

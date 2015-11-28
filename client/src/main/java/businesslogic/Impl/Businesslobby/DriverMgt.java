@@ -33,16 +33,16 @@ public class DriverMgt implements AddDriverService,DeleteDriverService,UpdateDri
 			SearchDriverInfoService searchDriver=(SearchDriverInfoService) Naming.lookup(RMIHelper.SEARCH_DRIVERINFO_IMPL);
 			
 			ArrayList<String> requirementId=new ArrayList<String>();
-			requirementId.add("id='"+id+"'");
+			requirementId.add("Driver_Number='"+id+"'");
 			
 			ArrayList<String> requirementName=new ArrayList<String>();
-			requirementName.add("name='"+id+"'");
+			requirementName.add("DRiver_Name='"+id+"'");
 			
 			ArrayList<DriverInfoPO> searchResultId=new ArrayList<DriverInfoPO>();
 			ArrayList<DriverInfoPO> searchResultName=new ArrayList<DriverInfoPO>();
 			
-			searchResultId=searchDriver.searchDriverInfo(SystemLog.getInstitutionId(), requirementId);
-			searchResultName=searchDriver.searchDriverInfo(SystemLog.getInstitutionId(), requirementName);
+			searchResultId=searchDriver.searchDriverInfo(URLHelper.getDriverInfoURL(SystemLog.getInstitutionId()), requirementId);
+			searchResultName=searchDriver.searchDriverInfo(URLHelper.getDriverInfoURL(SystemLog.getInstitutionId()), requirementName);
 			
 			for(int i=0;i<searchResultName.size();i++)
 				searchResultId.add(searchResultName.get(i));
@@ -75,9 +75,9 @@ public class DriverMgt implements AddDriverService,DeleteDriverService,UpdateDri
 			SearchDriverInfoService searchDriver=(SearchDriverInfoService) Naming.lookup(RMIHelper.SEARCH_DRIVERINFO_IMPL);
 			
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("id='"+driver.getId()+"'");
+			requirement.add("Driver_number='"+driver.getNumber()+"'");
 			
-			ArrayList<DriverInfoPO> searchResult=searchDriver.searchDriverInfo(URLHelper.getDriverInfoURL(driver.getId().substring(0,driver.getId().length()-3)), requirement);
+			ArrayList<DriverInfoPO> searchResult=searchDriver.searchDriverInfo(URLHelper.getDriverInfoURL(driver.getNumber().substring(0, driver.getNumber().length()-3)), requirement);
 			
 			if(searchResult.isEmpty()){
 				System.out.println("not found");
@@ -85,9 +85,9 @@ public class DriverMgt implements AddDriverService,DeleteDriverService,UpdateDri
 			}
 			
 			else{
-				for(int i=0;i<searchResult.size();i++){
+				
 					result=updateService.update(new DriverInfoPO(driver));
-				}
+				
 			}
 			
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
@@ -108,9 +108,9 @@ public class DriverMgt implements AddDriverService,DeleteDriverService,UpdateDri
 			SearchDriverInfoService searchDriver=(SearchDriverInfoService) Naming.lookup(RMIHelper.SEARCH_DRIVERINFO_IMPL);
 			
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("id='"+driver.getId()+"'");
+			requirement.add("Driver_Number='"+driver.getNumber()+"'");
 			
-			ArrayList<DriverInfoPO> searchResult=searchDriver.searchDriverInfo(URLHelper.getDriverInfoURL(driver.getId().substring(0,driver.getId().length()-3)), requirement);
+			ArrayList<DriverInfoPO> searchResult=searchDriver.searchDriverInfo(URLHelper.getDriverInfoURL(driver.getNumber().substring(0, driver.getNumber().length()-3)), requirement);
 			
 			if(searchResult.isEmpty()){
 				System.out.println("not found");

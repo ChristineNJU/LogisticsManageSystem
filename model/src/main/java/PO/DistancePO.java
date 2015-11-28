@@ -2,8 +2,8 @@ package PO;
 
 public class DistancePO extends PO {
 
-	private String city_1 = null;
-	private String city_2 = null;
+	private String city_1 = "";
+	private String city_2 = "";
 	private double distance = 0;
 	private double time = 0;
 	

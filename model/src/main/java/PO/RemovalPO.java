@@ -13,11 +13,11 @@ import VO.RemovalVO;
 
 public class RemovalPO extends PO {
 
-	private String bar_code = null;
-	private Date removal_date = null;
-	private String destination = null;
-	private TransferType type = null;
-	private String transfer_number = null;
+	private String bar_code = "";
+	private Date removal_date;
+	private String destination = "";
+	private TransferType type;
+	private String transfer_number = "";
 	private boolean isApproved = false;
 	
 	public RemovalPO(String bar_code, Date removal_date, String destination, TransferType type,

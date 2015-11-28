@@ -13,9 +13,9 @@ import VO.GatheringVO;
 
 public class GatheringPO extends PO {
 	
-	private Date date = null;
+	private Date date;
 	private double amount = 0;
-	private String courier = null;
+	private String courier = "";
 	private ArrayList<String> bar_code_list = new ArrayList<String>();
 	private boolean isApproved = false;
 	
@@ -119,9 +119,10 @@ public class GatheringPO extends PO {
 			if(i!=bar_code_list.size()-1){
 				result = result + bar_code_list.get(i) + ",";				
 			}else{
-				result = result + bar_code_list.get(i) + "',";
+				result = result + bar_code_list.get(i);
 			}
 		}
+		result = result + "', ";
 		
 		result = result + "'" + isApproved + "'";
 		

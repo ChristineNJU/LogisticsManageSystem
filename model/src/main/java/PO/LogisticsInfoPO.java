@@ -19,39 +19,39 @@ public class LogisticsInfoPO extends PO {
 	/*
 	 * 寄件人信息
 	 * */
-	private String sender_name = null;
-	private String sender_address = null;
-	private String sender_organization = null;
-	private String sender_telephone = null;
-	private String sender_mobilephone = null;
+	private String sender_name = "";
+	private String sender_address = "";
+	private String sender_organization = "";
+	private String sender_telephone = "";
+	private String sender_mobilephone = "";
 	/*
 	 * 收件人信息
 	 * */
-	private String recipient_name = null;
-	private String recipient_address = null;
-	private String recipient_organization = null;
-	private String recipient_telephone = null;
-	private String recipient_mobilephone = null;
-	private String actual_recipient_name = null;			//实际收件人
+	private String recipient_name = "";
+	private String recipient_address = "";
+	private String recipient_organization = "";
+	private String recipient_telephone = "";
+	private String recipient_mobilephone = "";
+	private String actual_recipient_name = "";			//实际收件人
 	/*
 	 * 快递信息
 	 * */
-	private String bar_code = null;							//订单条形码
+	private String bar_code = "";							//订单条形码
 	private int original_number = 1;						//原件数
 	private double weight = 0;								//实际重量
 	private double size = 0;								//体积
-	private String internal_name = null;					//内件品名
+	private String internal_name ="";					//内件品名
 	private LogisticsType type = LogisticsType.STANDARD;	//快递类型
 	private PackingCharge pack = PackingCharge.COURISE_BAG;	//包装费
 	private double total_cost = 0;							//费用合计
-	private String starting = null;							//出发地
-	private String destination = null;						//到达地
+	private String starting = "";							//出发地
+	private String destination = "";						//到达地
 	private boolean isApproved = false;						//审批状态
 	private LogisticsState state = LogisticsState.INTACT;	//快递状态
 	private boolean isReceived = false;						//收件状态
-	private Date send_date = null;							//发件日期
-	private Date receive_date = null;						//收件日期
-	private String courier = null;							//快递员
+	private Date send_date = new Date();							//发件日期
+	private Date receive_date = new Date();						//收件日期
+	private String courier = "";							//快递员
 	/*
 	 * 历史轨迹
 	 * */
@@ -407,18 +407,19 @@ public class LogisticsInfoPO extends PO {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		result = result + "'" + sdf.format(send_date) + "', ";
 		result = result + "'" + sdf.format(receive_date) + "', ";
-		result = result + "'" + courier + "'";
-		result = result + "'" + isApproved + "'";
-		result = result + "'" + isReceived + "'";
+		result = result + "'" + courier + "', ";
+		result = result + "'" + isApproved + "', ";
+		result = result + "'" + isReceived + "', ";
 		
 		result = result + "'";
 		for(int i=0;i<history.size();i++){
 			if(i!=history.size()-1){
 				result = result + history.get(i) + ">>";				
 			}else{
-				result = result + history.get(i) + "'";
+				result = result + history.get(i);
 			}
 		}
+		result = result + "'";
 		
 		System.out.println(result);
  		return result;

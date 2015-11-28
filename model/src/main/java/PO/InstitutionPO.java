@@ -7,10 +7,10 @@ import VO.InstitutionVO;
 
 public class InstitutionPO extends PO {
 	
-	private String institution_name = null;
-	private InstitutionType institution_type = null;
-	private String city = null;
-	private String institution_number = null;
+	private String institution_name = "";
+	private InstitutionType institution_type;
+	private String city = "";
+	private String institution_number = "";
 	
 	public InstitutionPO(String institution_name, InstitutionType institution_type, String city, String institution_number, 
 			 String DB_URL) {

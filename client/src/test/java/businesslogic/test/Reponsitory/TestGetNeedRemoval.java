@@ -1,14 +1,14 @@
 package businesslogic.test.Reponsitory;
 
-import businesslogic.Impl.Reponsitory.ReponsitoryController;
 import junit.framework.TestCase;
+import businesslogic.Impl.Repository.RepositoryController;
 
 public class TestGetNeedRemoval extends TestCase {
 	
 	public void testGetNeedRemoval() {
 		
-		ReponsitoryController rc = new ReponsitoryController();
+		RepositoryController rc = new RepositoryController();
 		
-		assertEquals(null, rc.getNeedRemoval());
+		assertEquals(null, rc.getNeedRemoval(null));
 	}
 }

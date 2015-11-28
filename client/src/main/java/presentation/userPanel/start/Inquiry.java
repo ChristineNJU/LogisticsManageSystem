@@ -1,6 +1,11 @@
 package presentation.userPanel.start;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Stroke;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -35,6 +40,7 @@ public class Inquiry{
 	private JPanel inquiryPanel;
 	
 	private JScrollPane scrollPane;
+	private JPanel scrollPanePanel;
 	
 	private JButton mini;
 	private JButton close;
@@ -63,7 +69,8 @@ public class Inquiry{
 	
 	private void componentsInstantiation(){
 		inquiryPanel = new JPanel();
-		scrollPane = new FlatScrollPane();
+		scrollPanePanel = new HistoryPanel();
+		scrollPane = new FlatScrollPane(scrollPanePanel);
 		mini = new ButtonFrame("mini");
 		close = new ButtonFrame("close");
 		Icon iconTitle = new ImageIcon("src/graphics/Title/logIn.png");
@@ -88,14 +95,6 @@ public class Inquiry{
 		close.addActionListener(listener);
 		inquiryPanel.add(mini);
 		inquiryPanel.add(close);
-		
-		scrollPane.setBounds(300, 320, 450, 500);
-		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane.setOpaque(false);
-		scrollPane.getViewport().setOpaque(false);
-		scrollPane.setBorder(new LineBorder(Color.black, 0));
-		inquiryPanel.add(scrollPane);
 		
 		title.setBounds(300,0,400,63);
 		inquiryPanel.add(title);
@@ -141,14 +140,22 @@ public class Inquiry{
 			showNotFound();
 			return;
 		}
-//		ArrayList<String> historyString = new ArrayList<String>();
-//		historyString.add("已签收，签收是本人");
-//		historyString.add("到达仙林营业厅");
-//		historyString.add("到达上海中转中心");
-//		historyString.add("从浦口营业厅出发");
-//		historyString.add("快递员揽件");
-//		info = new LogisticsHistoryVO(bar_code, historyString);
 		history = info.getHistory();		
+		
+		scrollPane.setBounds(300, 320, 441, 260);
+		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		scrollPane.setOpaque(false);
+		scrollPane.getViewport().setOpaque(false);
+		scrollPane.setBorder(new LineBorder(Color.black, 0));
+		scrollPanePanel.setLayout(null);
+		scrollPanePanel.setOpaque(false);
+		
+		Dimension d = new Dimension(441, 66*history.size());
+		
+		scrollPanePanel.setPreferredSize(d);
+		inquiryPanel.add(scrollPane);
+		
 		historyLabel = new ArrayList<HistoryLabel>();
 		for(int i = 0 ; i < history.size();i++){
 			String[] input = history.get(i).split(",");
@@ -158,8 +165,19 @@ public class Inquiry{
 				historyLabel.add(new HistoryLabel(input[0], "",i));
 			}
 //			inquiryPanel.add(historyLabel.get(i));
-			scrollPane.add(historyLabel.get(i));
+//			scrollPanePanel.add(historyLabel.get(i));
 			System.out.println(i);
+		}
+		
+		int w = 300;
+		int h = 0;
+		
+		for(int i=0;i<history.size();i++){
+			
+			h = h+66;
+			
+			scrollPanePanel.add(historyLabel.get(i));
+			scrollPanePanel.setSize(w, h);
 		}
 //		inquiryPanel.repaint();
 		scrollPane.repaint();
@@ -178,7 +196,7 @@ public class Inquiry{
 		Thread t = new Thread(new MovingFunction());
 		t.start();
 		
-		logInDialog.getDialog().setModal(true);
+//		logInDialog.getDialog().setModal(true);
 	}
 	
 	private void showNotFound(){
@@ -221,12 +239,39 @@ public class Inquiry{
 		return logIn;
 	}
 	
+	class HistoryPanel extends JPanel {
+		
+		public void paint(Graphics g) {
+			Color oldColor = g.getColor();
+			
+			Graphics2D g2d = (Graphics2D)g;
+			g2d.setBackground(Color.black);
+			Stroke dash = new BasicStroke(1.5f,BasicStroke.CAP_BUTT,BasicStroke.JOIN_ROUND,
+			3.5f,new float[]{5,5},0f);
+			g2d.setStroke(dash);
+			g2d.setColor(ColorPallet.GrayDark);
+//			g2d.drawLine(30, y1, x2, y2);
+			
+			int h = 40;
+			
+			for(int i=0;i<this.getHeight()/66-1;i++){
+				g2d.drawLine(15, h, 15, h+26+10);
+				h = h+66;
+			}
+			
+			super.paint(g);
+		}
+	}
+	
 	public class HistoryLabel extends JLabel{
 		
 		JLabel detailL;
 		JLabel timeL;
+		JLabel node;
+		
 		public HistoryLabel(String detail,String time,int i) {
 
+			node = new JLabel();
 			
 			detailL = new JLabel(detail);
 			detailL.setBounds(60,6,300,25);
@@ -239,17 +284,32 @@ public class Inquiry{
 			if(i == 0){
 				detailL.setForeground(ColorPallet.Pink);
 				timeL.setForeground(ColorPallet.Pink);
+				node.setIcon(new ImageIcon("src/graphics/Node/node_first.png"));
 			}else{
 				detailL.setForeground(ColorPallet.Purple);
 				timeL.setForeground(ColorPallet.Purple);
+				node.setIcon(new ImageIcon("src/graphics/Node/node_other.png"));
 			}
+			
+			node.setBounds(0, 10, 30, 30);
 			
 			this.add(detailL);
 			this.add(timeL);
+			this.add(node);
 //			setBounds(300,320+i*66,450,66);
 			setBounds(0, i*66, 450, 66);
 		}
-		
+//		public void paint(Graphics g) {
+//			Color oldColor = g.getColor();
+//			
+//			Graphics2D g2d = (Graphics2D)g;
+//			g2d.setBackground(Color.black);
+//			Stroke dash = new BasicStroke(1f,BasicStroke.CAP_BUTT,BasicStroke.JOIN_ROUND,
+//			3.5f,new float[]{15,10,},0f);
+//			g2d.setStroke(dash);
+//			g2d.setColor(ColorPallet.GrayDark);
+//			g2d.drawLine(30, y1, x2, y2);
+//		}
 	}
 	
 	public class Listener implements ActionListener, FocusListener{

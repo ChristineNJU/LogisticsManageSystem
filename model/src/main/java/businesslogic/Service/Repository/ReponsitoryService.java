@@ -23,7 +23,7 @@ public interface ReponsitoryService {
 	public ArrayList<StorageVO> seeStorage(String time_start, String time_end);
 	public AddState stockTakingConfirm(ArrayList<StockTakingVO> stockList);
 	public OutputState stockTakingExcel();
-	public ArrayList<StockTakingVO> getStockTaking(ArrayList<WareHousePO> repository);
+	public ArrayList<StockTakingVO> getStockTaking();
 	public StorageState storage(ArrayList<StorageVO> storage);
 	
 }

@@ -21,6 +21,7 @@ public class BalanceImpl implements AddBalanceService {
 			AddService balanceAdd=(AddService) Naming.lookup(RMIHelper.ADD_IMPL);
 			for(int i=0;i<balance.size();i++){
 				state=balanceAdd.add(new BalancePO(balance.get(i),SystemLog.getInstitutionId()));
+//				state=balanceAdd.add(new BalancePO(balance.get(i),"02500"));
 			}
 		} catch (Exception ex){
 			state=AddState.CONNECTERROR;

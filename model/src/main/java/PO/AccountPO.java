@@ -6,7 +6,7 @@ import businesslogic.URLHelper.URLHelper;
 public class AccountPO extends PO {
 
 	private int account_id = 0;
-	private String account_name = null;
+	private String account_name = "";
 	private double amount = 0;
 	
 	public AccountPO(int account_id, String account_name, double amount, String DB_URL) {
@@ -17,9 +17,9 @@ public class AccountPO extends PO {
 		this.amount = amount;
 	}
 	
-	public AccountPO(AccountVO avo){
+	public AccountPO(AccountVO avo,int ID){
 		super(URLHelper.getAccountURL());
-		this.account_id=avo.getID();
+		this.account_id=ID;
 		this.account_name=avo.getName();
 		this.amount=avo.getMoney();
 	}
@@ -90,7 +90,7 @@ public class AccountPO extends PO {
 	@Override
 	public String getPrimaryKey() {
 		// TODO Auto-generated method stub
-		return "account_id = '"+account_id+"'";
+		return "account_id = "+account_id+"";
 	}
 
 }

@@ -29,4 +29,10 @@ public class AnimationEasing {
 		return c*(t/=d)*t + b;
 	}
 	
+	public static double easeInOutQuint(double x, double t, double b, double c, double d) {
+		if ((t/=d/2) < 1) return c/2*t*t*t*t*t + b;
+
+        return c/2*((t-=2)*t*t*t*t + 2) + b;
+	}
+	
 }

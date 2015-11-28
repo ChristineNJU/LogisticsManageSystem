@@ -34,6 +34,7 @@ public class FlatScrollBarUI extends BasicScrollBarUI {
 		
 		FlatArrowButton fb = new FlatArrowButton(orientation);
 		fb.setFocusable(isFocusable);
+//		fb.setVisible(false);
 		fb.setVisible(true);
 		return fb;
 	}
@@ -43,13 +44,14 @@ public class FlatScrollBarUI extends BasicScrollBarUI {
 //		System.out.println(isFocusable);
 		FlatArrowButton fb = new FlatArrowButton(orientation);
 		fb.setFocusable(isFocusable);
+//		fb.setVisible(false);
 		fb.setVisible(true);
 		return fb;
 	}
 	
 	public void paintTrack(Graphics g, JComponent c, Rectangle trackBounds) {
-//		g.setColor(trackColor);
-//		g.fillRect(trackBounds.x, trackBounds.y, trackBounds.width, trackBounds.height);
+		g.setColor(trackColor);
+		g.fillRect(trackBounds.x, trackBounds.y, trackBounds.width, trackBounds.height);
 	}
 	
 	public void paintThumb(Graphics g, JComponent c, Rectangle thumbBounds) {
@@ -64,7 +66,7 @@ public class FlatScrollBarUI extends BasicScrollBarUI {
 			
 		g.setColor(ColorPallet.GrayLight);
 //		g.fillRect(0, 0, w, h);
-		g.fillRect(5, 0, w-5, h);
+		g.fillRect(0, 0, w, h);
 		
 		g.translate(-thumbBounds.x, -thumbBounds.y);
 	}

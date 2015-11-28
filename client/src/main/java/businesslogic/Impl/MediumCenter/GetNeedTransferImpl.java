@@ -23,7 +23,7 @@ public class GetNeedTransferImpl implements GetNeedTransferService{
 		try {
 			SearchTransferService searchTransfer=(SearchTransferService) Naming.lookup(RMIHelper.SEARCH_GATHERING_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("date like '%%'");
+			requirement.add("TRANSFER_NUMBER like '%%'");
 			
 			ArrayList<TransferPO> searchResult=searchTransfer.searchTransfer(URLHelper.getTransferURL(SystemLog.getInstitutionId()), requirement);
 			
