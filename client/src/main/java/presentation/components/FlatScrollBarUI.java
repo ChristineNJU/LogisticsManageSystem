@@ -66,7 +66,7 @@ public class FlatScrollBarUI extends BasicScrollBarUI {
 			
 		g.setColor(ColorPallet.GrayLight);
 //		g.fillRect(0, 0, w, h);
-		g.fillRect(5, 0, w-5, h);
+		g.fillRect(0, 0, w, h);
 		
 		g.translate(-thumbBounds.x, -thumbBounds.y);
 	}

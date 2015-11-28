@@ -13,13 +13,13 @@ import VO.TransferVO;
 
 public class TransferPO extends PO {
 	
-	private Date date = null;
-	private String transfer_number = null;
-	private String transport_id = null;
-	private String starting = null;
-	private String destination = null;
-	private String container_number = null;
-	private String guard_name = null;
+	private Date date;
+	private String transfer_number = "";
+	private String transport_id = "";
+	private String starting = "";
+	private String destination = "";
+	private String container_number = "";
+	private String guard_name = "";
 	private ArrayList<String> bar_code_list = new ArrayList<String>();
 	private double amount = 0;
 	private boolean isApproved = false;
@@ -167,9 +167,10 @@ public class TransferPO extends PO {
 			if(i!=bar_code_list.size()-1){
 				result = result + bar_code_list.get(i) + ",";				
 			}else{
-				result = result + bar_code_list.get(i) + "',";
+				result = result + bar_code_list.get(i);
 			}
 		}
+		result = result + "', ";
 		
 		result = result + amount + ", ";
 		result = result + "'" + isApproved + "'";

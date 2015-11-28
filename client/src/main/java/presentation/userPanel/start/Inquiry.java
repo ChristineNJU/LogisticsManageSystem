@@ -1,6 +1,7 @@
 package presentation.userPanel.start;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -91,16 +92,6 @@ public class Inquiry{
 		inquiryPanel.add(mini);
 		inquiryPanel.add(close);
 		
-		scrollPane.setBounds(300, 320, 441, 100);
-		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-		scrollPane.setOpaque(false);
-		scrollPane.getViewport().setOpaque(false);
-		scrollPane.setBorder(new LineBorder(Color.black, 0));
-		scrollPanePanel.setLayout(null);
-		scrollPanePanel.setBounds(0, 0, 441, 100);
-		inquiryPanel.add(scrollPane);
-		
 		title.setBounds(300,0,400,63);
 		inquiryPanel.add(title);
 		
@@ -145,14 +136,22 @@ public class Inquiry{
 			showNotFound();
 			return;
 		}
-//		ArrayList<String> historyString = new ArrayList<String>();
-//		historyString.add("已签收，签收是本人");
-//		historyString.add("到达仙林营业厅");
-//		historyString.add("到达上海中转中心");
-//		historyString.add("从浦口营业厅出发");
-//		historyString.add("快递员揽件");
-//		info = new LogisticsHistoryVO(bar_code, historyString);
 		history = info.getHistory();		
+		
+		scrollPane.setBounds(300, 320, 441, 260);
+		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		scrollPane.setOpaque(false);
+		scrollPane.getViewport().setOpaque(false);
+		scrollPane.setBorder(new LineBorder(Color.black, 0));
+		scrollPanePanel.setLayout(null);
+		scrollPanePanel.setOpaque(false);
+		
+		Dimension d = new Dimension(441, 66*history.size());
+		
+		scrollPanePanel.setPreferredSize(d);
+		inquiryPanel.add(scrollPane);
+		
 		historyLabel = new ArrayList<HistoryLabel>();
 		for(int i = 0 ; i < history.size();i++){
 			String[] input = history.get(i).split(",");
@@ -240,8 +239,10 @@ public class Inquiry{
 		
 		JLabel detailL;
 		JLabel timeL;
+		JLabel node;
 		public HistoryLabel(String detail,String time,int i) {
 
+			node = new JLabel();
 			
 			detailL = new JLabel(detail);
 			detailL.setBounds(60,6,300,25);
@@ -254,13 +255,18 @@ public class Inquiry{
 			if(i == 0){
 				detailL.setForeground(ColorPallet.Pink);
 				timeL.setForeground(ColorPallet.Pink);
+				node.setIcon(new ImageIcon("src/graphics/Node/node_first.png"));
 			}else{
 				detailL.setForeground(ColorPallet.Purple);
 				timeL.setForeground(ColorPallet.Purple);
+				node.setIcon(new ImageIcon("src/graphics/Node/node_other.png"));
 			}
+			
+			node.setBounds(0, 10, 30, 30);
 			
 			this.add(detailL);
 			this.add(timeL);
+			this.add(node);
 //			setBounds(300,320+i*66,450,66);
 			setBounds(0, i*66, 450, 66);
 		}

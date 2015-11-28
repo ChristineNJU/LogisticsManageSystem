@@ -8,9 +8,9 @@ import VO.SalaryVO;
 
 public class SalaryPO extends PO {
 
-	private UserRole staff = null;
+	private UserRole staff;
 	private double salary = 0;
-	private SalaryType type = null;
+	private SalaryType type;
 	
 	
 	public SalaryPO(UserRole staff, double salary, SalaryType type, String DB_URL) {

@@ -13,10 +13,10 @@ import businesslogic.URLHelper.URLHelper;
  * */
 
 public class StockTakingPO extends PO {
-	private String bar_code = null;
-	private Date storage_date = null;
-	private String destination = null;
-	private StorageArea area_code = null;
+	private String bar_code = "";
+	private Date storage_date;
+	private String destination = "";
+	private StorageArea area_code;
 	private int row = 0;
 	private int shelf = 0;
 	private int position = 0;
