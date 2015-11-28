@@ -15,15 +15,13 @@ import javax.swing.table.TableCellRenderer;
 
 import presentation.main.ColorPallet;
 import presentation.main.FontSet;
+import presentation.components.RendererDelete;
 
 public class Table extends JTable {
 
 	private RendererGeneral render = new RendererGeneral();
 	private CellEditor editor = new CellEditor();
-//	private CellState[][] cellState;
 	TableModel model;
-	boolean [] isDelete;
-//	MyTableMouseMotionListener mouseMoveListener = new MyTableMouseMotionListener();
 
 	public Table(TableModel model){
 		super(model);
@@ -33,7 +31,6 @@ public class Table extends JTable {
         this.setGridColor(ColorPallet.GrayLight);
         this.setShowVerticalLines(false);
         this.setForeground(ColorPallet.GrayDark);
-//        this.setDefaultRenderer(getColumnClass(0), new RendererGeneral());
         this.setDefaultRenderer(getColumnClass(0), new colorTableRender());
         this.setDefaultEditor(getColumnClass(0), new DefaultCellEditor(editor));
         
@@ -42,12 +39,33 @@ public class Table extends JTable {
 	@Override
 	public Component prepareRenderer(TableCellRenderer renderer, int row, int column){
         JComponent comp = (JComponent)super.prepareRenderer(renderer,row,column);
+        if(model.isNew(row)){
+        	comp.setOpaque(true);
+        	comp.setBackground(ColorPallet.Green);
+        	if(column == getColumnCount() - 1){
+//        		System.out.println("empty renderer "+row);
+        		return (JComponent)super.prepareRenderer(new RendererCancelNew(), row, column);
+        	}
+//        	System.out.println("!!!!!Not empty renderer "+row);
+        	return comp;
+        }
         if(model.isDelete(row)){
         	comp.setOpaque(true);
         	comp.setBackground(ColorPallet.Yellow);
-        }else{
-        	comp.setOpaque(false);
+        	if(column == getColumnCount() - 1){
+        		return (JComponent)super.prepareRenderer(new RenderHaveDelete(), row, column);
+        	}
+//        	System.out.println("-------------!!!!!Not empty renderer "+row);
+        	return comp;
         }
+        if(model.isUpdate(row,column)){
+        	comp.setOpaque(true);
+        	comp.setBackground(ColorPallet.Orange);
+        	return comp;
+        }
+        
+        comp.setOpaque(false);
+        
         return comp;
     }
 	

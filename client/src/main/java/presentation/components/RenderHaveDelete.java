@@ -1,42 +1,37 @@
 package presentation.components;
 
-import java.awt.Color;
 import java.awt.Component;
 
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
-import presentation.components.RenderHaveDelete.ButtonHaveDelete;
 import presentation.main.ColorPallet;
 import presentation.main.FontSet;
 
-public class RendererDelete implements TableCellRenderer{
+public class RenderHaveDelete implements TableCellRenderer{
 
-	private ButtonDelete delete = new ButtonDelete();
-	
-	public RendererDelete(){
-		
-	}
-	
+
+	private ButtonHaveDelete haveDelete = new ButtonHaveDelete();
 	@Override
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
 			int row, int column) {
-		
-//		System.out.println("in renderer delete:"+row+"  "+column);
-			return delete;
-
+		// TODO Auto-generated method stub
+		return haveDelete;
 	}
-	public class ButtonDelete extends JButton{
-		public ButtonDelete(){
-			this.setBorderPainted(false);
+	
+	public class ButtonHaveDelete extends JButton{
+		public ButtonHaveDelete(){
+//			this.setBorderPainted(false);
 			this.setFocusPainted(false);
 			this.setContentAreaFilled(false);
-			setIcon(new ImageIcon("src/graphics/Button/delete.png"));
-			setSize(30,30);
+			setText("取消删除");
+			setSize(50,30);
+			setFont(FontSet.fourteen);
+			setForeground(ColorPallet.Purple);
 			setHorizontalAlignment(CENTER); 
+			setBorder(BorderFactory.createLineBorder(ColorPallet.Purple));
 		}
 	}
 
