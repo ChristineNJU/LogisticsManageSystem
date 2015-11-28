@@ -1,7 +1,11 @@
 package presentation.userPanel.start;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Stroke;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -65,7 +69,7 @@ public class Inquiry{
 	
 	private void componentsInstantiation(){
 		inquiryPanel = new JPanel();
-		scrollPanePanel = new JPanel();
+		scrollPanePanel = new HistoryPanel();
 		scrollPane = new FlatScrollPane(scrollPanePanel);
 		mini = new ButtonFrame("mini");
 		close = new ButtonFrame("close");
@@ -235,11 +239,36 @@ public class Inquiry{
 		return logIn;
 	}
 	
+	class HistoryPanel extends JPanel {
+		
+		public void paint(Graphics g) {
+			Color oldColor = g.getColor();
+			
+			Graphics2D g2d = (Graphics2D)g;
+			g2d.setBackground(Color.black);
+			Stroke dash = new BasicStroke(1.5f,BasicStroke.CAP_BUTT,BasicStroke.JOIN_ROUND,
+			3.5f,new float[]{5,5},0f);
+			g2d.setStroke(dash);
+			g2d.setColor(ColorPallet.GrayDark);
+//			g2d.drawLine(30, y1, x2, y2);
+			
+			int h = 40;
+			
+			for(int i=0;i<this.getHeight()/66-1;i++){
+				g2d.drawLine(15, h, 15, h+26+10);
+				h = h+66;
+			}
+			
+			super.paint(g);
+		}
+	}
+	
 	public class HistoryLabel extends JLabel{
 		
 		JLabel detailL;
 		JLabel timeL;
 		JLabel node;
+		
 		public HistoryLabel(String detail,String time,int i) {
 
 			node = new JLabel();
@@ -270,7 +299,17 @@ public class Inquiry{
 //			setBounds(300,320+i*66,450,66);
 			setBounds(0, i*66, 450, 66);
 		}
-		
+//		public void paint(Graphics g) {
+//			Color oldColor = g.getColor();
+//			
+//			Graphics2D g2d = (Graphics2D)g;
+//			g2d.setBackground(Color.black);
+//			Stroke dash = new BasicStroke(1f,BasicStroke.CAP_BUTT,BasicStroke.JOIN_ROUND,
+//			3.5f,new float[]{15,10,},0f);
+//			g2d.setStroke(dash);
+//			g2d.setColor(ColorPallet.GrayDark);
+//			g2d.drawLine(30, y1, x2, y2);
+//		}
 	}
 	
 	public class Listener implements ActionListener, FocusListener{
