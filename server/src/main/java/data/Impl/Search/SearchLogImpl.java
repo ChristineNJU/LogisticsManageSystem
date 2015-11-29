@@ -29,12 +29,6 @@ public class SearchLogImpl extends UnicastRemoteObject implements SearchLogServi
 	}
 
 	@Override
-	/**
-	 * 从数据库中搜索LogPO
-	 * 
-	 * @param requirement 搜索要求
-	 * @return LogPO的ArrayList 
-	 */
 	public ArrayList<LogPO> searchLog(ArrayList<String> requirement)
 			throws RemoteException {
 		// TODO Auto-generated method stub

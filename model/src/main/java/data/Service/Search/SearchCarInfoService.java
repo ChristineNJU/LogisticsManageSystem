@@ -19,6 +19,7 @@ public interface SearchCarInfoService extends Remote{
 	 * @param DB_URL 表链接
 	 * @param requirement 搜索要求
 	 * @return CarInfoPO的ArrayList 
+	 * @throws RemoteException 如果RMI链接断开
 	 */
 	public ArrayList<CarInfoPO> searchCarInfo(String DB_URL, ArrayList<String> requirement) throws RemoteException;
 	

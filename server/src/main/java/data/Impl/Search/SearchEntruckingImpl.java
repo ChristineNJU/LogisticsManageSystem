@@ -28,13 +28,6 @@ public class SearchEntruckingImpl extends UnicastRemoteObject implements SearchE
 	}
 
 	@Override
-	/**
-	 * 从数据库中搜索EntruckingPO
-	 * 
-	 * @param DB_URL 表链接
-	 * @param requirement 搜索要求
-	 * @return EntruckingPO的ArrayList 
-	 */
 	public ArrayList<EntruckingPO> searchEntrucking(String DB_URL,
 			ArrayList<String> requirement) throws RemoteException {
 		// TODO Auto-generated method stub

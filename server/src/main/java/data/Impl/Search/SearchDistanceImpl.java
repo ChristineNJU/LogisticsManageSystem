@@ -26,12 +26,6 @@ public class SearchDistanceImpl extends UnicastRemoteObject implements SearchDis
 	}
 
 	@Override
-	/**
-	 * 从数据库中搜索DistancePO
-	 * 
-	 * @param requirement 搜索要求
-	 * @return DistancePO的ArrayList 
-	 */
 	public ArrayList<DistancePO> searchDistance(ArrayList<String> requirement)
 			throws RemoteException {
 		// TODO Auto-generated method stub

@@ -28,13 +28,6 @@ public class SearchTransferImpl extends UnicastRemoteObject implements SearchTra
 	}
 
 	@Override
-	/**
-	 * 从数据库中搜索TransferPO
-	 * 
-	 * @param DB_URL 表链接
-	 * @param requirement 搜索要求
-	 * @return TransferPO的ArrayList 
-	 */
 	public ArrayList<TransferPO> searchTransfer(String DB_URL,
 			ArrayList<String> requirement) throws RemoteException {
 		// TODO Auto-generated method stub

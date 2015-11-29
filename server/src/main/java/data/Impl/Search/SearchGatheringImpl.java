@@ -28,13 +28,6 @@ public class SearchGatheringImpl extends UnicastRemoteObject implements SearchGa
 	}
 
 	@Override
-	/**
-	 * 从数据库中搜索GatheringPO
-	 * 
-	 * @param DB_URL 表链接
-	 * @param requirement 搜索要求
-	 * @return GatheringPO的ArrayList 
-	 */
 	public ArrayList<GatheringPO> searchGathering(String DB_URL,
 			ArrayList<String> requirement) throws RemoteException {
 		// TODO Auto-generated method stub

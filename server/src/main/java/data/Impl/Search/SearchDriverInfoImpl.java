@@ -28,13 +28,6 @@ public class SearchDriverInfoImpl extends UnicastRemoteObject implements SearchD
 	}
 
 	@Override
-	/**
-	 * 从数据库中搜索DriverInfoPO
-	 * 
-	 * @param DB_URL 表链接
-	 * @param requirement 搜索要求
-	 * @return DriverInfoPO的ArrayList 
-	 */
 	public ArrayList<DriverInfoPO> searchDriverInfo(String DB_URL,
 			ArrayList<String> requirement) throws RemoteException {
 		// TODO Auto-generated method stub

@@ -29,12 +29,6 @@ public class SearchSalaryImpl extends UnicastRemoteObject implements SearchSalar
 	}
 
 	@Override
-	/**
-	 * 从数据库中搜索SalaryPO
-	 * 
-	 * @param requirement 搜索要求
-	 * @return SalaryPO的ArrayList 
-	 */
 	public ArrayList<SalaryPO> searchSalary(ArrayList<String> requirement)
 			throws RemoteException {
 		// TODO Auto-generated method stub

@@ -6,6 +6,19 @@ import java.util.ArrayList;
 
 import PO.LogPO;
 
+/**
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public interface SearchLogService extends Remote {
+	
+	/**
+	 * 从数据库中搜索LogPO
+	 * 
+	 * @param requirement 搜索要求
+	 * @return LogPO的ArrayList 
+	 * @throws RemoteException 如果RMI链接断开
+	 */
 	public ArrayList<LogPO> searchLog(ArrayList<String> requirement) throws RemoteException;
 }

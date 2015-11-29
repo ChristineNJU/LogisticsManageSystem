@@ -14,6 +14,11 @@ import State.StorageArea;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Sundry.WareHouseService;
 
+/**
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public class WareHouseImpl extends UnicastRemoteObject implements WareHouseService {
 
 	public WareHouseImpl() throws RemoteException {

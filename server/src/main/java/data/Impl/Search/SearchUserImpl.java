@@ -29,12 +29,6 @@ public class SearchUserImpl extends UnicastRemoteObject implements SearchUserSer
 	}
 
 	@Override
-	/**
-	 * 从数据库中搜索UserPO
-	 * 
-	 * @param requirement 搜索要求
-	 * @return UserPO的ArrayList 
-	 */
 	public ArrayList<UserPO> searchUser(ArrayList<String> requirement)
 			throws RemoteException {
 		// TODO Auto-generated method stub

@@ -6,6 +6,19 @@ import java.util.ArrayList;
 
 import PO.SalaryPO;
 
+/**
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public interface SearchSalaryService extends Remote {
+	
+	/**
+	 * 从数据库中搜索SalaryPO
+	 * 
+	 * @param requirement 搜索要求
+	 * @return SalaryPO的ArrayList 
+	 * @throws RemoteException 如果RMI链接断开
+	 */
 	public ArrayList<SalaryPO> searchSalary(ArrayList<String> requirement) throws RemoteException;
 }
