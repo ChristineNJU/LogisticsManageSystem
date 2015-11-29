@@ -91,16 +91,7 @@ public class FinanceController implements FinanceService{
 		}
 		return state;
 	}
-	@Override
-	public AddState addBenefit(BenefitVO benefit) {
-		// TODO Auto-generated method stub
-		BenefitImpl benefitC=new BenefitImpl();
-		AddState state = benefitC.addBenefit(benefit);
-		if(state==AddState.SUCCESS){
-			SystemLog.addLog("添加收益信息");
-		}
-		return state;
-	}
+	
 	@Override
 	public AddState addAccount(AccountVO account) {
 		// TODO Auto-generated method stub
