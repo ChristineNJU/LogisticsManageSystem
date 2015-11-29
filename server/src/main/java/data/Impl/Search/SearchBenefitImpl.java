@@ -58,7 +58,7 @@ public class SearchBenefitImpl extends UnicastRemoteObject implements SearchBene
 				double income = rs.getDouble(1);
 				double expend = rs.getDouble(2);
 				
-				String date = rs.getString(5);
+				String date = rs.getString(3);
 				
 				BenefitPO benefit = new BenefitPO(income, expend, URLHelper.getBenefitURL(), date);
 				

@@ -53,6 +53,7 @@ public class SearchArrivalImpl extends UnicastRemoteObject implements SearchArri
 			}
 			
 			System.out.println(DB_URL);
+			System.out.println(DBHelper.SEARCH(DB_URL, target));
 			ResultSet rs = s.executeQuery(DBHelper.SEARCH(DB_URL, target));
 			
 			while(rs.next()){
