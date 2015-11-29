@@ -1,8 +1,8 @@
 package businesslogic.test.User;
 
+import junit.framework.TestCase;
 import State.ResetState;
 import businesslogic.Impl.User.UserController;
-import junit.framework.TestCase;
 
 public class TestResetPassword extends TestCase {
 	

@@ -2,7 +2,6 @@ package businesslogic.Impl.Repository;
 
 import java.util.ArrayList;
 
-import PO.WareHousePO;
 import State.AddState;
 import State.OutputState;
 import State.StorageState;
@@ -24,10 +23,10 @@ public class RepositoryController implements ReponsitoryService{
 	}
 
 	@Override
-	public OutputState stockTakingExcel() {
+	public OutputState stockTakingExcel(ArrayList<StockTakingVO> stockTaking) {
 		// TODO Auto-generated method stub
 		StockTakingExcelImpl stockTakingExcel=new StockTakingExcelImpl();
-		OutputState state = stockTakingExcel.stockTakingExcel();
+		OutputState state = stockTakingExcel.stockTakingExcel(stockTaking);
 		if(state==OutputState.SUCCESS){
 			SystemLog.addLog("导出盘点信息");
 		}

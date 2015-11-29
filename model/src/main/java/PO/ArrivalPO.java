@@ -38,6 +38,7 @@ public class ArrivalPO extends PO {
 		this.transfer_number=arrival.getListId();
 		this.state=arrival.getLogisticsState();
 		this.starting=arrival.getDeparture();
+		
 	}
 	
 	/*====================================================================================

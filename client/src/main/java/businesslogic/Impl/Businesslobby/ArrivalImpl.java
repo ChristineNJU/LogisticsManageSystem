@@ -1,10 +1,8 @@
 package businesslogic.Impl.Businesslobby;
 
 import java.rmi.Naming;
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import test.Stub.data.AddService_Stub;
 import PO.ArrivalPO;
 import State.AddState;
 import VO.ArrivalVO;
@@ -22,7 +20,7 @@ public class ArrivalImpl implements ArrivalService{
 		try{
 			AddService arrivalAdd=(AddService) Naming.lookup(RMIHelper.ADD_IMPL);
 			for(int i=0;i<arrival.size();i++){
-				state=arrivalAdd.add(new ArrivalPO(arrival.get(i), SystemLog.getInstitutionId()));
+				state=arrivalAdd.add(new ArrivalPO(arrival.get(i), "025000"));
 			} 
 			
 		} catch(Exception ex){

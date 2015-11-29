@@ -1,8 +1,8 @@
 package presentation.userPanel.BusinessLb;
 
-import VO.UserVO;
 import presentation.components.ButtonNav;
 import presentation.main.Navigation;
+import VO.UserVO;
 
 public class NavigationBusinessLobby extends Navigation{
 

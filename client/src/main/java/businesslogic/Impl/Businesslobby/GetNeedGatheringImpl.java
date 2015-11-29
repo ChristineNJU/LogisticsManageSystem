@@ -7,7 +7,6 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import PO.GatheringPO;
-import VO.EntruckingVO;
 import VO.GatheringVO;
 import businesslogic.Service.BusinessLobby.GetNeedGatheringService;
 import businesslogic.SystemLog.SystemLog;

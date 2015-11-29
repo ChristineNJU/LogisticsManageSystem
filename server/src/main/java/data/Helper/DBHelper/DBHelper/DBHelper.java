@@ -69,6 +69,7 @@ public class DBHelper {
 	 * @return SQL搜索语句
 	 */
 	public static String SEARCH(String table, String target) {
+	//	System.out.println("SELECT * FROM "+table+" WHERE "+target);
 		return "SELECT * FROM "+table+" WHERE "+target;
 	}
 	

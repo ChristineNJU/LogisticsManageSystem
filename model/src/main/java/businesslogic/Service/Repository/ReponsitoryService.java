@@ -90,7 +90,7 @@ public interface ReponsitoryService {
 	 * 
 	 * @return 返回导出状态
 	 * */
-	public OutputState stockTakingExcel();
+	public OutputState stockTakingExcel(ArrayList<StockTakingVO> stockTaking);
 	
 	/**
 	 * 获取库存盘点信息

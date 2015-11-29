@@ -1,17 +1,11 @@
 package presentation.components;
 
-import java.awt.Color;
 import java.awt.Component;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
-
-import presentation.components.RenderHaveDelete.ButtonHaveDelete;
-import presentation.main.ColorPallet;
-import presentation.main.FontSet;
 
 public class RendererDelete implements TableCellRenderer{
 

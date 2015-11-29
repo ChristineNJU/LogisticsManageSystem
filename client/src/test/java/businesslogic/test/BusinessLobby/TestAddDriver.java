@@ -4,7 +4,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import junit.framework.TestCase;
-import PO.DriverInfoPO;
 import State.AddState;
 import VO.DriverInfoVO;
 import businesslogic.Impl.Businesslobby.BusinessLobbyController;

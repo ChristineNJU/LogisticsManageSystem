@@ -4,8 +4,6 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import presentation.listener.RollListener;
-
 public class ButtonNav  extends JLabel{
 
 	private Icon icon1 ;

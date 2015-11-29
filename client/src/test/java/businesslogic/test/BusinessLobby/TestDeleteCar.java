@@ -1,9 +1,9 @@
 package businesslogic.test.BusinessLobby;
 
+import junit.framework.TestCase;
 import State.DeleteState;
 import VO.CarInfoVO;
 import businesslogic.Impl.Businesslobby.BusinessLobbyController;
-import junit.framework.TestCase;
 
 public class TestDeleteCar extends TestCase {
 

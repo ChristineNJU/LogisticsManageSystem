@@ -1,8 +1,6 @@
 package presentation.components;
 
 import java.awt.Color;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import presentation.listener.RollListener;
 import presentation.main.ColorPallet;

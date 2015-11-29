@@ -5,7 +5,6 @@ import java.awt.Dimension;
 
 import javax.swing.BorderFactory;
 import javax.swing.DefaultCellEditor;
-import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -15,7 +14,6 @@ import javax.swing.table.TableCellRenderer;
 
 import presentation.main.ColorPallet;
 import presentation.main.FontSet;
-import presentation.components.RendererDelete;
 
 public class Table extends JTable {
 

@@ -1,7 +1,6 @@
 package businesslogic.Impl.Inquiry;
 
 import VO.LogisticsHistoryVO;
-
 import businesslogic.Service.Inquiry.InquiryService;
 
 
