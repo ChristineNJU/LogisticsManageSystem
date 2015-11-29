@@ -28,12 +28,6 @@ public class SearchInstitutionInfoImpl extends UnicastRemoteObject implements Se
 	}
 
 	@Override
-	/**
-	 * 从数据库中搜索InstitutionPO
-	 * 
-	 * @param requirement 搜索要求
-	 * @return InstitutionPO的ArrayList 
-	 */
 	public ArrayList<InstitutionPO> searchInstitutionInfo(
 			ArrayList<String> requirement) throws RemoteException {
 		// TODO Auto-generated method stub

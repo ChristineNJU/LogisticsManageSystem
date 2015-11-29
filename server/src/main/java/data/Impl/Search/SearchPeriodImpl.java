@@ -29,13 +29,6 @@ public class SearchPeriodImpl extends UnicastRemoteObject implements SearchPerio
 	}
 
 	@Override
-	/**
-	 * 从数据库中搜索PeriodPO
-	 * 
-	 * @param DB_URL 表链接
-	 * @param requirement 搜索要求
-	 * @return PeriodPO的ArrayList 
-	 */
 	public ArrayList<PeriodPO> searchPeriod(String DB_URL,
 			ArrayList<String> requirement) throws RemoteException {
 		// TODO Auto-generated method stub

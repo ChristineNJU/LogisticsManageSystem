@@ -11,14 +11,6 @@ import State.StorageArea;
 import State.TransferType;
 import State.UpdateState;
 import VO.ArrivalVO;
-import VO.BalanceVO;
-import VO.CostVO;
-import VO.DeliveryVO;
-import VO.EntruckingVO;
-import VO.GatheringVO;
-import VO.RemovalVO;
-import VO.StorageVO;
-import VO.TransferVO;
 import businesslogic.Impl.Manage.ManageController;
 
 public class TestUpdateReceipt extends TestCase {

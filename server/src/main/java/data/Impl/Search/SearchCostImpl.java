@@ -28,12 +28,6 @@ public class SearchCostImpl extends UnicastRemoteObject implements SearchCostSer
 	}
 
 	@Override
-	/**
-	 * 从数据库中搜索CostPO
-	 * 
-	 * @param requirement 搜索要求
-	 * @return CostPO的ArrayList 
-	 */
 	public ArrayList<CostPO> searchCost(ArrayList<String> requirement)
 			throws RemoteException {
 		// TODO Auto-generated method stub

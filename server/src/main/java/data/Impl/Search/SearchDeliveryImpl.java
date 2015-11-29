@@ -29,13 +29,6 @@ public class SearchDeliveryImpl extends UnicastRemoteObject implements SearchDel
 	}
 
 	@Override
-	/**
-	 * 从数据库中搜索DeliveryPO
-	 * 
-	 * @param DB_URL 表链接
-	 * @param requirement 搜索要求
-	 * @return DeliveryPO的ArrayList 
-	 */
 	public ArrayList<DeliveryPO> searchDelivery(String DB_URL,
 			ArrayList<String> requirement) throws RemoteException {
 		// TODO Auto-generated method stub

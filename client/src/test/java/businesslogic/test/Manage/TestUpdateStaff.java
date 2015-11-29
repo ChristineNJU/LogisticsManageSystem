@@ -1,11 +1,11 @@
 package businesslogic.test.Manage;
 
+import junit.framework.TestCase;
 import State.InstitutionType;
 import State.UpdateState;
 import State.UserRole;
 import VO.StaffVO;
 import businesslogic.Impl.Manage.ManageController;
-import junit.framework.TestCase;
 
 public class TestUpdateStaff extends TestCase {
 

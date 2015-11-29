@@ -8,7 +8,6 @@ import java.rmi.RemoteException;
 import PO.DeliveryPO;
 import State.AddState;
 import VO.DeliveryVO;
-import businesslogic.Service.BusinessLobby.DeliveryService;
 import businesslogic.SystemLog.SystemLog;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;

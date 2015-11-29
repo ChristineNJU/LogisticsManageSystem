@@ -1,8 +1,7 @@
 package businesslogic.test.Manage;
 
-import VO.BenefitVO;
-import businesslogic.Impl.Manage.ManageController;
 import junit.framework.TestCase;
+import businesslogic.Impl.Manage.ManageController;
 
 public class TestSearchBenefit extends TestCase {
 

@@ -3,8 +3,6 @@ package businesslogic.test.Admin;
 import java.util.ArrayList;
 
 import junit.framework.TestCase;
-import State.InstitutionType;
-import State.UserRole;
 import VO.UserVO;
 import businesslogic.Impl.Admin.AdminController;
 

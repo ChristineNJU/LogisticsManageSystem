@@ -10,10 +10,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import VO.UserVO;
 import presentation.frame.MainFrame;
 import presentation.main.ColorPallet;
 import presentation.main.FontSet;
+import VO.UserVO;
 
 public class PanelNavigation extends JPanel {
 

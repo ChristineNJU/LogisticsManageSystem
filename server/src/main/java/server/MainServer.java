@@ -63,6 +63,12 @@ import data.Service.Sundry.TableOperationService;
 import data.Service.Sundry.WareHouseService;
 import data.Service.Update.UpdateService;
 
+/**
+ * server的启动模块,绑定data接口,初始化数据库链接
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ * */
 public class MainServer {
 		
 	public static void main(String[] args) {
@@ -197,6 +203,11 @@ public class MainServer {
 		DBHelper db_helper = DBHelper.createDBHelper();
 	}
 	
+	/**
+	 * 提示消息
+	 * 
+	 * @param object_name 对象名称
+	 * */
 	private static void print(String object_name) {
 		System.out.println(">>>>>>远程"+object_name+"对象绑定成功！");
 	}

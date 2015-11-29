@@ -33,12 +33,6 @@ public class SearchLogisticsImpl extends UnicastRemoteObject implements SearchLo
 	}
 
 	@Override
-	/**
-	 * 从数据库中搜索LogisticsInfoPO
-	 * 
-	 * @param requirement 搜索要求
-	 * @return LogisticsInfoPO的ArrayList 
-	 */
 	public ArrayList<LogisticsInfoPO> searchLogisticsInfo(
 			ArrayList<String> requirement) throws RemoteException {
 		// TODO Auto-generated method stub

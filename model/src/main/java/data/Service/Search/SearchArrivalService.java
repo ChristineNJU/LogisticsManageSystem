@@ -19,6 +19,7 @@ public interface SearchArrivalService extends Remote {
 	 * @param DB_URL 表链接
 	 * @param requirement 搜索要求
 	 * @return ArrivalPO的ArrayList 
+	 * @exception RemoteException 如果RMI链接断开
 	 */
 	public ArrayList<ArrivalPO> searchArrival(String DB_URL, 
 								ArrayList<String> requirement) throws RemoteException;

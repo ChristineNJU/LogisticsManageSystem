@@ -1,7 +1,7 @@
 package businesslogic.test.Manage;
 
-import businesslogic.Impl.Manage.ManageController;
 import junit.framework.TestCase;
+import businesslogic.Impl.Manage.ManageController;
 
 public class TestSearchGathering extends TestCase {
 

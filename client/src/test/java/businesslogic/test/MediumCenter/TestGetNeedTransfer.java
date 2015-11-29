@@ -1,7 +1,7 @@
 package businesslogic.test.MediumCenter;
 
-import businesslogic.Impl.MediumCenter.MediumCenterController;
 import junit.framework.TestCase;
+import businesslogic.Impl.MediumCenter.MediumCenterController;
 
 public class TestGetNeedTransfer extends TestCase {
 	
