@@ -37,7 +37,7 @@ public class MainFrame {
 	
 	private Inquiry inquiry;
 	
-	private UserVO user;
+	private UserVO user = new UserVO("141250181", "张晨剑", UserRole.businessAgent);
 	private Navigation nav;
 //	private CourierNavigation nav;
 	
@@ -56,15 +56,12 @@ public class MainFrame {
 		frame.setContentPane(panel);
 		panel.setLayout(null);
 		
-<<<<<<< HEAD
-//		inquiry = new Inquiry(this);
-//		frame.add(inquiry.getPanel());
-=======
+
 		inquiry = new Inquiry(this);
 //		frame.add(inquiry.getPanel());
-		panel.add(inquiry.getPanel());
->>>>>>> 8160515329f31ecd043adf232fae3036243ef2a4
-//		changeToCourier();
+//		panel.add(inquiry.getPanel());
+
+		changeToCourier();
 //		changeToBusinesslobby();
 //		changeToFinance();
 //		changeToManager();

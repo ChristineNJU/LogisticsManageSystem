@@ -12,14 +12,11 @@ import javax.swing.JLabel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
-<<<<<<< HEAD
 import State.InstitutionType;
 import State.UserRole;
 import VO.UserVO;
 import businesslogic.Impl.Admin.AdminController;
 import businesslogic.Service.Admin.AdminService;
-=======
->>>>>>> 8160515329f31ecd043adf232fae3036243ef2a4
 import presentation.components.ButtonCancel;
 import presentation.components.ButtonNew;
 import presentation.components.ButtonOk;
@@ -36,11 +33,6 @@ import presentation.frame.MgtFourFunctions;
 import presentation.main.ColorPallet;
 import presentation.main.FontSet;
 import presentation.main.Translater;
-import State.InstitutionType;
-import State.UserRole;
-import VO.UserVO;
-import businesslogic.Impl.Admin.AdminController;
-import businesslogic.Service.Admin.AdminService;
 /*
  * initTable有问题
  */
