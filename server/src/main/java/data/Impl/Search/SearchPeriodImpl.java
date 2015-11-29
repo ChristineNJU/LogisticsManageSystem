@@ -16,6 +16,11 @@ import PO.PeriodPO;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Search.SearchPeriodService;
 
+/**
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public class SearchPeriodImpl extends UnicastRemoteObject implements SearchPeriodService {
 
 	public SearchPeriodImpl() throws RemoteException {
@@ -24,6 +29,13 @@ public class SearchPeriodImpl extends UnicastRemoteObject implements SearchPerio
 	}
 
 	@Override
+	/**
+	 * 从数据库中搜索PeriodPO
+	 * 
+	 * @param DB_URL 表链接
+	 * @param requirement 搜索要求
+	 * @return PeriodPO的ArrayList 
+	 */
 	public ArrayList<PeriodPO> searchPeriod(String DB_URL,
 			ArrayList<String> requirement) throws RemoteException {
 		// TODO Auto-generated method stub

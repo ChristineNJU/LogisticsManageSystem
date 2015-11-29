@@ -20,6 +20,11 @@ import businesslogic.URLHelper.URLHelper;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Search.SearchLogisticsService;
 
+/**
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public class SearchLogisticsImpl extends UnicastRemoteObject implements SearchLogisticsService {
 
 	public SearchLogisticsImpl() throws RemoteException {
@@ -28,6 +33,12 @@ public class SearchLogisticsImpl extends UnicastRemoteObject implements SearchLo
 	}
 
 	@Override
+	/**
+	 * 从数据库中搜索LogisticsInfoPO
+	 * 
+	 * @param requirement 搜索要求
+	 * @return LogisticsInfoPO的ArrayList 
+	 */
 	public ArrayList<LogisticsInfoPO> searchLogisticsInfo(
 			ArrayList<String> requirement) throws RemoteException {
 		// TODO Auto-generated method stub

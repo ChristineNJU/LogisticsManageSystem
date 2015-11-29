@@ -32,7 +32,7 @@ private RollListener listener;
 		setBackground(ColorPallet.Purple);
 	}
 	
-	public void setUnRolled(){
+	public void unRolled(){
 		setForeground(ColorPallet.Purple);
 		setOpaque(false);
 		this.repaint();

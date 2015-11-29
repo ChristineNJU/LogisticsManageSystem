@@ -17,6 +17,11 @@ import State.StateSwitch;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Search.SearchArrivalService;
 
+/**
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public class SearchArrivalImpl extends UnicastRemoteObject implements SearchArrivalService {
 
 	public SearchArrivalImpl() throws RemoteException {

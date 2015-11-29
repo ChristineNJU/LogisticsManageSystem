@@ -17,6 +17,11 @@ import State.StorageArea;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Search.SearchStorageService;
 
+/**
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public class SearchStorageImpl extends UnicastRemoteObject implements SearchStorageService {
 
 	public SearchStorageImpl() throws RemoteException {
@@ -25,6 +30,13 @@ public class SearchStorageImpl extends UnicastRemoteObject implements SearchStor
 	}
 
 	@Override
+	/**
+	 * 从数据库中搜索StoragePO
+	 * 
+	 * @param DB_URL 表链接
+	 * @param requirement 搜索要求
+	 * @return StoragePO的ArrayList 
+	 */
 	public ArrayList<StoragePO> searchStorage(String DB_URL,
 			ArrayList<String> requirement) throws RemoteException {
 		// TODO Auto-generated method stub

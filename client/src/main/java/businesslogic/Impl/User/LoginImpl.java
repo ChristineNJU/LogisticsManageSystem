@@ -17,11 +17,12 @@ public class LoginImpl {
 		try{
 			SearchUserService searchUser=(SearchUserService)Naming.lookup(RMIHelper.SEARCH_USER_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("name='"+userName+"'");
+			requirement.add("ID='"+userName+"'");
 			ArrayList<UserPO> result=searchUser.searchUser(requirement);
 			
 			if(result.isEmpty()){
 				state=LoginState.WRONGID;
+				System.out.println("wrongID");
 			}
 			
 			else{
@@ -35,7 +36,7 @@ public class LoginImpl {
 //						isFind=false;
 //				}
 				UserPO user = result.get(0);
-				
+								
 				if(user.getPassword().equals(password)){
 					isFind = true;
 					

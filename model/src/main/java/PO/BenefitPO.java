@@ -38,7 +38,6 @@ public class BenefitPO extends PO {
 	
 	public BenefitPO(BenefitVO bvo, int number){
 		super(URLHelper.getBenefitURL());
-		this.number=number;
 		this.income=bvo.getIncome();
 		this.expend=bvo.getCost();
 		this.benefit=bvo.getBenefit();
@@ -54,13 +53,6 @@ public class BenefitPO extends PO {
 	 * 对BenefitPO的数据进行读取
 	 * */
 	
-	/*
-	 * 获取序号
-	 * 返回int
-	 * */
-	public int getNumber() {
-		return number;
-	}
 	/*
 	 * 获取总收入
 	 * 返回double
@@ -134,7 +126,6 @@ public class BenefitPO extends PO {
 		
 		String result = "";
 		
-		result = result + number + ", ";
 		result = result + income + ", ";
 		result = result + expend + ", ";
 		result = result + benefit + ", ";

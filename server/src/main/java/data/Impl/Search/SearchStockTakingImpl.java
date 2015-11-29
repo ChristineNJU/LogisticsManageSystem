@@ -17,6 +17,11 @@ import State.StorageArea;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Search.SearchStockTakingService;
 
+/**
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public class SearchStockTakingImpl extends UnicastRemoteObject implements SearchStockTakingService {
 
 	public SearchStockTakingImpl() throws RemoteException {
@@ -25,6 +30,13 @@ public class SearchStockTakingImpl extends UnicastRemoteObject implements Search
 	}
 
 	@Override
+	/**
+	 * 从数据库中搜索StockTakingPO
+	 * 
+	 * @param DB_URL 表链接
+	 * @param requirement 搜索要求
+	 * @return StockTakingPO的ArrayList 
+	 */
 	public ArrayList<StockTakingPO> searchStockTaking(String DB_URL,
 			ArrayList<String> requirement) throws RemoteException {
 		// TODO Auto-generated method stub
