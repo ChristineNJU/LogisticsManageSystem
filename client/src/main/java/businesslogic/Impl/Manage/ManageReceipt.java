@@ -76,10 +76,7 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 			ArrayList<InstitutionPO> searchResultReponsitory=searchInstitution.searchInstitutionInfo(requirementReponsitory);
 			ArrayList<InstitutionPO> searchResultMediumCenter=searchInstitution.searchInstitutionInfo(requirementMediumCenter);
 			
-//			System.out.println(searchResultBusinesslobby.get(0).getInstitutionNumber());
-//			System.out.println(searchResultMediumCenter.get(0).getInstitutionNumber());
-//			System.out.println(searchResultReponsitory.get(0).getInstitutionNumber());
-//			//arrival
+			//arrival
 			if(receipt instanceof ArrivalVO){
 				
 				ArrivalVO arrival=(ArrivalVO) receipt;
@@ -109,7 +106,6 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-				//	System.out.println(institutionid);
 					ArrivalPO temp=new ArrivalPO((ArrivalVO)receipt,institutionid);
 					temp.setApproved(true);
 					result=updateService.update(temp);
@@ -180,18 +176,10 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 					ArrayList<DeliveryPO> deliveryResult=searchDelivery.searchDelivery(URLHelper.getDeliveryURL(searchResultBusinesslobby.get(i).getInstitutionNumber()), requirement);
 					for(int j=0;j<deliveryResult.size();j++){
 						searchResult.add(deliveryResult.get(j));	
-						System.out.println(institutionid);
 						institutionid=searchResultBusinesslobby.get(i).getInstitutionNumber();
 						}
 				}
-				for(int i=0;i<searchResultMediumCenter.size();i++){
-					ArrayList<DeliveryPO> deliveryResult=searchDelivery.searchDelivery(URLHelper.getDeliveryURL(searchResultMediumCenter.get(i).getInstitutionNumber()), requirement);
-					for(int j=0;j<deliveryResult.size();j++){
-						searchResult.add(deliveryResult.get(j));	
-						System.out.println(institutionid);
-						institutionid=searchResultMediumCenter.get(i).getInstitutionNumber();	
-					}
-				}
+				
 				
 				if(searchResult.isEmpty()){
 					System.out.println("! not found");
@@ -342,7 +330,7 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 					ArrayList<TransferPO> transferResult=searchTransfer.searchTransfer(URLHelper.getTransferURL(searchResultMediumCenter.get(i).getInstitutionNumber()), requirement);
 					for(int j=0;j<transferResult.size();j++){
 						searchResult.add(transferResult.get(j));
-						institutionid=searchResultReponsitory.get(i).getInstitutionNumber();	
+						institutionid=searchResultMediumCenter.get(i).getInstitutionNumber();	
 					}
 				}
 
