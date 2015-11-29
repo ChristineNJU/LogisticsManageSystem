@@ -142,7 +142,7 @@ public class BenefitPO extends PO {
 	/**
 	 * 更新总支出
 	 * 
-	 * @param 新支出
+	 * @param expend 新支出
 	 * */
 	public void setExpend(double expend) {
 		this.expend = expend;

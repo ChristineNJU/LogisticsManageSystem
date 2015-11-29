@@ -3,6 +3,7 @@ package data.Impl.Delete;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -29,6 +30,12 @@ public class DeleteImpl extends UnicastRemoteObject implements DeleteService {
 		Connection conn = DBHelper.getConnection();
 		try {
 			Statement s = conn.createStatement();
+			
+			ResultSet rs = s.executeQuery(DBHelper.SEARCH(statistics.getURL(), statistics.getPrimaryKey()));
+			if(!rs.next()){
+				return DeleteState.FAIL;
+			}
+			
 			boolean mark = s.execute("DELETE FROM "+statistics.getURL()+" WHERE "+statistics.getPrimaryKey());
 			
 			conn.commit();

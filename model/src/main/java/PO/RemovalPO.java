@@ -10,9 +10,15 @@ import State.StateSwitch;
 
 import State.TransferType;
 import VO.RemovalVO;
-
+/**
+ * 用来保存出库单的持久化数据格式
+ * 
+ * @author HermC
+ * @version 1.0.0
+ * */
 public class RemovalPO extends PO {
 
+	// ----- member variables ---------------------------------------
 	private String bar_code = "";
 	private Date removal_date;
 	private String destination = "";
@@ -20,6 +26,9 @@ public class RemovalPO extends PO {
 	private String transfer_number = "";
 	private boolean isApproved = false;
 	
+	/**
+	 * 直接创建出库单的持久化数据对象
+	 * */
 	public RemovalPO(String bar_code, Date removal_date, String destination, TransferType type,
 			String transfer_number, String DB_URL) {
 		super(DB_URL);
@@ -31,6 +40,9 @@ public class RemovalPO extends PO {
 		this.transfer_number = transfer_number;
 	}
 	
+	/**
+	 * 通过RemovalVO创建出库单的持久化数据对象
+	 * */
 	public RemovalPO(RemovalVO removal,String institutionID){
 		super(URLHelper.getRemovalURL(institutionID));
 		this.bar_code=removal.getBarCode();
@@ -48,44 +60,55 @@ public class RemovalPO extends PO {
 	 * 对RemovalPO的数据进行读取
 	 * */
 	
-	/*
+	/**
 	 * 获取订单条形码
-	 * 返回String
+	 * 
+	 * @return 订单条形码String
 	 * */
 	public String getBarCode() {
 		return bar_code;
 	}
-	/*
+	
+	/**
 	 * 获取出库日期
-	 * 返回Date
+	 * 
+	 * @return 出库日期Date
 	 * */
 	public Date getRemovalDate() {
 		return removal_date;
 	}
-	/*
+	
+	/**
 	 * 获取目的地
-	 * 返回String
+	 * 
+	 * @return 目的地String
 	 * */
 	public String getDestination() {
 		return destination;
 	}
-	/*
+	
+	/**
 	 * 获取装运形式
-	 * 返回TranferType
+	 * 
+	 * @return 装运形式TranferType
 	 * */
 	public TransferType getType() {
 		return type;
 	}
-	/*
+	
+	/**
 	 * 获取中转单编号
-	 * 返回String
+	 * 
+	 * @return 中转单编号String
 	 * */
 	public String getTransferNumber() {
 		return transfer_number;
 	}
-	/*
+	
+	/**
 	 * 获取审批状态
-	 * 返回boolean
+	 * 
+	 * @return 审批状态
 	 * */
 	public boolean isApproved() {
 		return isApproved;
@@ -96,8 +119,10 @@ public class RemovalPO extends PO {
 	 * 对RemovalPO的某些信息进行更新
 	 * */
 	
-	/*
+	/**
 	 * 更新审批状态
+	 * 
+	 * @param isApproved 新审批状态
 	 * */
 	public void setApproved(boolean isApproved) {
 		this.isApproved = isApproved;

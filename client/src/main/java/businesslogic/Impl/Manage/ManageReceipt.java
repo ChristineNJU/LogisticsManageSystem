@@ -84,10 +84,9 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 				requirement.add("bar_code='"+arrival.getBarCode()+"'");
 				ArrayList<ArrivalPO> searchResult=new ArrayList<ArrivalPO>();
 				for(int i=0;i<searchResultBusinesslobby.size();i++){
-					String r = URLHelper.getArrivalURL(searchResultBusinesslobby.get(i).getInstitutionNumber());
-//					System.out.println(r);
-					ArrayList<ArrivalPO> arrivalResult=searchArrival.searchArrival(URLHelper.getArrivalURL(searchResultBusinesslobby.get(i).getInstitutionNumber()), requirement);
-					//System.out.println(searchResultBusinesslobby.size());
+
+					ArrayList<ArrivalPO> arrivalResult=searchArrival.searchArrival(URLHelper.getArrivalURL(searchResultBusinesslobby.get(0).getInstitutionNumber()), requirement);
+
 					for(int j=0;j<arrivalResult.size();j++){
 						searchResult.add(arrivalResult.get(j));
 						institutionid=searchResultBusinesslobby.get(i).getInstitutionNumber();

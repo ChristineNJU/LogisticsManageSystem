@@ -11,6 +11,7 @@ import VO.CostVO;
 import VO.EntruckingVO;
 import VO.GatheringVO;
 import VO.LogVO;
+import VO.PeriodVO;
 import VO.TransferVO;
 import businesslogic.Service.Finance.FinanceService;
 import businesslogic.SystemLog.SystemLog;
@@ -101,6 +102,21 @@ public class FinanceController implements FinanceService{
 			SystemLog.addLog("添加银行账户");
 		}
 		return state;
+	}
+	@Override
+	public AddState addPeriod() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public PeriodVO getPeriod() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public UpdateState updatePeriod() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

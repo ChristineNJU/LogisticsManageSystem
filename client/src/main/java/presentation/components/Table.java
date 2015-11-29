@@ -29,7 +29,7 @@ public class Table extends JTable {
         this.setGridColor(ColorPallet.GrayLight);
         this.setShowVerticalLines(false);
         this.setForeground(ColorPallet.GrayDark);
-        this.setDefaultRenderer(getColumnClass(0), new colorTableRender());
+        this.setDefaultRenderer(getColumnClass(0), new RendererGeneral());
         this.setDefaultEditor(getColumnClass(0), new DefaultCellEditor(editor));
         
 	}
@@ -94,46 +94,22 @@ public class Table extends JTable {
 		}
 	}
 	
-	public class colorTableRender extends DefaultTableCellRenderer {
-		 
-        public Component getTableCellRendererComponent(JTable table,
-                Object value, boolean isSelected, boolean hasFocus, int row,
-                int column) {
-            Component cell = super.getTableCellRendererComponent(table, value,
-                    isSelected, hasFocus, row, column);
-            
-            setOpaque(false);
-            setForeground(ColorPallet.GrayDark);
-    		setFont(FontSet.fourteen);
-    		setBorder(null);
-            return cell;
- 
-        }
-    }
+//	public class colorTableRender extends DefaultTableCellRenderer {
+//		 
+//        public Component getTableCellRendererComponent(JTable table,
+//                Object value, boolean isSelected, boolean hasFocus, int row,
+//                int column) {
+//            Component cell = super.getTableCellRendererComponent(table, value,
+//                    isSelected, hasFocus, row, column);
+//            
+//            setOpaque(false);
+//            setForeground(ColorPallet.GrayDark);
+//    		setFont(FontSet.fourteen);
+//    		setBorder(null);
+//            return cell;
+// 
+//        }
+//    }
 	
 	
-//	class MyTableMouseMotionListener extends MouseMotionAdapter{
-//
-//        private int rowUnderMouse = -1;
-//        @Override
-//		public void mouseMoved(MouseEvent e) {
-//			JTable table = (JTable) e.getSource();
-//			Point p = table.getMousePosition();
-//			if (p != null) {
-//				rowUnderMouse = table.rowAtPoint(p);
-//				if (rowUnderMouse >= 0) {
-//					for (int i = 0; i < table.getColumnCount(); i++) {
-//							prepareRenderer(table.getCellRenderer(rowUnderMouse, i), rowUnderMouse, i);
-//						if (rowUnderMouse != 0) {
-//							prepareRenderer(table.getCellRenderer(rowUnderMouse - 1, i), rowUnderMouse - 1, i);
-//						}
-//						if (rowUnderMouse != table.getRowCount() - 1) {
-//							prepareRenderer(table.getCellRenderer(rowUnderMouse + 1, i), rowUnderMouse + 1, i);
-//						}
-//					}
-//					table.repaint(table.getVisibleRect());
-//				}
-//			}
-//		}
-//	}
 }

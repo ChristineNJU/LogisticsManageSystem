@@ -11,11 +11,15 @@ import State.PackingCharge;
 import State.StateSwitch;
 import VO.LogisticsInputVO;
 
-/*=================================================================================
+/**
  * 用来保存快递信息的持久化数据格式
+ * 
+ * @author HermC
+ * @version 1.0.0
  * */
-
 public class LogisticsInfoPO extends PO {
+	
+	// ----- member variables ---------------------------------------
 	/*
 	 * 寄件人信息
 	 * */
@@ -57,6 +61,9 @@ public class LogisticsInfoPO extends PO {
 	 * */
 	private ArrayList<String> history = new ArrayList<String>();
 	
+	/**
+	 * 直接创建快递的持久化数据对象
+	 * */
 	public LogisticsInfoPO(String sender_name, String sender_address, String sender_organization,
 							String sender_telephone, String sender_mobilephone,
 						  String recipient_name, String recipient_address, String recipient_organization,
@@ -94,6 +101,9 @@ public class LogisticsInfoPO extends PO {
 		this.courier = courier;
 	}
 	
+	/**
+	 * 通过LogisticsInputVO创建快递的持久化数据对象
+	 * */
 	public LogisticsInfoPO(LogisticsInputVO logisticsInfo){
 		
 		super(URLHelper.getLogisticsURL());
@@ -126,201 +136,253 @@ public class LogisticsInfoPO extends PO {
 	 * 对LogisticsInfoPO的数据进行读取
 	 * */
 	
-	/*
+	/**
 	 * 获取寄件人姓名
-	 * 返回String
+	 * 
+	 * @return 寄件人姓名String
 	 * */
 	public String getSenderName() {
 		return sender_name;
 	}
-	/*
+	
+	/**
 	 * 获取寄件人地址
-	 * 返回String
+	 * 
+	 * @return 寄件人地址String
 	 * */
 	public String getSenderAddress() {
 		return sender_address;
 	}
-	/*
+	
+	/**
 	 * 获取寄件人单位
-	 * 返回String
+	 * 
+	 * @return 寄件人单位String
 	 * */
 	public String getSenderOrganization() {
 		return sender_organization;
 	}
-	/*
+	
+	/**
 	 * 获取寄件人电话
-	 * 返回String
+	 * 
+	 * @return 寄件人电话String
 	 * */
 	public String getSenderTelephone() {
 		return sender_telephone;
 	}
-	/*
+	
+	/**
 	 * 获取寄件人手机
-	 * 返回String
+	 * 
+	 * @return 寄件人手机String
 	 * */
 	public String getSenderMobilephone() {
 		return sender_mobilephone;
 	}
 	
-	/*
+	/**
 	 * 获取收件人姓名
-	 * 返回String
+	 * 
+	 * @return 收件人姓名String
 	 * */
 	public String getRecipientName() {
 		return recipient_name;
 	}
-	/*
+	
+	/**
 	 * 获取收件人地址
-	 * 返回String
+	 * 
+	 * @return 收件人地址String
 	 * */
 	public String getRecipientAddress() {
 		return recipient_address;
 	}
-	/*
+	
+	/**
 	 * 获取收件人单位
-	 * 返回String
+	 * 
+	 * @return 收件人单位String
 	 * */
 	public String getRecipientOrganization() {
 		return recipient_organization;
 	}
-	/*
+	
+	/**
 	 * 获取收件人电话
-	 * 返回String
+	 * 
+	 * @return 收件人电话String
 	 * */
 	public String getRecipientTelephone() {
 		return recipient_telephone;
 	}
-	/*
+	
+	/**
 	 * 获取收件人手机
-	 * 返回String
+	 * 
+	 * @return 收件人手机String
 	 * */
 	public String getRecipientMobilephone() {
 		return recipient_mobilephone;
 	}
-	/*	
+	
+	/**	
 	 * 获取实际收件人姓名
-	 * 返回String
+	 * 
+	 * @return 实际收件人姓名String
 	 * */
 	public String getActualRecipientName() {
 		return actual_recipient_name;
 	}
 	
-	/*
+	/**
 	 * 获取条形码
-	 * 返回String
+	 * 
+	 * @return 条形码String
 	 * */
 	public String getBarCode() {
 		return bar_code;
 	}
-	/*
+	
+	/**
 	 * 获取原件数
-	 * 返回int
+	 * 
+	 * @return 原件数
 	 * */
 	public int getOriginalNumber() {
 		return original_number;
 	}
-	/*
+	
+	/**
 	 * 获取实际重量
-	 * 返回double
+	 * 
+	 * @return 实际重量
 	 * */
 	public double getWeight() {
 		return weight;
 	}
-	/*
+	
+	/**
 	 * 获取实际体积
-	 * 返回double
+	 * 
+	 * @return 实际体积
 	 * */
 	public double getSize() {
 		return size;
 	}
-	/*
+	
+	/**
 	 * 获取内件品名
-	 * 返回String
+	 * 
+	 * @return 内件品名String
 	 * */
 	public String getInternalName() {
 		return internal_name;
 	}
-	/*
+	
+	/**
 	 * 获取快递类型
-	 * 返回LogisticsType
+	 * 
+	 * @return 快递类型LogisticsType
 	 * */
 	public LogisticsType getType() {
 		return type;
 	}
-	/*
+	
+	/**
 	 * 获取包装费
-	 * 返回PackingCharge
+	 * 
+	 * @return 包装费PackingCharge
 	 * */
 	public PackingCharge getPack() {
 		return pack;
 	}
-	/*
+	
+	/**
 	 * 获取费用合计
-	 * 返回double
+	 * 
+	 * @return 费用合计
 	 * */
 	public double getTotalCost() {
 		return total_cost;
 	}
-	/*
+	
+	/**
 	 * 获取出发地
-	 * 返回String
+	 * 
+	 * @return 出发地String
 	 * */
 	public String getStarting() {
 		return starting;
 	}
-	/*
+	
+	/**
 	 * 获取到达地
-	 * 返回String
+	 * 
+	 * @return 到达地String
 	 * */
 	public String getDestination() {
 		return destination;
 	}
-	/*
+	
+	/**
 	 * 获取审批状态
-	 * 返回boolean
+	 * 
+	 * @return 审批状态
 	 * */
 	public boolean isApproved() {
 		return isApproved;
 	}
-	/*
+	
+	/**
 	 * 获取快递状态
-	 * 返回LogisticsState
+	 * 
+	 * @return 快递状态LogisticsState
 	 * */
 	public LogisticsState getState() {
 		return state;
 	}
-	/*
+	
+	/**
 	 * 获取收件状态
-	 * 返回boolean
+	 * 
+	 * @return 收件状态boolean
 	 * */
 	public boolean isReceived() {
 		return isReceived;
 	}
-	/*
+	
+	/**
 	 * 获取发件日期
-	 * 返回Date
+	 * 
+	 * @return 发件日期Date
 	 * */
 	public Date getSendDate() {
 		return send_date;
 	}
-	/*
+	
+	/**
 	 * 获取收件日期
-	 * 返回Date
+	 * 
+	 * @return 收件日期Date
 	 * */
 	public Date getReceiveDate() {
 		return receive_date;
 	}
-	/*
+	
+	/**
 	 * 获取收件员
-	 * 返回String
+	 * 
+	 * @return 收件员String
 	 * */
 	public String getCourier() {
 		return courier;
 	}
 	
-	/*
+	/**
 	 * 获取历史轨迹
-	 * 返回ArrayList<String>
+	 * 
+	 * @return 历史轨迹ArrayList<String>
 	 * */
 	public ArrayList<String> getHistory() {
 		return history;
@@ -330,38 +392,55 @@ public class LogisticsInfoPO extends PO {
 	 * 对LogisticsInfoPO的某些数据进行更改 
 	 * */
 	
-	/*
+	/**
 	 * 更新审批状态
+	 * 
+	 * @param isApproved 新审批状态
 	 * */
 	public void setApproved(boolean isApproved) {
 		this.isApproved = isApproved;
 	} 
-	/*
+	
+	/**
 	 * 更新收件状态
+	 * 
+	 * @param isReceived 新收件状态
 	 * */
 	public void setReceived(boolean isReceived) {
 		this.isReceived = isReceived;
 	}
-	/*
+	
+	/**
 	 * 更新快递状态
+	 * 
+	 * @param state 新快递状态
 	 * */
 	public void setState(LogisticsState state) {
 		this.state = state;
 	}
-	/*
+	
+	/**
 	 * 更新收件日期
+	 * 
+	 * @param receive_date 新收件日期
 	 * */
 	public void setReceiveDate(Date receive_date) {
 		this.receive_date = receive_date;
 	}
-	/*
+	
+	/**
 	 * 更新实际收件人
+	 * 
+	 * @param name 实际收件人
 	 * */
 	public void setActualRecipientName(String name) {
 		this.actual_recipient_name = name;
 	}
-	/*
+	
+	/**
 	 * 更新历史轨迹
+	 * 
+	 * @param node 新历史轨迹
 	 * */
 	public void addHistory(String node) {
 		this.history.add(node);
@@ -371,10 +450,6 @@ public class LogisticsInfoPO extends PO {
 	 * 对数据的格式化
 	 * */
 	
-	/*
-	 * 形成数据库格式
-	 * 返回String
-	 * */
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
