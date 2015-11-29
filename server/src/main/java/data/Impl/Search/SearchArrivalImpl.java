@@ -52,7 +52,6 @@ public class SearchArrivalImpl extends UnicastRemoteObject implements SearchArri
 				}
 			}
 			
-			System.out.println(DB_URL);
 			ResultSet rs = s.executeQuery(DBHelper.SEARCH(DB_URL, target));
 			
 			while(rs.next()){
@@ -84,7 +83,7 @@ public class SearchArrivalImpl extends UnicastRemoteObject implements SearchArri
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-//			e.printStackTrace();
+			e.printStackTrace();
 			System.out.println("从数据库提取ArrivalPO对象失败");
 			return result;
 		}
