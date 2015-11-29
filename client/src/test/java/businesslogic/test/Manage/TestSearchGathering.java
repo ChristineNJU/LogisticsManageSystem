@@ -8,6 +8,6 @@ public class TestSearchGathering extends TestCase {
 	public void testSearchGathering(){
 		ManageController manageController=new ManageController();
 		
-		assertEquals(null,manageController.searchGathering(null, null));
+		assertEquals(null,manageController.searchGathering(null, "025000"));
 	}
 }

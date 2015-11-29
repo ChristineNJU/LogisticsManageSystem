@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import VO.BenefitVO;
+import VO.CostVO;
+import VO.GatheringVO;
 import businesslogic.URLHelper.URLHelper;
 
 public class BenefitPO extends PO {
@@ -41,7 +43,23 @@ public class BenefitPO extends PO {
 		this.benefit=bvo.getBenefit();
 		this.date=bvo.getDate();
 	}
-
+	
+	public BenefitPO(GatheringVO gathering,BenefitPO benefit) {
+		super(URLHelper.getBenefitURL());
+		// TODO Auto-generated constructor stub
+		this.benefit=benefit.getBenefit()+gathering.getMoney();
+		this.income=gathering.getMoney()+benefit.getIncome();
+		this.expend=benefit.getExpend();
+		this.date=gathering.getDate();
+	}
+	public BenefitPO(CostVO cost,BenefitPO benefit) {
+		super(URLHelper.getBenefitURL());
+		// TODO Auto-generated constructor stub
+		this.benefit=benefit.getBenefit()-cost.getAmount();
+		this.income=benefit.getIncome();
+		this.expend=benefit.getExpend()+cost.getAmount();
+		this.date=cost.getDate();
+	}
 	/*====================================================================================
 	 * Public方法
 	 * */
