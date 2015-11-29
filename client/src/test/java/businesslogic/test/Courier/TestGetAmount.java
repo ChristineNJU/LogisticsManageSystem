@@ -11,6 +11,6 @@ public class TestGetAmount extends TestCase {
 		
 		CourierController courier = new CourierController();
 		
-		assertEquals(null, courier.getAmount("南京", "北京", LogisticsType.ECONOMIC, PackingCharge.COURISE_BAG, 68, 9));
+		assertEquals(null, courier.getAmount("南京", "北京", LogisticsType.ECONOMIC, PackingCharge.COURISE_BAG, 100, 9));
 	}
 }

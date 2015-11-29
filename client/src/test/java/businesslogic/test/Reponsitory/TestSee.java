@@ -9,7 +9,7 @@ public class TestSee extends TestCase {
 		
 		RepositoryController rc = new RepositoryController();
 		
-		assertEquals("1000000000", rc.seeRemoval("2015-2-2 00:00:00", "2015-11-11 00:00:00").get(0).getBarCode());
+		assertEquals("1000000000", rc.seeRemoval("2015-02-02 00:00:00", "2015-11-11 00:00:00").get(0).getBarCode());
 		
 		
 	}

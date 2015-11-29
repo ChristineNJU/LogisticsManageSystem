@@ -11,4 +11,6 @@ public class ColorPallet {
 	public static Color GrayDark = new Color(160,160,160);
 	public static Color BlueGray = new Color(130,157,176);
 	public static Color Yellow = new Color(255,247,153);
+	public static Color Green = new Color(204,225,152);
+	public static Color Orange = new Color(254,232,190);
 }
