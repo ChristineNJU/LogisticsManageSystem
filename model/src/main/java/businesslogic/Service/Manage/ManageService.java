@@ -68,17 +68,100 @@ public interface ManageService {
 	 * @return BenefitVO
 	 * */
 	public BenefitVO searchBenefit(String time_end);
+	
+	/**
+	 * 查询出款单
+	 * 
+	 * @param time_start 起始时间
+	 * @param time_end 截止时间
+	 * @return CostVO的ArrayList
+	 * */
 	public ArrayList<CostVO> searchCost(String time_start, String time_end);
+	
+	/**
+	 * 查询收款单
+	 * 
+	 * @param date 收款日期
+	 * @param businesslobby 营业厅
+	 * @return GatheringVO的ArrayList
+	 * */
 	public ArrayList<GatheringVO> searchGathering(String date, String businesslobby);
+	
+	/**
+	 * 查询机构信息
+	 * 
+	 * @param id 机构ID
+	 * @return InstitutionVO的ArrayList
+	 * */
 	public ArrayList<InstitutionVO> searchInstitution (String id);
+	
+	/**
+	 * 查询收款单
+	 * 
+	 * @param id 人员ID
+	 * @return StaffVO的ArrayList
+	 * */
 	public ArrayList<StaffVO> searchStaff (String id);
+	
+	/**
+	 * 查询常量
+	 * 
+	 * @return ConstVO的ArrayList
+	 * */
 	public ArrayList<ConstVO> showConst();
+	
+	/**
+	 * 显示所有单据
+	 * 
+	 * @return VO的ArrayList
+	 * */
 	public ArrayList<VO> showReceipt();
+	
+	/**
+	 * 查询薪水信息
+	 * 
+	 * @return SalaryVO的ArrayList
+	 * */
 	public ArrayList<SalaryVO> showSalary();
+	
+	/**
+	 * 更新常量
+	 * 
+	 * @param constant ConstVO
+	 * @return 更新状态
+	 * */
 	public UpdateState updateConst(ConstVO constant);
+	
+	/**
+	 * 更新机构
+	 * 
+	 * @param institution institutionVO
+	 * @return 更新状态
+	 * */
 	public UpdateState UpdateInstitution (InstitutionVO institution);
+	
+	/**
+	 * 更新薪水
+	 * 
+	 * @param salary SalaryVO
+	 * @return 更新状态
+	 * */
 	public UpdateState updatePayment (SalaryVO salary);
+	
+	/**
+	 * 更新单据
+	 * 
+	 * @param receipt VO
+	 * @return 更新状态
+	 * */
 	public UpdateState updateReceipt(VO receipt);
+	
+	/**
+	 * 更新人员
+	 * 
+	 * @param staff StaffVO
+	 * @return 更新状态
+	 * */
 	public UpdateState updateStaff (StaffVO staff);
 	
 }

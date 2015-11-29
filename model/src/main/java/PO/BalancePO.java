@@ -8,8 +8,15 @@ import State.StorageArea;
 import VO.BalanceVO;
 import businesslogic.URLHelper.URLHelper;
 
+/**
+ * 用来保存库存调整的持久化数据格式
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ * */
 public class BalancePO extends PO {
 
+	// ----- member variables ---------------------------------------
 	private String bar_code = "";
 	private Date storage_date;
 	private String destination = "";
@@ -23,6 +30,9 @@ public class BalancePO extends PO {
 	private int new_position = 0;
 	private boolean isApproved = false;
 	
+	/**
+	 * 直接创建库存调整持久化数据对象
+	 * */
 	public BalancePO(String bar_code, Date storage_date, String destination, StorageArea old_area, 
 			int old_row, int old_shelf, int old_position, StorageArea new_area, int new_row, int new_shelf,
 			int new_position, String DB_URL) {
@@ -41,6 +51,9 @@ public class BalancePO extends PO {
 		this.new_position = new_position;
 	}
 	
+	/**
+	 * 通过BalanceVO创建库存调整的持久化数据对象
+	 * */
 	public BalancePO(BalanceVO balance,String institutionID){
 		super(URLHelper.getBalanceURL(institutionID));
 		this.bar_code=balance.getBarCode();
@@ -64,86 +77,98 @@ public class BalancePO extends PO {
 	 * 对BalancePO的数据进行读取
 	 * */
 	
-	/*
+	/**
 	 * 获取订单条形码
-	 * 返回String
+	 * 
+	 * @return 订单条形码String
 	 * */
 	public String getBarCode() {
 		return bar_code;
 	}
-	/*
+	/**
 	 * 获取入库日期
-	 * 返回Date
+	 * 
+	 * @return 入库日期Date
 	 * */
 	public Date getStorageDate() {
 		return storage_date;
 	}
-	/*
+	/**
 	 * 获取到达地
-	 * 返回String
+	 * 
+	 * @return 到达地String
 	 * */
 	public String getDestination() {
 		return destination;
 	}
-	/*
+	/**
 	 * 获取原来的区号
-	 * 返回StorageArea
+	 * 
+	 * @return 原来的区号StorageArea
 	 * */
 	public StorageArea getOldArea() {
 		return old_area;
 	}
-	/*
+	/**
 	 * 获取原来的排号
-	 * 返回int
+	 * 
+	 * @return 原来的排号
 	 * */
 	public int getOldRow() {
 		return old_row;
 	}
-	/*
+	/**
 	 * 获取原来的架号
-	 * 返回int
+	 * 
+	 * @return 原来的架号
 	 * */
 	public int getOldShelf() {
 		return old_shelf;
 	}
-	/*
+	/**
 	 * 获取原来的位号
-	 * 返回int
+	 * 
+	 * @return 原来的位号
 	 * */
 	public int getOldPosition() {
 		return old_position;
 	}
-	/*
+	/**
 	 * 获取新区号
-	 * 返回StorageArea
+	 * 
+	 * @return 新区号StorageArea
 	 * */
 	public StorageArea getNewArea() {
 		return new_area;
 	}
-	/*
+	/**
 	 * 获取新排号
-	 * 返回int
+	 * 
+	 * @return 新排号
 	 * */
 	public int getNewRow() {
 		return new_row;
 	}
-	/*
+	/**
 	 * 获取新架号
-	 * 返回int
+	 * 
+	 * @return 新架号
 	 * */
 	public int getNewShelf() {
 		return new_shelf;
 	}
-	/*
+	/**
 	 * 获取新位号
-	 * 返回int
+	 * 
+	 * @return 新排号
 	 * */
 	public int getNewPosition() {
 		return new_position;
 	}
-	/*
+	/**
 	 * 获取审批状态
-	 * 返回boolean
+	 * 
+	 * @return 审批状态
 	 * */
 	public boolean isApproved() {
 		return isApproved;
@@ -154,8 +179,10 @@ public class BalancePO extends PO {
 	 * 对BalancePO的某些信息进行更新
 	 * */
 	
-	/*
+	/**
 	 * 更新审批状态
+	 * 
+	 * @param isAppproved 新审批状态
 	 * */
 	public void setApproved(boolean isAppproved) {
 		this.isApproved = isAppproved;

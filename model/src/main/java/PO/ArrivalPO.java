@@ -8,12 +8,15 @@ import State.StateSwitch;
 import VO.ArrivalVO;
 import businesslogic.URLHelper.URLHelper;
 
-/*========================================================================================
+/**
  * 用来保存到达单的持久化数据格式
+ * 
+ * @author 尹子越
+ * @version 1.0.0
  * */
-
 public class ArrivalPO extends PO {
 
+	// ----- member variables ---------------------------------------
 	private String bar_code = "";
 	private Date arrival_date;
 	private String transfer_number = "";
@@ -21,6 +24,9 @@ public class ArrivalPO extends PO {
 	private LogisticsState state;
 	private boolean isApproved = false;
 	
+	/**
+	 * 直接创建到达单的持久化数据对象
+	 * */
 	public ArrivalPO(String bar_code, Date arrival_date, String transfer_number, String starting,
 			LogisticsState state, String DB_URL) {
 		super(DB_URL);
@@ -31,6 +37,9 @@ public class ArrivalPO extends PO {
 		this.state = state;
 	}
 	
+	/**
+	 * 通过ArrivalVO创建到达单的持久化数据格式
+	 * */
 	public ArrivalPO(ArrivalVO arrival,String institutionID){
 		super(URLHelper.getArrivalURL(institutionID));
 		this.arrival_date=arrival.getDate();
@@ -49,44 +58,50 @@ public class ArrivalPO extends PO {
 	 * 对DriverInfoPO的数据进行读取
 	 * */
 	
-	/*
+	/**
 	 * 获取订单信息
-	 * 返回String
+	 * 
+	 * @return 订单信息String
 	 * */
 	public String getBarCode() {
 		return bar_code;
 	}
-	/*
+	/**
 	 * 获取到达日期
-	 * 返回Date
+	 * 
+	 * @return 到达日期Date
 	 * */
 	public Date getArrivalDate() {
 		return arrival_date;
 	}
-	/*
+	/**
 	 * 获取中转单编号
-	 * 返回String
+	 * 
+	 * @return 中转单编号String
 	 * */
 	public String getTransferNumber() {
 		return transfer_number;
 	}
-	/*
+	/**
 	 * 获取出发地
-	 * 返回String
+	 * 
+	 * @return 出发地String
 	 * */
 	public String getStarting() {
 		return starting;
 	}
-	/*
+	/**
 	 * 获取货物状态
-	 * 返回LogisticsState
+	 * 
+	 * @return 货物状态LogisticsState
 	 * */
 	public LogisticsState getState() {
 		return state;
 	} 
-	/*
+	/**
 	 * 获取审批状态
-	 * 返回boolean
+	 * 
+	 * @return 审批状态boolean
 	 * */
 	public boolean isApproved() {
 		return isApproved;
@@ -97,16 +112,16 @@ public class ArrivalPO extends PO {
 	 * 对ArrivalPO的某些信息进行更新
 	 * */
 	
-	/*
+	/**
 	 * 更新审批状态
+	 * 
+	 * @param isApproved 新审批状态
 	 * */
 	public void setApproved(boolean isApproved) {
 		this.isApproved = isApproved;
 	}
 	
-	
-	
-	
+
 
 	@Override
 	public String toString() {

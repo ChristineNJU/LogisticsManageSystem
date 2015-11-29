@@ -9,15 +9,25 @@ import VO.CostVO;
 import VO.GatheringVO;
 import businesslogic.URLHelper.URLHelper;
 
+/**
+ * 用来保存收益的持久化数据对象
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ * */
 public class BenefitPO extends PO {
 	
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
+	// ----- member variables ---------------------------------------
 	private double income = 0;
 	private double expend = 0;
 	private double benefit = 0;
 	private Date date;
 	
+	/**
+	 * 直接创建收益的持久化数据对象
+	 * */
 	public BenefitPO(double income, double expend, String DB_URL,String date) {
 		super(DB_URL);
 		// TODO Auto-generated constructor stub
@@ -35,6 +45,9 @@ public class BenefitPO extends PO {
 		}
 	}
 	
+	/**
+	 * 通过BenefitVO创建收益的持久化数据对象
+	 * */
 	public BenefitPO(BenefitVO bvo){
 		super(URLHelper.getBenefitURL());
 		this.income=bvo.getIncome();
@@ -43,6 +56,9 @@ public class BenefitPO extends PO {
 		this.date=bvo.getDate();
 	}
 	
+	/**
+	 * 通过GatheringVO, BenefitPO创建收益的持久化数据对象
+	 * */
 	public BenefitPO(GatheringVO gathering,BenefitPO benefit) {
 		super(URLHelper.getBenefitURL());
 		// TODO Auto-generated constructor stub
@@ -51,6 +67,10 @@ public class BenefitPO extends PO {
 		this.expend=benefit.getExpend();
 		this.date=gathering.getDate();
 	}
+	
+	/**
+	 * 通过CostVO, BenefitPO创建收益的持久化数据对象
+	 * */
 	public BenefitPO(CostVO cost,BenefitPO benefit) {
 		super(URLHelper.getBenefitURL());
 		// TODO Auto-generated constructor stub
@@ -67,28 +87,38 @@ public class BenefitPO extends PO {
 	 * 对BenefitPO的数据进行读取
 	 * */
 	
-	/*
+	/**
 	 * 获取总收入
-	 * 返回double
+	 * 
+	 * @return 总收入
 	 * */
 	public double getIncome() {
 		return income;
 	}
-	/*
+	
+	/**
 	 * 获取总支出
-	 * 返回double
+	 * 
+	 * @return 总支出
 	 * */
 	public double getExpend() {
 		return expend;
 	}
-	/*
+	
+	/**
 	 * 获取总利润
-	 * 返回double
+	 * 
+	 * @return 总利润
 	 * */
 	public double getBenefit() {
 		return benefit;
 	}
 	
+	/**
+	 * 获取收益时间
+	 * 
+	 * @return 收益时间
+	 * */
 	public Date getDate(){
 		return date;
 	}
@@ -99,21 +129,31 @@ public class BenefitPO extends PO {
 	 * 对BenefitPO的数据进行更新
 	 * */
 	
-	/*
+	/**
 	 * 更新总收入
+	 * 
+	 * @param income 新收入
 	 * */
 	public void setIncome(double income) {
 		this.income = income;
 		benefit = income - expend;
 	}
-	/*
+	
+	/**
 	 * 更新总支出
+	 * 
+	 * @param 新支出
 	 * */
 	public void setExpend(double expend) {
 		this.expend = expend;
 		benefit = income - expend;
 	}
 	
+	/**
+	 * 更新收益日期
+	 * 
+	 * @param startDate 新收益日期
+	 * */
 	public void setDate(String startDate){
 		try {
 			this.date=sdf.parse(startDate);
@@ -122,7 +162,6 @@ public class BenefitPO extends PO {
 			e.printStackTrace();
 		}
 	}
-	
 	
 	
 	@Override

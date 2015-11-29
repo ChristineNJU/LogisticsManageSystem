@@ -9,6 +9,10 @@ import State.CostType;
 import State.StateSwitch;
 import VO.CostVO;
 
+/**
+ * 用来
+ * 
+ * */
 public class CostPO extends PO {
 	
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
