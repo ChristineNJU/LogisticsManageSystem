@@ -83,18 +83,18 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 				requirement.add("barCode='"+arrival.getBarCode()+"'");
 				ArrayList<ArrivalPO> searchResult=new ArrayList<ArrivalPO>();
 				for(int i=0;i<searchResultBusinesslobby.size();i++){
-					//String r = URLHelper.getArrivalURL(searchResultBusinesslobby.get(i).getInstitutionNumber());
-					//System.out.println(r);
-					ArrayList<ArrivalPO> arrivalResult=searchArrival.searchArrival(searchResultBusinesslobby.get(0).getInstitutionNumber(), requirement);
+					String r = URLHelper.getArrivalURL(searchResultBusinesslobby.get(i).getInstitutionNumber());
+					System.out.println(r);
+					ArrayList<ArrivalPO> arrivalResult=searchArrival.searchArrival(URLHelper.getArrivalURL(searchResultBusinesslobby.get(i).getInstitutionNumber()), requirement);
 					//System.out.println(searchResultBusinesslobby.size());
 					for(int j=0;j<arrivalResult.size();j++)
 						searchResult.add(arrivalResult.get(j));	
 				}
-//				for(int i=0;i<searchResultMediumCenter.size();i++){
-//					ArrayList<ArrivalPO> arrivalResult=searchArrival.searchArrival(URLHelper.getArrivalURL(searchResultMediumCenter.get(i).getInstitutionNumber()), requirement);
-//					for(int j=0;j<arrivalResult.size();j++)
-//						searchResult.add(arrivalResult.get(j));	
-//				}
+				for(int i=0;i<searchResultMediumCenter.size();i++){
+					ArrayList<ArrivalPO> arrivalResult=searchArrival.searchArrival(URLHelper.getArrivalURL(searchResultMediumCenter.get(i).getInstitutionNumber()), requirement);
+					for(int j=0;j<arrivalResult.size();j++)
+						searchResult.add(arrivalResult.get(j));	
+				}
 				
 				if(!searchResult.isEmpty()){
 					System.out.println("not found");
