@@ -43,6 +43,8 @@ public class SearchDistanceImpl extends UnicastRemoteObject implements SearchDis
 				}
 			}
 			
+			System.out.println(target);
+			
 			ResultSet rs = s.executeQuery(DBHelper.SEARCH(URLHelper.getDistanceURL(), target));
 			while(rs.next()){
 				String city_1 = rs.getString(1);
@@ -56,7 +58,7 @@ public class SearchDistanceImpl extends UnicastRemoteObject implements SearchDis
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-//			e.printStackTrace();
+			e.printStackTrace();
 			System.out.println("从数据库提取DistancePO对象失败");
 			return result;
 		}

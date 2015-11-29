@@ -62,7 +62,7 @@ public class CourierImpl implements AddLogisticsService,GetAmountService,GetCity
 		try{
 			SearchDistanceService distance=(SearchDistanceService) Naming.lookup(RMIHelper.SEARCH_DISTANCE_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("city1 like '%%'");
+			requirement.add("city_1 like '%%'");
 			ArrayList<DistancePO> result=distance.searchDistance(requirement);
 			
 			for(int i=0;i<result.size();i++){
@@ -94,38 +94,54 @@ public class CourierImpl implements AddLogisticsService,GetAmountService,GetCity
 			SearchConstService constSearch=(SearchConstService) Naming.lookup(RMIHelper.SEARCH_CONST_IMPL);
 			SearchDistanceService distanceSearch=(SearchDistanceService) Naming.lookup(RMIHelper.SEARCH_DISTANCE_IMPL);
 			ArrayList<String> requirementDis=new ArrayList<String>();
-			requirementDis.add("city1='"+starting+"' AND "+"city2='"+destination+"'");
-			
-			ArrayList<DistancePO> distanceResult=distanceSearch.searchDistance(requirementDis);
-			
-			double distance=distanceResult.get(0).getDistance();
-			
+			double distance=0;
+			if(starting.equals(destination)){
+				distance=30;
+			}
+			else {
+				requirementDis.add("city_1='"+starting+"' AND "+"city_2='"+destination+"'");
+	//			requirementDis.add("city_2='"+starting+"' AND "+"city_1='"+destination+"'");
+				ArrayList<DistancePO> distanceResult=distanceSearch.searchDistance(requirementDis);
+				if(distanceResult.isEmpty()){
+					requirementDis.clear();
+					System.out.println("empty");
+					requirementDis.add("city_2='"+starting+"' AND "+"city_1='"+destination+"'");
+	//				distanceSearchceResult.clear();
+					distanceResult=distanceSearch.searchDistance(requirementDis);
+				}
+				distance=distanceResult.get(0).getDistance();
+			}
 			//----------------------------------------------------------
 			
 			ArrayList<String> requirementType=new ArrayList<String>();
-			requirementType.add("name="+StateSwitch.switchToStr(type));
+			System.out.println(type);
+			requirementType.add("name='"+StateSwitch.switchToStr(type)+"'");
 			ArrayList<ConstPO> constResult=constSearch.searchConst(requirementType);
 			double fee=constResult.get(0).getValue();
 			
 			double density=weight/size;
 			
+			System.out.println(density);
+			System.out.println(fee);
+			System.out.println(distance);
+//			System.out.println()
 			if(density>=10){
 				//define: object whose density is less than 10kg/m^3 is considered to be light
 				Amount+=fee*distance*weight/1000;
 			}
 			else {
-				Amount+=Math.max(fee*distance*weight/1000,fee*distance*size/5000);
+				Amount+=Math.min(fee*distance*weight/1000,fee*distance*size/5000);
 			}
 			
 			//----------------------------------------------------------
-			
+			System.out.println(Amount);
 			ArrayList<String> requirementPack=new ArrayList<String>();
-			requirementPack.add("name="+StateSwitch.switchToStr(charge));
+			requirementPack.add("name='"+StateSwitch.switchToStr(charge)+"'");
 			constResult=constSearch.searchConst(requirementPack);
 			double packFee=constResult.get(0).getValue();
 			
 			Amount+=packFee;
-			
+			System.out.println(Amount);
 		} catch(Exception ex){
 			System.out.println(ex.getMessage());
 			ex.printStackTrace();

@@ -125,7 +125,9 @@ public class SundryImpl implements GetEntruckingService,GetGatheringService,GetL
 			requirementInsti.add("city like '%%'");
 			requirementEntruck.add("date between '"+time_start+"' and '"+time_end+"'");
 			instiList=institutionSearch.searchInstitutionInfo(requirementInsti);
+			
 			for(int i=0;i<instiList.size();i++){
+				System.out.println(instiList.get(i).getInstitutionNumber());
 				institutionID.add(instiList.get(i).getInstitutionNumber());
 			}
 			for(int i=0;i<institutionID.size();i++){

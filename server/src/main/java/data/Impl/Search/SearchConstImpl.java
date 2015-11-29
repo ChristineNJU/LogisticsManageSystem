@@ -57,7 +57,7 @@ public class SearchConstImpl extends UnicastRemoteObject implements SearchConstS
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-//			e.printStackTrace();
+			e.printStackTrace();
 			System.out.println("从数据库提取ConstPO对象失败");
 			return result;
 		}
