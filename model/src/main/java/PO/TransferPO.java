@@ -51,7 +51,7 @@ public class TransferPO extends PO {
 	 * */
 	public TransferPO(TransferVO transfer, String institutionId) {
 		// TODO Auto-generated constructor stub
-		super(URLHelper.getGatheringURL(institutionId));
+		super(URLHelper.getTransferURL(institutionId));
 		this.date=transfer.getDate();
 		this.transfer_number=transfer.getList();
 		this.transport_id=transfer.getTransferId();
