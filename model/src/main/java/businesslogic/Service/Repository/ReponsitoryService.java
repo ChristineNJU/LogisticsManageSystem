@@ -22,7 +22,7 @@ public interface ReponsitoryService {
 	public ArrayList<RemovalVO> seeRemoval(String time_start, String time_end);
 	public ArrayList<StorageVO> seeStorage(String time_start, String time_end);
 	public AddState stockTakingConfirm(ArrayList<StockTakingVO> stockList);
-	public OutputState stockTakingExcel();
+	public OutputState stockTakingExcel(ArrayList<StockTakingVO> stockTaking);
 	public ArrayList<StockTakingVO> getStockTaking();
 	public StorageState storage(ArrayList<StorageVO> storage);
 	

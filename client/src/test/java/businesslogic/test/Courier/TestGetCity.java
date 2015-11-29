@@ -1,7 +1,7 @@
 package businesslogic.test.Courier;
 
-import businesslogic.Impl.Courier.CourierController;
 import junit.framework.TestCase;
+import businesslogic.Impl.Courier.CourierController;
 
 public class TestGetCity extends TestCase {
 	

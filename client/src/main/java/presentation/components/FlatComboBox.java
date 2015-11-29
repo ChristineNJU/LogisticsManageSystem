@@ -2,9 +2,6 @@ package presentation.components;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.Vector;
 
 import javax.swing.ComboBoxModel;

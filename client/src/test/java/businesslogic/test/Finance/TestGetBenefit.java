@@ -1,7 +1,7 @@
 package businesslogic.test.Finance;
 
-import businesslogic.Impl.Finance.FinanceController;
 import junit.framework.TestCase;
+import businesslogic.Impl.Finance.FinanceController;
 
 public class TestGetBenefit extends TestCase{
 	 public void testGetBenefit() {

@@ -6,8 +6,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import presentation.AnimationEasing.AnimationEasing;
-import State.UserRole;
-import VO.UserVO;
 import presentation.main.Navigation;
 import presentation.userPanel.Admin.NavigationAdmin;
 import presentation.userPanel.BusinessLb.NavigationBusinessLobby;
@@ -17,6 +15,8 @@ import presentation.userPanel.Manager.NavigationManager;
 import presentation.userPanel.Medium.NavigationMediumCenter;
 import presentation.userPanel.Repository.NavigationRepository;
 import presentation.userPanel.start.Inquiry;
+import State.UserRole;
+import VO.UserVO;
 
 
 public class MainFrame {

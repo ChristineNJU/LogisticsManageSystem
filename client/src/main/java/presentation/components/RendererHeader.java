@@ -1,12 +1,9 @@
 package presentation.components;
 
 import java.awt.Color;
-
 /**
  * @(#)DefaultTableHeaderCellRenderer.java	1.0 02/24/09
  */
-
-
 import java.awt.Component;
 import java.util.List;
 
@@ -15,7 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.RowSorter;
 import javax.swing.RowSorter.SortKey;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 

@@ -1,9 +1,9 @@
 package businesslogic.test.BusinessLobby;
 
+import junit.framework.TestCase;
 import State.UpdateState;
 import VO.CarInfoVO;
 import businesslogic.Impl.Businesslobby.BusinessLobbyController;
-import junit.framework.TestCase;
 
 public class TestUpdateCar extends TestCase {
 

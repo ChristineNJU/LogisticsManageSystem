@@ -1,9 +1,9 @@
 package presentation.components;
 
-import java.awt.Component;  
-import javax.swing.JComboBox;  
-import javax.swing.JTable;  
-import javax.swing.table.TableCellRenderer;  
+import java.awt.Component;
+
+import javax.swing.JTable;
+import javax.swing.table.TableCellRenderer;
    
 public class RendererGender extends FlatComboBox implements TableCellRenderer{  
          private static final long serialVersionUID = -8624401777277852691L;  

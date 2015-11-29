@@ -1,15 +1,13 @@
 package presentation.main;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
-import State.UserRole;
-import VO.UserVO;
 import presentation.components.ButtonNav;
 import presentation.components.PanelNavigation;
+import State.UserRole;
+import VO.UserVO;
 
 public class Navigation {
 

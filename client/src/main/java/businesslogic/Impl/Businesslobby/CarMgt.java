@@ -7,12 +7,10 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import PO.CarInfoPO;
-import PO.DriverInfoPO;
 import State.AddState;
 import State.DeleteState;
 import State.UpdateState;
 import VO.CarInfoVO;
-import VO.DriverInfoVO;
 import businesslogic.Service.BusinessLobby.AddCarService;
 import businesslogic.Service.BusinessLobby.DeleteCarService;
 import businesslogic.Service.BusinessLobby.GetCarService;
@@ -23,7 +21,6 @@ import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
 import data.Service.Delete.DeleteService;
 import data.Service.Search.SearchCarInfoService;
-import data.Service.Search.SearchDriverInfoService;
 import data.Service.Update.UpdateService;
 
 public class CarMgt implements UpdateCarService,GetCarService,DeleteCarService,AddCarService{
