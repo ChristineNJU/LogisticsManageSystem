@@ -7,6 +7,12 @@ import java.sql.Statement;
 
 import businesslogic.URLHelper.URLHelper;
 
+/**
+ * 用于直接在数据库中创建删除表,以及创建删除数据
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public class DirectDBCreater {
 	
 	private static final String db_name = "LogisticsManageSystemDataBase";

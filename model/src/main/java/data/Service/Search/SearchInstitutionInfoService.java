@@ -18,7 +18,7 @@ public interface SearchInstitutionInfoService extends Remote{
 	 * 
 	 * @param requirement 搜索要求
 	 * @return InstitutionPO的ArrayList 
-	 * @throws RemoteException 如果RMI链接断开
+	 * @exception RemoteException 如果RMI链接断开
 	 */
 	public ArrayList<InstitutionPO> searchInstitutionInfo(ArrayList<String> requirement) throws RemoteException;
 

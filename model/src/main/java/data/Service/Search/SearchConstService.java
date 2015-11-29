@@ -18,7 +18,7 @@ public interface SearchConstService extends Remote{
 	 * 
 	 * @param requirement 搜索要求
 	 * @return ConstPO的ArrayList 
-	 * @throws RemoteException 如果RMI链接断开
+	 * @exception RemoteException 如果RMI链接断开
 	 */
 	public ArrayList<ConstPO> searchConst(ArrayList<String> requirement) throws RemoteException;
 

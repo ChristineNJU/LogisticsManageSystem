@@ -18,7 +18,7 @@ public interface SearchLogisticsService extends Remote{
 	 * 
 	 * @param requirement 搜索要求
 	 * @return LogisticsInfoPO的ArrayList 
-	 * @throws RemoteException 如果RMI链接断开
+	 * @exception RemoteException 如果RMI链接断开
 	 */
 	public ArrayList<LogisticsInfoPO> searchLogisticsInfo(ArrayList<String> requirement) throws RemoteException;
 

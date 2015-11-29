@@ -19,7 +19,7 @@ public interface SearchRemovalService extends Remote{
 	 * @param DB_URL 表链接
 	 * @param requirement 搜索要求
 	 * @return RemovalPO的ArrayList 
-	 * @throws RemoteException 如果RMI链接断开
+	 * @exception RemoteException 如果RMI链接断开
 	 */
 	public ArrayList<RemovalPO> searchRemoval(String DB_URL, ArrayList<String> requirement) throws RemoteException;
 

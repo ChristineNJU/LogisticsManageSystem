@@ -19,7 +19,7 @@ public interface SearchStockTakingService extends Remote{
 	 * @param DB_URL 表链接
 	 * @param requirement 搜索要求
 	 * @return StockTakingPO的ArrayList 
-	 * @throws RemoteException 如果RMI链接断开
+	 * @exception RemoteException 如果RMI链接断开
 	 */
 	public ArrayList<StockTakingPO> searchStockTaking(String DB_URL, ArrayList<String> requirement) throws RemoteException;
 

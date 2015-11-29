@@ -18,7 +18,7 @@ public interface SearchDistanceService extends Remote{
 	 * 
 	 * @param requirement 搜索要求
 	 * @return DistancePO的ArrayList 
-	 * @throws RemoteException 如果RMI链接断开
+	 * @exception RemoteException 如果RMI链接断开
 	 */
 	public ArrayList<DistancePO> searchDistance(ArrayList<String> requirement) throws RemoteException;
 	

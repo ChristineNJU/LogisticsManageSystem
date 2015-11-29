@@ -18,7 +18,7 @@ public interface SearchBenefitService extends Remote {
 	 * 
 	 * @param DB_URL 表链接
 	 * @return BenefitPO的ArrayList 
-	 * @throws RemoteException 如果RMI链接断开
+	 * @exception RemoteException 如果RMI链接断开
 	 */
 	public ArrayList<BenefitPO> searchBenefit(ArrayList<String> requirement) throws RemoteException;
 }

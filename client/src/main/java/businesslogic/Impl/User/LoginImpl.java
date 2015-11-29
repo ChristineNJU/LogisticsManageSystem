@@ -10,8 +10,23 @@ import State.UserRole;
 import data.RMIHelper.RMIHelper;
 import data.Service.Search.SearchUserService;
 
+/**
+ * 用户登录的实现
+ * 
+ * @author 张晨剑
+ * @version 1.0.0
+ * */
 public class LoginImpl {
 	
+	/**
+	 * 登录方法,包括从数据库查询数据以及对密码的比对
+	 * 
+	 * @param userName 用户名
+	 * @param password 密码
+	 * @return 登录状态LoginState
+	 * 
+	 * @see SearchUserService#searchUser(ArrayList)
+	 * */
 	public LoginState login(String userName, String password) {
 		LoginState state=LoginState.SUCCESS;
 		try{

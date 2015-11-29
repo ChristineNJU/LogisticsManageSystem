@@ -18,7 +18,7 @@ public interface SearchCostService extends Remote {
 	 * 
 	 * @param requirement 搜索要求
 	 * @return CostPO的ArrayList 
-	 * @throws RemoteException 如果RMI链接断开
+	 * @exception RemoteException 如果RMI链接断开
 	 */
 	public ArrayList<CostPO> searchCost(ArrayList<String> requirement) throws RemoteException;
 }

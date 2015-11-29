@@ -19,7 +19,7 @@ public interface SearchGatheringService extends Remote{
 	 * @param DB_URL 表链接
 	 * @param requirement 搜索要求
 	 * @return GatheringPO的ArrayList 
-	 * @throws RemoteException 如果RMI链接断开
+	 * @exception RemoteException 如果RMI链接断开
 	 */
 	public ArrayList<GatheringPO> searchGathering(String DB_URL, ArrayList<String> requirement) throws RemoteException;
 
