@@ -7,18 +7,24 @@ import java.util.Date;
 import businesslogic.URLHelper.URLHelper;
 import VO.GatheringVO;
 
-/*======================================================================
+/**
  * 用来保存收款信息的持久化数据格式
+ * 
+ * @author HermC
+ * @version 1.0.0
  * */
-
 public class GatheringPO extends PO {
 	
+	// ----- member variables ---------------------------------------
 	private Date date;
 	private double amount = 0;
 	private String courier = "";
 	private ArrayList<String> bar_code_list = new ArrayList<String>();
 	private boolean isApproved = false;
 	
+	/**
+	 * 直接创建收款信息的持久化数据对象
+	 * */
 	public GatheringPO(Date date, double amount, String courier, ArrayList<String> bar_code_list,
 			String DB_URL) {
 		super(DB_URL);
@@ -27,6 +33,10 @@ public class GatheringPO extends PO {
 		this.courier = courier;
 		this.bar_code_list = bar_code_list;
 	}
+	
+	/**
+	 * 通过GatheringVO创建收款信息的持久化数据对象
+	 * */
 	public GatheringPO(GatheringVO gathering, String institutionId) {
 		// TODO Auto-generated constructor stub
 		super(URLHelper.getGatheringURL(institutionId));
@@ -45,37 +55,46 @@ public class GatheringPO extends PO {
 	
 	
 
-	/*
+	/**
 	 * 获取收款时间
-	 * 返回Date
+	 * 
+	 * @return 收款时间Date
 	 * */
 	public Date getDate() {
 		return date;
 	}
-	/*
+	
+	/**
 	 * 获取收款金额
-	 * 返回double
+	 * 
+	 * @return 收款金额
 	 * */
 	public double getAmount() {
 		return amount;
 	}
-	/*
+	
+	/**
 	 * 获取收件快递员
-	 * 返回String
+	 * 
+	 * @return 收件快递员String
 	 * */
 	public String getCourier() {
 		return courier;
 	}
-	/*
+	
+	/**
 	 * 获取所有订单条形码
-	 * 返回ArrayList<String>
+	 * 
+	 * @return 所有订单条形码ArrayList<String>
 	 * */
 	public ArrayList<String> getBarCodeList() {
 		return bar_code_list;
 	}
-	/*
+	
+	/**
 	 * 获取审批状态
-	 * 返回boolean
+	 * 
+	 * @return 审批状态
 	 * */
 	public boolean isApproved() {
 		return isApproved;
@@ -85,8 +104,10 @@ public class GatheringPO extends PO {
 	 * 对GatheringPO的某些信息进行更新
 	 * */
 	
-	/*
+	/**
 	 * 更新审批状态
+	 * 
+	 * @param isApproved 新审批状态
 	 * */
 	public void setApproved(boolean isApproved) {
 		this.isApproved = isApproved;
@@ -98,10 +119,7 @@ public class GatheringPO extends PO {
 	 * 对数据的格式化
 	 * */
 	
-	/*
-	 * 形成数据库格式
-	 * 返回String
-	 * */
+
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub

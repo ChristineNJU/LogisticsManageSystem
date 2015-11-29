@@ -66,7 +66,7 @@ public class ConstPO extends PO {
 	/**
 	 * 更新常量值
 	 * 
-	 * @param 新常量值
+	 * @param value 新常量值
 	 * */
 	public void setValue(double value) {
 		this.value = value;

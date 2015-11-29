@@ -3,10 +3,12 @@ package data.Impl.Update;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 import PO.PO;
+import State.DeleteState;
 import State.UpdateState;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Update.UpdateService;
@@ -31,6 +33,11 @@ public class UpdateImpl extends UnicastRemoteObject implements UpdateService {
 		Connection conn = DBHelper.getConnection();
 		try {
 			Statement s = conn.createStatement();
+			
+			ResultSet rs = s.executeQuery(DBHelper.SEARCH(statistics.getURL(), statistics.getPrimaryKey()));
+			if(!rs.next()){
+				return UpdateState.NOTFOUND;
+			}
 			boolean mark;
 			
 			mark = s.execute("DELETE FROM "+statistics.getURL()+" WHERE "+statistics.getPrimaryKey());

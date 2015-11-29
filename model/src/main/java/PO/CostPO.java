@@ -10,11 +10,14 @@ import State.StateSwitch;
 import VO.CostVO;
 
 /**
- * 用来
+ * 用来保存出款单的持久化数据格式
  * 
+ * @author HermC
+ * @version 1.0.0
  * */
 public class CostPO extends PO {
 	
+	// ----- member variables ---------------------------------------
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	private Date cost_date;
 	private double cost_amount = 0;
@@ -24,6 +27,9 @@ public class CostPO extends PO {
 	private	String remark = "";
 	private boolean isApproved = false;
 	
+	/**
+	 * 直接创建出款单的持久化数据对象
+	 * */
 	public CostPO(String cost_date, double cost_amount, String cost_name, String account_name, 
 			CostType type, String remark, String DB_URL) {
 		super(DB_URL);
@@ -41,6 +47,9 @@ public class CostPO extends PO {
 		this.remark = remark;
 	}
 	
+	/**
+	 * 通过CostVO创建出款单的持久化数据格式
+	 * */
 	public CostPO(CostVO cvo){
 		super(URLHelper.getCostURL());
 		this.account_name=cvo.getPayerAccount();
@@ -58,51 +67,64 @@ public class CostPO extends PO {
 	/*------------------------------------------------------------------------------------
 	 * 对CostPO的数据进行读取
 	 * */
-	/*
+	/**
 	 * 获取付款日期
-	 * 返回String
+	 * 
+	 * @return 付款日期String
 	 * */
 	public Date getCostDate() {
 		return cost_date;
 	}
-	/*
+	
+	/**
 	 * 获取付款金额
-	 * 返回double
+	 * 
+	 * @return 付款金额
 	 * */
 	public double getCostAmount() {
 		return cost_amount;
 	}
-	/*
+	
+	/**
 	 * 获取付款人
-	 * 返回String
+	 * 
+	 * @return 付款人String
 	 * */
 	public String getCostName() {
 		return cost_name;
 	}
-	/*
+	
+	/**
 	 * 获取付款账号
-	 * 返回String
+	 * 
+	 * @return 付款账号String
 	 * */
 	public String getAccountName() {
 		return account_name;
 	}
-	/*
+	
+	/**
 	 * 获取条目
-	 * 返回CostType
+	 * 
+	 * @return 条目CostType
 	 * */
 	public CostType getType() {
 		return type;
 	}
-	/*
+	
+	/**
 	 * 获取备注
-	 * 返回String
+	 * 
+	 * @return 备注String
 	 * */
 	public String getRemark() {
 		return remark;
 	}
-	/*
+	
+	/**
 	 * 获取审批状态
-	 * 返回boolean
+	 * 
+	 * @return 审批状态
 	 * */
 	public boolean isApproved() {
 		return isApproved;
@@ -113,8 +135,10 @@ public class CostPO extends PO {
 	 * 对AccountPO的某些信息进行更新
 	 * */
 	
-	/*
+	/**
 	 * 更新审批状态
+	 * 
+	 * @param isApproved 新审批状态
 	 * */
 	public void setApproved(boolean isApproved) {
 		this.isApproved = isApproved;

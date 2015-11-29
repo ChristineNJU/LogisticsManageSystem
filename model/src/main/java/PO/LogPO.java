@@ -2,13 +2,22 @@ package PO;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+/**
+ * 系统日志的持久化数据格式
+ * 
+ * @author HermC
+ * @version 1.0.0
+ * */
 public class LogPO extends PO {
 
+	// ----- member variables ---------------------------------------
 	private Date time;
 	private String operation = "";
 	private String operator = "";
 	
+	/**
+	 * 直接创建系统日志的持久化数据对象
+	 * */
 	public LogPO(Date time, String operation, String operator, String DB_URL) {
 		super(DB_URL);
 		// TODO Auto-generated constructor stub
@@ -24,23 +33,28 @@ public class LogPO extends PO {
 	/*---------------------------------------------------------------
 	 * 对LogPO的数据进行读取
 	 * */
-	/*
+	/**
 	 * 获取操作时间
-	 * 返回Date
+	 * 
+	 * @return 操作时间Date
 	 * */
 	public Date getTime() {
 		return time;
 	}
-	/*
+	
+	/**
 	 * 获取操作
-	 * 返回String
+	 * 
+	 * @return 操作String
 	 * */
 	public String getOperation() {
 		return operation;
 	}
-	/*
+	
+	/**
 	 * 获取操作员
-	 * 返回String
+	 * 
+	 * @return 操作员String
 	 * */
 	public String getOperator() {
 		return operator;
