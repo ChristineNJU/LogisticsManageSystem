@@ -21,7 +21,7 @@ public class TestArrival extends TestCase {
 		String time="2015-11-26 11:06:06";
 		
 		try {
-			ArrivalVO arrival=new ArrivalVO("1234567890", sdf.parse(time), "025000", "南京", LogisticsState.INTACT);
+			ArrivalVO arrival=new ArrivalVO("1234567891", sdf.parse(time), "025000", "南京", LogisticsState.INTACT);
 			ArrayList<ArrivalVO> arrivalList=new ArrayList<ArrivalVO>();
 			arrivalList.add(arrival);
 			assertEquals(AddState.SUCCESS,businessLobbyController.arrival(arrivalList));

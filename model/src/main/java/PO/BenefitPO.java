@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import VO.BenefitVO;
+import VO.CostVO;
+import VO.GatheringVO;
 import businesslogic.URLHelper.URLHelper;
 
 public class BenefitPO extends PO {
@@ -35,13 +37,28 @@ public class BenefitPO extends PO {
 	
 	public BenefitPO(BenefitVO bvo){
 		super(URLHelper.getBenefitURL());
-
 		this.income=bvo.getIncome();
 		this.expend=bvo.getCost();
 		this.benefit=bvo.getBenefit();
 		this.date=bvo.getDate();
 	}
-
+	
+	public BenefitPO(GatheringVO gathering,BenefitPO benefit) {
+		super(URLHelper.getBenefitURL());
+		// TODO Auto-generated constructor stub
+		this.benefit=benefit.getBenefit()+gathering.getMoney();
+		this.income=gathering.getMoney()+benefit.getIncome();
+		this.expend=benefit.getExpend();
+		this.date=gathering.getDate();
+	}
+	public BenefitPO(CostVO cost,BenefitPO benefit) {
+		super(URLHelper.getBenefitURL());
+		// TODO Auto-generated constructor stub
+		this.benefit=benefit.getBenefit()-cost.getAmount();
+		this.income=benefit.getIncome();
+		this.expend=benefit.getExpend()+cost.getAmount();
+		this.date=cost.getDate();
+	}
 	/*====================================================================================
 	 * Public方法
 	 * */
@@ -49,7 +66,6 @@ public class BenefitPO extends PO {
 	/*------------------------------------------------------------------------------------
 	 * 对BenefitPO的数据进行读取
 	 * */
-	
 	
 	/*
 	 * 获取总收入
@@ -115,7 +131,6 @@ public class BenefitPO extends PO {
 		
 		String result = "";
 		
-
 		result = result + income + ", ";
 		result = result + expend + ", ";
 		result = result + benefit + ", ";

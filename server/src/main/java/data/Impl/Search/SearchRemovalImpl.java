@@ -17,6 +17,11 @@ import State.TransferType;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Search.SearchRemovalService;
 
+/**
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public class SearchRemovalImpl extends UnicastRemoteObject implements SearchRemovalService {
 
 	public SearchRemovalImpl() throws RemoteException {
@@ -25,6 +30,13 @@ public class SearchRemovalImpl extends UnicastRemoteObject implements SearchRemo
 	}
 
 	@Override
+	/**
+	 * 从数据库中搜索RemovalPO
+	 * 
+	 * @param DB_URL 表链接
+	 * @param requirement 搜索要求
+	 * @return RemovalPO的ArrayList 
+	 */
 	public ArrayList<RemovalPO> searchRemoval(String DB_URL,
 			ArrayList<String> requirement) throws RemoteException {
 		// TODO Auto-generated method stub

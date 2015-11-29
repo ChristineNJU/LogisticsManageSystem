@@ -61,7 +61,7 @@ public class UserPO extends PO {
 		return id;
 	}
 	public String getPassword() {
-		return name;
+		return password;
 	}
 	public String getSex() {
 		return sex;

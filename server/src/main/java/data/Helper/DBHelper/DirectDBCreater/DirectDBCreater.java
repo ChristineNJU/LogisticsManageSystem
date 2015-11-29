@@ -812,8 +812,8 @@ public class DirectDBCreater {
 		
 		try {
 			s = conn.createStatement();
-			s.execute("CREATE TABLE "+table_name+" (number int PRIMARY key, income double, expend double, benefit double, "
-					+ "startDate varchar(20), endDate varchar(20))");
+			s.execute("CREATE TABLE "+table_name+" (income double, expend double, benefit double, "
+					+ "date varchar(20) PRIMARY key)");
 			conn.commit();
 			
 			System.out.println("create table "+table_name);

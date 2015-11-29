@@ -12,7 +12,7 @@ import VO.UserVO;
 public class Navigation {
 
 	UserVO user = new UserVO("141250174","尹子越",UserRole.courier);
-	private PanelNavigation navPanel = new PanelNavigation(user);
+	private PanelNavigation navPanel;
 	
 	private ButtonNav pressed;
 	protected  ArrayList<ButtonNav> buttonList = new ArrayList<ButtonNav>();
@@ -20,10 +20,11 @@ public class Navigation {
 	private NavListener navListener = new NavListener();
 	public Navigation(UserVO user) {
 		this.user = user;
-
+		navPanel = new PanelNavigation(user);
 	}
 	
-	protected void initNavButtonArray(){
+	protected void initNavButtonArray() {
+		
 	}
 	
 	protected void addNavButtons(){

@@ -50,14 +50,10 @@ public class LogIn{
 	private AdminService adminService = new AdminController();
 	
 	MainFrame frame;
-	public LogIn(MainFrame frame){
+	public LogIn(MainFrame frame, Inquiry parent){
 		initComponents();
 		this.frame = frame;
-	}
-	
-	public LogIn(Inquiry parent) {
 		this.parent = parent;
-		initComponents();
 	}
 	
 	private void initComponents(){
@@ -138,6 +134,7 @@ public class LogIn{
 	public void logIn(){
 		String userId = id.getText();
 		String userPassword = password.getText();
+		
 		LoginState state = loginService.login(userId,userPassword);
 		
 		if(state.equals(LoginState.SUCCESS)){
@@ -196,7 +193,7 @@ public class LogIn{
 			}
 			if(e.getSource().equals(cancel)){
 //				logIn.dispose();
-				Thread t = new Thread(new MovingFunction());
+				Thread t = new Thread(new LoginMovingFunction());
 				t.start();
 				
 //				container.setVisible(false);
@@ -253,7 +250,7 @@ public class LogIn{
 		
 	}
 	
-	class MovingFunction implements Runnable {
+	class LoginMovingFunction implements Runnable {
 
 		@Override
 		public void run() {

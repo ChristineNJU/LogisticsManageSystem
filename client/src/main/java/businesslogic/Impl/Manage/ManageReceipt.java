@@ -33,8 +33,10 @@ import businesslogic.Service.Manage.UpdateReceiptService;
 import businesslogic.SystemLog.SystemLog;
 import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
+import data.Service.Add.AddService;
 import data.Service.Search.SearchArrivalService;
 import data.Service.Search.SearchBalanceService;
+import data.Service.Search.SearchBenefitService;
 import data.Service.Search.SearchCostService;
 import data.Service.Search.SearchDeliveryService;
 import data.Service.Search.SearchEntruckingService;
@@ -60,41 +62,48 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 			requirementBusinesslobby.add("institution_type='BusinessLobby'");
 			
 			ArrayList<String> requirementReponsitory=new ArrayList<String>();
-			requirementReponsitory.add("institution_type='Reponsitory'");
+			requirementReponsitory.add("institution_type='Repository'");
 			
 			ArrayList<String> requirementMediumCenter=new ArrayList<String>();
-			requirementMediumCenter.add("institution_type='Mediuncenter'");
+			requirementMediumCenter.add("institution_type='MediumCenter'");
 			
 			SearchInstitutionInfoService searchInstitution=(SearchInstitutionInfoService) Naming.lookup(RMIHelper.SEARCH_INSTITUTION_IMPL);
 			ArrayList<InstitutionPO> searchResultBusinesslobby=searchInstitution.searchInstitutionInfo(requirementBusinesslobby);
 			ArrayList<InstitutionPO> searchResultReponsitory=searchInstitution.searchInstitutionInfo(requirementReponsitory);
 			ArrayList<InstitutionPO> searchResultMediumCenter=searchInstitution.searchInstitutionInfo(requirementMediumCenter);
 			
+			System.out.println(searchResultBusinesslobby.get(0).getInstitutionNumber());
+			System.out.println(searchResultMediumCenter.get(0).getInstitutionNumber());
+			System.out.println(searchResultReponsitory.get(0).getInstitutionNumber());
 			//arrival
 			if(receipt instanceof ArrivalVO){
+				
 				ArrivalVO arrival=(ArrivalVO) receipt;
 				SearchArrivalService searchArrival=(SearchArrivalService) Naming.lookup(RMIHelper.SEARCH_ARRIVAL_IMPL);
 				requirement.add("barCode='"+arrival.getBarCode()+"'");
 				ArrayList<ArrivalPO> searchResult=new ArrayList<ArrivalPO>();
 				for(int i=0;i<searchResultBusinesslobby.size();i++){
-					ArrayList<ArrivalPO> arrivalResult=searchArrival.searchArrival(URLHelper.getArrivalURL(searchResultBusinesslobby.get(i).getInstitutionNumber()), requirement);
+					//String r = URLHelper.getArrivalURL(searchResultBusinesslobby.get(i).getInstitutionNumber());
+					//System.out.println(r);
+					ArrayList<ArrivalPO> arrivalResult=searchArrival.searchArrival(searchResultBusinesslobby.get(0).getInstitutionNumber(), requirement);
+					//System.out.println(searchResultBusinesslobby.size());
 					for(int j=0;j<arrivalResult.size();j++)
 						searchResult.add(arrivalResult.get(j));	
 				}
-				for(int i=0;i<searchResultMediumCenter.size();i++){
-					ArrayList<ArrivalPO> arrivalResult=searchArrival.searchArrival(URLHelper.getArrivalURL(searchResultMediumCenter.get(i).getInstitutionNumber()), requirement);
-					for(int j=0;j<arrivalResult.size();j++)
-						searchResult.add(arrivalResult.get(j));	
-				}
+//				for(int i=0;i<searchResultMediumCenter.size();i++){
+//					ArrayList<ArrivalPO> arrivalResult=searchArrival.searchArrival(URLHelper.getArrivalURL(searchResultMediumCenter.get(i).getInstitutionNumber()), requirement);
+//					for(int j=0;j<arrivalResult.size();j++)
+//						searchResult.add(arrivalResult.get(j));	
+//				}
 				
 				if(!searchResult.isEmpty()){
 					System.out.println("not found");
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					
-						result=updateService.update(new ArrivalPO((ArrivalVO)receipt,SystemLog.getInstitutionId()));
-					
+					ArrivalPO temp=new ArrivalPO((ArrivalVO)receipt,SystemLog.getInstitutionId());
+					temp.setApproved(true);
+					result=updateService.update(temp);
 				}
 			}
 			
@@ -115,8 +124,9 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					
-						result=updateService.update(new BenefitPO((BenefitVO)receipt,));
+					BalancePO temp=new BalancePO((BalanceVO)receipt, SystemLog.getInstitutionId());
+					temp.setApproved(true);
+					result=updateService.update(temp);
 					
 				}
 			}
@@ -133,10 +143,20 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					
-						result=updateService.update(new CostPO((CostVO) receipt));
+					CostPO temp=new CostPO((CostVO) receipt);
+					temp.setApproved(true);
+					result=updateService.update(temp);
 					
 				}
+				
+				
+				SearchBenefitService searchBenefit=(SearchBenefitService) Naming.lookup(RMIHelper.SEARCH_BENEFIT_IMPL);
+				ArrayList<String> requireBenefit=new ArrayList<String>();
+				requireBenefit.add("date like '%%'");
+				ArrayList<BenefitPO> searchResultBenefit=searchBenefit.searchBenefit(requireBenefit);
+				AddService addService=(AddService) Naming.lookup(RMIHelper.ADD_IMPL);
+				BenefitPO benefit=new BenefitPO(cost, searchResultBenefit.get(searchResultBenefit.size()));
+				addService.add(benefit);
 			}
 			
 			//Delivery
@@ -161,8 +181,9 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					
-						result=updateService.update(new DeliveryPO((DeliveryVO)receipt,SystemLog.getInstitutionId()));
+					DeliveryPO temp=new DeliveryPO((DeliveryVO)receipt,SystemLog.getInstitutionId());
+					temp.setApproved(true);
+					result=updateService.update(temp);
 					
 				}
 			}
@@ -190,8 +211,9 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-				
-						result=updateService.update(new EntruckingPO((EntruckingVO)receipt, SystemLog.getInstitutionId()));
+					EntruckingPO temp=new EntruckingPO((EntruckingVO)receipt, SystemLog.getInstitutionId());
+					temp.setApproved(true);;
+					result=updateService.update(temp);
 					
 				}
 			}
@@ -213,10 +235,20 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					
-						result=updateService.update(new GatheringPO((GatheringVO)receipt,SystemLog.getInstitutionId()));
+					GatheringPO temp=new GatheringPO((GatheringVO)receipt,SystemLog.getInstitutionId());
+					temp.setApproved(true);
+					result=updateService.update(temp);
 					
 				}
+				
+				
+				SearchBenefitService searchBenefit=(SearchBenefitService) Naming.lookup(RMIHelper.SEARCH_BENEFIT_IMPL);
+				ArrayList<String> requireBenefit=new ArrayList<String>();
+				requireBenefit.add("date like '%%'");
+				ArrayList<BenefitPO> searchResultBenefit=searchBenefit.searchBenefit(requireBenefit);
+				AddService addService=(AddService) Naming.lookup(RMIHelper.ADD_IMPL);
+				BenefitPO benefit=new BenefitPO(gathering, searchResultBenefit.get(searchResultBenefit.size()));
+				addService.add(benefit);
 			}
 			
 			
@@ -238,8 +270,9 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					
-						result=updateService.update(new RemovalPO((RemovalVO)receipt,SystemLog.getInstitutionId()));
+					RemovalPO temp=new RemovalPO((RemovalVO)receipt,SystemLog.getInstitutionId());
+					temp.setApproved(true);
+					result=updateService.update(temp);
 					
 				}
 				
@@ -263,8 +296,9 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					
-						result=updateService.update(new StoragePO((StorageVO)receipt,SystemLog.getInstitutionId()));
+					StoragePO temp=new StoragePO((StorageVO)receipt,SystemLog.getInstitutionId());
+					temp.setApproved(true);
+					result=updateService.update(temp);
 					
 				}
 			}
@@ -287,8 +321,9 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					
-						result=updateService.update(new TransferPO((TransferVO)receipt,SystemLog.getInstitutionId()));
+					TransferPO temp=new TransferPO((TransferVO)receipt,SystemLog.getInstitutionId());
+					temp.setApproved(true);
+					result=updateService.update(temp);
 					
 				}
 			}

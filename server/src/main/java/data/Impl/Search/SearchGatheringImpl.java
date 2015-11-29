@@ -15,6 +15,11 @@ import PO.GatheringPO;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Search.SearchGatheringService;
 
+/**
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public class SearchGatheringImpl extends UnicastRemoteObject implements SearchGatheringService {
 
 	public SearchGatheringImpl() throws RemoteException {
@@ -23,6 +28,13 @@ public class SearchGatheringImpl extends UnicastRemoteObject implements SearchGa
 	}
 
 	@Override
+	/**
+	 * 从数据库中搜索GatheringPO
+	 * 
+	 * @param DB_URL 表链接
+	 * @param requirement 搜索要求
+	 * @return GatheringPO的ArrayList 
+	 */
 	public ArrayList<GatheringPO> searchGathering(String DB_URL,
 			ArrayList<String> requirement) throws RemoteException {
 		// TODO Auto-generated method stub

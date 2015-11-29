@@ -16,6 +16,11 @@ import businesslogic.URLHelper.URLHelper;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Search.SearchSalaryService;
 
+/**
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public class SearchSalaryImpl extends UnicastRemoteObject implements SearchSalaryService {
 
 	public SearchSalaryImpl() throws RemoteException {
@@ -24,6 +29,12 @@ public class SearchSalaryImpl extends UnicastRemoteObject implements SearchSalar
 	}
 
 	@Override
+	/**
+	 * 从数据库中搜索SalaryPO
+	 * 
+	 * @param requirement 搜索要求
+	 * @return SalaryPO的ArrayList 
+	 */
 	public ArrayList<SalaryPO> searchSalary(ArrayList<String> requirement)
 			throws RemoteException {
 		// TODO Auto-generated method stub

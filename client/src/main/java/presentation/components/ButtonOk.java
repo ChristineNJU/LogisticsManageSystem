@@ -32,7 +32,7 @@ public class ButtonOk extends ButtonTotal {
 		setBackground(ColorPallet.Pink);
 	}
 	
-	public void setUnRolled(){
+	public void unRolled(){
 		setForeground(ColorPallet.Pink);
 //		setBackground(Color.black);
 		setOpaque(false);

@@ -16,6 +16,11 @@ import businesslogic.URLHelper.URLHelper;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Search.SearchLogService;
 
+/**
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public class SearchLogImpl extends UnicastRemoteObject implements SearchLogService {
 
 	public SearchLogImpl() throws RemoteException {
@@ -24,6 +29,12 @@ public class SearchLogImpl extends UnicastRemoteObject implements SearchLogServi
 	}
 
 	@Override
+	/**
+	 * 从数据库中搜索LogPO
+	 * 
+	 * @param requirement 搜索要求
+	 * @return LogPO的ArrayList 
+	 */
 	public ArrayList<LogPO> searchLog(ArrayList<String> requirement)
 			throws RemoteException {
 		// TODO Auto-generated method stub

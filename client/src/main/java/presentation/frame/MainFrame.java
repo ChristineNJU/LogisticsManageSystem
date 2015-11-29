@@ -48,7 +48,8 @@ public class MainFrame {
 		panel.setLayout(null);
 		
 		inquiry = new Inquiry(this);
-		frame.add(inquiry.getPanel());
+//		frame.add(inquiry.getPanel());
+		panel.add(inquiry.getPanel());
 //		changeToCourier();
 //		changeToBusinesslobby();
 //		changeToFinance();
@@ -66,7 +67,9 @@ public class MainFrame {
 	public void changeToUserPane(UserVO user){
 		this.user = user;
 		UserRole role = user.getRole();
-		frame.remove(frame.getContentPane());
+		System.out.println(user.getRole());
+//		frame.remove(frame.getContentPane());
+		panel.remove(inquiry.getPanel());
 		if(role == UserRole.courier)
 			changeToCourier();
 		if(role == UserRole.businessAgent)
@@ -118,6 +121,7 @@ public class MainFrame {
 	private void changeToAdmin(){
 		nav = new NavigationAdmin(user);
 		panel.add(nav.getNavPanel());
+		panel.repaint();
 	}
 	
 	public static JFrame getMainFrame(){
@@ -135,9 +139,10 @@ public class MainFrame {
 		int y = Toolkit.getDefaultToolkit().getScreenSize().height;
 		
 		double tmp = 0;
+		int total = 200;
 		
-		while(tmp<=300){
-			height = AnimationEasing.easeOutCubic(0, tmp, FRAME_HEIGHT, -FRAME_HEIGHT+5, 300);
+		while(tmp<=total){
+			height = AnimationEasing.easeOutCubic(0, tmp, FRAME_HEIGHT, -FRAME_HEIGHT+5, total);
 			frame.setBounds((int)((x-width)/2), (int)((y-height)/2)-32, (int)width, (int)height);
 			
 			try {

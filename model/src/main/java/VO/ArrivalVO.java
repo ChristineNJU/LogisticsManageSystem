@@ -13,6 +13,7 @@ public class ArrivalVO extends VO {
 	private String departure = null;
 	private LogisticsState itemState = null;
 	
+	
 	public ArrivalVO(String barCode,Date date,String listId,String departure,
 			LogisticsState itemState){
 		this.barCode = barCode;
@@ -21,6 +22,7 @@ public class ArrivalVO extends VO {
 		this.departure = departure;
 		this.itemState = itemState;
 	}
+	
 	public ArrivalVO(ArrivalPO po) {
 		this.date = po.getArrivalDate();
 		this.listId = po.getBarCode();

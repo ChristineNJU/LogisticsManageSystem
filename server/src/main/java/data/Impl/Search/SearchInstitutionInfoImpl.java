@@ -15,6 +15,11 @@ import businesslogic.URLHelper.URLHelper;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Search.SearchInstitutionInfoService;
 
+/**
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public class SearchInstitutionInfoImpl extends UnicastRemoteObject implements SearchInstitutionInfoService {
 
 	public SearchInstitutionInfoImpl() throws RemoteException {
@@ -23,6 +28,12 @@ public class SearchInstitutionInfoImpl extends UnicastRemoteObject implements Se
 	}
 
 	@Override
+	/**
+	 * 从数据库中搜索InstitutionPO
+	 * 
+	 * @param requirement 搜索要求
+	 * @return InstitutionPO的ArrayList 
+	 */
 	public ArrayList<InstitutionPO> searchInstitutionInfo(
 			ArrayList<String> requirement) throws RemoteException {
 		// TODO Auto-generated method stub
