@@ -8,6 +8,12 @@ import VO.StaffVO;
 import VO.UserVO;
 import businesslogic.URLHelper.URLHelper;
 
+/**
+ * 用来保存用户信息的持久化数据格式
+ * 
+ * @author HermC
+ * @version 1.0.0
+ * */
 public class UserPO extends PO {
 	private String id;
 	private String password;
@@ -18,6 +24,9 @@ public class UserPO extends PO {
 	private String city;
 	private UserRole role;
 		
+	/**
+	 * 直接创建用户信息的持久化数据对象
+	 * */
 	public UserPO(String id, String password, String name, String sex, int age, 
 			InstitutionType institution, String city, UserRole role, String DB_URL) {
 		super(DB_URL);
@@ -31,6 +40,9 @@ public class UserPO extends PO {
 		this.role = role;		
 	}
 	
+	/**
+	 * 通过StaffVO创建用户信息的持久化数据对象
+	 * */
 	public UserPO(StaffVO staff){
 		super(URLHelper.getUserURL());
 		this.id = staff.getSystemId();
@@ -43,6 +55,9 @@ public class UserPO extends PO {
 		this.role = staff.getPosition();	
 	}
 	
+	/**
+	 * 通过UserVO创建用户信息的持久化数据对象
+	 * */
 	public UserPO(UserVO user){
 		super(URLHelper.getUserURL());
 		this.id=user.getId();
@@ -55,27 +70,74 @@ public class UserPO extends PO {
 		this.role=user.getRole();
 	}
 
+	/**
+	 * 获取用户姓名
+	 * 
+	 * @return 用户姓名String
+	 * */
 	public String getName() {
 		return name;
 	}
+	
+	/**
+	 * 获取用户ID
+	 * 
+	 * @return 用户IDString
+	 * */
 	public String getID() {
 		return id;
 	}
+	
+	/**
+	 * 获取密码
+	 * 
+	 * @return 密码String
+	 * */
 	public String getPassword() {
 		return password;
 	}
+	
+	/**
+	 * 获取性别
+	 * 
+	 * @return 性别String
+	 * */
 	public String getSex() {
 		return sex;
 	}
+	
+	/**
+	 * 获取年龄
+	 * 
+	 * @return 年龄
+	 * */
 	public int getAge() {
 		return age;
 	}
+	
+	/**
+	 * 获取机构类型
+	 * 
+	 * @return 机构类型InstitutionType
+	 * */
 	public InstitutionType getInstitution() {
 		return institution;
 	}
+	
+	/**
+	 * 获取城市
+	 * 
+	 * @return 城市String
+	 * */
 	public String getCity() {
 		return city;
 	}
+	
+	/**
+	 * 获取职责
+	 * 
+	 * @return 职责String
+	 * */
 	public UserRole getRole() {
 		return role;
 	}

@@ -16,10 +16,8 @@ public interface SearchPeriodService extends Remote {
 	/**
 	 * 从数据库中搜索PeriodPO
 	 * 
-	 * @param DB_URL 表链接
-	 * @param requirement 搜索要求
-	 * @return PeriodPO的ArrayList 
+	 * @return Period
 	 * @exception RemoteException 如果RMI链接断开
 	 */
-	public ArrayList<PeriodPO> searchPeriod(String DB_URL, ArrayList<String> requirement) throws RemoteException;
+	public PeriodPO searchPeriod() throws RemoteException;
 }

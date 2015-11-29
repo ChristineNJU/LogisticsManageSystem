@@ -3,15 +3,22 @@ package PO;
 import businesslogic.URLHelper.URLHelper;
 import VO.CarInfoVO;
 
-/*==================================================================
+/**
  * 用来保存车辆信息的持久化数据格式
+ * 
+ * @author 尹子越
+ * @version 1.0.0
  * */
 public class CarInfoPO extends PO {
 
+	// ----- member variables ---------------------------------------
 	private String car_number = "";
 	private String car_license = "";
 	private int attend_time = 0;
 	
+	/**
+	 * 直接创建车辆信息的持久化数据对象
+	 * */
 	public CarInfoPO(String car_number, String car_license, int attend_time, String DB_URL) {
 		super(DB_URL);
 		this.car_number = car_number;
@@ -19,6 +26,9 @@ public class CarInfoPO extends PO {
 		this.attend_time = attend_time;
 	}
 	
+	/**
+	 * 通过CarInfoVO创建车辆信息的持久化数据对象
+	 * */
 	public CarInfoPO(CarInfoVO car) {
 		super(URLHelper.getCarInfoURL(car.getCarNumber().substring(0, car.getCarNumber().length()-3)));
 		// TODO Auto-generated constructor stub
@@ -33,26 +43,29 @@ public class CarInfoPO extends PO {
 	/*---------------------------------------------------------------
 	 * 对CarInfoPO的数据进行读取
 	 * */
-	
-	
 
-	/*
+	/**
 	 * 获取车辆代号
-	 * 返回String
+	 * 
+	 * @return 车辆代号String
 	 * */
 	public String getCarNumber() {
 		return car_number;
 	}
-	/*
+	
+	/**
 	 * 获取车牌号
-	 * 返回String
+	 * 
+	 * @return 车牌号String
 	 * */
 	public String getCarLicense() {
 		return car_license;
 	}
-	/*
+	
+	/**
 	 * 获取服役时间
-	 * 返回int
+	 * 
+	 * @return 服役时间
 	 * */
 	public int getAttendTime() {
 		return attend_time;
@@ -62,20 +75,27 @@ public class CarInfoPO extends PO {
 	 * 对CarInfoPO的数据进行更新
 	 * */
 	
-	/*
+	/**
 	 * 更新车辆代号
+	 * 
+	 * @param car_number 新车辆代号
 	 * */
 	public void setCarNumber(String car_number) {
 		this.car_number = car_number;
 	}
-	/*
+	
+	/**
 	 * 更新车牌号
+	 * 
+	 * @param car_license 新车牌号
 	 * */
 	public void setCarLicense(String car_license) {
 		this.car_license = car_license;
 	}
-	/*
+	/**
 	 * 更新服役时间
+	 * 
+	 * @param n 新服役时间
 	 * */
 	public void setAttendTime(int n) {
 		this.attend_time = n;
@@ -86,10 +106,6 @@ public class CarInfoPO extends PO {
 	 * 对数据的格式化
 	 * */
 	
-	/*
-	 * 形成数据库格式
-	 * 返回String
-	 * */
 	
 	@Override
 	public String toString() {

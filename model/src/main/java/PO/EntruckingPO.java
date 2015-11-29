@@ -8,12 +8,15 @@ import VO.EntruckingVO;
 import businesslogic.URLHelper.URLHelper;
 
 
-/*========================================================================================
+/**
  * 用来保存装车单的持久化数据格式
+ * 
+ * @author HermC
+ * @version 1.0.0
  * */
-
 public class EntruckingPO extends PO {
 	
+	// ----- member variables ---------------------------------------
 	private Date date;
 	private String transfer_number = "";
 	private String destination = "";
@@ -24,6 +27,9 @@ public class EntruckingPO extends PO {
 	private double amount = 0;
 	private boolean isApproved = false;
 	
+	/**
+	 * 直接创建装车单的持久化数据对象
+	 * */
 	public EntruckingPO(Date date, String transfer_number, String destination, String car_number,
 			String guard_name, String supercargo_name, ArrayList<String> bar_code_list, double amount,
 			String DB_URL) {
@@ -38,6 +44,10 @@ public class EntruckingPO extends PO {
 		this.bar_code_list = bar_code_list;
 		this.amount = amount;
 	}
+	
+	/**
+	 * 通过EntruckingVO创建装车单的持久化数据对象
+	 * */
 	public EntruckingPO(EntruckingVO entrucking, String institutionId) {
 		// TODO Auto-generated constructor stub
 		super(URLHelper.getEntruckingURL(institutionId));
@@ -60,65 +70,83 @@ public class EntruckingPO extends PO {
 	
 	
 
-	/*
+	/**
 	 * 获取装车日期
-	 * 返回Date
+	 * 
+	 * 
+	 * @return 装车日期Date
 	 * */
 	public Date getDate() {
 		return date;
 	}
-	/*
+	
+	/**
 	 * 获取中转单编号
-	 * 返回String
+	 * 
+	 * @return 中转单编号String
 	 * */
 	public String getTransferNumber() {
 		return transfer_number;
 	}
-	/*
+	
+	/**
 	 * 获取到达地
-	 * 返回String
+	 * 
+	 * @return 到达地String
 	 * */
 	public String getDestination() {
 		return destination;
 	}
-	/*
+	
+	/**
 	 * 获取车辆代号
-	 * 返回String
+	 * 
+	 * @return 车辆代号String
 	 * */
 	public String getCarNumber() {
 		return car_number;
 	}
-	/*
+	
+	/**
 	 * 获取监装员
-	 * 返回String
+	 * 
+	 * @return 监装员String
 	 * */
 	public String getGuardName() {
 		return guard_name;
 	}
-	/*
+	
+	/**
 	 * 获取押运员
-	 * 返回String
+	 * 
+	 * @return 押运员String
 	 * */
 	public String getSupercargoName() {
 		return supercargo_name;
 	}
-	/*
+	
+	/**
 	 * 获取所有订单编号
-	 * 返回ArrayList<String>
+	 * 
+	 * @return 所有订单编号ArrayList<String>
 	 * */
 	public ArrayList<String> getBarCodeList() {
 		return bar_code_list;
 	}
-	/*
+	
+	/**
 	 * 获取运费
-	 * 返回double
+	 * 
+	 * @return 运费
 	 * */
 	public double getAmount() {
 		return amount;
 	}
-	/*
+	
+	/**
 	 * 获取审批状态
-	 * 返回boolean
+	 * 
+	 * @return 审批状态
 	 * */
 	public boolean isApproved() {
 		return isApproved;
@@ -129,8 +157,10 @@ public class EntruckingPO extends PO {
 	 * 对EntruckingPO的某些信息进行更新
 	 * */
 	
-	/*
+	/**
 	 * 更新审批状态
+	 * 
+	 * @param isApproved 新审批状态
 	 * */
 	public void setApproved(boolean isApproved) {
 		this.isApproved = isApproved;

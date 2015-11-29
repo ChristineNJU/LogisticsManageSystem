@@ -37,7 +37,7 @@ public class MainFrame {
 	
 	private Inquiry inquiry;
 	
-	private UserVO user;
+	private UserVO user = new UserVO("141250181", "张晨剑", UserRole.businessAgent);
 	private Navigation nav;
 //	private CourierNavigation nav;
 	
@@ -55,11 +55,20 @@ public class MainFrame {
 
 		frame.setContentPane(panel);
 		panel.setLayout(null);
-	
+
 		inquiry = new Inquiry(this);
 //		frame.add(inquiry.getPanel());
 		panel.add(inquiry.getPanel());
 //		changeToCourier();
+
+		
+
+		inquiry = new Inquiry(this);
+//		frame.add(inquiry.getPanel());
+//		panel.add(inquiry.getPanel());
+
+		changeToCourier();
+
 //		changeToBusinesslobby();
 //		changeToFinance();
 //		changeToManager();
