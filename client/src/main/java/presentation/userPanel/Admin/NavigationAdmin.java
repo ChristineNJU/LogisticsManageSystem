@@ -37,7 +37,7 @@ public class NavigationAdmin extends Navigation{
 		
 	}
 	protected void changeToUserAccount(){
-		userAccountP = new AdminUserAccount(this);
+		userAccountP = new AdminUserAccount();
 		MainFrame.getMainPanel().add(userAccountP.getPanel());
 		MainFrame.getMainPanel().repaint();
 	}

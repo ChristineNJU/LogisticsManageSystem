@@ -40,9 +40,14 @@ public class TableModel extends AbstractTableModel {
 	}
 
 	public void delete(int i){
-		if(i < initialRowCount)
+		if(i < initialRowCount){
 			isDelete[i] =  !isDelete[i];
-		System.out.println("in model "+isDelete[i]);
+		}else{
+			tableValues.remove(i);
+			fireTableRowsDeleted(i,i);
+		}
+		
+//		System.out.println("in model "+isDelete[i]);
 	}
 	
 	public Boolean isDelete(int i){
