@@ -1,7 +1,7 @@
 package businesslogic.test.BusinessLobby;
 
-import businesslogic.Impl.Businesslobby.BusinessLobbyController;
 import junit.framework.TestCase;
+import businesslogic.Impl.Businesslobby.BusinessLobbyController;
 
 public class TestGetNeedGathering extends TestCase {
 

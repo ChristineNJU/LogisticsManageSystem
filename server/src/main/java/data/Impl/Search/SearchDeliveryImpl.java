@@ -16,6 +16,11 @@ import businesslogic.URLHelper.URLHelper;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Search.SearchDeliveryService;
 
+/**
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public class SearchDeliveryImpl extends UnicastRemoteObject implements SearchDeliveryService {
 
 	public SearchDeliveryImpl() throws RemoteException {

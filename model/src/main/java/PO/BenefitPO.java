@@ -5,47 +5,60 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import VO.BenefitVO;
+import VO.CostVO;
+import VO.GatheringVO;
 import businesslogic.URLHelper.URLHelper;
 
 public class BenefitPO extends PO {
 	
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	private int number = 0;
+
 	private double income = 0;
 	private double expend = 0;
 	private double benefit = 0;
-	private Date startDate;
-	private Date endDate;
+	private Date date;
 	
-	public BenefitPO(int number, double income, double expend, String DB_URL,String start,String end) {
+	public BenefitPO(double income, double expend, String DB_URL,String date) {
 		super(DB_URL);
 		// TODO Auto-generated constructor stub
-		this.number = number;
+		
 		this.income = income;
 		this.expend = expend;
 		this.benefit = income - expend;
 		try {
-			startDate=sdf.parse(start);
-			endDate=sdf.parse(end);
+			this.date=sdf.parse(date);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
-			startDate = null;
-			endDate = null;
+			this.date = null;
 			System.out.println("时间对象创建失败");
 //			e.printStackTrace();
 		}
 	}
 	
-	public BenefitPO(BenefitVO bvo, int number){
+	public BenefitPO(BenefitVO bvo){
 		super(URLHelper.getBenefitURL());
-		this.number=number;
 		this.income=bvo.getIncome();
 		this.expend=bvo.getCost();
 		this.benefit=bvo.getBenefit();
-		this.startDate=bvo.getStartDate();
-		this.endDate=bvo.getEndDate();
+		this.date=bvo.getDate();
 	}
-
+	
+	public BenefitPO(GatheringVO gathering,BenefitPO benefit) {
+		super(URLHelper.getBenefitURL());
+		// TODO Auto-generated constructor stub
+		this.benefit=benefit.getBenefit()+gathering.getMoney();
+		this.income=gathering.getMoney()+benefit.getIncome();
+		this.expend=benefit.getExpend();
+		this.date=gathering.getDate();
+	}
+	public BenefitPO(CostVO cost,BenefitPO benefit) {
+		super(URLHelper.getBenefitURL());
+		// TODO Auto-generated constructor stub
+		this.benefit=benefit.getBenefit()-cost.getAmount();
+		this.income=benefit.getIncome();
+		this.expend=benefit.getExpend()+cost.getAmount();
+		this.date=cost.getDate();
+	}
 	/*====================================================================================
 	 * Public方法
 	 * */
@@ -54,13 +67,6 @@ public class BenefitPO extends PO {
 	 * 对BenefitPO的数据进行读取
 	 * */
 	
-	/*
-	 * 获取序号
-	 * 返回int
-	 * */
-	public int getNumber() {
-		return number;
-	}
 	/*
 	 * 获取总收入
 	 * 返回double
@@ -83,13 +89,11 @@ public class BenefitPO extends PO {
 		return benefit;
 	}
 	
-	public Date getStartDate(){
-		return startDate;
+	public Date getDate(){
+		return date;
 	}
 	
-	public Date getEndDate(){
-		return endDate;
-	}
+	
 	
 	/*---------------------------------------------------------------
 	 * 对BenefitPO的数据进行更新
@@ -110,23 +114,16 @@ public class BenefitPO extends PO {
 		benefit = income - expend;
 	}
 	
-	public void setStartDate(String startDate){
+	public void setDate(String startDate){
 		try {
-			this.startDate=sdf.parse(startDate);
+			this.date=sdf.parse(startDate);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
-	public void setEndDate(String endDate){
-		try{
-			this.endDate=sdf.parse(endDate);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+	
 	
 	@Override
 	public String toString() {
@@ -134,14 +131,11 @@ public class BenefitPO extends PO {
 		
 		String result = "";
 		
-		result = result + number + ", ";
 		result = result + income + ", ";
 		result = result + expend + ", ";
 		result = result + benefit + ", ";
 		
-		result = result + "'" + sdf.format(startDate) + "', ";
-		result = result + "'" + sdf.format(endDate) + "'";
-		
+		result = result + "'" + sdf.format(date) + "', ";
 		System.out.println(result);
 		return result;
 	}
@@ -149,7 +143,7 @@ public class BenefitPO extends PO {
 	@Override
 	public String getPrimaryKey() {
 		// TODO Auto-generated method stub
-		return "number = "+number;
+		return "date = "+date;
 	}
 	
 

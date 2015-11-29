@@ -9,8 +9,25 @@ import data.RMIHelper.RMIHelper;
 import data.Service.Search.SearchUserService;
 import data.Service.Update.UpdateService;
 
+/**
+ * 密码修改的实现
+ * 
+ * @author 张晨剑
+ * @version 1.0.0
+ * */
 public class ResetPasswordImpl {
-
+	
+	/**
+	 * 密码的修改方法,包括密码的比对和修改
+	 * 
+	 * @param userName 用户名
+	 * @param oldPassword 旧密码
+	 * @param newPassword 新密码
+	 * @return 重设状态ResetState
+	 * 
+	 * @see SearchUserService#searchUser(ArrayList)
+	 * @see UpdateService#update(PO.PO)
+	 * */
 	public ResetState reset(String userName, String oldPassword,
 			String newPassword) {
 		

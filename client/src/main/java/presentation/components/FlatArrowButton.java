@@ -5,7 +5,6 @@ import java.awt.Graphics;
 
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
-import javax.swing.plaf.UIResource;
 
 
 public class FlatArrowButton extends JButton implements SwingConstants {

@@ -15,6 +15,11 @@ import PO.EntruckingPO;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Search.SearchEntruckingService;
 
+/**
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public class SearchEntruckingImpl extends UnicastRemoteObject implements SearchEntruckingService {
 
 	public SearchEntruckingImpl() throws RemoteException {
@@ -82,7 +87,7 @@ public class SearchEntruckingImpl extends UnicastRemoteObject implements SearchE
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-//			e.printStackTrace();
+			e.printStackTrace();
 			System.out.println("从数据库提取EntruckingPO对象失败");
 			return result;
 		}

@@ -3,25 +3,41 @@ package businesslogic.Impl.User;
 import java.rmi.Naming;
 import java.util.ArrayList;
 
-import businesslogic.SystemLog.SystemLog;
 import PO.UserPO;
 import State.LoginState;
 import State.UserRole;
+import businesslogic.SystemLog.SystemLog;
 import data.RMIHelper.RMIHelper;
 import data.Service.Search.SearchUserService;
 
+/**
+ * 用户登录的实现
+ * 
+ * @author 张晨剑
+ * @version 1.0.0
+ * */
 public class LoginImpl {
 	
+	/**
+	 * 登录方法,包括从数据库查询数据以及对密码的比对
+	 * 
+	 * @param userName 用户名
+	 * @param password 密码
+	 * @return 登录状态LoginState
+	 * 
+	 * @see SearchUserService#searchUser(ArrayList)
+	 * */
 	public LoginState login(String userName, String password) {
 		LoginState state=LoginState.SUCCESS;
 		try{
 			SearchUserService searchUser=(SearchUserService)Naming.lookup(RMIHelper.SEARCH_USER_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("name='"+userName+"'");
+			requirement.add("ID='"+userName+"'");
 			ArrayList<UserPO> result=searchUser.searchUser(requirement);
 			
 			if(result.isEmpty()){
 				state=LoginState.WRONGID;
+				System.out.println("wrongID");
 			}
 			
 			else{
@@ -35,7 +51,7 @@ public class LoginImpl {
 //						isFind=false;
 //				}
 				UserPO user = result.get(0);
-				
+								
 				if(user.getPassword().equals(password)){
 					isFind = true;
 					

@@ -1,9 +1,9 @@
 package businesslogic.test.Manage;
 
+import junit.framework.TestCase;
 import State.InstitutionType;
 import VO.InstitutionVO;
 import businesslogic.Impl.Manage.ManageController;
-import junit.framework.TestCase;
 
 public class TestSearchInstituion extends TestCase {
 

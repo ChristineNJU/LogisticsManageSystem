@@ -11,6 +11,11 @@ import State.InstitutionType;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Sundry.TableOperationService;
 
+/**
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public class TableOperationImpl extends UnicastRemoteObject implements TableOperationService {
 
 	public TableOperationImpl() throws RemoteException {
@@ -18,6 +23,7 @@ public class TableOperationImpl extends UnicastRemoteObject implements TableOper
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
 	public boolean createInstitutionTable(String institution_id,
 			InstitutionType type) throws RemoteException {
 		// TODO Auto-generated method stub

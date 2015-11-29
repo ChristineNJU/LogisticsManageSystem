@@ -13,6 +13,11 @@ import businesslogic.URLHelper.URLHelper;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Search.SearchConstService;
 
+/**
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public class SearchConstImpl extends UnicastRemoteObject implements SearchConstService {
 
 	public SearchConstImpl() throws RemoteException {
@@ -57,7 +62,7 @@ public class SearchConstImpl extends UnicastRemoteObject implements SearchConstS
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-//			e.printStackTrace();
+			e.printStackTrace();
 			System.out.println("从数据库提取ConstPO对象失败");
 			return result;
 		}

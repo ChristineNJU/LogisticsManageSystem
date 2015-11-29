@@ -148,7 +148,7 @@ public class SearchService_Stub implements SearchLogisticsService, SearchGatheri
 	public ArrayList<BenefitPO> searchBenefit(ArrayList<String> requirement)
 			throws RemoteException {
 		// TODO Auto-generated method stub
-		BenefitPO benefit = new BenefitPO(1, 1294324, 492304, "benefit_info","2015-11-26 10:20:20","2015-11-26 10:20:30");
+		BenefitPO benefit = new BenefitPO(1294324, 492304, "benefit_info","2015-11-26 10:20:20");
 		ArrayList<BenefitPO> list = new ArrayList<BenefitPO>();
 		list.add(benefit);
 		return list;

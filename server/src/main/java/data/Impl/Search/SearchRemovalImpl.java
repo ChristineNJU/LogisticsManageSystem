@@ -17,6 +17,11 @@ import State.TransferType;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Search.SearchRemovalService;
 
+/**
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public class SearchRemovalImpl extends UnicastRemoteObject implements SearchRemovalService {
 
 	public SearchRemovalImpl() throws RemoteException {

@@ -4,11 +4,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import junit.framework.TestCase;
 import State.AddState;
 import State.LogisticsState;
 import VO.ArrivalVO;
 import businesslogic.Impl.MediumCenter.MediumCenterController;
-import junit.framework.TestCase;
 
 public class TestArrival extends TestCase {
 	/**

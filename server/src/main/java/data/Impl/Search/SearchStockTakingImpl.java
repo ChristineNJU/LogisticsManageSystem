@@ -17,6 +17,11 @@ import State.StorageArea;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Search.SearchStockTakingService;
 
+/**
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public class SearchStockTakingImpl extends UnicastRemoteObject implements SearchStockTakingService {
 
 	public SearchStockTakingImpl() throws RemoteException {

@@ -12,16 +12,14 @@ public class BenefitVO extends VO {
 	private double costTotal = 0;
 	private double benefitTotal = 0;
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	private Date startDate=null;
-	private Date endDate=null;
+	private Date Date=null;
 	
-	public BenefitVO(double income,double cost,String startDate,String endDate){
+	public BenefitVO(double income,double cost,String startDate){
 		this.incomeTotal = income;
 		this.costTotal = cost;
 		this.benefitTotal = income - cost;
 		try {
-			this.startDate=(sdf.parse(startDate));
-			this.endDate=sdf.parse(endDate);
+			this.Date=(sdf.parse(startDate));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -32,8 +30,8 @@ public class BenefitVO extends VO {
 		this.incomeTotal = po.getIncome();
 		this.costTotal = po.getExpend();
 		this.benefitTotal = po.getBenefit();
-		this.startDate=(po.getStartDate());
-		this.endDate=po.getEndDate();
+		this.Date=(po.getDate());
+		
 	}
 	
 	public double getIncome(){
@@ -45,12 +43,10 @@ public class BenefitVO extends VO {
 	public double getBenefit(){
 		return this.benefitTotal;
 	}
-	public Date getStartDate() {
-		return startDate;
+	public Date getDate() {
+		return Date;
 	}
-	public Date getEndDate(){
-		return endDate;
-	}
+
 	
 	public void setIncome(double income){
 		this.incomeTotal = income;
@@ -59,17 +55,9 @@ public class BenefitVO extends VO {
 		this.costTotal = cost;
 	}
 	
-	public void setStartDate(String startDate) {
+	public void setDate(String Date) {
 		try{
-			this.startDate=sdf.parse(startDate);
-		} catch (ParseException e){
-			e.printStackTrace();
-		}
-	}
-	
-	public void setEndDate(String endDate) {
-		try{
-			this.endDate=sdf.parse(endDate);
+			this.Date=sdf.parse(Date);
 		} catch (ParseException e){
 			e.printStackTrace();
 		}

@@ -7,6 +7,12 @@ import java.sql.Statement;
 
 import businesslogic.URLHelper.URLHelper;
 
+/**
+ * 用于直接在数据库中创建删除表,以及创建删除数据
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public class DirectDBCreater {
 	
 	private static final String db_name = "LogisticsManageSystemDataBase";
@@ -236,15 +242,15 @@ public class DirectDBCreater {
 			s = conn.createStatement();
 			boolean mark;
 			
-			mark = s.execute("INSERT INTO "+table_name+" VALUES('plane', 20)");
-			mark = s.execute("INSERT INTO "+table_name+" VALUES('train', 0.2)");
-			mark = s.execute("INSERT INTO "+table_name+" VALUES('car', 2)");
-			mark = s.execute("INSERT INTO "+table_name+" VALUES('economic', 18)");
-			mark = s.execute("INSERT INTO "+table_name+" VALUES('standard', 23)");
-			mark = s.execute("INSERT INTO "+table_name+" VALUES('express', 25)");
-			mark = s.execute("INSERT INTO "+table_name+" VALUES('wooden_case', 10)");
-			mark = s.execute("INSERT INTO "+table_name+" VALUES('courise_bag', 1)");
-			mark = s.execute("INSERT INTO "+table_name+" VALUES('paper_case', 5)");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('AIR', 20)");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('RAILWAT', 0.2)");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('CAR', 2)");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('ECONOMIC', 18)");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('STANDARD', 23)");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('EXPRESS', 25)");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('WOODEN_CASE', 10)");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('COURISE_BAG', 1)");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('PAPER_CASE', 5)");
 			
 			conn.commit();
 			
@@ -812,8 +818,8 @@ public class DirectDBCreater {
 		
 		try {
 			s = conn.createStatement();
-			s.execute("CREATE TABLE "+table_name+" (number int PRIMARY key, income double, expend double, benefit double, "
-					+ "startDate varchar(20), endDate varchar(20))");
+			s.execute("CREATE TABLE "+table_name+" (income double, expend double, benefit double, "
+					+ "date varchar(20) PRIMARY key)");
 			conn.commit();
 			
 			System.out.println("create table "+table_name);

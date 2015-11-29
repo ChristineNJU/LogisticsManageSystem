@@ -13,13 +13,18 @@ import businesslogic.URLHelper.URLHelper;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Search.SearchAccountService;
 
+/**
+ *
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public class SearchAccountImpl extends UnicastRemoteObject implements SearchAccountService {
 	
 	public SearchAccountImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	@Override
 	public ArrayList<AccountPO> searchAccount(ArrayList<String> requirement)
 			throws RemoteException {

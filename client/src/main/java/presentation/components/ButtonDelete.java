@@ -2,7 +2,6 @@ package presentation.components;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 
 public class ButtonDelete extends JButton{
 	

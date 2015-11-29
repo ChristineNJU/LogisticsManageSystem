@@ -17,6 +17,11 @@ import State.StateSwitch;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Search.SearchArrivalService;
 
+/**
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public class SearchArrivalImpl extends UnicastRemoteObject implements SearchArrivalService {
 
 	public SearchArrivalImpl() throws RemoteException {
@@ -47,6 +52,7 @@ public class SearchArrivalImpl extends UnicastRemoteObject implements SearchArri
 				}
 			}
 			
+			System.out.println(DB_URL);
 			ResultSet rs = s.executeQuery(DBHelper.SEARCH(DB_URL, target));
 			
 			while(rs.next()){

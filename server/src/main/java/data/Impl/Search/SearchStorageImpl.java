@@ -17,6 +17,11 @@ import State.StorageArea;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Search.SearchStorageService;
 
+/**
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public class SearchStorageImpl extends UnicastRemoteObject implements SearchStorageService {
 
 	public SearchStorageImpl() throws RemoteException {

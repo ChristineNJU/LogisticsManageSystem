@@ -5,7 +5,6 @@ import java.awt.Component;
 import javax.swing.BorderFactory;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.TableCellRenderer;
 
 import presentation.main.ColorPallet;
 import presentation.main.FontSet;

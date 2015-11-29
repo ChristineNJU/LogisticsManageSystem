@@ -15,6 +15,11 @@ import businesslogic.URLHelper.URLHelper;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Search.SearchInstitutionInfoService;
 
+/**
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public class SearchInstitutionInfoImpl extends UnicastRemoteObject implements SearchInstitutionInfoService {
 
 	public SearchInstitutionInfoImpl() throws RemoteException {

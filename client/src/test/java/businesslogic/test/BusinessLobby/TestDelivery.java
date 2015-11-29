@@ -8,7 +8,6 @@ import junit.framework.TestCase;
 import State.AddState;
 import VO.DeliveryVO;
 import businesslogic.Impl.Businesslobby.BusinessLobbyController;
-import businesslogic.URLHelper.URLHelper;
 
 public class TestDelivery extends TestCase {
 	/**

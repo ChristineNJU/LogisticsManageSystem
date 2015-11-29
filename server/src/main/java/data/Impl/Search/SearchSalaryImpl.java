@@ -16,6 +16,11 @@ import businesslogic.URLHelper.URLHelper;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Search.SearchSalaryService;
 
+/**
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public class SearchSalaryImpl extends UnicastRemoteObject implements SearchSalaryService {
 
 	public SearchSalaryImpl() throws RemoteException {

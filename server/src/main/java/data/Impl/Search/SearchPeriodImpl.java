@@ -16,6 +16,11 @@ import PO.PeriodPO;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Search.SearchPeriodService;
 
+/**
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public class SearchPeriodImpl extends UnicastRemoteObject implements SearchPeriodService {
 
 	public SearchPeriodImpl() throws RemoteException {

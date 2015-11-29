@@ -1,13 +1,13 @@
 package businesslogic.test.Manage;
 
-import businesslogic.Impl.Manage.ManageController;
 import junit.framework.TestCase;
+import businesslogic.Impl.Manage.ManageController;
 
 public class TestSearchGathering extends TestCase {
 
 	public void testSearchGathering(){
 		ManageController manageController=new ManageController();
 		
-		assertEquals(null,manageController.searchGathering(null, null));
+		assertEquals(null,manageController.searchGathering(null, "025000"));
 	}
 }

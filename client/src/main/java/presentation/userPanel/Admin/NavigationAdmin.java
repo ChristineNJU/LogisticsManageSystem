@@ -1,9 +1,9 @@
 package presentation.userPanel.Admin;
 
-import VO.UserVO;
 import presentation.components.ButtonNav;
 import presentation.frame.MainFrame;
 import presentation.main.Navigation;
+import VO.UserVO;
 
 public class NavigationAdmin extends Navigation{
 	

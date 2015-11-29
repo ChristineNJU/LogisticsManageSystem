@@ -1,20 +1,18 @@
 package presentation.main;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
-import State.UserRole;
-import VO.UserVO;
 import presentation.components.ButtonNav;
 import presentation.components.PanelNavigation;
+import State.UserRole;
+import VO.UserVO;
 
 public class Navigation {
 
 	UserVO user = new UserVO("141250174","尹子越",UserRole.courier);
-	private PanelNavigation navPanel = new PanelNavigation(user);
+	private PanelNavigation navPanel;
 	
 	private ButtonNav pressed;
 	protected  ArrayList<ButtonNav> buttonList = new ArrayList<ButtonNav>();
@@ -22,10 +20,11 @@ public class Navigation {
 	private NavListener navListener = new NavListener();
 	public Navigation(UserVO user) {
 		this.user = user;
-
+		navPanel = new PanelNavigation(user);
 	}
 	
-	protected void initNavButtonArray(){
+	protected void initNavButtonArray() {
+		
 	}
 	
 	protected void addNavButtons(){

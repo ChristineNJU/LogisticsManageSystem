@@ -184,7 +184,7 @@ public class Inquiry{
 	}
 	
 	private void showLogIn(){
-		logInDialog = new LogIn(this);
+		logInDialog = new LogIn(this.mainFrame, this);
 //		logInDialog.getDialog().setVisible(true);
 		JPanel lg = logInDialog.getPanel();
 		
@@ -193,7 +193,7 @@ public class Inquiry{
 		lg.setVisible(true);
 		logIn.setVisible(false);
 		
-		Thread t = new Thread(new MovingFunction());
+		Thread t = new Thread(new LoginMovingFunction());
 		t.start();
 		
 //		logInDialog.getDialog().setModal(true);
@@ -299,20 +299,10 @@ public class Inquiry{
 //			setBounds(300,320+i*66,450,66);
 			setBounds(0, i*66, 450, 66);
 		}
-//		public void paint(Graphics g) {
-//			Color oldColor = g.getColor();
-//			
-//			Graphics2D g2d = (Graphics2D)g;
-//			g2d.setBackground(Color.black);
-//			Stroke dash = new BasicStroke(1f,BasicStroke.CAP_BUTT,BasicStroke.JOIN_ROUND,
-//			3.5f,new float[]{15,10,},0f);
-//			g2d.setStroke(dash);
-//			g2d.setColor(ColorPallet.GrayDark);
-//			g2d.drawLine(30, y1, x2, y2);
-//		}
+
 	}
 	
-	public class Listener implements ActionListener, FocusListener{
+	class Listener implements ActionListener, FocusListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -361,8 +351,8 @@ public class Inquiry{
 		
 	}
 
-	class MovingFunction implements Runnable {
-
+	class LoginMovingFunction implements Runnable {
+		
 		@Override
 		public void run() {
 			// TODO Auto-generated method stub
@@ -383,4 +373,6 @@ public class Inquiry{
 			}
 		}
 	}
+
+
 }

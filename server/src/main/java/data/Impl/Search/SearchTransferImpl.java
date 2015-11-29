@@ -15,6 +15,11 @@ import PO.TransferPO;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Search.SearchTransferService;
 
+/**
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public class SearchTransferImpl extends UnicastRemoteObject implements SearchTransferService {
 
 	public SearchTransferImpl() throws RemoteException {
