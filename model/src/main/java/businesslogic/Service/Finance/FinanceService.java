@@ -16,7 +16,6 @@ import VO.TransferVO;
 public interface FinanceService {
 	
 	public AddState addAccount(AccountVO account);
-	public AddState addBenefit(BenefitVO benefit);
 	public AddState addCost(CostVO cost);
 	public DeleteState deleteAccount(AccountVO account);
 	public ArrayList<AccountVO> searchAccount(String name);
