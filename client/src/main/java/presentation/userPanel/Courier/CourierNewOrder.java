@@ -27,8 +27,9 @@ public class CourierNewOrder {
 	private void init() {
 		panel.setLayout(null);
 		sender.setBounds(87, 80, sender.getWidth(), sender.getHeight());
-		
+		recipient.setBounds(487, 80, recipient.getWidth(), recipient.getHeight());
 		panel.add(sender);
+		panel.add(recipient);
 	}
 	
 	public JPanel getPanel() {
@@ -58,47 +59,57 @@ public class CourierNewOrder {
 		}
 		
 		private void init() {
-			setSize(320, 200);
+			setSize(320, 206);
 			setLayout(null);
 			
 			title.setOpaque(true);
 			title.setBackground(ColorPallet.Purple);
 			title.setFont(FontSet.twenty);
 			title.setForeground(Color.white);
-			title.setBounds(0, 0, 320, 32);
+			title.setBounds(0, 0, 320, 30);
 			add(title);
 			
 			name.setFont(FontSet.fourteen);
 			name.setForeground(ColorPallet.GrayDark);
 			name.setBounds(-3, 32, 90, 28);
-			n.setBounds(90, 32, 230, 28);
+			n.setBounds(90, 36, 208, 22);
 			add(name);
 			add(n);
 			
 			city.setFont(FontSet.fourteen);
 			city.setForeground(ColorPallet.GrayDark);
 			city.setBounds(-3, 60, 90, 28);
+			c.setBounds(90, 64, 208, 22);
 			add(city);
+			add(c);
 			
 			address.setFont(FontSet.fourteen);
 			address.setForeground(ColorPallet.GrayDark);
 			address.setBounds(-3, 88, 90, 28);
+			a.setBounds(90, 92, 208, 22);
 			add(address);
+			add(a);
 			
 			organization.setFont(FontSet.fourteen);
 			organization.setForeground(ColorPallet.GrayDark);
-			organization.setBounds(-3, 118, 90, 28);
+			organization.setBounds(-3, 116, 90, 28);
+			o.setBounds(90, 120, 208, 22);
 			add(organization);
+			add(o);
 			
 			telephone.setFont(FontSet.fourteen);
 			telephone.setForeground(ColorPallet.GrayDark);
 			telephone.setBounds(-3, 144, 90, 28);
+			t.setBounds(90, 148, 208, 22);
 			add(telephone);
+			add(t);
 			
 			mobilephone.setFont(FontSet.fourteen);
 			mobilephone.setForeground(ColorPallet.GrayDark);
 			mobilephone.setBounds(-3, 172, 90, 28);
+			m.setBounds(90, 176, 208, 22);
 			add(mobilephone);
+			add(m);
 		}
 	}
 }
