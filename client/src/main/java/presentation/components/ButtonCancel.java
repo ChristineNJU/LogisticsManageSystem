@@ -34,6 +34,7 @@ public class ButtonCancel extends ButtonTotal {
 	
 	public void unRolled(){
 		setBackground(ColorPallet.GrayLight);
+		this.repaint();
 	}
 	
 	public void click(){

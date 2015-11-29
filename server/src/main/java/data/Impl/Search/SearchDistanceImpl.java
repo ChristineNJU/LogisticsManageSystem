@@ -13,6 +13,11 @@ import PO.DistancePO;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Search.SearchDistanceService;
 
+/**
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public class SearchDistanceImpl extends UnicastRemoteObject implements SearchDistanceService {
 
 	public SearchDistanceImpl() throws RemoteException {
@@ -21,6 +26,12 @@ public class SearchDistanceImpl extends UnicastRemoteObject implements SearchDis
 	}
 
 	@Override
+	/**
+	 * 从数据库中搜索DistancePO
+	 * 
+	 * @param requirement 搜索要求
+	 * @return DistancePO的ArrayList 
+	 */
 	public ArrayList<DistancePO> searchDistance(ArrayList<String> requirement)
 			throws RemoteException {
 		// TODO Auto-generated method stub

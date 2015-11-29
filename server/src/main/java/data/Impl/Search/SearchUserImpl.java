@@ -10,12 +10,17 @@ import java.util.ArrayList;
 
 import PO.UserPO;
 import State.InstitutionType;
+import State.StateSwitch;
 import State.UserRole;
 import businesslogic.URLHelper.URLHelper;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Search.SearchUserService;
 
-
+/**
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public class SearchUserImpl extends UnicastRemoteObject implements SearchUserService {
 
 	public SearchUserImpl() throws RemoteException {
@@ -24,6 +29,12 @@ public class SearchUserImpl extends UnicastRemoteObject implements SearchUserSer
 	}
 
 	@Override
+	/**
+	 * 从数据库中搜索UserPO
+	 * 
+	 * @param requirement 搜索要求
+	 * @return UserPO的ArrayList 
+	 */
 	public ArrayList<UserPO> searchUser(ArrayList<String> requirement)
 			throws RemoteException {
 		// TODO Auto-generated method stub
@@ -59,7 +70,7 @@ public class SearchUserImpl extends UnicastRemoteObject implements SearchUserSer
 				int age = rs.getInt(5);
 				InstitutionType type = null;
 				String city = rs.getString(7);
-				UserRole role = null;
+				UserRole role = StateSwitch.switchToUserRole(rs.getString(8));
 				
 				UserPO user = new UserPO(id, password, name, sex, age, type, city, role, URLHelper.getUserURL());
 				

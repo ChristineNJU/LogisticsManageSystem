@@ -15,6 +15,11 @@ import businesslogic.URLHelper.URLHelper;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Search.SearchCostService;
 
+/**
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public class SearchCostImpl extends UnicastRemoteObject implements SearchCostService {
 
 	public SearchCostImpl() throws RemoteException {
@@ -23,6 +28,12 @@ public class SearchCostImpl extends UnicastRemoteObject implements SearchCostSer
 	}
 
 	@Override
+	/**
+	 * 从数据库中搜索CostPO
+	 * 
+	 * @param requirement 搜索要求
+	 * @return CostPO的ArrayList 
+	 */
 	public ArrayList<CostPO> searchCost(ArrayList<String> requirement)
 			throws RemoteException {
 		// TODO Auto-generated method stub

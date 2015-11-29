@@ -4,20 +4,14 @@ import javax.swing.JLabel;
 
 import presentation.listener.RollListener;
 
-public class ButtonTotal extends JLabel {
+public abstract class ButtonTotal extends JLabel {
 	private RollListener listener;
 	
 	public ButtonTotal(){
 		listener = new RollListener(this);
 		this.addMouseListener(listener);
 	}
-	public void rolled(){
-		
-	}
-	public void setUnRolled(){
-		
-	}
-	public void click(){
-		
-	}
+	abstract public void rolled();
+	abstract public void unRolled();
+	abstract public void click();
 }

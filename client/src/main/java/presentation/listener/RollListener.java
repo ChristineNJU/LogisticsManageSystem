@@ -34,12 +34,11 @@ public class RollListener implements MouseListener {
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		source.rolled();
-
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		source.setUnRolled();
+		source.unRolled();
 	}
 
 }

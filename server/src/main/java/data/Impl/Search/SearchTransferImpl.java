@@ -15,6 +15,11 @@ import PO.TransferPO;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Search.SearchTransferService;
 
+/**
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public class SearchTransferImpl extends UnicastRemoteObject implements SearchTransferService {
 
 	public SearchTransferImpl() throws RemoteException {
@@ -23,6 +28,13 @@ public class SearchTransferImpl extends UnicastRemoteObject implements SearchTra
 	}
 
 	@Override
+	/**
+	 * 从数据库中搜索TransferPO
+	 * 
+	 * @param DB_URL 表链接
+	 * @param requirement 搜索要求
+	 * @return TransferPO的ArrayList 
+	 */
 	public ArrayList<TransferPO> searchTransfer(String DB_URL,
 			ArrayList<String> requirement) throws RemoteException {
 		// TODO Auto-generated method stub

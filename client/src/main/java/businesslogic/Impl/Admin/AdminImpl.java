@@ -64,6 +64,7 @@ public class AdminImpl implements AddUserService,DeleteUserService,GetUserServic
 					requirementID.add("id='"+requirement.get(i)+"'");
 					requirementName.add("name='"+requirement.get(i)+"'");
 				}
+				System.out.println(requirementID.get(0)+" "+requirementName.get(0));
 				ArrayList<UserPO> userListID=userSearch.searchUser(requirementID);
 				ArrayList<UserPO> userListName=userSearch.searchUser(requirementName);
 				
@@ -73,6 +74,8 @@ public class AdminImpl implements AddUserService,DeleteUserService,GetUserServic
 				for(int i=0;i<userListName.size();i++){
 					result.add(new UserVO(userListName.get(i)));
 				}
+				
+				System.out.println(result.size());
 			}
 			else {
 				requirementID.add("id like '%%'");
