@@ -58,16 +58,16 @@ public class MainFrame {
 		
 
 		inquiry = new Inquiry(this);
-//		frame.add(inquiry.getPanel());
+		frame.add(inquiry.getPanel());
 //		panel.add(inquiry.getPanel());
 
-		changeToCourier();
+//		changeToCourier();
 //		changeToBusinesslobby();
 //		changeToFinance();
 //		changeToManager();
 //		changeToMediumCenter();
 //		changeToRepository();
-		changeToAdmin();
+//		changeToAdmin();
 	}
 	
 	/**
@@ -160,7 +160,6 @@ public class MainFrame {
 	private void changeToAdmin(){
 		nav = new NavigationAdmin(user);
 		panel.add(nav.getNavPanel());
-		panel.repaint();
 	}
 	
 	//
