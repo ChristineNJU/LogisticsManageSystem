@@ -10,5 +10,7 @@ public class Add {
 		
 		AdminController admin = new AdminController();
 		admin.addUser(new UserVO("025100003", "yh", UserRole.courier,"男" ,10 ,InstitutionType.BusinessLobby, "南京"));
+//Hey I am programming on iPad
+
 	}
 }
