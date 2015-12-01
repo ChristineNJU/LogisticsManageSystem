@@ -2,6 +2,9 @@ package presentation.components;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.Vector;
 
 import javax.swing.ComboBoxModel;
@@ -11,20 +14,20 @@ import javax.swing.border.LineBorder;
 import presentation.main.ColorPallet;
 import presentation.main.FontSet;
 
-public class FlatComboBox extends JComboBox {
-	public FlatComboBox() {
+public class MyComboBox extends JComboBox {
+	public MyComboBox() {
 		super();
 		init();
 	}
-	public FlatComboBox(ComboBoxModel model) {
+	public MyComboBox(ComboBoxModel model) {
 		super(model);
 		init();
 	}
-	public FlatComboBox(Object[] items) {
+	public MyComboBox(Object[] items) {
 		super(items);
 		init();
 	}
-	public FlatComboBox(Vector<?> items) {
+	public MyComboBox(Vector<?> items) {
 		super(items);
 		init();
 	}
@@ -32,10 +35,12 @@ public class FlatComboBox extends JComboBox {
 	public void init() {
 		setFont(FontSet.fourteen);
 		setForeground(ColorPallet.GrayDark);
-		setOpaque(false);
-		setUI(new FlatComboBoxUI());
-		setRenderer(new FlatComboBoxRenderer());
-		setBorder(new LineBorder(Color.gray, 1));
+		setOpaque(true);
+		setBackground(Color.white);
+		setUI(new MyComboBoxUI());
+		setRenderer(new MyComboBoxRenderer());
+		setBorder(new LineBorder(ColorPallet.GrayLight, 1));
+		
 //		setBackground(Color.GRAY);
 	}
 	

@@ -180,7 +180,7 @@ public class MainFrame {
 	/**
 	 * 关闭窗口动画效果
 	 * */
-	public void frameClose() {
+	public static void frameClose() {
 				
 		double width = FRAME_WIDTH;
 		double height = FRAME_HEIGHT;
