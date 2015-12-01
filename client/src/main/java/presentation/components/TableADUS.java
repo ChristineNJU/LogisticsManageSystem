@@ -3,25 +3,21 @@ package presentation.components;
 import java.awt.Component;
 import java.awt.Dimension;
 
-import javax.swing.BorderFactory;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComponent;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 
 import presentation.main.ColorPallet;
-import presentation.main.FontSet;
 
-public class Table extends JTable {
+public class TableADUS extends JTable {
 
-	private RendererGeneral render = new RendererGeneral();
-	private CellEditor editor = new CellEditor();
-	TableModel model;
+	private EditorGeneral editor = new EditorGeneral();
+	TableModelADUS model;
 
-	public Table(TableModel model){
+	public TableADUS(TableModelADUS model){
 		super(model);
 		this.model = model;
 		this.setRowHeight(30); 
@@ -83,33 +79,19 @@ public class Table extends JTable {
 		return tableHeader;
 	}
 	
-	
-	
-	public class CellEditor extends JTextField{
-		public CellEditor(){
-			this.setFont(FontSet.fourteen);
-			this.setOpaque(false);
-			this.setForeground(ColorPallet.GrayDark);
-			this.setBorder(BorderFactory.createLoweredSoftBevelBorder());
-		}
-	}
-	
-//	public class colorTableRender extends DefaultTableCellRenderer {
-//		 
-//        public Component getTableCellRendererComponent(JTable table,
-//                Object value, boolean isSelected, boolean hasFocus, int row,
-//                int column) {
-//            Component cell = super.getTableCellRendererComponent(table, value,
-//                    isSelected, hasFocus, row, column);
-//            
-//            setOpaque(false);
-//            setForeground(ColorPallet.GrayDark);
-//    		setFont(FontSet.fourteen);
-//    		setBorder(null);
-//            return cell;
-// 
-//        }
-//    }
-	
-	
+//	@Override
+//	public JTableHeader getTableHeader() {
+//		// TODO Auto-generated method stub
+//		JTableHeader tableHeader = super.getTableHeader();
+//
+//		tableHeader.setReorderingAllowed(false);
+//
+//		tableHeader.setPreferredSize(new Dimension(this.getWidth(), 30));
+//		tableHeader.setDefaultRenderer(new RendererHeader());
+//
+//		RendererHeader hr = (RendererHeader) tableHeader.getDefaultRenderer();
+//		hr.setHorizontalAlignment(DefaultTableCellRenderer.LEFT);
+//		hr.setBorder(null);
+//		return tableHeader;
+//	}	
 }

@@ -68,6 +68,11 @@ public class CourierBlService_Stub implements CourierService{
 		return list;
 		
 	}
+	@Override
+	public UpdateState receiveConfirm(VO logistics_info) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 }

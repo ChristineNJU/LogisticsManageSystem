@@ -57,11 +57,10 @@ public class MainFrame {
 		panel.setLayout(null);
 		
 
-		inquiry = new Inquiry(this);
+//		inquiry = new Inquiry(this);
 //		frame.add(inquiry.getPanel());
 //		panel.add(inquiry.getPanel());
-
-		changeToCourier();
+//		changeToCourier();
 //		changeToBusinesslobby();
 //		changeToFinance();
 //		changeToManager();

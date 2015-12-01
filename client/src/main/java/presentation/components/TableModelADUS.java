@@ -6,7 +6,7 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
 
-public class TableModel extends AbstractTableModel {
+public class TableModelADUS extends AbstractTableModel {
 
 	private Vector<Vector<String>> tableValues;
 	private String[] head;
@@ -18,7 +18,7 @@ public class TableModel extends AbstractTableModel {
 	private int initialColumnCount;
 	private ModelListener listener;
 
-	public TableModel(Vector<Vector<String>> value, String[] head,boolean[] isCellEditable) {
+	public TableModelADUS(Vector<Vector<String>> value, String[] head,boolean[] isCellEditable) {
 		super();
 		this.tableValues = value;
 		this.head = head;
@@ -46,12 +46,14 @@ public class TableModel extends AbstractTableModel {
 			tableValues.remove(i);
 			fireTableRowsDeleted(i,i);
 		}
-		
-//		System.out.println("in model "+isDelete[i]);
 	}
 	
 	public Boolean isDelete(int i){
-		return isDelete[i];
+		try{
+			return isDelete[i];
+		}catch(ArrayIndexOutOfBoundsException e){
+			return false;
+		}
 	}
 	
 	public boolean isUpdate(int row,int column){
@@ -61,7 +63,11 @@ public class TableModel extends AbstractTableModel {
 	}
 	
 	public boolean isUpdate(int row){
-		return isRowUpdate[row];
+		try{
+			return isRowUpdate[row];
+		}catch(ArrayIndexOutOfBoundsException e){
+			return false;
+		}
 	}
 	
 	public boolean isNew(int row){
@@ -89,13 +95,12 @@ public class TableModel extends AbstractTableModel {
 		}
 		tableValues.add(element);
 		fireTableRowsInserted(tableValues.size()-1,tableValues.size()-1);
-
-//		System.out.println("in model ,add empty row");
 	}
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		try {
+//			System.out.println(tableValues.get(rowIndex).get(columnIndex));
 			return tableValues.get(rowIndex).get(columnIndex);
 		} catch (ArrayIndexOutOfBoundsException e) {
 			return null;
@@ -110,21 +115,13 @@ public class TableModel extends AbstractTableModel {
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
 		if(rowIndex >= initialRowCount){
-//			System.out.println(initialColumnCount+"initialColumnCount");
-//			if(columnIndex == initialColumnCount){
-//				return false;
-//			}else{
 				return true;
 		}
-			
 		return isCellEditable[columnIndex];
 	}
 
 	@Override
 	public void setValueAt(Object value, int row, int column) {
-//		if(value.equals(null))
-//			tableValues.get(row).setElementAt("",column);
-//		System.out.println("in table model method setValueAt"+row+"   "+column);
 		fireTableCellUpdated(row, column);
 		if(column < getColumnCount())
 			tableValues.get(row).setElementAt((String) value,column);

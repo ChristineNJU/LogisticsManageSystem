@@ -3,23 +3,40 @@ package presentation.userPanel.BusinessLb;
 import java.util.Vector;
 
 import VO.VO;
-import presentation.frame.MgtFourFunctions;
+import presentation.components.ButtonNew;
+import presentation.main.MgtFourFunctions;
 
 public class BusinessLbCarMgt  extends MgtFourFunctions{
 
-	@Override
-	protected void initUI() {
-		// TODO Auto-generated method stub
-		
+	//新建controller
+	//vo的arraylist
+	
+	//表头的名字tableH
+	//可编辑性isCellEditable
+	
+	public BusinessLbCarMgt(){
+		buttonNew = new ButtonNew("新增车辆");
+		initUI("车辆管理");
 	}
-
+	
 	@Override
 	protected void initTable() {
+		//VO Arraylist的初始化（调用search方法）
 		
+				//初始化model
+				//初始化table
+				
+		//设置编辑器
+		
+				//增加最后一列删除按钮
+				
+				//table增加监听
+				//新建panel
+				//panel。add（jscrollpanel）
 	}
 
 	@Override
-	protected void showSearchResult() {
+	protected void showSearchResult(String s) {
 		
 	}
 
@@ -28,20 +45,13 @@ public class BusinessLbCarMgt  extends MgtFourFunctions{
 		
 	}
 
-	@Override
-	protected void showError() {
-		
-	}
 
 	@Override
 	protected void solveDelete(int i) {
 		
 	}
 
-	@Override
-	protected void newItem() {
-		
-	}
+
 
 	@Override
 	protected VO getVO(Vector<String> vector) {

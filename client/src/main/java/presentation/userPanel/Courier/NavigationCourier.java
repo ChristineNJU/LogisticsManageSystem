@@ -1,6 +1,7 @@
 package presentation.userPanel.Courier;
 
 import presentation.components.ButtonNav;
+import presentation.frame.MainFrame;
 import presentation.main.Navigation;
 import VO.UserVO;
 
@@ -15,7 +16,10 @@ public class NavigationCourier extends Navigation{
 	private ButtonNav receive = new ButtonNav("courier","receive");
 	private ButtonNav inquiry = new ButtonNav("courier","inquiry");
 	
-//	private ArrayList<ButtonNav> buttonList = new ArrayList<ButtonNav>();
+
+	private CourierNewOrder courierNewOrder;
+	private CourierReceive courierReceive;
+	private CourierLogisticsInfoSearch courierLogisticsInfoSearch;
 	
 	public NavigationCourier(UserVO user) {
 		super(user);
@@ -49,15 +53,21 @@ public class NavigationCourier extends Navigation{
 	}
 	
 	private void changeToNewLogistics(){
-		
+		courierNewOrder = new CourierNewOrder();
+		MainFrame.getMainPanel().add(courierNewOrder.getPanel());
+		MainFrame.getMainPanel().repaint();
 	}
 	
 	private void changeToReceive(){
-		
+		courierReceive = new CourierReceive();
+//		MainFrame.getMainPanel().add(courierReceive.getPanel());
+		MainFrame.getMainPanel().repaint();
 	}
 	
 	private void changeToInquiry(){
-		
+		courierLogisticsInfoSearch = new CourierLogisticsInfoSearch();
+//		MainFrame.getMainPanel().add(courierLogisticsInfoSearch.getPanel());
+		MainFrame.getMainPanel().repaint();
 	}
 	
 //	public PanelNavigation getNavPanel(){
