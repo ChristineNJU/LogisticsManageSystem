@@ -51,7 +51,7 @@ public class SearchDeliveryImpl extends UnicastRemoteObject implements SearchDel
 				}
 			}
 			
-			ResultSet rs = s.executeQuery(DBHelper.SEARCH(URLHelper.getDeliveryURL(DB_URL), target));
+			ResultSet rs = s.executeQuery(DBHelper.SEARCH(DB_URL, target));
 		
 			while(rs.next()){				
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -83,7 +83,7 @@ public class SearchDeliveryImpl extends UnicastRemoteObject implements SearchDel
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-//			e.printStackTrace();
+			e.printStackTrace();
 			System.out.println("从数据库提取DeliveryPO对象失败");
 			return result;
 		}

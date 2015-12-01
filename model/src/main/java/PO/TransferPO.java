@@ -7,12 +7,15 @@ import java.util.Date;
 import businesslogic.URLHelper.URLHelper;
 import VO.TransferVO;
 
-/*======================================================================
+/**
  * 用来保存中转单的持久化数据格式
+ * 
+ * @author HermC
+ * @version 1.0.0
  * */
-
 public class TransferPO extends PO {
 	
+	// ----- member variables ---------------------------------------
 	private Date date;
 	private String transfer_number = "";
 	private String transport_id = "";
@@ -24,6 +27,9 @@ public class TransferPO extends PO {
 	private double amount = 0;
 	private boolean isApproved = false;
 	
+	/**
+	 * 直接创建中转单的持久化的数据格式
+	 * */
 	public TransferPO(Date date, String transfer_number, String transport_id, String starting, String destination,
 			String container_number, String guard_name, ArrayList<String> bar_code_list, double amount, 
 			String DB_URL) {
@@ -39,9 +45,13 @@ public class TransferPO extends PO {
 		this.bar_code_list = bar_code_list;
 		this.amount = amount;	
 	}
+	
+	/**
+	 * 通过TransferVO创建中转单的持久化数据格式
+	 * */
 	public TransferPO(TransferVO transfer, String institutionId) {
 		// TODO Auto-generated constructor stub
-		super(URLHelper.getGatheringURL(institutionId));
+		super(URLHelper.getTransferURL(institutionId));
 		this.date=transfer.getDate();
 		this.transfer_number=transfer.getList();
 		this.transport_id=transfer.getTransferId();
@@ -62,72 +72,91 @@ public class TransferPO extends PO {
 	 * */
 	
 	
-	/*
+	/**
 	 * 获取装车日期
-	 * 返回Date
+	 * 
+	 * @return 装车日期Date
 	 * */
 	public Date getDate() {
 		return date;
 	}
-	/*
+	
+	/**
 	 * 获取获取中转单
-	 * 返回String
+	 * 
+	 * @return 中转单String
 	 * */
 	public String getTranferNumber() {
 		return transfer_number;
 	}
-	/*
+	
+	/**
 	 * 获取交通工具班次号
-	 * 返回String
+	 * 
+	 * @return 交通工具班次号String
 	 * */
 	public String getTransportID() {
 		return transport_id;
 	}
-	/*
+	
+	/**
 	 * 获取出发地
-	 * 返回String
+	 * 
+	 * @return 出发地String
 	 * */
 	public String getStarting() {
 		return starting;
 	}
-	/*
+	
+	/**
 	 * 获取到达地
-	 * 返回String
+	 * 
+	 * @return 到达地String
 	 * */
 	public String getDestination() {
 		return destination;
 	}
-	/*
+	
+	/**
 	 * 获取货柜号
-	 * 返回String
+	 * 
+	 * @return 货柜号String
 	 * */
 	public String getContainerNumber() {
 		return container_number;
 	}
-	/*
+	
+	/**
 	 * 获取监装员
-	 * 返回String
+	 * 
+	 * @return 监装员String
 	 * */
 	public String getGuardName() {
 		return guard_name;
 	}
-	/*
+	
+	/**
 	 * 获取所有订单编号
-	 * 返回ArrayList<String>
+	 * 
+	 * @return 所有订单编号ArrayList<String>
 	 * */
 	public ArrayList<String> getBarCodeList() {
 		return bar_code_list;
 	}
-	/*
+	
+	/**
 	 * 获取运费
-	 * 返回double
+	 * 
+	 * @return 运费
 	 * */
 	public double getAmount() {
 		return amount;
 	}
-	/*
+	
+	/**
 	 * 获取审批状态
-	 * 返回boolean
+	 * 
+	 * @return 审批状态
 	 * */
 	public boolean isApproved() {
 		return isApproved;
@@ -137,8 +166,10 @@ public class TransferPO extends PO {
 	 * 对TransferPO的某些信息进行更新
 	 * */
 	
-	/*
+	/**
 	 * 更新审批状态
+	 * 
+	 * @param isApproved 新审批状态
 	 * */
 	public void setApproved(boolean isApproved) {
 		this.isApproved = isApproved;

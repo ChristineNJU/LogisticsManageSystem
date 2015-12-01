@@ -79,23 +79,23 @@ public class FlatArrowButton extends JButton implements SwingConstants {
 				g.setColor(background_pressed);
 				g.fillRect(0, 0, w, h);
 				g.setColor(arrow_pressed);
-				paintTriangle(g, (w-size)/2, (h-size)/2, size, direction);
+				paintTriangle(g, (w-size)/2, (h-size)/2, size, direction, background_pressed);
 			}else if(isRollover){
 				g.setColor(background_rollover);
 				g.fillRect(0, 0, w, h);
 				g.setColor(arrow_rollover);
-				paintTriangle(g, (w-size)/2, (h-size)/2, size, direction);
+				paintTriangle(g, (w-size)/2, (h-size)/2, size, direction, background_rollover);
 			}else{
 				g.setColor(background_common);
 				g.fillRect(0, 0, w, h);
 				g.setColor(arrow_common);
-				paintTriangle(g, (w-size)/2, (h-size)/2, size, direction);
+				paintTriangle(g, (w-size)/2, (h-size)/2, size, direction, background_common);
 			}		
 		}else{
 			g.setColor(background_common);
 			g.fillRect(0, 0, w, h);
 			g.setColor(arrow_unabled);
-			paintTriangle(g, (w-size)/2, (h-size)/2, size, direction);
+			paintTriangle(g, (w-size)/2, (h-size)/2, size, direction, background_common);
 		}
 		
 		g.setColor(origColor);
@@ -117,7 +117,7 @@ public class FlatArrowButton extends JButton implements SwingConstants {
 		return false;
 	}
 	
-	public void paintTriangle(Graphics g, int x, int y, int size, int direction) {
+	public void paintTriangle(Graphics g, int x, int y, int size, int direction, Color tmp) {
 		Color oldColor = g.getColor();	
 //		System.out.println(g.getColor());
 		int mid, i, j;
@@ -128,27 +128,100 @@ public class FlatArrowButton extends JButton implements SwingConstants {
 	
 		g.translate(x, y);
 
+		Color temp;
+		
 		switch(direction){
 		case NORTH:
 			for(i = 0; i < size; i++){
-				g.drawLine(mid-i, i, mid+i, i);
+				g.drawLine(mid-i, i-2, mid+i, i-2);
+				j++;
+			}
+			
+			j = j-2;
+			
+			i--;
+			
+			for(int m=0; m<=2; m++){
+				g.drawLine(mid-i, j, mid+i, j);
+				j++;
+			}
+			
+			temp = g.getColor();
+			g.setColor(tmp);
+			
+			for(i = 0; i < size; i++){
+				g.drawLine(mid-i, i+1, mid+i, i+1);
+				j++;
 			}
 			break;
 		case SOUTH:
 			j = 0;
+			i = size-1;
+			
+			for(int m=0; m<=2; m++){
+				g.drawLine(mid-i, j, mid+i, j);
+				j++;
+			}
+			
 			for(i = size-1; i >= 0; i--){
 				g.drawLine(mid-i, j, mid+i, j);
 				j++;
 			}
+			
+			temp = g.getColor();
+			g.setColor(tmp);
+			
+			j = 0;
+			
+			for(i = size-1; i >= 0; i--){
+				g.drawLine(mid-i, j, mid+i, j);
+				j++;
+			}
+			
+			g.setColor(temp);
 			break;
 		case WEST:
 			for(i = 0; i < size; i++){
-				g.drawLine(i, mid-i, i, mid+i);
+				g.drawLine(i-2, mid-i, i-2, mid+i);
+				j++;
+			}
+			
+			j = j-2;
+			i--;
+			
+			for(int m=0; m<=2; m++){
+				g.drawLine(j, mid-i, j, mid+i);
+				j++;
+			}
+			
+			temp = g.getColor();
+			g.setColor(tmp);
+			
+			for(i = 0; i < size; i++){
+				g.drawLine(i+1, mid-i, i+1, mid+i);
+				j++;
 			}
 
 			break;
 		case EAST:
 			j = 0;
+			i = size-1;
+			
+			for(int m=0; m<=2; m++){
+				g.drawLine(j, mid-i, j, mid+i);
+				j++;
+			}
+			
+			for(i = size-1; i >= 0; i--){
+				g.drawLine(j, mid-i, j, mid+i);
+				j++;
+			}
+			
+			temp = g.getColor();
+			g.setColor(tmp);
+			
+			j = 0;
+			
 			for(i = size-1; i >= 0; i--){
 				g.drawLine(j, mid-i, j, mid+i);
 				j++;

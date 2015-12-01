@@ -1,231 +1,303 @@
 package presentation.userPanel.Courier;
 
-import java.awt.Point;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.Color;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Vector;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
 
+import presentation.components.MyComboBox;
+import presentation.components.PanelContent;
+import presentation.components.TextField;
+import presentation.main.ColorPallet;
+import presentation.main.FontSet;
+import presentation.main.Translater;
 import State.LogisticsType;
 import State.PackingCharge;
-import VO.LogisticsInputVO;
-import VO.UserVO;
+import State.StateSwitch;
+import State.TransferType;
 import businesslogic.Impl.Courier.CourierController;
 import businesslogic.Service.Courier.CourierService;
-import presentation.components.ButtonCancel;
-import presentation.components.ButtonNew;
-import presentation.components.ButtonOk;
-import presentation.components.ButtonTotal;
-import presentation.components.PanelContent;
-import presentation.components.RendererDelete;
-import presentation.components.RendererReviseLogistics;
-import presentation.components.ScrollPaneTable;
-import presentation.components.TableAddOnly;
-import presentation.components.TableModelAddOnly;
-import presentation.main.Translater;
 
-/**
- * 快递员新建快递单的列表
- * 
- * @author 张馨中
- * @version 1.0.0
- * */
-public class CourierNewOrder{
-
+public class CourierNewOrder {
+	
 	CourierService service = new CourierController();
-	Translater trans = new Translater();
-	ArrayList<LogisticsInputVO> logistics = new ArrayList<LogisticsInputVO>();
+	Listener listener = new Listener();
 	
-	private PanelContent panel = new PanelContent("创建快递单");
+	private PanelContent panel = new PanelContent("快递信息输入");
+	private SRInfoPanel sender = new SRInfoPanel("  寄件人");
+	private SRInfoPanel recipient = new SRInfoPanel("  收件人");
+	private LogisticsInfoPanel l;
 	
-	private ButtonNew buttonNew = new ButtonNew("添加新订单");
-	
-	private TableListener tableListener = new TableListener();
-	private FuncionListener functionListener = new FuncionListener();
-	
-	String[] tableH = {"快递单号","出发地","目的地","内件品名","体积","重量","费用合计"};
-	boolean[] isCellEditable = {false,false,false,false,false,false,false};
-	Vector<Vector<String>> tableV = new Vector<Vector<String>>();
-	private TableModelAddOnly model;
-	private TableAddOnly table;
-	private ScrollPaneTable sPanel;
-	
-	private ButtonOk confirm = new ButtonOk("提交所有订单");
-	private ButtonCancel cancel = new ButtonCancel();
-//	String[] city = {"南京","北京","上海","广州"};
+	JLabel amount = new JLabel("费  用  合  计 ", JLabel.CENTER);
+	JLabel time = new JLabel("预计到达时间", JLabel.CENTER);
+	JLabel amount_actual = new JLabel("");
+	JLabel time_actual = new JLabel("");
 	
 	
-	public CourierNewOrder(){
-		initUI();
+	public CourierNewOrder() {
+		init();
 	}
 	
-	protected void initUI() {
+	private void init() {
 		panel.setLayout(null);
+		sender.setBounds(87, 80, sender.getWidth(), sender.getHeight());
+		recipient.setBounds(487, 80, recipient.getWidth(), recipient.getHeight());
+		l.setBounds(87, 310, l.getWidth(), l.getHeight());
 		
-		buttonNew.setBounds(762,110,110,30);
-		buttonNew.addMouseListener(functionListener);
-		panel.add(buttonNew);
+		amount.setForeground(ColorPallet.GrayDark);
+		amount_actual.setForeground(ColorPallet.GrayDark);
+		time.setForeground(ColorPallet.GrayDark);
+		time_actual.setForeground(ColorPallet.GrayDark);
+		amount.setFont(FontSet.fourteen);
+		time.setFont(FontSet.fourteen);
+		amount_actual.setFont(FontSet.fourteen);
+		time_actual.setFont(FontSet.fourteen);
+		amount.setBounds(93, 460, 100, 30);
+		amount_actual.setBounds(220, 460, 200, 30);
+		time.setBounds(93, 490, 100, 30);
+		time_actual.setBounds(220, 490, 200, 30);
 		
-		initTable();
-		
-		confirm.setBounds(120,175+sPanel.getHeight(),160,30);
-		confirm.addMouseListener(tableListener);
-		panel.add(confirm);
-		
-		cancel.setBounds(295,175+sPanel.getHeight(),110,30);
-		cancel.addMouseListener(tableListener);
-		panel.add(cancel);
-	}
-	
-	ArrayList<UserVO> users;
-	protected void initTable() {
-		Date sendDate = new Date();
-		LogisticsInputVO temp = new LogisticsInputVO("黄勇","南京大学仙林校区","南京大学保卫处","13954565789","13984562125",
-				"女朋友","南航江宁校区","南航","12345678936","12345678936",
-				"0000000001",1,1,1,"台灯",LogisticsType.ECONOMIC,PackingCharge.COURISE_BAG,7.6,"南京","南京",
-				new Date(),new Date(),"张斯栋");
-		logistics.add(temp);
-		logistics.add(temp);
-		logistics.add(temp);
-		tableV = getVector(logistics);
-		
-		model = new TableModelAddOnly(tableV,tableH,isCellEditable);
-		table = new TableAddOnly(model);
-		
-		TableColumnModel tcm = table.getColumnModel();
-		tcm.addColumn(new TableColumn());
-		tcm.getColumn(tcm.getColumnCount()-1).setCellRenderer(new RendererDelete());
-		tcm.getColumn(tcm.getColumnCount()-1).setPreferredWidth(40);
-		
-//		tcm.getColumn(tcm.getColumnCount()).setCellRenderer(new RendererReviseLogistics());
-		
-		table.addMouseListener(tableListener);
-		
-		sPanel = new ScrollPaneTable(table);
-		
-		panel.add(sPanel);
-	}
-	
-
-
-	private Vector<Vector<String>> getVector(ArrayList<LogisticsInputVO> logistics) {
-		Vector<Vector<String>> result = new Vector<Vector<String>>();
-		for(LogisticsInputVO temp:logistics){
-//			System.out.println("int GetVector method");
-			Vector<String> vRow = new Vector<String>();
-			vRow.add(temp.getBar_code());
-			vRow.add(temp.getStarting());
-			vRow.add(temp.getDestination());
-			vRow.add(temp.getInternal_name());
-			vRow.add(temp.getSize()+"");
-			vRow.add(temp.getWeight()+"");
-			vRow.add(temp.getTotal_cost()+"");
-			result.add(vRow);
-			
-		}
-		return result;
-	}
-	
-	
-	protected void confirm() {
-		// TODO 提交所有的快递信息
+		panel.add(sender);
+		panel.add(recipient);
+		panel.add(l);
+		panel.add(amount);
+		panel.add(time);
+		panel.add(amount_actual);
+		panel.add(time_actual);
 		
 	}
 	
-	
-	protected void solveDelete(int i) {
-		model.delete(i);
-		logistics.remove(i);
-	}
-	
-	protected void solveRevise(int i){
-		//TODO 修改已填的快递信息
-	}
-
-	protected void newItem() {
-		// TODO 新增快递，弹出dialog，返回值可为VO
-		
-	}
-
-
-//	protected VO getVO(Vector<String> vector) {
-//		// TODO Auto-generated method stub
-//		return null;
+//	public JPanel getPanel() {
+//		return panel;
 //	}
+//	
+	class SRInfoPanel extends JPanel {
+		JLabel title;
+		JLabel name = new JLabel("姓       名", JLabel.CENTER);
+		JLabel city = new JLabel("所在地区", JLabel.CENTER);
+		JLabel address = new JLabel("详细地址", JLabel.CENTER);
+		JLabel organization = new JLabel("机       构", JLabel.CENTER);
+		JLabel telephone = new JLabel("电       话", JLabel.CENTER);
+		JLabel mobilephone = new JLabel("手       机", JLabel.CENTER);
+		
+		MyComboBox city_actual = new MyComboBox();
+		
+		TextField n = new TextField();
+		TextField c = new TextField();
+		TextField a = new TextField();
+		TextField o = new TextField();
+		TextField t = new TextField();
+		TextField m = new TextField();
+		
+		public SRInfoPanel(String title) {
+			// TODO Auto-generated constructor stub
+			l = new LogisticsInfoPanel();
+			this.title = new JLabel(title);
+			init();
+			initComboBox();
+			initListener();
+		}
+		
+		private void init() {
+			setSize(320, 206);
+			setLayout(null);
+			
+			title.setOpaque(true);
+			title.setBackground(ColorPallet.Purple);
+			title.setFont(FontSet.twenty);
+			title.setForeground(Color.white);
+			title.setBounds(0, 0, 320, 30);
+			add(title);
+			
+			name.setFont(FontSet.fourteen);
+			name.setForeground(ColorPallet.GrayDark);
+			name.setBounds(-3, 32, 90, 28);
+			n.setBounds(90, 36, 208, 22);
+			add(name);
+			add(n);
+			
+			city.setFont(FontSet.fourteen);
+			city.setForeground(ColorPallet.GrayDark);
+			city.setBounds(-3, 60, 90, 28);
+			city_actual.setBounds(90, 64, 70, 22);
+			c.setBounds(161, 64, 137, 22);
+			add(city);
+			add(city_actual);
+			add(c);
+			
+			address.setFont(FontSet.fourteen);
+			address.setForeground(ColorPallet.GrayDark);
+			address.setBounds(-3, 88, 90, 28);
+			a.setBounds(90, 92, 208, 22);
+			add(address);
+			add(a);
+			
+			organization.setFont(FontSet.fourteen);
+			organization.setForeground(ColorPallet.GrayDark);
+			organization.setBounds(-3, 116, 90, 28);
+			o.setBounds(90, 120, 208, 22);
+			add(organization);
+			add(o);
+			
+			telephone.setFont(FontSet.fourteen);
+			telephone.setForeground(ColorPallet.GrayDark);
+			telephone.setBounds(-3, 144, 90, 28);
+			t.setBounds(90, 148, 208, 22);
+			add(telephone);
+			add(t);
+			
+			mobilephone.setFont(FontSet.fourteen);
+			mobilephone.setForeground(ColorPallet.GrayDark);
+			mobilephone.setBounds(-3, 172, 90, 28);
+			m.setBounds(90, 176, 208, 22);
+			add(mobilephone);
+			add(m);
+		}
 	
-	public class TableListener implements MouseListener{
-
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			Point p = table.getMousePosition();
-			int row = table.rowAtPoint(p);
-			int column = table.columnAtPoint(p);
-			System.out.println("position clicked :   row"+row+"   column"+column);
-			if(column == table.getColumnCount() -2){
-				solveDelete(row);
-			}
-			if(column == table.getColumnCount() -1){
-				solveRevise(row);
+		private void initComboBox() {
+			ArrayList<String> c = service.getCity();
+			
+			for(int i=0;i<c.size();i++){
+				city_actual.addItem(c.get(i));
 			}
 		}
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-			
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-			
+		
+		private void initListener() {
+			city_actual.addFocusListener(listener);
 		}
 	}
+
+	class LogisticsInfoPanel extends JPanel {
+		
+		JLabel title = new JLabel("  货物信息", JLabel.LEFT);
+		JLabel o_n = new JLabel("原  件  数", JLabel.CENTER);
+		JLabel i_n = new JLabel("内件品名", JLabel.CENTER);
+		JLabel s = new JLabel("实际体积", JLabel.CENTER);
+		JLabel w = new JLabel("实际重量", JLabel.CENTER);
+		JLabel m3 = new JLabel("m3", JLabel.CENTER);
+		JLabel kg = new JLabel("kg", JLabel.CENTER);
+		JLabel t = new JLabel("快递类型", JLabel.CENTER);
+		JLabel p = new JLabel("包装费用", JLabel.CENTER);
+		
+		MyComboBox original_number = new MyComboBox();
+		TextField internal_name = new TextField();
+		TextField size = new TextField();
+		TextField weight = new TextField();
+		MyComboBox type = new MyComboBox();
+		MyComboBox pack = new MyComboBox();
+		
+		public LogisticsInfoPanel() {
+			// TODO Auto-generated constructor stub
+			init();
+			initComboBox();
+			initListener();
+		}
+		
+		private void init() {
+			setLayout(null);
+			setSize(720, 130);
+		
+			title.setBounds(0, 0, 720, 30);
+			title.setOpaque(true);
+			title.setForeground(Color.white);
+			title.setFont(FontSet.twenty);
+			title.setBackground(ColorPallet.Purple);
+			add(title);
+			
+			o_n.setBounds(2, 40, 80, 40);
+			o_n.setForeground(ColorPallet.GrayDark);
+			o_n.setFont(FontSet.fourteen);
+			original_number.setBounds(90, 48, 80, 26);
+			original_number.setEditable(true);
+			add(o_n);
+			add(original_number);
+			
+			i_n.setBounds(180, 40, 80, 40);
+			i_n.setForeground(ColorPallet.GrayDark);
+			i_n.setFont(FontSet.fourteen);
+			internal_name.setBounds(268, 48, 80, 26);
+			add(i_n);
+			add(internal_name);
+			
+			s.setBounds(358, 40, 80, 40);
+			s.setForeground(ColorPallet.GrayDark);
+			s.setFont(FontSet.fourteen);
+			size.setBounds(446, 48, 60, 26);
+			m3.setBounds(511, 48, 20, 26);
+//			m3.setFont(FontSet.fourteen);
+			m3.setForeground(ColorPallet.GrayDark);
+			add(s);
+			add(size);
+			add(m3);
+			
+			w.setBounds(546, 40, 60, 40);
+			w.setForeground(ColorPallet.GrayDark);
+			w.setFont(FontSet.fourteen);
+			weight.setBounds(624, 48, 60, 26);
+			kg.setBounds(687, 48, 20, 26);
+			kg.setForeground(ColorPallet.GrayDark);
+			add(w);
+			add(weight);
+			add(kg);
+			
+			t.setBounds(2, 80, 80, 40);
+			t.setForeground(ColorPallet.GrayDark);
+			t.setFont(FontSet.fourteen);
+			type.setBounds(90, 88, 100, 26);
+			type.setEditable(false);
+			add(t);
+			add(type);
+			
+			p.setBounds(200, 80, 80, 40);
+			p.setForeground(ColorPallet.GrayDark);
+			p.setFont(FontSet.fourteen);
+			pack.setBounds(288, 88, 80, 26);
+			pack.setEditable(false);
+			add(p);
+			add(pack);
+		}
+		
+		private void initComboBox() {
+			for(int i=1;i<6;i++){				
+				original_number.addItem(i);
+			}
+			
+			type.addItem("标准快递");
+			type.addItem("经济快递");
+			type.addItem("特快专递");
+			
+			pack.addItem("木箱");
+			pack.addItem("快递袋");
+			pack.addItem("纸箱");
+		}
 	
-	public class FuncionListener implements MouseListener{
-
-
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			ButtonTotal source = (ButtonTotal)e.getSource();
-			if(source.equals(buttonNew)){
-				newItem();
-			}
-			if(source.equals(confirm)){
-				confirm();
-			}
+		private void initListener() {
+			original_number.addFocusListener(listener);
+			internal_name.addFocusListener(listener);
+			size.addFocusListener(listener);
+			weight.addFocusListener(listener);
+			type.addFocusListener(listener);
+			pack.addFocusListener(listener);
 		}
+	}
+
+	class Listener implements FocusListener {
 
 		@Override
-		public void mousePressed(MouseEvent e) {
+		public void focusGained(FocusEvent e) {
+			// TODO Auto-generated method stub
 			
 		}
 
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			
-		}
+	
+		
 
 		@Override
-		public void mouseEntered(MouseEvent e) {
-			
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
+		public void focusLost(FocusEvent e) {
+			// TODO Auto-generated method stub
 			
 		}
 		
@@ -235,4 +307,58 @@ public class CourierNewOrder{
 		return panel;
 	}
 
+		public void focusLost(FocusEvent e) {
+			// TODO Auto-generated method stub
+			if(e.getSource().equals(l.weight)){
+				if(!isLegal(l.weight.getText())){
+					l.weight.setError();;
+//					l.weight.setText("");
+				}
+			}else if(e.getSource().equals(l.size)){
+				if(!isLegal(l.size.getText())){
+					l.size.setError();
+				}
+			}
+			
+			if(isLegal(l.weight.getText())&&isLegal(l.size.getText())){
+				amount_actual.setText(""+getAmount());
+			}
+		}
+	
+
+	private boolean isLegal(String s) {
+		if(s.equals("")){
+			return false;
+		}
+		
+		boolean isLegal = true;
+		for(int i=0;i<s.length();i++){
+			if(s.charAt(i)<='9'&&s.charAt(i)>='0'){
+				isLegal = true;
+			}else{
+				isLegal = false;
+				break;
+			}
+		}
+		return isLegal;
+	}
+
+	private double getAmount() {
+		double result = 0;
+
+		LogisticsType type = Translater.getLogisticsType((String)l.type.getSelectedItem());
+		PackingCharge pack = Translater.getPackingCharge((String)l.pack.getSelectedItem());
+		
+		double weight = Double.parseDouble(l.weight.getText());
+		double size = Double.parseDouble(l.size.getText());
+		
+		System.out.println(weight+" "+size+" "+type+" "+pack+" "+(String)sender.city_actual.getSelectedItem()
+				+(String)recipient.city_actual.getSelectedItem());
+		
+		result = service.getAmount((String)sender.city_actual.getSelectedItem(), 
+				(String)recipient.city_actual.getSelectedItem(),
+				type, pack, weight, size);
+		
+		return result;
+	}
 }

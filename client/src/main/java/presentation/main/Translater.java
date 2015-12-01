@@ -1,11 +1,13 @@
 package presentation.main;
 
 import State.InstitutionType;
+import State.LogisticsType;
+import State.PackingCharge;
 import State.UserRole;
 
 public class Translater {
 
-	public String getChineseForInstitution(InstitutionType type){
+	public static String getChineseForInstitution(InstitutionType type){
 		switch(type){
 		case BusinessLobby:
 			return "营业厅";
@@ -21,7 +23,7 @@ public class Translater {
 	}
 	
 	
-	public InstitutionType getInstitutionType(String s){
+	public static InstitutionType getInstitutionType(String s){
 		switch(s){
 		case "营业厅":
 			return InstitutionType.BusinessLobby;
@@ -36,7 +38,7 @@ public class Translater {
 		}
 	}
 	
- 	public String getChineseForUserRole(UserRole role){
+ 	public static String getChineseForUserRole(UserRole role){
 		switch(role){
 		case admin:
 			return "管理员";
@@ -57,7 +59,7 @@ public class Translater {
 		}
 	}
 	
- 	public UserRole getUserRole(String s){
+ 	public static UserRole getUserRole(String s){
 		switch(s){
 		case "管理员":
 			return UserRole.admin;
@@ -77,4 +79,30 @@ public class Translater {
 			return UserRole.uninit;
 		}
 	}
+ 	
+ 	public static LogisticsType getLogisticsType(String s) {
+ 		switch(s){
+ 		case "标准快递":
+ 			return LogisticsType.STANDARD;
+ 		case "经济快递":
+ 			return LogisticsType.ECONOMIC;
+ 		case "次晨特快":
+ 			return LogisticsType.EXPRESS;
+ 		default:
+ 			return LogisticsType.STANDARD;
+ 		}
+ 	}
+ 	
+ 	public static PackingCharge getPackingCharge(String s) {
+ 		switch(s){
+ 		case "木箱":
+ 			return PackingCharge.WOODEN_CASE;
+ 		case "纸箱":
+ 			return PackingCharge.PAPER_CASE;
+ 		case "快递袋":
+ 			return PackingCharge.COURISE_BAG;
+ 		default:
+ 			return PackingCharge.PAPER_CASE;
+ 		}
+ 	}
 }

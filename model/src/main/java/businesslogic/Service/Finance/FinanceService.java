@@ -12,6 +12,7 @@ import VO.EntruckingVO;
 import VO.GatheringVO;
 import VO.LogVO;
 import VO.TransferVO;
+import VO.PeriodVO;
 
 /**
  * 财务人员业务接口
@@ -36,6 +37,15 @@ public interface FinanceService {
 	 * @return 添加状态
 	 * */
 	public AddState addCost(CostVO cost);
+
+	/**
+	 * 增加期初
+	 * 
+	 * @param name 银行名称
+	 * @return 添加状态
+	 * */
+	public AddState addPeriod();
+
 	
 	/**
 	 * 删除银行账户
@@ -43,6 +53,7 @@ public interface FinanceService {
 	 * @param account AccountVO
 	 * @return 删除状态
 	 * */
+
 	public DeleteState deleteAccount(AccountVO account);
 	
 	/**
@@ -96,6 +107,15 @@ public interface FinanceService {
 	 * @return LogVO的ArrayList
 	 * */
 	public ArrayList<LogVO> getLog(String time_start, String time_end);
+
+	/**
+	 * 查询期初
+	 * 
+	 * 
+	 * @return PeriodVO
+	 * */
+	public PeriodVO getPeriod();
+
 	
 	/**
 	 * 查询中转单
@@ -104,7 +124,7 @@ public interface FinanceService {
 	 * @param time_end 截止日期
 	 * @return TransferVO的ArrayList
 	 * */
-	public ArrayList<TransferVO> getTransfer(String time_start, String time_end);
+public ArrayList<TransferVO> getTransfer(String time_start, String time_end);
 	
 	/**
 	 * 更新银行账户
@@ -113,5 +133,11 @@ public interface FinanceService {
 	 * @return 更新状态
 	 * */
 	public UpdateState updateAccount(AccountVO account);
+	/**
+	 * 更新期初
+	 *
+	 * @return 更新状态
+	 * */
+	public UpdateState updatePeriod();
 	
 }

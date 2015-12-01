@@ -87,7 +87,7 @@ public class PanelNavigation extends JPanel {
 			if(e.getSource().equals(mini))
 				frame.setExtendedState(1);
 			if(e.getSource().equals(close))
-				System.exit(0);
+				MainFrame.frameClose();
 		}
 		
 	}

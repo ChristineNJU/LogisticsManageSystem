@@ -7,23 +7,34 @@ import java.util.Date;
 import businesslogic.URLHelper.URLHelper;
 import VO.DeliveryVO;
 
-/*========================================================================================
+/**
  * 用来保存派送信息的持久化数据格式
+ * 
+ * @author HermC
+ * @version 1.0.0
  * */
 
 public class DeliveryPO extends PO {
 
+	// ----- member variables ---------------------------------------
 	private Date date;
 	private ArrayList<String> bar_code_list = new ArrayList<String>();	
 	private String courier = "";
 	private boolean isApproved = false;
 	
+	/**
+	 * 直接创建派送信息的持久化数据格式
+	 * */
 	public DeliveryPO(Date date, ArrayList<String> bar_code_list, String courier, String DB_URL) {
 		super(DB_URL);
 		this.date = date;
 		this.bar_code_list = bar_code_list;
 		this.courier = courier;
 	}
+	
+	/**
+	 * 通过DeliveryVO创建派送信息的持久化数据格式
+	 * */
 	public DeliveryPO(DeliveryVO delivery,String institution_id) {
 		// TODO Auto-generated constructor stub
 		super(URLHelper.getDeliveryURL(institution_id));
@@ -41,30 +52,37 @@ public class DeliveryPO extends PO {
 	
 	
 
-	/*
+	/**
 	 * 获取到达日期
-	 * 返回Date
+	 * 
+	 * @return 到达日期Date
 	 * */
 	public Date getDate() {
 		return date;
 	}
-	/*
+	
+	/**
 	 * 获取托运订单条形码号
-	 * 返回ArrayList<String>
+	 * 
+	 * @return 托运订单条形码号ArrayList<String>
 	 * */
 	public ArrayList<String> getBarCodeList() {
 		return bar_code_list;
 	}
-	/*
+	
+	/**
 	 * 获取派件员
-	 * 返回String
+	 * 
+	 * @return 派件员String
 	 * */
 	public String getCourier() {
 		return courier;
 	}
-	/*
+	
+	/**
 	 * 获取审批状态
-	 * 返回boolean
+	 * 
+	 * @return 审批状态
 	 * */
 	public boolean isApproved() {
 		return isApproved;
@@ -75,8 +93,10 @@ public class DeliveryPO extends PO {
 	 * 对DeliveryPO的某些信息进行更新
 	 * */
 	
-	/*
+	/**
 	 * 更新审批状态
+	 * 
+	 * @param isApproved 新审批状态
 	 * */
 	public void setApproved(boolean isApproved) {
 		this.isApproved = isApproved;
@@ -86,10 +106,7 @@ public class DeliveryPO extends PO {
 	 * 对数据的格式化
 	 * */
 	
-	/*
-	 * 形成数据库格式
-	 * 返回String
-	 * */
+
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub

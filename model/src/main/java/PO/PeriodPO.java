@@ -4,8 +4,15 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * 用来保存期初建账的持久化数据格式
+ * 
+ * @author HermC
+ * @version 1.0.0
+ * */
 public class PeriodPO extends PO {
 
+	// ----- member variables ---------------------------------------
 	private Date date;
 	private int institution_size = 0;
 	private int staff_size = 0;
@@ -13,6 +20,9 @@ public class PeriodPO extends PO {
 	private int storage_size = 0;
 	private ArrayList<AccountPO> account = new ArrayList<AccountPO>();
 	
+	/**
+	 * 直接创建期初建账的持久化数据对象
+	 * */
 	public PeriodPO(Date date, int institution_size, int staff_size, int car_size, int storage_size, 
 			ArrayList<AccountPO> account, String DB_URL) {
 		super(DB_URL);
@@ -32,44 +42,55 @@ public class PeriodPO extends PO {
 	/*---------------------------------------------------------------
 	 * 对PeriodPO的数据进行读取
 	 * */
-	/*
+	/**
 	 * 获取时间
-	 * 返回Date
+	 * 
+	 * @return 时间Date
 	 * */
 	public Date getDate() {
 		return date;
 	}
-	/*
+	
+	/**
 	 * 获取机构数量
-	 * 返回int
+	 * 
+	 * @return 机构数量
 	 * */
 	public int getInstitutionSize() {
 		return institution_size;
 	}
-	/*
+	
+	/**
 	 * 获取人员数量
-	 * 返回int
+	 * 
+	 * @return 人员数量
 	 * */
 	public int getStaffSize() {
 		return staff_size;
 	}
-	/*
+	
+	/**
 	 * 获取车辆数量
-	 * 返回int
+	 * 
+	 * @return 车辆数量
 	 * */
 	public int getCarSize() {
 		return car_size;
 	}
-	/*
+	
+	/**
 	 * 获取库存数量
-	 * 返回int
+	 * 
+	 * @return 库存数量
 	 * */
 	public int getStorageSize() {
 		return storage_size;
 	}
-	/*
+	
+	/**
 	 * 获取银行账户
-	 * 返回ArrayList<AccountPO>
+	 * 
+	 * @return 银行账户ArrayList<AccountPO>
 	 * */
 	public ArrayList<AccountPO> getAccount() {
 		return account;
@@ -78,26 +99,37 @@ public class PeriodPO extends PO {
 	/*---------------------------------------------------------------
 	 * 对PeriodPO的数据进行更新
 	 * */
-	/*
+	/**
 	 * 更新机构信息
+	 * 
+	 * @param institution_size 新机构信息
 	 * */
 	public void setInstitutionSize(int institution_size) {
 		this.institution_size = institution_size;
 	}
-	/*
+	
+	/**
 	 * 更新人员信息
+	 * 
+	 * @param staff_size 新人员信息
 	 * */
 	public void setStaffSize(int staff_size) {
 		this.staff_size = staff_size;
 	}
-	/*
+	
+	/**
 	 * 更新库存信息
+	 * 
+	 * @param storage_size 新库存信息
 	 * */
 	public void setStorageSize(int storage_size) {
 		this.storage_size = storage_size;
 	}
-	/*
+	
+	/**
 	 * 更新银行账户信息
+	 * 
+	 * @param account 新银行账户信息
 	 * */
 	public void setAccount(ArrayList<AccountPO> account) {
 		this.account = account;

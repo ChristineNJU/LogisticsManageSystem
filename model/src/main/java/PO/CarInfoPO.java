@@ -95,7 +95,7 @@ public class CarInfoPO extends PO {
 	/**
 	 * 更新服役时间
 	 * 
-	 * @param n 
+	 * @param n 新服役时间
 	 * */
 	public void setAttendTime(int n) {
 		this.attend_time = n;

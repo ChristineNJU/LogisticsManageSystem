@@ -15,11 +15,12 @@ public class NavigationCourier extends Navigation{
 	private ButtonNav newLogistics = new ButtonNav("courier","newLogistics");
 	private ButtonNav receive = new ButtonNav("courier","receive");
 	private ButtonNav inquiry = new ButtonNav("courier","inquiry");
-	
 
 	private CourierNewOrder courierNewOrder;
 	private CourierReceive courierReceive;
 	private CourierLogisticsInfoSearch courierLogisticsInfoSearch;
+
+
 	
 	public NavigationCourier(UserVO user) {
 		super(user);
@@ -56,6 +57,7 @@ public class NavigationCourier extends Navigation{
 		courierNewOrder = new CourierNewOrder();
 		MainFrame.getMainPanel().add(courierNewOrder.getPanel());
 		MainFrame.getMainPanel().repaint();
+		MainFrame.getMainFrame().repaint();
 	}
 	
 	private void changeToReceive(){

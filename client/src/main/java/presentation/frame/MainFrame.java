@@ -55,18 +55,18 @@ public class MainFrame {
 
 		frame.setContentPane(panel);
 		panel.setLayout(null);
-		
 
 //		inquiry = new Inquiry(this);
 //		frame.add(inquiry.getPanel());
 //		panel.add(inquiry.getPanel());
-//		changeToCourier();
+
+		changeToCourier();
 //		changeToBusinesslobby();
 //		changeToFinance();
 //		changeToManager();
 //		changeToMediumCenter();
 //		changeToRepository();
-		changeToAdmin();
+//		changeToAdmin();
 	}
 	
 	/**
@@ -159,7 +159,6 @@ public class MainFrame {
 	private void changeToAdmin(){
 		nav = new NavigationAdmin(user);
 		panel.add(nav.getNavPanel());
-		panel.repaint();
 	}
 	
 	//
@@ -173,7 +172,7 @@ public class MainFrame {
 	/**
 	 * 关闭窗口动画效果
 	 * */
-	public void frameClose() {
+	public static void frameClose() {
 				
 		double width = FRAME_WIDTH;
 		double height = FRAME_HEIGHT;
