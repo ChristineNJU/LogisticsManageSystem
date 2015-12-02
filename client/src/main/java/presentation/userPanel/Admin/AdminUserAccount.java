@@ -77,7 +77,7 @@ public class AdminUserAccount extends MgtFourFunctions{
 	JComboBox cityC;
 	JComboBox institutionC;
 	
-	private int addUsersNum = 0;
+	private int addsersNum = 0;
 	private ArrayList<UserVO> addUsers = new ArrayList<UserVO>();
 	private ArrayList<UserVO> deleteUsers;
 	private ArrayList<UserVO> updateUsers = new ArrayList<UserVO>();
@@ -154,6 +154,7 @@ public class AdminUserAccount extends MgtFourFunctions{
         tcm.getColumn(3).setCellEditor(new DefaultCellEditor(genderC)); 
         
         for(int i = 0;i < age.length;i++)
+        	
         	age[i] = i+18+"";
         ageC = new FlatComboBox(age);  
         tcm.getColumn(4).setCellEditor(new DefaultCellEditor(ageC));
