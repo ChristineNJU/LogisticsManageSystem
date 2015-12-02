@@ -1,9 +1,9 @@
 package presentation.userPanel.Courier;
 
+import VO.UserVO;
 import presentation.components.ButtonNav;
 import presentation.frame.MainFrame;
 import presentation.main.Navigation;
-import VO.UserVO;
 
 public class NavigationCourier extends Navigation{
 
@@ -16,7 +16,7 @@ public class NavigationCourier extends Navigation{
 	private ButtonNav receive = new ButtonNav("courier","receive");
 	private ButtonNav inquiry = new ButtonNav("courier","inquiry");
 
-	private CourierNewOrder courierNewOrder;
+	private CourierNewOrderList courierNewOrder;
 	private CourierReceive courierReceive;
 	private CourierLogisticsInfoSearch courierLogisticsInfoSearch;
 
@@ -54,7 +54,7 @@ public class NavigationCourier extends Navigation{
 	}
 	
 	private void changeToNewLogistics(){
-		courierNewOrder = new CourierNewOrder();
+		courierNewOrder = new CourierNewOrderList();
 		MainFrame.getMainPanel().add(courierNewOrder.getPanel());
 		MainFrame.getMainPanel().repaint();
 		MainFrame.getMainFrame().repaint();

@@ -4,9 +4,9 @@ import java.util.Vector;
 
 import VO.VO;
 import presentation.components.ButtonNew;
-import presentation.main.MgtFourFunctions;
+import presentation.main.FunctionADUS;
 
-public class ManagerStaffMgt extends MgtFourFunctions{
+public class ManagerStaffMgt extends FunctionADUS{
 
 	public ManagerStaffMgt(){
 		buttonNew = new ButtonNew("新增员工");

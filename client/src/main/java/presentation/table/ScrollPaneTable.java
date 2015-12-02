@@ -1,4 +1,4 @@
-package presentation.components;
+package presentation.table;
 
 import java.awt.Image;
 
@@ -7,6 +7,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
+import presentation.components.FlatScrollBarUI;
 
 public class ScrollPaneTable extends JScrollPane{
 

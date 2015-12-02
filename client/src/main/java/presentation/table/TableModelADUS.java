@@ -1,4 +1,4 @@
-package presentation.components;
+package presentation.table;
 
 import java.util.Vector;
 

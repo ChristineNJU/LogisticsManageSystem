@@ -1,4 +1,4 @@
-package presentation.components;
+package presentation.table;
 
 import java.awt.Component;
 import java.awt.Dimension;
@@ -10,6 +10,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 
+import presentation.components.EditorGeneral;
 import presentation.main.ColorPallet;
 
 public class TableADUS extends JTable {

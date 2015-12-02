@@ -1,10 +1,10 @@
-package presentation.components;
+package presentation.table;
 
 import java.util.Vector;
 
 import javax.swing.table.AbstractTableModel;
 
-import presentation.components.TableModelADUS.ModelListener;
+import presentation.table.TableModelADUS.ModelListener;
 
 public class TableModelAddOnly extends AbstractTableModel{
 

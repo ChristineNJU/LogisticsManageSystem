@@ -3,23 +3,24 @@ package presentation.userPanel.Courier;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.MouseAdapter;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import State.LogisticsType;
+import State.PackingCharge;
+import businesslogic.Impl.Courier.CourierController;
+import businesslogic.Service.Courier.CourierService;
+import presentation.components.ButtonCancel;
+import presentation.components.ButtonOk;
 import presentation.components.MyComboBox;
 import presentation.components.PanelContent;
 import presentation.components.TextField;
 import presentation.main.ColorPallet;
 import presentation.main.FontSet;
 import presentation.main.Translater;
-import State.LogisticsType;
-import State.PackingCharge;
-import State.StateSwitch;
-import State.TransferType;
-import businesslogic.Impl.Courier.CourierController;
-import businesslogic.Service.Courier.CourierService;
 
 public class CourierNewOrder {
 	
@@ -36,9 +37,14 @@ public class CourierNewOrder {
 	JLabel amount_actual = new JLabel("");
 	JLabel time_actual = new JLabel("");
 	
+//	ButtonOk confirm = new ButtonOk("确认订单信息");
+//	ButtonCancel cancel = new ButtonCancel();
 	
-	public CourierNewOrder() {
+	CourierNewOrderList source;
+	
+	public CourierNewOrder(CourierNewOrderList source) {
 		init();
+		this.source = source;
 	}
 	
 	private void init() {
@@ -60,6 +66,12 @@ public class CourierNewOrder {
 		time.setBounds(93, 490, 100, 30);
 		time_actual.setBounds(220, 490, 200, 30);
 		
+//		confirm.setLocation(220, 530);
+//		cancel.setLocation(340,530);
+//		cancel.addMouseListener(new MouseAdapter(){
+//			
+//		});
+		
 		panel.add(sender);
 		panel.add(recipient);
 		panel.add(l);
@@ -67,6 +79,8 @@ public class CourierNewOrder {
 		panel.add(time);
 		panel.add(amount_actual);
 		panel.add(time_actual);
+//		panel.add(confirm);
+//		panel.add(cancel);
 		
 	}
 	
@@ -288,7 +302,7 @@ public class CourierNewOrder {
 
 		@Override
 		public void focusGained(FocusEvent e) {
-			// TODO Auto-generated method stub
+			
 			
 		}
 

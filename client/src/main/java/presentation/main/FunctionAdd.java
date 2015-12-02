@@ -4,67 +4,49 @@ import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 
-import VO.UserVO;
 import VO.VO;
 import presentation.components.ButtonCancel;
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
-import presentation.components.ButtonSearch;
 import presentation.components.ButtonTotal;
 import presentation.components.PanelContent;
-import presentation.components.ScrollPaneTable;
-import presentation.components.TableADUS;
-import presentation.components.TableModelADUS;
-import presentation.components.TextField;
+import presentation.table.ScrollPaneTable;
+import presentation.table.TableAddOnly;
+import presentation.table.TableModelAddOnly;
 
-
-public abstract class MgtFourFunctions {
+public abstract class FunctionAdd {
 
 	protected Translater trans = new Translater();
 	
 	protected PanelContent panel;
-
-	protected TextField input;
-	protected ButtonSearch search;
+	
 	protected ButtonNew buttonNew;
-	protected ButtonConfirm confirm = new ButtonConfirm("提交修改");
+	protected ButtonConfirm confirm;
 	protected ButtonCancel cancel = new ButtonCancel();
-	protected AttentionLabel attention  = new AttentionLabel();;
-//	protected String[] tableH;
-//	boolean[] isCellEditable;
+	protected AttentionLabel attention = new AttentionLabel();
+	
 	protected ScrollPaneTable sPanel;
 	protected TableListener tableListener = new TableListener();
-	private FuncionListener functionListener = new FuncionListener();
+	protected FuncionListener functionListener = new FuncionListener();
 	
 	protected Vector<Vector<String>> tableV = new Vector<Vector<String>>();
-	protected TableModelADUS model;
-	protected TableADUS table;
+	protected TableModelAddOnly model;
+	protected TableAddOnly table;
 	
-	protected ArrayList<UserVO> addItems = new ArrayList<UserVO>();
-	protected ArrayList<UserVO> deleteItems ;
-	protected ArrayList<UserVO> updateItems = new ArrayList<UserVO>();
-	protected ArrayList<UserVO> searchItems = new ArrayList<UserVO>();
-	
-	public MgtFourFunctions(){
+	public FunctionAdd(){
+		
 	}
 	
 	protected void initUI(String s){
 		panel = new PanelContent(s);
 		panel.setLayout(null);
-
-		input = new TextField();
-		search = new ButtonSearch();
-		input.setBounds(120,110,160,30);
-		panel.add(input);
-		search.setBounds(280,110,60,30);
-		search.addMouseListener(functionListener);
-		panel.add(search);
+		
+		initHeader();
 		
 		buttonNew.addMouseListener(functionListener);
 		panel.add(buttonNew);
@@ -77,21 +59,20 @@ public abstract class MgtFourFunctions {
 		cancel.setBounds(confirm.getWidth()+130,175+sPanel.getHeight(),110,30);
 		cancel.addMouseListener(functionListener);
 		panel.add(cancel);
-//		System.out.println("button height:"+this.getHeight());
 	}
+	
+	protected abstract void initHeader();
 	
 	protected abstract void initTable();
 	
-	protected abstract void showSearchResult(String s);
-	
-	protected abstract void confirmRevise();
+	protected abstract void confirmAll();
 	
 	protected void removeError(){
 		panel.remove(attention);
 	}
 	
 	protected void showError(String s){
-		attention = new AttentionLabel(s);
+		attention.setText(s);
 		panel.add(attention);
 	}
 	
@@ -100,57 +81,16 @@ public abstract class MgtFourFunctions {
 		table.repaint();
 	}
 	
-	protected void newItem() {
-		model.addEmptyRow();
-		int lastIndex = table.getRowCount() - 1;
-		table.changeSelection(lastIndex, 0, false, false);
-	}
-	
-//	protected abstract Vector<Vector<String>> getVector(ArrayList<VO> voList);
-	
 	protected abstract VO getVO(Vector<String> vector);
 	
 	public PanelContent getPanel(){
 		return panel;
 	}
 	
-	public class FuncionListener implements MouseListener{
-
-
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			ButtonTotal source = (ButtonTotal)e.getSource();
-			if(source.equals(buttonNew)){
-				newItem();
-			}
-			if(source.equals(confirm)){
-				confirmRevise();
-			}
-			if(source.equals(search)){
-				showSearchResult(input.getText());
-			}
-		}
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-			
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-			
-		}
-		
+	protected void newItem() {
+		model.addEmptyRow();
+		int lastIndex = table.getRowCount() - 1;
+		table.changeSelection(lastIndex, 0, false, false);
 	}
 	
 	public class AttentionLabel extends JLabel{
@@ -205,6 +145,43 @@ public abstract class MgtFourFunctions {
 			
 		}
 	}
+	
+	public class FuncionListener implements MouseListener{
 
 
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			ButtonTotal source = (ButtonTotal)e.getSource();
+//			if(source.equals(buttonNew)){
+//				newItem();
+//			}
+//			if(source.equals(confirm)){
+//				confirmRevise();
+//			}
+//			if(source.equals(search)){
+//				showSearchResult(input.getText());
+//			}
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			
+		}
+		
+	}
 }

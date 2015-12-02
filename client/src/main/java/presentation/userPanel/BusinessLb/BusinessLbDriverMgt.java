@@ -4,9 +4,9 @@ import java.util.Vector;
 
 import VO.VO;
 import presentation.components.ButtonNew;
-import presentation.main.MgtFourFunctions;
+import presentation.main.FunctionADUS;
 
-public class BusinessLbDriverMgt extends MgtFourFunctions{
+public class BusinessLbDriverMgt extends FunctionADUS{
 
 	public BusinessLbDriverMgt(){
 		buttonNew = new ButtonNew("新增司机");

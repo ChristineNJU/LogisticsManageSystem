@@ -25,17 +25,20 @@ import presentation.components.ButtonSearch;
 import presentation.components.ButtonTotal;
 import presentation.components.FlatComboBox;
 import presentation.components.PanelContent;
-import presentation.components.RendererDelete;
-import presentation.components.ScrollPaneTable;
-import presentation.components.TableADUS;
-import presentation.components.TableModelADUS;
 import presentation.components.TextField;
-import presentation.main.MgtFourFunctions;
+import presentation.main.FunctionADUS;
 import presentation.main.Translater;
+import presentation.table.RendererDelete;
+import presentation.table.ScrollPaneTable;
+import presentation.table.TableADUS;
+import presentation.table.TableModelADUS;
 /*
  *
  */
-public class AdminUserAccount extends MgtFourFunctions{
+
+
+
+public class AdminUserAccount extends FunctionADUS{
 
 	AdminService service = new AdminController();
 	ArrayList<UserVO> users;
@@ -43,6 +46,10 @@ public class AdminUserAccount extends MgtFourFunctions{
 	String[] tableH = {"员工编号","姓名","职务","性别","年龄","城市","所属机构"};
 	boolean[] isCellEditable = {false,true,true,true,true,true,true};
 	
+	protected ArrayList<UserVO> addItems = new ArrayList<UserVO>();
+	protected ArrayList<UserVO> deleteItems ;
+	protected ArrayList<UserVO> updateItems = new ArrayList<UserVO>();
+	protected ArrayList<UserVO> searchItems = new ArrayList<UserVO>();
 	
 	public AdminUserAccount(){
 		buttonNew = new ButtonNew("新增账号");
@@ -88,13 +95,9 @@ public class AdminUserAccount extends MgtFourFunctions{
 		
 		tableV = getVector(users);
 		
-		
-        
 		model = new TableModelADUS(tableV, tableH,isCellEditable);
 		table = new TableADUS(model);
         
-        
-
         TableColumnModel tcm = table.getColumnModel(); 
         String[] position = {"管理员","营业厅业务员","快递员","财务人员","总经理","中转中心业务员","仓库管理员"}; 
 		JComboBox positionC = new FlatComboBox(position);  

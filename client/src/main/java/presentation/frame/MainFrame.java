@@ -60,8 +60,8 @@ public class MainFrame {
 //		frame.add(inquiry.getPanel());
 //		panel.add(inquiry.getPanel());
 
-		changeToCourier();
-//		changeToBusinesslobby();
+//		changeToCourier();
+		changeToBusinesslobby();
 //		changeToFinance();
 //		changeToManager();
 //		changeToMediumCenter();
@@ -103,6 +103,13 @@ public class MainFrame {
 			changeToRepository();
 		if(role == UserRole.admin)
 			changeToAdmin();
+	}
+	
+	/**
+	 * 切换工作区域的panel
+	 * */
+	public void changeContentPanel(JPanel contentPanel){
+		
 	}
 	
 	/**

@@ -21,7 +21,7 @@ public class ButtonConfirm extends ButtonOk {
 		
 		listener = new RollListener(this);
 		this.addMouseListener(listener);
-		System.out.println("button height:"+this.getHeight());
+//		System.out.println("button height:"+this.getHeight());
 	}
 
 }

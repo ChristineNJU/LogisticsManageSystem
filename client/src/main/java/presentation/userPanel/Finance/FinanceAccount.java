@@ -4,9 +4,9 @@ import java.util.Vector;
 
 import VO.VO;
 import presentation.components.ButtonNew;
-import presentation.main.MgtFourFunctions;
+import presentation.main.FunctionADUS;
 
-public class FinanceAccount extends MgtFourFunctions{
+public class FinanceAccount extends FunctionADUS{
 
 	public FinanceAccount(){
 		buttonNew = new ButtonNew("新增账户");

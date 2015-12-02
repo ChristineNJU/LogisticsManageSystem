@@ -4,9 +4,9 @@ import java.util.Vector;
 
 import VO.VO;
 import presentation.components.ButtonNew;
-import presentation.main.MgtFourFunctions;
+import presentation.main.FunctionADUS;
 
-public class BusinessLbCarMgt  extends MgtFourFunctions{
+public class BusinessLbCarMgt  extends FunctionADUS{
 
 	//新建controller
 	//vo的arraylist
