@@ -58,7 +58,7 @@ public class PeriodImpl implements AddPeriodService, GetPeriodService, UpdatePer
 		PeriodVO period=null;
 		try{
 			SearchPeriodService periodSearch=(SearchPeriodService) Naming.lookup(RMIHelper.SEARCH_PERIOD_IMPL);
-			period=periodSearch.searchPeriod();
+			period=new PeriodVO(periodSearch.searchPeriod())	;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

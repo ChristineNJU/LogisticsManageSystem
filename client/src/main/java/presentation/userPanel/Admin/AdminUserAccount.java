@@ -50,6 +50,7 @@ public class AdminUserAccount extends FunctionADUS{
 	protected ArrayList<UserVO> deleteItems ;
 	protected ArrayList<UserVO> updateItems = new ArrayList<UserVO>();
 	protected ArrayList<UserVO> searchItems = new ArrayList<UserVO>();
+
 	
 	public AdminUserAccount(){
 		buttonNew = new ButtonNew("新增账号");
@@ -107,6 +108,7 @@ public class AdminUserAccount extends FunctionADUS{
         JComboBox  genderC = new FlatComboBox(gender);  
         tcm.getColumn(3).setCellEditor(new DefaultCellEditor(genderC)); 
         
+
 		String[] city = {"南京","北京","上海","广州"};
 		JComboBox  cityC = new FlatComboBox(city);  
         tcm.getColumn(5).setCellEditor(new DefaultCellEditor(cityC));
@@ -130,7 +132,8 @@ public class AdminUserAccount extends FunctionADUS{
 		sPanel = new ScrollPaneTable(table);
 		panel.add(sPanel);
 	}
-	
+
+	@Override
 	protected void showSearchResult(String s){
 		ArrayList<String> require = new ArrayList<String>();
 		require.add(s);
@@ -138,6 +141,8 @@ public class AdminUserAccount extends FunctionADUS{
 		model = new TableModelADUS(getVector(searchItems),tableH,isCellEditable);
 		table.setModel(model);
 	}
+	
+	
 	
 	protected void confirmRevise(){
 		removeError();
@@ -210,5 +215,7 @@ public class AdminUserAccount extends FunctionADUS{
 		UserVO user = new UserVO(vector.get(0),vector.get(1),role,vector.get(3),age,type,vector.get(5));
 		return user;
 	}
+
+
 	
 }

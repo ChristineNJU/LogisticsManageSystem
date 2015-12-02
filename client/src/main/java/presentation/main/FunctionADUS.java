@@ -102,6 +102,7 @@ public abstract class FunctionADUS {
 		table.changeSelection(lastIndex, 0, false, false);
 	}
 	
+	
 //	protected abstract Vector<Vector<String>> getVector(ArrayList<VO> voList);
 	
 	protected abstract VO getVO(Vector<String> vector);
