@@ -25,6 +25,7 @@ public abstract class FunctionAdd {
 	
 	protected PanelContent panel;
 	
+	protected JLabel header;
 	protected ButtonNew buttonNew;
 	protected ButtonConfirm confirm;
 	protected ButtonCancel cancel = new ButtonCancel();
@@ -48,15 +49,16 @@ public abstract class FunctionAdd {
 		
 		initHeader();
 		
+		buttonNew.setLocation(buttonNew.getX(),130+header.HEIGHT);
 		buttonNew.addMouseListener(functionListener);
 		panel.add(buttonNew);
 		
 		initTable();
 		
-		confirm.setLocation(120,175+sPanel.getHeight());
+		confirm.setLocation(120,200+sPanel.getHeight());
 		confirm.addMouseListener(functionListener);
 		panel.add(confirm);
-		cancel.setBounds(confirm.getWidth()+130,175+sPanel.getHeight(),110,30);
+		cancel.setBounds(confirm.getWidth()+130,200+sPanel.getHeight(),110,30);
 		cancel.addMouseListener(functionListener);
 		panel.add(cancel);
 	}

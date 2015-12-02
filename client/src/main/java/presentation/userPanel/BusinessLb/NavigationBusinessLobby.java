@@ -27,6 +27,8 @@ public class NavigationBusinessLobby extends Navigation{
 		super(user);
 		initNavButtonArray();
 		addNavButtons();
+		//Test
+		changeTask(6);
 	}
 
 	protected void initNavButtonArray(){
@@ -63,22 +65,28 @@ public class NavigationBusinessLobby extends Navigation{
 	}
 	private void changeToArrival(){
 		businessArrival = new BusinessLbArrival();
+		MainFrame.changeContentPanel(businessArrival.getPanel());
 	}
 	private void changeToEntrucking(){
 		businessLbEntrucking = new BusinessLbEntrucking();
+		MainFrame.changeContentPanel(businessLbEntrucking.getPanel());
 	}
 	private void changeToDelivery(){
 		businessLbDelivery = new BusinessLbDelivery();
+		MainFrame.changeContentPanel(businessLbDelivery.getPanel());
 	}
 	private void changeToDriverMgt(){
 		 businessLbDriverMgt = new BusinessLbDriverMgt();
+		 MainFrame.changeContentPanel(businessLbDriverMgt.getPanel());
 	}
 	private void changeToCarMgt(){
 		businessLbCarMgt = new BusinessLbCarMgt();
+		MainFrame.changeContentPanel(businessLbCarMgt.getPanel());
 	}
 	private void changeToGathering(){
 		businessLbGathering = new BusinessLbGathering();
-		MainFrame.getMainPanel().add(businessLbGathering.getPanel());
-		MainFrame.getMainPanel().repaint();
+		MainFrame.changeContentPanel(businessLbGathering.getPanel());
+//		MainFrame.getMainPanel().add(businessLbGathering.getPanel());
+//		MainFrame.getMainPanel().repaint();
 	}
 }

@@ -5,7 +5,10 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import State.UserRole;
+import VO.UserVO;
 import presentation.AnimationEasing.AnimationEasing;
+import presentation.components.PanelContent;
 import presentation.main.Navigation;
 import presentation.userPanel.Admin.NavigationAdmin;
 import presentation.userPanel.BusinessLb.NavigationBusinessLobby;
@@ -15,8 +18,6 @@ import presentation.userPanel.Manager.NavigationManager;
 import presentation.userPanel.Medium.NavigationMediumCenter;
 import presentation.userPanel.Repository.NavigationRepository;
 import presentation.userPanel.start.Inquiry;
-import State.UserRole;
-import VO.UserVO;
 
 /**
  * client展示模块的窗口容器
@@ -34,12 +35,14 @@ public class MainFrame {
 	// ----- member variables ---------------------------------------
 	private static JFrame frame = new JFrame();
 	private static JPanel panel = new JPanel();
+	private static JPanel contentPanel = new PanelContent("");
 	
 	private Inquiry inquiry;
 	
 	private UserVO user = new UserVO("141250181", "张晨剑", UserRole.businessAgent);
 	private Navigation nav;
 //	private CourierNavigation nav;
+
 	
 	/**
 	 * 创建MainFrame,初始化窗口设置,添加初始Panel
@@ -108,8 +111,10 @@ public class MainFrame {
 	/**
 	 * 切换工作区域的panel
 	 * */
-	public void changeContentPanel(JPanel contentPanel){
-		
+	public static void changeContentPanel(JPanel p){
+		contentPanel = p;
+		panel.add(contentPanel);
+		panel.repaint();
 	}
 	
 	/**

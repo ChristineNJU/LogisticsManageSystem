@@ -22,7 +22,6 @@ public class BusinessLbGathering extends FunctionAdd{
 	BsLbService service = new BusinessLobbyController();
 	ArrayList<GatheringVO> needGathering;
 	
-	Header header = new Header();
 	
 	String[] tableH = {"快递单号","收款日期","收款金额","收款快递员"};
 	boolean[] isCellEditable = {false,false,false,false};
@@ -36,6 +35,7 @@ public class BusinessLbGathering extends FunctionAdd{
 	@Override
 	protected void initHeader() {
 		//获取营业厅的id和收款单的id，加入label中显示
+		header = new Header();
 		panel.add(header);
 		panel.repaint();
 	}
@@ -73,7 +73,7 @@ public class BusinessLbGathering extends FunctionAdd{
 		LabelHeader businessLobbyID = new LabelHeader("营业厅编号");
 		LabelHeader gatheringId = new LabelHeader("收款单编号");
 		public Header(){
-			this.setBounds(100,100,680,60);
+			this.setBounds(120,100,680,60);
 			this.setBackground(null);
 			businessLobbyID.addInfo("");
 			gatheringId.addInfo("");

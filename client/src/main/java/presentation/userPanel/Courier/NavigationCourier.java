@@ -55,21 +55,17 @@ public class NavigationCourier extends Navigation{
 	
 	private void changeToNewLogistics(){
 		courierNewOrder = new CourierNewOrderList();
-		MainFrame.getMainPanel().add(courierNewOrder.getPanel());
-		MainFrame.getMainPanel().repaint();
-		MainFrame.getMainFrame().repaint();
+		MainFrame.changeContentPanel(courierNewOrder.getPanel());
 	}
 	
 	private void changeToReceive(){
 		courierReceive = new CourierReceive();
-//		MainFrame.getMainPanel().add(courierReceive.getPanel());
-		MainFrame.getMainPanel().repaint();
+		MainFrame.changeContentPanel(courierReceive.getPanel());
 	}
 	
 	private void changeToInquiry(){
 		courierLogisticsInfoSearch = new CourierLogisticsInfoSearch();
-//		MainFrame.getMainPanel().add(courierLogisticsInfoSearch.getPanel());
-		MainFrame.getMainPanel().repaint();
+		MainFrame.changeContentPanel(courierLogisticsInfoSearch.getPanel());
 	}
 	
 //	public PanelNavigation getNavPanel(){

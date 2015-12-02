@@ -67,6 +67,11 @@ public class Inquiry{
 		initComponents();
 	}
 	
+	public Inquiry() {
+		componentsInstantiation();
+		initComponents();
+	}
+
 	private void componentsInstantiation(){
 		inquiryPanel = new JPanel();
 		scrollPanePanel = new HistoryPanel();

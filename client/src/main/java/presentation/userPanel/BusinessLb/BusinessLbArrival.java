@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import VO.ArrivalVO;
+import VO.VO;
+import presentation.main.FunctionAdd;
 
 /**
  * 营业厅到达单的列表
@@ -14,7 +16,7 @@ import VO.ArrivalVO;
  * @author 张馨中
  * @version 1.0.0
  * */
-public class BusinessLbArrival {
+public class BusinessLbArrival extends FunctionAdd{
 
 	//新建controller
 	//类型的中英转换
@@ -79,40 +81,22 @@ public class BusinessLbArrival {
 	protected void newItem() {
 		// TODO 新增一行新的表格
 	}
-	public class TableListener implements MouseListener{
 
-		@Override
-		public void mouseClicked(MouseEvent e) {
-//			Point p = table.getMousePosition();
-//			int row = table.rowAtPoint(p);
-//			int column = table.columnAtPoint(p);
-//			System.out.println("position clicked :   row"+row+"   column"+column);
-//			if(column == table.getColumnCount() -2){
-//				solveDelete(row);
-//			}
-//			if(column == table.getColumnCount() -1){
-//				solveRevise(row);
-//			}
-		}
+	@Override
+	protected void initHeader() {
+		// TODO Auto-generated method stub
+		
+	}
 
-		@Override
-		public void mousePressed(MouseEvent e) {
-			
-		}
+	@Override
+	protected void confirmAll() {
+		// TODO Auto-generated method stub
+		
+	}
 
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-			
-		}
+	@Override
+	protected VO getVO(Vector<String> vector) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
