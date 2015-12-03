@@ -4,8 +4,6 @@ import java.util.Vector;
 
 import javax.swing.table.AbstractTableModel;
 
-import presentation.table.TableModelADUS.ModelListener;
-
 public class TableModelAddOnly extends AbstractTableModel{
 
 	private Vector<Vector<String>> tableValues;
