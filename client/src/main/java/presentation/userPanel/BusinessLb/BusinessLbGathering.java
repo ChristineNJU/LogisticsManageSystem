@@ -1,5 +1,7 @@
 package presentation.userPanel.BusinessLb;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -20,7 +22,8 @@ import businesslogic.Service.BusinessLobby.BsLbService;
 import businesslogic.Service.BusinessLobby.GetNeedGatheringService;
 
 public class BusinessLbGathering extends FunctionAdd{
-
+	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
+	
 	BsLbService service = new BusinessLobbyController();
 	ArrayList<GatheringVO> Gathering;
 	
@@ -54,8 +57,27 @@ public class BusinessLbGathering extends FunctionAdd{
 		sPanel.setLocation(sPanel.getX(),header.getHeight()+120);
 		panel.add(sPanel);
 		
-		GetNeedGatheringService needGathering = new GetNeedGatheringImpl();
-		Gathering = needGathering.getNeedGathering();
+//		GetNeedGatheringService needGathering = new GetNeedGatheringImpl();
+//		Gathering = needGathering.getNeedGathering();
+		
+		
+		
+		try {ArrayList<String> barCodeList = new ArrayList<String>();
+			barCodeList.add("0000000001");
+			GatheringVO gathering1 = new GatheringVO(sdf.parse("2015-12-3 10:20:20"),20,"张斯栋是二货",barCodeList);
+			GatheringVO gathering2 = new GatheringVO(sdf.parse("2015-12-3 10:20:20"),20,"张斯栋是傻逼",barCodeList);
+			GatheringVO gathering3 = new GatheringVO(sdf.parse("2015-12-3 10:20:20"),20,"张斯栋是二货",barCodeList);
+			GatheringVO gathering4 = new GatheringVO(sdf.parse("2015-12-3 10:20:20"),20,"张斯栋是二货",barCodeList);
+			GatheringVO gathering5 = new GatheringVO(sdf.parse("2015-12-3 10:20:20"),20,"张斯栋是二货",barCodeList);
+			Gathering.add(gathering1);
+			Gathering.add(gathering2);
+			Gathering.add(gathering3);
+			Gathering.add(gathering4);
+			Gathering.add(gathering5);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 		
 		tableV = getVector(Gathering);
 		
@@ -75,7 +97,16 @@ public class BusinessLbGathering extends FunctionAdd{
 	}
 
 	protected Vector<Vector<String>> getVector(ArrayList<GatheringVO> vo){
-		return null;
+		Vector<Vector<String>> result = new Vector<Vector<String>>();
+		for(GatheringVO temp:vo){
+			Vector<String> vRow = new Vector<String>();
+			vRow.add(sdf.format(temp.getDate()));
+			vRow.add(temp.getName());
+			vRow.add(String.valueOf(temp.getMoney()));
+			
+			result.add(vRow);
+		}
+		return result;
 	}
 	
 	public class Header extends JLabel{
