@@ -1,5 +1,5 @@
 package presentation.userPanel.Finance;
 
-public class FinanceGathering {
+public class FinanceIncome {
 
 }

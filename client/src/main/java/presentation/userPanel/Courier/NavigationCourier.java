@@ -76,7 +76,4 @@ public class NavigationCourier extends Navigation{
 		MainFrame.changeContentPanel(courierLogisticsInfoSearch.getPanel());
 	}
 	
-//	public PanelNavigation getNavPanel(){
-//		return navPanel;
-//	}
 }

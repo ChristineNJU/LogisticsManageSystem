@@ -28,7 +28,7 @@ public class NavigationBusinessLobby extends Navigation{
 		initNavButtonArray();
 		addNavButtons();
 		//Test
-		changeTask(6);
+		changeTask(5);
 	}
 
 	protected void initNavButtonArray(){
@@ -81,6 +81,7 @@ public class NavigationBusinessLobby extends Navigation{
 	}
 	private void changeToCarMgt(){
 		businessLbCarMgt = new BusinessLbCarMgt();
+//		System.out.println("in method nav");
 		MainFrame.changeContentPanel(businessLbCarMgt.getPanel());
 	}
 	private void changeToGathering(){

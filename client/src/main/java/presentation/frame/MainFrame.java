@@ -68,6 +68,9 @@ public class MainFrame {
 //		changeToBusinesslobby();
 //		changeToBusinesslobby();
 //		changeToFinance();
+//		changeToCourier();
+//		changeToBusinesslobby();
+//		changeToFinance();
 //		changeToManager();
 //		changeToMediumCenter();
 //		changeToRepository();
@@ -114,8 +117,9 @@ public class MainFrame {
 	 * 切换工作区域的panel
 	 * */
 	public static void changeContentPanel(JPanel p){
+		panel.remove(contentPanel);
 		contentPanel = p;
-		panel.add(contentPanel);
+		panel.add(p);
 		panel.repaint();
 	}
 	
