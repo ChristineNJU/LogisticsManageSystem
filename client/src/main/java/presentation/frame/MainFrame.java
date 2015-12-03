@@ -69,7 +69,7 @@ public class MainFrame {
 //		changeToManager();
 //		changeToMediumCenter();
 //		changeToRepository();
-//		changeToAdmin();
+//		changeToAdmin()contentPanel;
 	}
 	
 	/**

@@ -5,10 +5,6 @@ import java.util.Vector;
 
 import javax.swing.JLabel;
 
-import VO.GatheringVO;
-import VO.VO;
-import businesslogic.Impl.Businesslobby.BusinessLobbyController;
-import businesslogic.Service.BusinessLobby.BsLbService;
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
 import presentation.components.LabelHeader;
@@ -16,11 +12,17 @@ import presentation.main.FunctionAdd;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
+import VO.GatheringVO;
+import VO.VO;
+import businesslogic.Impl.Businesslobby.BusinessLobbyController;
+import businesslogic.Impl.Businesslobby.GetNeedGatheringImpl;
+import businesslogic.Service.BusinessLobby.BsLbService;
+import businesslogic.Service.BusinessLobby.GetNeedGatheringService;
 
 public class BusinessLbGathering extends FunctionAdd{
 
 	BsLbService service = new BusinessLobbyController();
-	ArrayList<GatheringVO> needGathering;
+	ArrayList<GatheringVO> Gathering;
 	
 	
 	String[] tableH = {"快递单号","收款日期","收款金额","收款快递员"};
@@ -51,6 +53,13 @@ public class BusinessLbGathering extends FunctionAdd{
 		sPanel = new ScrollPaneTable(table);
 		sPanel.setLocation(sPanel.getX(),header.getHeight()+120);
 		panel.add(sPanel);
+		
+		GetNeedGatheringService needGathering = new GetNeedGatheringImpl();
+		Gathering = needGathering.getNeedGathering();
+		
+		tableV = getVector(Gathering);
+		
+		
 	}
 
 	@Override
