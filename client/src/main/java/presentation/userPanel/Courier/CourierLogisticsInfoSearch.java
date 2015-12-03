@@ -1,6 +1,5 @@
 package presentation.userPanel.Courier;
 
-<<<<<<< HEAD
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -31,11 +30,9 @@ import presentation.userPanel.start.Inquiry.HistoryLabel;
 import VO.LogisticsHistoryVO;
 import businesslogic.Impl.Inquiry.InquiryController;
 import businesslogic.Service.Inquiry.InquiryService;
-=======
 import javax.swing.JPanel;
 
 import presentation.userPanel.start.Inquiry;
->>>>>>> b4764cc66da8b6a13c41d033d6b2a313ccc5a7ee
 
 public class CourierLogisticsInfoSearch {
 	
@@ -311,7 +308,6 @@ public class CourierLogisticsInfoSearch {
 			}
 		}
 
-<<<<<<< HEAD
 		@Override
 		public void focusLost(FocusEvent e) {
 			// TODO Auto-generated method stub
@@ -321,14 +317,5 @@ public class CourierLogisticsInfoSearch {
 				}
 			}
 		}
-=======
-	Inquiry inquiry;
-	public CourierLogisticsInfoSearch(){
-		inquiry = new Inquiry();
-	}
-	
-	public JPanel getPanel(){
-		return inquiry.getPanel();
->>>>>>> b4764cc66da8b6a13c41d033d6b2a313ccc5a7ee
 	}
 }

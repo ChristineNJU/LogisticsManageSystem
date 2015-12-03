@@ -14,6 +14,7 @@ import businesslogic.Impl.Courier.CourierController;
 import businesslogic.Service.Courier.CourierService;
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
+import presentation.frame.MainFrame;
 import presentation.main.FunctionAdd;
 import presentation.table.RendererDelete;
 import presentation.table.RendererReviseLogistics;
@@ -84,9 +85,11 @@ public class CourierNewOrderList extends FunctionAdd{
 	
 	protected void newItem(){
 		newOrder = new CourierNewOrder(this);
-		newOrder.getPanel().setLocation(0, 0);
-		panel.add(newOrder.getPanel());
-		panel.repaint();
+		MainFrame.getMainPanel().remove(panel);
+		MainFrame.getMainPanel().add(newOrder.getPanel());
+		MainFrame.getMainPanel().repaint();
+//		panel.add(newOrder.getPanel());
+//		panel.repaint();
 	}
 
 	public void cancelNewItem(){

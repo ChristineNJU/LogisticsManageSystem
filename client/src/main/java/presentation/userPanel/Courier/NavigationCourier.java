@@ -15,19 +15,15 @@ public class NavigationCourier extends Navigation{
 	private ButtonNav newLogistics = new ButtonNav("courier","newLogistics");
 	private ButtonNav receive = new ButtonNav("courier","receive");
 	private ButtonNav inquiry = new ButtonNav("courier","inquiry");
-<<<<<<< HEAD
 	
-	private CourierNewOrder courierNewOrder = new CourierNewOrder();
+	private CourierNewOrderList courierNewOrder = new CourierNewOrderList();
 	private CourierLogisticsInfoSearch courierInquiry = new CourierLogisticsInfoSearch();
 //	private ArrayList<ButtonNav> buttonList = new ArrayList<ButtonNav>();
-=======
 
-	private CourierNewOrderList courierNewOrder;
 	private CourierReceive courierReceive;
 	private CourierLogisticsInfoSearch courierLogisticsInfoSearch;
 
 
->>>>>>> b4764cc66da8b6a13c41d033d6b2a313ccc5a7ee
 	
 	public NavigationCourier(UserVO user) {
 		super(user);
@@ -61,15 +57,9 @@ public class NavigationCourier extends Navigation{
 	}
 	
 	private void changeToNewLogistics(){
-<<<<<<< HEAD
-		courierNewOrder = new CourierNewOrder();
-		MainFrame.getMainPanel().remove(courierInquiry.getPanel());
-		MainFrame.getMainPanel().add(courierNewOrder.getPanel());
 		MainFrame.getMainPanel().repaint();
-=======
 		courierNewOrder = new CourierNewOrderList();
 		MainFrame.changeContentPanel(courierNewOrder.getPanel());
->>>>>>> b4764cc66da8b6a13c41d033d6b2a313ccc5a7ee
 	}
 	
 	private void changeToReceive(){
@@ -78,15 +68,12 @@ public class NavigationCourier extends Navigation{
 	}
 	
 	private void changeToInquiry(){
-<<<<<<< HEAD
 		courierInquiry = new CourierLogisticsInfoSearch();
 		MainFrame.getMainPanel().remove(courierNewOrder.getPanel());
 		MainFrame.getMainPanel().add(courierInquiry.getPanel());
 		MainFrame.getMainPanel().repaint();
-=======
 		courierLogisticsInfoSearch = new CourierLogisticsInfoSearch();
 		MainFrame.changeContentPanel(courierLogisticsInfoSearch.getPanel());
->>>>>>> b4764cc66da8b6a13c41d033d6b2a313ccc5a7ee
 	}
 	
 //	public PanelNavigation getNavPanel(){

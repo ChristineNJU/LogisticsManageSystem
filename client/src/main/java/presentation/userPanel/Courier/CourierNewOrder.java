@@ -3,14 +3,11 @@ package presentation.userPanel.Courier;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-<<<<<<< HEAD
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
-=======
 import java.awt.event.MouseAdapter;
->>>>>>> b4764cc66da8b6a13c41d033d6b2a313ccc5a7ee
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -18,13 +15,10 @@ import java.util.Date;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-<<<<<<< HEAD
-=======
 import State.LogisticsType;
 import State.PackingCharge;
 import businesslogic.Impl.Courier.CourierController;
 import businesslogic.Service.Courier.CourierService;
->>>>>>> b4764cc66da8b6a13c41d033d6b2a313ccc5a7ee
 import presentation.components.ButtonCancel;
 import presentation.components.ButtonOk;
 import presentation.components.MyComboBox;
@@ -33,13 +27,10 @@ import presentation.components.TextField;
 import presentation.main.ColorPallet;
 import presentation.main.FontSet;
 import presentation.main.Translater;
-<<<<<<< HEAD
 import State.LogisticsType;
 import State.PackingCharge;
 import businesslogic.Impl.Courier.CourierController;
 import businesslogic.Service.Courier.CourierService;
-=======
->>>>>>> b4764cc66da8b6a13c41d033d6b2a313ccc5a7ee
 
 public class CourierNewOrder {
 	
@@ -60,13 +51,10 @@ public class CourierNewOrder {
 	JLabel amount_actual = new JLabel("");
 	JLabel time_actual = new JLabel("");
 	
-<<<<<<< HEAD
 	ButtonOk ok = new ButtonOk("提交订单");
 	ButtonCancel cancel = new ButtonCancel();
-=======
 //	ButtonOk confirm = new ButtonOk("确认订单信息");
 //	ButtonCancel cancel = new ButtonCancel();
->>>>>>> b4764cc66da8b6a13c41d033d6b2a313ccc5a7ee
 	
 	CourierNewOrderList source;
 	
@@ -95,19 +83,16 @@ public class CourierNewOrder {
 		time.setBounds(93, 490, 100, 30);
 		time_actual.setBounds(220, 490, 200, 30);
 		
-<<<<<<< HEAD
 		ok.setBounds(87, 533, ok.getWidth(), ok.getHeight());
 		cancel.setBounds(237, 533, cancel.getWidth(), cancel.getHeight());
 		
 		ok.addMouseListener(confirm);
 		cancel.addMouseListener(confirm);
-=======
 //		confirm.setLocation(220, 530);
 //		cancel.setLocation(340,530);
 //		cancel.addMouseListener(new MouseAdapter(){
 //			
 //		});
->>>>>>> b4764cc66da8b6a13c41d033d6b2a313ccc5a7ee
 		
 		panel.add(sender);
 		panel.add(recipient);
@@ -116,14 +101,11 @@ public class CourierNewOrder {
 		panel.add(time);
 		panel.add(amount_actual);
 		panel.add(time_actual);
-<<<<<<< HEAD
 		panel.add(ok);
 		panel.add(cancel);
-=======
 //		panel.add(confirm);
 //		panel.add(cancel);
 		
->>>>>>> b4764cc66da8b6a13c41d033d6b2a313ccc5a7ee
 	}
 	
 //	public JPanel getPanel() {
@@ -357,11 +339,9 @@ public class CourierNewOrder {
 		@Override
 		public void focusLost(FocusEvent e) {
 			// TODO Auto-generated method stub
-<<<<<<< HEAD
 					
 			time_actual.setText(sdf.format(getArrivalDate()));
 			
-=======
 			
 		}
 		
@@ -373,7 +353,6 @@ public class CourierNewOrder {
 
 		public void focusLost(FocusEvent e) {
 			// TODO Auto-generated method stub
->>>>>>> b4764cc66da8b6a13c41d033d6b2a313ccc5a7ee
 			if(e.getSource().equals(l.weight)){
 				if(!isLegal(l.weight.getText())){
 					l.weight.setError();;
