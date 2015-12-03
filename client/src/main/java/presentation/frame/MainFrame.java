@@ -69,7 +69,9 @@ public class MainFrame {
 //		changeToBusinesslobby();
 //		changeToFinance();
 //		changeToCourier();
+
 		changeToBusinesslobby();
+
 //		changeToFinance();
 //		changeToManager();
 //		changeToMediumCenter();
