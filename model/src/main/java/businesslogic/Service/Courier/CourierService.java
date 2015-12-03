@@ -52,4 +52,13 @@ public interface CourierService {
 	 * @return 更新状态
 	 * */
 	public UpdateState receiveConfirm(VO logistics_info);
+	
+	/**
+	 * 获取时长
+	 * 
+	 * @param starting 起始地
+	 * @param destination 到达地
+	 * @return 时长
+	 * */
+	public double getDayLength(String starting, String destination);
 }

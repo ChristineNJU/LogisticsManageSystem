@@ -67,13 +67,13 @@ public class MainFrame {
 //		frame.add(inquiry.getPanel());
 //		panel.add(inquiry.getPanel());
 
-		changeToCourier();
+//		changeToCourier();
 
 //		changeToBusinesslobby();
 //		changeToFinance();
 //		changeToManager();
 //		changeToMediumCenter();
-//		changeToRepository();
+		changeToRepository();
 //		changeToAdmin();
 	}
 	

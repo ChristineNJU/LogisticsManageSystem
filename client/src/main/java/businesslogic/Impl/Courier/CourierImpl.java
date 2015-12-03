@@ -1,6 +1,9 @@
 package businesslogic.Impl.Courier;
 
+import java.net.MalformedURLException;
 import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import PO.ConstPO;
@@ -14,6 +17,7 @@ import State.UpdateState;
 import VO.LogisticsInputVO;
 import VO.VO;
 import businesslogic.Service.Courier.AddLogisticsService;
+import businesslogic.Service.Courier.CourierService;
 import businesslogic.Service.Courier.GetAmountService;
 import businesslogic.Service.Courier.GetCityService;
 import businesslogic.Service.Courier.ReceiveConfirmService;
@@ -24,7 +28,7 @@ import data.Service.Search.SearchDistanceService;
 import data.Service.Search.SearchLogisticsService;
 import data.Service.Update.UpdateService;
 
-public class CourierImpl implements AddLogisticsService,GetAmountService,GetCityService,ReceiveConfirmService{
+public class CourierImpl implements CourierService{
 
 	@Override
 	public UpdateState receiveConfirm(VO logistics_info) {
@@ -167,4 +171,35 @@ public class CourierImpl implements AddLogisticsService,GetAmountService,GetCity
 		return state;
 	}
 
+	@Override
+	public double getDayLength(String starting, String destination) {
+		// TODO Auto-generated method stub
+		SearchDistanceService distanceSearch;
+		double dayLength = 0;
+		try {
+			distanceSearch = (SearchDistanceService) Naming.lookup(RMIHelper.SEARCH_DISTANCE_IMPL);
+			ArrayList<String> requirementDis=new ArrayList<String>();
+			if(starting.equals(destination)){
+				return dayLength;
+			}
+			else {
+				requirementDis.add("city_1='"+starting+"' AND "+"city_2='"+destination+"'");
+//			requirementDis.add("city_2='"+starting+"' AND "+"city_1='"+destination+"'");
+				ArrayList<DistancePO> distanceResult=distanceSearch.searchDistance(requirementDis);
+				if(distanceResult.isEmpty()){
+					requirementDis.clear();
+					System.out.println("empty");
+					requirementDis.add("city_2='"+starting+"' AND "+"city_1='"+destination+"'");
+//				distanceSearchceResult.clear();
+					distanceResult=distanceSearch.searchDistance(requirementDis);
+				}
+				dayLength=distanceResult.get(0).getTime();
+			}
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return dayLength;
+	}
 }

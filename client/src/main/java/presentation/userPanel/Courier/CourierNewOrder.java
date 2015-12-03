@@ -3,11 +3,19 @@ package presentation.userPanel.Courier;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import presentation.components.ButtonCancel;
+import presentation.components.ButtonOk;
 import presentation.components.MyComboBox;
 import presentation.components.PanelContent;
 import presentation.components.TextField;
@@ -16,15 +24,17 @@ import presentation.main.FontSet;
 import presentation.main.Translater;
 import State.LogisticsType;
 import State.PackingCharge;
-import State.StateSwitch;
-import State.TransferType;
 import businesslogic.Impl.Courier.CourierController;
 import businesslogic.Service.Courier.CourierService;
 
 public class CourierNewOrder {
 	
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
+	
 	CourierService service = new CourierController();
-	Listener listener = new Listener();
+	AmountFocusListener listener = new AmountFocusListener();
+	SaveFocusListener saveFocus = new SaveFocusListener();
+	ConfirmListener confirm = new ConfirmListener();
 	
 	private PanelContent panel = new PanelContent("快递信息输入");
 	private SRInfoPanel sender = new SRInfoPanel("  寄件人");
@@ -36,6 +46,8 @@ public class CourierNewOrder {
 	JLabel amount_actual = new JLabel("");
 	JLabel time_actual = new JLabel("");
 	
+	ButtonOk ok = new ButtonOk("提交订单");
+	ButtonCancel cancel = new ButtonCancel();
 	
 	public CourierNewOrder() {
 		init();
@@ -48,17 +60,24 @@ public class CourierNewOrder {
 		l.setBounds(87, 310, l.getWidth(), l.getHeight());
 		
 		amount.setForeground(ColorPallet.GrayDark);
-		amount_actual.setForeground(ColorPallet.GrayDark);
+		amount_actual.setForeground(Color.red);
 		time.setForeground(ColorPallet.GrayDark);
 		time_actual.setForeground(ColorPallet.GrayDark);
+		time_actual.setForeground(Color.red);
 		amount.setFont(FontSet.fourteen);
 		time.setFont(FontSet.fourteen);
 		amount_actual.setFont(FontSet.fourteen);
 		time_actual.setFont(FontSet.fourteen);
 		amount.setBounds(93, 460, 100, 30);
-		amount_actual.setBounds(220, 460, 200, 30);
+		amount_actual.setBounds(220, 461, 200, 30);
 		time.setBounds(93, 490, 100, 30);
 		time_actual.setBounds(220, 490, 200, 30);
+		
+		ok.setBounds(87, 533, ok.getWidth(), ok.getHeight());
+		cancel.setBounds(237, 533, cancel.getWidth(), cancel.getHeight());
+		
+		ok.addMouseListener(confirm);
+		cancel.addMouseListener(confirm);
 		
 		panel.add(sender);
 		panel.add(recipient);
@@ -67,7 +86,8 @@ public class CourierNewOrder {
 		panel.add(time);
 		panel.add(amount_actual);
 		panel.add(time_actual);
-		
+		panel.add(ok);
+		panel.add(cancel);
 	}
 	
 	public JPanel getPanel() {
@@ -86,7 +106,7 @@ public class CourierNewOrder {
 		MyComboBox city_actual = new MyComboBox();
 		
 		TextField n = new TextField();
-		TextField c = new TextField();
+//		TextField c = new TextField();
 		TextField a = new TextField();
 		TextField o = new TextField();
 		TextField t = new TextField();
@@ -123,10 +143,10 @@ public class CourierNewOrder {
 			city.setForeground(ColorPallet.GrayDark);
 			city.setBounds(-3, 60, 90, 28);
 			city_actual.setBounds(90, 64, 70, 22);
-			c.setBounds(161, 64, 137, 22);
+//			c.setBounds(161, 64, 137, 22);
 			add(city);
 			add(city_actual);
-			add(c);
+//			add(c);
 			
 			address.setFont(FontSet.fourteen);
 			address.setForeground(ColorPallet.GrayDark);
@@ -167,6 +187,9 @@ public class CourierNewOrder {
 		
 		private void initListener() {
 			city_actual.addFocusListener(listener);
+			n.addFocusListener(saveFocus);
+			a.addFocusListener(saveFocus);
+			t.addFocusListener(saveFocus);
 		}
 	}
 
@@ -267,7 +290,7 @@ public class CourierNewOrder {
 			
 			type.addItem("标准快递");
 			type.addItem("经济快递");
-			type.addItem("特快专递");
+			type.addItem("次晨特快");
 			
 			pack.addItem("木箱");
 			pack.addItem("快递袋");
@@ -276,7 +299,7 @@ public class CourierNewOrder {
 	
 		private void initListener() {
 			original_number.addFocusListener(listener);
-			internal_name.addFocusListener(listener);
+			internal_name.addFocusListener(saveFocus);
 			size.addFocusListener(listener);
 			weight.addFocusListener(listener);
 			type.addFocusListener(listener);
@@ -284,7 +307,7 @@ public class CourierNewOrder {
 		}
 	}
 
-	class Listener implements FocusListener {
+	class AmountFocusListener implements FocusListener {
 
 		@Override
 		public void focusGained(FocusEvent e) {
@@ -295,6 +318,9 @@ public class CourierNewOrder {
 		@Override
 		public void focusLost(FocusEvent e) {
 			// TODO Auto-generated method stub
+					
+			time_actual.setText(sdf.format(getArrivalDate()));
+			
 			if(e.getSource().equals(l.weight)){
 				if(!isLegal(l.weight.getText())){
 					l.weight.setError();;
@@ -307,11 +333,93 @@ public class CourierNewOrder {
 			}
 			
 			if(isLegal(l.weight.getText())&&isLegal(l.size.getText())){
-				amount_actual.setText(""+getAmount());
+				amount_actual.setText("¥"+getAmount());
 			}
 		}
 	}
 
+	class SaveFocusListener implements FocusListener {
+
+		@Override
+		public void focusGained(FocusEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void focusLost(FocusEvent e) {
+			// TODO Auto-generated method stub
+			if(e.getSource().equals(sender.a)){
+				if(sender.a.getText().equals("")){
+					sender.a.setError();
+				}
+			}else if(e.getSource().equals(sender.n)){
+				if(sender.n.getText().equals("")){
+					sender.n.setError();
+				}
+			}else if(e.getSource().equals(sender.m)){
+				if(sender.m.getText().equals("")){
+					sender.m.setError();
+				}
+			}else if(e.getSource().equals(recipient.n)){
+				if(recipient.n.getText().equals("")){
+					recipient.n.setError();
+				}
+			}else if(e.getSource().equals(recipient.m)){
+				if(recipient.m.getText().equals("")){
+					recipient.m.setError();
+				}
+			}else if(e.getSource().equals(recipient.a)){
+				if(recipient.a.getText().equals("")){
+					recipient.a.setError();
+				}
+			}else if(e.getSource().equals(l.internal_name)){
+				if(l.internal_name.getText().equals("")){
+					l.internal_name.setError();
+				}
+			}
+		}
+		
+	}
+	
+	class ConfirmListener implements MouseListener {
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			// TODO Auto-generated method stub
+			if(isComplete()){
+				System.out.println("confirm");
+			}else{
+				System.out.println("fail");
+			}
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	}
+	
 	private boolean isLegal(String s) {
 		if(s.equals("")){
 			return false;
@@ -319,7 +427,7 @@ public class CourierNewOrder {
 		
 		boolean isLegal = true;
 		for(int i=0;i<s.length();i++){
-			if(s.charAt(i)<='9'&&s.charAt(i)>='0'){
+			if((s.charAt(i)<='9'&&s.charAt(i)>='0')||s.charAt(i)=='.'){
 				isLegal = true;
 			}else{
 				isLegal = false;
@@ -338,13 +446,55 @@ public class CourierNewOrder {
 		double weight = Double.parseDouble(l.weight.getText());
 		double size = Double.parseDouble(l.size.getText());
 		
-		System.out.println(weight+" "+size+" "+type+" "+pack+" "+(String)sender.city_actual.getSelectedItem()
-				+(String)recipient.city_actual.getSelectedItem());
+//		System.out.println(weight+" "+size+" "+type+" "+pack+" "+(String)sender.city_actual.getSelectedItem()
+//				+(String)recipient.city_actual.getSelectedItem());
 		
 		result = service.getAmount((String)sender.city_actual.getSelectedItem(), 
 				(String)recipient.city_actual.getSelectedItem(),
 				type, pack, weight, size);
 		
-		return result;
+		BigDecimal b = new BigDecimal(result);
+		
+		return b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+	}
+
+	private Date getArrivalDate() {
+		double length = 0;
+		service.getDayLength((String)sender.city_actual.getSelectedItem(), (String)recipient.city_actual.getSelectedItem());
+		Calendar rightNow = Calendar.getInstance();
+		rightNow.add(Calendar.HOUR, (int) length);
+		Date now = rightNow.getTime();
+		return now;
+	}
+
+	private boolean isComplete() {
+		if(sender.n.getText().equals("")||recipient.n.getText().equals("")||sender.a.getText().equals("")
+				||recipient.a.getText().equals("")||sender.m.getText().equals("")
+				||recipient.m.getText().equals("")||l.internal_name.getText().equals("")){
+			if(sender.a.getText().equals("")){
+				sender.a.setError();
+			}
+			if(sender.n.getText().equals("")){
+				sender.n.setError();
+			}
+			if(sender.m.getText().equals("")){
+				sender.m.setError();
+			}
+			if(recipient.n.getText().equals("")){
+				recipient.n.setError();
+			}
+			if(recipient.m.getText().equals("")){
+				recipient.m.setError();
+			}
+			if(recipient.a.getText().equals("")){
+				recipient.a.setError();
+			}
+			if(l.internal_name.getText().equals("")){
+				l.internal_name.setError();
+			}
+			return false;
+		}else{
+			return true;
+		}
 	}
 }
