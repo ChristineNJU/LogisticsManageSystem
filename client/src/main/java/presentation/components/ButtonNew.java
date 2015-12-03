@@ -19,8 +19,9 @@ private RollListener listener;
 		setHorizontalAlignment(CENTER);
 		setBorder(BorderFactory.createLineBorder(ColorPallet.Purple));
 
-		setFont(FontSet.twenty);
-		setSize(s.length()*25+30,40);
+		setFont(FontSet.eighteen);
+		setSize(s.length()*25+20,30);
+		setLocation(873-this.getWidth(),110);
 		
 		listener = new RollListener(this);
 		this.addMouseListener(listener);

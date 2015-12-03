@@ -1,4 +1,4 @@
-package presentation.components;
+package presentation.table;
 
 import java.awt.Image;
 
@@ -8,11 +8,13 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import presentation.components.FlatScrollBarUI;
+
 public class ScrollPaneTable extends JScrollPane{
 
 	Image image = new ImageIcon("src/graphics/tableBackgroung.png").getImage();
 	JTable content;
-	JButton addRow;
+//	JButton addRow;
 	public ScrollPaneTable(JTable table){
 		super(table);
 		content = table;
@@ -23,25 +25,17 @@ public class ScrollPaneTable extends JScrollPane{
 		if(row > 18){
 			setBounds(120,150,770,400);
 		}else{
-			setBounds(120,150,770,row*30);
+			setBounds(120,150,770,(row+1)*30);
 		}
-		
+//		System.out.println("------------------"+this.getHeight());
 		setBorder(BorderFactory.createEmptyBorder());
 		setViewportBorder(null);
 		getVerticalScrollBar().setUI(new FlatScrollBarUI());
 		getHorizontalScrollBar().setUI(new FlatScrollBarUI());
 		getVerticalScrollBar().setUI(new FlatScrollBarUI());
 		getHorizontalScrollBar().setUI(new FlatScrollBarUI());
-		addRow = new JButton("增加新行");
-		addRow.setBounds(0,row*30+5,100,40);
-		this.add(addRow);
 	}
 	
-//	public void paintComponent(Graphics g)  
-//	{  
-//	    super.paintComponent(g);    
-//	    g.drawImage(image,0,0,this);  
-//	} 
 	
 	public void setSize(){
 		int num = content.getRowCount();

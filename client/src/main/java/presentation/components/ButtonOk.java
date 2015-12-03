@@ -12,6 +12,9 @@ public class ButtonOk extends ButtonTotal {
 
 	private RollListener listener;
 	
+	public ButtonOk(){
+		
+	}
 	public ButtonOk(String s){
 		super();
 		setText(s);

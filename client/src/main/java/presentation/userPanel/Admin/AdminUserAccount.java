@@ -8,7 +8,6 @@ import java.util.Vector;
 
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
@@ -20,99 +19,46 @@ import businesslogic.Impl.Admin.AdminController;
 import businesslogic.Service.Admin.AdminService;
 
 import presentation.components.ButtonCancel;
+import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
-import presentation.components.ButtonOk;
 import presentation.components.ButtonSearch;
 import presentation.components.ButtonTotal;
 import presentation.components.FlatComboBox;
 import presentation.components.PanelContent;
-import presentation.components.RendererDelete;
-import presentation.components.ScrollPaneTable;
-import presentation.components.Table;
-import presentation.components.TableModel;
 import presentation.components.TextField;
-import presentation.frame.MgtFourFunctions;
-import presentation.main.ColorPallet;
-import presentation.main.FontSet;
+import presentation.main.FunctionADUS;
 import presentation.main.Translater;
+import presentation.table.RendererDelete;
+import presentation.table.ScrollPaneTable;
+import presentation.table.TableADUS;
+import presentation.table.TableModelADUS;
 /*
- * initTable有问题
+ *
  */
-public class AdminUserAccount extends MgtFourFunctions{
+
+
+
+public class AdminUserAccount extends FunctionADUS{
 
 	AdminService service = new AdminController();
-	Translater trans = new Translater();
 	ArrayList<UserVO> users;
-	
-	private PanelContent panel = new PanelContent("账号管理");
-
-	private TextField input = new TextField();
-	private ButtonSearch search = new ButtonSearch();
-	private ButtonNew buttonNew = new ButtonNew("新增账号");
-	private ButtonOk confirmUp = new ButtonOk("提交修改");
-	
-	private TableListener tableListener = new TableListener();
-	private FuncionListener functionListener = new FuncionListener();
-	
-	
 	
 	String[] tableH = {"员工编号","姓名","职务","性别","年龄","城市","所属机构"};
 	boolean[] isCellEditable = {false,true,true,true,true,true,true};
-	Vector<Vector<String>> tableV = new Vector<Vector<String>>();
-	private TableModel model;
-	private Table table;
-	private ScrollPaneTable sPanel;
 	
-	
-	private ButtonOk confirmDown = new ButtonOk("提交修改");
-	private ButtonCancel cancel = new ButtonCancel();
-	String[] position = {"管理员","营业厅业务员","快递员","财务人员","总经理","中转中心业务员","仓库管理员"}; 
-	String[] gender = {"男","女"}; 
-	String[] city = {"南京","北京","上海","广州"};
-	String[] age = new String[42];
-	String[] institution = {"营业厅","中转中心","仓库","总部"};
-	JComboBox positionC;
-	JComboBox genderC;
-	JComboBox ageC;
-	JComboBox cityC;
-	JComboBox institutionC;
-	
-	private int addUsersNum = 0;
-	private ArrayList<UserVO> addUsers = new ArrayList<UserVO>();
-	private ArrayList<UserVO> deleteUsers;
-	private ArrayList<UserVO> updateUsers = new ArrayList<UserVO>();
-	private ArrayList<UserVO> searchUsers = new ArrayList<UserVO>();
+	protected ArrayList<UserVO> addItems = new ArrayList<UserVO>();
+	protected ArrayList<UserVO> deleteItems ;
+	protected ArrayList<UserVO> updateItems = new ArrayList<UserVO>();
+	protected ArrayList<UserVO> searchItems = new ArrayList<UserVO>();
+
 	
 	public AdminUserAccount(){
-		initUI();
-	}
-	
-	protected void initUI(){
-
-		panel.setLayout(null);
-		input.setBounds(120,110,160,30);
-		panel.add(input);
-		search.setBounds(280,110,60,30);
-		search.addMouseListener(functionListener);
-		panel.add(search);
-		
-		initTable();
-		
-		buttonNew.setFont(FontSet.eighteen);
-		buttonNew.setBounds(762,110,110,30);
-		buttonNew.addMouseListener(functionListener);
-		panel.add(buttonNew);
-		confirmUp.setFont(FontSet.eighteen);
-		confirmUp.setBounds(120,175+sPanel.getHeight(),110,30);
-		confirmUp.addMouseListener(functionListener);
-		panel.add(confirmUp);
-		
+		buttonNew = new ButtonNew("新增账号");
+		initUI("账号管理");
 	}
 	
 	protected void initTable(){
-		/*
-		 * 有问题这里这里这里这里
-		 */
+		
 
 		users = new ArrayList<UserVO>();
 		UserVO u1 = new UserVO("1", "jack", UserRole.manager, "男", 34, InstitutionType.BusinessLobby,"南京");
@@ -136,32 +82,45 @@ public class AdminUserAccount extends MgtFourFunctions{
 		users.add(u8);
 		users.add(u9);
 		users.add(u10);
+		users.add(u10);
+		users.add(u10);
+		users.add(u10);
+		users.add(u10);
+		users.add(u10);
+		users.add(u10);
+		users.add(u10);
+		users.add(u10);
+		users.add(u10);
+		users.add(u10);		
+		users.add(u10);
 		
 		tableV = getVector(users);
+		
+		model = new TableModelADUS(tableV, tableH,isCellEditable);
+		table = new TableADUS(model);
         
-        
-		model = new TableModel(tableV, tableH,isCellEditable);
-		table = new Table(model);
-        
-        
-
         TableColumnModel tcm = table.getColumnModel(); 
-        
-        positionC = new FlatComboBox(position);  
+        String[] position = {"管理员","营业厅业务员","快递员","财务人员","总经理","中转中心业务员","仓库管理员"}; 
+		JComboBox positionC = new FlatComboBox(position);  
         tcm.getColumn(2).setCellEditor(new DefaultCellEditor(positionC)); 
         
-        genderC = new FlatComboBox(gender);  
+        String[] gender = {"男","女"}; 
+        JComboBox  genderC = new FlatComboBox(gender);  
         tcm.getColumn(3).setCellEditor(new DefaultCellEditor(genderC)); 
         
-        for(int i = 0;i < age.length;i++)
-        	age[i] = i+18+"";
-        ageC = new FlatComboBox(age);  
-        tcm.getColumn(4).setCellEditor(new DefaultCellEditor(ageC));
 
-        cityC = new FlatComboBox(city);  
+		String[] city = {"南京","北京","上海","广州"};
+		JComboBox  cityC = new FlatComboBox(city);  
         tcm.getColumn(5).setCellEditor(new DefaultCellEditor(cityC));
         
-        institutionC = new FlatComboBox(institution);  
+		String[] age = new String[42];
+		 for(int i = 0;i < age.length;i++)
+	        	age[i] = i+18+"";
+        JComboBox ageC = new FlatComboBox(age);  
+        tcm.getColumn(4).setCellEditor(new DefaultCellEditor(ageC));
+	        
+		String[] institution = {"营业厅","中转中心","仓库","总部"};
+		JComboBox institutionC = new FlatComboBox(institution);  
         tcm.getColumn(6).setCellEditor(new DefaultCellEditor(institutionC));
         
         tcm.addColumn(new TableColumn());
@@ -170,55 +129,60 @@ public class AdminUserAccount extends MgtFourFunctions{
         
         
 		table.addMouseListener(tableListener);
-		
 		sPanel = new ScrollPaneTable(table);
-
-
 		panel.add(sPanel);
 	}
-	
-	protected void showSearchResult(){
+
+	@Override
+	protected void showSearchResult(String s){
 		ArrayList<String> require = new ArrayList<String>();
-		require.add(input.getText());
-		searchUsers = service.searchUser(require);
-		model = new TableModel(getVector(searchUsers),tableH,isCellEditable);
+		require.add(s);
+		searchItems = service.searchUser(require);
+		model = new TableModelADUS(getVector(searchItems),tableH,isCellEditable);
 		table.setModel(model);
 	}
 	
+	
+	
 	protected void confirmRevise(){
-		deleteUsers = new ArrayList<UserVO>();
+		removeError();
+		
+		deleteItems = new ArrayList<UserVO>();
+		System.out.println(tableV.size());
 		for(int i = 0;i < tableV.size();i++){
 			if(model.isDelete(i)){
-				deleteUsers.add(getVO(tableV.get(i)));
+				deleteItems.add(getVO(tableV.get(i)));
 			}
 		}
-		System.out.println("----------------------------deleteusers:");
-		for(int i = 0; i < deleteUsers.size();i++){
-			System.out.println(deleteUsers.get(i).getId());
+		System.out.println("----------------------------deleted users:");
+		for(int i = 0; i < deleteItems.size();i++){
+			System.out.println(deleteItems.get(i).getId());
 		}
-		updateUsers = new ArrayList<UserVO>();
+		updateItems = new ArrayList<UserVO>();
 		for(int i = 0;i < tableV.size();i++){
 			if(model.isUpdate(i)){
-				updateUsers.add(getVO(tableV.get(i)));
+				updateItems.add(getVO(tableV.get(i)));
 			}
 		}
-		System.out.println("----------------------------deleteusers:");
-		for(int i = 0; i < updateUsers.size();i++){
-			System.out.println(updateUsers.get(i).getId());
+		System.out.println("----------------------------updated users:");
+		for(int i = 0; i < updateItems.size();i++){
+			System.out.println(updateItems.get(i).getId());
 		}
 		//TODO 全部提交之后更新界面
 //		for(UserVO temp:addUsers){
 //			AddState state = service.addUser(temp);
 //			
 //			if(state != AddState.SUCCESS){
-//				showError();
+//				//TODO 
+//				showError()
 //			}
 //			
 //		}
 //		for(UserVO temp:deleteUsers){
 //			DeleteState state = service.deleteUser(temp);
 //			if(state != DeleteState.SUCCESS){
-//				showError();
+//				//TODO
+//				showError()
 //			}
 //		}
 //		for(UserVO temp:updateUsers){
@@ -226,27 +190,6 @@ public class AdminUserAccount extends MgtFourFunctions{
 //		}
 	}
 	
-	protected void showError(){
-		
-	}
- 
-	protected void solveDelete(int rowUnderMouse){
-		//处理界面显示问题并且更新tablemodel，
-		//使得最后一起更新的时候，deleteUsers可以直接从model获知某行是否需要删除
-		model.delete(rowUnderMouse);
-		table.repaint();
-	}
-	
-	protected void newItem(){
-		model.addEmptyRow();
-//		table.scrollRectToVisible(table.getCellRect(table.getRowCount(), 0, true));
-		 int lastIndex = table.getRowCount()-1;
-         table.changeSelection(lastIndex, 0,false,false);
-	}
-	
-//	public PanelContent getPanel(){
-//		return this.panel;
-//	}
 
 	protected Vector<Vector<String>> getVector(ArrayList<UserVO> voList){
 		Vector<Vector<String>> result = new Vector<Vector<String>>();
@@ -272,91 +215,7 @@ public class AdminUserAccount extends MgtFourFunctions{
 		UserVO user = new UserVO(vector.get(0),vector.get(1),role,vector.get(3),age,type,vector.get(5));
 		return user;
 	}
+
+
 	
-	public PanelContent getPanel(){
-		return this.panel;
-	}
-	
-	public class FuncionListener implements MouseListener{
-
-
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			ButtonTotal source = (ButtonTotal)e.getSource();
-			if(source.equals(buttonNew)){
-				newItem();
-			}
-			if(source.equals(confirmUp)){
-				confirmRevise();
-			}
-			if(source.equals(search)){
-				showSearchResult();
-			}
-		}
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-			
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-			
-		}
-		
-	}
-	
-	public class TableListener implements MouseListener{
-
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			Point p = table.getMousePosition();
-			int row = table.rowAtPoint(p);
-			int column = table.columnAtPoint(p);
-			System.out.println("position clicked :   row"+row+"   column"+column);
-			if(column == table.getColumnCount() -1){
-				solveDelete(row);
-			}
-		}
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-			
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-			
-		}
-	}
-	
-
-	public class Label extends JLabel{
-		public Label(String s){
-			super(s);
-			this.setFont(FontSet.fourteen);
-			this.setForeground(ColorPallet.GrayMedium);
-			this.setSize(60,30);
-		}
-	}
 }
