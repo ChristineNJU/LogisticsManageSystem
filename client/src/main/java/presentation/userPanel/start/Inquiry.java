@@ -316,7 +316,7 @@ public class Inquiry{
 			}
 			if(e.getSource().equals(close)){
 //				System.exit(0);
-				mainFrame.frameClose();
+				MainFrame.frameClose();
 			}
 			if(e.getSource().equals(confirm)){
 				String bar_code = input.getText();

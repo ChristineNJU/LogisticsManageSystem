@@ -64,12 +64,19 @@ public class MainFrame {
 //		panel.add(inquiry.getPanel());
 
 //		changeToCourier();
+
 		changeToBusinesslobby();
+
+
+//		changeToBusinesslobby();
+//		changeToBusinesslobby();
 //		changeToFinance();
-//		changeToManager();
+//		changeToCourier()
+//		changeToFinance();
+//	changeToManager();
 //		changeToMediumCenter();
 //		changeToRepository();
-//		changeToAdmin();
+//		changeToAdmin()contentPanel;
 	}
 	
 	/**

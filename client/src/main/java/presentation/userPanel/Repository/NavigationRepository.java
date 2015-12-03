@@ -1,6 +1,7 @@
 package presentation.userPanel.Repository;
 
 import presentation.components.ButtonNav;
+import presentation.frame.MainFrame;
 import presentation.main.Navigation;
 import VO.UserVO;
 
@@ -13,6 +14,7 @@ public class NavigationRepository extends Navigation{
 	private ButtonNav stockTaking = new ButtonNav("repository","stockTaking");
 	private ButtonNav see = new ButtonNav("repository","see");
 	
+	private RepositoryStorage rs = new RepositoryStorage();
 	
 	public NavigationRepository(UserVO user) {
 		super(user);
@@ -49,7 +51,10 @@ public class NavigationRepository extends Navigation{
 		
 	}
 	private void changeToStorage(){
-		
+		rs = new RepositoryStorage();
+//		MainFrame.getMainPanel().remove(comp);
+		MainFrame.getMainPanel().add(rs.getPanel());
+		MainFrame.getMainPanel().repaint();
 	}
 	private void changeToRemoval(){
 		
