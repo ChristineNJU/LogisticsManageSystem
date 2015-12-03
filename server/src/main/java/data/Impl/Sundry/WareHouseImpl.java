@@ -41,13 +41,13 @@ public class WareHouseImpl extends UnicastRemoteObject implements WareHouseServi
 			
 			String a = StateSwitch.switchToStr(area);
 			
-			ResultSet rs = s.executeQuery("SELECT count(*) FROM "+DB_URL+" WHERE area_code = "+a);
+			ResultSet rs = s.executeQuery("SELECT count(*) FROM "+DB_URL+" WHERE area_code = '"+a+"'");
 			rs.next();
 			
 			result = rs.getInt(1);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-//			e.printStackTrace();
+			e.printStackTrace();
 			System.out.println("计数失败");
 			return result;
 		}

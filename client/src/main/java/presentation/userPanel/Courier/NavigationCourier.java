@@ -69,9 +69,9 @@ public class NavigationCourier extends Navigation{
 	
 	private void changeToInquiry(){
 		courierInquiry = new CourierLogisticsInfoSearch();
-		MainFrame.getMainPanel().remove(courierNewOrder.getPanel());
-		MainFrame.getMainPanel().add(courierInquiry.getPanel());
-		MainFrame.getMainPanel().repaint();
+//		MainFrame.getMainPanel().remove(courierNewOrder.getPanel());
+//		MainFrame.getMainPanel().add(courierInquiry.getPanel());
+//		MainFrame.getMainPanel().repaint();
 		courierLogisticsInfoSearch = new CourierLogisticsInfoSearch();
 		MainFrame.changeContentPanel(courierLogisticsInfoSearch.getPanel());
 	}

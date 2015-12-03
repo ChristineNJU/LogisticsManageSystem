@@ -27,7 +27,7 @@ import presentation.userPanel.start.Inquiry;
  * */
 public class MainFrame {
 	public static final int FRAME_WIDTH = 1200;
-	public static final int FRAME_HEIGHT = 600;
+	public static final int FRAME_HEIGHT = 700;
 	
 	public static final int FRAME_X = (Toolkit.getDefaultToolkit().getScreenSize().width - FRAME_WIDTH) / 2;
 	public static final int FRAME_Y = (Toolkit.getDefaultToolkit().getScreenSize().height - FRAME_HEIGHT) / 2 - 32;
@@ -63,7 +63,7 @@ public class MainFrame {
 //		frame.add(inquiry.getPanel());
 //		panel.add(inquiry.getPanel());
 
-		changeToCourier();
+//		changeToCourier();
 
 //		changeToBusinesslobby();
 //		changeToBusinesslobby();
@@ -71,7 +71,7 @@ public class MainFrame {
 //		changeToCourier();
 //		changeToBusinesslobby();
 //		changeToFinance();
-//		changeToManager();
+		changeToManager();
 //		changeToMediumCenter();
 //		changeToRepository();
 //		changeToAdmin();

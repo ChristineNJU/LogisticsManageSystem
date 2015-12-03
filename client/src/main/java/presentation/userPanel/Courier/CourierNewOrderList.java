@@ -85,9 +85,10 @@ public class CourierNewOrderList extends FunctionAdd{
 	
 	protected void newItem(){
 		newOrder = new CourierNewOrder(this);
-		MainFrame.getMainPanel().remove(panel);
-		MainFrame.getMainPanel().add(newOrder.getPanel());
-		MainFrame.getMainPanel().repaint();
+//		MainFrame.getMainPanel().remove(panel);
+//		MainFrame.getMainPanel().add(newOrder.getPanel());
+//		MainFrame.getMainPanel().repaint();
+		MainFrame.changeContentPanel(newOrder.getPanel());
 //		panel.add(newOrder.getPanel());
 //		panel.repaint();
 	}
