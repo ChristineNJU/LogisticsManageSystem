@@ -9,6 +9,8 @@ import java.util.Vector;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 
 import VO.UserVO;
 import VO.VO;
@@ -19,6 +21,7 @@ import presentation.components.ButtonSearch;
 import presentation.components.ButtonTotal;
 import presentation.components.PanelContent;
 import presentation.components.TextField;
+import presentation.table.RendererDelete;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableADUS;
 import presentation.table.TableModelADUS;
@@ -77,6 +80,13 @@ public abstract class FunctionADUS {
 	}
 	
 	protected abstract void initTable();
+	
+	protected void addDeleteColumn(){
+		TableColumnModel tcm = table.getColumnModel(); 
+		tcm.addColumn(new TableColumn());
+		tcm.getColumn(tcm.getColumnCount()-1).setCellRenderer(new RendererDelete());
+	    tcm.getColumn(tcm.getColumnCount()-1).setPreferredWidth(40);
+	}
 	
 	protected abstract void showSearchResult(String s);
 	
