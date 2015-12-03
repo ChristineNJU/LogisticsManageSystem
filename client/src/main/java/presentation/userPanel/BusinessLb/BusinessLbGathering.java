@@ -45,9 +45,12 @@ public class BusinessLbGathering extends FunctionAdd{
 		// TODO Auto-generated method stub
 		//首先获得needGathering
 		
+		needGathering = service.getNeedGathering();
+		tableV = getVector(needGathering);
+		
 		model = new TableModelAddOnly(tableV,tableH,isCellEditable);
 		table = new TableAddOnly(model);
-		
+
 		sPanel = new ScrollPaneTable(table);
 		sPanel.setLocation(sPanel.getX(),header.getHeight()+120);
 		panel.add(sPanel);
@@ -69,7 +72,7 @@ public class BusinessLbGathering extends FunctionAdd{
 		return null;
 	}
 	
-	public class Header extends JLabel{
+	private class Header extends JLabel{
 		LabelHeader businessLobbyID = new LabelHeader("营业厅编号");
 		LabelHeader gatheringId = new LabelHeader("收款单编号");
 		public Header(){

@@ -154,15 +154,12 @@ public abstract class FunctionAdd {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			ButtonTotal source = (ButtonTotal)e.getSource();
-//			if(source.equals(buttonNew)){
-//				newItem();
-//			}
-//			if(source.equals(confirm)){
-//				confirmRevise();
-//			}
-//			if(source.equals(search)){
-//				showSearchResult(input.getText());
-//			}
+			if(source.equals(buttonNew)){
+				newItem();
+			}
+			if(source.equals(confirm)){
+				confirmAll();
+			}
 		}
 
 		@Override
