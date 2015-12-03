@@ -1,34 +1,16 @@
 package presentation.userPanel.BusinessLb;
 
-import java.awt.Point;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import javax.swing.DefaultCellEditor;
-import javax.swing.JLabel;
-import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
-import javax.swing.table.TableModel;
-
-import VO.CarInfoVO;
-import businesslogic.Impl.Businesslobby.CarMgt;
-import presentation.components.ButtonCancel;
 import presentation.components.ButtonNew;
-import presentation.components.ButtonOk;
-import presentation.components.ButtonSearch;
-import presentation.components.ButtonTotal;
 import presentation.components.PanelContent;
-import presentation.components.TextField;
-import presentation.main.ColorPallet;
-import presentation.main.FontSet;
 import presentation.main.FunctionADUS;
-import presentation.main.Translater;
-import presentation.table.RendererDelete;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableADUS;
 import presentation.table.TableModelADUS;
+import VO.CarInfoVO;
+import businesslogic.Impl.Businesslobby.CarMgt;
 
 public class BusinessLbCarMgt  extends FunctionADUS{
 	CarMgt service=new CarMgt();
@@ -42,13 +24,9 @@ public class BusinessLbCarMgt  extends FunctionADUS{
 	private ArrayList<CarInfoVO> searchCar=new ArrayList<CarInfoVO>();
 	private ArrayList<CarInfoVO> updateCar=new ArrayList<CarInfoVO>();
 	
-	
-	private TableListener tableListener = new TableListener();
-	private FuncionListener functionListener = new FuncionListener();
-	
 	public BusinessLbCarMgt(){
 		buttonNew = new ButtonNew("新增车辆");
-		initUI("账号管理");
+		initUI("车辆管理");
 	}
 	
 	
@@ -80,22 +58,9 @@ public class BusinessLbCarMgt  extends FunctionADUS{
 	@Override
 	protected void showSearchResult(String s) {
 		
-
-		cars=new ArrayList<CarInfoVO>();
-		
-		CarInfoVO car1=new CarInfoVO("025001001", "苏B 025E2", 2);
-		CarInfoVO car2=new CarInfoVO("025001001", "苏B 025F2", 1);
-		CarInfoVO car3=new CarInfoVO("025001001", "苏B 025C4", 3);
-		
-		cars.add(car1);
-		cars.add(car2);
-		cars.add(car3);
-		
-		tableV = getVector(cars);
-        
-        model = new TableModelADUS(tableV, tableH,isCellEditable);
+		searchCar = service.searchCar(s);
+		model = new TableModelADUS(getVector(searchCar),tableH,isCellEditable);
 		table.setModel(model);
-		addDeleteColumn();
 	}
 
 	

@@ -4,8 +4,6 @@ import java.util.Vector;
 
 import javax.swing.table.AbstractTableModel;
 
-import presentation.table.TableModelADUS.ModelListener;
-
 public class TableModelAddOnly extends AbstractTableModel{
 
 	private Vector<Vector<String>> tableValues;
@@ -42,12 +40,12 @@ public class TableModelAddOnly extends AbstractTableModel{
 	
 	@Override
 	public int getRowCount() {
-//		try{
+		try{
 //		System.out.println("in tablemodel method getRowCount   "+tableValues.size());
 			return tableValues.size();
-//		}catch(NullPointerException e){
-//			return 0;
-//		}
+		}catch(NullPointerException e){
+			return 0;
+		}
 	}
 
 	@Override
