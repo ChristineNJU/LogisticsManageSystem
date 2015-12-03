@@ -53,5 +53,13 @@ public class CourierController implements CourierService{
 		}
 		return state;
 	}
+
+	@Override
+	public double getDayLength(String starting, String destination) {
+		// TODO Auto-generated method stub
+		CourierImpl courier=new CourierImpl();
+		
+		return 0;
+	}
 	
 }
