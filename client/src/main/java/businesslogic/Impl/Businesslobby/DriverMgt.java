@@ -10,11 +10,9 @@ import PO.DriverInfoPO;
 import State.AddState;
 import State.DeleteState;
 import State.UpdateState;
+import VO.CarInfoVO;
 import VO.DriverInfoVO;
-import businesslogic.Service.BusinessLobby.AddDriverService;
-import businesslogic.Service.BusinessLobby.DeleteDriverService;
-import businesslogic.Service.BusinessLobby.GetDriverService;
-import businesslogic.Service.BusinessLobby.UpdateDriverService;
+import businesslogic.Service.BusinessLobby.DriverMgtService;
 import businesslogic.SystemLog.SystemLog;
 import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
@@ -23,7 +21,7 @@ import data.Service.Delete.DeleteService;
 import data.Service.Search.SearchDriverInfoService;
 import data.Service.Update.UpdateService;
 
-public class DriverMgt implements AddDriverService,DeleteDriverService,UpdateDriverService,GetDriverService{
+public class DriverMgt implements DriverMgtService{
 
 	@Override
 	public ArrayList<DriverInfoVO> searchDriver(String id) {
@@ -31,7 +29,7 @@ public class DriverMgt implements AddDriverService,DeleteDriverService,UpdateDri
 		ArrayList<DriverInfoVO> result=new ArrayList<DriverInfoVO>();
 		try {
 			SearchDriverInfoService searchDriver=(SearchDriverInfoService) Naming.lookup(RMIHelper.SEARCH_DRIVERINFO_IMPL);
-			
+			System.out.println(id+" searchDriver debug "+SystemLog.getInstitutionId());
 			ArrayList<String> requirementId=new ArrayList<String>();
 			requirementId.add("Driver_Number='"+id+"'");
 			
@@ -48,14 +46,14 @@ public class DriverMgt implements AddDriverService,DeleteDriverService,UpdateDri
 				searchResultId.add(searchResultName.get(i));
 			
 			if(searchResultId.isEmpty()){
-				System.out.println("not found");
+				System.out.println("searchDriver: not found");
 				return null;
 			}
 			
 			else{
 				for(int i=0;i<searchResultId.size();i++)
 					result.add(new DriverInfoVO(searchResultId.get(i)));
-				
+				System.out.println(searchResultId.get(0).getDriverId());
 			}
 			
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
@@ -133,13 +131,14 @@ public class DriverMgt implements AddDriverService,DeleteDriverService,UpdateDri
 	}
 
 	@Override
-	public AddState AddDriver(DriverInfoVO driver) {
+	public AddState addDriver(DriverInfoVO driver) {
 		// TODO Auto-generated method stub
 				AddState state=AddState.SUCCESS;
 				
 				try{
 					AddService driverAdd=(AddService) Naming.lookup(RMIHelper.ADD_IMPL);
 					state=driverAdd.add(new DriverInfoPO(driver));
+					System.out.println("add debug "+driver.getId());
 				} catch (Exception ex){
 					state=AddState.CONNECTERROR;
 					System.out.println(ex.getMessage());
@@ -148,5 +147,7 @@ public class DriverMgt implements AddDriverService,DeleteDriverService,UpdateDri
 				
 				return state;
 	}
+
+	
 
 }
