@@ -57,8 +57,8 @@ public class NavigationCourier extends Navigation{
 	}
 	
 	private void changeToNewLogistics(){
-		MainFrame.getMainPanel().repaint();
-		courierNewOrder = new CourierNewOrderList();
+//		MainFrame.getMainPanel().repaint();
+//		courierNewOrder = new CourierNewOrderList();
 		MainFrame.changeContentPanel(courierNewOrder.getPanel());
 	}
 	

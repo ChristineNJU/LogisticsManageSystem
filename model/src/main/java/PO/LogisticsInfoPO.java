@@ -113,6 +113,12 @@ public class LogisticsInfoPO extends PO {
 		this.sender_telephone=logisticsInfo.getSender_telephone();
 		this.sender_mobilephone=logisticsInfo.getSender_mobilephone();
 		
+		this.recipient_name=logisticsInfo.getRecipient_name();
+		this.recipient_address=logisticsInfo.getRecipient_address();
+		this.recipient_organization=logisticsInfo.getRecipient_organization();
+		this.recipient_telephone=logisticsInfo.getRecipient_telephone();
+		this.recipient_mobilephone=logisticsInfo.getRecipient_mobilephone();
+		
 		this.bar_code=logisticsInfo.getBar_code();
 		this.original_number=logisticsInfo.getOriginal_number();
 		this.weight=logisticsInfo.getWeight();

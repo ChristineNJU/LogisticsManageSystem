@@ -15,6 +15,8 @@ import java.util.Date;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import PO.LogisticsInfoPO;
+import State.CodeState;
 import State.LogisticsType;
 import State.PackingCharge;
 import businesslogic.Impl.Courier.CourierController;
@@ -29,8 +31,10 @@ import presentation.main.FontSet;
 import presentation.main.Translater;
 import State.LogisticsType;
 import State.PackingCharge;
+import VO.LogisticsInputVO;
 import businesslogic.Impl.Courier.CourierController;
 import businesslogic.Service.Courier.CourierService;
+import businesslogic.SystemLog.SystemLog;
 
 public class CourierNewOrder {
 	
@@ -222,6 +226,9 @@ public class CourierNewOrder {
 		JLabel kg = new JLabel("kg", JLabel.CENTER);
 		JLabel t = new JLabel("快递类型", JLabel.CENTER);
 		JLabel p = new JLabel("包装费用", JLabel.CENTER);
+		JLabel b_c = new JLabel("快递编号", JLabel.CENTER);
+		
+		JLabel bar_code_state = new JLabel();
 		
 		MyComboBox original_number = new MyComboBox();
 		TextField internal_name = new TextField();
@@ -229,6 +236,7 @@ public class CourierNewOrder {
 		TextField weight = new TextField();
 		MyComboBox type = new MyComboBox();
 		MyComboBox pack = new MyComboBox();
+		TextField bar_code = new TextField();
 		
 		public LogisticsInfoPanel() {
 			// TODO Auto-generated constructor stub
@@ -299,6 +307,17 @@ public class CourierNewOrder {
 			pack.setEditable(false);
 			add(p);
 			add(pack);
+		
+			b_c.setBounds(374, 80, 80, 40);
+			b_c.setForeground(ColorPallet.GrayDark);
+			b_c.setFont(FontSet.fourteen);
+			bar_code.setBounds(462, 88, 100, 26);
+			bar_code_state.setBounds(568, 80, 150, 40);
+			bar_code_state.setForeground(Color.RED);
+			bar_code_state.setFont(FontSet.fourteen);
+			add(b_c);
+			add(bar_code);
+			add(bar_code_state);
 		}
 		
 		private void initComboBox() {
@@ -322,6 +341,7 @@ public class CourierNewOrder {
 			weight.addFocusListener(listener);
 			type.addFocusListener(listener);
 			pack.addFocusListener(listener);
+			bar_code.addFocusListener(saveFocus);
 		}
 	}
 
@@ -333,24 +353,7 @@ public class CourierNewOrder {
 			
 		}
 
-	
-		
-
 		@Override
-		public void focusLost(FocusEvent e) {
-			// TODO Auto-generated method stub
-					
-			time_actual.setText(sdf.format(getArrivalDate()));
-			
-			
-		}
-		
-	}
-
-	public JPanel getPanel() {
-		return panel;
-	}
-
 		public void focusLost(FocusEvent e) {
 			// TODO Auto-generated method stub
 			if(e.getSource().equals(l.weight)){
@@ -366,9 +369,16 @@ public class CourierNewOrder {
 			
 			if(isLegal(l.weight.getText())&&isLegal(l.size.getText())){
 				amount_actual.setText("¥"+getAmount());
-			}
+			}	
+			
+			time_actual.setText(sdf.format(getArrivalDate()));
 		}
-	
+		
+	}
+
+	public JPanel getPanel() {
+		return panel;
+	}	
 
 	class SaveFocusListener implements FocusListener {
 
@@ -409,6 +419,19 @@ public class CourierNewOrder {
 				if(l.internal_name.getText().equals("")){
 					l.internal_name.setError();
 				}
+			}else if(e.getSource().equals(l.bar_code)){
+				if(barCodeLegal()==CodeState.ERROR){
+					l.bar_code.setError();
+					l.bar_code_state.setText("请输入10位数字");
+				}else if(barCodeLegal()==CodeState.CONNECTION_ERROR){
+					l.bar_code.setError();
+					l.bar_code_state.setText("与服务器连接中断");
+				}else if(barCodeLegal()==CodeState.REPEAT){
+					l.bar_code.setError();
+					l.bar_code_state.setText("快递单号已存在");
+				}else{					
+					l.bar_code_state.setText("");
+				}
 			}
 		}
 		
@@ -419,10 +442,29 @@ public class CourierNewOrder {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
-			if(isComplete()){
-				System.out.println("confirm");
-			}else{
-				System.out.println("fail");
+			if(e.getSource().equals(ok)){				
+				if(isComplete()){
+					System.out.println("confirm");
+					
+					Date date = Calendar.getInstance().getTime();
+					
+					LogisticsInputVO logistics = new LogisticsInputVO(sender.n.getText(), sender.a.getText(), sender.o.getText(), 
+							sender.t.getText(), sender.m.getText(), recipient.n.getText(), recipient.a.getText(), recipient.o.getText(), 
+							recipient.t.getText(), recipient.m.getText(), l.bar_code.getText(), (int)l.original_number.getSelectedItem(), 
+							Double.parseDouble(l.weight.getText()),
+							Double.parseDouble(l.size.getText()),l.internal_name.getText(), Translater.getLogisticsType((String)l.type.getSelectedItem()), 
+							Translater.getPackingCharge((String)l.pack.getSelectedItem()), 
+							Double.parseDouble(amount_actual.getText().substring(1, amount_actual.getText().length())), (String)sender.city_actual.getSelectedItem(), 
+							(String)recipient.city_actual.getSelectedItem(), date, new Date(), SystemLog.getOperatorID());
+					
+					
+					source.addItem(logistics);
+					source.cancelNewItem();
+				}else{
+					System.out.println("fail");
+				}
+			}else if(e.getSource().equals(cancel)){
+				source.cancelNewItem();
 			}
 		}
 
@@ -499,10 +541,34 @@ public class CourierNewOrder {
 		return now;
 	}
 
+	private CodeState barCodeLegal() {
+		CodeState state = CodeState.WELL;
+		
+		if(l.bar_code.getText().equals("")||l.bar_code.getText().length()!=10){
+			return CodeState.ERROR;
+		}else{
+			
+			for(int i=0;i<source.logistics.size();i++){
+				if(source.logistics.get(i).getBar_code().equals(l.bar_code.getText())){
+					return CodeState.REPEAT;
+				}
+			}
+			
+			if(isLegal(l.bar_code.getText())){
+				state = service.isLegal(l.bar_code.getText());
+			}else{
+				return CodeState.ERROR;
+			}
+		}		
+		return state;
+	}
+
 	private boolean isComplete() {
 		if(sender.n.getText().equals("")||recipient.n.getText().equals("")||sender.a.getText().equals("")
 				||recipient.a.getText().equals("")||sender.m.getText().equals("")
-				||recipient.m.getText().equals("")||l.internal_name.getText().equals("")){
+				||recipient.m.getText().equals("")||l.internal_name.getText().equals("")
+				||(!isLegal(l.size.getText()))||
+				(!isLegal(l.weight.getText())||(barCodeLegal()!=CodeState.WELL))){
 			if(sender.a.getText().equals("")){
 				sender.a.setError();
 			}
@@ -523,6 +589,24 @@ public class CourierNewOrder {
 			}
 			if(l.internal_name.getText().equals("")){
 				l.internal_name.setError();
+			}
+			if(!isLegal(l.size.getText())){
+				l.size.setError();
+			}
+			if(!isLegal(l.weight.getText())){
+				l.weight.setError();
+			}
+			if(barCodeLegal()==CodeState.ERROR){
+				l.bar_code.setError();
+				l.bar_code_state.setText("请输入10位数字");
+			}
+			if(barCodeLegal()==CodeState.CONNECTION_ERROR){
+				l.bar_code.setError();
+				l.bar_code_state.setText("与服务器连接中断");
+			}
+			if(barCodeLegal()==CodeState.REPEAT){
+				l.bar_code.setError();
+				l.bar_code_state.setText("快递单号已存在");
 			}
 			return false;
 		}else{
