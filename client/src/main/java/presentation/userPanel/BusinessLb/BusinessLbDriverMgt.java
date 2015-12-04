@@ -16,12 +16,16 @@ import presentation.main.FunctionADUS;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableADUS;
 import presentation.table.TableModelADUS;
+import State.AddState;
+import State.DeleteState;
+import State.UpdateState;
 import VO.DriverInfoVO;
 import businesslogic.Impl.Businesslobby.DriverMgt;
+import businesslogic.Service.BusinessLobby.DriverMgtService;
 
 public class BusinessLbDriverMgt extends FunctionADUS{
+	DriverMgtService service=new DriverMgt();
 	
-	DriverMgt service=new DriverMgt();
 	ArrayList<DriverInfoVO> drivers;
 	
 	String[] tableH = {"司机ID","司机姓名","司机生日","身份证号","司机手机","司机性别","雇佣时间"};
@@ -32,7 +36,7 @@ public class BusinessLbDriverMgt extends FunctionADUS{
 	ArrayList<DriverInfoVO> searchItems=new ArrayList<DriverInfoVO>();
 	ArrayList<DriverInfoVO> updateItems=new ArrayList<DriverInfoVO>();
 	
-	SimpleDateFormat sdf=new SimpleDateFormat("yy-MM-dd HH:mm:ss");
+	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 	
 	public BusinessLbDriverMgt(){
 		buttonNew = new ButtonNew("新增司机");
@@ -44,14 +48,8 @@ public class BusinessLbDriverMgt extends FunctionADUS{
 		// TODO Auto-generated method stub
 		drivers=new ArrayList<DriverInfoVO>();
 		
-		DriverInfoVO driver1=new DriverInfoVO("321002199402210242", "张三", new Date(),"025001001","1111111111111", "男", 10);
-		DriverInfoVO driver2=new DriverInfoVO("321002199402210241", "huangyong", new Date(),"025001002","1111111111111", "男", 10);
-		DriverInfoVO driver3=new DriverInfoVO( "321002199402210243","yonghuang", new Date(),"025001003","1111111111111", "男", 10);
-		
-		drivers.add(driver1);
-		drivers.add(driver2);
-		drivers.add(driver3);
-	
+		drivers=service.searchDriver("hy");
+	//need to be changed
 		tableV = getVector(drivers);
         
         model = new TableModelADUS(tableV, tableH,isCellEditable);
@@ -74,8 +72,11 @@ public class BusinessLbDriverMgt extends FunctionADUS{
 		// TODO Auto-generated method stub
 		drivers=new ArrayList<DriverInfoVO>();
 		searchItems = service.searchDriver(s);
+//		System.out.println("arraylist size"+searchItems.size());
+//		System.out.println("   "+getVector(searchItems).size());
 		model = new TableModelADUS(getVector(searchItems),tableH,isCellEditable);
 		table.setModel(model);
+		table.repaint();
 	}
 
 	@Override
@@ -87,6 +88,15 @@ public class BusinessLbDriverMgt extends FunctionADUS{
 				deleteItems.add((DriverInfoVO) getVO(tableV.get(i)));
 			}
 		}
+		DeleteState deleteState=DeleteState.FAIL;
+		for(int i=0;i<deleteItems.size();i++){
+			deleteState=service.deleteDriver(deleteItems.get(i));
+			if(deleteState==DeleteState.FAIL){
+				break;
+			}
+			else if(deleteState==DeleteState.CONNECTERROR)
+				break;
+		}
 		
 		updateItems=new ArrayList<DriverInfoVO>();
 		for(int i=0;i<tableV.size();i++){
@@ -94,13 +104,41 @@ public class BusinessLbDriverMgt extends FunctionADUS{
 				updateItems.add((DriverInfoVO) getVO(tableV.get(i)));
 			}
 		}
+		UpdateState updateState=UpdateState.NOTFOUND;
+		for(int i=0;i<updateItems.size();i++){
+			updateState=service.updateDriver(updateItems.get(i));
+			if(updateState==UpdateState.NOTFOUND){
+				break;
+			}
+			else if(updateState==UpdateState.CONNECTERROR){
+				break;
+			}
+		}
+		
+		addItems=new ArrayList<DriverInfoVO>();
+		for(int i=0;i<tableV.size();i++){
+			if(model.isNew(i)){
+				addItems.add(getVO(tableV.get(i)));
+				}
+		}
+		AddState addState=AddState.FAIL;
+		System.out.println("addList size"+addItems.size());
+		for(int i=0;i<addItems.size();i++){
+			addState=service.addDriver(addItems.get(i));
+			if(addState==AddState.FAIL){
+				break;
+			}
+			else if(addState==AddState.CONNECTERROR){
+				break;
+			}
+		}
 		
 	}
 	
-	protected void solveDelete(int rowUnderMouse) {
-		model.delete(rowUnderMouse);
-		table.repaint();
-	}
+//	protected void solveDelete(int rowUnderMouse) {
+//		model.delete(rowUnderMouse);
+//		table.repaint();
+//	}
 	
 	protected void newItem() {
 		model.addEmptyRow();
@@ -114,7 +152,8 @@ public class BusinessLbDriverMgt extends FunctionADUS{
 		// TODO Auto-generated method stub
 		DriverInfoVO driver=null;
 		try {
-			driver=new DriverInfoVO(vector.get(3),vector.get(1),sdf.parse(vector.get(2)),vector.get(0),vector.get(4),vector.get(5),Integer.parseInt(vector.get(6)));
+			driver=new DriverInfoVO(vector.get(0).trim(),vector.get(1).trim(),sdf.parse(vector.get(2).trim()), 
+					vector.get(3).trim(),vector.get(4).trim(),vector.get(5).trim(),Integer.parseInt(vector.get(6).trim()));
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -122,17 +161,20 @@ public class BusinessLbDriverMgt extends FunctionADUS{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		if(driver==null){
+			System.out.println("get null VO");
+		}
 		return driver;
 	}
 
 	protected Vector<Vector<String>> getVector(ArrayList<DriverInfoVO> voList){
 		Vector<Vector<String>> result=new Vector<Vector<String>>();
-		for(DriverInfoVO temp:drivers){
+		for(DriverInfoVO temp:voList){
 			Vector<String> vRow=new Vector<String>();
-			vRow.add(temp.getId());
+			vRow.add(temp.getNumber());
 			vRow.add(temp.getName());
 			vRow.add(sdf.format(temp.getBirthday()));
-			vRow.add(temp.getNumber());
+			vRow.add(temp.getId());
 			vRow.add(temp.getMobilephone());
 			vRow.add(temp.getSex());
 			vRow.add(String.valueOf(temp.getAttendTime()));

@@ -37,6 +37,7 @@ public class TableModelADUS extends AbstractTableModel {
 		
 		listener = new ModelListener();
 		this.addTableModelListener(listener);
+		System.out.println("tableValues.size:"+tableValues.size());
 	}
 
 	public void delete(int i){
@@ -90,7 +91,13 @@ public class TableModelADUS extends AbstractTableModel {
 	
 	public void addEmptyRow(){
 		Vector<String> element = new Vector<String>();
-		for(int i = 0;i < tableValues.get(0).size();i++){
+		int size = 0;
+		try {
+			size = tableValues.get(0).size();
+		}catch(Exception e){
+			size = 0;
+		}
+		for(int i = 0;i < size;i++){
 			element.add(" ");
 		}
 		tableValues.add(element);
