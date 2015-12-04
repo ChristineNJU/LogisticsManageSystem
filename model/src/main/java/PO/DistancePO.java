@@ -1,5 +1,7 @@
 package PO;
 
+import VO.DistanceVO;
+
 /**
  * 用来保存距离的持久化数据格式
  * 
@@ -23,6 +25,18 @@ public class DistancePO extends PO {
 		this.city_1 = city_1;
 		this.city_2 = city_2;
 		this.distance = distance;
+		this.time = time;
+	}
+	
+	/**
+	 * 通过DistanceVO创建距离的持久化数据格式
+	 * */
+	public DistancePO(DistanceVO d, double time, String DB_URL) {
+		super(DB_URL);
+		
+		this.city_1 = d.getCity_1();
+		this.city_2 = d.getCity_2();
+		this.distance = d.getDistance();
 		this.time = time;
 	}
 	

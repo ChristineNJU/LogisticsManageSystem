@@ -10,6 +10,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import State.StorageArea;
+import businesslogic.Impl.Repository.GetAmountImpl;
+import businesslogic.Service.Repository.GetAmountService;
 import data.RMIHelper.RMIHelper;
 import data.Service.Sundry.WareHouseService;
 import presentation.components.ProgressBar;
@@ -18,7 +21,11 @@ import presentation.main.FontSet;
 
 public class ProgressBarPanel {
 	
-	WareHouseService whs;
+	GetAmountService gas;
+	
+	private int a = 0;
+	private int c = 0;
+	private int r = 0;
 	
 	private JPanel panel = new JPanel();
 	private JLabel air = new JLabel("航空区", JLabel.CENTER);
@@ -29,20 +36,30 @@ public class ProgressBarPanel {
 	private ProgressBar car_actual = new ProgressBar();
 	private ProgressBar rail_actual = new ProgressBar();
 	
-	public ProgressBarPanel() {
-		try {
-			whs = (WareHouseService) Naming.lookup(RMIHelper.WAREHOUSE_IMPL);
-		} catch (MalformedURLException | RemoteException | NotBoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		init();
-	}
+	private JLabel error = new JLabel("与服务器连接失败", JLabel.CENTER);
 	
-	private void init() {
+	public ProgressBarPanel() {
 		panel.setBounds(550, 0, 240, 95);
 		panel.setOpaque(true);
 		panel.setBackground(Color.white);
+		try {
+			gas = new GetAmountImpl();
+			a = gas.getAmount(StorageArea.AIR_TRANSPORTATION);
+			c = gas.getAmount(StorageArea.CAR_TRANSPORTATION);
+			r = gas.getAmount(StorageArea.RAILWAY_TRANSPORTATION);
+			init();
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			error.setBounds(20, 10, 200, 80);
+			error.setForeground(ColorPallet.Pink);
+			error.setFont(FontSet.twenty);;
+			
+			panel.add(error);
+		}
+	}
+	
+	private void init() {
 		
 		air.setBounds(0, 0, 50, 30);
 		air.setFont(FontSet.fourteen);
@@ -68,12 +85,20 @@ public class ProgressBarPanel {
 		rail_actual.setMaximum(100);
 		rail_actual.setStringPainted(true);
 		
+		setValue();
+		
 		panel.add(air);
 		panel.add(air_actual);
 		panel.add(car);
 		panel.add(car_actual);
 		panel.add(rail);
 		panel.add(rail_actual);
+	}
+	
+	private void setValue() {
+		air_actual.setValue(a);
+		car_actual.setValue(c);
+		rail_actual.setValue(r);
 	}
 	
 	public JPanel getPanel() {

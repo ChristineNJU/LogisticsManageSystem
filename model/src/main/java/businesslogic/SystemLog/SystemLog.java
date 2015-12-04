@@ -17,7 +17,7 @@ public class SystemLog {
 	
 	private static String operator_name = "";
 	private static String operator_id = "";
-	private static String operator_institution_id = "";
+	private static String operator_institution_id = "02500";
 	
 	private static AddService addLog = null;
 	

@@ -8,6 +8,7 @@ import State.UpdateState;
 import VO.BenefitVO;
 import VO.ConstVO;
 import VO.CostVO;
+import VO.DistanceVO;
 import VO.GatheringVO;
 import VO.InstitutionVO;
 import VO.SalaryVO;
@@ -163,5 +164,20 @@ public interface ManageService {
 	 * @return 更新状态
 	 * */
 	public UpdateState updateStaff (StaffVO staff);
+	
+	/**
+	 * 获取距离
+	 * 
+	 * @return DistanceVO的ArrayList
+	 * */
+	public ArrayList<DistanceVO> getDistance();
+	
+	/**
+	 * 更新距离
+	 * 
+	 * @param distance 新距离
+	 * @return 更新状态
+	 * */
+	public UpdateState updateDistance(DistanceVO distance);
 	
 }
