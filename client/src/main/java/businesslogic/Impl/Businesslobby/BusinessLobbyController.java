@@ -114,7 +114,7 @@ public class BusinessLobbyController implements BsLbService{
 	public AddState AddDriver(DriverInfoVO driver) {
 		// TODO Auto-generated method stub
 		DriverMgt addDriver=new DriverMgt();
-		AddState state = addDriver.AddDriver(driver);
+		AddState state = addDriver.addDriver(driver);
 		if(state==AddState.SUCCESS){
 			SystemLog.addLog("添加司机信息");
 		}

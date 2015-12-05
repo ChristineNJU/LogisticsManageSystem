@@ -35,7 +35,7 @@ public class ManageInstitution implements AddInstitutionService,UpdateInstitutio
 			ArrayList<String> requirementName=new ArrayList<String>();
 			
 			//show  when id==null
-			if(id!=null){
+			if(!id.equals("%%")){
 			requirementId.add("institution_number='"+id+"'");
 			requirementName.add("institution_name'"+id+"'");
 			}

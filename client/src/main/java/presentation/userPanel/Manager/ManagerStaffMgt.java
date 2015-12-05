@@ -156,22 +156,23 @@ public class ManagerStaffMgt extends FunctionADUS{
 	@Override
 	protected StaffVO getVO(Vector<String> vector) {
 		// TODO Auto-generated method stub
-		StaffVO staff=new StaffVO(vector.get(1),vector.get(2),Integer.parseInt(vector.get(3)),Translater.getInstitutionType(vector.get(4))
-				,Translater.getUserRole(vector.get(5)),vector.get(0),vector.get(6),vector.get(7));
+		StaffVO staff=new StaffVO(vector.get(1).trim(),vector.get(2).trim(),Integer.parseInt(vector.get(3).trim()),Translater.getInstitutionType(vector.get(4).trim())
+				,Translater.getUserRole(vector.get(5).trim()),vector.get(0).trim(),vector.get(6).trim(),vector.get(7).trim());
 		return staff;
 	}
 	
 	protected Vector<Vector<String>> getVector(ArrayList<StaffVO> voList){
 		Vector<Vector<String>> result=new Vector<Vector<String>>();
 		for(StaffVO temp:voList){
+			System.out.println(temp.getInsitution());
 			Vector<String> vRow=new Vector<String>();
 			vRow.add(temp.getSystemId());
 			vRow.add(temp.getName());
 			vRow.add(temp.getSex());
 			vRow.add(String.valueOf(temp.getAge()));
-//			vRow.add(State.StateSwitch.switchToStr(temp.getInsitution()));
-			vRow.add("businesslobby");
-			vRow.add(State.StateSwitch.switchToStr(temp.getPosition()));
+			vRow.add(Translater.getChineseForInstitution(temp.getInsitution()));
+//			vRow.add("businesslobby");
+			vRow.add(Translater.getChineseForUserRole(temp.getPosition()));
 			vRow.add(temp.getCity());
 			vRow.add(temp.getPassword());
 			result.add(vRow);

@@ -12,6 +12,8 @@ import presentation.components.ButtonConfirm;
 import presentation.components.DateChooser;
 import presentation.components.FlatComboBox;
 import presentation.components.LabelHeader;
+import presentation.main.ColorPallet;
+import presentation.main.FontSet;
 import presentation.main.FunctionSearch;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableModelSearch;
@@ -19,15 +21,17 @@ import presentation.table.TableSearch;
 
 public class FinanceIncome extends FunctionSearch{
 	FinanceService service = new FinanceController();
-	ArrayList<GatheringVO> costs;
-	String[] tableH = {"付款日期","金额","付款人","付款账户","条目","备注"};
-	boolean[] isCellEditable = {false,false,false,false,false,false};
+	ArrayList<GatheringVO> incomes;
+//	String[] tableH = {"付款日期","金额","付款人","付款账户","条目","备注"};
+	String[] tableH = {"收款日期","收款金额(￥)","收款快递员","快递单号"};
+//	boolean[] isCellEditable = {false,false,false,false,false,false};
 	
 	public DateChooser dateBeginChooser;
 	public DateChooser dateEndChooser;
 	public FinanceIncome(){
+//		System.out.println("     ");
 		confirmSearch = new ButtonConfirm("查看进项");
-		initUI("增加支出");
+		initUI("查看进项");
 	}
 	
 	@Override
@@ -52,7 +56,14 @@ public class FinanceIncome extends FunctionSearch{
 		panel.add(sPanel);
 		
 	}
-
+	
+	@Override
+	protected void initFooter() {
+		foot = new Footer();
+		panel.add(foot);
+		
+	}
+	
 	private Vector<Vector<String>> getVector(ArrayList<GatheringVO> costs2) {
 		Vector<Vector<String>> result = new Vector<Vector<String>>();
         for(GatheringVO temp:costs2){
@@ -65,12 +76,19 @@ public class FinanceIncome extends FunctionSearch{
 		return result;
 	}
 
+	public int getTotal(){
+		int total = 0;
+		for(int i = 0; i < model.getRowCount();i++){
+			total += Integer.parseInt((String)model.getValueAt(i, 1));
+		}
+		return total;
+	}
 
 	@Override
 	protected void showSearch() {
 		String time = dateBeginChooser.getTime();
 		String businessLb = ((Header) header).getBusinessLobby();
-		costs = service.searchGathering(time, businessLb);
+		incomes = service.searchGathering(time, businessLb);
 		tableV = new Vector<Vector<String>>();
 		model = new TableModelSearch(tableV,tableH);
 		table.setModel(model);
@@ -91,9 +109,9 @@ public class FinanceIncome extends FunctionSearch{
 			this.add(dateBegin);
 //			dateEnd.setBounds(270,0,80,30);
 //			this.add(dateEnd);
-			businessLb.setBounds(240,0,60,30);
+			businessLb.setBounds(240,0,150,30);
 			this.add(businessLb);
-			businessLbChooser.setBounds(320,0,80,30);
+			businessLbChooser.setBounds(320,0,120,30);
 			this.add(businessLbChooser);
 		}
 		public String getBusinessLobby(){
@@ -101,6 +119,17 @@ public class FinanceIncome extends FunctionSearch{
 			return businessLbChooser.getSelectedItem().toString();
 		}
 	}
+
+	private class Footer extends JLabel{
+		public Footer(){
+			setBounds(120,table.getHeight()+200,300,40);
+			setText("合计："+getTotal()+"￥");
+			setForeground(ColorPallet.Pink);
+			setFont(FontSet.eighteen);
+//			int total = getTotal();
+		}
+	}
+
 
 	
 }

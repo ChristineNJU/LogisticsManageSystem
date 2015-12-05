@@ -112,7 +112,7 @@ public class BusinessLbDelivery extends FunctionAdd{
 	}
 	public class Header extends JLabel{
 		LabelHeader businessLobbyID = new LabelHeader("营业厅编号");
-	//	LabelHeader gatheringId = new LabelHeader("装运单编号");
+	//	LabelHeader gatheringId = new LabelHeader( "装运单编号 ");
 		public Header(){
 			this.setBounds(120,100,680,60);
 			this.setBackground(null);

@@ -25,4 +25,7 @@ public class LogisticsHistoryVO extends VO {
 	public ArrayList<String> getHistory(){
 		return this.history;
 	}
+	public  void addHistory(String s){
+		this.history.add(s);
+	}
 }

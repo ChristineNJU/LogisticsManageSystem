@@ -48,4 +48,23 @@ public class CostImpl implements AddCostService,GetCostService{
 		return state;
 	}
 
+	@Override
+	public ArrayList<CostVO> searchCost(String time) {
+		// TODO Auto-generated method stub
+		ArrayList<CostVO> Cost=new ArrayList<CostVO>();
+		try{
+			SearchCostService costSearch=(SearchCostService) Naming.lookup(RMIHelper.SEARCH_COST_IMPL);
+			ArrayList<String> requirement=new ArrayList<String>();
+			requirement.add("cost_date= '"+time+"'");
+			ArrayList<CostPO> costList=costSearch.searchCost(requirement);
+			for(int i=0;i<costList.size();i++){
+				Cost.add(new CostVO(costList.get(i)));
+			}
+		} catch (Exception ex){
+			System.out.println(ex.getMessage());
+			ex.printStackTrace();
+		}
+		return Cost;
+	}
+
 }

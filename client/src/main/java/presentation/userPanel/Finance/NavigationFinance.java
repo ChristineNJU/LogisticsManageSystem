@@ -79,7 +79,7 @@ public class NavigationFinance extends Navigation{
 	}
 	private void changeToOutcomeAndIncome(){
 		financeIncomeAndOutcome = new FinanceIncomeAndOutcome();
-//		MainFrame.changeContentPanel(financeIncomeAndOutcome.getPanel());
+		MainFrame.changeContentPanel(financeIncomeAndOutcome.getPanel());
 	}
 	private void changeToBenefit(){
 		financeBenefit = new FinanceBenefit();
