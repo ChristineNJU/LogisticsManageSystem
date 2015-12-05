@@ -16,8 +16,8 @@ import data.Service.Add.AddService;
 public class SystemLog {
 	
 	private static String operator_name = "";
-	private static String operator_id = "";
-	private static String operator_institution_id = "";
+	private static String operator_id = "025000000";
+	private static String operator_institution_id = "02500";
 	
 	private static AddService addLog = null;
 	
@@ -35,10 +35,15 @@ public class SystemLog {
 		operator_id = id;
 	}
 	
+	public static String getOperatorID() {
+		return operator_id;
+	}
+	
 	public static String getInstitutionId() {
+
 		return "025000";
 		//return operator_institution_id;
-	}
+}
 	
 	public static void addLog(String operation) {
 		

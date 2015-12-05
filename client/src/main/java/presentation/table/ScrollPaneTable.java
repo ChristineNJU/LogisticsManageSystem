@@ -4,7 +4,6 @@ import java.awt.Image;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
@@ -22,11 +21,11 @@ public class ScrollPaneTable extends JScrollPane{
 		setOpaque(false);
 		getViewport().setOpaque(false);
 		int row = table.getRowCount();
-		if(row > 18){
+//		if(row > 18){
 			setBounds(120,150,770,400);
-		}else{
-			setBounds(120,150,770,(row+1)*30);
-		}
+//		}else{
+//			setBounds(120,150,770,(row+1)*30);
+//		}
 //		System.out.println("------------------"+this.getHeight());
 		setBorder(BorderFactory.createEmptyBorder());
 		setViewportBorder(null);

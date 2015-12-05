@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
@@ -12,8 +11,6 @@ import javax.swing.JLabel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
-import VO.UserVO;
-import VO.VO;
 import presentation.components.ButtonCancel;
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
@@ -25,6 +22,7 @@ import presentation.table.RendererDelete;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableADUS;
 import presentation.table.TableModelADUS;
+import VO.VO;
 
 
 public abstract class FunctionADUS {

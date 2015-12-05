@@ -9,6 +9,9 @@ import javax.swing.table.AbstractTableModel;
 public class TableModelADUS extends AbstractTableModel {
 
 	private Vector<Vector<String>> tableValues;
+	
+	private Vector<Vector<String>> tableValuesCompare;
+	
 	private String[] head;
 	private boolean[] isCellEditable;
 	private boolean[] isDelete;
@@ -21,6 +24,14 @@ public class TableModelADUS extends AbstractTableModel {
 	public TableModelADUS(Vector<Vector<String>> value, String[] head,boolean[] isCellEditable) {
 		super();
 		this.tableValues = value;
+		this.tableValuesCompare = new Vector<Vector<String>>();
+		
+		for(int i=0;i<value.size();i++){
+			Vector<String> tmp = new Vector<String>();
+			tmp = (Vector<String>) value.get(i).clone();
+			tableValuesCompare.add(tmp);
+		}
+		
 		this.head = head;
 		this.isCellEditable = isCellEditable;
 		this.initialColumnCount = head.length;
@@ -37,6 +48,7 @@ public class TableModelADUS extends AbstractTableModel {
 		
 		listener = new ModelListener();
 		this.addTableModelListener(listener);
+		System.out.println("tableValues.size:"+tableValues.size());
 	}
 
 	public void delete(int i){
@@ -90,7 +102,13 @@ public class TableModelADUS extends AbstractTableModel {
 	
 	public void addEmptyRow(){
 		Vector<String> element = new Vector<String>();
-		for(int i = 0;i < tableValues.get(0).size();i++){
+		int size = 0;
+		try {
+			size = tableValues.get(0).size();
+		}catch(Exception e){
+			size = 0;
+		}
+		for(int i = 0;i < size;i++){
 			element.add(" ");
 		}
 		tableValues.add(element);
@@ -122,10 +140,10 @@ public class TableModelADUS extends AbstractTableModel {
 
 	@Override
 	public void setValueAt(Object value, int row, int column) {
-		fireTableCellUpdated(row, column);
-		if(column < getColumnCount())
+		if(column < getColumnCount()){
 			tableValues.get(row).setElementAt((String) value,column);
-		else
+			fireTableCellUpdated(row, column);
+		}else
 			return;
 	}
 	
@@ -138,8 +156,18 @@ public class TableModelADUS extends AbstractTableModel {
                  int row = evt.getFirstRow();
                  if(row >= initialRowCount)
                 	 return;
-                 isCellUpdate[row][column] = true;
-                 isRowUpdate[row] = true;
+                 
+                 System.out.println(tableValues.get(row).get(column));
+                 System.out.println(tableValuesCompare.get(row).get(column));
+                 
+                 if(!tableValues.get(row).get(column).equals(tableValuesCompare.get(row).get(column))){   
+                	 System.out.println("table change");
+                	 isCellUpdate[row][column] = true;
+                	 isRowUpdate[row] = true;
+                 }else{
+                	 isCellUpdate[row][column] = false;
+                	 isRowUpdate[row] = false;
+                 }
 			 }
 		}
 		

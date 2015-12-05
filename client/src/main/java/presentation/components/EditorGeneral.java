@@ -14,3 +14,4 @@ public class EditorGeneral extends JTextField {
 		this.setBorder(BorderFactory.createLoweredSoftBevelBorder());
 	}
 }
+ 

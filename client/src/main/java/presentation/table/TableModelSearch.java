@@ -4,45 +4,35 @@ import java.util.Vector;
 
 import javax.swing.table.AbstractTableModel;
 
-public class TableModelAddOnly extends AbstractTableModel{
-
+public class TableModelSearch extends AbstractTableModel{
 	private Vector<Vector<String>> tableValues;
 	private String[] head;
-	private boolean[] isCellEditable;
-	public TableModelAddOnly(Vector<Vector<String>> value, String[] head,boolean[] isCellEditable) {
-		super();
 
+	public TableModelSearch(Vector<Vector<String>> value, String[] head) {
+		super();
 //		System.out.println("in tableMOdelAddOnly constructor");
 		this.tableValues = value;
 		this.head = head;
-		this.isCellEditable = isCellEditable;
 		
 	}
 
-	public void delete(int i) {
-		tableValues.remove(i);
-		fireTableRowsDeleted(i, i);
-	}
+//	public void delete(int i) {
+//		tableValues.remove(i);
+//		fireTableRowsDeleted(i, i);
+//	}
 	
-	public void addEmptyRow(){
-		Vector<String> element = new Vector<String>();
-		int size = 0;
-		try {
-			size = tableValues.get(0).size();
-		}catch(NullPointerException e){
-			size = 0;
-		}
-		for(int i = 0;i < size;i++){
-			element.add(" ");
-		}
-		tableValues.add(element);
-		fireTableRowsInserted(tableValues.size()-1,tableValues.size()-1);
-	}
+//	public void addEmptyRow(){
+//		Vector<String> element = new Vector<String>();
+//		for(int i = 0;i < tableValues.get(0).size();i++){
+//			element.add(" ");
+//		}
+//		tableValues.add(element);
+//		fireTableRowsInserted(tableValues.size()-1,tableValues.size()-1);
+//	}
 	
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
-//		return isCellEditable[columnIndex];
-		return true;
+		return false;
 	}
 	
 	@Override
@@ -88,6 +78,4 @@ public class TableModelAddOnly extends AbstractTableModel{
 	public String getColumnName(int columnIndex) {
 		return head[columnIndex];
 	}
-	
-
 }

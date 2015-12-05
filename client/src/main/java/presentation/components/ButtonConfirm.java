@@ -19,6 +19,7 @@ public class ButtonConfirm extends ButtonOk {
 		setFont(FontSet.twenty);
 		setSize(s.length()*25+30,30);
 		
+		
 		listener = new RollListener(this);
 		this.addMouseListener(listener);
 //		System.out.println("button height:"+this.getHeight());

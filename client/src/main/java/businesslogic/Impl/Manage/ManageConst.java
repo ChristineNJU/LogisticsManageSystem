@@ -7,18 +7,24 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import PO.ConstPO;
+import PO.DistancePO;
 import State.AddState;
 import State.UpdateState;
 import VO.ConstVO;
+import VO.DistanceVO;
 import businesslogic.Service.Manage.AddConstService;
+import businesslogic.Service.Manage.GetDistanceService;
 import businesslogic.Service.Manage.ShowConstService;
 import businesslogic.Service.Manage.UpdateConstService;
+import businesslogic.Service.Manage.UpdateDistanceService;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
 import data.Service.Search.SearchConstService;
+import data.Service.Search.SearchDistanceService;
 import data.Service.Update.UpdateService;
 
-public class ManageConst implements ShowConstService,UpdateConstService,AddConstService{
+public class ManageConst implements ShowConstService,UpdateConstService,AddConstService, GetDistanceService
+, UpdateDistanceService{
 
 	@Override
 	public ArrayList<ConstVO> showConst() {
@@ -93,4 +99,60 @@ public class ManageConst implements ShowConstService,UpdateConstService,AddConst
 		return result;
 	}
 
+	@Override
+	public ArrayList<DistanceVO> getDistance() {
+		// TODO Auto-generated method stub
+		ArrayList<DistanceVO> result = new ArrayList<DistanceVO>();
+		
+		try {
+			SearchDistanceService searchDistanceService = (SearchDistanceService) Naming.lookup(RMIHelper.SEARCH_DISTANCE_IMPL);
+			ArrayList<String> requirement = new ArrayList<String>();
+			requirement.add("city_1 like '%%'");
+			
+			ArrayList<DistancePO> tmp = searchDistanceService.searchDistance(requirement);
+			
+			if(tmp.isEmpty()){
+				return result;
+			}
+			
+			for(int i=0;i<tmp.size();i++){
+				result.add(new DistanceVO(tmp.get(i)));
+			}
+			
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return result;
+		}
+		return result;
+	}
+
+	@Override
+	public UpdateState updateDistance(DistanceVO distance) {
+		// TODO Auto-generated method stub
+		UpdateState state = UpdateState.SUCCESS;
+		try {
+			UpdateService service = (UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
+			
+			SearchDistanceService searchDistanceService = (SearchDistanceService) Naming.lookup(RMIHelper.SEARCH_DISTANCE_IMPL);
+			ArrayList<String> requirement = new ArrayList<String>();
+			requirement.add("city_1 = '"+distance.getCity_1()+"' AND city_2 = '"+distance.getCity_2()+"'");
+			
+			ArrayList<DistancePO> tmp = searchDistanceService.searchDistance(requirement);
+			
+			DistancePO result = new DistancePO(distance, tmp.get(0).getTime(), tmp.get(0).getURL());
+			
+			state = service.update(result);
+			
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return UpdateState.CONNECTERROR;
+		}
+		
+		return state;
+	}
+
+	
+	
 }

@@ -118,7 +118,7 @@ public class DirectDBCreater {
 //				createTable_Benefit();
 //				deleteTable(URLHelper.getBenefitURL());
 				
-//				createTable_Cost();
+				createTable_Cost();
 //				deleteTable(URLHelper.getCostURL());
 				
 //				createTable_WareHouse("02500");
@@ -243,7 +243,7 @@ public class DirectDBCreater {
 			boolean mark;
 			
 			mark = s.execute("INSERT INTO "+table_name+" VALUES('AIR', 20)");
-			mark = s.execute("INSERT INTO "+table_name+" VALUES('RAILWAT', 0.2)");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('RAILWAY', 0.2)");
 			mark = s.execute("INSERT INTO "+table_name+" VALUES('CAR', 2)");
 			mark = s.execute("INSERT INTO "+table_name+" VALUES('ECONOMIC', 18)");
 			mark = s.execute("INSERT INTO "+table_name+" VALUES('STANDARD', 23)");

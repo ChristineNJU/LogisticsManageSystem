@@ -1,78 +1,99 @@
 package presentation.main;
 
-import java.awt.Point;
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Vector;
 
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 
-import presentation.components.ButtonCancel;
+import VO.VO;
 import presentation.components.ButtonConfirm;
-import presentation.components.ButtonNew;
-import presentation.components.ButtonTotal;
 import presentation.components.PanelContent;
-import presentation.main.FunctionAdd.AttentionLabel;
-import presentation.main.FunctionAdd.FuncionListener;
-import presentation.main.FunctionAdd.TableListener;
 import presentation.table.ScrollPaneTable;
-import presentation.table.TableAddOnly;
-import presentation.table.TableModelAddOnly;
+import presentation.table.TableModelSearch;
+import presentation.table.TableSearch;
 
-public class FunctionSearch {
+public abstract class FunctionSearch {
 
 	protected Translater trans = new Translater();
 	
-protected PanelContent panel;
+	protected PanelContent panel;
 	
 	protected JLabel header;
-	protected ButtonNew buttonNew;
-	protected ButtonConfirm confirm;
-	protected ButtonCancel cancel = new ButtonCancel();
-//	protected AttentionLabel attention = new AttentionLabel();
+//	protected ButtonNew buttonNew;
+	protected ButtonConfirm confirmSearch;
+//	protected ButtonCancel cancel = new ButtonCancel();
+	protected AttentionLabel attention = new AttentionLabel();
 	
 	protected ScrollPaneTable sPanel;
-	protected TableListener tableListener = new TableListener();
-	protected FuncionListener functionListener = new FuncionListener();
+//	protected TableListener tableListener = new TableListener();
+	protected FuncionListener listener = new FuncionListener();
 	
 	protected Vector<Vector<String>> tableV = new Vector<Vector<String>>();
-	protected TableModelAddOnly model;
-	protected TableAddOnly table;
+	protected TableModelSearch model;
+	protected TableSearch table;
 	
-	private class TableListener implements MouseListener{
-
-		@Override
-		public void mouseClicked(MouseEvent e) {
-//			Point p = table.getMousePosition();
-//			int row = table.rowAtPoint(p);
-//			int column = table.columnAtPoint(p);
-//			System.out.println("position clicked :   row"+row+"   column"+column);
-//			if(column == table.getColumnCount() -1){
-//				solveDelete(row);
-//			}
+	public FunctionSearch(){
+		
+	}
+	
+	protected void initUI(String s){
+		panel = new PanelContent(s);
+		panel.setLayout(null);
+		
+		initHeader();
+		
+		confirmSearch.setLocation(888-confirmSearch.getWidth(),110);
+		confirmSearch.addMouseListener(listener);
+		panel.add(confirmSearch);
+//		buttonNew.setLocation(buttonNew.getX(),130+header.HEIGHT);
+//		buttonNew.addMouseListener(functionListener);
+//		panel.add(buttonNew);
+		
+		initTable();
+		
+		
+//		cancel.setBounds(confirm.getWidth()+130,200+sPanel.getHeight(),110,30);
+//		cancel.addMouseListener(functionListener);
+//		panel.add(cancel);
+	}
+	
+	protected abstract void initHeader();
+	
+	protected abstract void initTable();
+	
+	protected abstract void showSearch();
+	
+	protected void removeError(){
+		panel.remove(attention);
+	}
+	
+	protected void showError(String s){
+		attention.setText(s);
+		panel.add(attention);
+	}
+	
+//	protected abstract VO getVO(Vector<String> vector);
+	
+	public PanelContent getPanel(){
+		return panel;
+	}
+	
+	public class AttentionLabel extends JLabel{
+		public AttentionLabel(String s){
+			super(s);
+			setBorder(BorderFactory.createLineBorder(Color.red));
+			setHorizontalAlignment(JLabel.CENTER);
+			setFont(FontSet.twenty);
+			setForeground(Color.red);
+			setSize(s.length()+50,40);
+			setLocation(873-this.getWidth(),0);
 		}
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
+		
+		public AttentionLabel(){
+			this("");
 		}
 	}
 	
@@ -81,13 +102,7 @@ protected PanelContent panel;
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			ButtonTotal source = (ButtonTotal)e.getSource();
-//			if(source.equals(buttonNew)){
-//				newItem();
-//			}
-//			if(source.equals(confirm)){
-//				confirmAll();
-//			}
+			showSearch();
 		}
 
 		@Override
