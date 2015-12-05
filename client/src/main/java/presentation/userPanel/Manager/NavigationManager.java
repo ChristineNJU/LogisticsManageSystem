@@ -19,7 +19,7 @@ public class NavigationManager extends Navigation{
 	private ButtonNav system = new ButtonNav("manager","system");
 	
 	private ManagerConst con = new ManagerConst();
-	
+	private ManagerStaffMgt staffM=new ManagerStaffMgt();
 	public NavigationManager(UserVO user) {
 		super(user);
 		initNavButtonArray();
@@ -70,7 +70,9 @@ public class NavigationManager extends Navigation{
 		
 	}
 	private void changeToStaff(){
-		
+		staffM = new ManagerStaffMgt();
+		MainFrame.changeContentPanel(staffM.getPanel());
+		MainFrame.getMainPanel().repaint();
 	}
 	private void changeToInstitution(){
 		
