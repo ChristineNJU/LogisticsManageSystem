@@ -22,9 +22,7 @@ import presentation.table.TableSearch;
 public class FinanceIncome extends FunctionSearch{
 	FinanceService service = new FinanceController();
 	ArrayList<GatheringVO> incomes;
-//	String[] tableH = {"付款日期","金额","付款人","付款账户","条目","备注"};
 	String[] tableH = {"收款日期","收款金额(￥)","收款快递员","快递单号"};
-//	boolean[] isCellEditable = {false,false,false,false,false,false};
 	
 	public DateChooser dateBeginChooser;
 	public DateChooser dateEndChooser;
@@ -35,12 +33,13 @@ public class FinanceIncome extends FunctionSearch{
 	protected void init(){
 		confirmSearch = new ButtonConfirm("查看进项");
 		initUI("查看进项");
+		confirmSearch.setLocation(confirmSearch.getX(), header.getHeight()+header.getY()-10-confirmSearch.getHeight());
 	}
 	
 	@Override
 	protected void initHeader() {
-		dateBeginChooser = new DateChooser(panel,210,120);
-//		dateEndChooser = new DateChooser(panel,480,120);
+		dateBeginChooser = new DateChooser(panel,200,122);
+		dateEndChooser = new DateChooser(panel,420,122);
 		header = new Header();
 		panel.add(header);
 		
@@ -67,9 +66,9 @@ public class FinanceIncome extends FunctionSearch{
 		
 	}
 	
-	private Vector<Vector<String>> getVector(ArrayList<GatheringVO> costs2) {
+	protected Vector<Vector<String>> getVector(ArrayList<GatheringVO> income2) {
 		Vector<Vector<String>> result = new Vector<Vector<String>>();
-        for(GatheringVO temp:costs2){
+        for(GatheringVO temp:income2){
         	Vector<String> vRow = new Vector<String>();
         	vRow.add(temp.getDate()+"");
         	vRow.add(temp.getMoney()+"");
@@ -87,6 +86,7 @@ public class FinanceIncome extends FunctionSearch{
 		String businessLb = ((Header) header).getBusinessLobby();
 		incomes = service.searchGathering(time, businessLb);
 		tableV = new Vector<Vector<String>>();
+//		tableV = service.searchGathering(/, endDate, businesslobby)
 		model = new TableModelSearch(tableV,tableH);
 		table.setModel(model);
 		table.repaint();
@@ -94,21 +94,21 @@ public class FinanceIncome extends FunctionSearch{
 
 	
 	private class Header extends JLabel{
-		LabelHeader dateBegin = new LabelHeader("日期:");
+		LabelHeader dateBegin = new LabelHeader("起始日期:");
 		LabelHeader dateEnd = new LabelHeader("结束日期:");
 		LabelHeader businessLb = new LabelHeader("营业厅:");
 		
 		String[] businessLbName = {"仙林营业厅","鼓楼营业厅","江宁营业厅","雨花营业厅"};
 		public FlatComboBox businessLbChooser = new FlatComboBox(businessLbName);
 		public Header(){
-			this.setBounds(120,115,770,30);
+			this.setBounds(120,120,770,40);
 			dateBegin.setBounds(0,0,80,30);
 			this.add(dateBegin);
-//			dateEnd.setBounds(270,0,80,30);
-//			this.add(dateEnd);
-			businessLb.setBounds(240,0,150,30);
+			dateEnd.setBounds(220,0,80,30);
+			this.add(dateEnd);
+			businessLb.setBounds(430,0,150,30);
 			this.add(businessLb);
-			businessLbChooser.setBounds(320,0,120,30);
+			businessLbChooser.setBounds(495,0,120,30);
 			this.add(businessLbChooser);
 		}
 		public String getBusinessLobby(){
