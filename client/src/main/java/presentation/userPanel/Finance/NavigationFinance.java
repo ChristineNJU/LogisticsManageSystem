@@ -70,8 +70,8 @@ public class NavigationFinance extends Navigation{
 		MainFrame.changeContentPanel(financeAccount.getPanel());
 	}
 	private void changeToIncome(){
-		financeBenefit = new FinanceBenefit();
-//		MainFrame.changeContentPanel(financeBenefit.getPanel());
+		financeIncome = new FinanceIncome();
+		MainFrame.changeContentPanel(financeIncome.getPanel());
 	}
 	private void changeToOutcome(){
 		financeCost = new FinanceCost();
