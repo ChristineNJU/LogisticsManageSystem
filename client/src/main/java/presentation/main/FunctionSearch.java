@@ -22,6 +22,7 @@ public abstract class FunctionSearch {
 	protected PanelContent panel;
 	
 	protected JLabel header;
+	protected JLabel foot;
 //	protected ButtonNew buttonNew;
 	protected ButtonConfirm confirmSearch;
 //	protected ButtonCancel cancel = new ButtonCancel();
@@ -54,7 +55,7 @@ public abstract class FunctionSearch {
 		
 		initTable();
 		
-		
+		initFooter();
 //		cancel.setBounds(confirm.getWidth()+130,200+sPanel.getHeight(),110,30);
 //		cancel.addMouseListener(functionListener);
 //		panel.add(cancel);
@@ -63,6 +64,8 @@ public abstract class FunctionSearch {
 	protected abstract void initHeader();
 	
 	protected abstract void initTable();
+	
+	protected abstract void initFooter();
 	
 	protected abstract void showSearch();
 	

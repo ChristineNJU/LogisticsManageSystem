@@ -35,7 +35,7 @@ public class ScrollPaneTable extends JScrollPane{
 		getHorizontalScrollBar().setUI(new FlatScrollBarUI());
 	}
 	
-	@Override
+
 //	public void repaint(){
 //		int row = table.getRowCount();
 //		if(row > 18){
