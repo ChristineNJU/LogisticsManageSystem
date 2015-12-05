@@ -3,6 +3,7 @@ package businesslogic.Service.Courier;
 import java.util.ArrayList;
 
 import State.AddState;
+import State.CodeState;
 import State.LogisticsType;
 import State.PackingCharge;
 import State.UpdateState;
@@ -61,4 +62,13 @@ public interface CourierService {
 	 * @return 时长
 	 * */
 	public double getDayLength(String starting, String destination);
+	
+	/**
+	 * 检查快递编号合法性
+	 * 
+	 * @param bar_code 快递编号
+	 * @return 合法性
+	 * @see CodeState
+	 * */
+	public CodeState isLegal(String bar_code);
 }

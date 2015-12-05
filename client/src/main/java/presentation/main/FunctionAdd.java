@@ -49,7 +49,7 @@ public abstract class FunctionAdd {
 		
 		initHeader();
 		
-		buttonNew.setLocation(buttonNew.getX(),130+header.HEIGHT);
+		buttonNew.setLocation(buttonNew.getX(),100+header.HEIGHT);
 		buttonNew.addMouseListener(functionListener);
 		panel.add(buttonNew);
 		

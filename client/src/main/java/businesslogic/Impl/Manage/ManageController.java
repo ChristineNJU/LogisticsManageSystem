@@ -8,6 +8,7 @@ import State.UpdateState;
 import VO.BenefitVO;
 import VO.ConstVO;
 import VO.CostVO;
+import VO.DistanceVO;
 import VO.GatheringVO;
 import VO.InstitutionVO;
 import VO.SalaryVO;
@@ -186,7 +187,22 @@ public class ManageController implements ManageService{
 		return state;
 	}
 
-	
-	
+	@Override
+	public ArrayList<DistanceVO> getDistance() {
+		// TODO Auto-generated method stub
+		ManageConst manageConst=new ManageConst();
+		return manageConst.getDistance();
+	}
+
+	@Override
+	public UpdateState updateDistance(DistanceVO distance) {
+		// TODO Auto-generated method stub
+		ManageConst manageConst = new ManageConst();
+		UpdateState state = manageConst.updateDistance(distance);
+		if(state==UpdateState.SUCCESS){
+			SystemLog.addLog("更新距离信息");
+		}
+		return state;
+	}
 
 }

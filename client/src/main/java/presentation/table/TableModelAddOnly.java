@@ -4,8 +4,6 @@ import java.util.Vector;
 
 import javax.swing.table.AbstractTableModel;
 
-import presentation.table.TableModelADUS.ModelListener;
-
 public class TableModelAddOnly extends AbstractTableModel{
 
 	private Vector<Vector<String>> tableValues;
@@ -28,7 +26,13 @@ public class TableModelAddOnly extends AbstractTableModel{
 	
 	public void addEmptyRow(){
 		Vector<String> element = new Vector<String>();
-		for(int i = 0;i < tableValues.get(0).size();i++){
+		int size = 0;
+		try {
+			size = tableValues.get(0).size();
+		}catch(NullPointerException e){
+			size = 0;
+		}
+		for(int i = 0;i < size;i++){
 			element.add(" ");
 		}
 		tableValues.add(element);

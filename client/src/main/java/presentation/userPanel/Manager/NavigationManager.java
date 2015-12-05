@@ -1,6 +1,7 @@
 package presentation.userPanel.Manager;
 
 import presentation.components.ButtonNav;
+import presentation.frame.MainFrame;
 import presentation.main.Navigation;
 import VO.UserVO;
 
@@ -16,6 +17,8 @@ public class NavigationManager extends Navigation{
 	private ButtonNav benefit = new ButtonNav("manager","benefit");
 	private ButtonNav consts = new ButtonNav("manager","consts");
 	private ButtonNav system = new ButtonNav("manager","system");
+	
+	private ManagerConst con = new ManagerConst();
 	
 	public NavigationManager(UserVO user) {
 		super(user);
@@ -85,7 +88,9 @@ public class NavigationManager extends Navigation{
 		
 	}
 	private void changeToConsts(){
-		
+		con = new ManagerConst();
+		MainFrame.changeContentPanel(con.getPanel());
+		MainFrame.getMainPanel().repaint();
 	}
 	private void changeToSystem(){
 		

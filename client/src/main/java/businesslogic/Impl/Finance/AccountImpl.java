@@ -8,17 +8,14 @@ import State.AddState;
 import State.DeleteState;
 import State.UpdateState;
 import VO.AccountVO;
-import businesslogic.Service.Finance.AddAccountService;
-import businesslogic.Service.Finance.DeleteAccountService;
-import businesslogic.Service.Finance.GetAccountService;
-import businesslogic.Service.Finance.UpdateAccountService;
+import businesslogic.Service.Finance.AccountService;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
 import data.Service.Delete.DeleteService;
 import data.Service.Search.SearchAccountService;
 import data.Service.Update.UpdateService;
 
-public class AccountImpl implements AddAccountService, DeleteAccountService, GetAccountService, UpdateAccountService{
+public class AccountImpl implements AccountService{
 
 	@Override
 	public UpdateState updateAccount(AccountVO account) {
@@ -49,14 +46,16 @@ public class AccountImpl implements AddAccountService, DeleteAccountService, Get
 	public ArrayList<AccountVO> searchAccount(String name) {
 		// TODO Auto-generated method stub
 		ArrayList<AccountVO> result=new ArrayList<AccountVO>();
+		if(!name.equals("%%")){
 		try{
 			SearchAccountService accountSearch=(SearchAccountService) Naming.lookup(RMIHelper.SEARCH_ACCOUNT_IMPL);
+			
 			ArrayList<String> requirementName=new ArrayList<String>();
 			ArrayList<String> requirementID=new ArrayList<String>();
 			requirementName.add("account_name='"+name+"'");
 			try{
 				int id=Integer.parseInt(name);
-				requirementID.add("account_id="+id+"");
+				requirementID.add("account_id ="+id);
 				ArrayList<AccountPO> accountListID=accountSearch.searchAccount(requirementID);
 				for(int i=0;i<accountListID.size();i++){
 					result.add(new AccountVO(accountListID.get(i)));
@@ -72,6 +71,22 @@ public class AccountImpl implements AddAccountService, DeleteAccountService, Get
 		} catch(Exception ex){
 			System.out.println(ex.getMessage());
 			ex.printStackTrace();
+		}
+		}
+		else {
+			ArrayList<String> requirement=new ArrayList<String>();
+			try{
+			requirement.add("account_name like '%%'");
+			SearchAccountService accountSearch=(SearchAccountService) Naming.lookup(RMIHelper.SEARCH_ACCOUNT_IMPL);
+			ArrayList<AccountPO> accountListName=accountSearch.searchAccount(requirement);
+			for(int i=0;i<accountListName.size();i++){
+				result.add(new AccountVO(accountListName.get(i)));
+			}
+			}
+			catch(Exception ex){
+				System.out.println(ex.getMessage());
+				ex.printStackTrace();
+			}
 		}
 		return result;
 	}

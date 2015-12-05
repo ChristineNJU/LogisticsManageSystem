@@ -77,7 +77,7 @@ public class SearchDriverInfoImpl extends UnicastRemoteObject implements SearchD
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-//			e.printStackTrace();
+			e.printStackTrace();
 			System.out.println("从数据库提取DriverInfoPO对象失败");
 			return result;
 		}

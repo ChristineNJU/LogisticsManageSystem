@@ -3,6 +3,7 @@ package businesslogic.Impl.Courier;
 import java.util.ArrayList;
 
 import State.AddState;
+import State.CodeState;
 import State.LogisticsType;
 import State.PackingCharge;
 import State.UpdateState;
@@ -58,8 +59,14 @@ public class CourierController implements CourierService{
 	public double getDayLength(String starting, String destination) {
 		// TODO Auto-generated method stub
 		CourierImpl courier=new CourierImpl();
-		
-		return 0;
+		return courier.getDayLength(starting, destination);
+	}
+
+	@Override
+	public CodeState isLegal(String bar_code) {
+		// TODO Auto-generated method stub
+		CourierImpl courier=new CourierImpl();
+		return courier.isLegal(bar_code);
 	}
 	
 }
