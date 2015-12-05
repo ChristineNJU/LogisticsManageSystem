@@ -6,6 +6,7 @@ import java.util.Vector;
 import javax.swing.JLabel;
 
 import VO.CostVO;
+import VO.GatheringVO;
 import presentation.components.ButtonConfirm;
 import presentation.components.DateChooser;
 import presentation.components.LabelHeader;
@@ -18,7 +19,8 @@ import presentation.table.TableSearch;
 public class FinanceIncomeAndOutcome extends FinanceIncome{
 
 	ArrayList<CostVO> costs;
-	String[] tableH2 = {"付款日期","金额","付款人","付款账户","条目","备注"};
+	ArrayList<GatheringVO> incomes;
+	
 	
 	public DateChooser dateBeginChooser;
 	public DateChooser dateEndChooser;
@@ -29,6 +31,11 @@ public class FinanceIncomeAndOutcome extends FinanceIncome{
 	private TableSearch table2;
 
 	public FinanceIncomeAndOutcome(){
+		
+	}
+	
+	@Override
+	protected void init(){
 		confirmSearch = new ButtonConfirm("查看成本收益");
 		initUI("查看成本收益");
 	}
@@ -49,10 +56,11 @@ public class FinanceIncomeAndOutcome extends FinanceIncome{
 		table = new TableSearch(model);
 		sPanel = new ScrollPaneTable(table);
 		sPanel.setLocation(sPanel.getX(),header.getHeight()+120);
-		sPanel.setSize(sPanel.getWidth(),300);
+		sPanel.setSize(sPanel.getWidth(),200);
 		panel.add(sPanel);
 		
 		tableV2 = new Vector<Vector<String>>();
+		String[] tableH2 = {"付款日期","金额","付款人","付款账户","条目","备注"};
 		model2 = new TableModelSearch(tableV2,tableH2);
 		table2 = new TableSearch(model2);
 		sPanel2 = new ScrollPaneTable(table2);
@@ -63,7 +71,8 @@ public class FinanceIncomeAndOutcome extends FinanceIncome{
 
 	@Override
 	protected void initFooter() {
-		foot = new Footer();
+//		System.out.println("construct");
+		foot = new FooterNew();
 		panel.add(foot);
 		
 	}
@@ -71,7 +80,14 @@ public class FinanceIncomeAndOutcome extends FinanceIncome{
 
 	@Override
 	protected void showSearch() {
-		// TODO Auto-generated method stub
+		String timeBegin = dateBeginChooser.getTime();
+		String timeEnd = dateEndChooser.getTime();
+		if(timeBegin.compareTo(timeEnd) >= 0){
+			showError("开始时间需要在结束时间之前");
+		}else{
+			costs = service.searchCost(timeBegin, timeEnd);
+			// incomes = service.searchGathering(date, businesslobby)
+		}
 		
 	}
 	
@@ -96,12 +112,28 @@ public class FinanceIncomeAndOutcome extends FinanceIncome{
 //		}
 	}
 	
-	private class Footer extends JLabel{
-		public Footer(){
-			setBounds(120,table.getHeight()+200,300,40);
-			setText("合计："+getTotal()+"￥");
+	public double getTotalCost(){
+		double total = 0;
+		for(int i = 0; i < model2.getRowCount();i++){
+			total += Double.valueOf((String)model.getValueAt(i, 1));
+		}
+		return total;
+	}
+	
+	public String getBenefitDetail(){
+		double income = super.getTotalIncome();
+		double cost = getTotalCost();
+		double benefit = income - cost;
+		return "总收入："+benefit+"    总支出:"+cost+"     总收入:"+income;
+	}
+	
+	private class FooterNew extends JLabel{
+		public FooterNew(){
+//			System.out.println("footer in child"+table2.getHeight()+table2.getY()+200);
+			setBounds(120,600,600,40);
+			setText(getBenefitDetail());
 			setForeground(ColorPallet.Pink);
-			setFont(FontSet.eighteen);
+			setFont(FontSet.twenty);
 		}
 	}
 

@@ -55,6 +55,7 @@ public abstract class FunctionSearch {
 		
 		initTable();
 		
+//		System.out.println("footer constructor in father");
 		initFooter();
 //		cancel.setBounds(confirm.getWidth()+130,200+sPanel.getHeight(),110,30);
 //		cancel.addMouseListener(functionListener);

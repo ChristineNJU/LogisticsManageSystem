@@ -29,7 +29,10 @@ public class FinanceIncome extends FunctionSearch{
 	public DateChooser dateBeginChooser;
 	public DateChooser dateEndChooser;
 	public FinanceIncome(){
-//		System.out.println("     ");
+		init();
+	}
+	
+	protected void init(){
 		confirmSearch = new ButtonConfirm("查看进项");
 		initUI("查看进项");
 	}
@@ -76,13 +79,7 @@ public class FinanceIncome extends FunctionSearch{
 		return result;
 	}
 
-	public int getTotal(){
-		int total = 0;
-		for(int i = 0; i < model.getRowCount();i++){
-			total += Integer.parseInt((String)model.getValueAt(i, 1));
-		}
-		return total;
-	}
+	
 
 	@Override
 	protected void showSearch() {
@@ -120,10 +117,18 @@ public class FinanceIncome extends FunctionSearch{
 		}
 	}
 
+	public double getTotalIncome(){
+		double total = 0;
+		for(int i = 0; i < model.getRowCount();i++){
+			total += Double.valueOf((String)model.getValueAt(i, 1));
+		}
+		return total;
+	}
+	
 	private class Footer extends JLabel{
 		public Footer(){
 			setBounds(120,table.getHeight()+200,300,40);
-			setText("合计："+getTotal()+"￥");
+			setText("合计："+getTotalIncome()+"￥");
 			setForeground(ColorPallet.Pink);
 			setFont(FontSet.eighteen);
 //			int total = getTotal();
