@@ -70,11 +70,11 @@ public class MainFrame {
 
 //		changeToBusinesslobby();
 //		changeToBusinesslobby();
-		changeToFinance();
+//		changeToFinance();
 //		changeToCourier()
 //		changeToFinance();
-		changeToManager();
-//	changeToManager();
+//		changeToManager();
+	changeToManager();
 //		changeToMediumCenter();
 //		changeToRepository();
 //		changeToAdmin()contentPanel;
