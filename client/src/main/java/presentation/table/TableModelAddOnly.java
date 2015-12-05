@@ -41,7 +41,8 @@ public class TableModelAddOnly extends AbstractTableModel{
 	
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
-		return isCellEditable[columnIndex];
+//		return isCellEditable[columnIndex];
+		return true;
 	}
 	
 	@Override

@@ -1,6 +1,7 @@
 package presentation.main;
 
 import State.InstitutionType;
+import State.LogisticsState;
 import State.LogisticsType;
 import State.PackingCharge;
 import State.UserRole;
@@ -22,7 +23,20 @@ public class Translater {
 		}
 	}
 	
-	
+	public static String getChineseLogisticsState(LogisticsState state){
+		switch(state){
+		case INTACT:
+			return "完整";
+		case LOST:
+			return "丢失";
+		case DAMAGED:
+			return "损坏";
+		default:
+			return "完整";
+			
+		}
+		
+	}
 	public static InstitutionType getInstitutionType(String s){
 		switch(s){
 		case "营业厅":
@@ -105,4 +119,17 @@ public class Translater {
  			return PackingCharge.PAPER_CASE;
  		}
  	}
+ 	public static LogisticsState getLogisticsState(String s){
+ 		switch(s){
+ 		case "完整":
+ 			return LogisticsState.INTACT;
+ 		case "丢失":
+ 			return LogisticsState.LOST;
+ 		case "损坏":
+ 			return LogisticsState.DAMAGED;
+ 		default:
+ 			return LogisticsState.INTACT;
+ 		}
+ 	}
+ 	
 }

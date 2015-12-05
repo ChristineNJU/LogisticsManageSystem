@@ -102,13 +102,13 @@ public class TableModelADUS extends AbstractTableModel {
 	
 	public void addEmptyRow(){
 		Vector<String> element = new Vector<String>();
-		int size = 0;
-		try {
-			size = tableValues.get(0).size();
-		}catch(Exception e){
-			size = 0;
-		}
-		for(int i = 0;i < size;i++){
+//		int size = 0;
+//		try {
+//			size = tableValues.get(0).size();
+//		}catch(Exception e){
+//			size = 0;
+//		}
+		for(int i = 0;i < initialColumnCount;i++){
 			element.add(" ");
 		}
 		tableValues.add(element);
@@ -140,8 +140,12 @@ public class TableModelADUS extends AbstractTableModel {
 
 	@Override
 	public void setValueAt(Object value, int row, int column) {
+//		if(row >= initialRowCount){
+//			addEmptyRow();
+//		}
 		if(column < getColumnCount()){
 			tableValues.get(row).setElementAt((String) value,column);
+			System.out.println("set value at   "+row+"   "+column);
 			fireTableCellUpdated(row, column);
 		}else
 			return;
