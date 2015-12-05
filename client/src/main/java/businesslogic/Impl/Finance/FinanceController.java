@@ -118,6 +118,19 @@ public class FinanceController implements FinanceService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public ArrayList<CostVO> searchCost(String time) {
+		// TODO Auto-generated method stub
+		CostImpl costC=new CostImpl();
+		return costC.searchCost(time);
+	}
+	@Override
+	public ArrayList<GatheringVO> searchGathering(String startDate,
+			String endDate, String businesslobby) {
+		// TODO Auto-generated method stub
+		SundryImpl sundryC=new SundryImpl();
+		return sundryC.searchGathering(startDate, endDate, businesslobby);
+	}
 	
 	
 }

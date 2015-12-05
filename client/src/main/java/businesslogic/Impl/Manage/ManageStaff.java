@@ -82,9 +82,12 @@ public class ManageStaff implements ManageStaffService{
 				return result;
 			}
 			
+			
+			
 			else{
 				for(int i=0;i<searchResultId.size();i++){
 				StaffVO temp=new StaffVO(searchResultId.get(i));
+				System.out.println(searchResultId.get(i).getInstitution());
 				result.add(temp);
 				}
 			}
@@ -94,7 +97,8 @@ public class ManageStaff implements ManageStaffService{
 			System.out.println("error");
 			e.printStackTrace();
 		}
-		System.out.println("searchStaff "+result.size());
+//		System.out.println("searchStaff "+result.size());
+//		System.out.println(result.get(0).getInsitution());
 		return result;
 	}
 

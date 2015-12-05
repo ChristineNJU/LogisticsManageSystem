@@ -82,6 +82,14 @@ public interface FinanceService {
 	public ArrayList<CostVO> searchCost(String time_start, String time_end);
 	
 	/**
+	 * 查询出款单
+	 * 
+	 * @param time 截止日期
+	 * @return CostVO的ArrayList
+	 * */
+	public ArrayList<CostVO> searchCost(String time);
+	
+	/**
 	 * 查询装车单
 	 * 
 	 * @param time_start 起始日期
@@ -98,6 +106,15 @@ public interface FinanceService {
 	 * @return GatheringVO的ArrayList
 	 * */
 	public ArrayList<GatheringVO> searchGathering(String date, String businesslobby);
+	
+	/**
+	 * visit gatherings
+	 * 
+	 * @param time_start 起始日期
+	 * @param time_end 截止日期
+	 * @return ArrayList of GatheringVOs
+	 * */
+	public ArrayList<GatheringVO> searchGathering(String startDate, String endDate, String businesslobby);
 	
 	/**
 	 * 查询日志

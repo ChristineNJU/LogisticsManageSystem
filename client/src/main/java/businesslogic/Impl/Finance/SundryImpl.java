@@ -143,4 +143,40 @@ public class SundryImpl implements GetEntruckingService,GetGatheringService,GetL
 		return entrucking;
 	}
 
+	@Override
+	public ArrayList<GatheringVO> searchGathering(String startDate,
+			String endDate, String businesslobby) {
+		// TODO Auto-generated method stub
+		ArrayList<GatheringVO> gathering=new ArrayList<GatheringVO>();
+		try{
+			SearchGatheringService gatheringSearch=(SearchGatheringService) Naming.lookup(RMIHelper.SEARCH_GATHERING_IMPL);
+			SearchInstitutionInfoService instiSearch=(SearchInstitutionInfoService) Naming.lookup(RMIHelper.SEARCH_INSTITUTION_IMPL);
+			ArrayList<String> requirementInsti=new ArrayList<String>();
+			ArrayList<String> requirementGathering=new ArrayList<String>();
+			ArrayList<String> institutionID=new ArrayList<String>();
+			ArrayList<InstitutionPO> institutionList=new ArrayList<InstitutionPO>();
+			requirementInsti.add("city like '%%'");
+			requirementGathering.add("date between '"+startDate+"' and '"+endDate+"'");
+			institutionList=instiSearch.searchInstitutionInfo(requirementInsti);
+			for(int i=0;i<institutionList.size();i++){
+				if(businesslobby.equals(institutionList.get(i).getInstitutionName())||businesslobby.equals(institutionList.get(i).getInstitutionNumber())){
+					institutionID.add(institutionList.get(i).getInstitutionNumber());
+				}
+			}
+			for(int i=0;i<institutionID.size();i++){
+				ArrayList<GatheringPO> temp=gatheringSearch.searchGathering(institutionID.get(i), requirementGathering);
+				for(int j=0;j<temp.size();j++){
+					gathering.add(new GatheringVO(temp.get(j)));
+				}
+				
+			}
+			
+		} catch (Exception ex){
+			System.out.println(ex.getMessage());
+			ex.printStackTrace();
+		}
+		// TODO Auto-generated method stub
+		return gathering;
+	}
+
 }
