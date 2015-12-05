@@ -30,7 +30,7 @@ public class BusinessLbGathering extends FunctionAdd{
 	ArrayList<GatheringVO> Gathering;
 	
 	
-	String[] tableH = {"快递单号","收款日期","收款金额","收款快递员"};
+	String[] tableH = {"快递单号","收款日期","收款金额","收款快递员",""};
 	boolean[] isCellEditable = {false,false,false,false};
 	
 	public BusinessLbGathering(){
