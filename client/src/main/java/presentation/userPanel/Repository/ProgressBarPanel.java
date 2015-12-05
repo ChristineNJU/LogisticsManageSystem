@@ -104,4 +104,12 @@ public class ProgressBarPanel {
 	public JPanel getPanel() {
 		return panel;
 	}
+	
+	public boolean isLeak() {
+		if(a>=95||c>=95||r>=95){
+			return true;
+		}else{
+			return false;
+		}
+	}
 }

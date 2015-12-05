@@ -4,12 +4,15 @@ import java.rmi.Naming;
 import java.util.ArrayList;
 
 import PO.RemovalPO;
+import PO.WareHousePO;
 import State.AddState;
 import VO.RemovalVO;
 import businesslogic.Service.Repository.AddRemovalService;
 import businesslogic.SystemLog.SystemLog;
+import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
+import data.Service.Delete.DeleteService;
 
 public class RemovalImpl implements AddRemovalService{
 
@@ -19,8 +22,12 @@ public class RemovalImpl implements AddRemovalService{
 		AddState state=AddState.SUCCESS;
 		try{
 			AddService removalAdd=(AddService) Naming.lookup(RMIHelper.ADD_IMPL);
+			DeleteService delete = (DeleteService) Naming.lookup(RMIHelper.DELETE_IMPL);
 			for(int i=0;i<re.size();i++){
-				state=removalAdd.add(new RemovalPO(re.get(i),SystemLog.getInstitutionId()));
+				RemovalPO po = new RemovalPO(re.get(i),SystemLog.getInstitutionId());
+				state=removalAdd.add(po);
+				WareHousePO wareHouse = new WareHousePO(re.get(i), URLHelper.getWareHouseURL(SystemLog.getInstitutionId()));
+				delete.delete(wareHouse);
 //				state=removalAdd.add(new RemovalPO(re.get(i),"02500"));
 			}
 		} catch (Exception ex){

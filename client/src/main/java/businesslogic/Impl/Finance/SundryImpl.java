@@ -93,6 +93,9 @@ public class SundryImpl implements GetEntruckingService,GetGatheringService,GetL
 				if(businesslobby.equals(institutionList.get(i).getInstitutionName())||businesslobby.equals(institutionList.get(i).getInstitutionNumber())){
 					institutionID.add(institutionList.get(i).getInstitutionNumber());
 				}
+				else if(businesslobby.equals("%%")){
+					institutionID.add(institutionList.get(i).getInstitutionNumber());
+				}
 			}
 			for(int i=0;i<institutionID.size();i++){
 				ArrayList<GatheringPO> temp=gatheringSearch.searchGathering(institutionID.get(i), requirementGathering);
@@ -160,6 +163,9 @@ public class SundryImpl implements GetEntruckingService,GetGatheringService,GetL
 			institutionList=instiSearch.searchInstitutionInfo(requirementInsti);
 			for(int i=0;i<institutionList.size();i++){
 				if(businesslobby.equals(institutionList.get(i).getInstitutionName())||businesslobby.equals(institutionList.get(i).getInstitutionNumber())){
+					institutionID.add(institutionList.get(i).getInstitutionNumber());
+				}
+				else if(businesslobby.equals("%%")){
 					institutionID.add(institutionList.get(i).getInstitutionNumber());
 				}
 			}

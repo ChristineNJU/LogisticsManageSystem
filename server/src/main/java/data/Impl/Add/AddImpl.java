@@ -30,7 +30,7 @@ public class AddImpl extends UnicastRemoteObject implements AddService {
 		
 		try {
 			Statement s = conn.createStatement();
-			
+						
 			boolean mark = s.execute("INSERT INTO "+statistics.getURL()+" VALUES("+statistics.toString()+")");
 			
 			conn.commit();

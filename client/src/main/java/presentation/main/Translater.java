@@ -5,6 +5,7 @@ import State.InstitutionType;
 import State.LogisticsState;
 import State.LogisticsType;
 import State.PackingCharge;
+import State.StorageArea;
 import State.UserRole;
 
 public class Translater {
@@ -96,44 +97,7 @@ public class Translater {
 		}
 	}
 
-	public static LogisticsType getLogisticsType(String s) {
-		switch (s) {
-		case "标准快递":
-			return LogisticsType.STANDARD;
-		case "经济快递":
-			return LogisticsType.ECONOMIC;
-		case "次晨特快":
-			return LogisticsType.EXPRESS;
-		default:
-			return LogisticsType.STANDARD;
-		}
-	}
 
-	public static PackingCharge getPackingCharge(String s) {
-		switch (s) {
-		case "木箱":
-			return PackingCharge.WOODEN_CASE;
-		case "纸箱":
-			return PackingCharge.PAPER_CASE;
-		case "快递袋":
-			return PackingCharge.COURISE_BAG;
-		default:
-			return PackingCharge.PAPER_CASE;
-		}
-	}
-
-	public static LogisticsState getLogisticsState(String s) {
-		switch (s) {
-		case "完整":
-			return LogisticsState.INTACT;
-		case "丢失":
-			return LogisticsState.LOST;
-		case "损坏":
-			return LogisticsState.DAMAGED;
-		default:
-			return LogisticsState.INTACT;
-		}
-	}
 
 	public String getChineseForCostType(CostType type) {
 		switch (type) {
@@ -164,5 +128,60 @@ public class Translater {
 			return CostType.reward;
 		}
 	}
+
+
+ 	
+ 	public static LogisticsType getLogisticsType(String s) {
+ 		switch(s){
+ 		case "标准快递":
+ 			return LogisticsType.STANDARD;
+ 		case "经济快递":
+ 			return LogisticsType.ECONOMIC;
+ 		case "次晨特快":
+ 			return LogisticsType.EXPRESS;
+ 		default:
+ 			return LogisticsType.STANDARD;
+ 		}
+ 	}
+ 	
+ 	public static PackingCharge getPackingCharge(String s) {
+ 		switch(s){
+ 		case "木箱":
+ 			return PackingCharge.WOODEN_CASE;
+ 		case "纸箱":
+ 			return PackingCharge.PAPER_CASE;
+ 		case "快递袋":
+ 			return PackingCharge.COURISE_BAG;
+ 		default:
+ 			return PackingCharge.PAPER_CASE;
+ 		}
+ 	}
+ 	public static LogisticsState getLogisticsState(String s){
+ 		switch(s){
+ 		case "完整":
+ 			return LogisticsState.INTACT;
+ 		case "丢失":
+ 			return LogisticsState.LOST;
+ 		case "损坏":
+ 			return LogisticsState.DAMAGED;
+ 		default:
+ 			return LogisticsState.INTACT;
+ 		}
+ 	}
+ 	
+ 	public static StorageArea getStorageArea(String s) {
+ 		switch(s){
+ 		case "航空区":
+ 			return StorageArea.AIR_TRANSPORTATION;
+ 		case "汽运区":
+ 			return StorageArea.CAR_TRANSPORTATION;
+ 		case "铁路区":
+ 			return StorageArea.RAILWAY_TRANSPORTATION;
+ 		case "机动区":
+ 			return StorageArea.MANOEUVERING_AREA;
+ 		default:
+ 			return StorageArea.MANOEUVERING_AREA;
+ 		}
+ 	}
 
 }

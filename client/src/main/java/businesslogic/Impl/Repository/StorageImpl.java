@@ -4,6 +4,7 @@ import java.rmi.Naming;
 import java.util.ArrayList;
 
 import PO.StoragePO;
+import PO.WareHousePO;
 import State.AddState;
 import State.StorageState;
 import VO.StorageVO;
@@ -26,6 +27,7 @@ public class StorageImpl implements StorageService {
 			WareHouseService wareManage=(WareHouseService) Naming.lookup(RMIHelper.WAREHOUSE_IMPL);
 			for(int i=0;i<storage.size();i++){
 				tempState=storageAdd.add(new StoragePO(storage.get(i), SystemLog.getInstitutionId()));
+				storageAdd.add(new WareHousePO(storage.get(i), URLHelper.getWareHouseURL(SystemLog.getInstitutionId())));
 				if(wareManage.getAmount(URLHelper.getWareHouseURL(SystemLog.getInstitutionId()),storage.get(i).getAreaCode())>1000){
 					state=StorageState.ALARM;
 					break;
