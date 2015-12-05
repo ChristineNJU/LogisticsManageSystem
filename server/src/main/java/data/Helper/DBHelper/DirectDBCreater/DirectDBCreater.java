@@ -118,7 +118,7 @@ public class DirectDBCreater {
 //				createTable_Benefit();
 //				deleteTable(URLHelper.getBenefitURL());
 				
-//				createTable_Cost();
+				createTable_Cost();
 //				deleteTable(URLHelper.getCostURL());
 				
 //				createTable_WareHouse("02500");

@@ -63,18 +63,11 @@ public class MainFrame {
 //		frame.add(inquiry.getPanel());
 //		panel.add(inquiry.getPanel());
 
-		changeToCourier();
-
-//		changeToBusinesslobby();
+//		changeToCourier();
 //		changeToBusinesslobby();
 //		changeToFinance();
 //		changeToCourier();
-<<<<<<< HEAD
-		changeToBusinesslobby();
-=======
-//		changeToBusinesslobby();
->>>>>>> 161b28aa6779c7f4c3e93c9e036c9b849a04bfb4
-//		changeToFinance();
+		changeToFinance();
 //		changeToManager();
 //		changeToMediumCenter();
 //		changeToRepository();
