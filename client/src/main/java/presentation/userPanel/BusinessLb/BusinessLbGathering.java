@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
 import presentation.components.LabelHeader;
+import presentation.components.TextFieldHeader;
 import presentation.main.FunctionAdd;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
@@ -32,6 +33,8 @@ public class BusinessLbGathering extends FunctionAdd{
 	
 	String[] tableH = {"快递单号","收款日期","收款金额","收款快递员",""};
 	boolean[] isCellEditable = {false,false,false,false};
+	
+//	public TextFieldHeader gatheringIdInput = new TextFieldHeader();
 	
 	public BusinessLbGathering(){
 		super.buttonNew = new ButtonNew("新增收款单");
@@ -59,8 +62,8 @@ public class BusinessLbGathering extends FunctionAdd{
 		
 		// 测试用
 		try {ArrayList<String> barCodeList = new ArrayList<String>();
-			barCodeList.add("0000000001");
-			GatheringVO gathering1 = new GatheringVO(sdf.parse("2015-12-3 10:20:20"),20,"张斯栋是二货",barCodeList);
+			barCodeList.add("0000000004");
+			GatheringVO gathering1 = new GatheringVO(sdf.parse("2015-12-3 10:15:13"),20,"张斯栋是二货",barCodeList);
 //			GatheringVO gathering2 = new GatheringVO(sdf.parse("2015-12-3 10:20:20"),20,"张斯栋是傻逼",barCodeList);
 //			GatheringVO gathering3 = new GatheringVO(sdf.parse("2015-12-3 10:20:20"),20,"张斯栋是二货",barCodeList);
 //			GatheringVO gathering4 = new GatheringVO(sdf.parse("2015-12-3 10:20:20"),20,"张斯栋是二货",barCodeList);
@@ -131,19 +134,24 @@ public class BusinessLbGathering extends FunctionAdd{
 	}
 	
 	private class Header extends JLabel{
-		LabelHeader businessLobbyID = new LabelHeader("营业厅编号");
-		LabelHeader gatheringId = new LabelHeader("收款单编号");
+		LabelHeader businessLobbyID = new LabelHeader("营业厅编号:");
+		//LabelHeader gatheringId = new LabelHeader("收款单编号:");
+		
+		LabelHeader businessLobbyIDInput = new LabelHeader(SystemLog.getInstitutionId());
 		public Header(){
 			this.setBounds(120,100,680,60);
 			this.setBackground(null);
-			businessLobbyID.addInfo(SystemLog.getInstitutionId());
-			gatheringId.addInfo("");
 			
-			businessLobbyID.setBounds(0,0,400,30);
-			gatheringId.setBounds(0,35,400,30);
+			
+			businessLobbyID.setBounds(0,0,105,30);
+//			gatheringId.setBounds(0,35,105,30);
+			businessLobbyIDInput.setBounds(110, 0, 130, 30);
+//			gatheringIdInput.setBounds(110, 35, 130, 30);
 			
 			add(businessLobbyID);
-			add(gatheringId);
+		//	add(gatheringId);
+			add(businessLobbyIDInput);
+//			add(gatheringIdInput);
 		}
 	}
 }

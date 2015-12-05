@@ -1,9 +1,11 @@
 package presentation.main;
 
+import State.CostType;
 import State.InstitutionType;
 import State.LogisticsState;
 import State.LogisticsType;
 import State.PackingCharge;
+import State.TransferType;
 import State.UserRole;
 
 public class Translater {
@@ -34,6 +36,35 @@ public class Translater {
 		default:
 			return "完整";
 			
+		}
+		
+	}
+	
+	public static String getChineseCostType(CostType type){
+		switch(type){
+		case rent:
+			return "租金";
+		case freight:
+			return "运费";
+		case salary:
+			return "薪水";
+		case reward:
+			return "奖金";
+		default:
+			return "薪水";
+		}
+	}
+	
+	public static String getChineseTransferType(TransferType type){
+		switch(type){
+		case AIR:
+			return "航空运输";
+		case RAILWAY:
+			return "铁路运输";
+		case CAR:
+			return "公路运输";
+		default:
+			return "公路运输";
 		}
 		
 	}
@@ -132,4 +163,30 @@ public class Translater {
  		}
  	}
  	
+ 	public static CostType getCostType(String s){
+ 		switch(s){
+ 		case "租金":
+ 			return CostType.rent;
+ 		case "运费":
+ 			return CostType.freight;
+ 		case "薪水":
+ 			return CostType.salary;
+ 		case "奖金":
+ 			return CostType.reward;
+ 		default:
+ 			return CostType.salary;
+ 		}
+ 	}
+ 	public static TransferType getTransferType(String s){
+ 		switch(s){
+ 		case"航空运输":
+ 			return TransferType.AIR;
+ 		case"铁路运输":
+ 			return TransferType.RAILWAY;
+ 		case"公路运输":
+ 			return TransferType.CAR;
+ 		default:
+ 			return TransferType.CAR;
+ 		}
+ 	}
 }

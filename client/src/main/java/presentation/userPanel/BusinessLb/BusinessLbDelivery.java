@@ -28,7 +28,7 @@ public class BusinessLbDelivery extends FunctionAdd{
 	BsLbService service = new BusinessLobbyController();
 	ArrayList<DeliveryVO> needDelivery;
 	
-	String[] tableH = {"快递单号","日期","派件人"};
+	String[] tableH = {"快递单号","日期","派件人",""};
 	boolean[] isCellEditable = {false,false,false};
 	
 	public  BusinessLbDelivery() {
@@ -53,8 +53,8 @@ public class BusinessLbDelivery extends FunctionAdd{
 		//测试用
 		try {
 			ArrayList<String> id = new ArrayList<String>();
-			id.add("0000000001");
-			DeliveryVO delivery0 = new DeliveryVO(sdf.parse("2015-12-4 10:27:30"), id, "张斯栋");
+			id.add("0000000009");
+			DeliveryVO delivery0 = new DeliveryVO(sdf.parse("2015-12-4 10:27:40"), id, "张斯栋");
 			needDelivery.add(delivery0);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
@@ -111,18 +111,18 @@ public class BusinessLbDelivery extends FunctionAdd{
 		return result;
 	}
 	public class Header extends JLabel{
-		LabelHeader businessLobbyID = new LabelHeader("营业厅编号");
+//		LabelHeader businessLobbyID = new LabelHeader("营业厅编号");
 	//	LabelHeader gatheringId = new LabelHeader( "装运单编号 ");
 		public Header(){
 			this.setBounds(120,100,680,60);
 			this.setBackground(null);
-			businessLobbyID.addInfo(SystemLog.getInstitutionId());
+//			businessLobbyID.addInfo(SystemLog.getInstitutionId());
 //			gatheringId.addInfo("");
 			
-			businessLobbyID.setBounds(0,0,400,30);
+//			businessLobbyID.setBounds(0,0,400,30);
 //			gatheringId.setBounds(0,35,400,30);
 			
-			add(businessLobbyID);
+//			add(businessLobbyID);
 //			add(gatheringId);
 		}
 	}

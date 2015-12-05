@@ -58,6 +58,7 @@ public abstract class FunctionAdd {
 		
 		confirm.setLocation(120,200+sPanel.getHeight());
 		confirm.addMouseListener(functionListener);
+//		System.out.println("add listener");
 		panel.add(confirm);
 		cancel.setBounds(confirm.getWidth()+130,200+sPanel.getHeight(),110,30);
 		cancel.addMouseListener(functionListener);
@@ -159,6 +160,7 @@ public abstract class FunctionAdd {
 				newItem();
 			}
 			if(source.equals(confirm)){
+//				System.out.println("in listener");
 				confirmAll();
 			}
 		}

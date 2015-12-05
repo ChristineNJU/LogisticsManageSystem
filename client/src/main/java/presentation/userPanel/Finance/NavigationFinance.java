@@ -75,7 +75,7 @@ public class NavigationFinance extends Navigation{
 	}
 	private void changeToOutcome(){
 		financeCost = new FinanceCost();
-//		MainFrame.changeContentPanel(financeCost.getPanel());
+		MainFrame.changeContentPanel(financeCost.getPanel());
 	}
 	private void changeToOutcomeAndIncome(){
 		financeIncomeAndOutcome = new FinanceIncomeAndOutcome();

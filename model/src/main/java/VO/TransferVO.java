@@ -32,6 +32,7 @@ public class TransferVO extends VO {
 	public TransferVO(TransferPO po) {
 		this.date = po.getDate();
 		this.listId = po.getTranferNumber();
+		this.transferId = po.getTransportID();
 		this.departure = po.getStarting();
 		this.destination = po.getDestination();
 		this.containerNumber = po.getContainerNumber();
