@@ -6,20 +6,20 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Vector;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import VO.EntruckingVO;
+import VO.VO;
+import businesslogic.Impl.MediumCenter.MediumCenterController;
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
 import presentation.components.LabelHeader;
+import presentation.components.TextField;
 import presentation.main.FunctionAdd;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
-import presentation.userPanel.BusinessLb.BusinessLbEntrucking.Header;
-import VO.EntruckingVO;
-import VO.VO;
-import businesslogic.Impl.MediumCenter.MediumCenterController;
-import businesslogic.SystemLog.SystemLog;
 
 public class MediumCtEntrucking extends FunctionAdd{
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -30,6 +30,13 @@ public class MediumCtEntrucking extends FunctionAdd{
 	
 	String[] tableH = {"快递单号","日期","目的地","车辆编号","押运人","货物监督员","数量","装运单号"};
 	boolean[] isCellEditable = {false,false,false,false,false,false,false};
+	
+	public TextField idInput  = new TextField();
+	public TextField carIdInput = new TextField();
+	public TextField superCarGoInput = new TextField();
+	public TextField guardInput = new TextField();
+	public TextField destinationInput = new TextField();
+	public TextField costInput = new TextField();
 	
 	public MediumCtEntrucking(){
 		super.buttonNew = new ButtonNew("新增装运单");
@@ -92,7 +99,8 @@ public class MediumCtEntrucking extends FunctionAdd{
 					ArrayList<String> tempbarCodeList = new ArrayList<String>();
 					tempbarCodeList.add(vector.get(0));
 					Date tempdate = sdf.parse(vector.get(1));
-					String tempdestination = vector.get(2);
+//					String tempdestination = vector.get(2);
+					String tempdestination = destinationInput.getText();
 					String tempcarnumber = vector.get(3);
 					String tempname = vector.get(4);
 					String tempsupercargo = vector.get(5);
@@ -127,19 +135,38 @@ public class MediumCtEntrucking extends FunctionAdd{
 		return result;
 	}
 	public class Header extends JLabel{
-		LabelHeader businessLobbyID = new LabelHeader("中转中心编号");
-		LabelHeader gatheringId = new LabelHeader("装运单编号");
+		LabelHeader mediumCenterId = new LabelHeader("中转中心编号");
+		LabelHeader date = new LabelHeader("装 车 日 期");
+		LabelHeader id = new LabelHeader("装车单编号");
+		LabelHeader carId = new LabelHeader("车辆代号");
+		LabelHeader superCarGo = new LabelHeader("");
+		LabelHeader guard = new LabelHeader("");
+		LabelHeader destination = new LabelHeader("");
+		LabelHeader cost = new LabelHeader("");
+		
+		
+		
+//		ImageIcon back = new ImageIcon("src/graphics/aomiao/MediumCenterEntrucking.png");
+		
 		public Header(){
-			this.setBounds(120,100,680,60);
-			this.setBackground(null);
-			businessLobbyID.addInfo(SystemLog.getInstitutionId());
-			gatheringId.addInfo("");
+			this.setBounds(120,100,760,100);
 			
-			businessLobbyID.setBounds(0,0,400,30);
-			gatheringId.setBounds(0,35,400,30);
+			ArrayList<LabelHeader> maohao = new ArrayList<LabelHeader>();
+			for(int i = 0; i < 8;i++){
+				maohao.add(new LabelHeader(":"));
+				maohao.get(i).setBounds(125+280*(i/3),(i%3)*33,14,30);
+				this.add(maohao.get(i));
+			}
 			
-			add(businessLobbyID);
-			add(gatheringId);
+			mediumCenterId.setBounds(0,0,125,30);
+			date.setBounds(0,33,125,30);
+			id.setBounds(0,66,125,30);
+			
+//			carId.setBounds()
+			
+			//add
+			
+			
 		}
 	}
 }

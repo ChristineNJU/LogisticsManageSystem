@@ -31,7 +31,11 @@ public class TableModelAddOnly extends AbstractTableModel{
 //		int size = 0;
 //		try {
 //			size = tableValues.get(0).size();
+
+//		}catch(Exception e){
+
 //		}catch(NullPointerException e){
+
 //			size = 0;
 //		}
 		for(int i = 0;i < head.length;i++){
