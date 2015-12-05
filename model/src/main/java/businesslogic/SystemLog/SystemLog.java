@@ -41,7 +41,7 @@ public class SystemLog {
 	
 	public static String getInstitutionId() {
 
-		return "02500";
+		return "0250";
 		//return operator_institution_id;
 }
 	

@@ -82,7 +82,7 @@ public class MainFrame {
 //		changeToRepository();
 
 //		changeToMediumCenter();
-		changeToRepository();
+//		changeToRepository();
 
 //		changeToAdmin()contentPanel;
 	}
