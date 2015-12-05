@@ -23,9 +23,9 @@ public class ProgressBarPanel {
 	
 	GetAmountService gas;
 	
-	private int a = 0;
-	private int c = 0;
-	private int r = 0;
+	int a = 0;
+	int c = 0;
+	int r = 0;
 	
 	private JPanel panel = new JPanel();
 	private JLabel air = new JLabel("航空区", JLabel.CENTER);

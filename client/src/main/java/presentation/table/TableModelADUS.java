@@ -140,8 +140,12 @@ public class TableModelADUS extends AbstractTableModel {
 
 	@Override
 	public void setValueAt(Object value, int row, int column) {
+//		if(row >= initialRowCount){
+//			addEmptyRow();
+//		}
 		if(column < getColumnCount()){
 			tableValues.get(row).setElementAt((String) value,column);
+			System.out.println("set value at   "+row+"   "+column);
 			fireTableCellUpdated(row, column);
 		}else
 			return;

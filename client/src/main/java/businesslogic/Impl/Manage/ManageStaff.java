@@ -11,18 +11,14 @@ import State.AddState;
 import State.DeleteState;
 import State.UpdateState;
 import VO.StaffVO;
-import businesslogic.Service.Manage.AddStaffService;
-import businesslogic.Service.Manage.DeleteStaffService;
-import businesslogic.Service.Manage.GetStaffService;
-import businesslogic.Service.Manage.UpdateStaffService;
+import businesslogic.Service.Manage.ManageStaffService;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
 import data.Service.Delete.DeleteService;
 import data.Service.Search.SearchUserService;
 import data.Service.Update.UpdateService;
 
-public class ManageStaff implements AddStaffService,UpdateStaffService,
-									GetStaffService,DeleteStaffService{
+public class ManageStaff implements ManageStaffService{
 
 	@Override
 	public DeleteState DeleteStaff(StaffVO staff) {
@@ -68,7 +64,7 @@ public class ManageStaff implements AddStaffService,UpdateStaffService,
 			ArrayList<String> requirementName=new ArrayList<String>();
 			
 			//show when id==null
-			if(id!=null){
+			if(!id.equals("%%")){
 				requirementId.add("id='"+id+"'");
 				requirementName.add("name='"+id+"'");
 			}else{
@@ -98,6 +94,7 @@ public class ManageStaff implements AddStaffService,UpdateStaffService,
 			System.out.println("error");
 			e.printStackTrace();
 		}
+		System.out.println("searchStaff "+result.size());
 		return result;
 	}
 
