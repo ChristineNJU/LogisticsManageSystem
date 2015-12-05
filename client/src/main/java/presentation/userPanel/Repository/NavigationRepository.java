@@ -15,6 +15,7 @@ public class NavigationRepository extends Navigation{
 	private ButtonNav see = new ButtonNav("repository","see");
 	
 	private RepositoryStorage rs = new RepositoryStorage();
+	private RepositoryBalance rb = new RepositoryBalance();
 	
 	public NavigationRepository(UserVO user) {
 		super(user);
@@ -53,13 +54,13 @@ public class NavigationRepository extends Navigation{
 	private void changeToStorage(){
 		rs = new RepositoryStorage();
 //		MainFrame.getMainPanel().remove(comp);
-		MainFrame.getMainPanel().add(rs.getPanel());
-		MainFrame.getMainPanel().repaint();
+		MainFrame.changeContentPanel(rs.getPanel());
 	}
 	private void changeToRemoval(){
 		
 	}
 	private void changeToBalance(){
+		rb = new RepositoryBalance();
 		
 	}
 	private void changeToStockTaking(){

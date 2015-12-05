@@ -64,10 +64,6 @@ public class MainFrame {
 		panel.add(inquiry.getPanel());
 
 //		changeToCourier();
-
-
-//		changeToBusinesslobby();
-
 //		changeToBusinesslobby();
 //		changeToFinance();
 //		changeToCourier()
@@ -81,8 +77,13 @@ public class MainFrame {
 //		changeToManager();
 //	changeToManager();
 
-//		changeToMediumCenter();
+
+		changeToMediumCenter();
 //		changeToRepository();
+
+//		changeToMediumCenter();
+		changeToRepository();
+
 //		changeToAdmin()contentPanel;
 	}
 	

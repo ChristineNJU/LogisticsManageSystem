@@ -3,6 +3,7 @@ package presentation.userPanel.BusinessLb;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Vector;
 
 import javax.swing.JLabel;
@@ -20,20 +21,21 @@ import businesslogic.Impl.Businesslobby.BusinessLobbyController;
 import businesslogic.Impl.Businesslobby.GetNeedGatheringImpl;
 import businesslogic.Service.BusinessLobby.BsLbService;
 import businesslogic.Service.BusinessLobby.GetNeedGatheringService;
+import businesslogic.SystemLog.SystemLog;
 
 public class BusinessLbGathering extends FunctionAdd{
-	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
+	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
 	BsLbService service = new BusinessLobbyController();
 	ArrayList<GatheringVO> Gathering;
 	
 	
-	String[] tableH = {"快递单号","收款日期","收款金额","收款快递员"};
+	String[] tableH = {"快递单号","收款日期","收款金额","收款快递员",""};
 	boolean[] isCellEditable = {false,false,false,false};
 	
 	public BusinessLbGathering(){
 		super.buttonNew = new ButtonNew("新增收款单");
-		super.confirm = new ButtonConfirm("提交所有订单");
+		super.confirm = new ButtonConfirm("提交所有收款单");
 		initUI("收款结算");
 	}
 	
@@ -50,33 +52,24 @@ public class BusinessLbGathering extends FunctionAdd{
 		// TODO Auto-generated method stub
 		//首先获得needGathering
 		
-		needGathering = service.getNeedGathering();
-		tableV = getVector(needGathering);
-		
-		model = new TableModelAddOnly(tableV,tableH,isCellEditable);
-		table = new TableAddOnly(model);
+		Gathering = new ArrayList<GatheringVO>();
 
-		sPanel = new ScrollPaneTable(table);
-		sPanel.setLocation(sPanel.getX(),header.getHeight()+120);
-		panel.add(sPanel);
-		
-//		GetNeedGatheringService needGathering = new GetNeedGatheringImpl();
-//		Gathering = needGathering.getNeedGathering();
+//		Gathering = Service.getNeedGathering();
 		
 		
-		
+		// 测试用
 		try {ArrayList<String> barCodeList = new ArrayList<String>();
 			barCodeList.add("0000000001");
 			GatheringVO gathering1 = new GatheringVO(sdf.parse("2015-12-3 10:20:20"),20,"张斯栋是二货",barCodeList);
-			GatheringVO gathering2 = new GatheringVO(sdf.parse("2015-12-3 10:20:20"),20,"张斯栋是傻逼",barCodeList);
-			GatheringVO gathering3 = new GatheringVO(sdf.parse("2015-12-3 10:20:20"),20,"张斯栋是二货",barCodeList);
-			GatheringVO gathering4 = new GatheringVO(sdf.parse("2015-12-3 10:20:20"),20,"张斯栋是二货",barCodeList);
-			GatheringVO gathering5 = new GatheringVO(sdf.parse("2015-12-3 10:20:20"),20,"张斯栋是二货",barCodeList);
+//			GatheringVO gathering2 = new GatheringVO(sdf.parse("2015-12-3 10:20:20"),20,"张斯栋是傻逼",barCodeList);
+//			GatheringVO gathering3 = new GatheringVO(sdf.parse("2015-12-3 10:20:20"),20,"张斯栋是二货",barCodeList);
+//			GatheringVO gathering4 = new GatheringVO(sdf.parse("2015-12-3 10:20:20"),20,"张斯栋是二货",barCodeList);
+//			GatheringVO gathering5 = new GatheringVO(sdf.parse("2015-12-3 10:20:20"),20,"张斯栋是二货",barCodeList);
 			Gathering.add(gathering1);
-			Gathering.add(gathering2);
-			Gathering.add(gathering3);
-			Gathering.add(gathering4);
-			Gathering.add(gathering5);
+//			Gathering.add(gathering2);
+//			Gathering.add(gathering3);
+//			Gathering.add(gathering4);
+//			Gathering.add(gathering5);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -84,18 +77,42 @@ public class BusinessLbGathering extends FunctionAdd{
 		
 		tableV = getVector(Gathering);
 		
-		
+		model = new TableModelAddOnly(tableV,tableH,isCellEditable);
+		table = new TableAddOnly(model);
+
+		sPanel = new ScrollPaneTable(table);
+		sPanel.setLocation(sPanel.getX(),header.getHeight()+120);
+		panel.add(sPanel);
 	}
 
 	@Override
 	protected void confirmAll() {
-		// TODO Auto-generated method stub
+		// 提交所有更新
+		for(Vector<String> vector: tableV ){
+			
+			GatheringVO temp = (GatheringVO)this.getVO(vector);
+			System.out.println("has one"+temp.getName());
+			service.gathering(temp);
+	}		
 		
 	}
 
 	@Override
 	protected VO getVO(Vector<String> vector) {
-		// TODO Auto-generated method stub
+		// 将表格的一行转化成vo
+		try {
+			ArrayList<String> tempbarCodeList = new ArrayList<String>();
+			tempbarCodeList.add(vector.get(0));
+			Date tempdate = sdf.parse(vector.get(1));
+			String tempname = vector.get(3);
+			double tempmoney = Double.valueOf(vector.get(2));
+			GatheringVO tempGathering = new GatheringVO(tempdate, tempmoney, tempname, tempbarCodeList);
+			return tempGathering;
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 
@@ -103,10 +120,11 @@ public class BusinessLbGathering extends FunctionAdd{
 		Vector<Vector<String>> result = new Vector<Vector<String>>();
 		for(GatheringVO temp:vo){
 			Vector<String> vRow = new Vector<String>();
+			vRow.add(temp.id().get(0));
 			vRow.add(sdf.format(temp.getDate()));
-			vRow.add(temp.getName());
-			vRow.add(String.valueOf(temp.getMoney()));
 			
+			vRow.add(String.valueOf(temp.getMoney()));
+			vRow.add(temp.getName());
 			result.add(vRow);
 		}
 		return result;
@@ -118,7 +136,7 @@ public class BusinessLbGathering extends FunctionAdd{
 		public Header(){
 			this.setBounds(120,100,680,60);
 			this.setBackground(null);
-			businessLobbyID.addInfo("");
+			businessLobbyID.addInfo(SystemLog.getInstitutionId());
 			gatheringId.addInfo("");
 			
 			businessLobbyID.setBounds(0,0,400,30);
