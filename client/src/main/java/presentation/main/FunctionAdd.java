@@ -54,6 +54,7 @@ public abstract class FunctionAdd {
 		panel.add(buttonNew);
 		
 		initTable();
+		table.addMouseListener(tableListener);
 		
 		confirm.setLocation(120,200+sPanel.getHeight());
 		confirm.addMouseListener(functionListener);

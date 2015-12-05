@@ -4,6 +4,8 @@ import java.util.Vector;
 
 import javax.swing.table.AbstractTableModel;
 
+import presentation.userPanel.Medium.MediumCtTransfer.Header;
+
 public class TableModelAddOnly extends AbstractTableModel{
 
 	private Vector<Vector<String>> tableValues;
@@ -29,7 +31,11 @@ public class TableModelAddOnly extends AbstractTableModel{
 //		int size = 0;
 //		try {
 //			size = tableValues.get(0).size();
+
 //		}catch(Exception e){
+
+//		}catch(NullPointerException e){
+
 //			size = 0;
 //		}
 		for(int i = 0;i < head.length;i++){
@@ -42,6 +48,13 @@ public class TableModelAddOnly extends AbstractTableModel{
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
 //		return isCellEditable[columnIndex];
+		
+		System.out.println("in tablemodeladdonly      "+rowIndex+" "+columnIndex+"   "+head.length);
+		
+		if(columnIndex==head.length-1){
+			return false;
+		}
+		
 		return true;
 	}
 	
