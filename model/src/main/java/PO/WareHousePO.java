@@ -1,6 +1,11 @@
 package PO;
 
+import State.StateSwitch;
 import State.StorageArea;
+import VO.RemovalVO;
+import VO.StorageVO;
+import VO.WareHouseVO;
+import VO.WareHouseVO;
 /**
  * 用来保存仓库的持久化数据格式
  * 
@@ -10,8 +15,8 @@ import State.StorageArea;
 public class WareHousePO extends PO {
 	
 	// ----- member variables ---------------------------------------
-	private String bar_code = null;
-	private String destination = null;
+	private String bar_code = "";
+	private String destination = "";
 	private StorageArea area_code = null;
 	private int row = 0;
 	private int shelf = 0;
@@ -31,7 +36,42 @@ public class WareHousePO extends PO {
 		this.shelf = shelf;
 		this.position = position;
 	}
+	
+	/**
+	 * 通过StorageVO创建仓库的持久化数据对象
+	 * */
+	public WareHousePO(StorageVO storage, String DB_URL) {
+		super(DB_URL);
+		this.bar_code = storage.getBarCode();
+		this.destination = storage.getDestination();
+		this.area_code = storage.getAreaCode();
+		this.row = storage.getRow();
+		this.shelf = storage.getShelf();
+		this.position = storage.getPosition();
+	}
 
+	/**
+	 * 通过RemovalVO创建仓库的持久化数据对象
+	 * */
+	public WareHousePO(RemovalVO removal, String DB_URL) {
+		super(DB_URL);
+		this.bar_code = removal.getBarCode();
+		this.destination = removal.getDestination();
+	}
+	
+	/**
+	 * 通过WareHouseVO创建仓库的持久化数据对象
+	 * */
+	public WareHousePO(WareHouseVO vo, String DB_URL) {
+		super(DB_URL);
+		this.bar_code = vo.getBar_code();
+		this.destination = vo.getDestination();
+		this.area_code = vo.getArea_code();
+		this.row = vo.getRow();
+		this.shelf = vo.getShelf();
+		this.position = vo.getPosition();
+	}
+	
 	/**
 	 * 获取条形码
 	 * 
@@ -89,7 +129,20 @@ public class WareHousePO extends PO {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return null;
+		
+		String result = "";
+		
+		result = result + "'" + bar_code + "', ";
+		
+		result = result + "'" + destination + "', ";
+		result = result + "'" + StateSwitch.switchToStr(area_code) + "', ";
+		result = result + row + ", ";
+		result = result + shelf + ", ";
+		result = result + position + "";
+		
+		System.out.println(result);
+		
+		return result;
 	}
 
 	@Override

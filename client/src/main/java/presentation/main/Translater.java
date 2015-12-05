@@ -4,6 +4,7 @@ import State.InstitutionType;
 import State.LogisticsState;
 import State.LogisticsType;
 import State.PackingCharge;
+import State.StorageArea;
 import State.UserRole;
 
 public class Translater {
@@ -132,4 +133,18 @@ public class Translater {
  		}
  	}
  	
+ 	public static StorageArea getStorageArea(String s) {
+ 		switch(s){
+ 		case "航空区":
+ 			return StorageArea.AIR_TRANSPORTATION;
+ 		case "汽运区":
+ 			return StorageArea.CAR_TRANSPORTATION;
+ 		case "铁路区":
+ 			return StorageArea.RAILWAY_TRANSPORTATION;
+ 		case "机动区":
+ 			return StorageArea.MANOEUVERING_AREA;
+ 		default:
+ 			return StorageArea.MANOEUVERING_AREA;
+ 		}
+ 	}
 }

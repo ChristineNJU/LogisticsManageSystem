@@ -61,7 +61,7 @@ public class NavigationRepository extends Navigation{
 	}
 	private void changeToBalance(){
 		rb = new RepositoryBalance();
-		
+		MainFrame.changeContentPanel(rb.getPanel());
 	}
 	private void changeToStockTaking(){
 		

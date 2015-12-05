@@ -118,7 +118,7 @@ public class DirectDBCreater {
 //				createTable_Benefit();
 //				deleteTable(URLHelper.getBenefitURL());
 				
-				createTable_Cost();
+//				createTable_Cost();
 //				deleteTable(URLHelper.getCostURL());
 				
 //				createTable_WareHouse("02500");
@@ -656,7 +656,7 @@ public class DirectDBCreater {
 		try {
 			s = conn.createStatement();
 			s.execute("CREATE TABLE "+table_name+" (bar_code varchar(20) PRIMARY key, storage_date varchar(20), "
-					+ "destination varchar(20), area_code varchar(20), row int, shelf int, "
+					+ "destination varchar(20), area_code varchar(100), row int, shelf int, "
 					+ "position int, isApproved varchar(10))");
 			conn.commit();
 		
@@ -849,9 +849,9 @@ public class DirectDBCreater {
 		
 		try {
 			s = conn.createStatement();
-			s.execute("CREATE TABLE "+table_name+" (cost_date varchar(20) PRIMARY key, cost_amount double, "
-					+ "cost_name varchar(50), account_name varchar(50), type varchar(50), "
-					+ "remark varchar(100), isApproved varchar(10))");
+			s.execute("CREATE TABLE "+table_name+" (cost_date varchar(50) PRIMARY key, cost_amount double, "
+					+ "cost_name varchar(100), account_name varchar(100), type varchar(50), "
+					+ "remark varchar(1000), isApproved varchar(10))");
 			conn.commit();
 			
 			System.out.println("create table "+table_name);
@@ -882,7 +882,7 @@ public class DirectDBCreater {
 		try {
 			s = conn.createStatement();
 			s.execute("CREATE TABLE "+table_name+" (bar_code varchar(20) PRIMARY key, destination varchar(20), "
-					+ "area_code varchar(50), row int, shelf int, position int)");
+					+ "area_code varchar(100), row int, shelf int, position int)");
 			conn.commit();
 			
 			System.out.println("create table "+table_name);

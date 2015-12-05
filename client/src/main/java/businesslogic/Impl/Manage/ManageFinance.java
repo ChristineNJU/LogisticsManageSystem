@@ -109,7 +109,7 @@ public class ManageFinance implements GetBenefitService, GetCostService,GetGathe
 		try {
 			SearchBenefitService searchBenefit=(SearchBenefitService) Naming.lookup(RMIHelper.SEARCH_BENEFIT_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("date <= '"+time_end);
+			requirement.add("date <= '"+time_end+"'");
 			ArrayList<BenefitPO> searchResult=searchBenefit.searchBenefit(requirement);
 			
 			if(searchResult.isEmpty()){
@@ -128,6 +128,27 @@ public class ManageFinance implements GetBenefitService, GetCostService,GetGathe
 		
 		
 		
+	}
+
+	@Override
+	public ArrayList<BenefitVO> searchAllBenefit(String time_start,
+			String time_end) {
+		// TODO Auto-generated method stub
+		ArrayList<BenefitVO> vo = new ArrayList<BenefitVO>();
+		try {
+			SearchBenefitService searchBenefit=(SearchBenefitService) Naming.lookup(RMIHelper.SEARCH_BENEFIT_IMPL);
+			ArrayList<String> requirement = new ArrayList<String>();
+			requirement.add("date >= '"+time_start+"' AND "+"date <= '"+time_end+"'");
+			ArrayList<BenefitPO> searchResult = searchBenefit.searchBenefit(requirement);
+			
+			for(int i=0;i<searchResult.size();i++){
+				vo.add(new BenefitVO(searchResult.get(i)));
+			}
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return vo;
 	}
 
 }

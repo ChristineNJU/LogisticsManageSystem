@@ -1,33 +1,43 @@
 package presentation.userPanel.Repository;
 
+import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Vector;
 
+import javax.swing.DefaultCellEditor;
 import javax.swing.JLabel;
-import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
+import presentation.components.FlatComboBox;
 import presentation.components.LabelHeader;
+import presentation.main.FontSet;
 import presentation.main.FunctionAdd;
-import presentation.table.RendererDelete;
+import presentation.main.Translater;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
 import State.StateSwitch;
+import State.StorageState;
 import VO.StorageVO;
+import businesslogic.Impl.Courier.CourierImpl;
 import businesslogic.Impl.Repository.RepositoryController;
+import businesslogic.Service.Courier.CourierService;
+import businesslogic.Service.Courier.GetCityService;
 import businesslogic.Service.Repository.ReponsitoryService;
 
 public class RepositoryStorage extends FunctionAdd {
 
 	ReponsitoryService service = new RepositoryController();
+	CourierService getCity = new CourierImpl();
 	
-	String[] tableH = {"快递编号", "到达地", "区号", "排号", "架号", "位号"};
-	boolean[] isCellEditable = {true, true, true, true, true, true};
+	String[] tableH = {"快递编号", "到达地", "区号", "排号", "架号", "位号", ""};
+	boolean[] isCellEditable = {true, true, true, true, true, true, false};
+	
+	private ProgressBarPanel pbp = new ProgressBarPanel();
 	
 	ArrayList<StorageVO> storage = new ArrayList<StorageVO>();
 	
@@ -35,10 +45,22 @@ public class RepositoryStorage extends FunctionAdd {
 	
 	boolean isSaved = false;
 	
+	JLabel info = new JLabel();
+	
 	public RepositoryStorage() {
 		super.buttonNew = new ButtonNew("新增入库单");
 		super.confirm = new ButtonConfirm("提交入库单");
+		
 		initUI("入库");
+		init();
+	}
+	
+	private void init() {
+		info.setBounds(480, 590, 200, 50);
+		info.setForeground(Color.red);
+		info.setFont(FontSet.twenty);
+		panel.add(info);
+		panel.add(pbp.getPanel());
 	}
 	
 	@Override
@@ -54,10 +76,39 @@ public class RepositoryStorage extends FunctionAdd {
 		model = new TableModelAddOnly(vector, tableH, isCellEditable);
 		table = new TableAddOnly(model);
 		
-//		TableColumnModel tcm = table.getColumnModel();
-//		tcm.addColumn(new TableColumn());
-//		tcm.getColumn(tcm.getColumnCount()-1).setCellRenderer(new RendererDelete());
+		TableColumnModel tcm = table.getColumnModel();
+///		tcm.getColumn(tcm.getColumnCount()-1).setCellRenderer(new RendererDelete());
 //		tcm.getColumn(tcm.getColumnCount()-1).setCellEditor(new ));
+		
+		ArrayList<String> city_actual = getCity.getCity();
+		
+		FlatComboBox city = new FlatComboBox();
+		
+		for(int i=0;i<city_actual.size();i++){
+			city.addItem(city_actual.get(i));
+		}
+		
+		FlatComboBox area = new FlatComboBox();
+		area.addItem("航空区");
+		area.addItem("汽运区");
+		area.addItem("铁路区");
+		area.addItem("机动区");
+		
+		FlatComboBox row = new FlatComboBox();
+		FlatComboBox shelf = new FlatComboBox();
+		FlatComboBox position = new FlatComboBox();
+		for(int i=1;i<=10;i++){
+			row.addItem(i+"");
+			shelf.addItem(i+"");
+			position.addItem(i+"");
+		}
+		
+		tcm.getColumn(1).setCellEditor(new DefaultCellEditor(city));
+		tcm.getColumn(2).setCellEditor(new DefaultCellEditor(area));
+		
+		tcm.getColumn(3).setCellEditor(new DefaultCellEditor(row));
+		tcm.getColumn(4).setCellEditor(new DefaultCellEditor(shelf));
+		tcm.getColumn(5).setCellEditor(new DefaultCellEditor(position));
 		
 		sPanel = new ScrollPaneTable(table);
 		panel.add(sPanel);
@@ -67,14 +118,55 @@ public class RepositoryStorage extends FunctionAdd {
 	protected void confirmAll() {
 		// TODO Auto-generated method stub
 		
+		if(isSaved){
+			info.setText("已保存");
+			return;
+		}
 		
+		if(pbp.isLeak()){
+			info.setText("请进行库存调整后入库");
+			return;
+		}
+		
+		boolean isLegal = true;
+		
+		
+		for(int i=0;i<table.getRowCount();i++){
+			Vector<String> v = model.getRow(i);
+			System.out.println(isLegal(v));
+			if(!isLegal(v)){
+				storage = new ArrayList<StorageVO>();
+				isLegal = false;
+				continue;
+			}else{				
+				storage.add(getVO(v));
+			}
+		}
+		
+		if(!isLegal){
+			info.setText("输入条目错误");
+			return;
+		}
+		
+		if(storage.isEmpty()){
+			info.setText("空的提交信息");
+			return;
+		}
+		
+		StorageState state = service.storage(storage);
+		
+		if(state==StorageState.SUCCESS){
+			info.setText("保存成功");
+			isSaved = true;
+		}else{
+			info.setText("保存失败");
+		}
 	}
 
 	@Override
 	protected StorageVO getVO(Vector<String> vector) {
-		SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		StorageVO vo = new StorageVO(vector.get(0), Calendar.getInstance().getTime(),
-				vector.get(1), StateSwitch.switchToStorageArea(vector.get(2)), Integer.parseInt(vector.get(3))
+		StorageVO vo = new StorageVO(vector.get(0).trim(), Calendar.getInstance().getTime(),
+				vector.get(1), Translater.getStorageArea(vector.get(2)), Integer.parseInt(vector.get(3))
 				, Integer.parseInt(vector.get(4)), Integer.parseInt(vector.get(5)));
 		return vo;
 	}
@@ -89,8 +181,42 @@ public class RepositoryStorage extends FunctionAdd {
 		return result;
 	}
 	
-	private class Header extends JLabel {
-		LabelHeader date = new LabelHeader("入库日期");
+	private boolean isLegal(Vector<String> v) {
+		if(v.get(0).trim().equals("")){
+			return false;
+		}
+		if(v.get(1).trim().equals("")){
+			return false;
+		}
+		if(v.get(2).trim().equals("")){
+			return false;
+		}
+		if(v.get(3).trim().equals("")){
+			return false;
+		}
+		if(v.get(4).trim().equals("")){
+			for(int i=0;i<v.get(4).length();i++){
+				if(v.get(4).charAt(i)<='9'&&v.get(4).charAt(i)>='0'){
+					
+				}else{
+					return false;
+				}
+			}
+		}
+		if(v.get(5).trim().equals("")){
+			for(int i=0;i<v.get(4).length();i++){
+				if(v.get(4).charAt(i)<='9'&&v.get(4).charAt(i)>='0'){
+					
+				}else{
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+	
+ 	private class Header extends JLabel {
+		LabelHeader date = new LabelHeader("入库日期:");
 		public Header() {
 			// TODO Auto-generated constructor stub
 			setBounds(120, 100, 680, 30);
