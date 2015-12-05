@@ -64,11 +64,11 @@ public class RepositoryStorage {
 	
 	public RepositoryStorage() {
 		
-		Vector<String> v = new Vector<String>();
-		for(int i=0;i<6;i++){
-			v.add("");
-		}
-		vector.add(v);
+//		Vector<String> v = new Vector<String>();
+//		for(int i=0;i<6;i++){
+//			v.add("");
+//		}
+//		vector.add(v);
 		
 		init();
 		initListener();
