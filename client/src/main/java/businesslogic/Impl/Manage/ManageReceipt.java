@@ -15,6 +15,7 @@ import PO.DeliveryPO;
 import PO.EntruckingPO;
 import PO.GatheringPO;
 import PO.InstitutionPO;
+import PO.LogisticsInfoPO;
 import PO.RemovalPO;
 import PO.StoragePO;
 import PO.TransferPO;
@@ -25,13 +26,14 @@ import VO.CostVO;
 import VO.DeliveryVO;
 import VO.EntruckingVO;
 import VO.GatheringVO;
+import VO.LogisticsHistoryVO;
 import VO.RemovalVO;
 import VO.StorageVO;
 import VO.TransferVO;
 import VO.VO;
+import businesslogic.Impl.Inquiry.InquiryController;
 import businesslogic.Service.Manage.ShowReceiptService;
 import businesslogic.Service.Manage.UpdateReceiptService;
-import businesslogic.SystemLog.SystemLog;
 import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
@@ -43,6 +45,7 @@ import data.Service.Search.SearchDeliveryService;
 import data.Service.Search.SearchEntruckingService;
 import data.Service.Search.SearchGatheringService;
 import data.Service.Search.SearchInstitutionInfoService;
+import data.Service.Search.SearchLogisticsService;
 import data.Service.Search.SearchRemovalService;
 import data.Service.Search.SearchStorageService;
 import data.Service.Search.SearchTransferService;
@@ -56,8 +59,12 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		
 		UpdateState result=UpdateState.NOTFOUND;
+		
+		
 		try {
 			UpdateService updateService=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
+			
+			
 			
 			ArrayList<String> requirement=new ArrayList<String>();
 			String institutionid="";
@@ -76,9 +83,8 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 			ArrayList<InstitutionPO> searchResultReponsitory=searchInstitution.searchInstitutionInfo(requirementReponsitory);
 			ArrayList<InstitutionPO> searchResultMediumCenter=searchInstitution.searchInstitutionInfo(requirementMediumCenter);
 			
-			//arrival
+			//arrival   
 			if(receipt instanceof ArrivalVO){
-				
 				ArrivalVO arrival=(ArrivalVO) receipt;
 				SearchArrivalService searchArrival=(SearchArrivalService) Naming.lookup(RMIHelper.SEARCH_ARRIVAL_IMPL);
 				requirement.add("bar_code='"+arrival.getBarCode()+"'");
@@ -90,6 +96,7 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 					for(int j=0;j<arrivalResult.size();j++){
 						searchResult.add(arrivalResult.get(j));
 						institutionid=searchResultBusinesslobby.get(i).getInstitutionNumber();
+						this.updateArrival(arrival,searchResultBusinesslobby.get(i));
 					}
 				}
 				for(int i=0;i<searchResultMediumCenter.size();i++){
@@ -97,6 +104,8 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 					for(int j=0;j<arrivalResult.size();j++){
 						searchResult.add(arrivalResult.get(j));	
 						institutionid=searchResultMediumCenter.get(i).getInstitutionNumber();
+						this.updateArrival(arrival,searchResultMediumCenter.get(i));
+						
 					}
 				}
 				
@@ -111,7 +120,7 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 				}
 			}
 			
-			//balance
+			//balance 
 			if(receipt instanceof BalanceVO){
 				BalanceVO balance=(BalanceVO) receipt;
 				SearchBalanceService searchBalance=(SearchBalanceService) Naming.lookup(RMIHelper.SEARCH_BALANCE_IMPL);
@@ -122,6 +131,7 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 					for(int j=0;j<balanceResult.size();j++){
 						searchResult.add(balanceResult.get(j));
 						institutionid=searchResultReponsitory.get(i).getInstitutionNumber();
+						
 						}
 				}
 				
@@ -137,7 +147,7 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 				}
 			}
 			
-			//Cost
+			//Cost 
 			if(receipt instanceof CostVO){
 				CostVO cost=(CostVO) receipt;
 				SearchCostService searchCost=(SearchCostService) Naming.lookup(RMIHelper.SEARCH_COST_IMPL);
@@ -165,7 +175,7 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 				addService.add(benefit);
 			}
 			
-			//Delivery
+			//Delivery 
 			if(receipt instanceof DeliveryVO){
 				DeliveryVO delivery=(DeliveryVO) receipt;
 				SearchDeliveryService searchDelivery=(SearchDeliveryService) Naming.lookup(RMIHelper.SEARCH_DELIVERY_SERVICE);
@@ -176,6 +186,7 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 					for(int j=0;j<deliveryResult.size();j++){
 						searchResult.add(deliveryResult.get(j));	
 						institutionid=searchResultBusinesslobby.get(i).getInstitutionNumber();
+						this.updateDelivery(delivery,searchResultBusinesslobby.get(i));
 						}
 				}
 				
@@ -195,7 +206,7 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 			}
 			
 			
-			//entrucking
+			//entrucking 
 			if(receipt instanceof EntruckingVO){
 				EntruckingVO entrucking=(EntruckingVO) receipt;
 				SearchEntruckingService searchEntrucking=(SearchEntruckingService) Naming.lookup(RMIHelper.SEARCH_ENTRUCKING_IMPL);
@@ -206,6 +217,7 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 					for(int j=0;j<entruckingResult.size();j++){
 						searchResult.add(entruckingResult.get(j));	
 						institutionid=searchResultBusinesslobby.get(i).getInstitutionNumber();	
+						this.updateEntrucking(entrucking,searchResultBusinesslobby.get(i));
 					}
 				}
 				for(int i=0;i<searchResultMediumCenter.size();i++){
@@ -213,6 +225,7 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 					for(int j=0;j<entruckingResult.size();j++){
 						searchResult.add(entruckingResult.get(j));	
 						institutionid=searchResultMediumCenter.get(i).getInstitutionNumber();	
+						this.updateEntrucking(entrucking,searchResultMediumCenter.get(i));
 					}
 				}
 				
@@ -228,7 +241,7 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 				}
 			}
 			
-			//gathering
+			//gathering 
 			if(receipt instanceof GatheringVO){
 				GatheringVO gathering=(GatheringVO) receipt;
 				SearchGatheringService searchGathering=(SearchGatheringService) Naming.lookup(RMIHelper.SEARCH_GATHERING_IMPL);
@@ -275,6 +288,7 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 					for(int j=0;j<removalResult.size();j++){
 						searchResult.add(removalResult.get(j));
 						institutionid=searchResultReponsitory.get(i).getInstitutionNumber();
+						this.updateRemoval(removal,searchResultReponsitory.get(i));
 					}
 				}
 				
@@ -292,7 +306,7 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 			}
 			
 			
-			//storage
+			//storage 
 			if(receipt instanceof StorageVO){
 				StorageVO storage=(StorageVO) receipt;
 				SearchStorageService searchStorage=(SearchStorageService) Naming.lookup(RMIHelper.SEARCH_STORAGE_IMPL);
@@ -303,6 +317,7 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 					for(int j=0;j<storageResult.size();j++){
 						searchResult.add(storageResult.get(j));
 						institutionid=searchResultReponsitory.get(i).getInstitutionNumber();	
+						this.updateStorage(storage,searchResultReponsitory.get(i));
 					}
 				}
 				
@@ -329,7 +344,9 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 					ArrayList<TransferPO> transferResult=searchTransfer.searchTransfer(URLHelper.getTransferURL(searchResultMediumCenter.get(i).getInstitutionNumber()), requirement);
 					for(int j=0;j<transferResult.size();j++){
 						searchResult.add(transferResult.get(j));
-						institutionid=searchResultMediumCenter.get(i).getInstitutionNumber();	
+						institutionid=searchResultMediumCenter.get(i).getInstitutionNumber();		
+						this.updateTransfer(transfer,searchResultMediumCenter.get(i));
+						
 					}
 				}
 
@@ -353,9 +370,133 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 		}
 		
 		
+		
+		
 		return result;
 	}
 
+	/**
+	 * 
+	 * @param n
+	 * @param receipt
+	 * @param institution
+	 * 更新物流信息
+	 * 测试存在困难
+	 * 可能会出现问题
+	 */
+	
+	public void updateArrival(ArrivalVO arrival,InstitutionPO institution){
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		try {
+			SearchLogisticsService service=(SearchLogisticsService) Naming.lookup(RMIHelper.SEARCH_LOGISTICS_IMPL);
+			ArrayList<String> requirement=new ArrayList<String>();
+			requirement.add("bar_code='"+arrival.getBarCode()+"'");
+			LogisticsInfoPO logistic=service.searchLogisticsInfo(requirement).get(0);
+			logistic.addHistory(institution.getInstitutionName()+"已收件，"+sdf.format(arrival.getDate()));
+		
+			UpdateService updateservice=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
+			updateservice.update(logistic);
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("更新物流信息失败");
+		}
+	}
+	
+	
+	
+	public void updateDelivery(DeliveryVO delivery,InstitutionPO institution){
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		try {
+			SearchLogisticsService service=(SearchLogisticsService) Naming.lookup(RMIHelper.SEARCH_LOGISTICS_IMPL);
+			ArrayList<String> requirement=new ArrayList<String>();
+			requirement.add("bar_code='"+delivery.getBarCodeList().get(0)+"'");
+			LogisticsInfoPO logistic=service.searchLogisticsInfo(requirement).get(0);
+			logistic.addHistory(institution.getInstitutionName()+"正在派件，"+sdf.format(delivery.getArrivalDate()));
+			
+			UpdateService updateservice=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
+			updateservice.update(logistic);
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("更新物流信息失败");
+		}
+	}
+	
+	public void updateEntrucking(EntruckingVO entrucking,InstitutionPO institution){
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		try {
+			SearchLogisticsService service=(SearchLogisticsService) Naming.lookup(RMIHelper.SEARCH_LOGISTICS_IMPL);
+			ArrayList<String> requirement=new ArrayList<String>();
+			requirement.add("bar_code='"+entrucking.getBarCodeList().get(0)+"'");
+			LogisticsInfoPO logistic=service.searchLogisticsInfo(requirement).get(0);
+			logistic.addHistory(institution.getInstitutionName()+"正在扫描装车，"+sdf.format(entrucking.getDate()));
+			
+			UpdateService updateservice=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
+			updateservice.update(logistic);
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("更新物流信息失败");
+		}
+	}
+	
+	
+	
+	public void updateRemoval(RemovalVO removal ,InstitutionPO institution){
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		try {
+			SearchLogisticsService service=(SearchLogisticsService) Naming.lookup(RMIHelper.SEARCH_LOGISTICS_IMPL);
+			ArrayList<String> requirement=new ArrayList<String>();
+			requirement.add("bar_code='"+removal.getBarCode()+"'");
+			LogisticsInfoPO logistic=service.searchLogisticsInfo(requirement).get(0);
+			logistic.addHistory(institution.getInstitutionName()+"正在出库，"+sdf.format(removal.getOutDate()));
+			
+			UpdateService updateservice=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
+			updateservice.update(logistic);
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("更新物流信息失败");
+		}
+	}
+	
+	public void updateStorage(StorageVO storage ,InstitutionPO institution){
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		try {
+			SearchLogisticsService service=(SearchLogisticsService) Naming.lookup(RMIHelper.SEARCH_LOGISTICS_IMPL);
+			ArrayList<String> requirement=new ArrayList<String>();
+			requirement.add("bar_code='"+storage.getBarCode()+"'");
+			LogisticsInfoPO logistic=service.searchLogisticsInfo(requirement).get(0);
+			logistic.addHistory(institution.getInstitutionName()+"正在入库，"+sdf.format(storage.getStorageDate()));
+			
+			UpdateService updateservice=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
+			updateservice.update(logistic);
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("更新物流信息失败");
+		}
+	}
+	
+	public void updateTransfer(TransferVO transfer ,InstitutionPO institution){
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		try {
+			SearchLogisticsService service=(SearchLogisticsService) Naming.lookup(RMIHelper.SEARCH_LOGISTICS_IMPL);
+			ArrayList<String> requirement=new ArrayList<String>();
+			requirement.add("bar_code='"+transfer.getItemId().get(0)+"'");
+			LogisticsInfoPO logistic=service.searchLogisticsInfo(requirement).get(0);
+			logistic.addHistory(institution.getInstitutionName()+"正在中转发送，"+sdf.format(transfer.getDate()));
+			
+			UpdateService updateservice=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
+			updateservice.update(logistic);
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("更新物流信息失败");
+		}
+	}
+	
 	@Override
 	public ArrayList<VO> showReceipt() {
 		// TODO Auto-generated method stub
