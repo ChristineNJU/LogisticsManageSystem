@@ -6,14 +6,14 @@ import State.UserRole;
 
 public class StaffVO extends VO {
 
-	private String name = null;
-	private String sex = null;
+	private String name = "";
+	private String sex = "";
 	private int age = 0;
 	private InstitutionType institution = null;
 	private UserRole role =  null;
-	private String systemId = null;
-	private String city=null;
-	private String password=null;
+	private String systemId = "";
+	private String city="";
+	private String password="";
 	
 	public StaffVO(String name,String sex,int age,
 			InstitutionType institution,UserRole role,String systemId,String city,String password){

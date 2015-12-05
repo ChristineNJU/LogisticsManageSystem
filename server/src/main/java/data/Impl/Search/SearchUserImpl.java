@@ -62,7 +62,7 @@ public class SearchUserImpl extends UnicastRemoteObject implements SearchUserSer
 				String name = rs.getString(3);
 				String sex = rs.getString(4);
 				int age = rs.getInt(5);
-				InstitutionType type = null;
+				InstitutionType type = StateSwitch.switchToInstitutionType(rs.getString(6));
 				String city = rs.getString(7);
 				UserRole role = StateSwitch.switchToUserRole(rs.getString(8));
 				
