@@ -83,7 +83,7 @@ public abstract class FunctionADUS {
 		TableColumnModel tcm = table.getColumnModel(); 
 		tcm.addColumn(new TableColumn());
 		tcm.getColumn(tcm.getColumnCount()-1).setCellRenderer(new RendererDelete());
-	    tcm.getColumn(tcm.getColumnCount()-1).setPreferredWidth(40);
+	    tcm.getColumn(tcm.getColumnCount()-1).setWidth(40);
 	}
 	
 	protected abstract void showSearchResult(String s);

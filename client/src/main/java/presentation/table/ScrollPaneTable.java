@@ -12,13 +12,13 @@ import presentation.components.FlatScrollBarUI;
 public class ScrollPaneTable extends JScrollPane{
 
 	Image image = new ImageIcon("src/graphics/tableBackgroung.png").getImage();
-	JTable content;
+	JTable table;
 //	JButton addRow;
 	public ScrollPaneTable(JTable table){
 		super(table);
-		content = table;
+		table = table;
 		setBorder(null);
-		setOpaque(false);
+		setOpaque(false);		
 		getViewport().setOpaque(false);
 		int row = table.getRowCount();
 		if(row > 18){
@@ -35,9 +35,18 @@ public class ScrollPaneTable extends JScrollPane{
 		getHorizontalScrollBar().setUI(new FlatScrollBarUI());
 	}
 	
+	@Override
+//	public void repaint(){
+//		int row = table.getRowCount();
+//		if(row > 18){
+//			setBounds(120,150,770,400);
+//		}else{
+//			setBounds(120,150,770,(row+1)*30);
+//		}
+//	}
 	
 	public void setSize(){
-		int num = content.getRowCount();
+		int num = table.getRowCount();
 		if(num < 30){
 			setSize(770,num*30);
 			System.out.println(num+"     size < 30");
