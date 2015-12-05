@@ -10,6 +10,7 @@ import PO.ConstPO;
 import PO.DistancePO;
 import PO.LogisticsInfoPO;
 import State.AddState;
+import State.CodeState;
 import State.LogisticsType;
 import State.PackingCharge;
 import State.StateSwitch;
@@ -160,7 +161,9 @@ public class CourierImpl implements CourierService{
 		try{
 			
 			AddService addService=(AddService) Naming.lookup(RMIHelper.ADD_IMPL);
-			state=addService.add(new LogisticsInfoPO((LogisticsInputVO)logistics_info));
+			LogisticsInfoPO result = new LogisticsInfoPO((LogisticsInputVO)logistics_info);
+			result.addHistory("快递员收件");
+			state=addService.add(result);
 			//AddState is depended in the data level. Can not give all AddStates here;
 			
 		} catch(Exception ex){
@@ -201,5 +204,27 @@ public class CourierImpl implements CourierService{
 		}
 		
 		return dayLength;
+	}
+
+	@Override
+	public CodeState isLegal(String bar_code) {
+		// TODO Auto-generated method stub
+		try {
+			SearchLogisticsService service = (SearchLogisticsService) Naming.lookup(RMIHelper.SEARCH_LOGISTICS_IMPL);
+			ArrayList<String> requirement = new ArrayList<String>();
+			requirement.add("bar_code = '"+bar_code+"'");
+			ArrayList<LogisticsInfoPO> tmp = service.searchLogisticsInfo(requirement);
+			
+			if(tmp.isEmpty()){
+				return CodeState.WELL;
+			}else{
+				return CodeState.REPEAT;
+			}
+			
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return CodeState.CONNECTION_ERROR;
+		}
 	}
 }

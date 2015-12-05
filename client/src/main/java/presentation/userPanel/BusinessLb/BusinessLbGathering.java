@@ -42,7 +42,7 @@ public class BusinessLbGathering extends FunctionAdd{
 		//获取营业厅的id和收款单的id，加入label中显示
 		header = new Header();
 		panel.add(header);
-		panel.repaint();
+//		panel.repaint();
 	}
 
 	@Override

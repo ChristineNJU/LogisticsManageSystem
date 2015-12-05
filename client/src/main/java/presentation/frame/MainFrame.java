@@ -65,16 +65,22 @@ public class MainFrame {
 
 //		changeToCourier();
 
-//		changeToBusinesslobby();
-
 
 //		changeToBusinesslobby();
+
 //		changeToBusinesslobby();
 //		changeToFinance();
 //		changeToCourier()
 //		changeToFinance();
 //		changeToManager();
 	changeToManager();
+
+//		changeToFinance();
+//		changeToCourier();
+//		changeToFinance();
+//		changeToManager();
+//	changeToManager();
+
 //		changeToMediumCenter();
 //		changeToRepository();
 //		changeToAdmin()contentPanel;
