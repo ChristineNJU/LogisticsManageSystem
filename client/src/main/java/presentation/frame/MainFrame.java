@@ -71,18 +71,18 @@ public class MainFrame {
 //		changeToManager();
 //	changeToManager();
 
-//		changeToFinance();
+		changeToFinance();
 //		changeToCourier();
 //		changeToFinance();
 //		changeToManager();
 //	changeToManager();
 
 
-		changeToMediumCenter();
+//		changeToMediumCenter();
 //		changeToRepository();
 
 //		changeToMediumCenter();
-		changeToRepository();
+//		changeToRepository();
 
 //		changeToAdmin()contentPanel;
 	}
