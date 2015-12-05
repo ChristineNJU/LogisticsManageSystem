@@ -67,7 +67,7 @@ public class MainFrame {
 //		changeToBusinesslobby();
 //		changeToFinance();
 //		changeToCourier()
-//		changeToFinance();
+		changeToFinance();
 //		changeToManager();
 //	changeToManager();
 
@@ -78,7 +78,7 @@ public class MainFrame {
 //	changeToManager();
 
 
-		changeToMediumCenter();
+//		changeToMediumCenter();
 //		changeToRepository();
 
 //		changeToMediumCenter();

@@ -14,7 +14,7 @@ public class NavigationFinance extends Navigation{
 	private ButtonNav incomeAndOutcome = new ButtonNav("finance","incomeAndOutcome");
 	private ButtonNav benefit = new ButtonNav("finance","benefit");
 	private ButtonNav initial = new ButtonNav("finance","initial");
-	private ButtonNav system = new ButtonNav("fiance","system");
+	private ButtonNav system = new ButtonNav("finance","system");
 	
 	private FinanceAccount financeAccount;
 	private FinanceBenefit financeBenefit;
@@ -40,6 +40,7 @@ public class NavigationFinance extends Navigation{
 		buttonList.add(benefit);
 		buttonList.add(initial);
 		buttonList.add(system);
+		System.out.println(buttonList.size()+"buttonList .size()");
 	}
 	
 	protected void changeTask(int index){
@@ -83,7 +84,7 @@ public class NavigationFinance extends Navigation{
 	}
 	private void changeToBenefit(){
 		financeBenefit = new FinanceBenefit();
-//		MainFrame.changeContentPanel(financeBenefit.getPanel());
+		MainFrame.changeContentPanel(financeBenefit.getPanel());
 	}
 	private void changeToInitial(){
 		financeInitial = new FinanceInitial();
@@ -91,6 +92,6 @@ public class NavigationFinance extends Navigation{
 	}
 	private void changeToSystem(){
 		financeSystem = new FinanceSystem();
-//		MainFrame.changeContentPanel(financeSystem.getPanel());
+		MainFrame.changeContentPanel(financeSystem.getPanel());
 	}
 }

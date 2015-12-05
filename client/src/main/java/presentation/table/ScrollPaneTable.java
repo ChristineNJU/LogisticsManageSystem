@@ -44,7 +44,6 @@ public class ScrollPaneTable extends JScrollPane{
 //			setBounds(120,150,770,(row+1)*30);
 //		}
 //	}
-	
 	public void setSize(){
 		int num = table.getRowCount();
 		if(num < 30){

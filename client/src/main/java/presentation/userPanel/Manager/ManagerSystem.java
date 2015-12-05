@@ -1,5 +1,10 @@
 package presentation.userPanel.Manager;
 
-public class ManagerSystem {
+import presentation.userPanel.Finance.FinanceSystem;
 
+public class ManagerSystem extends FinanceSystem{
+
+	public ManagerSystem(){
+		super();
+	}
 }
