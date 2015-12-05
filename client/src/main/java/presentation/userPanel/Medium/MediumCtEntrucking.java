@@ -6,20 +6,20 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Vector;
 
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import VO.EntruckingVO;
-import VO.VO;
-import businesslogic.Impl.MediumCenter.MediumCenterController;
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
 import presentation.components.LabelHeader;
 import presentation.components.TextField;
+import presentation.components.TextFieldHeader;
 import presentation.main.FunctionAdd;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
+import VO.EntruckingVO;
+import VO.VO;
+import businesslogic.Impl.MediumCenter.MediumCenterController;
 
 public class MediumCtEntrucking extends FunctionAdd{
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -31,8 +31,8 @@ public class MediumCtEntrucking extends FunctionAdd{
 	String[] tableH = {"快递单号","日期","目的地","车辆编号","押运人","货物监督员","数量","装运单号"};
 	boolean[] isCellEditable = {false,false,false,false,false,false,false};
 	
-	public TextField idInput  = new TextField();
-	public TextField carIdInput = new TextField();
+	public TextFieldHeader idInput  = new TextFieldHeader();
+	public TextFieldHeader carIdInput = new TextFieldHeader();
 	public TextField superCarGoInput = new TextField();
 	public TextField guardInput = new TextField();
 	public TextField destinationInput = new TextField();
@@ -136,17 +136,16 @@ public class MediumCtEntrucking extends FunctionAdd{
 	}
 	public class Header extends JLabel{
 		LabelHeader mediumCenterId = new LabelHeader("中转中心编号");
-		LabelHeader date = new LabelHeader("装 车 日 期");
-		LabelHeader id = new LabelHeader("装车单编号");
-		LabelHeader carId = new LabelHeader("车辆代号");
-		LabelHeader superCarGo = new LabelHeader("");
-		LabelHeader guard = new LabelHeader("");
-		LabelHeader destination = new LabelHeader("");
-		LabelHeader cost = new LabelHeader("");
+		LabelHeader date = new  LabelHeader      ("装  车  日  期");
+		LabelHeader id = new  LabelHeader        ("装 车 单 编 号");
+		LabelHeader carId = new LabelHeader		 ("车  辆   代  号");
+		LabelHeader superCarGo = new LabelHeader ("监     运     员");
+		LabelHeader guard = new LabelHeader		 ("押     运     员");
+		LabelHeader destination = new LabelHeader("到     达     地");
+		LabelHeader cost = new LabelHeader		 ("运             费");
 		
 		
 		
-//		ImageIcon back = new ImageIcon("src/graphics/aomiao/MediumCenterEntrucking.png");
 		
 		public Header(){
 			this.setBounds(120,100,760,100);
@@ -154,17 +153,43 @@ public class MediumCtEntrucking extends FunctionAdd{
 			ArrayList<LabelHeader> maohao = new ArrayList<LabelHeader>();
 			for(int i = 0; i < 8;i++){
 				maohao.add(new LabelHeader(":"));
-				maohao.get(i).setBounds(125+280*(i/3),(i%3)*33,14,30);
+				maohao.get(i).setBounds(115+260*(i/3),(i%3)*33,14,30);
 				this.add(maohao.get(i));
 			}
 			
-			mediumCenterId.setBounds(0,0,125,30);
-			date.setBounds(0,33,125,30);
-			id.setBounds(0,66,125,30);
+			mediumCenterId.setBounds(0,0,115,30);
+			date.setBounds(0,33,115,30);
+			id.setBounds(0,66,115,30);
+			carId.setBounds(260, 0, 115, 30);
+			superCarGo.setBounds(260, 33, 115, 30);
+			guard.setBounds(260, 66, 115, 30);
+			destination.setBounds(520, 0,115, 30);
+			cost.setBounds(520, 33, 115, 30);
 			
-//			carId.setBounds()
+			add(mediumCenterId);
+			add(date);
+			add(id);
+			add(carId);
+			add(superCarGo);
+			add(guard);
+			add(destination);
+			add(cost);
 			
-			//add
+			idInput.setBounds(130, 66, 120, 30);
+			carIdInput.setBounds(390,0 , 120, 30);
+			superCarGoInput.setBounds(390, 33, 120,30 );
+			guardInput.setBounds(390,66 , 120, 30);
+			destinationInput.setBounds(650, 0, 120, 30);
+			costInput.setBounds(650, 33, 120, 30);
+			
+			add(idInput);
+			add(carIdInput);
+			add(superCarGoInput);
+			add(guardInput);
+			add(destinationInput);
+			add(costInput);
+			
+			
 			
 			
 		}
