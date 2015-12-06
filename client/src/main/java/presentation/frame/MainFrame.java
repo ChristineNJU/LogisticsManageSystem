@@ -1,12 +1,15 @@
 package presentation.frame;
 
+import java.awt.BorderLayout;
+import java.awt.Image;
 import java.awt.Toolkit;
+import java.rmi.ConnectException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import State.UserRole;
-import VO.UserVO;
 import presentation.AnimationEasing.AnimationEasing;
 import presentation.components.PanelContent;
 import presentation.main.Navigation;
@@ -18,6 +21,8 @@ import presentation.userPanel.Manager.NavigationManager;
 import presentation.userPanel.Medium.NavigationMediumCenter;
 import presentation.userPanel.Repository.NavigationRepository;
 import presentation.userPanel.start.Inquiry;
+import State.UserRole;
+import VO.UserVO;
 
 /**
  * client展示模块的窗口容器
@@ -39,7 +44,7 @@ public class MainFrame {
 	
 	private Inquiry inquiry;
 	
-	private UserVO user = new UserVO("141250181", "张晨剑", UserRole.businessAgent);
+	private UserVO user = new UserVO("141250181", "黄勇", UserRole.businessAgent);
 	private Navigation nav;
 //	private CourierNavigation nav;
 
@@ -58,17 +63,17 @@ public class MainFrame {
 
 		frame.setContentPane(panel);
 		panel.setLayout(null);
-
-		inquiry = new Inquiry(this);
-		frame.add(inquiry.getPanel());
-		panel.add(inquiry.getPanel());
+		
+//		inquiry = new Inquiry(this);
+//		frame.add(inquiry.getPanel());
+//		panel.add(inquiry.getPanel());
 
 //		changeToCourier();
 //		changeToBusinesslobby();
 //		changeToFinance();
 //		changeToCourier()
 //		changeToFinance();
-//		changeToManager();
+		changeToManager();
 //	changeToManager();
 
 //		changeToFinance();
@@ -78,15 +83,17 @@ public class MainFrame {
 //	changeToManager();
 
 
-		changeToMediumCenter();
+//		changeToMediumCenter();
 //		changeToRepository();
 
 //		changeToMediumCenter();
-		changeToRepository();
+//		changeToRepository();
 
 //		changeToAdmin()contentPanel;
-	}
 	
+		
+	}	
+
 	/**
 	 * 获取client主窗口
 	 * 
@@ -100,8 +107,9 @@ public class MainFrame {
 	 * 窗口跳转
 	 * 
 	 * @param user 人员类型,据此跳转不同人员的Panel
+	 * @throws ConnectException 
 	 * */
-	public void changeToUserPane(UserVO user){
+	public void changeToUserPane(UserVO user) {
 		this.user = user;
 		UserRole role = user.getRole();
 		System.out.println(user.getRole());
@@ -160,7 +168,7 @@ public class MainFrame {
 	/**
 	 * 跳转至总经理Panel
 	 * */
-	private void changeToManager(){
+	private void changeToManager() {
 		nav = new NavigationManager(user);
 		panel.add(nav.getNavPanel());
 	}
