@@ -39,7 +39,7 @@ public class ProgressBarPanel {
 	private JLabel error = new JLabel("与服务器连接失败", JLabel.CENTER);
 	
 	public ProgressBarPanel() {
-		panel.setBounds(550, 0, 240, 95);
+		panel.setBounds(650, 0, 240, 95);
 		panel.setOpaque(true);
 		panel.setBackground(Color.white);
 		try {

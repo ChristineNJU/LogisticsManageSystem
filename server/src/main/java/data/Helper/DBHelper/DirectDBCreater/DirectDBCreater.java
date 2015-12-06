@@ -590,7 +590,7 @@ public class DirectDBCreater {
 		
 		try {
 			s = conn.createStatement();
-			s.execute("CREATE TABLE "+table_name+" (bar_code varchar(20) PRIMARY key, storage_date varchar(20), destination varchar(50), "
+			s.execute("CREATE TABLE "+table_name+" (bar_code varchar(20), storage_date varchar(50) PRIMARY key, destination varchar(50), "
 					+ "old_area varchar(50), old_row int, old_shelf int, old_position int, "
 					+ "new_area varchar(50), new_row int, new_shelf int, new_position int, isApproved varchar(10))");
 			conn.commit();
