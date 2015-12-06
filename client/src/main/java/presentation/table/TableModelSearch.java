@@ -13,6 +13,7 @@ public class TableModelSearch extends AbstractTableModel{
 //		System.out.println("in tableMOdelAddOnly constructor");
 		this.tableValues = value;
 		this.head = head;
+//		System.out.println(head.length);
 		
 	}
 

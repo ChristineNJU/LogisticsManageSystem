@@ -1,5 +1,11 @@
 package presentation.userPanel.Manager;
 
-public class ManagerIncomeAndOutcome {
+import presentation.userPanel.Finance.FinanceIncomeAndOutcome;
+
+public class ManagerIncomeAndOutcome extends FinanceIncomeAndOutcome{
+	
+	public ManagerIncomeAndOutcome(){
+		super();
+	}
 
 }

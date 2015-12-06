@@ -409,13 +409,15 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {
 			SearchLogisticsService service=(SearchLogisticsService) Naming.lookup(RMIHelper.SEARCH_LOGISTICS_IMPL);
-			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("bar_code='"+delivery.getBarCodeList().get(0)+"'");
-			LogisticsInfoPO logistic=service.searchLogisticsInfo(requirement).get(0);
-			logistic.addHistory(institution.getInstitutionName()+"正在派件，"+sdf.format(delivery.getArrivalDate()));
-			
-			UpdateService updateservice=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
-			updateservice.update(logistic);
+			for(String s:delivery.getBarCodeList()){
+				ArrayList<String> requirement=new ArrayList<String>();
+				requirement.add("bar_code='"+s+"'");
+				LogisticsInfoPO logistic=service.searchLogisticsInfo(requirement).get(0);
+				logistic.addHistory(institution.getInstitutionName()+"正在派件，"+sdf.format(delivery.getArrivalDate()));
+				
+				UpdateService updateservice=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
+				updateservice.update(logistic);
+			}
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -427,13 +429,15 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {
 			SearchLogisticsService service=(SearchLogisticsService) Naming.lookup(RMIHelper.SEARCH_LOGISTICS_IMPL);
-			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("bar_code='"+entrucking.getBarCodeList().get(0)+"'");
-			LogisticsInfoPO logistic=service.searchLogisticsInfo(requirement).get(0);
-			logistic.addHistory(institution.getInstitutionName()+"正在扫描装车，"+sdf.format(entrucking.getDate()));
+			for(String s:entrucking.getBarCodeList()){
+				ArrayList<String> requirement=new ArrayList<String>();
+				requirement.add("bar_code='"+s+"'");
+				LogisticsInfoPO logistic=service.searchLogisticsInfo(requirement).get(0);
+				logistic.addHistory(institution.getInstitutionName()+"正在扫描装车，"+sdf.format(entrucking.getDate()));
 			
-			UpdateService updateservice=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
-			updateservice.update(logistic);
+				UpdateService updateservice=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
+				updateservice.update(logistic);
+			}
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -483,14 +487,16 @@ public class ManageReceipt implements ShowReceiptService, UpdateReceiptService{
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {
 			SearchLogisticsService service=(SearchLogisticsService) Naming.lookup(RMIHelper.SEARCH_LOGISTICS_IMPL);
-			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("bar_code='"+transfer.getItemId().get(0)+"'");
-			LogisticsInfoPO logistic=service.searchLogisticsInfo(requirement).get(0);
-			logistic.addHistory(institution.getInstitutionName()+"正在中转发送，"+sdf.format(transfer.getDate()));
-			
-			UpdateService updateservice=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
-			updateservice.update(logistic);
-		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			for(String s:transfer.getItemId()){
+				ArrayList<String> requirement=new ArrayList<String>();
+				requirement.add("bar_code='"+s+"'");
+				LogisticsInfoPO logistic=service.searchLogisticsInfo(requirement).get(0);
+				logistic.addHistory(institution.getInstitutionName()+"正在中转发送，"+sdf.format(transfer.getDate()));
+				
+				UpdateService updateservice=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
+				updateservice.update(logistic);
+			}
+			} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("更新物流信息失败");

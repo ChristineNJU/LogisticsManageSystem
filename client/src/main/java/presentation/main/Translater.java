@@ -1,16 +1,20 @@
 package presentation.main;
 
+import State.CostType;
 import State.InstitutionType;
 import State.LogisticsState;
 import State.LogisticsType;
 import State.PackingCharge;
+
+import State.TransferType;
+
 import State.StorageArea;
 import State.UserRole;
 
 public class Translater {
 
-	public static String getChineseForInstitution(InstitutionType type){
-		switch(type){
+	public static String getChineseForInstitution(InstitutionType type) {
+		switch (type) {
 		case BusinessLobby:
 			return "营业厅";
 		case MediumCenter:
@@ -23,9 +27,9 @@ public class Translater {
 			return "总部";
 		}
 	}
-	
-	public static String getChineseLogisticsState(LogisticsState state){
-		switch(state){
+
+	public static String getChineseLogisticsState(LogisticsState state) {
+		switch (state) {
 		case INTACT:
 			return "完整";
 		case LOST:
@@ -34,12 +38,45 @@ public class Translater {
 			return "损坏";
 		default:
 			return "完整";
-			
+
+		}
+
+	}
+
+	
+	public static String getChineseCostType(CostType type){
+		switch(type){
+		case rent:
+			return "租金";
+		case freight:
+			return "运费";
+		case salary:
+			return "薪水";
+		case reward:
+			return "奖金";
+		default:
+			return "薪水";
+		}
+	}
+	
+	public static String getChineseTransferType(TransferType type){
+		switch(type){
+		case AIR:
+			return "航空运输";
+		case RAILWAY:
+			return "铁路运输";
+		case CAR:
+			return "公路运输";
+		default:
+			return "公路运输";
 		}
 		
 	}
-	public static InstitutionType getInstitutionType(String s){
-		switch(s){
+	
+
+	public static InstitutionType getInstitutionType(String s) {
+		switch (s) {
+
 		case "营业厅":
 			return InstitutionType.BusinessLobby;
 		case "中转中心":
@@ -52,9 +89,9 @@ public class Translater {
 			return InstitutionType.Other;
 		}
 	}
-	
- 	public static String getChineseForUserRole(UserRole role){
-		switch(role){
+
+	public static String getChineseForUserRole(UserRole role) {
+		switch (role) {
 		case admin:
 			return "管理员";
 		case businessAgent:
@@ -73,9 +110,9 @@ public class Translater {
 			return "职业";
 		}
 	}
-	
- 	public static UserRole getUserRole(String s){
-		switch(s){
+
+	public static UserRole getUserRole(String s) {
+		switch (s) {
 		case "管理员":
 			return UserRole.admin;
 		case "营业厅业务员":
@@ -94,6 +131,26 @@ public class Translater {
 			return UserRole.uninit;
 		}
 	}
+
+
+
+	public String getChineseForCostType(CostType type) {
+		switch (type) {
+		case rent:
+			return "租金";
+		case freight:
+			return "运费";
+		case salary:
+			return "工资";
+		case reward:
+			return "奖金";
+		default:
+			return "其他";
+		}
+	}
+
+	
+
  	
  	public static LogisticsType getLogisticsType(String s) {
  		switch(s){
@@ -133,6 +190,33 @@ public class Translater {
  		}
  	}
  	
+
+ 	public static CostType getCostType(String s){
+ 		switch(s){
+ 		case "租金":
+ 			return CostType.rent;
+ 		case "运费":
+ 			return CostType.freight;
+ 		case "薪水":
+ 			return CostType.salary;
+ 		case "奖金":
+ 			return CostType.reward;
+ 		default:
+ 			return CostType.salary;
+ 		}
+ 	}
+ 	public static TransferType getTransferType(String s){
+ 		switch(s){
+ 		case"航空运输":
+ 			return TransferType.AIR;
+ 		case"铁路运输":
+ 			return TransferType.RAILWAY;
+ 		case"公路运输":
+ 			return TransferType.CAR;
+ 		default:
+ 			return TransferType.CAR;
+ 		}
+ 	}
  	public static StorageArea getStorageArea(String s) {
  		switch(s){
  		case "航空区":
@@ -147,4 +231,5 @@ public class Translater {
  			return StorageArea.MANOEUVERING_AREA;
  		}
  	}
+
 }

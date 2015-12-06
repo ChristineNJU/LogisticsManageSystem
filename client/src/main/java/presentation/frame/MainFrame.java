@@ -59,15 +59,15 @@ public class MainFrame {
 		frame.setContentPane(panel);
 		panel.setLayout(null);
 
-		inquiry = new Inquiry(this);
-		frame.add(inquiry.getPanel());
-		panel.add(inquiry.getPanel());
+//		inquiry = new Inquiry(this);
+//		frame.add(inquiry.getPanel());
+//		panel.add(inquiry.getPanel());
 
 //		changeToCourier();
 //		changeToBusinesslobby();
 //		changeToFinance();
 //		changeToCourier()
-//		changeToFinance();
+		changeToFinance();
 //		changeToManager();
 //	changeToManager();
 
@@ -78,11 +78,11 @@ public class MainFrame {
 //	changeToManager();
 
 
-		changeToMediumCenter();
+//		changeToMediumCenter();
 //		changeToRepository();
 
 //		changeToMediumCenter();
-		changeToRepository();
+//		changeToRepository();
 
 //		changeToAdmin()contentPanel;
 	}
