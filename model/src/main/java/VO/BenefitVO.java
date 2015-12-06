@@ -14,12 +14,12 @@ public class BenefitVO extends VO {
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	private Date Date=null;
 	
-	public BenefitVO(double income,double cost,String startDate){
+	public BenefitVO(double income,double cost,String date){
 		this.incomeTotal = income;
 		this.costTotal = cost;
 		this.benefitTotal = income - cost;
 		try {
-			this.Date=(sdf.parse(startDate));
+			this.Date=(sdf.parse(date));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

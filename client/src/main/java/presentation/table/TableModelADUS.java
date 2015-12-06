@@ -109,7 +109,7 @@ public class TableModelADUS extends AbstractTableModel {
 //			size = 0;
 //		}
 		for(int i = 0;i < initialColumnCount;i++){
-			element.add(" ");
+			element.add("");
 		}
 		tableValues.add(element);
 		fireTableRowsInserted(tableValues.size()-1,tableValues.size()-1);

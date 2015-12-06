@@ -7,12 +7,14 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import PO.WareHousePO;
+import State.UpdateState;
 import VO.WareHouseVO;
-import businesslogic.Service.Repository.GetWareHouseService;
+import businesslogic.Service.Repository.BlWareHouseService;
 import businesslogic.SystemLog.SystemLog;
 import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
 import data.Service.Sundry.WareHouseService;
+import data.Service.Update.UpdateService;
 
 /**
  * 获取仓库所有快递信息
@@ -20,7 +22,7 @@ import data.Service.Sundry.WareHouseService;
  * @author 尹子越
  * @version 1.0.0
  * */
-public class GetWareHouseImpl implements GetWareHouseService{
+public class BlWareHouseImpl implements BlWareHouseService{
 
 	@Override
 	public ArrayList<WareHouseVO> getWareHouse() {
@@ -41,5 +43,21 @@ public class GetWareHouseImpl implements GetWareHouseService{
 		}
 		
 		return vo;
+	}
+
+	@Override
+	public UpdateState updateWareHouse(WareHouseVO vo) {
+		// TODO Auto-generated method stub
+		UpdateState state = UpdateState.SUCCESS;
+		
+		try {
+			UpdateService service = (UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
+			state = service.update(new WareHousePO(vo, URLHelper.getWareHouseURL(SystemLog.getInstitutionId())));
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return UpdateState.CONNECTERROR;
+		}
+		return state;
 	}
 }

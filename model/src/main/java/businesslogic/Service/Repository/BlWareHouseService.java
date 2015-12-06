@@ -2,6 +2,7 @@ package businesslogic.Service.Repository;
 
 import java.util.ArrayList;
 
+import State.UpdateState;
 import VO.WareHouseVO;
 /**
  * 获取仓库所有快递信息的接口
@@ -9,7 +10,7 @@ import VO.WareHouseVO;
  * @author 尹子越
  * @version 1.0.0
  * */
-public interface GetWareHouseService {
+public interface BlWareHouseService {
 	
 	/**
 	 * 获取仓库所有快递信息
@@ -17,4 +18,12 @@ public interface GetWareHouseService {
 	 * @return ArrayList<WareHouseVO>保存所有快递信息
 	 * */
 	public ArrayList<WareHouseVO> getWareHouse();
+	
+	/**
+	 * 更新仓库信息
+	 * 
+	 * @param vo 新仓库信息
+	 * @return UpdateState
+	 * */
+	public UpdateState updateWareHouse(WareHouseVO vo);
 }

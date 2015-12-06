@@ -63,7 +63,7 @@ public class MainFrame {
 
 		frame.setContentPane(panel);
 		panel.setLayout(null);
-		
+
 //		inquiry = new Inquiry(this);
 //		frame.add(inquiry.getPanel());
 //		panel.add(inquiry.getPanel());
@@ -72,8 +72,13 @@ public class MainFrame {
 //		changeToBusinesslobby();
 //		changeToFinance();
 //		changeToCourier()
+
 //		changeToFinance();
 		changeToManager();
+
+//		changeToFinance();
+//		changeToManager();
+
 //	changeToManager();
 
 //		changeToFinance();

@@ -6,7 +6,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Vector;
 
+import javax.swing.DefaultCellEditor;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.table.TableColumnModel;
 
 import businesslogic.Impl.Businesslobby.BusinessLobbyController;
 import businesslogic.Impl.MediumCenter.MediumCenterController;
@@ -17,7 +20,9 @@ import VO.ArrivalVO;
 import VO.VO;
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
+import presentation.components.FlatComboBox;
 import presentation.components.LabelHeader;
+import presentation.components.TextFieldHeader;
 import presentation.main.FunctionAdd;
 import presentation.main.Translater;
 import presentation.table.ScrollPaneTable;
@@ -26,13 +31,16 @@ import presentation.table.TableModelAddOnly;
 import presentation.userPanel.BusinessLb.BusinessLbArrival.Header;
 
 public class MediumCtArrival extends FunctionAdd{
-	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	SimpleDateFormat sdfs=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	SimpleDateFormat sdfd=new SimpleDateFormat("yyyy-MM-dd");
 	
 	MediumCenterController service = new MediumCenterController();
 	ArrayList<ArrivalVO> arrivals;
 	
-	String[] tableH={"快递单号","日期","出发地","快递状态","到达单编号"};
-	boolean[] isCellEditable = {false,false,false,false};
+	String[] tableH={"快递单号","出发地","快递状态",""};
+	boolean[] isCellEditable = {false,false,false,};
+	
+	public TextFieldHeader listIdIuput = new TextFieldHeader();
 	
 	public MediumCtArrival(){
 		super.buttonNew = new ButtonNew("新增到达单");
@@ -47,7 +55,7 @@ public class MediumCtArrival extends FunctionAdd{
 		
 		//测试用
 		try {
-			ArrivalVO arrival0 = new ArrivalVO("0000000001", sdf.parse("2015-12-03"), "0210210201021020102102", "南京", LogisticsState.INTACT);
+			ArrivalVO arrival0 = new ArrivalVO("0000002001", sdfs.parse("2015-12-03 11:30:10"), "0210210201021020102102", "南京", LogisticsState.INTACT);
 			arrivals.add(arrival0);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
@@ -62,6 +70,12 @@ public class MediumCtArrival extends FunctionAdd{
 		sPanel = new ScrollPaneTable(table);
 		sPanel.setLocation(sPanel.getX(),header.getHeight()+120);
 		panel.add(sPanel);
+		
+		TableColumnModel tcm = table.getColumnModel(); 
+	    String[] gender = {"完整","丢失","损坏"}; 
+	    JComboBox  genderC = new FlatComboBox(gender);  
+	    tcm.getColumn(2).setCellEditor(new DefaultCellEditor(genderC)); 
+		
 	}
 	
 	private Vector<Vector<String>> getVector(ArrayList<ArrivalVO> vo) {
@@ -70,10 +84,10 @@ public class MediumCtArrival extends FunctionAdd{
 		for(ArrivalVO temp:vo){
 			Vector<String> vRow = new Vector<String>();
 			vRow.add(temp.getBarCode());
-			vRow.add(sdf.format(temp.getDate()));
+			//vRow.add(sdfs.format(temp.getDate()));
 			vRow.add(temp.getDeparture());
 			vRow.add(Translater.getChineseLogisticsState(temp.getLogisticsState()));
-			vRow.add(temp.getListId());
+//			vRow.add(temp.getListId());
 			result.add(vRow);
 		}
 		return result;
@@ -101,38 +115,37 @@ public class MediumCtArrival extends FunctionAdd{
 
 	@Override
 	protected VO getVO(Vector<String> vector) {
-		// 将表格的一行转化成vo
-		try {
-			Date tempdate = sdf.parse(vector.get(1));
-			String tempbarCode = vector.get(0);
-			String tempdep = vector.get(2);
-			LogisticsState tempstate = Translater.getLogisticsState(vector.get(3));
-			String tempnumber = vector.get(4);
-			ArrivalVO tempArrival = new ArrivalVO(tempbarCode, tempdate, tempnumber, tempdep, tempstate);
-			return tempArrival;
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		Date tempdate = new Date();
+		String tempbarCode = vector.get(0);
+		String tempdep = vector.get(1);
+		LogisticsState tempstate = Translater.getLogisticsState(vector.get(2));
+		String tempnumber = listIdIuput.getText();
+		ArrivalVO tempArrival = new ArrivalVO(tempbarCode, tempdate, tempnumber, tempdep, tempstate);
+		return tempArrival;
 		
-		
-		return null;
 	}
 	
 	public class Header extends JLabel{
-		LabelHeader businessLobbyID = new LabelHeader("营业厅编号");
-		LabelHeader gatheringId = new LabelHeader("到达单编号");
+		LabelHeader date = new LabelHeader("日         期:");
+		LabelHeader arrivalID = new LabelHeader("到达单编号:");
+		
+		LabelHeader dateInput = new LabelHeader(sdfd.format(new Date()));
 		public Header(){
-			this.setBounds(120,100,680,60);
+			this.setBounds(120,100,680,70);
 			this.setBackground(null);
-			businessLobbyID.addInfo(SystemLog.getInstitutionId());
-			gatheringId.addInfo("");
+//			arrivalID.addInfo(SystemLog.getInstitutionId());
+//			date.addInfo(sdfd.format(new Date()));
 			
-			businessLobbyID.setBounds(0,0,400,30);
-			gatheringId.setBounds(0,35,400,30);
+			arrivalID.setBounds(0,35,115,30);
+			date.setBounds(0,0,115,30);
 			
-			add(businessLobbyID);
-			add(gatheringId);
+			add(arrivalID);
+			add(date);
+			
+			listIdIuput.setBounds(118, 35, 120, 30);
+			dateInput.setBounds(118, 0, 120, 30);
+			add(dateInput);
+			add(listIdIuput);
 		}
 	}
 

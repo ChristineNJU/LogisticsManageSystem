@@ -39,7 +39,7 @@ public class TableModelAddOnly extends AbstractTableModel{
 //			size = 0;
 //		}
 		for(int i = 0;i < head.length;i++){
-			element.add(" ");
+			element.add("");
 		}
 		tableValues.add(element);
 		fireTableRowsInserted(tableValues.size()-1,tableValues.size()-1);
@@ -91,8 +91,11 @@ public class TableModelAddOnly extends AbstractTableModel{
 	@Override
 	public void setValueAt(Object value, int row, int column) {
 //		fireTableCellUpdated(row, column);
-		if(column < getColumnCount())
+		if(column < getColumnCount()){
 			tableValues.get(row).setElementAt((String) value,column);
+			System.out.println("set value at   "+row+"   "+column);
+			fireTableCellUpdated(row, column);
+		}
 		else
 			return;
 	}
