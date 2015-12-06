@@ -88,13 +88,13 @@ public class MainFrame {
 //	changeToManager();
 
 
-//		changeToMediumCenter();
-		changeToRepository();
+		changeToMediumCenter();
+//		changeToRepository();
 
 //		changeToMediumCenter();
 //		changeToRepository();
-
-//		changeToAdmin()contentPanel;
+//
+//		changeToAdmin();
 	
 		
 	}	
