@@ -18,7 +18,7 @@ import VO.VO;
  * @author 张馨中
  * @version 1.0.0
  * */
-public interface ReponsitoryService {
+public interface RepositoryService {
 	
 	/**
 	 * 库存报警

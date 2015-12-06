@@ -24,7 +24,7 @@ import VO.VO;
 import businesslogic.Impl.Repository.RepositoryController;
 import businesslogic.SystemLog.SystemLog;
 
-public class RepositoryRemovall extends FunctionAdd{
+public class RepositoryRemoval extends FunctionAdd{
 
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	SimpleDateFormat sdfd = new SimpleDateFormat("yyyy-MM-dd");
@@ -40,7 +40,7 @@ public class RepositoryRemovall extends FunctionAdd{
 	public TextFieldHeader destinationInput = new TextFieldHeader();
 	public TextFieldHeader transferWayInput = new TextFieldHeader();
 	
-	public  RepositoryRemovall() {
+	public  RepositoryRemoval() {
 		super.buttonNew = new ButtonNew("新增出库项");
 		super.confirm = new ButtonConfirm("提交出库单");
 		initUI("出库");

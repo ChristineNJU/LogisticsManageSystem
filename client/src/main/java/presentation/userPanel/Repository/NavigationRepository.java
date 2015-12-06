@@ -1,9 +1,9 @@
 package presentation.userPanel.Repository;
 
+import VO.UserVO;
 import presentation.components.ButtonNav;
 import presentation.frame.MainFrame;
 import presentation.main.Navigation;
-import VO.UserVO;
 
 public class NavigationRepository extends Navigation{
 
@@ -14,9 +14,12 @@ public class NavigationRepository extends Navigation{
 	private ButtonNav stockTaking = new ButtonNav("repository","stockTaking");
 	private ButtonNav see = new ButtonNav("repository","see");
 	
-	private RepositoryStorage rs = new RepositoryStorage();
-	private RepositoryBalance rb = new RepositoryBalance();
-	private RepositoryRemovall rr = new  RepositoryRemovall();
+	private RepositoryStorage repositoryStorage;
+	private RepositoryBalance repositoryBalance;
+	private RepositoryRemoval repositoryRemoval;
+	private RepositoryCheck repositoryCheck;
+	private RepositoryStockTaking repositoryStockTaking;
+	
 	public NavigationRepository(UserVO user) {
 		super(user);
 		initNavButtonArray();
@@ -52,22 +55,24 @@ public class NavigationRepository extends Navigation{
 		
 	}
 	private void changeToStorage(){
-		rs = new RepositoryStorage();
+		repositoryStorage = new RepositoryStorage();
 //		MainFrame.getMainPanel().remove(comp);
-		MainFrame.changeContentPanel(rs.getPanel());
+		MainFrame.changeContentPanel(repositoryStorage.getPanel());
 	}
 	private void changeToRemoval(){
-		rr = new RepositoryRemovall();
-		MainFrame.changeContentPanel(rr.getPanel());
+		repositoryRemoval = new RepositoryRemoval();
+		MainFrame.changeContentPanel(repositoryRemoval.getPanel());
 	}
 	private void changeToBalance(){
-		rb = new RepositoryBalance();
-		MainFrame.changeContentPanel(rb.getPanel());
+		repositoryBalance = new RepositoryBalance();
+		MainFrame.changeContentPanel(repositoryBalance.getPanel());
 	}
 	private void changeToStockTaking(){
-		
+		repositoryStockTaking = new RepositoryStockTaking();
+		MainFrame.changeContentPanel(repositoryStockTaking.getPanel());
 	}
 	private void changeToSee(){
-		
+		repositoryCheck = new RepositoryCheck();
+		MainFrame.changeContentPanel(repositoryCheck.getPanel());
 	}
 }

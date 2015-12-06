@@ -29,13 +29,13 @@ import State.StorageArea;
 import State.StorageState;
 import VO.StorageVO;
 import businesslogic.Impl.Repository.RepositoryController;
-import businesslogic.Service.Repository.ReponsitoryService;
+import businesslogic.Service.Repository.RepositoryService;
 
 public class RepositoryStorageTMP {
 	
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	
-	ReponsitoryService service = new RepositoryController();
+	RepositoryService service = new RepositoryController();
 	
 	private ProgressBarPanel pbp = new ProgressBarPanel();
 	

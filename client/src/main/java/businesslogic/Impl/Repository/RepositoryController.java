@@ -9,10 +9,10 @@ import VO.BalanceVO;
 import VO.RemovalVO;
 import VO.StockTakingVO;
 import VO.StorageVO;
-import businesslogic.Service.Repository.ReponsitoryService;
+import businesslogic.Service.Repository.RepositoryService;
 import businesslogic.SystemLog.SystemLog;
 
-public class RepositoryController implements ReponsitoryService{
+public class RepositoryController implements RepositoryService{
 
 	
 	@Override
