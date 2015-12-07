@@ -5,14 +5,21 @@ import java.util.ArrayList;
 import State.AddState;
 import State.DeleteState;
 import State.UpdateState;
+import VO.ArrivalVO;
+import VO.BalanceVO;
 import VO.BenefitVO;
 import VO.ConstVO;
 import VO.CostVO;
+import VO.DeliveryVO;
 import VO.DistanceVO;
+import VO.EntruckingVO;
 import VO.GatheringVO;
 import VO.InstitutionVO;
+import VO.RemovalVO;
 import VO.SalaryVO;
 import VO.StaffVO;
+import VO.StorageVO;
+import VO.TransferVO;
 import VO.VO;
 /**
  * 总经理业务的接口
@@ -111,13 +118,13 @@ public interface ManageService {
 	 * */
 	public ArrayList<ConstVO> showConst();
 	
-	/**
-	 * 显示所有单据
-	 * 
-	 * @return VO的ArrayList
-	 * */
-	public ArrayList<VO> showReceipt();
-	
+//	/**
+//	 * 显示所有单据
+//	 * 
+//	 * @return VO的ArrayList
+//	 * */
+//	public ArrayList<VO> showReceipt();
+//	
 	/**
 	 * 查询薪水信息
 	 * 
@@ -179,5 +186,60 @@ public interface ManageService {
 	 * @return 更新状态
 	 * */
 	public UpdateState updateDistance(DistanceVO distance);
+
+	/**
+	 * 显示未评审ArrivalVO
+	 * @return ArrayList<ArrivalVO>
+	 */
+	public ArrayList<ArrivalVO> showArrival();
+	
+	/**
+	 * 显示未评审BalanceVO
+	 * @return ArrayList<ArrivalVO>
+	 */
+	public ArrayList<BalanceVO> showBalance();
+	
+	/**
+	 * 显示未评审CostVO
+	 * @return ArrayList<CostVO>
+	 */
+	public ArrayList<CostVO> showCost();
+	
+	/**
+	 * 显示未评审DeliveryVO
+	 * @return ArrayList<DeliveryVO>
+	 */
+	public ArrayList<DeliveryVO> showDelivery();
+	
+	/**
+	 * 显示未评审EntruckingVO
+	 * @return ArrayList<EntruckingVO>
+	 */
+	public ArrayList<EntruckingVO> showEntrucking();
+	
+	/**
+	 * 显示未评审GatheringVO
+	 * @return ArrayList<GatheringVO>
+	 */
+	public ArrayList<GatheringVO> showGathering();
+	
+	/**
+	 * 显示未评审RemovalVO
+	 * @return ArrayList<RemovalVO>
+	 */
+	public ArrayList<RemovalVO> showRemoval();
+	
+	/**
+	 * 显示未评审StorageVO
+	 * @return ArrayList<StorageVO>
+	 */
+	public ArrayList<StorageVO> showStorage();
+	
+	/**
+	 * 显示未评审TransferVO
+	 * @return ArrayList<TransferVO>
+	 */
+	public ArrayList<TransferVO> showTransfer();
+	
 	
 }

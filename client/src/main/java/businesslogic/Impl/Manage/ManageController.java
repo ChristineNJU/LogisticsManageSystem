@@ -5,14 +5,21 @@ import java.util.ArrayList;
 import State.AddState;
 import State.DeleteState;
 import State.UpdateState;
+import VO.ArrivalVO;
+import VO.BalanceVO;
 import VO.BenefitVO;
 import VO.ConstVO;
 import VO.CostVO;
+import VO.DeliveryVO;
 import VO.DistanceVO;
+import VO.EntruckingVO;
 import VO.GatheringVO;
 import VO.InstitutionVO;
+import VO.RemovalVO;
 import VO.SalaryVO;
 import VO.StaffVO;
+import VO.StorageVO;
+import VO.TransferVO;
 import VO.VO;
 import businesslogic.Service.Manage.ManageService;
 import businesslogic.SystemLog.SystemLog;
@@ -88,12 +95,12 @@ public class ManageController implements ManageService{
 		return state;
 	}
 
-	@Override
-	public ArrayList<VO> showReceipt() {
-		// TODO Auto-generated method stub
-		ManageReceipt manageReceipt=new ManageReceipt();
-		return manageReceipt.showReceipt();
-	}
+//	@Override
+//	public ArrayList<VO> showReceipt() {
+//		// TODO Auto-generated method stub
+//		ManageReceipt manageReceipt=new ManageReceipt();
+//		return manageReceipt.showReceipt();
+//	}
 
 	@Override
 	public ArrayList<GatheringVO> searchGathering(String date,
@@ -203,6 +210,78 @@ public class ManageController implements ManageService{
 			SystemLog.addLog("更新距离信息");
 		}
 		return state;
+	}
+
+	@Override
+	public ArrayList<ArrivalVO> showArrival() {
+		// TODO Auto-generated method stub
+		ManageShowReceipt manageShowReceipt = new ManageShowReceipt();
+		ArrayList<ArrivalVO> result = manageShowReceipt.showArrival();
+		return result;
+	}
+
+	@Override
+	public ArrayList<BalanceVO> showBalance() {
+		// TODO Auto-generated method stub
+		ManageShowReceipt manageShowReceipt = new ManageShowReceipt();
+		ArrayList<BalanceVO> result = manageShowReceipt.showBalance();
+		return result;
+	}
+
+	@Override
+	public ArrayList<CostVO> showCost() {
+		// TODO Auto-generated method stub
+		ManageShowReceipt manageShowReceipt = new ManageShowReceipt();
+		ArrayList<CostVO> result = manageShowReceipt.showCost();
+		return result;
+	}
+
+	@Override
+	public ArrayList<DeliveryVO> showDelivery() {
+		// TODO Auto-generated method stub
+		ManageShowReceipt manageShowReceipt = new ManageShowReceipt();
+		ArrayList<DeliveryVO> result = manageShowReceipt.showDelivery();
+		return result;
+	}
+
+	@Override
+	public ArrayList<EntruckingVO> showEntrucking() {
+		// TODO Auto-generated method stub
+		ManageShowReceipt manageShowReceipt = new ManageShowReceipt();
+		ArrayList<EntruckingVO> result = manageShowReceipt.showEntrucking();
+		return result;
+	}
+
+	@Override
+	public ArrayList<GatheringVO> showGathering() {
+		// TODO Auto-generated method stub
+		ManageShowReceipt manageShowReceipt = new ManageShowReceipt();
+		ArrayList<GatheringVO> result = manageShowReceipt.showGathering();
+		return result;
+	}
+
+	@Override
+	public ArrayList<RemovalVO> showRemoval() {
+		// TODO Auto-generated method stub
+		ManageShowReceipt manageShowReceipt = new ManageShowReceipt();
+		ArrayList<RemovalVO> result = manageShowReceipt.showRemoval();
+		return result;
+	}
+
+	@Override
+	public ArrayList<StorageVO> showStorage() {
+		// TODO Auto-generated method stub
+		ManageShowReceipt manageShowReceipt = new ManageShowReceipt();
+		ArrayList<StorageVO> result = manageShowReceipt.showStorage();
+		return result;
+	}
+
+	@Override
+	public ArrayList<TransferVO> showTransfer() {
+		// TODO Auto-generated method stub
+		ManageShowReceipt manageShowReceipt = new ManageShowReceipt();
+		ArrayList<TransferVO> result = manageShowReceipt.showTransfer();
+		return result;
 	}
 
 }

@@ -25,7 +25,8 @@ public class ArrivalVO extends VO {
 	
 	public ArrivalVO(ArrivalPO po) {
 		this.date = po.getArrivalDate();
-		this.listId = po.getBarCode();
+		this.barCode=po.getBarCode();
+		this.listId = po.getTransferNumber();
 		this.departure = po.getStarting();
 		this.itemState = po.getState();
 	}
