@@ -136,7 +136,7 @@ public class StateSwitch {
 		case finance: result="finance"; break;
 		case manager: result="manager"; break;
 		case mediumAgent: result="mediumAgent"; break;
-		case repository: result="erpository"; break;
+		case repository: result="repository"; break;
 		}
 		
 		return result;
