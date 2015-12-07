@@ -50,7 +50,6 @@ public class ManagerReceipt extends FunctionSearch{
 
 	@Override
 	protected void initTable() {
-		voList = serviceShow.showReceipt();
 		tableV = getVector(voList);
 	
 		System.out.println(tableV.size());

@@ -50,7 +50,7 @@ public class RepositoryStockTaking extends RepositoryCheck{
 		stockTaking = service.getStockTaking();
 		getStockTaking(stockTaking);
 		
-		model = new TableModelSearch(tableV,tableH);
+		model = new TableModelSearch(tableV,tableH2);
 		table = new TableSearch(model);
 		sPanel = new ScrollPaneTable(table);
 		sPanel.setLocation(sPanel.getX(),header.getHeight()+120);

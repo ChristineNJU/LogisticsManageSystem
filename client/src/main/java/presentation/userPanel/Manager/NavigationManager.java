@@ -81,11 +81,11 @@ public class NavigationManager extends Navigation{
 		MainFrame.changeContentPanel(managerReceipt.getPanel());
 	}
 	private void changeToStaff(){
-		managerStaffMgt = new ManagerStaffMgt();
+		managerStaffMgt = new ManagerStaffMgt(this);
 		MainFrame.changeContentPanel(managerStaffMgt.getPanel());
 	}
 	private void changeToInstitution(){
-		managerInstitution=new ManagerInstitutionMgt();
+		managerInstitution=new ManagerInstitutionMgt(this);
 		MainFrame.changeContentPanel(managerInstitution.getPanel());
 	}
 	private void changeToSalary(){
