@@ -4,7 +4,9 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import PO.ConstPO;
 import PO.DistancePO;
@@ -17,11 +19,7 @@ import State.StateSwitch;
 import State.UpdateState;
 import VO.LogisticsInputVO;
 import VO.VO;
-import businesslogic.Service.Courier.AddLogisticsService;
 import businesslogic.Service.Courier.CourierService;
-import businesslogic.Service.Courier.GetAmountService;
-import businesslogic.Service.Courier.GetCityService;
-import businesslogic.Service.Courier.ReceiveConfirmService;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
 import data.Service.Search.SearchConstService;
@@ -46,11 +44,16 @@ public class CourierImpl implements CourierService{
 			else {
 				UpdateService update=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
 			
-				for(int i=0;i<result.size();i++){
-					state=update.update(new LogisticsInfoPO((LogisticsInputVO)logistics_info));
-				}
+//				for(int i=0;i<result.size();i++){
+//					state=update.update(new LogisticsInfoPO((LogisticsInputVO)logistics_info));
+//				}
+				result.get(0).setActualRecipientName(((LogisticsInputVO)logistics_info).getActual_recipient_name());
+				result.get(0).setReceived(true);
+				result.get(0).setReceiveDate(Calendar.getInstance().getTime());
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				result.get(0).addHistory("收件人已收件,"+sdf.format(Calendar.getInstance().getTime()));
 				
-				
+				state = update.update(result.get(0));
 			}
 		} catch(Exception ex){
 			state=UpdateState.CONNECTERROR;

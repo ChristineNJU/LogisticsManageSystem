@@ -2,6 +2,7 @@ package presentation.userPanel.Finance;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Vector;
 
 import javax.swing.DefaultCellEditor;
@@ -92,6 +93,12 @@ public class FinanceCost extends FunctionAdd{
 		// 提交所有更新
 		for(Vector<String> vector:tableV){
 			CostVO temp = (CostVO)this.getVO(vector);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			service.addCost(temp);
 		}
 		
@@ -99,7 +106,8 @@ public class FinanceCost extends FunctionAdd{
 	@Override
 	protected VO getVO(Vector<String> vector) {
 		//将表格的一行转换成vo
-		String tempdate = vector.get(0)+" 12:00:00";
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String tempdate = sdf.format(Calendar.getInstance().getTime());
 		double amount = Double.valueOf(vector.get(1));
 		String temppayer = vector.get(2);
 		String tempaccount = vector.get(3);

@@ -166,7 +166,8 @@ public class CostPO extends PO {
 	@Override
 	public String getPrimaryKey() {
 		// TODO Auto-generated method stub
-		return "cost_date = '"+cost_date+"'";
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		return "cost_date = '"+sdf.format(cost_date)+"'";
 	}
 	
 }

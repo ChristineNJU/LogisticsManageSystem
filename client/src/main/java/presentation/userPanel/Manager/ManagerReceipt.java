@@ -3,20 +3,22 @@ package presentation.userPanel.Manager;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import javax.swing.JLabel;
+
+import presentation.components.LabelHeader;
+import presentation.main.FunctionSearch;
 import VO.VO;
 import businesslogic.Impl.Manage.ManageReceipt;
 import businesslogic.Service.Manage.ShowReceiptService;
 import businesslogic.Service.Manage.UpdateReceiptService;
-import presentation.main.FunctionSearch;
-import presentation.table.TableModelReceipt;
 
 public class ManagerReceipt extends FunctionSearch{
 
 	ShowReceiptService serviceShow = new ManageReceipt();
 	UpdateReceiptService serviceUpdate = new ManageReceipt();
 	
-	String[] tableH = {"单据类型"};
-	boolean[] isCellEditable = {false};
+	String[] tableH = {"单据类型", "主要信息", ""};
+	boolean[] isCellEditable = {false, false, false};
 	
 	ArrayList<VO> voList = new ArrayList<VO>();
 	
@@ -55,4 +57,16 @@ public class ManagerReceipt extends FunctionSearch{
 		return null;
 	}
 
+	@Override
+	protected void initFooter() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	class Header extends JLabel {
+		LabelHeader date = new LabelHeader("当前日期：");
+		Header() {
+			
+		}
+	}
 }

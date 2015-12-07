@@ -219,7 +219,8 @@ public class BalancePO extends PO {
 	@Override
 	public String getPrimaryKey() {
 		// TODO Auto-generated method stub
-		return "bar_code = '"+bar_code+"'";
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		return "storage_date = '"+sdf.format(storage_date)+"'";
 	}
 
 }

@@ -157,11 +157,15 @@ public abstract class FunctionAdd {
 		public void mouseClicked(MouseEvent e) {
 			ButtonTotal source = (ButtonTotal)e.getSource();
 			if(source.equals(buttonNew)){
-				newItem();
+				if(buttonNew.isEnabled()){					
+					newItem();
+				}
 			}
 			if(source.equals(confirm)){
 //				System.out.println("in listener");
-				confirmAll();
+				if(confirm.isEnabled()){
+					confirmAll();
+				}
 			}
 		}
 

@@ -59,10 +59,14 @@ public class RepositoryBalance extends FunctionAdd {
 	
 	boolean isSaved = false;
 	
-	public RepositoryBalance() {
+	NavigationRepository nav;
+	
+	public RepositoryBalance(NavigationRepository navigationRepository) {
 		// TODO Auto-generated constructor stub
 		super.buttonNew = new ButtonNew("新增调整");
 		super.confirm = new ButtonConfirm("提交调整");
+		
+		nav = navigationRepository;
 		
 		initUI("库区调整");
 		init();
@@ -179,6 +183,13 @@ public class RepositoryBalance extends FunctionAdd {
 					old.getRow(), old.getShelf(), old.getPosition(), 
 					new_area, new_row, new_shelf, new_position);
 
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			change.add(ne);
 			balance.add(bal);
 		}
@@ -190,7 +201,8 @@ public class RepositoryBalance extends FunctionAdd {
 		AddState state = repository.addBalance(balance);
 		
 		if(state==AddState.SUCCESS){
-			info.setText("保存成功");
+			nav.changeTask(3);
+			nav.rb.info.setText("保存成功");
 		}else{
 			info.setText("保存失败");
 		}

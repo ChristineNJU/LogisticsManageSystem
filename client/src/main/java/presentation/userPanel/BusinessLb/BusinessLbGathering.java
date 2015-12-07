@@ -3,6 +3,7 @@ package presentation.userPanel.BusinessLb;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Vector;
 
@@ -95,6 +96,12 @@ public class BusinessLbGathering extends FunctionAdd{
 			
 			GatheringVO temp = (GatheringVO)this.getVO(vector);
 			System.out.println("has one"+temp.getName());
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			service.gathering(temp);
 	}		
 		
@@ -102,21 +109,13 @@ public class BusinessLbGathering extends FunctionAdd{
 
 	@Override
 	protected VO getVO(Vector<String> vector) {
-		// 将表格的一行转化成vo
-		try {
-			ArrayList<String> tempbarCodeList = new ArrayList<String>();
-			tempbarCodeList.add(vector.get(0));
-			Date tempdate = sdf.parse(vector.get(1));
-			String tempname = vector.get(3);
-			double tempmoney = Double.valueOf(vector.get(2));
-			GatheringVO tempGathering = new GatheringVO(tempdate, tempmoney, tempname, tempbarCodeList);
-			return tempGathering;
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return null;
+		ArrayList<String> tempbarCodeList = new ArrayList<String>();
+		tempbarCodeList.add(vector.get(0));
+		Date tempdate = Calendar.getInstance().getTime();
+		String tempname = vector.get(3);
+		double tempmoney = Double.valueOf(vector.get(2));
+		GatheringVO tempGathering = new GatheringVO(tempdate, tempmoney, tempname, tempbarCodeList);
+		return tempGathering;
 	}
 
 	protected Vector<Vector<String>> getVector(ArrayList<GatheringVO> vo){

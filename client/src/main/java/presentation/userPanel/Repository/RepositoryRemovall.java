@@ -40,11 +40,16 @@ public class RepositoryRemovall extends FunctionAdd{
 	public TextFieldHeader destinationInput = new TextFieldHeader();
 	public TextFieldHeader transferWayInput = new TextFieldHeader();
 	
-	public  RepositoryRemovall() {
+	NavigationRepository nav;
+	
+	public  RepositoryRemovall(NavigationRepository navigationRepository) {
 		super.buttonNew = new ButtonNew("新增出库项");
 		super.confirm = new ButtonConfirm("提交出库单");
+		
+		nav = navigationRepository;
+		
 		initUI("出库");
-		}
+	}
 	
 	@Override
 	protected void initHeader() {

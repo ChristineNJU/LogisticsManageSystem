@@ -3,6 +3,7 @@ package presentation.userPanel.BusinessLb;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Vector;
 
@@ -75,6 +76,12 @@ public class BusinessLbDelivery extends FunctionAdd{
 		//提交所有更新
 		for(Vector<String> vector:tableV){
 			DeliveryVO temp = (DeliveryVO) this.getVO(vector);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			service.delivery(temp);
 		}
 		
@@ -82,20 +89,12 @@ public class BusinessLbDelivery extends FunctionAdd{
 
 	@Override
 	protected VO getVO(Vector<String> vector) {
-		// 将表格的一行转化成vo
-		try {
-			ArrayList<String> tempbarCodeList = new ArrayList<String>();
-			tempbarCodeList.add(vector.get(0));
-			Date tempdate;
-			tempdate = sdf.parse((vector.get(1)));
-			String tempname = vector.get(2);
-			DeliveryVO tempDelivery = new DeliveryVO(tempdate, tempbarCodeList, tempname);
-			return tempDelivery;
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
+		ArrayList<String> tempbarCodeList = new ArrayList<String>();
+		tempbarCodeList.add(vector.get(0));
+		Date tempdate = Calendar.getInstance().getTime();
+		String tempname = vector.get(2);
+		DeliveryVO tempDelivery = new DeliveryVO(tempdate, tempbarCodeList, tempname);
+		return tempDelivery;
 	}
 	
 	protected Vector<Vector<String>> getVector(ArrayList<DeliveryVO> vo){
