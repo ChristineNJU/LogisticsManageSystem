@@ -29,11 +29,11 @@ import businesslogic.Impl.Courier.CourierImpl;
 import businesslogic.Impl.Repository.RepositoryController;
 import businesslogic.Service.Courier.CourierService;
 import businesslogic.Service.Courier.GetCityService;
-import businesslogic.Service.Repository.ReponsitoryService;
+import businesslogic.Service.Repository.RepositoryService;
 
 public class RepositoryStorage extends FunctionAdd {
 
-	ReponsitoryService service = new RepositoryController();
+	RepositoryService service = new RepositoryController();
 	CourierService getCity = new CourierImpl();
 	
 	String[] tableH = {"快递编号", "到达地", "区号", "排号", "架号", "位号", ""};

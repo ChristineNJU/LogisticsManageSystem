@@ -87,7 +87,7 @@ public class FinanceAccount extends FunctionADUS{
 		updateItems=new ArrayList<AccountVO>();
 		for(int i=0;i<tableV.size();i++){
 			if(model.isUpdate(i)){
-				deleteItems.add(getVO(tableV.get(i)));
+				updateItems.add(getVO(tableV.get(i)));
 			}
 		}
 		UpdateState updateState=UpdateState.NOTFOUND;

@@ -5,7 +5,6 @@ import java.util.Vector;
 
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
-import javax.swing.JPanel;
 import javax.swing.table.TableColumnModel;
 
 import presentation.components.ButtonNew;
@@ -72,12 +71,13 @@ public class ManagerStaffMgt extends FunctionADUS{
 		String[] city = {"南京","北京","上海","广州"};
 	   JComboBox  cityC = new FlatComboBox(city);  
        tcm.getColumn(6).setCellEditor(new DefaultCellEditor(cityC));
-       
+		
        addDeleteColumn();
-	    
-	   table.addMouseListener(tableListener);
-	   sPanel = new ScrollPaneTable(table);
-	   panel.add(sPanel);
+
+		table.addMouseListener(tableListener);
+		sPanel = new ScrollPaneTable(table);
+		panel.add(sPanel);
+		
 	}
 
 	
@@ -104,9 +104,11 @@ public class ManagerStaffMgt extends FunctionADUS{
 		for(int i=0;i<deleteItems.size();i++){
 			deleteState=service.DeleteStaff(deleteItems.get(i));
 			if(deleteState==DeleteState.FAIL){
+				showError("删除失败");
 				break;
 			}
 			else if(deleteState==DeleteState.CONNECTERROR){
+				showError("连接异常");
 				break;
 			}
 		}
@@ -121,9 +123,11 @@ public class ManagerStaffMgt extends FunctionADUS{
 		for(int i=0;i<updateItems.size();i++){
 			updateState=service.updateStaff(updateItems.get(i));
 			if(updateState==UpdateState.NOTFOUND){
+				showError("更新失败");
 				break;
 			}
 			else if(updateState==UpdateState.CONNECTERROR){
+				showError("连接异常");
 				break;
 			}
 		}
@@ -138,9 +142,11 @@ public class ManagerStaffMgt extends FunctionADUS{
 		for(int i=0;i<addItems.size();i++){
 			addState=service.addStaff(addItems.get(i));
 			if(addState==AddState.FAIL){
+				showError("增加失败");
 				break;
 			}
 			else if(addState==AddState.CONNECTERROR){
+				showError("连接异常");
 				break;
 			}
 		}

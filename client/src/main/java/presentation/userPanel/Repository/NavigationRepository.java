@@ -1,9 +1,9 @@
 package presentation.userPanel.Repository;
 
+import VO.UserVO;
 import presentation.components.ButtonNav;
 import presentation.frame.MainFrame;
 import presentation.main.Navigation;
-import VO.UserVO;
 
 public class NavigationRepository extends Navigation{
 
@@ -14,9 +14,11 @@ public class NavigationRepository extends Navigation{
 	private ButtonNav stockTaking = new ButtonNav("repository","stockTaking");
 	private ButtonNav see = new ButtonNav("repository","see");
 	
-	public RepositoryStorage rs;
-	public RepositoryBalance rb;
-	public RepositoryRemovall rr;
+	public RepositoryStorage repositoryStorage;
+	public RepositoryBalance repositoryBalance;
+	public RepositoryRemoval repositoryRemoval;
+	public RepositoryCheck repositoryCheck;
+	public RepositoryStockTaking repositoryStockTaking;
 	
 	public NavigationRepository(UserVO user) {
 		super(user);
@@ -53,22 +55,24 @@ public class NavigationRepository extends Navigation{
 		
 	}
 	private void changeToStorage(){
-		rs = new RepositoryStorage(this);
+		repositoryStorage = new RepositoryStorage(this);
 //		MainFrame.getMainPanel().remove(comp);
-		MainFrame.changeContentPanel(rs.getPanel());
+		MainFrame.changeContentPanel(repositoryStorage.getPanel());
 	}
 	private void changeToRemoval(){
-		rr = new RepositoryRemovall(this);
-		MainFrame.changeContentPanel(rr.getPanel());
+		repositoryRemoval = new RepositoryRemoval(this);
+		MainFrame.changeContentPanel(repositoryRemoval.getPanel());
 	}
 	private void changeToBalance(){
-		rb = new RepositoryBalance(this);
-		MainFrame.changeContentPanel(rb.getPanel());
+		repositoryBalance = new RepositoryBalance(this);
+		MainFrame.changeContentPanel(repositoryBalance.getPanel());
 	}
 	private void changeToStockTaking(){
-		
+		repositoryStockTaking = new RepositoryStockTaking();
+		MainFrame.changeContentPanel(repositoryStockTaking.getPanel());
 	}
 	private void changeToSee(){
-		
+		repositoryCheck = new RepositoryCheck();
+		MainFrame.changeContentPanel(repositoryCheck.getPanel());
 	}
 }

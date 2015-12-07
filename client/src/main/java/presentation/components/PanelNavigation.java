@@ -1,6 +1,7 @@
 package presentation.components;
 
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -23,9 +24,7 @@ public class PanelNavigation extends JPanel {
 	ButtonFrame mini = new ButtonFrame("mini");
 	ButtonFrame close = new ButtonFrame("close");
 	JLabel block = new JLabel();
-	Icon userIconImage = new ImageIcon("src/graphics/User/userIcon.png");
-	JLabel userIcon = new JLabel(userIconImage);
-	JLabel userName;
+		JLabel userName;
 	JLabel userRole;
 	JLabel userId;
 	LabelOnline online = new LabelOnline();
@@ -40,6 +39,14 @@ public class PanelNavigation extends JPanel {
 	}
 
 	private void initUser(){
+		ImageIcon userIconImage = new ImageIcon("src/graphics/Tips/connectError.png");
+		Image image=userIconImage.getImage();
+		int  width  =  ( int ) (image.getWidth( null )    /   3.0 );
+        int  height  =  ( int ) (image.getHeight( null )    /   3.0 );
+
+		userIconImage.setImage(userIconImage.getImage().getScaledInstance(width,height,Image.SCALE_SMOOTH));
+		JLabel userIcon = new JLabel(userIconImage);
+
 		this.setLayout(null);
 		this.setBackground(new Color(245,245,245));
 		this.setBounds(0,0,220,800);

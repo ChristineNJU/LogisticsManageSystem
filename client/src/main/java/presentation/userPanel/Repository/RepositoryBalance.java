@@ -30,12 +30,12 @@ import VO.WareHouseVO;
 import businesslogic.Impl.Repository.BlWareHouseImpl;
 import businesslogic.Impl.Repository.RepositoryController;
 import businesslogic.Service.Repository.BlWareHouseService;
-import businesslogic.Service.Repository.ReponsitoryService;
+import businesslogic.Service.Repository.RepositoryService;
 
 public class RepositoryBalance extends FunctionAdd {
 
 	BlWareHouseService wareHouse = new BlWareHouseImpl();
-	ReponsitoryService repository = new RepositoryController();
+	RepositoryService repository = new RepositoryController();
 	
 	private ProgressBarPanel pbp = new ProgressBarPanel();
 	
@@ -202,7 +202,7 @@ public class RepositoryBalance extends FunctionAdd {
 		
 		if(state==AddState.SUCCESS){
 			nav.changeTask(3);
-			nav.rb.info.setText("保存成功");
+			nav.repositoryBalance.info.setText("保存成功");
 		}else{
 			info.setText("保存失败");
 		}

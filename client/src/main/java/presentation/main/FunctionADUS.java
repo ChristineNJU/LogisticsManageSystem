@@ -65,8 +65,8 @@ public abstract class FunctionADUS {
 		
 		buttonNew.addMouseListener(functionListener);
 		panel.add(buttonNew);
-		
-		initTable();
+
+	    initTable();
 		
 		confirm.setLocation(120,175+sPanel.getHeight());
 		confirm.addMouseListener(functionListener);

@@ -45,7 +45,7 @@ public class ManageStaff implements ManageStaffService{
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
 			System.out.println("error");
-			result=DeleteState.FAIL;
+			result=DeleteState.CONNECTERROR;
 			e.printStackTrace();
 		}
 		
@@ -140,7 +140,7 @@ public class ManageStaff implements ManageStaffService{
 			result=addService.add(requirement);
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
-			result=AddState.FAIL;
+			result=AddState.CONNECTERROR;
 			System.out.println("error");
 			e.printStackTrace();
 		}
