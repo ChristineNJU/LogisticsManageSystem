@@ -33,7 +33,10 @@ public class ManagerInstitutionMgt extends FunctionADUS{
 	ArrayList<InstitutionVO> searchItems=new ArrayList<InstitutionVO>();
 	ArrayList<InstitutionVO> updateItems=new ArrayList<InstitutionVO>();
 	
-	public ManagerInstitutionMgt(){
+	NavigationManager nav;
+	
+	public ManagerInstitutionMgt(NavigationManager navigationManager){
+		nav = navigationManager;
 		buttonNew = new ButtonNew("新增机构");
 		initUI("机构管理");
 	}
@@ -82,7 +85,7 @@ public class ManagerInstitutionMgt extends FunctionADUS{
 				deleteItems.add(getVO(tableV.get(i)));
 			}
 		}
-		DeleteState deleteState=DeleteState.FAIL;
+		DeleteState deleteState=DeleteState.SUCCESS;
 		for(int i=0;i<deleteItems.size();i++){
 			deleteState=service.deleteInstitution(deleteItems.get(i));
 			if(deleteState==DeleteState.FAIL){
@@ -98,7 +101,7 @@ public class ManagerInstitutionMgt extends FunctionADUS{
 				updateItems.add(getVO(tableV.get(i)));
 			}
 		}
-		UpdateState updateState=UpdateState.NOTFOUND;
+		UpdateState updateState=UpdateState.SUCCESS;
 		for(int i=0;i<updateItems.size();i++){
 			updateState=service.UpdateInstitution(updateItems.get(i));
 			if(updateState==UpdateState.NOTFOUND){
@@ -115,7 +118,7 @@ public class ManagerInstitutionMgt extends FunctionADUS{
 				addItems.add(getVO(tableV.get(i)));
 			}
 		}
-		AddState addState=AddState.FAIL;
+		AddState addState=AddState.SUCCESS;
 		for(int i=0;i<addItems.size();i++){
 			addState=service.addInstitution(addItems.get(i));
 			if(addState==AddState.FAIL){
@@ -126,6 +129,10 @@ public class ManagerInstitutionMgt extends FunctionADUS{
 			}
 		}
 		
+		if(deleteState==DeleteState.SUCCESS&&updateState==UpdateState.SUCCESS
+				&&addState==AddState.SUCCESS){
+			nav.changeTask(2);
+		}
 	}
 	
 	protected void newItem() {
