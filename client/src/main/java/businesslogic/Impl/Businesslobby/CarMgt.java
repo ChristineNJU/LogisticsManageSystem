@@ -11,10 +11,7 @@ import State.AddState;
 import State.DeleteState;
 import State.UpdateState;
 import VO.CarInfoVO;
-import businesslogic.Service.BusinessLobby.AddCarService;
-import businesslogic.Service.BusinessLobby.DeleteCarService;
-import businesslogic.Service.BusinessLobby.GetCarService;
-import businesslogic.Service.BusinessLobby.UpdateCarService;
+import businesslogic.Service.BusinessLobby.CarMgtService;
 import businesslogic.SystemLog.SystemLog;
 import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
@@ -23,8 +20,7 @@ import data.Service.Delete.DeleteService;
 import data.Service.Search.SearchCarInfoService;
 import data.Service.Update.UpdateService;
 
-public class CarMgt implements UpdateCarService,GetCarService,DeleteCarService,AddCarService{
-
+public class CarMgt implements CarMgtService{
 	@Override
 	public AddState addCar(CarInfoVO car) {
 		// TODO Auto-generated method stub

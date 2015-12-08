@@ -3,16 +3,15 @@ package businesslogic.Impl.Finance;
 import java.rmi.Naming;
 import java.util.ArrayList;
 
+import businesslogic.Service.Finance.CostService;
 import PO.CostPO;
 import State.AddState;
 import VO.CostVO;
-import businesslogic.Service.Finance.AddCostService;
-import businesslogic.Service.Finance.GetCostService;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
 import data.Service.Search.SearchCostService;
 
-public class CostImpl implements AddCostService,GetCostService{
+public class CostImpl implements CostService{
 
 	@Override
 	public ArrayList<CostVO> searchCost(String time_start, String time_end) {

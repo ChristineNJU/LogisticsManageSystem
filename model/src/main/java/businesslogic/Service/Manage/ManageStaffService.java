@@ -8,8 +8,37 @@ import State.UpdateState;
 import VO.StaffVO;
 
 public interface ManageStaffService {
+
+	/**
+	 * 添加人员
+	 * 
+	 * @param constant ConstVO
+	 * @return 添加状态
+	 * */
 	public AddState addStaff (StaffVO staff);
+	
+	/**
+	 * 删除人员
+	 * 
+	 * @param staff StaffVO
+	 * @return 删除状态
+	 * */
 	public DeleteState DeleteStaff (StaffVO staff);
-	public ArrayList<StaffVO> searchStaff (String id);
+	
+	/**
+	 * 更新人员
+	 * 
+	 * @param staff StaffVO
+	 * @return 更新状态
+	 * */
 	public UpdateState updateStaff (StaffVO staff);
+	
+	/**
+	 * 查询人员
+	 * 
+	 * @param id 人员ID
+	 * @return StaffVO的ArrayList
+	 * */
+	public ArrayList<StaffVO> searchStaff (String id);
+	
 }

@@ -11,10 +11,7 @@ import State.AddState;
 import State.DeleteState;
 import State.UpdateState;
 import VO.InstitutionVO;
-import businesslogic.Service.Manage.AddInstitutionService;
-import businesslogic.Service.Manage.DeleteInstitutionService;
-import businesslogic.Service.Manage.GetInstitutionService;
-import businesslogic.Service.Manage.UpdateInstitutionService;
+import businesslogic.Service.Manage.ManageInstitutionService;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
 import data.Service.Delete.DeleteService;
@@ -22,9 +19,7 @@ import data.Service.Search.SearchInstitutionInfoService;
 import data.Service.Sundry.TableOperationService;
 import data.Service.Update.UpdateService;
 
-public class ManageInstitution implements AddInstitutionService,UpdateInstitutionService,
-											DeleteInstitutionService,GetInstitutionService{
-
+public class ManageInstitution implements ManageInstitutionService{
 	@Override
 	public ArrayList<InstitutionVO> searchInstitution(String id) {
 		// TODO Auto-generated method stub
