@@ -18,9 +18,9 @@ import presentation.table.TableSearch;
 
 public class RepositoryStockTaking extends RepositoryCheck{
 
-	String[] tableH = {"航空区","   ","   ","   ","   ","   "};
-	String[] tableH2 = {"火车区","   ","   ","   ","   ","   "};
-	String[] tableH3 = {"汽运区","   ","   ","   ","   ","   "};
+	private String[] tableH = {"航空区","   ","   ","   ","   ","   "};
+	private String[] tableH2 = {"火车区","   ","   ","   ","   ","   "};
+	private String[] tableH3 = {"汽运区","   ","   ","   ","   ","   "};
 	
 	ArrayList<StockTakingVO> stockTaking = new ArrayList<StockTakingVO>();
 	
@@ -50,7 +50,11 @@ public class RepositoryStockTaking extends RepositoryCheck{
 		stockTaking = service.getStockTaking();
 		getStockTaking(stockTaking);
 		
-		model = new TableModelSearch(tableV,tableH2);
+		String[] tableH = {"航空区","   ","   ","   ","   ","   "};
+		String[] tableH2 = {"火车区","   ","   ","   ","   ","   "};
+		String[] tableH3 = {"汽运区","   ","   ","   ","   ","   "};
+		
+		model = new TableModelSearch(tableV,tableH);
 		table = new TableSearch(model);
 		sPanel = new ScrollPaneTable(table);
 		sPanel.setLocation(sPanel.getX(),header.getHeight()+120);
@@ -113,7 +117,7 @@ public class RepositoryStockTaking extends RepositoryCheck{
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 			String dateNow = format.format(Calendar.getInstance().getTime());
 			date.addInfo(dateNow);
-			date.setBounds(0,0,80,30);
+			date.setBounds(0,0,300,30);
 			this.add(date);
 		}
 	}
