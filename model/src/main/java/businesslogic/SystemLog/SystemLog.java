@@ -41,9 +41,9 @@ public class SystemLog {
 	
 	public static String getInstitutionId() {
 
-		return "02500";
-		//return operator_institution_id;
-}
+//		return "02500";
+		return operator_institution_id;
+	}
 	
 	public static void addLog(String operation) {
 		

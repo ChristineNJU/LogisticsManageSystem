@@ -50,6 +50,9 @@ public class SearchGatheringImpl extends UnicastRemoteObject implements SearchGa
 				}
 			}
 			
+//			System.out.println(target);
+//			System.out.println(DBHelper.SEARCH(DB_URL, target));
+			
 			ResultSet rs = s.executeQuery(DBHelper.SEARCH(DB_URL, target));
 			while(rs.next()){
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -82,7 +85,7 @@ public class SearchGatheringImpl extends UnicastRemoteObject implements SearchGa
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-//			e.printStackTrace();
+			e.printStackTrace();
 			System.out.println("从数据库提取GatheringPO对象失败");
 			return result;
 		}
