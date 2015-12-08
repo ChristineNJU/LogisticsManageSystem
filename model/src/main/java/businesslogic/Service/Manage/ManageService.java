@@ -104,7 +104,7 @@ public interface ManageService {
 	public ArrayList<InstitutionVO> searchInstitution (String id);
 	
 	/**
-	 * 查询收款单
+	 * 查询人员
 	 * 
 	 * @param id 人员ID
 	 * @return StaffVO的ArrayList

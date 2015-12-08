@@ -92,10 +92,11 @@ public class ManageStaff implements ManageStaffService{
 				}
 			}
 			
-		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.out.println("error");
-			e.printStackTrace();
+			return null;
+			
 		}
 //		System.out.println("searchStaff "+result.size());
 //		System.out.println(result.get(0).getInsitution());

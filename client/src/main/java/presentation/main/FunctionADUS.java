@@ -1,12 +1,14 @@
 package presentation.main;
 
 import java.awt.Color;
+import java.awt.Frame;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
@@ -36,7 +38,8 @@ public abstract class FunctionADUS {
 	protected ButtonNew buttonNew;
 	protected ButtonConfirm confirm = new ButtonConfirm("提交修改");
 	protected ButtonCancel cancel = new ButtonCancel();
-	protected AttentionLabel attention  = new AttentionLabel();;
+	protected AttentionLabel attention  = new AttentionLabel();
+	protected AttentionFrame attentionframe;
 //	protected String[] tableH;
 //	boolean[] isCellEditable;
 	protected ScrollPaneTable sPanel;
@@ -47,6 +50,7 @@ public abstract class FunctionADUS {
 	protected TableModelADUS model;
 	protected TableADUS table;
 	
+	protected boolean isConnectError = false;
 	
 	public FunctionADUS(){
 	}
@@ -91,12 +95,14 @@ public abstract class FunctionADUS {
 	protected abstract void confirmRevise();
 	
 	protected void removeError(){
-		panel.remove(attention);
+//		panel.remove(attention);
+		attentionframe.setVisible(false);
 	}
 	
 	protected void showError(String s){
 		attention = new AttentionLabel(s);
-		panel.add(attention);
+		attentionframe=new AttentionFrame(attention);
+//		panel.add(attention);
 	}
 	
 	protected void solveDelete(int rowUnderMouse){
@@ -166,11 +172,40 @@ public abstract class FunctionADUS {
 			setFont(FontSet.twenty);
 			setForeground(Color.red);
 			setSize(s.length()+50,40);
-			setLocation(873-this.getWidth(),0);
+//			setLocation(873-this.getWidth(),0);
+//			setLocation()
+			setVisible(true);
 		}
 		
 		public AttentionLabel(){
 			this("");
+		}
+	}
+	
+	public class AttentionFrame extends JFrame implements Runnable{
+		public AttentionFrame(AttentionLabel attention){
+			this.setUndecorated(true);
+			this.setSize(150, 80);
+			this.setLocation(100, 100);
+			this.add(attention);
+			this.setVisible(false);
+			run();
+			
+		}
+
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			try {
+				 Thread.sleep(1000);
+				 setVisible(true);
+				 Thread.sleep(5000);
+				 setVisible(false);
+//				 System.exit(0);
+				 } catch (InterruptedException e) {
+				 e.printStackTrace();
+			}
+
 		}
 	}
 	

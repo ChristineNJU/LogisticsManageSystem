@@ -14,9 +14,7 @@ import PO.UserPO;
 import State.AddState;
 import State.UpdateState;
 import VO.PeriodVO;
-import businesslogic.Service.Finance.AddPeriodService;
-import businesslogic.Service.Finance.GetPeriodService;
-import businesslogic.Service.Finance.UpdatePeriodService;
+import businesslogic.Service.Finance.PeriodService;
 import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
@@ -28,7 +26,7 @@ import data.Service.Search.SearchPeriodService;
 import data.Service.Search.SearchStorageService;
 import data.Service.Search.SearchUserService;
 
-public class PeriodImpl implements AddPeriodService, GetPeriodService, UpdatePeriodService{
+public class PeriodImpl implements PeriodService{
 
 	@Override
 	public UpdateState updatePeriod() {

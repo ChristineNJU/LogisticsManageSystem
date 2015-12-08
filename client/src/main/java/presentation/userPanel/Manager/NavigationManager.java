@@ -18,18 +18,9 @@ public class NavigationManager extends Navigation{
 	private ButtonNav consts = new ButtonNav("manager","consts");
 	private ButtonNav system = new ButtonNav("manager","system");
 	
-	private ManagerConst managerConst;
-	private ManagerStaffMgt managerStaffMgt;
-	private ManagerInstitutionMgt managerInstitution;
-	private ManagerAccount managerAccount;
-	private ManagerIncomeAndOutcome managerBenefit;
-	private ManagerBenefit managerIncomeAndOutcome;
-	private ManagerReceipt managerReceipt;
-//	private ManagerStatistics managerStatistics;
-	private ManagerSalary managerSalary;
-	private ManagerSystem managerSystem;
-	
-	
+	private ManagerConst con = new ManagerConst();
+	private ManagerStaffMgt staffM=new ManagerStaffMgt();
+	private ManagerInstitutionMgt institutionM=new ManagerInstitutionMgt();
 	public NavigationManager(UserVO user) {
 		super(user);
 		initNavButtonArray();
@@ -52,7 +43,7 @@ public class NavigationManager extends Navigation{
 
 	protected void changeTask(int index){
 		if(index == 1){
-			changeToReceipt();
+			changeToJudge();
 		}else if(index == 2){
 			changeToStaff();
 		}else if(index == 3){
@@ -76,40 +67,46 @@ public class NavigationManager extends Navigation{
 	private void changeToHome(){
 		
 	}
-	private void changeToReceipt(){
-		managerReceipt = new ManagerReceipt();
-		MainFrame.changeContentPanel(managerReceipt.getPanel());
+	private void changeToJudge(){
+		
 	}
 	private void changeToStaff(){
-		managerStaffMgt = new ManagerStaffMgt(this);
-		MainFrame.changeContentPanel(managerStaffMgt.getPanel());
+
+		staffM = new ManagerStaffMgt();
+		MainFrame.changeContentPanel(staffM.getPanel());
+		MainFrame.getMainPanel().repaint();
 	}
 	private void changeToInstitution(){
-		managerInstitution=new ManagerInstitutionMgt(this);
-		MainFrame.changeContentPanel(managerInstitution.getPanel());
+		institutionM=new ManagerInstitutionMgt();
+		MainFrame.changeContentPanel(institutionM.getPanel());
+		MainFrame.getMainPanel().repaint();
+
+		
+	}
+	private void changeToManager(){
+		ManagerStaffMgt managerStaffMgt = new ManagerStaffMgt();
+		MainFrame.changeContentPanel(managerStaffMgt.getPanel());
+		MainFrame.getMainPanel().repaint();
+
 	}
 	private void changeToSalary(){
-		managerSalary = new ManagerSalary();
-//		MainFrame.changeContentPanel(managerSalary.getPanel());
+		
 	}
 	private void changeToAccount(){
-		managerAccount = new ManagerAccount();
-//		MainFrame.changeContentPanel(managerAccount.getPanel());
+		
 	}
 	private void changeToIncomeAndOutcome(){
-		managerIncomeAndOutcome = new ManagerBenefit();
-		MainFrame.changeContentPanel(managerIncomeAndOutcome.getPanel());
+		
 	}
 	private void changeToBenefit(){
-		managerBenefit = new ManagerIncomeAndOutcome();
-		MainFrame.changeContentPanel(managerBenefit.getPanel());
+		
 	}
 	private void changeToConsts(){
-		managerConst = new ManagerConst();
-		MainFrame.changeContentPanel(managerConst.getPanel());
+		con = new ManagerConst();
+		MainFrame.changeContentPanel(con.getPanel());
+		MainFrame.getMainPanel().repaint();
 	}
 	private void changeToSystem(){
-		managerSystem = new ManagerSystem();
-		MainFrame.changeContentPanel(managerSystem.getPanel());
+		
 	}
 }

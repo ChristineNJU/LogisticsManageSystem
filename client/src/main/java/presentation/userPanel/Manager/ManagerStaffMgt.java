@@ -43,10 +43,10 @@ public class ManagerStaffMgt extends FunctionADUS{
 	
 	@Override
 	protected void initTable() {
-		// TODO Auto-generated method stub
 		System.out.println("staff manage");
 		staffs=new ArrayList<StaffVO>();
 		staffs=service.searchStaff("%%");
+		if(staffs!=null){
 		tableV = getVector(staffs);
         System.out.println(staffs.size());
         model = new TableModelADUS(tableV, tableH,isCellEditable);
@@ -74,13 +74,31 @@ public class ManagerStaffMgt extends FunctionADUS{
 		String[] city = {"南京","北京","上海","广州"};
 	   JComboBox  cityC = new FlatComboBox(city);  
        tcm.getColumn(6).setCellEditor(new DefaultCellEditor(cityC));
-		
-       addDeleteColumn();
-
-		table.addMouseListener(tableListener);
+       
+       table.addMouseListener(tableListener);
 		sPanel = new ScrollPaneTable(table);
 		panel.add(sPanel);
 		
+       addDeleteColumn();
+		}
+		else {
+			
+			tableV = new Vector<Vector<String>>();
+//	        System.out.println(staffs.size());
+	        model = new TableModelADUS(tableV, tableH,isCellEditable);
+			table = new TableADUS(model);
+			
+			table.addMouseListener(tableListener);
+			sPanel = new ScrollPaneTable(table);
+			panel.add(sPanel);
+			showError("Connect Error");
+			super.isConnectError = true;
+		}
+		
+		
+//		if(staffs.isEmpty()){
+//			showError("Connect Error");
+//		}
 	}
 
 	

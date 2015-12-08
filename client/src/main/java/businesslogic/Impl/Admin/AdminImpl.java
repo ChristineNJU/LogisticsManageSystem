@@ -8,17 +8,14 @@ import State.AddState;
 import State.DeleteState;
 import State.UpdateState;
 import VO.UserVO;
-import businesslogic.Service.Admin.AddUserService;
-import businesslogic.Service.Admin.DeleteUserService;
-import businesslogic.Service.Admin.GetUserService;
-import businesslogic.Service.Admin.UpdateUserService;
+import businesslogic.Service.Admin.AdminUserService;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
 import data.Service.Delete.DeleteService;
 import data.Service.Search.SearchUserService;
 import data.Service.Update.UpdateService;
 
-public class AdminImpl implements AddUserService,DeleteUserService,GetUserService,UpdateUserService{
+public class AdminImpl implements AdminUserService{
 
 	@Override
 	public UpdateState updateUser(UserVO user) {

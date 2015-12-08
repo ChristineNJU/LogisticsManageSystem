@@ -5,10 +5,9 @@ import State.InstitutionType;
 import State.LogisticsState;
 import State.LogisticsType;
 import State.PackingCharge;
-
-import State.TransferType;
-
+import State.SalaryType;
 import State.StorageArea;
+import State.TransferType;
 import State.UserRole;
 
 public class Translater {
@@ -229,6 +228,30 @@ public class Translater {
  			return StorageArea.MANOEUVERING_AREA;
  		default:
  			return StorageArea.MANOEUVERING_AREA;
+ 		}
+ 	}
+ 	public static SalaryType getSalaryType(String s){
+ 		switch(s){
+		case "月薪":
+			return SalaryType.MONTH;
+		case "按次":
+			return SalaryType.ONCE;
+		case "提成":
+			return SalaryType.REWARD;
+		default:
+			return SalaryType.MONTH;
+ 		}
+ 	}
+ 	public static String getChineseForSalaryType(SalaryType type){
+		switch (type) {
+		case MONTH:
+			return "月薪";
+		case ONCE:
+			return "按次";
+		case REWARD:
+			return "提成";
+		default:
+			return "月薪";
  		}
  	}
 
