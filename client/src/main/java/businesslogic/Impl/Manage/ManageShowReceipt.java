@@ -6,17 +6,6 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import data.RMIHelper.RMIHelper;
-import data.Service.Search.SearchArrivalService;
-import data.Service.Search.SearchBalanceService;
-import data.Service.Search.SearchCostService;
-import data.Service.Search.SearchDeliveryService;
-import data.Service.Search.SearchEntruckingService;
-import data.Service.Search.SearchGatheringService;
-import data.Service.Search.SearchInstitutionInfoService;
-import data.Service.Search.SearchRemovalService;
-import data.Service.Search.SearchStorageService;
-import data.Service.Search.SearchTransferService;
 import PO.ArrivalPO;
 import PO.BalancePO;
 import PO.CostPO;
@@ -36,21 +25,21 @@ import VO.GatheringVO;
 import VO.RemovalVO;
 import VO.StorageVO;
 import VO.TransferVO;
-import businesslogic.Service.Manage.ShowArrivalService;
-import businesslogic.Service.Manage.ShowBalanceService;
-import businesslogic.Service.Manage.ShowCostService;
-import businesslogic.Service.Manage.ShowDeliveryService;
-import businesslogic.Service.Manage.ShowEntruckingService;
-import businesslogic.Service.Manage.ShowGatheringService;
-import businesslogic.Service.Manage.ShowRemovalService;
-import businesslogic.Service.Manage.ShowStorageService;
-import businesslogic.Service.Manage.ShowTransferService;
+import businesslogic.Service.Manage.ShowReceiptService;
 import businesslogic.URLHelper.URLHelper;
+import data.RMIHelper.RMIHelper;
+import data.Service.Search.SearchArrivalService;
+import data.Service.Search.SearchBalanceService;
+import data.Service.Search.SearchCostService;
+import data.Service.Search.SearchDeliveryService;
+import data.Service.Search.SearchEntruckingService;
+import data.Service.Search.SearchGatheringService;
+import data.Service.Search.SearchInstitutionInfoService;
+import data.Service.Search.SearchRemovalService;
+import data.Service.Search.SearchStorageService;
+import data.Service.Search.SearchTransferService;
 
-public class ManageShowReceipt implements ShowArrivalService,ShowBalanceService,ShowCostService,
-											ShowDeliveryService,ShowEntruckingService,ShowGatheringService,
-											ShowRemovalService,ShowStorageService,ShowTransferService{
-	
+public class ManageShowReceipt implements ShowReceiptService{
 	
 	
 	/**
