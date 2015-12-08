@@ -1,0 +1,5 @@
+package State;
+
+public enum ErrorState {
+	CONNECTERROR,ADDERROR,DELETEERROR,UPDATEERROR,SEARCHERROR
+}

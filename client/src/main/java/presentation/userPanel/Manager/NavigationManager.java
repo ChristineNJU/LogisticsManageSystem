@@ -3,6 +3,7 @@ package presentation.userPanel.Manager;
 import presentation.components.ButtonNav;
 import presentation.frame.MainFrame;
 import presentation.main.Navigation;
+import State.ErrorState;
 import VO.UserVO;
 
 public class NavigationManager extends Navigation{
@@ -19,8 +20,8 @@ public class NavigationManager extends Navigation{
 	private ButtonNav system = new ButtonNav("manager","system");
 	
 	private ManagerConst con = new ManagerConst();
-	private ManagerStaffMgt staffM=new ManagerStaffMgt();
-	private ManagerInstitutionMgt institutionM=new ManagerInstitutionMgt();
+	private ManagerStaffMgt staffM=new ManagerStaffMgt(this);
+	private ManagerInstitutionMgt institutionM=new ManagerInstitutionMgt(this);
 	public NavigationManager(UserVO user) {
 		super(user);
 		initNavButtonArray();
@@ -72,23 +73,40 @@ public class NavigationManager extends Navigation{
 	}
 	private void changeToStaff(){
 
-		staffM = new ManagerStaffMgt();
+		staffM = new ManagerStaffMgt(this);
 		MainFrame.changeContentPanel(staffM.getPanel());
 		MainFrame.getMainPanel().repaint();
+		if(staffM.isConnectError()){
+			System.out.println("manager initiate null");
+			staffM.showError(ErrorState.CONNECTERROR);
+//			try {
+//				Thread.sleep(3000);
+//				staffM.removeError();
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+			
+		}
 	}
 	private void changeToInstitution(){
-		institutionM=new ManagerInstitutionMgt();
+		institutionM=new ManagerInstitutionMgt(this);
 		MainFrame.changeContentPanel(institutionM.getPanel());
 		MainFrame.getMainPanel().repaint();
-
+		
 		
 	}
-	private void changeToManager(){
-		ManagerStaffMgt managerStaffMgt = new ManagerStaffMgt();
-		MainFrame.changeContentPanel(managerStaffMgt.getPanel());
-		MainFrame.getMainPanel().repaint();
-
-	}
+//	private void changeToManager(){
+//		System.out.println("manager initiate");
+//		ManagerStaffMgt managerStaffMgt = new ManagerStaffMgt(this);
+//		MainFrame.changeContentPanel(managerStaffMgt.getPanel());
+//		MainFrame.getMainPanel().repaint();
+//		if(managerStaffMgt.isConnectError()){
+//			System.out.println("manager initiate null");
+//			managerStaffMgt.showError("Connect Error");
+//		}
+//
+//	}
 	private void changeToSalary(){
 		
 	}
