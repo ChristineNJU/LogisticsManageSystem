@@ -16,6 +16,7 @@ import presentation.table.TableADUS;
 import presentation.table.TableModelADUS;
 import State.AddState;
 import State.DeleteState;
+import State.ErrorState;
 import State.UpdateState;
 import VO.StaffVO;
 import businesslogic.Impl.Manage.ManageStaff;
@@ -47,8 +48,14 @@ public class ManagerStaffMgt extends FunctionADUS{
 		staffs=new ArrayList<StaffVO>();
 		staffs=service.searchStaff("%%");
 		if(staffs!=null){
-		tableV = getVector(staffs);
-        System.out.println(staffs.size());
+			
+			tableV = getVector(staffs);
+		}
+		else {
+			tableV=new Vector<Vector<String>>();
+			super.isConnectError=true;
+		}
+//      System.out.println(staffs.size());
         model = new TableModelADUS(tableV, tableH,isCellEditable);
 		table = new TableADUS(model);
 		
@@ -80,20 +87,6 @@ public class ManagerStaffMgt extends FunctionADUS{
 		panel.add(sPanel);
 		
        addDeleteColumn();
-		}
-		else {
-			
-			tableV = new Vector<Vector<String>>();
-//	        System.out.println(staffs.size());
-	        model = new TableModelADUS(tableV, tableH,isCellEditable);
-			table = new TableADUS(model);
-			
-			table.addMouseListener(tableListener);
-			sPanel = new ScrollPaneTable(table);
-			panel.add(sPanel);
-			showError("Connect Error");
-			super.isConnectError = true;
-		}
 		
 		
 //		if(staffs.isEmpty()){
@@ -125,11 +118,11 @@ public class ManagerStaffMgt extends FunctionADUS{
 		for(int i=0;i<deleteItems.size();i++){
 			deleteState=service.DeleteStaff(deleteItems.get(i));
 			if(deleteState==DeleteState.FAIL){
-				showError("删除失败");
+				showError(ErrorState.DELETEERROR);
 				break;
 			}
 			else if(deleteState==DeleteState.CONNECTERROR){
-				showError("连接异常");
+				showError(ErrorState.CONNECTERROR);
 				break;
 			}
 		}
@@ -144,11 +137,11 @@ public class ManagerStaffMgt extends FunctionADUS{
 		for(int i=0;i<updateItems.size();i++){
 			updateState=service.updateStaff(updateItems.get(i));
 			if(updateState==UpdateState.NOTFOUND){
-				showError("更新失败");
+				showError(ErrorState.UPDATEERROR);
 				break;
 			}
 			else if(updateState==UpdateState.CONNECTERROR){
-				showError("连接异常");
+				showError(ErrorState.CONNECTERROR);
 				break;
 			}
 		}
@@ -163,11 +156,11 @@ public class ManagerStaffMgt extends FunctionADUS{
 		for(int i=0;i<addItems.size();i++){
 			addState=service.addStaff(addItems.get(i));
 			if(addState==AddState.FAIL){
-				showError("增加失败");
+				showError(ErrorState.ADDERROR);
 				break;
 			}
 			else if(addState==AddState.CONNECTERROR){
-				showError("连接异常");
+				showError(ErrorState.CONNECTERROR);
 				break;
 			}
 		}
@@ -184,6 +177,9 @@ public class ManagerStaffMgt extends FunctionADUS{
          table.changeSelection(lastIndex, 0,false,false);
 	}
 
+	protected boolean isConnectError(){
+		return super.isConnectError;
+	}
 
 	@Override
 	protected StaffVO getVO(Vector<String> vector) {

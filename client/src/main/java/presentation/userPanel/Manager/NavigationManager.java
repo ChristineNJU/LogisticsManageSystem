@@ -3,6 +3,7 @@ package presentation.userPanel.Manager;
 import presentation.components.ButtonNav;
 import presentation.frame.MainFrame;
 import presentation.main.Navigation;
+import State.ErrorState;
 import VO.UserVO;
 
 public class NavigationManager extends Navigation{
@@ -86,6 +87,18 @@ public class NavigationManager extends Navigation{
 		staffM = new ManagerStaffMgt(this);
 		MainFrame.changeContentPanel(staffM.getPanel());
 		MainFrame.getMainPanel().repaint();
+		if(staffM.isConnectError()){
+			System.out.println("manager initiate null");
+			staffM.showError(ErrorState.CONNECTERROR);
+//			try {
+//				Thread.sleep(3000);
+//				staffM.removeError();
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+			
+		}
 	}
 	
 	private void changeToInstitution(){
@@ -100,7 +113,6 @@ public class NavigationManager extends Navigation{
 		MainFrame.getMainPanel().repaint();
 
 	}
-	
 	private void changeToSalary(){
 		sal = new ManagerSalary();
 		MainFrame.changeContentPanel(sal.getPanel());

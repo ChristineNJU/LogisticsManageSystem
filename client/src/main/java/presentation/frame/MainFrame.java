@@ -81,10 +81,10 @@ public class MainFrame {
 //		changeToCourier();
 //		changeToFinance();
 //		changeToManager();
-//	changeToManager();
+	changeToManager();
 
 
-		changeToMediumCenter();
+//		changeToMediumCenter();
 //		changeToRepository();
 
 //		changeToMediumCenter();
