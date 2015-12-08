@@ -71,6 +71,7 @@ public class NavigationManager extends Navigation{
 		
 	}
 	private void changeToStaff(){
+
 		staffM = new ManagerStaffMgt();
 		MainFrame.changeContentPanel(staffM.getPanel());
 		MainFrame.getMainPanel().repaint();
@@ -79,6 +80,14 @@ public class NavigationManager extends Navigation{
 		institutionM=new ManagerInstitutionMgt();
 		MainFrame.changeContentPanel(institutionM.getPanel());
 		MainFrame.getMainPanel().repaint();
+
+		
+	}
+	private void changeToManager(){
+		ManagerStaffMgt managerStaffMgt = new ManagerStaffMgt();
+		MainFrame.changeContentPanel(managerStaffMgt.getPanel());
+		MainFrame.getMainPanel().repaint();
+
 	}
 	private void changeToSalary(){
 		

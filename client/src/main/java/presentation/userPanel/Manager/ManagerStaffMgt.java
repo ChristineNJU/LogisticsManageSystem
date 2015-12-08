@@ -33,7 +33,10 @@ public class ManagerStaffMgt extends FunctionADUS{
 	ArrayList<StaffVO> searchItems=new ArrayList<StaffVO>();
 	ArrayList<StaffVO> updateItems=new ArrayList<StaffVO>();
 			
-	public ManagerStaffMgt(){
+	NavigationManager nav;
+	
+	public ManagerStaffMgt(NavigationManager navigationManager){
+		nav = navigationManager;
 		buttonNew = new ButtonNew("新增员工");
 		initUI("员工管理");
 	}
@@ -118,7 +121,7 @@ public class ManagerStaffMgt extends FunctionADUS{
 				deleteItems.add(getVO(tableV.get(i)));
 			}
 		}
-		DeleteState deleteState=DeleteState.FAIL;
+		DeleteState deleteState=DeleteState.SUCCESS;
 		for(int i=0;i<deleteItems.size();i++){
 			deleteState=service.DeleteStaff(deleteItems.get(i));
 			if(deleteState==DeleteState.FAIL){
@@ -137,7 +140,7 @@ public class ManagerStaffMgt extends FunctionADUS{
 				updateItems.add(getVO(tableV.get(i)));
 			}
 		}
-		UpdateState updateState=UpdateState.NOTFOUND;
+		UpdateState updateState=UpdateState.SUCCESS;
 		for(int i=0;i<updateItems.size();i++){
 			updateState=service.updateStaff(updateItems.get(i));
 			if(updateState==UpdateState.NOTFOUND){
@@ -156,7 +159,7 @@ public class ManagerStaffMgt extends FunctionADUS{
 				addItems.add(getVO(tableV.get(i)));
 			}
 		}
-		AddState addState=AddState.FAIL;
+		AddState addState=AddState.SUCCESS;
 		for(int i=0;i<addItems.size();i++){
 			addState=service.addStaff(addItems.get(i));
 			if(addState==AddState.FAIL){
@@ -167,6 +170,11 @@ public class ManagerStaffMgt extends FunctionADUS{
 				showError("连接异常");
 				break;
 			}
+		}
+		
+		if(deleteState==DeleteState.SUCCESS&&updateState==UpdateState.SUCCESS
+				&&addState==AddState.SUCCESS){
+			nav.changeTask(2);
 		}
 	}
 	

@@ -70,7 +70,7 @@ public class MainFrame {
 //		changeToCourier()
 
 //		changeToFinance();
-		changeToManager();
+//		changeToManager();
 
 //		changeToFinance();
 //		changeToManager();
@@ -84,13 +84,13 @@ public class MainFrame {
 //	changeToManager();
 
 
-//		changeToMediumCenter();
+		changeToMediumCenter();
 //		changeToRepository();
 
 //		changeToMediumCenter();
 //		changeToRepository();
-
-//		changeToAdmin()contentPanel;
+//
+//		changeToAdmin();
 	
 		
 	}	

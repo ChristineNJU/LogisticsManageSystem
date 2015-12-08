@@ -1,6 +1,8 @@
 package presentation.userPanel.Repository;
 
 import java.awt.Color;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -27,11 +29,11 @@ import businesslogic.Impl.Courier.CourierImpl;
 import businesslogic.Impl.Repository.RepositoryController;
 import businesslogic.Service.Courier.CourierService;
 import businesslogic.Service.Courier.GetCityService;
-import businesslogic.Service.Repository.ReponsitoryService;
+import businesslogic.Service.Repository.RepositoryService;
 
 public class RepositoryStorage extends FunctionAdd {
 
-	ReponsitoryService service = new RepositoryController();
+	RepositoryService service = new RepositoryController();
 	CourierService getCity = new CourierImpl();
 	
 	String[] tableH = {"快递编号", "到达地", "区号", "排号", "架号", "位号", ""};
@@ -47,15 +49,56 @@ public class RepositoryStorage extends FunctionAdd {
 	
 	JLabel info = new JLabel();
 	
-	public RepositoryStorage() {
+	NavigationRepository nav;
+	
+	public RepositoryStorage(NavigationRepository nav) {
 		super.buttonNew = new ButtonNew("新增入库单");
 		super.confirm = new ButtonConfirm("提交入库单");
+		
+		this.nav = nav;
 		
 		initUI("入库");
 		init();
 	}
 	
 	private void init() {
+		
+		confirm.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				if(confirm.isEnabled()){
+					nav.changeTask(1);
+				}
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
 		info.setBounds(480, 590, 200, 50);
 		info.setForeground(Color.red);
 		info.setFont(FontSet.twenty);
@@ -158,6 +201,7 @@ public class RepositoryStorage extends FunctionAdd {
 		if(state==StorageState.SUCCESS){
 			info.setText("保存成功");
 			isSaved = true;
+			nav.changeTask(1);
 		}else{
 			info.setText("保存失败");
 		}

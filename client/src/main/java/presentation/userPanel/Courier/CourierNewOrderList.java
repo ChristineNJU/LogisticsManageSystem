@@ -2,16 +2,20 @@ package presentation.userPanel.Courier;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Vector;
 
 import javax.swing.JLabel;
-import javax.swing.JTable;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
+import presentation.components.ButtonCancel;
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
+import presentation.components.LabelHeader;
 import presentation.frame.MainFrame;
 import presentation.main.ColorPallet;
 import presentation.main.FontSet;
@@ -45,13 +49,20 @@ public class CourierNewOrderList extends FunctionAdd{
 	
 	TableModelAddOnly oldTableModelAddOnly;
 	
-	public CourierNewOrderList(){
+	NavigationCourier nav;
+	
+	public CourierNewOrderList(final NavigationCourier nav){
+		
+		super.buttonNew = new ButtonNew("新增快递");
+		super.confirm = new ButtonConfirm("提交所有订单");
+		super.cancel = new ButtonCancel();
+
+		this.nav = nav;
 		
 		oldTableModelAddOnly = model;
 		
-		buttonNew = new ButtonNew("新增快递");
-		confirm = new ButtonConfirm("提交所有订单");
 		initUI("创建快递单");
+		
 		buttonNew.addMouseListener(new MouseAdapter(){
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -74,7 +85,7 @@ public class CourierNewOrderList extends FunctionAdd{
 //					Thread t = new Thread(info);
 //					t.start();
 					info.setText("提交成功！");
-					
+					nav.changeTask(1);
 				}else{
 					info.setText("提交失败");
 				
@@ -93,6 +104,40 @@ public class CourierNewOrderList extends FunctionAdd{
 			}
 		});
 		
+		cancel.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				nav.changeTask(1);
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
 		info.setBounds(500, 590, 100, 50);
 		info.setForeground(ColorPallet.Pink);
 		info.setFont(FontSet.eighteen);
@@ -102,7 +147,8 @@ public class CourierNewOrderList extends FunctionAdd{
 	
 	@Override
 	protected void initHeader() {
-		return;
+		header = new Header();
+		panel.add(header);
 	}
 
 	@Override
@@ -184,6 +230,20 @@ public class CourierNewOrderList extends FunctionAdd{
 		MainFrame.getMainPanel().repaint();
 	}
 
+	class Header extends JLabel {
+		
+		LabelHeader date = new LabelHeader("接件日期：");
+		Header() {
+			setBounds(120, 100, 400,30);
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			date.addInfo(sdf.format(Calendar.getInstance().getTime()));
+			
+			date.setBounds(0, 0, 400, 30);
+			add(date);
+		}
+	}
+	
 //	class InfomationPanel extends JPanel implements Runnable {
 //		
 //		JLabel label;

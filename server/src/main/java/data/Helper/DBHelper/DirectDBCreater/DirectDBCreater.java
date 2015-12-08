@@ -334,7 +334,7 @@ public class DirectDBCreater {
 		
 		try {
 			s = conn.createStatement();
-			s.execute("CREATE TABLE "+table_name+" (time varchar(30) PRIMARY key, operation varchar(50), operator varchar(20))");
+			s.execute("CREATE TABLE "+table_name+" (time varchar(30), operation varchar(50), operator varchar(20))");
 			conn.commit();
 			
 			System.out.println("create table "+table_name);

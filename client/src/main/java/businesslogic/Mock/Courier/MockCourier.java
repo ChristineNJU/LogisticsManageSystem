@@ -10,12 +10,6 @@ import VO.VO;
 import businesslogic.Impl.Courier.CourierImpl;
 
 public class MockCourier extends CourierImpl{
-	@Override
-	public UpdateState receiveConfirm(VO logistics_info, String field,
-			String value) {
-		// TODO Auto-generated method stub
-		return UpdateState.NOTFOUND;
-	}
 
 	@Override
 	public ArrayList<String> getCity() {

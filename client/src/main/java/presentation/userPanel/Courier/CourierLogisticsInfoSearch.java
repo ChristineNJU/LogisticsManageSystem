@@ -119,6 +119,8 @@ public class CourierLogisticsInfoSearch {
 		
 		size = history.size();
 		
+		System.out.println(size);
+		
 		scrollPane.setBounds(116, 220, 441, 350);
 		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
@@ -138,7 +140,7 @@ public class CourierLogisticsInfoSearch {
 			if(input.length>=2){				
 				historyLabel.add(new HistoryLabel(input[0], input[1],history.size()-i-1));
 			}else{
-				historyLabel.add(new HistoryLabel(input[0], "",i));
+				historyLabel.add(new HistoryLabel(input[0], "",history.size()-i-1));
 			}
 //			inquiryPanel.add(historyLabel.get(i));
 //			scrollPanePanel.add(historyLabel.get(i));

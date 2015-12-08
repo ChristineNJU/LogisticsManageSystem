@@ -2,6 +2,7 @@ package businesslogic.Impl.Finance;
 
 import java.rmi.Naming;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import PO.AccountPO;
@@ -58,7 +59,7 @@ public class PeriodImpl implements AddPeriodService, GetPeriodService, UpdatePer
 		PeriodVO period=null;
 		try{
 			SearchPeriodService periodSearch=(SearchPeriodService) Naming.lookup(RMIHelper.SEARCH_PERIOD_IMPL);
-			period=new PeriodVO(periodSearch.searchPeriod())	;
+			period=new PeriodVO(periodSearch.searchPeriod());
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -81,7 +82,7 @@ public class PeriodImpl implements AddPeriodService, GetPeriodService, UpdatePer
 			
 			//---------------------------------------------------------------------------------------
 			
-			Date date=new Date();
+			Date date=Calendar.getInstance().getTime();
 			int institution_size=0;
 			int staff_size=0;
 			int car_size=0;

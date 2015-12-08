@@ -146,9 +146,13 @@ public class LogisticsInputVO extends VO {
 	public String getRecipient_mobilephone() {
 		return recipient_mobilephone;
 	}
-
+	
 	public String getActual_recipient_name() {
 		return actual_recipient_name;
+	}
+
+	public void setActual_recipient_name(String actual_recipient_name) {
+		this.actual_recipient_name = actual_recipient_name;
 	}
 
 	public String getBar_code() {
