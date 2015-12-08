@@ -8,6 +8,7 @@ import java.util.Vector;
 import javax.swing.JLabel;
 
 import presentation.components.ButtonConfirm;
+import presentation.components.FlatComboBox;
 import presentation.components.LabelHeader;
 import presentation.main.FunctionSearch;
 import presentation.table.ScrollPaneTable;
@@ -23,20 +24,33 @@ import VO.RemovalVO;
 import VO.StorageVO;
 import VO.TransferVO;
 import VO.VO;
-import businesslogic.Impl.Manage.ManageReceipt;
-import businesslogic.Service.Manage.ShowReceiptService;
-import businesslogic.Service.Manage.UpdateReceiptService;
+import businesslogic.Impl.Manage.ManageController;
+import businesslogic.Service.Manage.ManageService;
 
 public class ManagerReceipt extends FunctionSearch{
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
+	ManageService service = new ManageController();
+	
 	String[] tableH = {"单据类型", "主要信息", ""};
 	boolean[] isCellEditable = {false, false, false};
+	
+	String[][] tableAH = {{}};
+	
+	ArrayList<ArrivalVO> arrival = new ArrayList<ArrivalVO>();
+	ArrayList<BalanceVO> balance = new ArrayList<BalanceVO>();
+	ArrayList<CostVO> cost = new ArrayList<CostVO>();
+	ArrayList<DeliveryVO> delivery = new ArrayList<DeliveryVO>();
+	ArrayList<EntruckingVO> entrucking = new ArrayList<EntruckingVO>();
+	ArrayList<GatheringVO> gathering = new ArrayList<GatheringVO>();
+	ArrayList<RemovalVO> removal = new ArrayList<RemovalVO>();
+	ArrayList<StorageVO> storage = new ArrayList<StorageVO>();
+	ArrayList<TransferVO> transfer = new ArrayList<TransferVO>();
 	
 	ArrayList<VO> voList = new ArrayList<VO>();
 	
 	public ManagerReceipt() {
-		super.confirmSearch = new ButtonConfirm("提交审批");
+		super.confirmSearch = new ButtonConfirm("");
 		
 		initUI("审批单据");
 	}
@@ -51,8 +65,16 @@ public class ManagerReceipt extends FunctionSearch{
 	@Override
 	protected void initTable() {
 		tableV = getVector(voList);
-	
-		System.out.println(tableV.size());
+		
+		arrival = service.showArrival();
+		balance = service.showBalance();
+		cost = service.showCost();
+		delivery = service.showDelivery();
+		entrucking = service.showEntrucking();
+		gathering = service.showGathering();
+		removal = service.showRemoval();
+		storage = service.showStorage();
+		transfer = service.showTransfer();
 		
 		model = new TableModelSearch(tableV, tableH);
 		table = new TableSearch(model);
