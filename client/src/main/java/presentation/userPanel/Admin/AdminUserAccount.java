@@ -49,38 +49,10 @@ public class AdminUserAccount extends FunctionADUS{
 		
 
 		users = new ArrayList<UserVO>();
-		UserVO u1 = new UserVO("1", "jack", UserRole.manager, "男", 34, InstitutionType.BusinessLobby,"南京");
-		UserVO u2 = new UserVO("2", "jack", UserRole.manager, "男", 34, InstitutionType.BusinessLobby,"南京");
-		UserVO u3 = new UserVO("3", "jack", UserRole.manager, "男", 34, InstitutionType.BusinessLobby,"南京");
-		UserVO u4 = new UserVO("4", "jack", UserRole.manager, "男", 34, InstitutionType.BusinessLobby,"南京");
-		UserVO u5 = new UserVO("5", "jack", UserRole.manager, "男", 34, InstitutionType.BusinessLobby,"南京");
-		UserVO u6 = new UserVO("6", "jack", UserRole.manager, "男", 34, InstitutionType.BusinessLobby,"南京");
-		UserVO u7 = new UserVO("7", "jack", UserRole.manager, "男", 34, InstitutionType.BusinessLobby,"南京");
-		UserVO u8 = new UserVO("8", "jack", UserRole.manager, "男", 34, InstitutionType.BusinessLobby,"南京");
-		UserVO u9 = new UserVO("9", "jack", UserRole.manager, "男", 34, InstitutionType.BusinessLobby,"南京");
-		UserVO u10 = new UserVO("10", "jack", UserRole.manager, "男", 34, InstitutionType.BusinessLobby,"南京");
 		
-		users.add(u1);
-		users.add(u2);
-		users.add(u3);
-		users.add(u4);
-		users.add(u5);
-		users.add(u6);
-		users.add(u7);
-		users.add(u8);
-		users.add(u9);
-		users.add(u10);
-		users.add(u10);
-		users.add(u10);
-		users.add(u10);
-		users.add(u10);
-		users.add(u10);
-		users.add(u10);
-		users.add(u10);
-		users.add(u10);
-		users.add(u10);
-		users.add(u10);		
-		users.add(u10);
+		ArrayList<String> requirement = new ArrayList<String>();
+		requirement.add("%%");
+		users = service.searchUser(requirement);
 		
 		tableV = getVector(users);
 		
@@ -126,8 +98,10 @@ public class AdminUserAccount extends FunctionADUS{
 		ArrayList<String> require = new ArrayList<String>();
 		require.add(s);
 		searchItems = service.searchUser(require);
+		System.out.println(searchItems.size());
 		model = new TableModelADUS(getVector(searchItems),tableH,isCellEditable);
 		table.setModel(model);
+		table.repaint();
 	}
 	
 	

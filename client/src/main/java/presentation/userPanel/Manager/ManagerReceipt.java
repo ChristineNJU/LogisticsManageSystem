@@ -1,5 +1,9 @@
 package presentation.userPanel.Manager;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -10,6 +14,8 @@ import javax.swing.JLabel;
 import presentation.components.ButtonConfirm;
 import presentation.components.FlatComboBox;
 import presentation.components.LabelHeader;
+import presentation.main.ColorPallet;
+import presentation.main.FontSet;
 import presentation.main.FunctionSearch;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableModelSearch;
@@ -28,14 +34,14 @@ import businesslogic.Impl.Manage.ManageController;
 import businesslogic.Service.Manage.ManageService;
 
 public class ManagerReceipt extends FunctionSearch{
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	
 	ManageService service = new ManageController();
 	
-	String[] tableH = {"单据类型", "主要信息", ""};
+	String[] tableH = {"", "", ""};
 	boolean[] isCellEditable = {false, false, false};
 	
-	String[][] tableAH = {{}};
+	ArrayList<String[]> tableHV = new ArrayList<String[]>();
 	
 	ArrayList<ArrivalVO> arrival = new ArrayList<ArrivalVO>();
 	ArrayList<BalanceVO> balance = new ArrayList<BalanceVO>();
@@ -49,10 +55,70 @@ public class ManagerReceipt extends FunctionSearch{
 	
 	ArrayList<VO> voList = new ArrayList<VO>();
 	
+	ButtonConfirm confirm = new ButtonConfirm("确认审批");
+	
 	public ManagerReceipt() {
-		super.confirmSearch = new ButtonConfirm("");
-		
+		super.confirmSearch = new ButtonConfirm("查看单据");
+		confirmSearch.setVisible(false);
+		initTableHead();
 		initUI("审批单据");
+		
+		confirm.setLocation(120,175+sPanel.getHeight());
+		confirm.addMouseListener(new MouseListener(){
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		panel.add(confirm);
+	}
+	
+	private void initTableHead() {
+		String[] tmp_1 = {"快递单号","出发地","到达单编号"};
+		tableHV.add(tmp_1);
+		String[] tmp_2 = {"原区号", "快递编号", "新区号", "排号", "架号", "位号"};
+		tableHV.add(tmp_2);
+		String[] tmp_3 = {"付款日期","金额","付款人","付款账目","条目"};
+		tableHV.add(tmp_3);
+		String[] tmp_4 = {"日期", "派件人"};
+		tableHV.add(tmp_4);
+		String[] tmp_5 = {"日期", "中转单编号", "目的地"};
+		tableHV.add(tmp_5);
+		String[] tmp_6 = {"收款日期","收款金额","收款快递员"};
+		tableHV.add(tmp_6);
+		String[] tmp_7 = {"快递编号", "到达地", "出库日期"};
+		tableHV.add(tmp_7);
+		String[] tmp_8 = {"快递编号", "到达地", "入库日期"};
+		tableHV.add(tmp_8);
+		String[] tmp_9 = {"日期", "中转单编号", "目的地"};
+		tableHV.add(tmp_9);
 	}
 	
 	@Override
@@ -64,7 +130,7 @@ public class ManagerReceipt extends FunctionSearch{
 
 	@Override
 	protected void initTable() {
-		tableV = getVector(voList);
+		tableV = getArrivalVector(arrival);
 		
 		arrival = service.showArrival();
 		balance = service.showBalance();
@@ -76,57 +142,153 @@ public class ManagerReceipt extends FunctionSearch{
 		storage = service.showStorage();
 		transfer = service.showTransfer();
 		
+		System.out.println(balance.size());
+		
 		model = new TableModelSearch(tableV, tableH);
 		table = new TableSearch(model);
 		
 		sPanel = new ScrollPaneTable(table);
 		panel.add(sPanel);
 	}
-
-	private Vector<Vector<String>> getVector(ArrayList<VO> voList2) {
-		Vector<Vector<String>> result= new  Vector<Vector<String>>();
-		for(VO temp:voList2){
-			Vector<String> oneItem = new Vector<String>();
-			//TODO
-			if(temp instanceof ArrivalVO){
-				oneItem.add("到达单");
-				oneItem.add(((ArrivalVO)temp).getBarCode());
-			}else if(temp instanceof BalanceVO){
-				oneItem.add("库存调整单");
-				oneItem.add(((BalanceVO)temp).getBarCode());
-			}else if(temp instanceof CostVO){
-				oneItem.add("出款单");
-				oneItem.add(((CostVO)temp).getPayer());
-			}else if(temp instanceof DeliveryVO){
-				oneItem.add("派件单");
-				oneItem.add(sdf.format(((DeliveryVO)temp).getArrivalDate()));
-			}else if(temp instanceof EntruckingVO){
-				oneItem.add("装车单");
-				oneItem.add(((EntruckingVO)temp).getCarNumber());
-			}else if(temp instanceof GatheringVO){
-				oneItem.add("收款单");
-				oneItem.add(sdf.format(((GatheringVO)temp).getDate()));
-			}else if(temp instanceof RemovalVO){
-				oneItem.add("出库单");
-				oneItem.add(((RemovalVO)temp).getBarCode());
-			}else if(temp instanceof StorageVO){
-				oneItem.add("入库单");
-				oneItem.add(((StorageVO)temp).getBarCode());
-			}else if(temp instanceof TransferVO){
-				oneItem.add("中转单");
-				oneItem.add(((TransferVO)temp).getTransferId());
-			}
-			
-			result.add(oneItem);
+	
+	private Vector<Vector<String>> getTask(int i) {
+		switch(i){
+		case 0: return getArrivalVector(arrival);
+		case 1: return getBalanceVector(balance);
+		case 2: return getCostVector(cost);
+		case 3: return getDeliveryVector(delivery);
+		case 4: return getEntruckingVector(entrucking);
+		case 5: return getGatheringVector(gathering);
+		case 6: return getRemovalVector(removal);
+		case 7: return getStorageVector(storage);
+		case 8: return getTransferVector(transfer);
+		default: return new Vector<Vector<String>>();
 		}
-		
+	}
+	
+	private Vector<Vector<String>> getArrivalVector(ArrayList<ArrivalVO> voList) {
+		Vector<Vector<String>> result = new Vector<Vector<String>>();
+		for(ArrivalVO vo: voList){
+			Vector<String> tmp = new Vector<String>();
+			tmp.add(vo.getBarCode());
+			tmp.add(vo.getDeparture());
+			tmp.add(vo.getListId());
+			result.add(tmp);
+		}
 		return result;
 	}
+	
+	private Vector<Vector<String>> getBalanceVector(ArrayList<BalanceVO> voList) {
+		Vector<Vector<String>> result = new Vector<Vector<String>>();
+		for(BalanceVO vo: voList){
+			Vector<String> tmp = new Vector<String>();
+			tmp.add(vo.getAreaBefore()+"");
+			tmp.add(vo.getBarCode());
+			tmp.add(vo.getAreaCode()+"");
+			tmp.add(vo.getRow()+"");
+			tmp.add(vo.getShelf()+"");
+			tmp.add(vo.getPosition()+"");
+			result.add(tmp);
+		}
+		return result;
+	}
+
+	private Vector<Vector<String>> getCostVector(ArrayList<CostVO> voList) {
+		Vector<Vector<String>> result = new Vector<Vector<String>>();
+		for(CostVO vo: voList) {
+			Vector<String> tmp = new Vector<String>();
+			tmp.add(sdf.format(vo.getDate()));
+			tmp.add(vo.getAmount()+"");
+			tmp.add(vo.getPayer());
+			tmp.add(vo.getPayerAccount());
+			tmp.add(vo.getType()+"");
+			result.add(tmp);
+		}
+		return result;
+	}
+
+	private Vector<Vector<String>> getDeliveryVector(ArrayList<DeliveryVO> voList) {
+		Vector<Vector<String>> result = new Vector<Vector<String>>();
+		for(DeliveryVO vo: voList){
+			Vector<String> tmp = new Vector<String>();
+			tmp.add(sdf.format(vo.getArrivalDate()));
+			tmp.add(vo.getPeople());
+			result.add(tmp);
+		}
+		return result;
+	}
+	
+	private Vector<Vector<String>> getEntruckingVector(ArrayList<EntruckingVO> voList) {
+		Vector<Vector<String>> result = new Vector<Vector<String>>();
+		for(EntruckingVO vo: voList){
+			Vector<String> tmp = new Vector<String>();
+			tmp.add(sdf.format(vo.getDate()));
+			tmp.add(vo.getInstitutioNumber());
+			tmp.add(vo.getDestination());
+			result.add(tmp);
+		}
+		return result;
+	}
+	
+	private Vector<Vector<String>> getGatheringVector(ArrayList<GatheringVO> voList) {
+		Vector<Vector<String>> result = new Vector<Vector<String>>();
+		for(GatheringVO vo: voList){
+			Vector<String> tmp = new Vector<String>();
+			tmp.add(sdf.format(vo.getDate()));
+			tmp.add(vo.getMoney()+"");
+			tmp.add(vo.getName());
+			result.add(tmp);
+		}
+		return result;
+	}
+	
+	private Vector<Vector<String>> getRemovalVector(ArrayList<RemovalVO> voList) {
+		Vector<Vector<String>> result = new Vector<Vector<String>>();
+		for(RemovalVO vo: voList){
+			Vector<String> tmp = new Vector<String>();
+			tmp.add(vo.getBarCode());
+			tmp.add(sdf.format(vo.getOutDate()));
+			tmp.add(vo.getDestination());
+			result.add(tmp);
+		}
+		return result;
+	}
+	
+	private Vector<Vector<String>> getStorageVector(ArrayList<StorageVO> voList) {
+		Vector<Vector<String>> result = new Vector<Vector<String>>();
+		for(StorageVO vo: voList){
+			Vector<String> tmp = new Vector<String>();
+			tmp.add(vo.getBarCode());
+			tmp.add(vo.getDestination());
+			tmp.add(sdf.format(vo.getStorageDate()));
+			result.add(tmp);
+		}
+		return result;
+	}
+	
+	private Vector<Vector<String>> getTransferVector(ArrayList<TransferVO> voList) {
+		Vector<Vector<String>> result = new Vector<Vector<String>>();
+		for(TransferVO vo: voList){
+			Vector<String> tmp = new Vector<String>();
+			tmp.add(sdf.format(vo.getDate()));
+			tmp.add(vo.getTransferId());
+			tmp.add(vo.getDestination());
+			result.add(tmp);
+		}
+		return result;
+	} 
 
 	@Override
 	protected void showSearch() {
 		// TODO Auto-generated method stub
+		int target = ((Header)header).receipt_actual.getSelectedIndex();
 		
+		tableV = getTask(target);
+		tableH = tableHV.get(target);
+		
+		model = new TableModelSearch(tableV, tableH);
+		table.setModel(model);
+		table.repaint();
 	}
 
 	protected VO getVO(Vector<String> vector) {
@@ -142,14 +304,46 @@ public class ManagerReceipt extends FunctionSearch{
 
 	class Header extends JLabel {
 		LabelHeader date = new LabelHeader("当前日期：");
+		JLabel receipt = new JLabel("单据类型：", JLabel.CENTER);
+		FlatComboBox receipt_actual = new FlatComboBox();
 		Header() {
-			setBounds(120, 100, 400, 30);
+			setBounds(120, 80, 400, 60);
 			
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			date.addInfo(sdf.format(Calendar.getInstance().getTime()));
 			
 			date.setBounds(0, 0, 400, 30);
 			add(date);
+			
+			receipt.setBounds(-55, 30, 200, 30);
+			receipt.setFont(FontSet.eighteen);
+			receipt.setForeground(ColorPallet.Purple);
+			add(receipt);
+			
+			receipt_actual.setBounds(90, 32, 90, 28);
+			receipt_actual.addItem("到达单");
+			receipt_actual.addItem("库存调整单");
+			receipt_actual.addItem("出款单");
+			receipt_actual.addItem("派件单");
+			receipt_actual.addItem("装车单");
+			receipt_actual.addItem("收款单");
+			receipt_actual.addItem("出库单");
+			receipt_actual.addItem("入库单");
+			receipt_actual.addItem("中转单");
+			add(receipt_actual);
+			
+			initListener();
+		}
+		
+		private void initListener() {
+			receipt_actual.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					showSearch();
+				}
+			});;
 		}
 	}
 }
