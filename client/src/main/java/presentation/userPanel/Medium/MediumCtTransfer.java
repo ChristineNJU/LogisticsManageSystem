@@ -40,8 +40,8 @@ public class MediumCtTransfer extends FunctionAdd{
 	public TextFieldHeader costInput = new TextFieldHeader();
 	
 	public  MediumCtTransfer() {
-		super.buttonNew = new ButtonNew("新增中转单");
-		super.confirm = new ButtonConfirm("提交所有中转单");
+		super.buttonNew = new ButtonNew("新增中转快递");
+		super.confirm = new ButtonConfirm("提交中转单");
 		initUI("中转发送");
 		confirm.setLocation(confirm.getX(), confirm.getY()+45);
 		cancel.setLocation(cancel.getX(),cancel.getY()+45);

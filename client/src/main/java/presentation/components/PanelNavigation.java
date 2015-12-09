@@ -39,7 +39,7 @@ public class PanelNavigation extends JPanel {
 	}
 
 	private void initUser(){
-		ImageIcon userIconImage = new ImageIcon("src/graphics/Tips/connectError.png");
+		ImageIcon userIconImage = new ImageIcon("src/graphics/Tips/welcome.png");
 		Image image=userIconImage.getImage();
 		int  width  =  ( int ) (image.getWidth( null )    /   3.0 );
         int  height  =  ( int ) (image.getHeight( null )    /   3.0 );

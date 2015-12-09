@@ -1,13 +1,11 @@
 package presentation.userPanel.Finance;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.JLabel;
 
-import VO.LogVO;
-import businesslogic.Impl.Finance.FinanceController;
-import businesslogic.Service.Finance.FinanceService;
 import presentation.components.ButtonConfirm;
 import presentation.components.DateChooser;
 import presentation.components.LabelHeader;
@@ -15,9 +13,14 @@ import presentation.main.FunctionSearch;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableModelSearch;
 import presentation.table.TableSearch;
+import VO.LogVO;
+import businesslogic.Impl.Finance.FinanceController;
+import businesslogic.Service.Finance.FinanceService;
 
 public class FinanceSystem extends FunctionSearch{
 
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	
 	FinanceService service = new FinanceController();
 	String[] tableH = {"操作日期","操作类型","操作人员"};
 	
@@ -72,9 +75,10 @@ public class FinanceSystem extends FunctionSearch{
 		Vector<Vector<String>> result = new Vector<Vector<String>>();
         for(LogVO temp:logs2){
         	Vector<String> vRow = new Vector<String>();
-        	vRow.add(temp.getTime()+"");
+        	vRow.add(sdf.format(temp.getTime()));
         	vRow.add(temp.getOperation());
         	vRow.add(temp.getOperator());
+        	result.add(vRow);
         }
 		return result;
 	}

@@ -167,7 +167,7 @@ public class Inquiry{
 			if(input.length>=2){				
 				historyLabel.add(new HistoryLabel(input[0], input[1],history.size()-i-1));
 			}else{
-				historyLabel.add(new HistoryLabel(input[0], "",i));
+				historyLabel.add(new HistoryLabel(input[0], "", history.size()-i-1));
 			}
 //			inquiryPanel.add(historyLabel.get(i));
 //			scrollPanePanel.add(historyLabel.get(i));
