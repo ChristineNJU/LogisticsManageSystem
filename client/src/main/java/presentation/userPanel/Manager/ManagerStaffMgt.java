@@ -177,7 +177,7 @@ public class ManagerStaffMgt extends FunctionADUS{
          table.changeSelection(lastIndex, 0,false,false);
 	}
 
-	protected boolean isConnectError(){
+	public boolean isConnectError(){
 		return super.isConnectError;
 	}
 

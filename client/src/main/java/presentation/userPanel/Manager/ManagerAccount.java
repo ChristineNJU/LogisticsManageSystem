@@ -3,6 +3,7 @@ package presentation.userPanel.Manager;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import State.ErrorState;
 import VO.AccountVO;
 import VO.GatheringVO;
 import businesslogic.Impl.Finance.FinanceController;
@@ -33,6 +34,17 @@ public class ManagerAccount extends FunctionSearch{
 	@Override
 	protected void initTable() {
 		accounts = service.searchAccount("%%");
+		if(accounts==null){
+			showError(ErrorState.CONNECTERROR);
+			tableV=new Vector<Vector<String>>();
+		}
+		else if(accounts.isEmpty()){
+			showError(ErrorState.SEARCHERROR);
+			tableV=getVector(accounts);
+		}
+		else {
+			tableV=getVector(accounts);
+		}
 		tableV = getVector(accounts);
 		model = new TableModelSearch(tableV,tableH);
 		table = new TableSearch(model);

@@ -9,6 +9,10 @@ import presentation.main.FunctionADUS;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableADUS;
 import presentation.table.TableModelADUS;
+import State.AddState;
+import State.DeleteState;
+import State.ErrorState;
+import State.UpdateState;
 import VO.CarInfoVO;
 import businesslogic.Impl.Businesslobby.CarMgt;
 
@@ -34,16 +38,15 @@ public class BusinessLbCarMgt  extends FunctionADUS{
 	protected void initTable() {
 		cars=new ArrayList<CarInfoVO>();
 		
-		CarInfoVO car1=new CarInfoVO("025001001", "苏A 025E2", 2);
-		CarInfoVO car2=new CarInfoVO("025001001", "苏A 025F2", 1);
-		CarInfoVO car3=new CarInfoVO("025001001", "苏A 025C4", 3);
+		cars=service.searchCar("%%");
 		
-		cars.add(car1);
-		cars.add(car2);
-		cars.add(car3);
-		
-		tableV = getVector(cars);
-        
+		if(cars!=null){
+			tableV = getVector(cars);
+		}
+		else {
+			tableV=new Vector<Vector<String>>();
+			super.isConnectError=true;
+		}
         model = new TableModelADUS(tableV, tableH,isCellEditable);
 		table = new TableADUS(model);
 		
@@ -59,26 +62,77 @@ public class BusinessLbCarMgt  extends FunctionADUS{
 	protected void showSearchResult(String s) {
 		
 		searchCar = service.searchCar(s);
-		model = new TableModelADUS(getVector(searchCar),tableH,isCellEditable);
-		table.setModel(model);
+		if(searchCar!=null){
+			model = new TableModelADUS(getVector(searchCar),tableH,isCellEditable);
+			table.setModel(model);
+		}
+		else {
+			showError(ErrorState.CONNECTERROR);
+			searchCar=new ArrayList<CarInfoVO>();
+			model = new TableModelADUS(getVector(searchCar),tableH,isCellEditable);
+			table.setModel(model);
+		}
 	}
 
 	
 
 	@Override
 	protected void confirmRevise() {
+		DeleteState deleteState=DeleteState.CONNECTERROR;
 		deleteCar=new ArrayList<CarInfoVO>();
 		for(int i=0;i<tableV.size();i++){
 			if(model.isDelete(i)){
 				deleteCar.add((CarInfoVO) getVO(tableV.get(i)));
 			}
 		}
+		for(int i=0;i<deleteCar.size();i++){
+			deleteState=service.deleteCar(deleteCar.get(i));
+			if(deleteState==DeleteState.CONNECTERROR){
+				showError(ErrorState.CONNECTERROR);
+				break;
+			}
+			else if(deleteState==DeleteState.FAIL){
+				showError(ErrorState.DELETEERROR);
+				break;
+			}
+		}
 		System.out.println("Delete CarInfo confirm");
 		
+		UpdateState updateState=UpdateState.CONNECTERROR;
 		updateCar=new ArrayList<CarInfoVO>();
 		for(int i=0;i<tableV.size();i++){
 			if(model.isUpdate(i)){
 				updateCar.add((CarInfoVO) getVO(tableV.get(i)));
+			}
+		}
+		for(int i=0;i<updateCar.size();i++){
+			updateState=service.updateCar(updateCar.get(i));
+			if(updateState==UpdateState.CONNECTERROR){
+				showError(ErrorState.CONNECTERROR);
+				break;
+			}
+			else if(updateState==UpdateState.NOTFOUND){
+				showError(ErrorState.UPDATEERROR);
+				break;
+			}
+		}
+		
+		AddState addState=AddState.CONNECTERROR;
+		addCar=new ArrayList<CarInfoVO>();
+		for(int i=0;i<tableV.size();i++){
+			if(model.isNew(i)){
+				addCar.add(getVO(tableV.get(i)));
+			}
+		}
+		for(int i=0;i<addCar.size();i++){
+			addState=service.addCar(addCar.get(i));
+			if(addState==AddState.CONNECTERROR){
+				showError(ErrorState.CONNECTERROR);
+				break;
+			}
+			else if(addState==AddState.FAIL){
+				showError(ErrorState.ADDERROR);
+				break;
 			}
 		}
 	}

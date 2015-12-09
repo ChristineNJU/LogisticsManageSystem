@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 
 import PO.LogisticsInfoPO;
 import State.CodeState;
+import State.ErrorState;
 import State.LogisticsType;
 import State.PackingCharge;
 import businesslogic.Impl.Courier.CourierController;
@@ -526,7 +527,9 @@ public class CourierNewOrder {
 		result = service.getAmount((String)sender.city_actual.getSelectedItem(), 
 				(String)recipient.city_actual.getSelectedItem(),
 				type, pack, weight, size);
-		
+//		if(result==-1){
+//			showError(ErrorState.CONNECTERROR);
+//		}
 		BigDecimal b = new BigDecimal(result);
 		
 		return b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();

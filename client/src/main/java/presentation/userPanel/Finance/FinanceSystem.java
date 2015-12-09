@@ -5,6 +5,7 @@ import java.util.Vector;
 
 import javax.swing.JLabel;
 
+import State.ErrorState;
 import VO.LogVO;
 import businesslogic.Impl.Finance.FinanceController;
 import businesslogic.Service.Finance.FinanceService;
@@ -61,7 +62,18 @@ public class FinanceSystem extends FunctionSearch{
 		String timeBegin = dateBeginChooser.getTime();
 		String timeEnd = dateEndChooser.getTime();
 		logs = service.getLog(timeBegin, timeEnd);
-		tableV = getVector(logs);
+		if(logs==null){
+			showError(ErrorState.CONNECTERROR);
+			tableV=new Vector<Vector<String>>();
+		}
+		else if(logs.isEmpty()){
+			tableV = getVector(logs);
+			showError(ErrorState.SEARCHERROR);
+		}
+		else {
+			tableV = getVector(logs);
+		}
+		
 		model = new TableModelSearch(tableV,tableH);
 		table.setModel(model);
 		table.repaint();

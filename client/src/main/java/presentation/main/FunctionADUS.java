@@ -125,6 +125,10 @@ public abstract class FunctionADUS {
 		return panel;
 	}
 	
+	public boolean isConnectError(){
+		return isConnectError;
+	}
+	
 	public class FuncionListener implements MouseListener{
 
 
@@ -217,7 +221,7 @@ public abstract class FunctionADUS {
 		public void run() {
 			// TODO Auto-generated method stub
 			try {
-				System.out.println("staff error thread");
+//				System.out.println("staff error thread");
 				Thread.sleep(1000);
 				this.setVisible(true);
 //				this.repaint();

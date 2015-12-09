@@ -153,6 +153,7 @@ public class CourierImpl implements CourierService{
 		} catch(Exception ex){
 			System.out.println(ex.getMessage());
 			ex.printStackTrace();
+			Amount=-1;
 		}
 		return Amount;
 	}

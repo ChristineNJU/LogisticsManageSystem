@@ -3,6 +3,7 @@ package presentation.userPanel.Admin;
 import presentation.components.ButtonNav;
 import presentation.frame.MainFrame;
 import presentation.main.Navigation;
+import State.ErrorState;
 import VO.UserVO;
 
 public class NavigationAdmin extends Navigation{
@@ -40,5 +41,8 @@ public class NavigationAdmin extends Navigation{
 		userAccountP = new AdminUserAccount();
 		MainFrame.getMainPanel().add(userAccountP.getPanel());
 		MainFrame.getMainPanel().repaint();
+		if(userAccountP.isConnectError()){
+			userAccountP.showError(ErrorState.CONNECTERROR);
+		}
 	}
 }

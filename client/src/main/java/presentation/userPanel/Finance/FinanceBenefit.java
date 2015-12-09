@@ -5,8 +5,6 @@ import java.util.Vector;
 
 import javax.swing.JLabel;
 
-import VO.CostVO;
-import VO.GatheringVO;
 import presentation.components.ButtonConfirm;
 import presentation.components.DateChooser;
 import presentation.components.LabelHeader;
@@ -15,6 +13,9 @@ import presentation.main.FontSet;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableModelSearch;
 import presentation.table.TableSearch;
+import State.ErrorState;
+import VO.CostVO;
+import VO.GatheringVO;
 
 public class FinanceBenefit extends FinanceIncome{
 
@@ -85,11 +86,18 @@ public class FinanceBenefit extends FinanceIncome{
 		String timeBegin = dateBeginChooser.getTime();
 		String timeEnd = dateEndChooser.getTime();
 		if(timeBegin.compareTo(timeEnd) >= 0){
-			showError("开始时间需要在结束时间之前");
+//			showError("开始时间需要在结束时间之前");
 		}else{
 			costs = service.searchCost(timeBegin, timeEnd);
 			incomes = service.searchGathering(timeBegin, timeEnd, "%%");
-			model = new TableModelSearch(getVector(incomes),tableH);
+			if(costs==null||incomes==null){
+				showError(ErrorState.CONNECTERROR);
+				model = new TableModelSearch(new Vector<Vector<String>>(),tableH);
+			}
+			else {
+				model = new TableModelSearch(getVector(incomes),tableH);
+			}
+			
 			table.setModel(model);
 			table.repaint();
 			String[] tableH2 = {"付款日期","金额","付款人","付款账户","条目","备注"};

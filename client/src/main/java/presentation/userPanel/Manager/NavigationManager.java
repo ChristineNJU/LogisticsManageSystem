@@ -93,6 +93,9 @@ public class NavigationManager extends Navigation{
 		institutionM=new ManagerInstitutionMgt(this);
 		MainFrame.changeContentPanel(institutionM.getPanel());
 		MainFrame.getMainPanel().repaint();
+		if(institutionM.isConnectError()){
+			institutionM.showError(ErrorState.CONNECTERROR);
+		}
 		
 		
 	}

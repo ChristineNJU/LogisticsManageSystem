@@ -6,11 +6,16 @@ import java.awt.event.MouseListener;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import State.ErrorState;
 import VO.VO;
 import presentation.components.ButtonConfirm;
 import presentation.components.PanelContent;
+import presentation.frame.MainFrame;
+import presentation.main.FunctionADUS.AttentionFrame;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableModelSearch;
 import presentation.table.TableSearch;
@@ -18,6 +23,8 @@ import presentation.table.TableSearch;
 public abstract class FunctionSearch {
 
 	protected Translater trans = new Translater();
+	
+	protected boolean isConnectError=false;
 	
 	protected PanelContent panel;
 	
@@ -27,6 +34,7 @@ public abstract class FunctionSearch {
 	protected ButtonConfirm confirmSearch;
 //	protected ButtonCancel cancel = new ButtonCancel();
 	protected AttentionLabel attention = new AttentionLabel();
+	protected AttentionFrame attentionframe;
 	
 	protected ScrollPaneTable sPanel;
 //	protected TableListener tableListener = new TableListener();
@@ -74,16 +82,23 @@ public abstract class FunctionSearch {
 		panel.remove(attention);
 	}
 	
-	protected void showError(String s){
-		attention.setText(s);
-		panel.add(attention);
-	}
 	
 //	protected abstract VO getVO(Vector<String> vector);
 	
 	public PanelContent getPanel(){
 		return panel;
 	}
+	
+	public boolean isConnectError(){
+		return isConnectError;
+	}
+	
+	public void showError(ErrorState state){
+		
+		attentionframe=new AttentionFrame(state);
+//		panel.add(attention);
+	}
+	
 	
 	public class AttentionLabel extends JLabel{
 		public AttentionLabel(String s){
@@ -98,6 +113,55 @@ public abstract class FunctionSearch {
 		
 		public AttentionLabel(){
 			this("");
+		}
+	}
+	
+	public class AttentionFrame extends JFrame implements Runnable{
+		public AttentionFrame(ErrorState state){
+			ImageIcon Image=null;
+			if(state==ErrorState.CONNECTERROR){
+				Image = new ImageIcon("src/graphics/Tips/connectError.png");
+			}
+			else if(state==ErrorState.DELETEERROR){
+				Image = new ImageIcon("src/graphics/Tips/deleteError.png");
+			}
+			else if(state==ErrorState.UPDATEERROR){
+				Image = new ImageIcon("src/graphics/Tips/updateError.png");
+			}
+			else if(state==ErrorState.SEARCHERROR){
+				Image = new ImageIcon("src/graphics/Tips/searchError.png");
+			}
+			else if(state==ErrorState.ADDERROR){
+				Image = new ImageIcon("src/graphics/Tips/addError.png");
+			}
+		    JLabel errorNote=new JLabel(Image);
+			this.setUndecorated(true);
+			this.setSize(150, 50);
+			this.setLocation((int)(MainFrame.FRAME_X+MainFrame.FRAME_WIDTH/2),(int) (MainFrame.FRAME_Y+MainFrame.FRAME_HEIGHT/2));
+			this.add(errorNote);
+			this.setVisible(true);
+			System.out.println("Error infomation");
+//			run();
+			Thread t = new Thread(this);
+			t.start();
+		}
+
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			try {
+				System.out.println("staff error thread");
+				Thread.sleep(1000);
+				this.setVisible(true);
+//				this.repaint();
+				Thread.sleep(500);
+				this. setVisible(false);
+//				this.repaint();
+//				System.exit(0);
+				} catch (InterruptedException e) {
+				 e.printStackTrace();
+			}
+
 		}
 	}
 	

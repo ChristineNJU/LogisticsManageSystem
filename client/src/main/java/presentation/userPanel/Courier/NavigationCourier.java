@@ -1,5 +1,6 @@
 package presentation.userPanel.Courier;
 
+import State.ErrorState;
 import VO.UserVO;
 import presentation.components.ButtonNav;
 import presentation.frame.MainFrame;
@@ -61,11 +62,19 @@ public class NavigationCourier extends Navigation{
 //		courierNewOrder = new CourierNewOrderList();
 		courierNewOrder = new CourierNewOrderList(this);
 		MainFrame.changeContentPanel(courierNewOrder.getPanel());
+		if(courierNewOrder.isConnectError()){
+			System.out.println("manager initiate null");
+			courierNewOrder.showError(ErrorState.CONNECTERROR);
+		}
 	}
 	
 	private void changeToReceive(){
 		courierReceive = new CourierReceive(this);
 		MainFrame.changeContentPanel(courierReceive.getPanel());
+		if(courierReceive.isConnectError()){
+			System.out.println("manager initiate null");
+			courierReceive.showError(ErrorState.CONNECTERROR);
+		}
 	}
 	
 	private void changeToInquiry(){
@@ -75,6 +84,7 @@ public class NavigationCourier extends Navigation{
 //		MainFrame.getMainPanel().repaint();
 		courierLogisticsInfoSearch = new CourierLogisticsInfoSearch();
 		MainFrame.changeContentPanel(courierLogisticsInfoSearch.getPanel());
+		
 	}
 	
 }

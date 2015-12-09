@@ -18,6 +18,7 @@ import presentation.table.TableADUS;
 import presentation.table.TableModelADUS;
 import State.AddState;
 import State.DeleteState;
+import State.ErrorState;
 import State.UpdateState;
 import VO.DriverInfoVO;
 import businesslogic.Impl.Businesslobby.DriverMgt;
@@ -47,11 +48,15 @@ public class BusinessLbDriverMgt extends FunctionADUS{
 	protected void initTable() {
 		// TODO Auto-generated method stub
 		drivers=new ArrayList<DriverInfoVO>();
-		
-		drivers=service.searchDriver("hy");
+		drivers=service.searchDriver("%%");
 	//need to be changed
-		tableV = getVector(drivers);
-        
+		if(drivers!=null){
+			tableV = getVector(drivers);
+		}
+		else if(drivers==null){
+			tableV=new Vector<Vector<String>>();
+			super.isConnectError=true;
+		}
         model = new TableModelADUS(tableV, tableH,isCellEditable);
 		table = new TableADUS(model);
 		TableColumnModel tcm = table.getColumnModel(); 
@@ -92,9 +97,11 @@ public class BusinessLbDriverMgt extends FunctionADUS{
 		for(int i=0;i<deleteItems.size();i++){
 			deleteState=service.deleteDriver(deleteItems.get(i));
 			if(deleteState==DeleteState.FAIL){
+				showError(ErrorState.DELETEERROR);
 				break;
 			}
 			else if(deleteState==DeleteState.CONNECTERROR)
+				showError(ErrorState.CONNECTERROR);
 				break;
 		}
 		
@@ -108,9 +115,11 @@ public class BusinessLbDriverMgt extends FunctionADUS{
 		for(int i=0;i<updateItems.size();i++){
 			updateState=service.updateDriver(updateItems.get(i));
 			if(updateState==UpdateState.NOTFOUND){
+				showError(ErrorState.UPDATEERROR);
 				break;
 			}
 			else if(updateState==UpdateState.CONNECTERROR){
+				showError(ErrorState.CONNECTERROR);
 				break;
 			}
 		}
@@ -126,9 +135,11 @@ public class BusinessLbDriverMgt extends FunctionADUS{
 		for(int i=0;i<addItems.size();i++){
 			addState=service.addDriver(addItems.get(i));
 			if(addState==AddState.FAIL){
+				showError(ErrorState.ADDERROR);
 				break;
 			}
 			else if(addState==AddState.CONNECTERROR){
+				showError(ErrorState.CONNECTERROR);
 				break;
 			}
 		}
