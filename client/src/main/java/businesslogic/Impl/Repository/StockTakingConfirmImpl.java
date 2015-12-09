@@ -11,8 +11,15 @@ import businesslogic.SystemLog.SystemLog;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class StockTakingConfirmImpl.
+ */
 public class StockTakingConfirmImpl implements StockTakingConfirmService{
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Repository.StockTakingConfirmService#stockTakingConfirm(java.util.ArrayList)
+	 */
 	@Override
 	public AddState stockTakingConfirm(ArrayList<StockTakingVO> stockList) {
 		// TODO Auto-generated method stub

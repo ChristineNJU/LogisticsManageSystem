@@ -14,8 +14,17 @@ import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
 import data.Service.Search.SearchEntruckingService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class GetNeedEntruckingImpl.
+ * 营业厅获取需要装车的快递的实现
+ * 
+ */
 public class GetNeedEntruckingImpl implements GetNeedEntruckingService{
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.BusinessLobby.GetNeedEntruckingService#getNeedEntrucking()
+	 */
 	@Override
 	public ArrayList<EntruckingVO> getNeedEntrucking() {
 		// TODO Auto-generated method stub

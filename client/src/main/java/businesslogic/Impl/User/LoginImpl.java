@@ -10,23 +10,23 @@ import businesslogic.SystemLog.SystemLog;
 import data.RMIHelper.RMIHelper;
 import data.Service.Search.SearchUserService;
 
+// TODO: Auto-generated Javadoc
 /**
- * 用户登录的实现
- * 
+ * 用户登录的实现.
+ *
  * @author 张晨剑
  * @version 1.0.0
- * */
+ */
 public class LoginImpl {
 	
 	/**
-	 * 登录方法,包括从数据库查询数据以及对密码的比对
-	 * 
+	 * 登录方法,包括从数据库查询数据以及对密码的比对.
+	 *
 	 * @param userName 用户名
 	 * @param password 密码
 	 * @return 登录状态LoginState
-	 * 
 	 * @see SearchUserService#searchUser(ArrayList)
-	 * */
+	 */
 	public LoginState login(String userName, String password) {
 		LoginState state=LoginState.SUCCESS;
 		try{
@@ -58,19 +58,20 @@ public class LoginImpl {
 					SystemLog.setOperatiorID(user.getID());
 					if(user.getRole()==UserRole.courier){
 						String id = user.getID();
-						SystemLog.setInstitutionId(id.substring(0, id.length()-2));
+						SystemLog.setInstitutionId(id.substring(0, id.length()-4));
 					}else if(user.getRole()==UserRole.businessAgent){
 						String id = user.getID();
-						SystemLog.setInstitutionId(id.substring(0, id.length()-1));
+						SystemLog.setInstitutionId(id.substring(0, id.length()-3));
 					}else if(user.getRole()==UserRole.mediumAgent){
 						String id = user.getID();
-						SystemLog.setInstitutionId(id.substring(0, id.length()-2));
+						SystemLog.setInstitutionId(id.substring(0, id.length()-3));
 					}else if(user.getRole()==UserRole.repository){
 						String id = user.getID();
-						SystemLog.setInstitutionId(id.substring(0, id.length()-1));
+						SystemLog.setInstitutionId(id.substring(0, id.length()-3));
 					}else{
 						SystemLog.setInstitutionId("");
 					}
+					System.out.println(SystemLog.getInstitutionId());
 				}else{
 					isFind = false;
 				}

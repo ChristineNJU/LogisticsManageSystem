@@ -17,8 +17,15 @@ import VO.StockTakingVO;
 import businesslogic.Service.Repository.StockTakingExcelService;
 import businesslogic.SystemLog.SystemLog;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class StockTakingExcelImpl.
+ */
 public class StockTakingExcelImpl implements StockTakingExcelService{
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Repository.StockTakingExcelService#stockTakingExcel(java.util.ArrayList)
+	 */
 	@Override
 	public OutputState stockTakingExcel(ArrayList<StockTakingVO> stockTaking) {
 		// TODO Auto-generated method stub

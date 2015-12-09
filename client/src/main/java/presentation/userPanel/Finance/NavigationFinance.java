@@ -37,8 +37,8 @@ public class NavigationFinance extends Navigation{
 		buttonList.add(account);
 		buttonList.add(income);
 		buttonList.add(outcome);
-		buttonList.add(incomeAndOutcome);
 		buttonList.add(benefit);
+		buttonList.add(incomeAndOutcome);
 		buttonList.add(initial);
 		buttonList.add(system);
 		System.out.println(buttonList.size()+"buttonList .size()");

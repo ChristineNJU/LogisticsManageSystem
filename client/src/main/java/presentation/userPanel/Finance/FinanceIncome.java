@@ -1,5 +1,6 @@
 package presentation.userPanel.Finance;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -13,6 +14,7 @@ import presentation.components.ButtonConfirm;
 import presentation.components.DateChooser;
 import presentation.components.FlatComboBox;
 import presentation.components.LabelHeader;
+import presentation.components.TextField;
 import presentation.main.ColorPallet;
 import presentation.main.FontSet;
 import presentation.main.FunctionSearch;
@@ -21,6 +23,8 @@ import presentation.table.TableModelSearch;
 import presentation.table.TableSearch;
 
 public class FinanceIncome extends FunctionSearch{
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	
 	FinanceService service = new FinanceController();
 	ArrayList<GatheringVO> incomes;
 	String[] tableH = {"收款日期","收款金额(￥)","收款快递员","快递单号"};
@@ -71,7 +75,7 @@ public class FinanceIncome extends FunctionSearch{
 		Vector<Vector<String>> result = new Vector<Vector<String>>();
         for(GatheringVO temp:income2){
         	Vector<String> vRow = new Vector<String>();
-        	vRow.add(temp.getDate()+"");
+        	vRow.add(sdf.format(temp.getDate()));
         	vRow.add(temp.getMoney()+"");
         	vRow.add(temp.getName());
         	result.add(vRow);
@@ -83,9 +87,10 @@ public class FinanceIncome extends FunctionSearch{
 
 	@Override
 	protected void showSearch() {
-		String time = dateBeginChooser.getTime();
+		String time_start = dateBeginChooser.getTime();
+		String time_end = dateEndChooser.getTime();
 		String businessLb = ((Header) header).getBusinessLobby();
-		incomes = service.searchGathering(time, businessLb);
+		incomes = service.searchGathering(time_start, time_end, businessLb);
 		if(incomes==null){
 			showError(ErrorState.CONNECTERROR);
 			tableV = new Vector<Vector<String>>();
@@ -102,6 +107,7 @@ public class FinanceIncome extends FunctionSearch{
 		model = new TableModelSearch(tableV,tableH);
 		table.setModel(model);
 		table.repaint();
+		foot.setText("合计："+getTotalIncome()+"￥");
 	}
 
 	
@@ -110,22 +116,25 @@ public class FinanceIncome extends FunctionSearch{
 		LabelHeader dateEnd = new LabelHeader("结束日期:");
 		LabelHeader businessLb = new LabelHeader("营业厅:");
 		
-		String[] businessLbName = {"仙林营业厅","鼓楼营业厅","江宁营业厅","雨花营业厅"};
-		public FlatComboBox businessLbChooser = new FlatComboBox(businessLbName);
+//		String[] businessLbName = {"仙林营业厅","鼓楼营业厅","江宁营业厅","雨花营业厅"};
+//		public FlatComboBox businessLbChooser = new FlatComboBox(businessLbName);
+		public TextField businessLbChooser = new TextField();
+		
 		public Header(){
 			this.setBounds(120,120,770,40);
 			dateBegin.setBounds(0,0,80,30);
 			this.add(dateBegin);
 			dateEnd.setBounds(220,0,80,30);
 			this.add(dateEnd);
-			businessLb.setBounds(430,0,150,30);
+			businessLb.setBounds(430,0,65,30);
 			this.add(businessLb);
 			businessLbChooser.setBounds(495,0,120,30);
 			this.add(businessLbChooser);
 		}
 		public String getBusinessLobby(){
 //			System.out.println(businessLbChooser.getSelectedItem().toString());
-			return businessLbChooser.getSelectedItem().toString();
+//			return businessLbChooser.getSelectedItem().toString();
+			return businessLbChooser.getText().equals("")? "%%":businessLbChooser.getText();
 		}
 	}
 
@@ -139,7 +148,7 @@ public class FinanceIncome extends FunctionSearch{
 	
 	private class Footer extends JLabel{
 		public Footer(){
-			setBounds(120,table.getHeight()+200,300,40);
+			setBounds(120,sPanel.getHeight()+200,300,40);
 			setText("合计："+getTotalIncome()+"￥");
 			setForeground(ColorPallet.Pink);
 			setFont(FontSet.eighteen);

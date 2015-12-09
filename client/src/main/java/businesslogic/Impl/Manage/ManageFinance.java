@@ -23,8 +23,15 @@ import data.Service.Search.SearchCostService;
 import data.Service.Search.SearchGatheringService;
 import data.Service.Search.SearchInstitutionInfoService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ManageFinance.
+ */
 public class ManageFinance implements GetBenefitService, GetCostService,GetGatheringService {
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Manage.GetGatheringService#searchGathering(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public ArrayList<GatheringVO> searchGathering(String date,
 			String businesslobby) {
@@ -71,6 +78,9 @@ public class ManageFinance implements GetBenefitService, GetCostService,GetGathe
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Manage.GetCostService#searchCost(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public ArrayList<CostVO> searchCost(String time_start, String time_end) {
 		// TODO Auto-generated method stub
@@ -101,6 +111,9 @@ public class ManageFinance implements GetBenefitService, GetCostService,GetGathe
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Manage.GetBenefitService#searchBenefit(java.lang.String)
+	 */
 	@Override
 	public BenefitVO searchBenefit(String time_end) {
 		// TODO Auto-generated method stub
@@ -130,6 +143,9 @@ public class ManageFinance implements GetBenefitService, GetCostService,GetGathe
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Manage.GetBenefitService#searchAllBenefit(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public ArrayList<BenefitVO> searchAllBenefit(String time_start,
 			String time_end) {

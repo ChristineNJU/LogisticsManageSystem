@@ -41,8 +41,8 @@ public class MediumCtEntrucking extends FunctionAdd{
 	public TextFieldHeader costInput = new TextFieldHeader();
 	
 	public MediumCtEntrucking(){
-		super.buttonNew = new ButtonNew("新增装运单");
-		super.confirm = new ButtonConfirm("提交所有装运单");
+		super.buttonNew = new ButtonNew("新增装运快递");
+		super.confirm = new ButtonConfirm("提交装运单");
 		initUI("装运发送");
 	}
 	

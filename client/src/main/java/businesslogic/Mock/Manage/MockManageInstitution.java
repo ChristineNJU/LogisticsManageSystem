@@ -23,13 +23,6 @@ public class MockManageInstitution extends ManageInstitution{
 	}
 
 	@Override
-	public UpdateState UpdateInstitution(InstitutionVO institution,
-			String field, String value) {
-		// TODO Auto-generated method stub
-		return UpdateState.SUCCESS;
-	}
-
-	@Override
 	public AddState addInstitution(InstitutionVO institution) {
 		// TODO Auto-generated method stub
 		return AddState.SUCCESS;

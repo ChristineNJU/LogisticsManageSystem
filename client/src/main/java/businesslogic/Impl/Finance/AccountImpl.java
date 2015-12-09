@@ -15,8 +15,20 @@ import data.Service.Delete.DeleteService;
 import data.Service.Search.SearchAccountService;
 import data.Service.Update.UpdateService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AccountImpl.
+ * 银行账户管理实现
+ * 
+ * @see UpdateService
+ * @see SearchAccountService
+ * @see DeleteService
+ */
 public class AccountImpl implements AccountService{
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Finance.AccountService#updateAccount(VO.AccountVO)
+	 */
 	@Override
 	public UpdateState updateAccount(AccountVO account) {
 		// TODO Auto-generated method stub
@@ -42,6 +54,9 @@ public class AccountImpl implements AccountService{
 		return state;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Finance.AccountService#searchAccount(java.lang.String)
+	 */
 	@Override
 	public ArrayList<AccountVO> searchAccount(String name) {
 		// TODO Auto-generated method stub
@@ -93,6 +108,9 @@ public class AccountImpl implements AccountService{
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Finance.AccountService#deleteAccount(VO.AccountVO)
+	 */
 	@Override
 	public DeleteState deleteAccount(AccountVO account) {
 		// TODO Auto-generated method stub
@@ -117,6 +135,9 @@ public class AccountImpl implements AccountService{
 		return state;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Finance.AccountService#addAccount(VO.AccountVO)
+	 */
 	@Override
 	public AddState addAccount(AccountVO account) {
 		// TODO Auto-generated method stub

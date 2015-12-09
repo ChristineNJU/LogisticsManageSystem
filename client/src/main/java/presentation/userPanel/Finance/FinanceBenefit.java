@@ -104,6 +104,8 @@ public class FinanceBenefit extends FinanceIncome{
 			model2 = new TableModelSearch(getVector2(costs),tableH2);
 			table2.setModel(model2);
 			table2.repaint();
+			foot.setText(getBenefitDetail());
+			foot.repaint();
 		}
 		
 	}
@@ -112,7 +114,7 @@ public class FinanceBenefit extends FinanceIncome{
 		Vector<Vector<String>> result = new Vector<Vector<String>>();
         for(CostVO temp:costs2){
         	Vector<String> vRow = new Vector<String>();
-        	vRow.add(temp.getDate()+"");
+        	vRow.add(sdf.format(temp.getDate()));
         	vRow.add(temp.getAmount()+"");
         	vRow.add(temp.getPayer());
         	vRow.add(temp.getPayerAccount());

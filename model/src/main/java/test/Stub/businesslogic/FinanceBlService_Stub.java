@@ -25,6 +25,7 @@ import VO.CostVO;
 import VO.EntruckingVO;
 import VO.GatheringVO;
 import VO.LogVO;
+import VO.PeriodVO;
 import VO.TransferVO;
 import businesslogic.Service.Finance.FinanceService;
 
@@ -146,7 +147,7 @@ public class FinanceBlService_Stub implements FinanceService{
 	---------------------------------------------*/
 	public AddState addBenefit(BenefitVO benefit){
 		System.out.println("Logic_Stub "+"添加成功");
-		BenefitPO bpo=new BenefitPO(0, 0, 0, null, null, null);
+		BenefitPO bpo=new BenefitPO(benefit);
 		try {
 			System.out.println("Data_Stub"+" "+new AddService_Stub().add(bpo));
 		} catch (RemoteException e) {
@@ -167,7 +168,7 @@ public class FinanceBlService_Stub implements FinanceService{
 		try{
 			ArrayList<BenefitPO> bpo=new SearchService_Stub().searchBenefit(requirement);
 			for(int i=0;i<bpo.size();i++){
-				BenefitVO bene=new BenefitVO(bpo.get(i).getIncome(),bpo.get(i).getExpend(),"2015-11-26-10:11",time_end);
+				BenefitVO bene=null;
 				bvo.add(bene);
 			}
 		}catch (RemoteException e){
@@ -234,7 +235,7 @@ public class FinanceBlService_Stub implements FinanceService{
 		System.out.println("Logic_Stub "+"更新成功");
 		AccountPO apo=new AccountPO(0, null, 0, null);
 		try {
-			System.out.println("Data_Stub "+new UpdateService_Stub().update(apo,field,value));
+			System.out.println("Data_Stub "+new UpdateService_Stub().update(apo));
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -261,6 +262,37 @@ public class FinanceBlService_Stub implements FinanceService{
 			e.printStackTrace();
 		}
 		return list;
+	}
+	@Override
+	public AddState addPeriod() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<CostVO> searchCost(String time) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<GatheringVO> searchGathering(String startDate,
+			String endDate, String businesslobby) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public PeriodVO getPeriod() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public UpdateState updateAccount(AccountVO account) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public UpdateState updatePeriod() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

@@ -9,8 +9,18 @@ import businesslogic.Service.Finance.GetBenefitService;
 import data.RMIHelper.RMIHelper;
 import data.Service.Search.SearchBenefitService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BenefitImpl.
+ * 收益管理的实现
+ * 
+ * @see SearchBenefitService
+ */
 public class BenefitImpl implements GetBenefitService{
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Finance.GetBenefitService#searchBenefit(java.lang.String)
+	 */
 	@Override
 	public BenefitVO searchBenefit(String time_end) {
 		// TODO Auto-generated method stub

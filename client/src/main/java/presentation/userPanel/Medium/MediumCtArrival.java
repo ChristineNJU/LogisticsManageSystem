@@ -43,25 +43,15 @@ public class MediumCtArrival extends FunctionAdd{
 	public TextFieldHeader listIdIuput = new TextFieldHeader();
 	
 	public MediumCtArrival(){
-		super.buttonNew = new ButtonNew("新增到达单");
-		super.confirm = new ButtonConfirm("提交所有到达单");
+		super.buttonNew = new ButtonNew("新增到达快递");
+		super.confirm = new ButtonConfirm("提交到达单");
 		initUI("中转接收");
 	}
 	
 	protected void initTable() {
 		// 表格初始化
 		
-		arrivals = new ArrayList<ArrivalVO>();
-		
-		//测试用
-		try {
-			ArrivalVO arrival0 = new ArrivalVO("0000002001", sdfs.parse("2015-12-03 11:30:10"), "0210210201021020102102", "南京", LogisticsState.INTACT);
-			arrivals.add(arrival0);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		arrivals = new ArrayList<ArrivalVO>();		
 		tableV = getVector(arrivals);
 		
 		model = new TableModelAddOnly(tableV,tableH,isCellEditable);

@@ -9,25 +9,26 @@ import State.PackingCharge;
 import State.UpdateState;
 import VO.VO;
 
+// TODO: Auto-generated Javadoc
 /**
- * 快递员业务接口
- * 
+ * 快递员业务接口.
+ *
  * @author 张斯栋
  * @version 1.0.0
- * */
+ */
 public interface CourierService {
 	
 	/**
-	 * 添加快递
-	 * 
+	 * 添加快递.
+	 *
 	 * @param logistics_info VO快递信息
 	 * @return 添加状态
-	 * */
+	 */
 	public AddState addLogistics(VO logistics_info);
 	
 	/**
-	 * 计算快递费用
-	 * 
+	 * 计算快递费用.
+	 *
 	 * @param starting 出发地
 	 * @param destination 到达地
 	 * @param type 快递类型
@@ -35,40 +36,40 @@ public interface CourierService {
 	 * @param weight 重量
 	 * @param height 体积
 	 * @return 快递费用
-	 * */
+	 */
 	public double getAmount(String starting, String destination, 
 			LogisticsType type, PackingCharge charge, double weight, double height);
 	
 	/**
-	 * 获取城市
-	 * 
+	 * 获取城市.
+	 *
 	 * @return 所有城市名
-	 * */
+	 */
 	public ArrayList<String> getCity();
 	
 	/**
-	 * 确认收件
-	 * 
+	 * 确认收件.
+	 *
 	 * @param logistics_info 收件信息
 	 * @return 更新状态
-	 * */
+	 */
 	public UpdateState receiveConfirm(VO logistics_info);
 	
 	/**
-	 * 获取时长
-	 * 
+	 * 获取时长.
+	 *
 	 * @param starting 起始地
 	 * @param destination 到达地
 	 * @return 时长
-	 * */
+	 */
 	public double getDayLength(String starting, String destination);
 	
 	/**
-	 * 检查快递编号合法性
-	 * 
+	 * 检查快递编号合法性.
+	 *
 	 * @param bar_code 快递编号
 	 * @return 合法性
 	 * @see CodeState
-	 * */
+	 */
 	public CodeState isLegal(String bar_code);
 }

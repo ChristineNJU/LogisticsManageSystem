@@ -14,8 +14,20 @@ import VO.GatheringVO;
 import businesslogic.Service.BusinessLobby.BsLbService;
 import businesslogic.SystemLog.SystemLog;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BusinessLobbyController.
+ * 
+ * @author 张斯栋
+ * @author 1.0.0
+ */
 public class BusinessLobbyController implements BsLbService{
 	
+	/**
+	 * @see DriverMgt
+	 * @see SystemLog#addLog(String)
+	 * @see businesslogic.Service.BusinessLobby.BsLbService#updateDriver(VO.DriverInfoVO)
+	 */
 	@Override
 	public UpdateState updateDriver(DriverInfoVO driver) {
 		// TODO Auto-generated method stub
@@ -27,6 +39,11 @@ public class BusinessLobbyController implements BsLbService{
 		return state;
 	}
 	
+	/**
+	 * @see CarMgt
+	 * @see SystemLog#addLog(String)
+	 * @see businesslogic.Service.BusinessLobby.BsLbService#updateCar(VO.CarInfoVO)
+	 */
 	@Override
 	public UpdateState updateCar(CarInfoVO car) {
 		// TODO Auto-generated method stub
@@ -38,6 +55,10 @@ public class BusinessLobbyController implements BsLbService{
 		return state;
 	}
 	
+	/**
+	 * @see DriverMgt
+	 * @see businesslogic.Service.BusinessLobby.BsLbService#searchDriver(java.lang.String)
+	 */
 	@Override
 	public ArrayList<DriverInfoVO> searchDriver(String id) {
 		// TODO Auto-generated method stub
@@ -45,6 +66,10 @@ public class BusinessLobbyController implements BsLbService{
 		return searchDriver.searchDriver(id);
 	}
 	
+	/**
+	 * @see CarMgt
+	 * @see businesslogic.Service.BusinessLobby.BsLbService#searchCar(java.lang.String)
+	 */
 	@Override
 	public ArrayList<CarInfoVO> searchCar(String id) {
 		// TODO Auto-generated method stub
@@ -52,6 +77,10 @@ public class BusinessLobbyController implements BsLbService{
 		return searchCar.searchCar(id);
 	}
 	
+	/**
+	 * @see GetNeedGatheringImpl
+	 * @see businesslogic.Service.BusinessLobby.BsLbService#getNeedGathering()
+	 */
 	@Override
 	public ArrayList<GatheringVO> getNeedGathering() {
 		// TODO Auto-generated method stub
@@ -59,6 +88,10 @@ public class BusinessLobbyController implements BsLbService{
 		return getNeedGathering.getNeedGathering();
 	}
 	
+	/**
+	 * @see GetNeedEntruckingImpl
+	 * @see businesslogic.Service.BusinessLobby.BsLbService#getNeedEntrucking()
+	 */
 	@Override
 	public ArrayList<EntruckingVO> getNeedEntrucking() {
 		// TODO Auto-generated method stub
@@ -66,6 +99,11 @@ public class BusinessLobbyController implements BsLbService{
 		return getNeedEntrucking.getNeedEntrucking();
 	}
 	
+	/**
+	 * @see GatheringImpl
+	 * @see SystemLog#addLog(String)
+	 * @see businesslogic.Service.BusinessLobby.BsLbService#gathering(VO.GatheringVO)
+	 */
 	@Override
 	public AddState gathering(GatheringVO gathering) {
 		// TODO Auto-generated method stub
@@ -77,6 +115,11 @@ public class BusinessLobbyController implements BsLbService{
 		return state;
 	}
 	
+	/**
+	 * @see EntruckingImpl
+	 * @see SystemLog#addLog(String)
+	 * @see businesslogic.Service.BusinessLobby.BsLbService#entrucking(VO.EntruckingVO)
+	 */
 	@Override
 	public AddState entrucking(EntruckingVO entrucking) {
 		// TODO Auto-generated method stub
@@ -88,6 +131,11 @@ public class BusinessLobbyController implements BsLbService{
 		return state;
 	}
 	
+	/**
+	 * @see CarMgt
+	 * @see SystemLog#addLog(String)
+	 * @see businesslogic.Service.BusinessLobby.BsLbService#deleteCar(VO.CarInfoVO)
+	 */
 	@Override
 	public DeleteState deleteCar(CarInfoVO car) {
 		// TODO Auto-generated method stub
@@ -99,6 +147,11 @@ public class BusinessLobbyController implements BsLbService{
 		return state;
 	}
 	
+	/**
+	 * @see ArrivalImpl
+	 * @see SystemLog#addLog(String)
+	 * @see businesslogic.Service.BusinessLobby.BsLbService#arrival(java.util.ArrayList)
+	 */
 	@Override
 	public AddState arrival(ArrayList<ArrivalVO> arrival) {
 		// TODO Auto-generated method stub
@@ -110,6 +163,11 @@ public class BusinessLobbyController implements BsLbService{
 		return state;
 	}
 	
+	/**
+	 * @see DriverMgt
+	 * @see SystemLog#addLog(String)
+	 * @see businesslogic.Service.BusinessLobby.BsLbService#AddDriver(VO.DriverInfoVO)
+	 */
 	@Override
 	public AddState AddDriver(DriverInfoVO driver) {
 		// TODO Auto-generated method stub
@@ -121,6 +179,11 @@ public class BusinessLobbyController implements BsLbService{
 		return state;
 	}
 	
+	/**
+	 * @see CarMgt
+	 * @see SystemLog#addLog(String)
+	 * @see businesslogic.Service.BusinessLobby.BsLbService#addCar(VO.CarInfoVO)
+	 */
 	@Override
 	public AddState addCar(CarInfoVO car) {
 		// TODO Auto-generated method stub
@@ -132,6 +195,11 @@ public class BusinessLobbyController implements BsLbService{
 		return state;
 	}
 
+	/**
+	 * @see DriverMgt
+	 * @see SystemLog#addLog(String)
+	 * @see businesslogic.Service.BusinessLobby.BsLbService#deleteDriver(VO.DriverInfoVO)
+	 */
 	@Override
 	public DeleteState deleteDriver(DriverInfoVO driver) {
 		// TODO Auto-generated method stub
@@ -143,12 +211,20 @@ public class BusinessLobbyController implements BsLbService{
 		return state;
 	}
 
+	/**
+	 * @see DeliveryImpl
+	 * @see SystemLog#addLog(String)
+	 * @see businesslogic.Service.BusinessLobby.BsLbService#delivery(VO.DeliveryVO)
+	 */
 	@Override
 	public AddState delivery(DeliveryVO delivery) {
 		// TODO Au
 		DeliveryImpl deliveryImpl=new DeliveryImpl();
-		
-		return deliveryImpl.delivery(delivery);
+		AddState state = deliveryImpl.delivery(delivery);
+		if(state==AddState.SUCCESS){
+			SystemLog.addLog("添加派件信息");
+		}
+		return state;
 	}
 	
 	

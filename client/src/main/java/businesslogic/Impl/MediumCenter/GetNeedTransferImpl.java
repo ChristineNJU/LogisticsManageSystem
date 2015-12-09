@@ -14,8 +14,15 @@ import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
 import data.Service.Search.SearchTransferService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class GetNeedTransferImpl.
+ */
 public class GetNeedTransferImpl implements GetNeedTransferService{
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.MediumCenter.GetNeedTransferService#getNeedTransfer()
+	 */
 	@Override
 	public ArrayList<TransferVO> getNeedTransfer() {
 		// TODO Auto-generated method stub

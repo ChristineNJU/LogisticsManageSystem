@@ -125,7 +125,7 @@ public class Inquiry{
 		inquiryPanel.add(confirm);
 		
 		input.setFont(FontSet.fourteen);
-		input.setForeground(ColorPallet.GrayLight);
+		input.setForeground(ColorPallet.GrayDark);
 		input.setBorder(BorderFactory.createLineBorder(ColorPallet.Pink));
 //		input.setOpaque(false);
 		input.setBounds(300,240,300,40);

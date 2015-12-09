@@ -2,18 +2,22 @@ package presentation.userPanel.Manager;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import presentation.components.ButtonConfirm;
 import presentation.components.FlatScrollPane;
 import presentation.components.PanelContent;
 import presentation.main.ColorPallet;
 import presentation.main.FontSet;
 import presentation.table.TableADUS;
 import presentation.table.TableModelADUS;
+import State.UpdateState;
 import VO.ConstVO;
 import VO.DistanceVO;
 import businesslogic.Impl.Manage.ManageController;
@@ -23,20 +27,84 @@ public class ManagerConst {
 	
 	ManageService ms = new ManageController();
 	
+	ButtonConfirm confirm;
+	
+	ArrayList<ConstVO> updateConst = new ArrayList<ConstVO>();
+	ArrayList<DistanceVO> updateDistance = new ArrayList<DistanceVO>();
+	
 	private PanelContent panel = new PanelContent("常量制定");
 	private OtherConstPanel other;
 	private DistanceConstPanel distance;
 	public ManagerConst() {
 		init();
+		
 	}
 	
 	private void init() {
 		panel.setLayout(null);
 		
+		confirm = new ButtonConfirm("提交修改");
+		confirm.setBounds(587, 50, 100, 30);
+		confirm.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				for(int i=0;i<distance.table.getRowCount();i++){
+					if(distance.tableModel.isUpdate(i)){
+						updateDistance.add(distance.getVO(distance.tableModel.getRow(i)));
+					}
+				}
+//				System.out.println(updateDistance.size());
+				for(int i=0;i<other.table.getRowCount();i++){
+					if(other.tableModel.isUpdate(i)){
+						updateConst.add(other.getVO(other.tableModel.getRow(i)));
+					}
+				}
+//				System.out.println(updateConst.size());
+				
+				UpdateState state = UpdateState.SUCCESS;
+				for(int i=0;i<updateConst.size();i++){
+					state = ms.updateConst(updateConst.get(i));
+				}
+				for(int i=0;i<updateDistance.size();i++){
+					state = ms.updateDistance(updateDistance.get(i));
+				}
+				
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
 		other = new OtherConstPanel();
 		distance = new DistanceConstPanel();
 		panel.add(other);
 		panel.add(distance);
+		panel.add(confirm);
 	}
 	
 	public JPanel getPanel() {

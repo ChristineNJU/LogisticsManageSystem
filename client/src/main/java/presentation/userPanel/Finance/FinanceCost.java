@@ -55,7 +55,7 @@ public class FinanceCost extends FunctionAdd{
 		//表格的初始化
 		costs = new ArrayList<CostVO>();
 		
-		//测试用
+
 //		CostVO cost0 = new CostVO("2015-12-5 19:59:11", 120, "张斯栋","0123456789" ,CostType.reward,"超过预计" );
 		costs=service.searchCost("%%");
 		if(costs==null){
@@ -65,7 +65,7 @@ public class FinanceCost extends FunctionAdd{
 		else {
 			tableV = getVector(costs);
 		}
-		
+
 		model = new TableModelAddOnly(tableV,tableH,isCellEditable);
 		table = new TableAddOnly(model);
 		

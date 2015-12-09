@@ -48,7 +48,9 @@ public class BusinessLbDriverMgt extends FunctionADUS{
 	protected void initTable() {
 		// TODO Auto-generated method stub
 		drivers=new ArrayList<DriverInfoVO>();
+		
 		drivers=service.searchDriver("%%");
+
 	//need to be changed
 		if(drivers!=null){
 			tableV = getVector(drivers);

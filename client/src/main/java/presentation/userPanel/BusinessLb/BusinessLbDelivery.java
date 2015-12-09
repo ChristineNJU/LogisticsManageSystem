@@ -53,16 +53,16 @@ public class BusinessLbDelivery extends FunctionAdd{
 		// 表格的初始化
 		needDelivery = new ArrayList<DeliveryVO>();
 		
-		//测试用
-		try {
-			ArrayList<String> id = new ArrayList<String>();
-			id.add("0000000009");
-			DeliveryVO delivery0 = new DeliveryVO(sdf.parse("2015-12-4 10:27:40"), id, "张斯栋");
-			needDelivery.add(delivery0);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		//测试用
+//		try {
+//			ArrayList<String> id = new ArrayList<String>();
+//			id.add("0000000009");
+//			DeliveryVO delivery0 = new DeliveryVO(sdf.parse("2015-12-4 10:27:40"), id, "张斯栋");
+//			needDelivery.add(delivery0);
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		tableV = getVector(needDelivery);
 		model = new TableModelAddOnly(tableV,tableH,isCellEditable);

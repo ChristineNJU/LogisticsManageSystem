@@ -19,9 +19,16 @@ public class NavigationManager extends Navigation{
 	private ButtonNav consts = new ButtonNav("manager","consts");
 	private ButtonNav system = new ButtonNav("manager","system");
 	
-	private ManagerConst con = new ManagerConst();
-	private ManagerStaffMgt staffM=new ManagerStaffMgt(this);
-	private ManagerInstitutionMgt institutionM=new ManagerInstitutionMgt(this);
+	public ManagerConst con;
+	public ManagerStaffMgt staffM;
+	public ManagerInstitutionMgt institutionM;
+	public ManagerAccount acc;
+	public ManagerBenefit ben;
+	public ManagerIncomeAndOutcome inAndOut;
+	public ManagerReceipt rec;
+	public ManagerSalary sal;
+	public ManagerSystem sys;
+	
 	public NavigationManager(UserVO user) {
 		super(user);
 		initNavButtonArray();
@@ -36,8 +43,8 @@ public class NavigationManager extends Navigation{
 		buttonList.add(institution);
 		buttonList.add(salary);
 		buttonList.add(account);
-		buttonList.add(incomeAndOutcome);
 		buttonList.add(benefit);
+		buttonList.add(incomeAndOutcome);
 		buttonList.add(consts);
 		buttonList.add(system);
 	}
@@ -68,9 +75,13 @@ public class NavigationManager extends Navigation{
 	private void changeToHome(){
 		
 	}
+	
 	private void changeToJudge(){
-		
+		rec = new ManagerReceipt();
+		MainFrame.changeContentPanel(rec.getPanel());
+		MainFrame.getMainPanel().repaint();
 	}
+	
 	private void changeToStaff(){
 
 		staffM = new ManagerStaffMgt(this);
@@ -89,45 +100,59 @@ public class NavigationManager extends Navigation{
 			
 		}
 	}
+	
 	private void changeToInstitution(){
 		institutionM=new ManagerInstitutionMgt(this);
 		MainFrame.changeContentPanel(institutionM.getPanel());
 		MainFrame.getMainPanel().repaint();
+
 		if(institutionM.isConnectError()){
 			institutionM.showError(ErrorState.CONNECTERROR);
 		}
 		
 		
+
 	}
-//	private void changeToManager(){
-//		System.out.println("manager initiate");
-//		ManagerStaffMgt managerStaffMgt = new ManagerStaffMgt(this);
-//		MainFrame.changeContentPanel(managerStaffMgt.getPanel());
-//		MainFrame.getMainPanel().repaint();
-//		if(managerStaffMgt.isConnectError()){
-//			System.out.println("manager initiate null");
-//			managerStaffMgt.showError("Connect Error");
-//		}
-//
-//	}
+	
+	private void changeToManager(){
+		staffM = new ManagerStaffMgt(this);
+		MainFrame.changeContentPanel(staffM.getPanel());
+		MainFrame.getMainPanel().repaint();
+
+	}
 	private void changeToSalary(){
-		
+		sal = new ManagerSalary();
+		MainFrame.changeContentPanel(sal.getPanel());
+		MainFrame.getMainPanel().repaint();
 	}
+	
 	private void changeToAccount(){
-		
+		acc = new ManagerAccount();
+		MainFrame.changeContentPanel(acc.getPanel());
+		MainFrame.getMainPanel().repaint();
 	}
+	
 	private void changeToIncomeAndOutcome(){
-		
+		inAndOut = new ManagerIncomeAndOutcome();
+		MainFrame.changeContentPanel(inAndOut.getPanel());
+		MainFrame.getMainPanel().repaint();
 	}
+	
 	private void changeToBenefit(){
-		
+		ben = new ManagerBenefit();
+		MainFrame.changeContentPanel(ben.getPanel());
+		MainFrame.getMainPanel().repaint();
 	}
+	
 	private void changeToConsts(){
 		con = new ManagerConst();
 		MainFrame.changeContentPanel(con.getPanel());
 		MainFrame.getMainPanel().repaint();
 	}
+	
 	private void changeToSystem(){
-		
+		sys = new ManagerSystem();
+		MainFrame.changeContentPanel(sys.getPanel());
+		MainFrame.getMainPanel().repaint();
 	}
 }

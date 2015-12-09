@@ -8,25 +8,44 @@ import State.StateSwitch;
 import VO.ArrivalVO;
 import businesslogic.URLHelper.URLHelper;
 
+// TODO: Auto-generated Javadoc
 /**
- * 用来保存到达单的持久化数据格式
- * 
+ * 用来保存到达单的持久化数据格式.
+ *
  * @author 尹子越
  * @version 1.0.0
- * */
+ */
 public class ArrivalPO extends PO {
 
+	/** The bar_code. */
 	// ----- member variables ---------------------------------------
 	private String bar_code = "";
+	
+	/** The arrival_date. */
 	private Date arrival_date;
+	
+	/** The transfer_number. */
 	private String transfer_number = "";
+	
+	/** The starting. */
 	private String starting = "";
+	
+	/** The state. */
 	private LogisticsState state;
+	
+	/** The is approved. */
 	private boolean isApproved = false;
 	
 	/**
-	 * 直接创建到达单的持久化数据对象
-	 * */
+	 * 直接创建到达单的持久化数据对象.
+	 *
+	 * @param bar_code the bar_code
+	 * @param arrival_date the arrival_date
+	 * @param transfer_number the transfer_number
+	 * @param starting the starting
+	 * @param state the state
+	 * @param DB_URL the db url
+	 */
 	public ArrivalPO(String bar_code, Date arrival_date, String transfer_number, String starting,
 			LogisticsState state, String DB_URL) {
 		super(DB_URL);
@@ -38,8 +57,11 @@ public class ArrivalPO extends PO {
 	}
 	
 	/**
-	 * 通过ArrivalVO创建到达单的持久化数据格式
-	 * */
+	 * 通过ArrivalVO创建到达单的持久化数据格式.
+	 *
+	 * @param arrival the arrival
+	 * @param institutionID the institution id
+	 */
 	public ArrivalPO(ArrivalVO arrival,String institutionID){
 		super(URLHelper.getArrivalURL(institutionID));
 		this.arrival_date=arrival.getDate();
@@ -59,50 +81,55 @@ public class ArrivalPO extends PO {
 	 * */
 	
 	/**
-	 * 获取订单信息
-	 * 
+	 * 获取订单信息.
+	 *
 	 * @return 订单信息String
-	 * */
+	 */
 	public String getBarCode() {
 		return bar_code;
 	}
+	
 	/**
-	 * 获取到达日期
-	 * 
+	 * 获取到达日期.
+	 *
 	 * @return 到达日期Date
-	 * */
+	 */
 	public Date getArrivalDate() {
 		return arrival_date;
 	}
+	
 	/**
-	 * 获取中转单编号
-	 * 
+	 * 获取中转单编号.
+	 *
 	 * @return 中转单编号String
-	 * */
+	 */
 	public String getTransferNumber() {
 		return transfer_number;
 	}
+	
 	/**
-	 * 获取出发地
-	 * 
+	 * 获取出发地.
+	 *
 	 * @return 出发地String
-	 * */
+	 */
 	public String getStarting() {
 		return starting;
 	}
+	
 	/**
-	 * 获取货物状态
-	 * 
+	 * 获取货物状态.
+	 *
 	 * @return 货物状态LogisticsState
-	 * */
+	 */
 	public LogisticsState getState() {
 		return state;
 	} 
+	
 	/**
-	 * 获取审批状态
-	 * 
+	 * 获取审批状态.
+	 *
 	 * @return 审批状态boolean
-	 * */
+	 */
 	public boolean isApproved() {
 		return isApproved;
 	}
@@ -113,16 +140,19 @@ public class ArrivalPO extends PO {
 	 * */
 	
 	/**
-	 * 更新审批状态
-	 * 
+	 * 更新审批状态.
+	 *
 	 * @param isApproved 新审批状态
-	 * */
+	 */
 	public void setApproved(boolean isApproved) {
 		this.isApproved = isApproved;
 	}
 	
 
 
+	/* (non-Javadoc)
+	 * @see PO.PO#toString()
+	 */
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
@@ -143,6 +173,9 @@ public class ArrivalPO extends PO {
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see PO.PO#getPrimaryKey()
+	 */
 	@Override
 	public String getPrimaryKey() {
 		// TODO Auto-generated method stub

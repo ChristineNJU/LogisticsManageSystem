@@ -6,16 +6,18 @@ import java.util.ArrayList;
 
 import PO.AccountPO;
 
+// TODO: Auto-generated Javadoc
 /**
-*
-* @author 尹子越
-* @version 1.0.0
-*/
+ * The Interface SearchAccountService.
+ *
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public interface SearchAccountService extends Remote {
 	
 	/**
-	 * 从数据库中搜索AccountPO
-	 * 
+	 * 从数据库中搜索AccountPO.
+	 *
 	 * @param requirement 搜索要求
 	 * @return AccountPO的ArrayList
 	 * @exception RemoteException 如果RMI链接断开

@@ -51,6 +51,8 @@ public class SearchLogImpl extends UnicastRemoteObject implements SearchLogServi
 				}
 			}
 			
+//			System.out.println(DBHelper.SEARCH(URLHelper.getLogURL(), target));
+			
 			ResultSet rs = s.executeQuery(DBHelper.SEARCH(URLHelper.getLogURL(), target));
 			while(rs.next()){
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -73,7 +75,7 @@ public class SearchLogImpl extends UnicastRemoteObject implements SearchLogServi
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-//			e.printStackTrace();
+			e.printStackTrace();
 			System.out.println("从数据库提取LogPO对象失败");
 			return result;
 		}

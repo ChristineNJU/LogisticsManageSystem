@@ -13,3 +13,5 @@ log.txt
 server/LogisticsManageSystemDataBase/
 derby.log
 kerby-server
+client/client_launcher.jar
+server/server_launcher.jar

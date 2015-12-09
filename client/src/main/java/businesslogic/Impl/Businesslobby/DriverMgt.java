@@ -21,20 +21,33 @@ import data.Service.Delete.DeleteService;
 import data.Service.Search.SearchDriverInfoService;
 import data.Service.Update.UpdateService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DriverMgt.
+ * 营业厅车辆管理的实现
+ * 
+ * @see SearchDriverInfoService
+ * @see UpdateService
+ * @see DeleteService
+ * @see AddService
+ */
 public class DriverMgt implements DriverMgtService{
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.BusinessLobby.DriverMgtService#searchDriver(java.lang.String)
+	 */
 	@Override
 	public ArrayList<DriverInfoVO> searchDriver(String id) {
 		// TODO Auto-generated method stub
 		ArrayList<DriverInfoVO> result=new ArrayList<DriverInfoVO>();
 		try {
 			SearchDriverInfoService searchDriver=(SearchDriverInfoService) Naming.lookup(RMIHelper.SEARCH_DRIVERINFO_IMPL);
-			System.out.println(id+" searchDriver debug "+SystemLog.getInstitutionId());
+//			System.out.println(id+" searchDriver debug "+SystemLog.getInstitutionId());
 			ArrayList<String> requirementId=new ArrayList<String>();
-			requirementId.add("Driver_Number='"+id+"'");
+			requirementId.add("Driver_Number like '"+id+"'");
 			
 			ArrayList<String> requirementName=new ArrayList<String>();
-			requirementName.add("DRiver_Name='"+id+"'");
+			requirementName.add("Driver_Name like '"+id+"'");
 			
 			ArrayList<DriverInfoPO> searchResultId=new ArrayList<DriverInfoPO>();
 			ArrayList<DriverInfoPO> searchResultName=new ArrayList<DriverInfoPO>();
@@ -47,7 +60,7 @@ public class DriverMgt implements DriverMgtService{
 			
 			if(searchResultId.isEmpty()){
 				System.out.println("searchDriver: not found");
-				return null;
+				return result;
 			}
 			
 			else{
@@ -64,6 +77,9 @@ public class DriverMgt implements DriverMgtService{
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.BusinessLobby.DriverMgtService#updateDriver(VO.DriverInfoVO)
+	 */
 	@Override
 	public UpdateState updateDriver(DriverInfoVO driver) {
 		// TODO Auto-generated method stub
@@ -97,6 +113,9 @@ public class DriverMgt implements DriverMgtService{
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.BusinessLobby.DriverMgtService#deleteDriver(VO.DriverInfoVO)
+	 */
 	@Override
 	public DeleteState deleteDriver(DriverInfoVO driver) {
 		// TODO Auto-generated method stub
@@ -130,6 +149,9 @@ public class DriverMgt implements DriverMgtService{
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.BusinessLobby.DriverMgtService#addDriver(VO.DriverInfoVO)
+	 */
 	@Override
 	public AddState addDriver(DriverInfoVO driver) {
 		// TODO Auto-generated method stub

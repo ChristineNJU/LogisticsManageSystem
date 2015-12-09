@@ -16,6 +16,7 @@ import businesslogic.Service.Finance.GetEntruckingService;
 import businesslogic.Service.Finance.GetGatheringService;
 import businesslogic.Service.Finance.GetLogService;
 import businesslogic.Service.Finance.GetTransferService;
+import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
 import data.Service.Search.SearchEntruckingService;
 import data.Service.Search.SearchGatheringService;
@@ -23,8 +24,15 @@ import data.Service.Search.SearchInstitutionInfoService;
 import data.Service.Search.SearchLogService;
 import data.Service.Search.SearchTransferService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SundryImpl.
+ */
 public class SundryImpl implements GetEntruckingService,GetGatheringService,GetLogService,GetTransferService{
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Finance.GetTransferService#getTransfer(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public ArrayList<TransferVO> getTransfer(String time_start, String time_end) {
 		// TODO Auto-generated method stub
@@ -43,7 +51,7 @@ public class SundryImpl implements GetEntruckingService,GetGatheringService,GetL
 				institutionID.add(institutionList.get(i).getInstitutionNumber());
 			}
 			for(int i=0;i<institutionID.size();i++){
-				ArrayList<TransferPO> transferTemp=transferSearch.searchTransfer(institutionID.get(i), requirementTrans);
+				ArrayList<TransferPO> transferTemp=transferSearch.searchTransfer(URLHelper.getTransferURL(institutionID.get(i)), requirementTrans);
 				for(int j=0;j<transferTemp.size();j++)
 				transferList.add(transferTemp.get(j));
 			}
@@ -57,6 +65,9 @@ public class SundryImpl implements GetEntruckingService,GetGatheringService,GetL
 		return transfer;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Finance.GetLogService#getLog(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public ArrayList<LogVO> getLog(String time_start, String time_end) {
 		ArrayList<LogVO>  log=new ArrayList<LogVO>();
@@ -64,7 +75,9 @@ public class SundryImpl implements GetEntruckingService,GetGatheringService,GetL
 			SearchLogService logSearch=(SearchLogService) Naming.lookup(RMIHelper.SEARCH_LOG_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
 			requirement.add("time between '"+time_start+"' and '"+time_end+"'");
+			System.out.println(requirement.get(0));
 			ArrayList<LogPO> logList=logSearch.searchLog(requirement);
+			System.out.println(logList.size()+"hhh");
 			for(int i=0;i<logList.size();i++){
 				log.add(new LogVO(logList.get(i)));
 			}
@@ -75,6 +88,9 @@ public class SundryImpl implements GetEntruckingService,GetGatheringService,GetL
 		return log;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Finance.GetGatheringService#searchGathering(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public ArrayList<GatheringVO> searchGathering(String date,
 			String businesslobby) {
@@ -86,7 +102,7 @@ public class SundryImpl implements GetEntruckingService,GetGatheringService,GetL
 			ArrayList<String> requirementGathering=new ArrayList<String>();
 			ArrayList<String> institutionID=new ArrayList<String>();
 			ArrayList<InstitutionPO> institutionList=new ArrayList<InstitutionPO>();
-			requirementInsti.add("city like '%%'");
+			requirementInsti.add("institution_type = 'BusinessLobby'");
 			requirementGathering.add("date='"+date+"'");
 			institutionList=instiSearch.searchInstitutionInfo(requirementInsti);
 			for(int i=0;i<institutionList.size();i++){
@@ -98,7 +114,7 @@ public class SundryImpl implements GetEntruckingService,GetGatheringService,GetL
 				}
 			}
 			for(int i=0;i<institutionID.size();i++){
-				ArrayList<GatheringPO> temp=gatheringSearch.searchGathering(institutionID.get(i), requirementGathering);
+				ArrayList<GatheringPO> temp=gatheringSearch.searchGathering(URLHelper.getGatheringURL(institutionID.get(i)), requirementGathering);
 				for(int j=0;j<temp.size();j++){
 					gathering.add(new GatheringVO(temp.get(j)));
 				}
@@ -113,6 +129,9 @@ public class SundryImpl implements GetEntruckingService,GetGatheringService,GetL
 		return gathering;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Finance.GetEntruckingService#getEntrucking(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public ArrayList<EntruckingVO> getEntrucking(String time_start,
 			String time_end) {
@@ -134,7 +153,7 @@ public class SundryImpl implements GetEntruckingService,GetGatheringService,GetL
 				institutionID.add(instiList.get(i).getInstitutionNumber());
 			}
 			for(int i=0;i<institutionID.size();i++){
-				ArrayList<EntruckingPO> temp=entruckingSearch.searchEntrucking(institutionID.get(i), requirementEntruck);
+				ArrayList<EntruckingPO> temp=entruckingSearch.searchEntrucking(URLHelper.getGatheringURL(institutionID.get(i)), requirementEntruck);
 				for(int j=0;j<temp.size();j++){
 					entrucking.add(new EntruckingVO(temp.get(j)));
 				}
@@ -146,11 +165,15 @@ public class SundryImpl implements GetEntruckingService,GetGatheringService,GetL
 		return entrucking;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Finance.GetGatheringService#searchGathering(java.lang.String, java.lang.String, java.lang.String)
+	 */
 	@Override
 	public ArrayList<GatheringVO> searchGathering(String startDate,
 			String endDate, String businesslobby) {
 		// TODO Auto-generated method stub
 		ArrayList<GatheringVO> gathering=new ArrayList<GatheringVO>();
+		System.out.println(startDate+" "+endDate+" "+businesslobby);
 		try{
 			SearchGatheringService gatheringSearch=(SearchGatheringService) Naming.lookup(RMIHelper.SEARCH_GATHERING_IMPL);
 			SearchInstitutionInfoService instiSearch=(SearchInstitutionInfoService) Naming.lookup(RMIHelper.SEARCH_INSTITUTION_IMPL);
@@ -158,7 +181,7 @@ public class SundryImpl implements GetEntruckingService,GetGatheringService,GetL
 			ArrayList<String> requirementGathering=new ArrayList<String>();
 			ArrayList<String> institutionID=new ArrayList<String>();
 			ArrayList<InstitutionPO> institutionList=new ArrayList<InstitutionPO>();
-			requirementInsti.add("city like '%%'");
+			requirementInsti.add("institution_type = 'BusinessLobby'");
 			requirementGathering.add("date between '"+startDate+"' and '"+endDate+"'");
 			institutionList=instiSearch.searchInstitutionInfo(requirementInsti);
 			for(int i=0;i<institutionList.size();i++){
@@ -170,11 +193,10 @@ public class SundryImpl implements GetEntruckingService,GetGatheringService,GetL
 				}
 			}
 			for(int i=0;i<institutionID.size();i++){
-				ArrayList<GatheringPO> temp=gatheringSearch.searchGathering(institutionID.get(i), requirementGathering);
+				ArrayList<GatheringPO> temp=gatheringSearch.searchGathering(URLHelper.getGatheringURL(institutionID.get(i)), requirementGathering);
 				for(int j=0;j<temp.size();j++){
 					gathering.add(new GatheringVO(temp.get(j)));
 				}
-				
 			}
 			
 		} catch (Exception ex){

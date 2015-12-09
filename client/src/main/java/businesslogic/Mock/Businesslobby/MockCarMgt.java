@@ -27,9 +27,4 @@ public class MockCarMgt extends CarMgt{
 		return new ArrayList<CarInfoVO>();
 	}
 
-	@Override
-	public UpdateState updateCar(CarInfoVO car, String field, String value) {
-		// TODO Auto-generated method stub
-		return UpdateState.NOTFOUND;
-	}
 }

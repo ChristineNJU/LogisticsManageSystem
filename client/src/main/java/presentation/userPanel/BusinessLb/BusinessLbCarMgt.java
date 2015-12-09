@@ -38,6 +38,7 @@ public class BusinessLbCarMgt  extends FunctionADUS{
 	protected void initTable() {
 		cars=new ArrayList<CarInfoVO>();
 		
+<<<<<<< HEAD
 		cars=service.searchCar("%%");
 		
 		if(cars!=null){
@@ -47,6 +48,18 @@ public class BusinessLbCarMgt  extends FunctionADUS{
 			tableV=new Vector<Vector<String>>();
 			super.isConnectError=true;
 		}
+=======
+//		CarInfoVO car1=new CarInfoVO("025001001", "苏A 025E2", 2);
+//		CarInfoVO car2=new CarInfoVO("025001001", "苏A 025F2", 1);
+//		CarInfoVO car3=new CarInfoVO("025001001", "苏A 025C4", 3);
+//		
+//		cars.add(car1);
+//		cars.add(car2);
+//		cars.add(car3);
+		
+		tableV = getVector(cars);
+        
+>>>>>>> 256d24dfbfce6fdad6f04f6f805dd8dd2d3b64af
         model = new TableModelADUS(tableV, tableH,isCellEditable);
 		table = new TableADUS(model);
 		

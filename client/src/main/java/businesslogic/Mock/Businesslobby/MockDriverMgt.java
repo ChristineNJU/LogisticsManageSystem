@@ -16,11 +16,6 @@ public class MockDriverMgt extends DriverMgt{
 		return new ArrayList<DriverInfoVO>();
 	}
 
-	@Override
-	public UpdateState updateDriver(DriverInfoVO driver, String field, String value) {
-		// TODO Auto-generated method stub
-		return UpdateState.SUCCESS;
-	}
 
 	@Override
 	public DeleteState deleteDriver(DriverInfoVO driver) {
@@ -28,9 +23,4 @@ public class MockDriverMgt extends DriverMgt{
 		return DeleteState.SUCCESS;
 	}
 
-	@Override
-	public AddState AddDriver(DriverInfoVO driver) {
-		// TODO Auto-generated method stub
-		return AddState.SUCCESS;
-	}
 }
