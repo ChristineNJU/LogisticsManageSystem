@@ -14,8 +14,15 @@ import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
 import data.Service.Search.SearchGatheringService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class GetNeedGatheringImpl.
+ */
 public class GetNeedGatheringImpl implements GetNeedGatheringService{
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.BusinessLobby.GetNeedGatheringService#getNeedGathering()
+	 */
 	@Override
 	public ArrayList<GatheringVO> getNeedGathering() {
 		// TODO Auto-generated method stub

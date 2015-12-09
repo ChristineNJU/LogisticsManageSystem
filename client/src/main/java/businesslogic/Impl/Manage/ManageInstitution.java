@@ -19,7 +19,15 @@ import data.Service.Search.SearchInstitutionInfoService;
 import data.Service.Sundry.TableOperationService;
 import data.Service.Update.UpdateService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ManageInstitution.
+ */
 public class ManageInstitution implements ManageInstitutionService{
+	
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Manage.ManageInstitutionService#searchInstitution(java.lang.String)
+	 */
 	@Override
 	public ArrayList<InstitutionVO> searchInstitution(String id) {
 		// TODO Auto-generated method stub
@@ -67,6 +75,9 @@ public class ManageInstitution implements ManageInstitutionService{
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Manage.ManageInstitutionService#deleteInstitution(VO.InstitutionVO)
+	 */
 	@Override
 	public DeleteState deleteInstitution(InstitutionVO institution) {
 		// TODO Auto-generated method stub
@@ -100,6 +111,9 @@ public class ManageInstitution implements ManageInstitutionService{
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Manage.ManageInstitutionService#UpdateInstitution(VO.InstitutionVO)
+	 */
 	@Override
 	public UpdateState UpdateInstitution(InstitutionVO institution) {
 		// TODO Auto-generated method stub
@@ -131,6 +145,9 @@ public class ManageInstitution implements ManageInstitutionService{
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Manage.ManageInstitutionService#addInstitution(VO.InstitutionVO)
+	 */
 	@Override
 	public AddState addInstitution(InstitutionVO institution) {
 		// TODO Auto-generated method stub

@@ -13,38 +13,79 @@ import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SystemLog.
+ */
 public class SystemLog {
 	
+	/** The operator_name. */
 	private static String operator_name = "";
+	
+	/** The operator_id. */
 	private static String operator_id = "025000000";
+	
+	/** The operator_institution_id. */
 	private static String operator_institution_id = "02500";
 	
+	/** The add log. */
 	private static AddService addLog = null;
 	
+	/** The sdf. */
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
+	/**
+	 * Sets the operator name.
+	 *
+	 * @param name the new operator name
+	 */
 	public static void setOperatorName(String name) {
 		operator_name = name;
 	} 
 	
+	/**
+	 * Sets the operatior id.
+	 *
+	 * @param id the new operatior id
+	 */
 	public static void setOperatiorID(String id) {
 		operator_id = id;
 	}
 	
+	/**
+	 * Sets the institution id.
+	 *
+	 * @param id the new institution id
+	 */
 	public static void setInstitutionId(String id) {
 		operator_id = id;
 	}
 	
+	/**
+	 * Gets the operator id.
+	 *
+	 * @return the operator id
+	 */
 	public static String getOperatorID() {
 		return operator_id;
 	}
 	
+	/**
+	 * Gets the institution id.
+	 *
+	 * @return the institution id
+	 */
 	public static String getInstitutionId() {
 
 		return "02500";
 		//return operator_institution_id;
 }
 	
+	/**
+	 * Adds the log.
+	 *
+	 * @param operation the operation
+	 */
 	public static void addLog(String operation) {
 		
 		LogPO log;

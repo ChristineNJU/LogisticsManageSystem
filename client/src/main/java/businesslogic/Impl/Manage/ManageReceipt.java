@@ -50,8 +50,15 @@ import data.Service.Search.SearchStorageService;
 import data.Service.Search.SearchTransferService;
 import data.Service.Update.UpdateService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ManageReceipt.
+ */
 public class ManageReceipt implements UpdateReceiptService{
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Manage.UpdateReceiptService#updateReceipt(VO.VO)
+	 */
 	@Override
 	public UpdateState updateReceipt(VO receipt) {
 		// TODO Auto-generated method stub
@@ -374,11 +381,10 @@ public class ManageReceipt implements UpdateReceiptService{
 	}
 
 	/**
-	 * 
-	 * @param n
-	 * @param receipt
-	 * @param institution
-	 * 更新物流信息
+	 * Update arrival.
+	 *
+	 * @param arrival the arrival
+	 * @param institution 更新物流信息
 	 * 测试存在困难
 	 * 可能会出现问题
 	 */
@@ -403,6 +409,12 @@ public class ManageReceipt implements UpdateReceiptService{
 	
 	
 	
+	/**
+	 * Update delivery.
+	 *
+	 * @param delivery the delivery
+	 * @param institution the institution
+	 */
 	public void updateDelivery(DeliveryVO delivery,InstitutionPO institution){
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {
@@ -423,6 +435,12 @@ public class ManageReceipt implements UpdateReceiptService{
 		}
 	}
 	
+	/**
+	 * Update entrucking.
+	 *
+	 * @param entrucking the entrucking
+	 * @param institution the institution
+	 */
 	public void updateEntrucking(EntruckingVO entrucking,InstitutionPO institution){
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {
@@ -445,6 +463,12 @@ public class ManageReceipt implements UpdateReceiptService{
 	
 	
 	
+	/**
+	 * Update removal.
+	 *
+	 * @param removal the removal
+	 * @param institution the institution
+	 */
 	public void updateRemoval(RemovalVO removal ,InstitutionPO institution){
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {
@@ -463,6 +487,12 @@ public class ManageReceipt implements UpdateReceiptService{
 		}
 	}
 	
+	/**
+	 * Update storage.
+	 *
+	 * @param storage the storage
+	 * @param institution the institution
+	 */
 	public void updateStorage(StorageVO storage ,InstitutionPO institution){
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {
@@ -481,6 +511,12 @@ public class ManageReceipt implements UpdateReceiptService{
 		}
 	}
 	
+	/**
+	 * Update transfer.
+	 *
+	 * @param transfer the transfer
+	 * @param institution the institution
+	 */
 	public void updateTransfer(TransferVO transfer ,InstitutionPO institution){
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {
@@ -499,6 +535,87 @@ public class ManageReceipt implements UpdateReceiptService{
 			e.printStackTrace();
 			System.out.println("更新物流信息失败");
 		}
+	}
+
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Manage.UpdateReceiptService#updateArrival(VO.ArrivalVO)
+	 */
+	@Override
+	public UpdateState updateArrival(ArrivalVO arrival) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Manage.UpdateReceiptService#updateBalance(VO.BalanceVO)
+	 */
+	@Override
+	public UpdateState updateBalance(BalanceVO balance) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Manage.UpdateReceiptService#updateCost(VO.CostVO)
+	 */
+	@Override
+	public UpdateState updateCost(CostVO cost) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Manage.UpdateReceiptService#updateDelivery(VO.DeliveryVO)
+	 */
+	@Override
+	public UpdateState updateDelivery(DeliveryVO delivery) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Manage.UpdateReceiptService#updateEntrucking(VO.EntruckingVO)
+	 */
+	@Override
+	public UpdateState updateEntrucking(EntruckingVO entrucking) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Manage.UpdateReceiptService#updateGathering(VO.GatheringVO)
+	 */
+	@Override
+	public UpdateState updateGathering(GatheringVO gathering) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Manage.UpdateReceiptService#updateRemoval(VO.RemovalVO)
+	 */
+	@Override
+	public UpdateState updateRemoval(RemovalVO removal) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Manage.UpdateReceiptService#updateStorage(VO.StorageVO)
+	 */
+	@Override
+	public UpdateState updateStorage(StorageVO storage) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Manage.UpdateReceiptService#updateTransfer(VO.TransferVO)
+	 */
+	@Override
+	public UpdateState updateTransfer(TransferVO transfer) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

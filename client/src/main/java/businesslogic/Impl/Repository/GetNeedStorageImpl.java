@@ -11,8 +11,15 @@ import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
 import data.Service.Search.SearchStorageService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class GetNeedStorageImpl.
+ */
 public class GetNeedStorageImpl implements GetNeedStorageService {
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Repository.GetNeedStorageService#getNeedStorage(java.lang.String)
+	 */
 	@Override
 	public ArrayList<StorageVO> getNeedStorage(String destination) {
 		// TODO Auto-generated method stub

@@ -14,8 +14,15 @@ import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
 import data.Service.Delete.DeleteService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class RemovalImpl.
+ */
 public class RemovalImpl implements AddRemovalService{
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Repository.AddRemovalService#addRemoval(java.util.ArrayList)
+	 */
 	@Override
 	public AddState addRemoval(ArrayList<RemovalVO> re) {
 		// TODO Auto-generated method stub

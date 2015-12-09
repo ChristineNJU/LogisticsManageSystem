@@ -15,8 +15,15 @@ import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
 import data.Service.Sundry.WareHouseService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class StorageImpl.
+ */
 public class StorageImpl implements StorageService {
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Repository.StorageService#storage(java.util.ArrayList)
+	 */
 	@Override
 	public StorageState storage(ArrayList<StorageVO> storage) {
 		// TODO Auto-generated method stub

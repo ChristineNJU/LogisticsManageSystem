@@ -15,8 +15,15 @@ import data.Service.Delete.DeleteService;
 import data.Service.Search.SearchUserService;
 import data.Service.Update.UpdateService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AdminImpl.
+ */
 public class AdminImpl implements AdminUserService{
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Admin.AdminUserService#updateUser(VO.UserVO)
+	 */
 	@Override
 	public UpdateState updateUser(UserVO user) {
 		// TODO Auto-generated method stub
@@ -45,6 +52,9 @@ public class AdminImpl implements AdminUserService{
 		return state;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Admin.AdminUserService#searchUser(java.util.ArrayList)
+	 */
 	@Override
 	public ArrayList<UserVO> searchUser(ArrayList<String> requirement) {
 		// TODO Auto-generated method stub
@@ -88,6 +98,9 @@ public class AdminImpl implements AdminUserService{
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Admin.AdminUserService#deleteUser(VO.UserVO)
+	 */
 	@Override
 	public DeleteState deleteUser(UserVO user) {
 		// TODO Auto-generated method stub
@@ -114,6 +127,9 @@ public class AdminImpl implements AdminUserService{
 		return state;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Admin.AdminUserService#addUser(VO.UserVO)
+	 */
 	@Override
 	public AddState addUser(UserVO user) {
 		// TODO Auto-generated method stub

@@ -2,6 +2,16 @@ package businesslogic.Service.Courier;
 
 import java.util.ArrayList;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Interface GetCityService.
+ */
 public interface GetCityService {
-	 public ArrayList<String> getCity();
+	 
+ 	/**
+ 	 * Gets the city.
+ 	 *
+ 	 * @return the city
+ 	 */
+ 	public ArrayList<String> getCity();
 }

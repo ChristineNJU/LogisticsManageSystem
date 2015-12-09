@@ -10,8 +10,15 @@ import businesslogic.SystemLog.SystemLog;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TransferImpl.
+ */
 public class TransferImpl implements TransferService{
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.MediumCenter.TransferService#transfer(VO.TransferVO)
+	 */
 	@Override
 	public AddState transfer(TransferVO transfer) {
 		// TODO Auto-generated method stub

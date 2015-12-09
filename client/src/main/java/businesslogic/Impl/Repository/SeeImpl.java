@@ -14,8 +14,15 @@ import data.RMIHelper.RMIHelper;
 import data.Service.Search.SearchRemovalService;
 import data.Service.Search.SearchStorageService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SeeImpl.
+ */
 public class SeeImpl implements SeeService {
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Repository.SeeService#seeStorage(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public ArrayList<StorageVO> seeStorage(String time_start, String time_end) {
 		ArrayList<StorageVO> storage=new ArrayList<StorageVO>();
@@ -36,6 +43,9 @@ public class SeeImpl implements SeeService {
 		return storage;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Repository.SeeService#seeRemoval(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public ArrayList<RemovalVO> seeRemoval(String time_start, String time_end) {
 		// TODO Auto-generated method stub

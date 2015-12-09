@@ -9,8 +9,15 @@ import VO.TransferVO;
 import businesslogic.Service.MediumCenter.MCService;
 import businesslogic.SystemLog.SystemLog;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MediumCenterController.
+ */
 public class MediumCenterController implements MCService{
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.MediumCenter.MCService#transfer(VO.TransferVO)
+	 */
 	@Override
 	public AddState transfer(TransferVO transfer) {
 		// TODO Auto-generated method stub
@@ -22,6 +29,9 @@ public class MediumCenterController implements MCService{
 		return state;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.MediumCenter.MCService#getNeedTransfer()
+	 */
 	@Override
 	public ArrayList<TransferVO> getNeedTransfer() {
 		// TODO Auto-generated method stub
@@ -29,6 +39,9 @@ public class MediumCenterController implements MCService{
 		return getNeedTransfer.getNeedTransfer();
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.MediumCenter.MCService#getNeedEntrucking()
+	 */
 	@Override
 	public ArrayList<EntruckingVO> getNeedEntrucking() {
 		// TODO Auto-generated method stub
@@ -36,6 +49,9 @@ public class MediumCenterController implements MCService{
 		return getNeedEntrucking.getNeedEntrucking();
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.MediumCenter.MCService#entrucking(VO.EntruckingVO)
+	 */
 	@Override
 	public AddState entrucking(EntruckingVO entrucking) {
 		// TODO Auto-generated method stub
@@ -47,6 +63,9 @@ public class MediumCenterController implements MCService{
 		return state;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.MediumCenter.MCService#arrival(java.util.ArrayList)
+	 */
 	@Override
 	public AddState arrival(ArrayList<ArrivalVO> arrival) {
 		// TODO Auto-generated method stub

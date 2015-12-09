@@ -23,8 +23,15 @@ import data.Service.Search.SearchInstitutionInfoService;
 import data.Service.Search.SearchLogService;
 import data.Service.Search.SearchTransferService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SundryImpl.
+ */
 public class SundryImpl implements GetEntruckingService,GetGatheringService,GetLogService,GetTransferService{
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Finance.GetTransferService#getTransfer(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public ArrayList<TransferVO> getTransfer(String time_start, String time_end) {
 		// TODO Auto-generated method stub
@@ -57,6 +64,9 @@ public class SundryImpl implements GetEntruckingService,GetGatheringService,GetL
 		return transfer;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Finance.GetLogService#getLog(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public ArrayList<LogVO> getLog(String time_start, String time_end) {
 		ArrayList<LogVO>  log=new ArrayList<LogVO>();
@@ -75,6 +85,9 @@ public class SundryImpl implements GetEntruckingService,GetGatheringService,GetL
 		return log;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Finance.GetGatheringService#searchGathering(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public ArrayList<GatheringVO> searchGathering(String date,
 			String businesslobby) {
@@ -113,6 +126,9 @@ public class SundryImpl implements GetEntruckingService,GetGatheringService,GetL
 		return gathering;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Finance.GetEntruckingService#getEntrucking(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public ArrayList<EntruckingVO> getEntrucking(String time_start,
 			String time_end) {
@@ -146,6 +162,9 @@ public class SundryImpl implements GetEntruckingService,GetGatheringService,GetL
 		return entrucking;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Finance.GetGatheringService#searchGathering(java.lang.String, java.lang.String, java.lang.String)
+	 */
 	@Override
 	public ArrayList<GatheringVO> searchGathering(String startDate,
 			String endDate, String businesslobby) {

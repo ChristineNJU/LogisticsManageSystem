@@ -10,8 +10,15 @@ import businesslogic.SystemLog.SystemLog;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EntruckingImpl.
+ */
 public class EntruckingImpl implements EntruckingService{
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.BusinessLobby.EntruckingService#entrucking(VO.EntruckingVO)
+	 */
 	@Override
 	public AddState entrucking(EntruckingVO entrucking) {
 		// TODO Auto-generated method stub

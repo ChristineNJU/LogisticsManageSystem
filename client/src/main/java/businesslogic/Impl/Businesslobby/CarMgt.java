@@ -20,7 +20,15 @@ import data.Service.Delete.DeleteService;
 import data.Service.Search.SearchCarInfoService;
 import data.Service.Update.UpdateService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CarMgt.
+ */
 public class CarMgt implements CarMgtService{
+	
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.BusinessLobby.CarMgtService#addCar(VO.CarInfoVO)
+	 */
 	@Override
 	public AddState addCar(CarInfoVO car) {
 		// TODO Auto-generated method stub
@@ -39,6 +47,9 @@ public class CarMgt implements CarMgtService{
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.BusinessLobby.CarMgtService#deleteCar(VO.CarInfoVO)
+	 */
 	@Override
 	public DeleteState deleteCar(CarInfoVO car) {
 		// TODO Auto-generated method stub
@@ -74,6 +85,9 @@ public class CarMgt implements CarMgtService{
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.BusinessLobby.CarMgtService#searchCar(java.lang.String)
+	 */
 	@Override
 	public ArrayList<CarInfoVO> searchCar(String id) {
 		// TODO Auto-generated method stub
@@ -115,6 +129,9 @@ public class CarMgt implements CarMgtService{
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.BusinessLobby.CarMgtService#updateCar(VO.CarInfoVO)
+	 */
 	@Override
 	public UpdateState updateCar(CarInfoVO car) {
 		// TODO Auto-generated method stub

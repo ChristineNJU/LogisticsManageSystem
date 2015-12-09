@@ -10,8 +10,15 @@ import businesslogic.SystemLog.SystemLog;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class GatheringImpl.
+ */
 public class GatheringImpl implements GatheringService{
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.BusinessLobby.GatheringService#gathering(VO.GatheringVO)
+	 */
 	@Override
 	public AddState gathering(GatheringVO gathering) {
 		// TODO Auto-generated method stub

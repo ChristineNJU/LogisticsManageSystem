@@ -18,8 +18,15 @@ import data.Service.Delete.DeleteService;
 import data.Service.Search.SearchUserService;
 import data.Service.Update.UpdateService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ManageStaff.
+ */
 public class ManageStaff implements ManageStaffService{
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Manage.ManageStaffService#DeleteStaff(VO.StaffVO)
+	 */
 	@Override
 	public DeleteState DeleteStaff(StaffVO staff) {
 		// TODO Auto-generated method stub
@@ -53,6 +60,9 @@ public class ManageStaff implements ManageStaffService{
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Manage.ManageStaffService#searchStaff(java.lang.String)
+	 */
 	@Override
 	public ArrayList<StaffVO> searchStaff(String id) {
 		// TODO Auto-generated method stub
@@ -103,6 +113,9 @@ public class ManageStaff implements ManageStaffService{
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Manage.ManageStaffService#updateStaff(VO.StaffVO)
+	 */
 	@Override
 	public UpdateState updateStaff(StaffVO staff) {
 		// TODO Auto-generated method stub
@@ -131,6 +144,9 @@ public class ManageStaff implements ManageStaffService{
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Manage.ManageStaffService#addStaff(VO.StaffVO)
+	 */
 	@Override
 	public AddState addStaff(StaffVO staff) {
 		// TODO Auto-generated method stub
