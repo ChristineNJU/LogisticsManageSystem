@@ -26,7 +26,7 @@ public class UserBlService_Stub implements LoginService,ResetPasswordService{
 		UserPO user=new UserPO(account, newPassword, null, null, 20, null, null, null, "user_info");
 		
 		try {
-			System.out.println("Update_Stub"+new UpdateService_Stub().update(user, "password", newPassword));
+			System.out.println("Update_Stub"+new UpdateService_Stub().update(user));
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

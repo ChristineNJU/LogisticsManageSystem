@@ -10,7 +10,6 @@ public class TestAddBenefit extends TestCase{
 			
 			FinanceController finance = new FinanceController();
 			
-			assertEquals(AddState.SUCCESS, finance.addBenefit(new BenefitVO(1294324, 492304,"2015-11-26 10:20:20")));
 		}
 
 }

@@ -19,10 +19,15 @@ import businesslogic.SystemLog.SystemLog;
 // TODO: Auto-generated Javadoc
 /**
  * The Class FinanceController.
+ * 
+ * @author 张斯栋
+ * @version 1.0.0
  */
 public class FinanceController implements FinanceService{
 	
-	/* (non-Javadoc)
+	/**
+	 * @see AccountImpl
+	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.Finance.FinanceService#updateAccount(VO.AccountVO)
 	 */
 	@Override
@@ -36,7 +41,8 @@ public class FinanceController implements FinanceService{
 		return state;
 	}
 	
-	/* (non-Javadoc)
+	/**
+	 * @see SundryImpl
 	 * @see businesslogic.Service.Finance.FinanceService#getTransfer(java.lang.String, java.lang.String)
 	 */
 	@Override
@@ -46,7 +52,8 @@ public class FinanceController implements FinanceService{
 		return sundryC.getTransfer(time_start, time_end);
 	}
 	
-	/* (non-Javadoc)
+	/**
+	 * @see SundryImpl
 	 * @see businesslogic.Service.Finance.FinanceService#getLog(java.lang.String, java.lang.String)
 	 */
 	@Override
@@ -56,7 +63,8 @@ public class FinanceController implements FinanceService{
 		return sundryC.getLog(time_start, time_end);
 	}
 	
-	/* (non-Javadoc)
+	/**
+	 * @see SundryImpl
 	 * @see businesslogic.Service.Finance.FinanceService#searchGathering(java.lang.String, java.lang.String)
 	 */
 	@Override
@@ -67,7 +75,8 @@ public class FinanceController implements FinanceService{
 		return sundryC.searchGathering(date, businesslobby);
 	}
 	
-	/* (non-Javadoc)
+	/**
+	 * @see SundryImpl
 	 * @see businesslogic.Service.Finance.FinanceService#getEntrucking(java.lang.String, java.lang.String)
 	 */
 	@Override
@@ -78,7 +87,8 @@ public class FinanceController implements FinanceService{
 		return sundryC.getEntrucking(time_start, time_end);
 	}
 	
-	/* (non-Javadoc)
+	/**
+	 * @see SundryImpl
 	 * @see businesslogic.Service.Finance.FinanceService#searchCost(java.lang.String, java.lang.String)
 	 */
 	@Override
@@ -88,7 +98,8 @@ public class FinanceController implements FinanceService{
 		return costC.searchCost(time_start, time_end);
 	}
 	
-	/* (non-Javadoc)
+	/**
+	 * @see BenefitImpl
 	 * @see businesslogic.Service.Finance.FinanceService#searchBenefit(java.lang.String)
 	 */
 	@Override
@@ -98,7 +109,8 @@ public class FinanceController implements FinanceService{
 		return benefitC.searchBenefit(time_end);
 	}
 	
-	/* (non-Javadoc)
+	/**
+	 * @see AccountImpl
 	 * @see businesslogic.Service.Finance.FinanceService#searchAccount(java.lang.String)
 	 */
 	@Override
@@ -108,7 +120,8 @@ public class FinanceController implements FinanceService{
 		return accountC.searchAccount(name);
 	}
 	
-	/* (non-Javadoc)
+	/**
+	 * @see AccountImpl
 	 * @see businesslogic.Service.Finance.FinanceService#deleteAccount(VO.AccountVO)
 	 */
 	@Override
@@ -122,7 +135,8 @@ public class FinanceController implements FinanceService{
 		return state;
 	}
 	
-	/* (non-Javadoc)
+	/**
+	 * @see CostImpl
 	 * @see businesslogic.Service.Finance.FinanceService#addCost(VO.CostVO)
 	 */
 	@Override
@@ -136,7 +150,8 @@ public class FinanceController implements FinanceService{
 		return state;
 	}
 	
-	/* (non-Javadoc)
+	/**
+	 * @see AccountImpl
 	 * @see businesslogic.Service.Finance.FinanceService#addAccount(VO.AccountVO)
 	 */
 	@Override
@@ -150,7 +165,7 @@ public class FinanceController implements FinanceService{
 		return state;
 	}
 	
-	/* (non-Javadoc)
+	/**
 	 * @see businesslogic.Service.Finance.FinanceService#addPeriod()
 	 */
 	@Override
@@ -159,7 +174,7 @@ public class FinanceController implements FinanceService{
 		return null;
 	}
 	
-	/* (non-Javadoc)
+	/**
 	 * @see businesslogic.Service.Finance.FinanceService#getPeriod()
 	 */
 	@Override
@@ -168,7 +183,7 @@ public class FinanceController implements FinanceService{
 		return null;
 	}
 	
-	/* (non-Javadoc)
+	/**
 	 * @see businesslogic.Service.Finance.FinanceService#updatePeriod()
 	 */
 	@Override
@@ -177,7 +192,8 @@ public class FinanceController implements FinanceService{
 		return null;
 	}
 	
-	/* (non-Javadoc)
+	/**
+	 * @see CostImpl 
 	 * @see businesslogic.Service.Finance.FinanceService#searchCost(java.lang.String)
 	 */
 	@Override
@@ -187,7 +203,8 @@ public class FinanceController implements FinanceService{
 		return costC.searchCost(time);
 	}
 	
-	/* (non-Javadoc)
+	/**
+	 * @see SundryImpl
 	 * @see businesslogic.Service.Finance.FinanceService#searchGathering(java.lang.String, java.lang.String, java.lang.String)
 	 */
 	@Override

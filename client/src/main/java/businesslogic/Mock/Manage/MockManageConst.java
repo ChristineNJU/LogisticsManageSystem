@@ -16,12 +16,6 @@ public class MockManageConst extends ManageConst{
 	}
 
 	@Override
-	public UpdateState updateConst(ConstVO constant, String field, String value) {
-		// TODO Auto-generated method stub
-		return UpdateState.SUCCESS;
-	}
-
-	@Override
 	public AddState addConst(ConstVO constant) {
 		// TODO Auto-generated method stub
 		return AddState.SUCCESS;

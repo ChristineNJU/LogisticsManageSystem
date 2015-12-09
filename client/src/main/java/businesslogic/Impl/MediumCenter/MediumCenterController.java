@@ -12,10 +12,15 @@ import businesslogic.SystemLog.SystemLog;
 // TODO: Auto-generated Javadoc
 /**
  * The Class MediumCenterController.
+ * 
+ * @author 张晨剑
+ * @version 1.0.0
  */
 public class MediumCenterController implements MCService{
 
-	/* (non-Javadoc)
+	/**
+	 * @see TransferImpl
+	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.MediumCenter.MCService#transfer(VO.TransferVO)
 	 */
 	@Override
@@ -29,7 +34,8 @@ public class MediumCenterController implements MCService{
 		return state;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see GetNeedTransferImpl
 	 * @see businesslogic.Service.MediumCenter.MCService#getNeedTransfer()
 	 */
 	@Override
@@ -39,7 +45,8 @@ public class MediumCenterController implements MCService{
 		return getNeedTransfer.getNeedTransfer();
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see GetNeedEntruckingImpl
 	 * @see businesslogic.Service.MediumCenter.MCService#getNeedEntrucking()
 	 */
 	@Override
@@ -49,7 +56,9 @@ public class MediumCenterController implements MCService{
 		return getNeedEntrucking.getNeedEntrucking();
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see EntruckingImpl
+	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.MediumCenter.MCService#entrucking(VO.EntruckingVO)
 	 */
 	@Override
@@ -63,7 +72,9 @@ public class MediumCenterController implements MCService{
 		return state;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see ArrivalImpl
+	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.MediumCenter.MCService#arrival(java.util.ArrayList)
 	 */
 	@Override

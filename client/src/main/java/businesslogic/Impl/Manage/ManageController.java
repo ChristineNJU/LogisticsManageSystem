@@ -27,10 +27,15 @@ import businesslogic.SystemLog.SystemLog;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ManageController.
+ * 
+ * @author 尹子越
+ * @version 1.0.0
  */
 public class ManageController implements ManageService{
 
-	/* (non-Javadoc)
+	/**
+	 * @see ManageStaff
+	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.Manage.ManageService#DeleteStaff(VO.StaffVO)
 	 */
 	@Override
@@ -44,7 +49,8 @@ public class ManageController implements ManageService{
 		return state;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see ManageStaff
 	 * @see businesslogic.Service.Manage.ManageService#searchStaff(java.lang.String)
 	 */
 	@Override
@@ -54,7 +60,9 @@ public class ManageController implements ManageService{
 		return manageStaff.searchStaff(id);
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see ManageStaff
+	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.Manage.ManageService#updateStaff(VO.StaffVO)
 	 */
 	@Override
@@ -68,7 +76,9 @@ public class ManageController implements ManageService{
 		return state;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see ManageStaff
+	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.Manage.ManageService#addStaff(VO.StaffVO)
 	 */
 	@Override
@@ -82,7 +92,9 @@ public class ManageController implements ManageService{
 		return state;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see ManageSalary
+	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.Manage.ManageService#updatePayment(VO.SalaryVO)
 	 */
 	@Override
@@ -96,7 +108,8 @@ public class ManageController implements ManageService{
 		return state;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see ManageSalary
 	 * @see businesslogic.Service.Manage.ManageService#showSalary()
 	 */
 	@Override
@@ -106,7 +119,9 @@ public class ManageController implements ManageService{
 		return manageSalary.showSalary();
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see ManageReceipt
+	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.Manage.ManageService#updateReceipt(VO.VO)
 	 */
 	@Override
@@ -127,10 +142,11 @@ public class ManageController implements ManageService{
 //		return manageReceipt.showReceipt();
 //	}
 
-	/* (non-Javadoc)
- * @see businesslogic.Service.Manage.ManageService#searchGathering(java.lang.String, java.lang.String)
- */
-@Override
+	/**
+	 * @see ManageFinance
+	 * @see businesslogic.Service.Manage.ManageService#searchGathering(java.lang.String, java.lang.String)
+	 */
+	@Override
 	public ArrayList<GatheringVO> searchGathering(String date,
 			String businesslobby) {
 		// TODO Auto-generated method stub
@@ -138,7 +154,8 @@ public class ManageController implements ManageService{
 		return manageFinance.searchGathering(date, businesslobby);
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see ManageFinance
 	 * @see businesslogic.Service.Manage.ManageService#searchCost(java.lang.String, java.lang.String)
 	 */
 	@Override
@@ -148,7 +165,8 @@ public class ManageController implements ManageService{
 		return manageFinance.searchCost(time_start, time_end);
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see ManageFinance
 	 * @see businesslogic.Service.Manage.ManageService#searchBenefit(java.lang.String)
 	 */
 	@Override
@@ -158,7 +176,8 @@ public class ManageController implements ManageService{
 		return manageFinance.searchBenefit(time_end);
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see ManageInstitution
 	 * @see businesslogic.Service.Manage.ManageService#searchInstitution(java.lang.String)
 	 */
 	@Override
@@ -168,7 +187,8 @@ public class ManageController implements ManageService{
 		return manageInstitution.searchInstitution(id);
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see ManageInstitution
 	 * @see businesslogic.Service.Manage.ManageService#deleteInstitution(VO.InstitutionVO)
 	 */
 	@Override
@@ -182,7 +202,9 @@ public class ManageController implements ManageService{
 		return state;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see ManageInstitution
+	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.Manage.ManageService#UpdateInstitution(VO.InstitutionVO)
 	 */
 	@Override
@@ -196,7 +218,9 @@ public class ManageController implements ManageService{
 		return state;
 	}
 	
-	/* (non-Javadoc)
+	/**
+	 * @see ManageInstitution
+	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.Manage.ManageService#addInstitution(VO.InstitutionVO)
 	 */
 	@Override
@@ -210,7 +234,9 @@ public class ManageController implements ManageService{
 		return state;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see ManageConst
+	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.Manage.ManageService#updateConst(VO.ConstVO)
 	 */
 	@Override
@@ -225,7 +251,8 @@ public class ManageController implements ManageService{
 		
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see ManageConst
 	 * @see businesslogic.Service.Manage.ManageService#showConst()
 	 */
 	@Override
@@ -235,7 +262,9 @@ public class ManageController implements ManageService{
 		return manageConst.showConst();
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see ManageConst
+	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.Manage.ManageService#addConst(VO.ConstVO)
 	 */
 	@Override
@@ -249,7 +278,8 @@ public class ManageController implements ManageService{
 		return state;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see ManageConst
 	 * @see businesslogic.Service.Manage.ManageService#getDistance()
 	 */
 	@Override
@@ -259,7 +289,9 @@ public class ManageController implements ManageService{
 		return manageConst.getDistance();
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see ManageConst
+	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.Manage.ManageService#updateDistance(VO.DistanceVO)
 	 */
 	@Override
@@ -273,7 +305,8 @@ public class ManageController implements ManageService{
 		return state;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see ManageShowReceipt
 	 * @see businesslogic.Service.Manage.ManageService#showArrival()
 	 */
 	@Override
@@ -284,7 +317,8 @@ public class ManageController implements ManageService{
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see ManageShowReceipt
 	 * @see businesslogic.Service.Manage.ManageService#showBalance()
 	 */
 	@Override
@@ -295,7 +329,8 @@ public class ManageController implements ManageService{
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see ManageShowReceipt
 	 * @see businesslogic.Service.Manage.ManageService#showCost()
 	 */
 	@Override
@@ -306,7 +341,8 @@ public class ManageController implements ManageService{
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see ManageShowReceipt
 	 * @see businesslogic.Service.Manage.ManageService#showDelivery()
 	 */
 	@Override
@@ -317,7 +353,8 @@ public class ManageController implements ManageService{
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see ManageShowReceipt
 	 * @see businesslogic.Service.Manage.ManageService#showEntrucking()
 	 */
 	@Override
@@ -328,7 +365,8 @@ public class ManageController implements ManageService{
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see ManageShowReceipt
 	 * @see businesslogic.Service.Manage.ManageService#showGathering()
 	 */
 	@Override
@@ -339,7 +377,8 @@ public class ManageController implements ManageService{
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see ManageShowReceipt
 	 * @see businesslogic.Service.Manage.ManageService#showRemoval()
 	 */
 	@Override
@@ -350,7 +389,8 @@ public class ManageController implements ManageService{
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see ManageShowReceipt
 	 * @see businesslogic.Service.Manage.ManageService#showStorage()
 	 */
 	@Override
@@ -361,7 +401,8 @@ public class ManageController implements ManageService{
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see ManageShowReceipt
 	 * @see businesslogic.Service.Manage.ManageService#showTransfer()
 	 */
 	@Override

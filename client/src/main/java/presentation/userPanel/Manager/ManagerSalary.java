@@ -54,8 +54,9 @@ public class ManagerSalary extends FunctionADUS{
 		}
 		for(SalaryVO temp:revisedSalary){
 			UpdateState state = service.updatePayment(temp);
-			if(state == UpdateState.CONNECTERROR)
-				showError("连接错误");
+			if(state == UpdateState.CONNECTERROR){
+//				showError("连接错误");
+			}
 		}
 		
 	}

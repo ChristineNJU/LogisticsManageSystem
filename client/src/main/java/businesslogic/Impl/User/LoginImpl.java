@@ -58,19 +58,20 @@ public class LoginImpl {
 					SystemLog.setOperatiorID(user.getID());
 					if(user.getRole()==UserRole.courier){
 						String id = user.getID();
-						SystemLog.setInstitutionId(id.substring(0, id.length()-2));
+						SystemLog.setInstitutionId(id.substring(0, id.length()-4));
 					}else if(user.getRole()==UserRole.businessAgent){
 						String id = user.getID();
-						SystemLog.setInstitutionId(id.substring(0, id.length()-1));
+						SystemLog.setInstitutionId(id.substring(0, id.length()-3));
 					}else if(user.getRole()==UserRole.mediumAgent){
 						String id = user.getID();
-						SystemLog.setInstitutionId(id.substring(0, id.length()-2));
+						SystemLog.setInstitutionId(id.substring(0, id.length()-3));
 					}else if(user.getRole()==UserRole.repository){
 						String id = user.getID();
-						SystemLog.setInstitutionId(id.substring(0, id.length()-1));
+						SystemLog.setInstitutionId(id.substring(0, id.length()-3));
 					}else{
 						SystemLog.setInstitutionId("");
 					}
+					System.out.println(SystemLog.getInstitutionId());
 				}else{
 					isFind = false;
 				}

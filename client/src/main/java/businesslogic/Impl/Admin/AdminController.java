@@ -12,10 +12,15 @@ import businesslogic.SystemLog.SystemLog;
 // TODO: Auto-generated Javadoc
 /**
  * The Class AdminController.
+ * 
+ * @author 张斯栋
+ * @version 1.0.0
  */
 public class AdminController implements AdminService{
 	
-	/* (non-Javadoc)
+	/**
+	 * @see AdminImpl
+	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.Admin.AdminService#updateUser(VO.UserVO)
 	 */
 	@Override
@@ -29,7 +34,8 @@ public class AdminController implements AdminService{
 		return state;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see AdminImpl
 	 * @see businesslogic.Service.Admin.AdminService#searchUser(java.util.ArrayList)
 	 */
 	@Override
@@ -39,7 +45,9 @@ public class AdminController implements AdminService{
 		return adminUser.searchUser(requirement);
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see AdminImpl
+	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.Admin.AdminService#deleteUser(VO.UserVO)
 	 */
 	@Override
@@ -53,7 +61,9 @@ public class AdminController implements AdminService{
 		return state;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see AdminImpl
+	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.Admin.AdminService#addUser(VO.UserVO)
 	 */
 	@Override

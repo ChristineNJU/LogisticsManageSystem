@@ -48,7 +48,8 @@ public class BusinessLbDriverMgt extends FunctionADUS{
 		// TODO Auto-generated method stub
 		drivers=new ArrayList<DriverInfoVO>();
 		
-		drivers=service.searchDriver("hy");
+		drivers=service.searchDriver("%%");
+//		System.out.println(drivers.size());
 	//need to be changed
 		tableV = getVector(drivers);
         

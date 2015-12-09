@@ -15,11 +15,13 @@ import businesslogic.SystemLog.SystemLog;
 // TODO: Auto-generated Javadoc
 /**
  * The Class RepositoryController.
+ * 
+ * @author 张晨剑
+ * @version 1.0.0
  */
 public class RepositoryController implements RepositoryService{
 
-	
-	/* (non-Javadoc)
+	/**
 	 * @see businesslogic.Service.Repository.RepositoryService#getStockTaking()
 	 */
 	@Override

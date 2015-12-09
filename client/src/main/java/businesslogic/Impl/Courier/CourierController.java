@@ -14,12 +14,15 @@ import businesslogic.SystemLog.SystemLog;
 // TODO: Auto-generated Javadoc
 /**
  * The Class CourierController.
+ * 
+ * @author 张斯栋
+ * @version 1.0.0
  */
 public class CourierController implements CourierService{
 	
-	
-	
-	/* (non-Javadoc)
+	/**
+	 * @see CourierImpl
+	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.Courier.CourierService#receiveConfirm(VO.VO)
 	 */
 	@Override
@@ -35,7 +38,8 @@ public class CourierController implements CourierService{
 		
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see CourierImpl
 	 * @see businesslogic.Service.Courier.CourierService#getCity()
 	 */
 	@Override
@@ -45,7 +49,8 @@ public class CourierController implements CourierService{
 		return courier.getCity();
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see CourierImpl
 	 * @see businesslogic.Service.Courier.CourierService#getAmount(java.lang.String, java.lang.String, State.LogisticsType, State.PackingCharge, double, double)
 	 */
 	@Override
@@ -57,7 +62,9 @@ public class CourierController implements CourierService{
 		return courier.getAmount(starting, destination, type, charge, weight, size);
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see CourierImpl
+	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.Courier.CourierService#addLogistics(VO.VO)
 	 */
 	@Override
@@ -71,7 +78,8 @@ public class CourierController implements CourierService{
 		return state;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see CourierImpl
 	 * @see businesslogic.Service.Courier.CourierService#getDayLength(java.lang.String, java.lang.String)
 	 */
 	@Override
@@ -81,7 +89,8 @@ public class CourierController implements CourierService{
 		return courier.getDayLength(starting, destination);
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see CourierImpl
 	 * @see businesslogic.Service.Courier.CourierService#isLegal(java.lang.String)
 	 */
 	@Override
