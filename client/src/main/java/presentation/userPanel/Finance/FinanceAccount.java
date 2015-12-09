@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import presentation.components.ButtonNew;
+import presentation.frame.MainFrame;
 import presentation.main.FunctionADUS;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableADUS;
 import presentation.table.TableModelADUS;
+import presentation.userPanel.Manager.ManagerStaffMgt;
 import State.AddState;
 import State.DeleteState;
 import State.UpdateState;
@@ -144,6 +146,11 @@ public class FinanceAccount extends FunctionADUS{
 		}
 		
 		return result;
+	}
+
+	@Override
+	public void performCancel() {
+		MainFrame.changeContentPanel(new FinanceAccount().getPanel());		
 	}
  
 }

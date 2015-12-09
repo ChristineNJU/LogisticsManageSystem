@@ -12,12 +12,14 @@ import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
 import presentation.components.LabelHeader;
 import presentation.components.TextFieldHeader;
+import presentation.frame.MainFrame;
 import presentation.main.FunctionAdd;
 import presentation.main.Translater;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
 import presentation.userPanel.BusinessLb.BusinessLbDelivery.Header;
+import presentation.userPanel.Manager.ManagerInstitutionMgt;
 import State.TransferType;
 import VO.RemovalVO;
 import VO.VO;
@@ -42,11 +44,11 @@ public class RepositoryRemoval extends FunctionAdd{
 	
 	NavigationRepository nav;
 	
-	public RepositoryRemoval(NavigationRepository navigationRepository) {
+	public RepositoryRemoval() {
 		super.buttonNew = new ButtonNew("新增出库项");
 		super.confirm = new ButtonConfirm("提交出库单");
 		
-		nav = navigationRepository;
+//		nav = navigationRepository;
 		
 		initUI("出库");
 	}
@@ -163,5 +165,9 @@ public class RepositoryRemoval extends FunctionAdd{
 			
 		}
 		
+	}
+	@Override
+	public void performCancel() {
+		MainFrame.changeContentPanel(new RepositoryRemoval().getPanel());		
 	}
 }

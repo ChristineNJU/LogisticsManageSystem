@@ -14,12 +14,14 @@ import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
 import presentation.components.FlatComboBox;
 import presentation.components.LabelHeader;
+import presentation.frame.MainFrame;
 import presentation.main.FunctionAdd;
 import presentation.main.Translater;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
 import presentation.userPanel.BusinessLb.BusinessLbDelivery.Header;
+import presentation.userPanel.Manager.ManagerInstitutionMgt;
 import State.CostType;
 import VO.CostVO;
 import VO.VO;
@@ -132,6 +134,11 @@ public class FinanceCost extends FunctionAdd{
 //			add(businessLobbyID);
 //			add(gatheringId);
 		}
+	}
+
+	@Override
+	public void performCancel() {
+		MainFrame.changeContentPanel(new FinanceCost().getPanel());		
 	}
 	
 }

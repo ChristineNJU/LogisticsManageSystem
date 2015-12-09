@@ -9,11 +9,13 @@ import javax.swing.table.TableColumnModel;
 
 import presentation.components.ButtonNew;
 import presentation.components.FlatComboBox;
+import presentation.frame.MainFrame;
 import presentation.main.FunctionADUS;
 import presentation.main.Translater;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableADUS;
 import presentation.table.TableModelADUS;
+import presentation.userPanel.BusinessLb.BusinessLbCarMgt;
 import State.AddState;
 import State.DeleteState;
 import State.ErrorState;
@@ -36,8 +38,8 @@ public class ManagerStaffMgt extends FunctionADUS{
 			
 	NavigationManager nav;
 	
-	public ManagerStaffMgt(NavigationManager navigationManager){
-		nav = navigationManager;
+	public ManagerStaffMgt(){
+//		nav = navigationManager;
 		buttonNew = new ButtonNew("新增员工");
 		initUI("员工管理");
 	}
@@ -206,6 +208,13 @@ public class ManagerStaffMgt extends FunctionADUS{
 			result.add(vRow);
 		}
 		return result;
+	}
+
+	@Override
+	public void performCancel() {
+		System.out.println("in managerStaffMgt");
+		MainFrame.changeContentPanel(new ManagerStaffMgt().getPanel());
+		
 	}
 
 }

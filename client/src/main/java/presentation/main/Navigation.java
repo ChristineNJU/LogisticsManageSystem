@@ -11,7 +11,7 @@ import VO.UserVO;
 
 public class Navigation {
 
-	UserVO user = new UserVO("141250174","尹子越",UserRole.courier);
+	protected UserVO user = new UserVO("141250174","尹子越",UserRole.courier);
 	private PanelNavigation navPanel;
 	
 	private ButtonNav pressed;

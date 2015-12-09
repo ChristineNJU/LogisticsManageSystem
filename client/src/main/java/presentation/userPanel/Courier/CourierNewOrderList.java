@@ -25,6 +25,7 @@ import presentation.table.RendererReviseLogistics;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
+import presentation.userPanel.Manager.ManagerInstitutionMgt;
 import State.AddState;
 import VO.LogisticsInputVO;
 import VO.VO;
@@ -51,13 +52,13 @@ public class CourierNewOrderList extends FunctionAdd{
 	
 	NavigationCourier nav;
 	
-	public CourierNewOrderList(final NavigationCourier nav){
+	public CourierNewOrderList(){
 		
 		super.buttonNew = new ButtonNew("新增快递");
 		super.confirm = new ButtonConfirm("提交所有订单");
 		super.cancel = new ButtonCancel();
 
-		this.nav = nav;
+//		this.nav = nav;
 		
 		oldTableModelAddOnly = model;
 		
@@ -242,6 +243,11 @@ public class CourierNewOrderList extends FunctionAdd{
 			date.setBounds(0, 0, 400, 30);
 			add(date);
 		}
+	}
+
+	@Override
+	public void performCancel() {
+		MainFrame.changeContentPanel(new CourierNewOrderList().getPanel());		
 	}
 	
 //	class InfomationPanel extends JPanel implements Runnable {

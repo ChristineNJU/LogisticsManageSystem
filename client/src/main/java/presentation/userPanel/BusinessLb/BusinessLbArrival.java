@@ -26,12 +26,14 @@ import presentation.components.ButtonNew;
 import presentation.components.FlatComboBox;
 import presentation.components.LabelHeader;
 import presentation.components.TextFieldHeader;
+import presentation.frame.MainFrame;
 import presentation.main.FunctionAdd;
 import presentation.main.Translater;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
 import presentation.userPanel.BusinessLb.BusinessLbEntrucking.Header;
+import presentation.userPanel.Manager.ManagerInstitutionMgt;
 
 /**
  * 营业厅到达单的列表
@@ -156,6 +158,11 @@ public class BusinessLbArrival extends FunctionAdd{
 			add(dateInput);
 			add(listIdIuput);
 		}
+	}
+
+	@Override
+	public void performCancel() {
+		MainFrame.changeContentPanel(new BusinessLbArrival().getPanel());		
 	}
 
 }

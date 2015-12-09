@@ -10,11 +10,13 @@ import javax.swing.table.TableColumnModel;
 
 import presentation.components.ButtonNew;
 import presentation.components.FlatComboBox;
+import presentation.frame.MainFrame;
 import presentation.main.FunctionADUS;
 import presentation.table.RendererDelete;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableADUS;
 import presentation.table.TableModelADUS;
+import presentation.userPanel.BusinessLb.BusinessLbCarMgt;
 import State.InstitutionType;
 import State.UserRole;
 import VO.UserVO;
@@ -176,6 +178,12 @@ public class AdminUserAccount extends FunctionADUS{
 		InstitutionType type = trans.getInstitutionType(vector.get(6));
 		UserVO user = new UserVO(vector.get(0),vector.get(1),role,vector.get(3),age,type,vector.get(5));
 		return user;
+	}
+
+	@Override
+	public void performCancel() {
+		MainFrame.changeContentPanel(new AdminUserAccount().getPanel());
+		
 	}
 
 

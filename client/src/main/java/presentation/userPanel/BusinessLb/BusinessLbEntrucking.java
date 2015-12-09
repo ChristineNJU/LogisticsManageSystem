@@ -12,10 +12,12 @@ import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
 import presentation.components.LabelHeader;
 import presentation.components.TextFieldHeader;
+import presentation.frame.MainFrame;
 import presentation.main.FunctionAdd;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
+import presentation.userPanel.Manager.ManagerInstitutionMgt;
 import presentation.userPanel.Medium.MediumCtEntrucking.Header;
 import VO.EntruckingVO;
 import VO.GatheringVO;
@@ -195,5 +197,9 @@ public class BusinessLbEntrucking extends FunctionAdd{
 			
 			
 		}
+	}
+	@Override
+	public void performCancel() {
+		MainFrame.changeContentPanel(new BusinessLbEntrucking().getPanel());		
 	}
 }

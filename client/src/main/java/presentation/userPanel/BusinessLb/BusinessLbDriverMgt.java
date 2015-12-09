@@ -3,25 +3,25 @@ package presentation.userPanel.BusinessLb;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Vector;
 
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
 import javax.swing.table.TableColumnModel;
 
-import presentation.components.ButtonNew;
-import presentation.components.FlatComboBox;
-import presentation.main.FunctionADUS;
-import presentation.table.ScrollPaneTable;
-import presentation.table.TableADUS;
-import presentation.table.TableModelADUS;
 import State.AddState;
 import State.DeleteState;
 import State.UpdateState;
 import VO.DriverInfoVO;
 import businesslogic.Impl.Businesslobby.DriverMgt;
 import businesslogic.Service.BusinessLobby.DriverMgtService;
+import presentation.components.ButtonNew;
+import presentation.components.FlatComboBox;
+import presentation.frame.MainFrame;
+import presentation.main.FunctionADUS;
+import presentation.table.ScrollPaneTable;
+import presentation.table.TableADUS;
+import presentation.table.TableModelADUS;
 
 public class BusinessLbDriverMgt extends FunctionADUS{
 	DriverMgtService service=new DriverMgt();
@@ -183,5 +183,11 @@ public class BusinessLbDriverMgt extends FunctionADUS{
 			result.add(vRow);
 		}
 		return result;
+	}
+
+	@Override
+	public void performCancel() {
+		MainFrame.changeContentPanel(new BusinessLbDriverMgt().getPanel());
+		
 	}
 }

@@ -3,14 +3,15 @@ package presentation.userPanel.BusinessLb;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import VO.CarInfoVO;
+import businesslogic.Impl.Businesslobby.CarMgt;
 import presentation.components.ButtonNew;
 import presentation.components.PanelContent;
+import presentation.frame.MainFrame;
 import presentation.main.FunctionADUS;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableADUS;
 import presentation.table.TableModelADUS;
-import VO.CarInfoVO;
-import businesslogic.Impl.Businesslobby.CarMgt;
 
 public class BusinessLbCarMgt  extends FunctionADUS{
 	CarMgt service=new CarMgt();
@@ -120,6 +121,12 @@ public class BusinessLbCarMgt  extends FunctionADUS{
 	
 	public PanelContent getPanel(){
 		return this.panel;
+	}
+
+
+	@Override
+	public void performCancel() {
+		MainFrame.changeContentPanel(new BusinessLbCarMgt().getPanel());
 	}
 
 }

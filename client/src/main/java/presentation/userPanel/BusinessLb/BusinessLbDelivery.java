@@ -12,10 +12,12 @@ import javax.swing.JLabel;
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
 import presentation.components.LabelHeader;
+import presentation.frame.MainFrame;
 import presentation.main.FunctionAdd;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
+import presentation.userPanel.Manager.ManagerInstitutionMgt;
 import VO.DeliveryVO;
 import VO.EntruckingVO;
 import VO.VO;
@@ -124,5 +126,9 @@ public class BusinessLbDelivery extends FunctionAdd{
 //			add(businessLobbyID);
 //			add(gatheringId);
 		}
+	}
+	@Override
+	public void performCancel() {
+		MainFrame.changeContentPanel(new BusinessLbDelivery().getPanel());
 	}
 }

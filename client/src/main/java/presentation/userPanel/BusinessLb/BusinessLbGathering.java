@@ -13,10 +13,12 @@ import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
 import presentation.components.LabelHeader;
 import presentation.components.TextFieldHeader;
+import presentation.frame.MainFrame;
 import presentation.main.FunctionAdd;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
+import presentation.userPanel.Manager.ManagerInstitutionMgt;
 import VO.GatheringVO;
 import VO.VO;
 import businesslogic.Impl.Businesslobby.BusinessLobbyController;
@@ -152,5 +154,10 @@ public class BusinessLbGathering extends FunctionAdd{
 			add(businessLobbyIDInput);
 //			add(gatheringIdInput);
 		}
+	}
+
+	@Override
+	public void performCancel() {
+		MainFrame.changeContentPanel(new BusinessLbGathering().getPanel());		
 	}
 }
