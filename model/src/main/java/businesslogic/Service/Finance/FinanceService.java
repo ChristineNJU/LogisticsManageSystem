@@ -141,7 +141,7 @@ public interface FinanceService {
 	 * @param time_end 截止日期
 	 * @return TransferVO的ArrayList
 	 */
-public ArrayList<TransferVO> getTransfer(String time_start, String time_end);
+	public ArrayList<TransferVO> getTransfer(String time_start, String time_end);
 	
 	/**
 	 * 更新银行账户.

@@ -20,6 +20,7 @@ import presentation.main.FunctionSearch;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableModelSearch;
 import presentation.table.TableSearch;
+import State.UpdateState;
 import VO.ArrivalVO;
 import VO.BalanceVO;
 import VO.CostVO;
@@ -69,6 +70,57 @@ public class ManagerReceipt extends FunctionSearch{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
+				UpdateState state = UpdateState.SUCCESS;
+				switch(((Header)header).receipt_actual.getSelectedIndex()){
+				case 0:
+					for(int i=0;i<arrival.size();i++){
+						state = service.updateReceipt(arrival.get(i));
+					}
+					break;
+				case 1:
+					for(int i=0;i<balance.size();i++){
+						state = service.updateReceipt(balance.get(i));
+					}
+					break;
+				case 2:
+					for(int i=0;i<cost.size();i++){
+						state = service.updateReceipt(cost.get(i));
+					}
+					break;
+				case 3:
+					for(int i=0;i<delivery.size();i++){
+						state = service.updateReceipt(delivery.get(i));
+					}
+					break;
+				case 4:
+					for(int i=0;i<entrucking.size();i++){
+						state = service.updateReceipt(entrucking.get(i));
+					}
+					break;
+				case 5:
+					for(int i=0;i<gathering.size();i++){
+						state = service.updateReceipt(gathering.get(i));
+					}
+					break;
+				case 6:
+					for(int i=0;i<removal.size();i++){
+						state = service.updateReceipt(removal.get(i));
+					}
+					break;
+				case 7:
+					for(int i=0;i<storage.size();i++){
+						state = service.updateReceipt(storage.get(i));
+					}
+					break;
+				case 8:
+					for(int i=0;i<transfer.size();i++){
+						state = service.updateReceipt(transfer.get(i));
+					}
+					break;
+				default:
+					break;
+				}
+				
 				
 			}
 
