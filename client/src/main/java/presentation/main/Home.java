@@ -5,10 +5,15 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JPasswordField;
 
+import State.ResetState;
 import VO.UserVO;
+import businesslogic.Impl.User.ResetPasswordImpl;
+import businesslogic.Service.User.ResetPasswordService;
 import presentation.components.ButtonOk;
+import presentation.components.LabelError;
 import presentation.components.LabelHeader;
 import presentation.components.PanelContent;
+import presentation.frame.MainFrame;
 
 public class Home extends PanelContent{
 
@@ -24,6 +29,9 @@ public class Home extends PanelContent{
 	
 	ButtonOk confirm = new ButtonOk("确认修改");
 	
+	ResetPasswordService service = new ResetPasswordImpl();
+	
+	LabelError error = new LabelError("");
 	public Home(String s) {
 		super(s);
 	}
@@ -59,12 +67,28 @@ public class Home extends PanelContent{
 	}
 
 	private void confirmRevise(){
+		this.remove(error);
 		String oldP = oldPassword.getPassword().toString();
 		String newP = newPassword.getPassword().toString();
 		String newPC = newPasswordConfirm.getPassword().toString();
 		
-//		System.out.println(oldPassword.getPassword());
+		if(newP.equals(newPC)){
+			ResetState state = service.reset(user.getId(), oldP, newP);
+			if(state == ResetState.WRONGPW){
+				showError("原密码错误");
+			}else if(state == ResetState.SUCCESS){
+				showError("修改成功");
+				MainFrame.changeContentPanel(new Home(this.user));
+			}
+		}else{
+			showError("两次输入的新密码不一样");
+		}
 	}
 	
+	private void showError(String s){
+		error = new LabelError(s);
+		error.setBounds(220,200,400,30);
+		this.add(error);
+	}
 	
 }
