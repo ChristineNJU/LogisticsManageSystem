@@ -26,8 +26,15 @@ import data.Service.Search.SearchPeriodService;
 import data.Service.Search.SearchStorageService;
 import data.Service.Search.SearchUserService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PeriodImpl.
+ */
 public class PeriodImpl implements PeriodService{
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Finance.PeriodService#updatePeriod()
+	 */
 	@Override
 	public UpdateState updatePeriod() {
 		// TODO Auto-generated method stub
@@ -51,6 +58,9 @@ public class PeriodImpl implements PeriodService{
 		return state;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Finance.PeriodService#getPeriod()
+	 */
 	@Override
 	public PeriodVO getPeriod() {
 		// TODO Auto-generated method stub
@@ -64,6 +74,9 @@ public class PeriodImpl implements PeriodService{
 		return period;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Finance.PeriodService#addPeriod()
+	 */
 	@Override
 	public AddState addPeriod() {
 		// TODO Auto-generated method stub

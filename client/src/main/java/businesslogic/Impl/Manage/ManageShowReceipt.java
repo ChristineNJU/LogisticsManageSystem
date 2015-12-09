@@ -39,11 +39,16 @@ import data.Service.Search.SearchRemovalService;
 import data.Service.Search.SearchStorageService;
 import data.Service.Search.SearchTransferService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ManageShowReceipt.
+ */
 public class ManageShowReceipt implements ShowReceiptService{
 	
 	
 	/**
-	 * show transfer
+	 * show transfer.
+	 *
 	 * @return ArrayList<TransferVO>
 	 */
 	
@@ -84,7 +89,8 @@ public class ManageShowReceipt implements ShowReceiptService{
 	}
 
 	/**
-	 * show storage
+	 * show storage.
+	 *
 	 * @return ArrayList<StorageVO>
 	 */
 	@Override
@@ -122,7 +128,8 @@ public class ManageShowReceipt implements ShowReceiptService{
 	}
 
 	/**
-	 * show Removal
+	 * show Removal.
+	 *
 	 * @return ArrayList<RemovalVO>
 	 */
 	@Override
@@ -159,7 +166,8 @@ public class ManageShowReceipt implements ShowReceiptService{
 	}
 
 	/**
-	 * show gathering
+	 * show gathering.
+	 *
 	 * @return ArrayList<GatheringVO>
 	 */
 	@Override
@@ -197,7 +205,8 @@ public class ManageShowReceipt implements ShowReceiptService{
 	}
 
 	/**
-	 * show entrucking
+	 * show entrucking.
+	 *
 	 * @return ArrayList<EntruckingVO>
 	 */
 	@Override
@@ -248,7 +257,8 @@ public class ManageShowReceipt implements ShowReceiptService{
 	}
 
 	/**
-	 * show delivery
+	 * show delivery.
+	 *
 	 * @return ArrayList<deliveryVO>
 	 */
 	@Override
@@ -286,7 +296,8 @@ public class ManageShowReceipt implements ShowReceiptService{
 	}
 
 	/**
-	 * show cost
+	 * show cost.
+	 *
 	 * @return ArrayList<CostVO>
 	 */
 	@Override
@@ -322,7 +333,8 @@ public class ManageShowReceipt implements ShowReceiptService{
 	}
 
 	/**
-	 * show balance
+	 * show balance.
+	 *
 	 * @return ArrayList<BalanceVO>
 	 */
 	@Override
@@ -360,8 +372,9 @@ public class ManageShowReceipt implements ShowReceiptService{
 
 	
 	/**
-	 *show arrival
-	 *@return ArrayList<ArrivalVO>
+	 * show arrival.
+	 *
+	 * @return ArrayList<ArrivalVO>
 	 */
 	@Override
 	public ArrayList<ArrivalVO> showArrival() {

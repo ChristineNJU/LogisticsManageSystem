@@ -13,8 +13,15 @@ import businesslogic.SystemLog.SystemLog;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DeliveryImpl.
+ */
 public class DeliveryImpl implements DeliveryService{
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.BusinessLobby.DeliveryService#delivery(VO.DeliveryVO)
+	 */
 	@Override
 	public AddState delivery(DeliveryVO delivery) {
 		// TODO Auto-generated method stub

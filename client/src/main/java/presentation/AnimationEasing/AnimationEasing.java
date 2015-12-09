@@ -1,7 +1,21 @@
 package presentation.AnimationEasing;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AnimationEasing.
+ */
 public class AnimationEasing {
 	
+	/**
+	 * Ease in elastic.
+	 *
+	 * @param x the x
+	 * @param t the t
+	 * @param b the b
+	 * @param c the c
+	 * @param d the d
+	 * @return the double
+	 */
 	public static double easeInElastic(double x, double t, double b, double c, double d) {
 		double s=1.70158;double p=0;double a=c;
 
@@ -18,6 +32,16 @@ public class AnimationEasing {
         return a*Math.pow(2,-10*t) * Math.sin( (t*d-s)*(2*Math.PI)/p ) + c + b;
 	}
 	
+	/**
+	 * Ease out cubic.
+	 *
+	 * @param x the x
+	 * @param t the t
+	 * @param b the b
+	 * @param c the c
+	 * @param d the d
+	 * @return the double
+	 */
 	public static double easeOutCubic(double x, double t, double b, double c, double d) {
 		 if ((t/=d/2) < 1) 
 			 return c/2*t*t*t + b;
@@ -25,10 +49,30 @@ public class AnimationEasing {
          return c/2*((t-=2)*t*t + 2) + b;
 	}
 	
+	/**
+	 * Ease in quad.
+	 *
+	 * @param x the x
+	 * @param t the t
+	 * @param b the b
+	 * @param c the c
+	 * @param d the d
+	 * @return the double
+	 */
 	public static double easeInQuad(double x, double t, double b, double c, double d) {
 		return c*(t/=d)*t + b;
 	}
 	
+	/**
+	 * Ease in out quint.
+	 *
+	 * @param x the x
+	 * @param t the t
+	 * @param b the b
+	 * @param c the c
+	 * @param d the d
+	 * @return the double
+	 */
 	public static double easeInOutQuint(double x, double t, double b, double c, double d) {
 		if ((t/=d/2) < 1) return c/2*t*t*t*t*t + b;
 

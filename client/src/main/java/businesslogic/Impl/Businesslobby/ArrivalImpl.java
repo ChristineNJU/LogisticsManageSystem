@@ -11,8 +11,15 @@ import businesslogic.SystemLog.SystemLog;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ArrivalImpl.
+ */
 public class ArrivalImpl implements ArrivalService{
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.BusinessLobby.ArrivalService#arrival(java.util.ArrayList)
+	 */
 	@Override
 	public AddState arrival(ArrayList<ArrivalVO> arrival) {
 		// TODO Auto-generated method stub

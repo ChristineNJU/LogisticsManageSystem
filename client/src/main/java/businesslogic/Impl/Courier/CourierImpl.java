@@ -27,8 +27,15 @@ import data.Service.Search.SearchDistanceService;
 import data.Service.Search.SearchLogisticsService;
 import data.Service.Update.UpdateService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CourierImpl.
+ */
 public class CourierImpl implements CourierService{
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Courier.CourierService#receiveConfirm(VO.VO)
+	 */
 	@Override
 	public UpdateState receiveConfirm(VO logistics_info) {
 		UpdateState state=UpdateState.SUCCESS;
@@ -63,6 +70,9 @@ public class CourierImpl implements CourierService{
 		return state;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Courier.CourierService#getCity()
+	 */
 	@Override
 	public ArrayList<String> getCity() {
 		// TODO Auto-generated method stub
@@ -89,6 +99,9 @@ public class CourierImpl implements CourierService{
 		return city;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Courier.CourierService#getAmount(java.lang.String, java.lang.String, State.LogisticsType, State.PackingCharge, double, double)
+	 */
 	@Override
 	public double getAmount(String starting, String destination,
 			LogisticsType type, PackingCharge charge, double weight,
@@ -157,6 +170,9 @@ public class CourierImpl implements CourierService{
 		return Amount;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Courier.CourierService#addLogistics(VO.VO)
+	 */
 	@Override
 	public AddState addLogistics(VO logistics_info) {
 		// TODO Auto-generated method stub
@@ -177,6 +193,9 @@ public class CourierImpl implements CourierService{
 		return state;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Courier.CourierService#getDayLength(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public double getDayLength(String starting, String destination) {
 		// TODO Auto-generated method stub
@@ -209,6 +228,9 @@ public class CourierImpl implements CourierService{
 		return dayLength;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Courier.CourierService#isLegal(java.lang.String)
+	 */
 	@Override
 	public CodeState isLegal(String bar_code) {
 		// TODO Auto-generated method stub

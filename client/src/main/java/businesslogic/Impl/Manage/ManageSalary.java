@@ -15,8 +15,15 @@ import data.RMIHelper.RMIHelper;
 import data.Service.Search.SearchSalaryService;
 import data.Service.Update.UpdateService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ManageSalary.
+ */
 public class ManageSalary implements ShowSalaryService,UpdatePaymentService{
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Manage.UpdatePaymentService#updatePayment(VO.SalaryVO)
+	 */
 	@Override
 	public UpdateState updatePayment(SalaryVO salary) {
 		// TODO Auto-generated method stub
@@ -48,6 +55,9 @@ public class ManageSalary implements ShowSalaryService,UpdatePaymentService{
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Manage.ShowSalaryService#showSalary()
+	 */
 	@Override
 	public ArrayList<SalaryVO> showSalary() {
 		// TODO Auto-generated method stub

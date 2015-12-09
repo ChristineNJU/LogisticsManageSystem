@@ -14,8 +14,15 @@ import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
 import data.Service.Search.SearchEntruckingService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class GetNeedEntruckingImpl.
+ */
 public class GetNeedEntruckingImpl implements GetNeedEntruckingService{
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.BusinessLobby.GetNeedEntruckingService#getNeedEntrucking()
+	 */
 	@Override
 	public ArrayList<EntruckingVO> getNeedEntrucking() {
 		// TODO Auto-generated method stub

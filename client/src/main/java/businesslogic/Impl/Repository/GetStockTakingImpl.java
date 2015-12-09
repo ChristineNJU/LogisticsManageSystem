@@ -14,8 +14,15 @@ import data.RMIHelper.RMIHelper;
 import data.Service.Search.SearchStockTakingService;
 import data.Service.Sundry.WareHouseService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class GetStockTakingImpl.
+ */
 public class GetStockTakingImpl implements GetStockTakingService{
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Repository.GetStockTakingService#getStockTaking()
+	 */
 	@Override
 	public ArrayList<StockTakingVO> getStockTaking() {
 		// TODO Auto-generated method stub

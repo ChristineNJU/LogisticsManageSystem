@@ -11,8 +11,15 @@ import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
 import data.Service.Search.SearchCostService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CostImpl.
+ */
 public class CostImpl implements CostService{
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Finance.CostService#searchCost(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public ArrayList<CostVO> searchCost(String time_start, String time_end) {
 		// TODO Auto-generated method stub
@@ -32,6 +39,9 @@ public class CostImpl implements CostService{
 		return Cost;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Finance.CostService#addCost(VO.CostVO)
+	 */
 	@Override
 	public AddState addCost(CostVO cost) {
 		// TODO Auto-generated method stub
@@ -47,6 +57,9 @@ public class CostImpl implements CostService{
 		return state;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Finance.CostService#searchCost(java.lang.String)
+	 */
 	@Override
 	public ArrayList<CostVO> searchCost(String time) {
 		// TODO Auto-generated method stub

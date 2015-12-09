@@ -12,8 +12,15 @@ import businesslogic.Service.Repository.GetAmountService;
 import businesslogic.SystemLog.SystemLog;
 import businesslogic.URLHelper.URLHelper;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class GetAmountImpl.
+ */
 public class GetAmountImpl implements GetAmountService {
 	
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Repository.GetAmountService#getAmount(State.StorageArea)
+	 */
 	@Override
 	public int getAmount(StorageArea area) throws RemoteException, MalformedURLException, NotBoundException {
 		// TODO Auto-generated method stub

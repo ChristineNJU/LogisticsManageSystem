@@ -17,12 +17,16 @@ import data.Service.Add.AddService;
 
 // TODO: Auto-generated Javadoc
 /**
+<<<<<<< HEAD
+ * The Class SystemLog.
+=======
  * 保存系统日志信息.
  * 在client模块的businesslogic.Impl中的所有Controller中使用,目的是在一次操作过后完成对系统日志的更新
  * 
  * 
  * @author 尹子越
  * @version 1.0.0
+>>>>>>> edb3b541549035216c246d3ca17170d45130aa94
  */
 public class SystemLog {
 	
@@ -92,7 +96,10 @@ public class SystemLog {
 	 * Adds the log.
 	 *
 	 * @param operation the operation
+<<<<<<< HEAD
+=======
 	 * @see AddService#add(PO.PO)
+>>>>>>> edb3b541549035216c246d3ca17170d45130aa94
 	 */
 	public static void addLog(String operation) {
 		

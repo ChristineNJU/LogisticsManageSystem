@@ -13,8 +13,18 @@ import data.RMIHelper.RMIHelper;
 import data.Service.Search.SearchLogisticsService;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class InquiryImpl.
+ */
 public class InquiryImpl {
 	
+	/**
+	 * Gets the logistics.
+	 *
+	 * @param bar_code the bar_code
+	 * @return the logistics
+	 */
 	public LogisticsHistoryVO getLogistics(String bar_code) {
 		LogisticsHistoryVO  logisticsVO = null ;
 		System.out.println(bar_code);

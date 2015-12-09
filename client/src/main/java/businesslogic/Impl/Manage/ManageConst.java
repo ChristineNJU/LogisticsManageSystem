@@ -23,9 +23,16 @@ import data.Service.Search.SearchConstService;
 import data.Service.Search.SearchDistanceService;
 import data.Service.Update.UpdateService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ManageConst.
+ */
 public class ManageConst implements ShowConstService,UpdateConstService,AddConstService, GetDistanceService
 , UpdateDistanceService{
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Manage.ShowConstService#showConst()
+	 */
 	@Override
 	public ArrayList<ConstVO> showConst() {
 		// TODO Auto-generated method stub
@@ -54,6 +61,9 @@ public class ManageConst implements ShowConstService,UpdateConstService,AddConst
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Manage.UpdateConstService#updateConst(VO.ConstVO)
+	 */
 	@Override
 	public UpdateState updateConst(ConstVO constant) {
 		// TODO Auto-generated method stub
@@ -83,6 +93,9 @@ public class ManageConst implements ShowConstService,UpdateConstService,AddConst
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Manage.AddConstService#addConst(VO.ConstVO)
+	 */
 	@Override
 	public AddState addConst(ConstVO constant) {
 		// TODO Auto-generated method stub
@@ -99,6 +112,9 @@ public class ManageConst implements ShowConstService,UpdateConstService,AddConst
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Manage.GetDistanceService#getDistance()
+	 */
 	@Override
 	public ArrayList<DistanceVO> getDistance() {
 		// TODO Auto-generated method stub
@@ -127,6 +143,9 @@ public class ManageConst implements ShowConstService,UpdateConstService,AddConst
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Manage.UpdateDistanceService#updateDistance(VO.DistanceVO)
+	 */
 	@Override
 	public UpdateState updateDistance(DistanceVO distance) {
 		// TODO Auto-generated method stub

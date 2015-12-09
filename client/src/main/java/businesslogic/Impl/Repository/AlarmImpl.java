@@ -9,8 +9,15 @@ import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
 import data.Service.Sundry.WareHouseService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AlarmImpl.
+ */
 public class AlarmImpl implements AlarmService {
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Repository.AlarmService#alarm()
+	 */
 	@Override
 	public boolean alarm() {
 		// TODO Auto-generated method stub
