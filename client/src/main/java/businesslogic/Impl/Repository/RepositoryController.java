@@ -22,7 +22,7 @@ import businesslogic.SystemLog.SystemLog;
 public class RepositoryController implements RepositoryService{
 
 	/**
-	 * 
+	 * @see GetStockTakingImpl
 	 * @see businesslogic.Service.Repository.RepositoryService#getStockTaking()
 	 */
 	@Override
@@ -32,7 +32,9 @@ public class RepositoryController implements RepositoryService{
 		return stockTaking.getStockTaking();
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see StockTakingExcelImpl
+	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.Repository.RepositoryService#stockTakingExcel(java.util.ArrayList)
 	 */
 	@Override
@@ -46,7 +48,9 @@ public class RepositoryController implements RepositoryService{
 		return state;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see StockTakingExcelImpl
+	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.Repository.RepositoryService#stockTakingConfirm(java.util.ArrayList)
 	 */
 	@Override
@@ -60,7 +64,8 @@ public class RepositoryController implements RepositoryService{
 		return state;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see GetNeedStorageImpl
 	 * @see businesslogic.Service.Repository.RepositoryService#getNeedStorage(java.lang.String)
 	 */
 	@Override
@@ -70,7 +75,9 @@ public class RepositoryController implements RepositoryService{
 		return getNeedStorage.getNeedStorage(destination);
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see BalanceImpl
+	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.Repository.RepositoryService#addBalance(java.util.ArrayList)
 	 */
 	@Override
@@ -84,7 +91,8 @@ public class RepositoryController implements RepositoryService{
 		return state;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see AlarmImpl
 	 * @see businesslogic.Service.Repository.RepositoryService#alarm()
 	 */
 	@Override
@@ -94,7 +102,9 @@ public class RepositoryController implements RepositoryService{
 		return alarm.alarm();
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see StorageImpl
+	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.Repository.RepositoryService#storage(java.util.ArrayList)
 	 */
 	@Override
@@ -108,7 +118,8 @@ public class RepositoryController implements RepositoryService{
 		return state;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see SeeImpl
 	 * @see businesslogic.Service.Repository.RepositoryService#seeStorage(java.lang.String, java.lang.String)
 	 */
 	@Override
@@ -118,7 +129,8 @@ public class RepositoryController implements RepositoryService{
 		return see.seeStorage(time_start, time_end);
 	}
 	
-	/* (non-Javadoc)
+	/**
+	 * @see SeeImpl
 	 * @see businesslogic.Service.Repository.RepositoryService#seeRemoval(java.lang.String, java.lang.String)
 	 */
 	public ArrayList<RemovalVO> seeRemoval(String time_start, String time_end) {
@@ -127,7 +139,8 @@ public class RepositoryController implements RepositoryService{
 		return see.seeRemoval(time_start, time_end);
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see GetNeedRemovalImpl
 	 * @see businesslogic.Service.Repository.RepositoryService#getNeedRemoval(java.lang.String)
 	 */
 	@Override
@@ -137,7 +150,9 @@ public class RepositoryController implements RepositoryService{
 		return gnr.getNeedRemoval(destination);
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * @see RemovalImpl
+	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.Repository.RepositoryService#addRemoval(java.util.ArrayList)
 	 */
 	@Override
