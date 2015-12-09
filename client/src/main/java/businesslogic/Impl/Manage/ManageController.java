@@ -24,8 +24,20 @@ import VO.VO;
 import businesslogic.Service.Manage.ManageService;
 import businesslogic.SystemLog.SystemLog;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ManageController.
+ * 
+ * @author 尹子越
+ * @version 1.0.0
+ */
 public class ManageController implements ManageService{
 
+	/**
+	 * @see ManageStaff
+	 * @see SystemLog#addLog(String)
+	 * @see businesslogic.Service.Manage.ManageService#DeleteStaff(VO.StaffVO)
+	 */
 	@Override
 	public DeleteState DeleteStaff(StaffVO staff) {
 		// TODO Auto-generated method stub
@@ -37,6 +49,10 @@ public class ManageController implements ManageService{
 		return state;
 	}
 
+	/**
+	 * @see ManageStaff
+	 * @see businesslogic.Service.Manage.ManageService#searchStaff(java.lang.String)
+	 */
 	@Override
 	public ArrayList<StaffVO> searchStaff(String id) {
 		// TODO Auto-generated method stub
@@ -44,6 +60,11 @@ public class ManageController implements ManageService{
 		return manageStaff.searchStaff(id);
 	}
 
+	/**
+	 * @see ManageStaff
+	 * @see SystemLog#addLog(String)
+	 * @see businesslogic.Service.Manage.ManageService#updateStaff(VO.StaffVO)
+	 */
 	@Override
 	public UpdateState updateStaff(StaffVO staff) {
 		// TODO Auto-generated method stub
@@ -55,6 +76,11 @@ public class ManageController implements ManageService{
 		return state;
 	}
 
+	/**
+	 * @see ManageStaff
+	 * @see SystemLog#addLog(String)
+	 * @see businesslogic.Service.Manage.ManageService#addStaff(VO.StaffVO)
+	 */
 	@Override
 	public AddState addStaff(StaffVO staff) {
 		// TODO Auto-generated method stub
@@ -66,6 +92,11 @@ public class ManageController implements ManageService{
 		return state;
 	}
 
+	/**
+	 * @see ManageSalary
+	 * @see SystemLog#addLog(String)
+	 * @see businesslogic.Service.Manage.ManageService#updatePayment(VO.SalaryVO)
+	 */
 	@Override
 	public UpdateState updatePayment(SalaryVO salary) {
 		// TODO Auto-generated method stub
@@ -77,6 +108,10 @@ public class ManageController implements ManageService{
 		return state;
 	}
 
+	/**
+	 * @see ManageSalary
+	 * @see businesslogic.Service.Manage.ManageService#showSalary()
+	 */
 	@Override
 	public ArrayList<SalaryVO> showSalary() {
 		// TODO Auto-generated method stub
@@ -84,6 +119,11 @@ public class ManageController implements ManageService{
 		return manageSalary.showSalary();
 	}
 
+	/**
+	 * @see ManageReceipt
+	 * @see SystemLog#addLog(String)
+	 * @see businesslogic.Service.Manage.ManageService#updateReceipt(VO.VO)
+	 */
 	@Override
 	public UpdateState updateReceipt(VO receipt) {
 		// TODO Auto-generated method stub
@@ -102,6 +142,10 @@ public class ManageController implements ManageService{
 //		return manageReceipt.showReceipt();
 //	}
 
+	/**
+	 * @see ManageFinance
+	 * @see businesslogic.Service.Manage.ManageService#searchGathering(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public ArrayList<GatheringVO> searchGathering(String date,
 			String businesslobby) {
@@ -110,6 +154,10 @@ public class ManageController implements ManageService{
 		return manageFinance.searchGathering(date, businesslobby);
 	}
 
+	/**
+	 * @see ManageFinance
+	 * @see businesslogic.Service.Manage.ManageService#searchCost(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public ArrayList<CostVO> searchCost(String time_start, String time_end) {
 		// TODO Auto-generated method stub
@@ -117,6 +165,10 @@ public class ManageController implements ManageService{
 		return manageFinance.searchCost(time_start, time_end);
 	}
 
+	/**
+	 * @see ManageFinance
+	 * @see businesslogic.Service.Manage.ManageService#searchBenefit(java.lang.String)
+	 */
 	@Override
 	public BenefitVO searchBenefit(String time_end) {
 		// TODO Auto-generated method stub
@@ -124,6 +176,10 @@ public class ManageController implements ManageService{
 		return manageFinance.searchBenefit(time_end);
 	}
 
+	/**
+	 * @see ManageInstitution
+	 * @see businesslogic.Service.Manage.ManageService#searchInstitution(java.lang.String)
+	 */
 	@Override
 	public ArrayList<InstitutionVO> searchInstitution(String id) {
 		// TODO Auto-generated method stub
@@ -131,6 +187,10 @@ public class ManageController implements ManageService{
 		return manageInstitution.searchInstitution(id);
 	}
 
+	/**
+	 * @see ManageInstitution
+	 * @see businesslogic.Service.Manage.ManageService#deleteInstitution(VO.InstitutionVO)
+	 */
 	@Override
 	public DeleteState deleteInstitution(InstitutionVO insitiution) {
 		// TODO Auto-generated method stub
@@ -142,6 +202,11 @@ public class ManageController implements ManageService{
 		return state;
 	}
 
+	/**
+	 * @see ManageInstitution
+	 * @see SystemLog#addLog(String)
+	 * @see businesslogic.Service.Manage.ManageService#UpdateInstitution(VO.InstitutionVO)
+	 */
 	@Override
 	public UpdateState UpdateInstitution(InstitutionVO institution) {
 		// TODO Auto-generated method stub
@@ -153,6 +218,11 @@ public class ManageController implements ManageService{
 		return state;
 	}
 	
+	/**
+	 * @see ManageInstitution
+	 * @see SystemLog#addLog(String)
+	 * @see businesslogic.Service.Manage.ManageService#addInstitution(VO.InstitutionVO)
+	 */
 	@Override
 	public AddState addInstitution(InstitutionVO institution) {
 		// TODO Auto-generated method stub
@@ -164,6 +234,11 @@ public class ManageController implements ManageService{
 		return state;
 	}
 
+	/**
+	 * @see ManageConst
+	 * @see SystemLog#addLog(String)
+	 * @see businesslogic.Service.Manage.ManageService#updateConst(VO.ConstVO)
+	 */
 	@Override
 	public UpdateState updateConst(ConstVO constant) {
 		// TODO Auto-generated method stub
@@ -176,6 +251,10 @@ public class ManageController implements ManageService{
 		
 	}
 
+	/**
+	 * @see ManageConst
+	 * @see businesslogic.Service.Manage.ManageService#showConst()
+	 */
 	@Override
 	public ArrayList<ConstVO> showConst() {
 		// TODO Auto-generated method stub
@@ -183,6 +262,11 @@ public class ManageController implements ManageService{
 		return manageConst.showConst();
 	}
 
+	/**
+	 * @see ManageConst
+	 * @see SystemLog#addLog(String)
+	 * @see businesslogic.Service.Manage.ManageService#addConst(VO.ConstVO)
+	 */
 	@Override
 	public AddState addConst(ConstVO constant) {
 		// TODO Auto-generated method stub
@@ -194,6 +278,10 @@ public class ManageController implements ManageService{
 		return state;
 	}
 
+	/**
+	 * @see ManageConst
+	 * @see businesslogic.Service.Manage.ManageService#getDistance()
+	 */
 	@Override
 	public ArrayList<DistanceVO> getDistance() {
 		// TODO Auto-generated method stub
@@ -201,6 +289,11 @@ public class ManageController implements ManageService{
 		return manageConst.getDistance();
 	}
 
+	/**
+	 * @see ManageConst
+	 * @see SystemLog#addLog(String)
+	 * @see businesslogic.Service.Manage.ManageService#updateDistance(VO.DistanceVO)
+	 */
 	@Override
 	public UpdateState updateDistance(DistanceVO distance) {
 		// TODO Auto-generated method stub
@@ -212,6 +305,10 @@ public class ManageController implements ManageService{
 		return state;
 	}
 
+	/**
+	 * @see ManageShowReceipt
+	 * @see businesslogic.Service.Manage.ManageService#showArrival()
+	 */
 	@Override
 	public ArrayList<ArrivalVO> showArrival() {
 		// TODO Auto-generated method stub
@@ -220,6 +317,10 @@ public class ManageController implements ManageService{
 		return result;
 	}
 
+	/**
+	 * @see ManageShowReceipt
+	 * @see businesslogic.Service.Manage.ManageService#showBalance()
+	 */
 	@Override
 	public ArrayList<BalanceVO> showBalance() {
 		// TODO Auto-generated method stub
@@ -228,6 +329,10 @@ public class ManageController implements ManageService{
 		return result;
 	}
 
+	/**
+	 * @see ManageShowReceipt
+	 * @see businesslogic.Service.Manage.ManageService#showCost()
+	 */
 	@Override
 	public ArrayList<CostVO> showCost() {
 		// TODO Auto-generated method stub
@@ -236,6 +341,10 @@ public class ManageController implements ManageService{
 		return result;
 	}
 
+	/**
+	 * @see ManageShowReceipt
+	 * @see businesslogic.Service.Manage.ManageService#showDelivery()
+	 */
 	@Override
 	public ArrayList<DeliveryVO> showDelivery() {
 		// TODO Auto-generated method stub
@@ -244,6 +353,10 @@ public class ManageController implements ManageService{
 		return result;
 	}
 
+	/**
+	 * @see ManageShowReceipt
+	 * @see businesslogic.Service.Manage.ManageService#showEntrucking()
+	 */
 	@Override
 	public ArrayList<EntruckingVO> showEntrucking() {
 		// TODO Auto-generated method stub
@@ -252,6 +365,10 @@ public class ManageController implements ManageService{
 		return result;
 	}
 
+	/**
+	 * @see ManageShowReceipt
+	 * @see businesslogic.Service.Manage.ManageService#showGathering()
+	 */
 	@Override
 	public ArrayList<GatheringVO> showGathering() {
 		// TODO Auto-generated method stub
@@ -260,6 +377,10 @@ public class ManageController implements ManageService{
 		return result;
 	}
 
+	/**
+	 * @see ManageShowReceipt
+	 * @see businesslogic.Service.Manage.ManageService#showRemoval()
+	 */
 	@Override
 	public ArrayList<RemovalVO> showRemoval() {
 		// TODO Auto-generated method stub
@@ -268,6 +389,10 @@ public class ManageController implements ManageService{
 		return result;
 	}
 
+	/**
+	 * @see ManageShowReceipt
+	 * @see businesslogic.Service.Manage.ManageService#showStorage()
+	 */
 	@Override
 	public ArrayList<StorageVO> showStorage() {
 		// TODO Auto-generated method stub
@@ -276,6 +401,10 @@ public class ManageController implements ManageService{
 		return result;
 	}
 
+	/**
+	 * @see ManageShowReceipt
+	 * @see businesslogic.Service.Manage.ManageService#showTransfer()
+	 */
 	@Override
 	public ArrayList<TransferVO> showTransfer() {
 		// TODO Auto-generated method stub

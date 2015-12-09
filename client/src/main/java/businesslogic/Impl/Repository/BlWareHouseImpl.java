@@ -16,14 +16,18 @@ import data.RMIHelper.RMIHelper;
 import data.Service.Sundry.WareHouseService;
 import data.Service.Update.UpdateService;
 
+// TODO: Auto-generated Javadoc
 /**
- * 获取仓库所有快递信息
- * 
+ * 获取仓库所有快递信息.
+ *
  * @author 尹子越
  * @version 1.0.0
- * */
+ */
 public class BlWareHouseImpl implements BlWareHouseService{
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Repository.BlWareHouseService#getWareHouse()
+	 */
 	@Override
 	public ArrayList<WareHouseVO> getWareHouse() {
 		// TODO Auto-generated method stub
@@ -45,6 +49,9 @@ public class BlWareHouseImpl implements BlWareHouseService{
 		return vo;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Repository.BlWareHouseService#updateWareHouse(VO.WareHouseVO)
+	 */
 	@Override
 	public UpdateState updateWareHouse(WareHouseVO vo) {
 		// TODO Auto-generated method stub

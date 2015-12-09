@@ -12,9 +12,19 @@ import VO.StorageVO;
 import businesslogic.Service.Repository.RepositoryService;
 import businesslogic.SystemLog.SystemLog;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class RepositoryController.
+ * 
+ * @author 张晨剑
+ * @version 1.0.0
+ */
 public class RepositoryController implements RepositoryService{
 
-	
+	/**
+	 * 
+	 * @see businesslogic.Service.Repository.RepositoryService#getStockTaking()
+	 */
 	@Override
 	public ArrayList<StockTakingVO> getStockTaking() {
 		// TODO Auto-generated method stub
@@ -22,6 +32,9 @@ public class RepositoryController implements RepositoryService{
 		return stockTaking.getStockTaking();
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Repository.RepositoryService#stockTakingExcel(java.util.ArrayList)
+	 */
 	@Override
 	public OutputState stockTakingExcel(ArrayList<StockTakingVO> stockTaking) {
 		// TODO Auto-generated method stub
@@ -33,6 +46,9 @@ public class RepositoryController implements RepositoryService{
 		return state;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Repository.RepositoryService#stockTakingConfirm(java.util.ArrayList)
+	 */
 	@Override
 	public AddState stockTakingConfirm(ArrayList<StockTakingVO> stockList) {
 		// TODO Auto-generated method stub
@@ -44,6 +60,9 @@ public class RepositoryController implements RepositoryService{
 		return state;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Repository.RepositoryService#getNeedStorage(java.lang.String)
+	 */
 	@Override
 	public ArrayList<StorageVO> getNeedStorage(String destination) {
 		// TODO Auto-generated method stub
@@ -51,6 +70,9 @@ public class RepositoryController implements RepositoryService{
 		return getNeedStorage.getNeedStorage(destination);
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Repository.RepositoryService#addBalance(java.util.ArrayList)
+	 */
 	@Override
 	public AddState addBalance(ArrayList<BalanceVO> balanceList) {
 		// TODO Auto-generated method stub
@@ -62,6 +84,9 @@ public class RepositoryController implements RepositoryService{
 		return state;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Repository.RepositoryService#alarm()
+	 */
 	@Override
 	public boolean alarm() {
 		// TODO Auto-generated method stub
@@ -69,6 +94,9 @@ public class RepositoryController implements RepositoryService{
 		return alarm.alarm();
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Repository.RepositoryService#storage(java.util.ArrayList)
+	 */
 	@Override
 	public StorageState storage(ArrayList<StorageVO> storage) {
 		// TODO Auto-generated method stub
@@ -80,6 +108,9 @@ public class RepositoryController implements RepositoryService{
 		return state;
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Repository.RepositoryService#seeStorage(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public ArrayList<StorageVO> seeStorage(String time_start, String time_end) {
 		// TODO Auto-generated method stub
@@ -87,12 +118,18 @@ public class RepositoryController implements RepositoryService{
 		return see.seeStorage(time_start, time_end);
 	}
 	
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Repository.RepositoryService#seeRemoval(java.lang.String, java.lang.String)
+	 */
 	public ArrayList<RemovalVO> seeRemoval(String time_start, String time_end) {
 		// TODO Auto-generated method stub
 		SeeImpl see = new SeeImpl();
 		return see.seeRemoval(time_start, time_end);
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Repository.RepositoryService#getNeedRemoval(java.lang.String)
+	 */
 	@Override
 	public ArrayList<RemovalVO> getNeedRemoval(String destination) {
 		// TODO Auto-generated method stub
@@ -100,6 +137,9 @@ public class RepositoryController implements RepositoryService{
 		return gnr.getNeedRemoval(destination);
 	}
 
+	/* (non-Javadoc)
+	 * @see businesslogic.Service.Repository.RepositoryService#addRemoval(java.util.ArrayList)
+	 */
 	@Override
 	public AddState addRemoval(ArrayList<RemovalVO> re) {
 		// TODO Auto-generated method stub
