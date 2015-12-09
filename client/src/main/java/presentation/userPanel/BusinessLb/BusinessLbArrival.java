@@ -18,6 +18,8 @@ import businesslogic.Impl.Businesslobby.BusinessLobbyController;
 import businesslogic.Impl.MediumCenter.MediumCenterController;
 import businesslogic.Service.BusinessLobby.BsLbService;
 import businesslogic.SystemLog.SystemLog;
+import State.AddState;
+import State.ErrorState;
 import State.LogisticsState;
 import VO.ArrivalVO;
 import VO.VO;
@@ -115,13 +117,19 @@ public class BusinessLbArrival extends FunctionAdd{
 	@Override
 	protected void confirmAll() {
 		//提交所有更新
+		AddState state=AddState.CONNECTERROR;
 		ArrayList<ArrivalVO> temps = new ArrayList<ArrivalVO>();
 		for(Vector<String> vector:tableV){
 			ArrivalVO temp = (ArrivalVO)this.getVO(vector);
 			temps.add(temp);
-			
 		}
-		service.arrival(temps);
+		state=service.arrival(temps);
+		if(state==AddState.CONNECTERROR){
+			showError(ErrorState.CONNECTERROR);
+		}
+		else if(state==AddState.FAIL){
+			showError(ErrorState.ADDERROR);
+		}
 	}
 
 	@Override
@@ -159,6 +167,8 @@ public class BusinessLbArrival extends FunctionAdd{
 			add(listIdIuput);
 		}
 	}
+	
+	
 
 	@Override
 	public void performCancel() {

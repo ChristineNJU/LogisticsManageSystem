@@ -17,7 +17,12 @@ import presentation.main.FunctionAdd;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
+<<<<<<< HEAD
 import presentation.userPanel.Manager.ManagerInstitutionMgt;
+=======
+import State.AddState;
+import State.ErrorState;
+>>>>>>> b422d9500cda77c829759d9b06a11ea656e0dff1
 import VO.DeliveryVO;
 import VO.EntruckingVO;
 import VO.VO;
@@ -84,7 +89,14 @@ public class BusinessLbDelivery extends FunctionAdd{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			service.delivery(temp);
+			AddState state=AddState.CONNECTERROR;
+			state=service.delivery(temp);
+			if(state==AddState.CONNECTERROR){
+				showError(ErrorState.CONNECTERROR);
+			}
+			else if(state==AddState.FAIL){
+				showError(ErrorState.ADDERROR);
+			}
 		}
 		
 	}

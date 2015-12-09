@@ -12,6 +12,7 @@ import presentation.table.TableModelADUS;
 import presentation.userPanel.Manager.ManagerStaffMgt;
 import State.AddState;
 import State.DeleteState;
+import State.ErrorState;
 import State.UpdateState;
 import VO.AccountVO;
 import businesslogic.Impl.Finance.AccountImpl;
@@ -41,8 +42,13 @@ public class FinanceAccount extends FunctionADUS{
 		accounts=new ArrayList<AccountVO>();
 		
 		accounts=service.searchAccount("%%");
-		
-		tableV=getVector(accounts);
+		if(accounts!=null){
+			tableV=getVector(accounts);
+		}
+		else {
+			tableV=new Vector<Vector<String>>();
+			super.isConnectError=true;
+		}
 		
 		model = new TableModelADUS(tableV, tableH,isCellEditable);
 		table = new TableADUS(model);
@@ -79,9 +85,11 @@ public class FinanceAccount extends FunctionADUS{
 		for(int i=0;i<deleteItems.size();i++){
 			deleteState=service.deleteAccount(deleteItems.get(i));
 			if(deleteState==DeleteState.FAIL){
+				showError(ErrorState.DELETEERROR);
 				break;
 			}
 			else if(deleteState==DeleteState.CONNECTERROR){
+				showError(ErrorState.CONNECTERROR);
 				break;
 			}
 		}
@@ -96,9 +104,11 @@ public class FinanceAccount extends FunctionADUS{
 		for(int i=0;i<updateItems.size();i++){
 			updateState=service.updateAccount(updateItems.get(i));
 			if(updateState==UpdateState.NOTFOUND){
+				showError(ErrorState.UPDATEERROR);
 				break;
 			}
 			else if(updateState==UpdateState.CONNECTERROR){
+				showError(ErrorState.CONNECTERROR);
 				break;
 			}
 		}
@@ -113,9 +123,11 @@ public class FinanceAccount extends FunctionADUS{
 		for(int i=0;i<addItems.size();i++){
 			addState=service.addAccount(addItems.get(i));
 			if(addState==AddState.FAIL){
+				showError(ErrorState.ADDERROR);
 				break;
 			}
 			else if(addState==AddState.CONNECTERROR){
+				showError(ErrorState.CONNECTERROR);
 				break;
 			}
 		}

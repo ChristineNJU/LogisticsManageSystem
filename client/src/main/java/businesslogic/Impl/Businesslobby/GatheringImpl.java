@@ -13,6 +13,9 @@ import data.Service.Add.AddService;
 // TODO: Auto-generated Javadoc
 /**
  * The Class GatheringImpl.
+ * 营业厅收款单的实现
+ * 
+ * @see AddService
  */
 public class GatheringImpl implements GatheringService{
 

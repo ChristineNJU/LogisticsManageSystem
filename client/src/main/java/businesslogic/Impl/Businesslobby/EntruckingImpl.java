@@ -9,10 +9,14 @@ import businesslogic.Service.BusinessLobby.EntruckingService;
 import businesslogic.SystemLog.SystemLog;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
+import data.Service.Delete.DeleteService;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class EntruckingImpl.
+ * 营业厅装车单的实现
+ * 
+ * @see AddService
  */
 public class EntruckingImpl implements EntruckingService{
 

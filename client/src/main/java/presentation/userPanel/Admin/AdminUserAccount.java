@@ -16,8 +16,14 @@ import presentation.table.RendererDelete;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableADUS;
 import presentation.table.TableModelADUS;
+<<<<<<< HEAD
 import presentation.userPanel.BusinessLb.BusinessLbCarMgt;
+=======
+import State.DeleteState;
+import State.ErrorState;
+>>>>>>> b422d9500cda77c829759d9b06a11ea656e0dff1
 import State.InstitutionType;
+import State.UpdateState;
 import State.UserRole;
 import VO.UserVO;
 import businesslogic.Impl.Admin.AdminController;
@@ -55,7 +61,14 @@ public class AdminUserAccount extends FunctionADUS{
 		ArrayList<String> requirement = new ArrayList<String>();
 		requirement.add("%%");
 		users = service.searchUser(requirement);
-		
+		if(users!=null){
+			
+			tableV = getVector(users);
+		}
+		else {
+			tableV=new Vector<Vector<String>>();
+			super.isConnectError=true;
+		}
 		tableV = getVector(users);
 		
 		model = new TableModelADUS(tableV, tableH,isCellEditable);
@@ -109,8 +122,8 @@ public class AdminUserAccount extends FunctionADUS{
 	
 	
 	protected void confirmRevise(){
-		removeError();
-		
+//		removeError();
+		DeleteState deleteState=DeleteState.CONNECTERROR;
 		deleteItems = new ArrayList<UserVO>();
 		System.out.println(tableV.size());
 		for(int i = 0;i < tableV.size();i++){
@@ -120,8 +133,20 @@ public class AdminUserAccount extends FunctionADUS{
 		}
 		System.out.println("----------------------------deleted users:");
 		for(int i = 0; i < deleteItems.size();i++){
-			System.out.println(deleteItems.get(i).getId());
+//			System.out.println(deleteItems.get(i).getId());
+			deleteState=service.deleteUser(deleteItems.get(i));
+			if(deleteState==DeleteState.CONNECTERROR){
+				showError(ErrorState.CONNECTERROR);
+				break;
+			}
+			else if(deleteState==DeleteState.FAIL){
+				showError(ErrorState.DELETEERROR);
+				break;
+			}
+			
 		}
+		
+		UpdateState updateState=UpdateState.CONNECTERROR;
 		updateItems = new ArrayList<UserVO>();
 		for(int i = 0;i < tableV.size();i++){
 			if(model.isUpdate(i)){
@@ -130,7 +155,15 @@ public class AdminUserAccount extends FunctionADUS{
 		}
 		System.out.println("----------------------------updated users:");
 		for(int i = 0; i < updateItems.size();i++){
-			System.out.println(updateItems.get(i).getId());
+//			System.out.println(updateItems.get(i).getId());
+			updateState=service.updateUser(updateItems.get(i));
+			if(updateState==UpdateState.CONNECTERROR){
+				showError(ErrorState.CONNECTERROR);
+				break;
+			}
+			else if(updateState==UpdateState.NOTFOUND){
+				showError(ErrorState.SEARCHERROR);
+			}
 		}
 		//TODO 全部提交之后更新界面
 //		for(UserVO temp:addUsers){
@@ -171,6 +204,10 @@ public class AdminUserAccount extends FunctionADUS{
         }
 		return result;
     }
+	
+	public boolean isConnectError(){
+		return super.isConnectError;
+	}
 	
 	protected UserVO getVO(Vector<String> vector){
 		UserRole role = trans.getUserRole(vector.get(2));

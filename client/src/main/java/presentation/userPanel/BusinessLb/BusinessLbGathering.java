@@ -18,7 +18,12 @@ import presentation.main.FunctionAdd;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
+<<<<<<< HEAD
 import presentation.userPanel.Manager.ManagerInstitutionMgt;
+=======
+import State.AddState;
+import State.ErrorState;
+>>>>>>> b422d9500cda77c829759d9b06a11ea656e0dff1
 import VO.GatheringVO;
 import VO.VO;
 import businesslogic.Impl.Businesslobby.BusinessLobbyController;
@@ -104,7 +109,15 @@ public class BusinessLbGathering extends FunctionAdd{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			service.gathering(temp);
+			AddState state=AddState.CONNECTERROR;
+			state=service.gathering(temp);
+			if(state==AddState.CONNECTERROR){
+				showError(ErrorState.CONNECTERROR);
+			}
+			else if(state==AddState.FAIL){
+				showError(ErrorState.ADDERROR);
+			}
+			
 	}		
 		
 	}

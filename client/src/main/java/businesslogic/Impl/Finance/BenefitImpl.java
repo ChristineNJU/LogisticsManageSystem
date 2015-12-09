@@ -12,6 +12,9 @@ import data.Service.Search.SearchBenefitService;
 // TODO: Auto-generated Javadoc
 /**
  * The Class BenefitImpl.
+ * 收益管理的实现
+ * 
+ * @see SearchBenefitService
  */
 public class BenefitImpl implements GetBenefitService{
 

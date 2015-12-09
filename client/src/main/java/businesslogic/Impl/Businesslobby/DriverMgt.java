@@ -24,6 +24,12 @@ import data.Service.Update.UpdateService;
 // TODO: Auto-generated Javadoc
 /**
  * The Class DriverMgt.
+ * 营业厅车辆管理的实现
+ * 
+ * @see SearchDriverInfoService
+ * @see UpdateService
+ * @see DeleteService
+ * @see AddService
  */
 public class DriverMgt implements DriverMgtService{
 

@@ -124,6 +124,10 @@ public abstract class FunctionADUS extends Function{
 		return panel;
 	}
 	
+	public boolean isConnectError(){
+		return isConnectError;
+	}
+	
 	public class FuncionListener implements MouseListener{
 
 
@@ -219,7 +223,7 @@ public abstract class FunctionADUS extends Function{
 		@Override
 		public void run() {
 			try {
-				System.out.println("staff error thread");
+//				System.out.println("staff error thread");
 				Thread.sleep(1000);
 				this.setVisible(true);
 //				this.repaint();
