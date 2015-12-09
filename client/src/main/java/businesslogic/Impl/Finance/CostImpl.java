@@ -14,6 +14,10 @@ import data.Service.Search.SearchCostService;
 // TODO: Auto-generated Javadoc
 /**
  * The Class CostImpl.
+ * 出款单业务的实现
+ * 
+ * @see SearchCostService
+ * @see AddService
  */
 public class CostImpl implements CostService{
 

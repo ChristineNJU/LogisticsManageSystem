@@ -30,6 +30,12 @@ import data.Service.Update.UpdateService;
 // TODO: Auto-generated Javadoc
 /**
  * The Class CourierImpl.
+ * 快递员业务的实现
+ * 
+ * @see SearchLogisticsService
+ * @see UpdateService
+ * @see SearchDistanceService
+ * @see SearchConstService
  */
 public class CourierImpl implements CourierService{
 
@@ -135,16 +141,16 @@ public class CourierImpl implements CourierService{
 			//----------------------------------------------------------
 			
 			ArrayList<String> requirementType=new ArrayList<String>();
-			System.out.println(type);
+//			System.out.println(type);
 			requirementType.add("name='"+StateSwitch.switchToStr(type)+"'");
 			ArrayList<ConstPO> constResult=constSearch.searchConst(requirementType);
 			double fee=constResult.get(0).getValue();
 			
 			double density=weight/size;
 			
-			System.out.println(density);
-			System.out.println(fee);
-			System.out.println(distance);
+//			System.out.println(density);
+//			System.out.println(fee);
+//			System.out.println(distance);
 //			System.out.println()
 			if(density>=10){
 				//define: object whose density is less than 10kg/m^3 is considered to be light
@@ -155,14 +161,14 @@ public class CourierImpl implements CourierService{
 			}
 			
 			//----------------------------------------------------------
-			System.out.println(Amount);
+//			System.out.println(Amount);
 			ArrayList<String> requirementPack=new ArrayList<String>();
 			requirementPack.add("name='"+StateSwitch.switchToStr(charge)+"'");
 			constResult=constSearch.searchConst(requirementPack);
 			double packFee=constResult.get(0).getValue();
 			
 			Amount+=packFee;
-			System.out.println(Amount);
+//			System.out.println(Amount);
 		} catch(Exception ex){
 			System.out.println(ex.getMessage());
 			ex.printStackTrace();
@@ -213,7 +219,7 @@ public class CourierImpl implements CourierService{
 				ArrayList<DistancePO> distanceResult=distanceSearch.searchDistance(requirementDis);
 				if(distanceResult.isEmpty()){
 					requirementDis.clear();
-					System.out.println("empty");
+//					System.out.println("empty");
 					requirementDis.add("city_2='"+starting+"' AND "+"city_1='"+destination+"'");
 //				distanceSearchceResult.clear();
 					distanceResult=distanceSearch.searchDistance(requirementDis);

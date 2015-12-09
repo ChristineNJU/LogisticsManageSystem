@@ -18,6 +18,11 @@ import data.Service.Update.UpdateService;
 // TODO: Auto-generated Javadoc
 /**
  * The Class AccountImpl.
+ * 银行账户管理实现
+ * 
+ * @see UpdateService
+ * @see SearchAccountService
+ * @see DeleteService
  */
 public class AccountImpl implements AccountService{
 
