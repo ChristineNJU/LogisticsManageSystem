@@ -10,28 +10,21 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.table.TableColumnModel;
 
+import State.AddState;
+import State.CostType;
+import State.ErrorState;
+import VO.CostVO;
+import VO.VO;
+import businesslogic.Impl.Finance.FinanceController;
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
 import presentation.components.FlatComboBox;
-import presentation.components.LabelHeader;
 import presentation.frame.MainFrame;
 import presentation.main.FunctionAdd;
 import presentation.main.Translater;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
-import presentation.userPanel.BusinessLb.BusinessLbDelivery.Header;
-<<<<<<< HEAD
-import presentation.userPanel.Manager.ManagerInstitutionMgt;
-=======
-import State.AddState;
->>>>>>> b422d9500cda77c829759d9b06a11ea656e0dff1
-import State.CostType;
-import State.ErrorState;
-import VO.CostVO;
-import VO.VO;
-import businesslogic.Impl.Finance.FinanceController;
-import businesslogic.SystemLog.SystemLog;
 
 public class FinanceCost extends FunctionAdd{
 	SimpleDateFormat sdfs=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

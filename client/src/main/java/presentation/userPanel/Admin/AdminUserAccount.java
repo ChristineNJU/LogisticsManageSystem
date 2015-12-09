@@ -8,20 +8,8 @@ import javax.swing.JComboBox;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
-import presentation.components.ButtonNew;
-import presentation.components.FlatComboBox;
-import presentation.frame.MainFrame;
-import presentation.main.FunctionADUS;
-import presentation.table.RendererDelete;
-import presentation.table.ScrollPaneTable;
-import presentation.table.TableADUS;
-import presentation.table.TableModelADUS;
-<<<<<<< HEAD
-import presentation.userPanel.BusinessLb.BusinessLbCarMgt;
-=======
 import State.DeleteState;
 import State.ErrorState;
->>>>>>> b422d9500cda77c829759d9b06a11ea656e0dff1
 import State.InstitutionType;
 import State.UpdateState;
 import State.UserRole;
@@ -31,6 +19,14 @@ import businesslogic.Service.Admin.AdminService;
 /*
  *
  */
+import presentation.components.ButtonNew;
+import presentation.components.FlatComboBox;
+import presentation.frame.MainFrame;
+import presentation.main.FunctionADUS;
+import presentation.table.RendererDelete;
+import presentation.table.ScrollPaneTable;
+import presentation.table.TableADUS;
+import presentation.table.TableModelADUS;
 
 
 

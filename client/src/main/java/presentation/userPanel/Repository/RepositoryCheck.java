@@ -37,9 +37,12 @@ public class RepositoryCheck extends FunctionSearch{
 	
 	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 	
+	private LabelHeader errorTime = new LabelHeader("开始时间需在结束时间之前");
+	
 	public RepositoryCheck(){
 		confirmSearch = new ButtonConfirm("查看出库入库记录");
 		initUI("查看出库入库记录");
+		errorTime.setBounds(500,0,200,40);
 	}
 	
 	@Override
@@ -78,10 +81,11 @@ public class RepositoryCheck extends FunctionSearch{
 
 	@Override
 	protected void showSearch() {
+		panel.remove(errorTime);
 		String timeBegin = dateBeginChooser.getTime();
 		String timeEnd = dateEndChooser.getTime();
 		if(timeBegin.compareTo(timeEnd) >= 0){
-			showError("开始时间需要在结束时间之前");
+			showErrorTime();
 		}else{
 			storages = service.seeStorage(timeBegin, timeEnd);
 			removals = service.seeRemoval(timeBegin, timeEnd);
@@ -93,6 +97,12 @@ public class RepositoryCheck extends FunctionSearch{
 			table2.setModel(model2);
 			table2.repaint();
 		}
+	}
+	
+	private void showErrorTime(){
+//		LabelHeader errorTime = new LabelHeader("开始时间需在结束时间之前");
+//		errorTime.setBounds(500,0,200,40);
+		panel.add(errorTime);
 	}
 	
 	protected Vector<Vector<String>> getVector(ArrayList<StorageVO> storages) {
