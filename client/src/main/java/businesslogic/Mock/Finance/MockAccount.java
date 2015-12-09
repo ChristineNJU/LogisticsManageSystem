@@ -10,12 +10,6 @@ import businesslogic.Impl.Finance.AccountImpl;
 
 public class MockAccount extends AccountImpl{
 	
-	@Override
-	public UpdateState updateAccount(AccountVO account, String field,
-			String value) {
-		// TODO Auto-generated method stub
-		return UpdateState.NOTFOUND;
-	}
 
 	@Override
 	public ArrayList<AccountVO> searchAccount(String name) {

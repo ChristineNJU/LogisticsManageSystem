@@ -19,11 +19,6 @@ public class MockManageStaff extends ManageStaff {
 		return new ArrayList<StaffVO>();
 	}
 
-	@Override
-	public UpdateState updateStaff(StaffVO staff, String field, String value) {
-		// TODO Auto-generated method stub
-		return UpdateState.SUCCESS;
-	}
 
 	@Override
 	public AddState addStaff(StaffVO staff) {

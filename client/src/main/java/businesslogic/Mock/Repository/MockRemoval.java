@@ -8,9 +8,4 @@ import businesslogic.Impl.Repository.RemovalImpl;
 
 public class MockRemoval extends RemovalImpl{
 
-	@Override
-	public AddState removal(ArrayList<RemovalVO> re) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

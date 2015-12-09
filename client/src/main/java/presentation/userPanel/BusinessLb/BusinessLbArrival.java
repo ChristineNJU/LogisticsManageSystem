@@ -62,14 +62,14 @@ public class BusinessLbArrival extends FunctionAdd{
 		
 		arrivals = new ArrayList<ArrivalVO>();
 		
-		//测试用
-		try {
-			ArrivalVO arrival0 = new ArrivalVO("0000001001", sdfs.parse("2015-12-03 10:30:10"), "0210210201021020102102", "南京", LogisticsState.INTACT);
-			arrivals.add(arrival0);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		//测试用
+//		try {
+//			ArrivalVO arrival0 = new ArrivalVO("0000001001", sdfs.parse("2015-12-03 10:30:10"), "0210210201021020102102", "南京", LogisticsState.INTACT);
+//			arrivals.add(arrival0);
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		tableV = getVector(arrivals);
 		

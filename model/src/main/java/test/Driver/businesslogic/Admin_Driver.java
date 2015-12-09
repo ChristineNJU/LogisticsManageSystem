@@ -13,7 +13,7 @@ public class Admin_Driver {
 		System.out.println(Admin.addUser(user));
 		System.out.println();
 		
-		System.out.println(Admin.updateUser(user,null,null));
+		System.out.println(Admin.updateUser(user));
 		System.out.println();
 		
 		System.out.println(Admin.deleteUser(user));

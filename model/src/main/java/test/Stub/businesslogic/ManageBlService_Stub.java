@@ -19,13 +19,21 @@ import State.DeleteState;
 import State.InstitutionType;
 import State.UpdateState;
 import State.UserRole;
+import VO.ArrivalVO;
+import VO.BalanceVO;
 import VO.BenefitVO;
 import VO.ConstVO;
 import VO.CostVO;
+import VO.DeliveryVO;
+import VO.DistanceVO;
+import VO.EntruckingVO;
 import VO.GatheringVO;
 import VO.InstitutionVO;
+import VO.RemovalVO;
 import VO.SalaryVO;
 import VO.StaffVO;
+import VO.StorageVO;
+import VO.TransferVO;
 import VO.VO;
 import businesslogic.Service.Finance.GetCostService;
 import businesslogic.Service.Manage.AddConstService;
@@ -80,7 +88,7 @@ public class ManageBlService_Stub implements ManageService{
 		System.out.println("修改成功");
 		ConstPO constpo=new ConstPO(null,1,null);
 		try {
-			System.out.println("Update_Stub"+new UpdateService_Stub().update(constpo, field,value));
+			System.out.println("Update_Stub"+new UpdateService_Stub().update(constpo));
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -112,7 +120,7 @@ public class ManageBlService_Stub implements ManageService{
 		System.out.println("修改成功");
 		ConstPO constpo=new ConstPO(c.getName(),c.getValue(),null);
 		try {
-			System.out.println("Update_Stub"+new UpdateService_Stub().update(constpo, field, value));
+			System.out.println("Update_Stub"+new UpdateService_Stub().update(constpo));
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -247,7 +255,7 @@ public class ManageBlService_Stub implements ManageService{
 		UserPO userpo=new UserPO(staff.getSystemId(), "120514214", staff.getName(),
 				staff.getSex(), staff.getAge(), staff.getInsitution(), "南京", UserRole.admin, "user_info");
 		try {
-			System.out.println("Update_Stub"+new UpdateService_Stub().update(userpo, field, value));
+			System.out.println("Update_Stub"+new UpdateService_Stub().update(userpo));
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -318,7 +326,7 @@ public class ManageBlService_Stub implements ManageService{
 		System.out.println("修改成功");
 		InstitutionPO userpo=new InstitutionPO(null, institution.getType(), institution.getCity(), null, null);
 		try {
-			System.out.println("Update_Stub"+new UpdateService_Stub().update(userpo, field, value));
+			System.out.println("Update_Stub"+new UpdateService_Stub().update(userpo));
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -388,7 +396,7 @@ public class ManageBlService_Stub implements ManageService{
 		System.out.println("修改成功");
 		SalaryPO userpo=new SalaryPO(null, 0, null, value);
 		try {
-			System.out.println("Update_Stub"+new UpdateService_Stub().update(userpo, field, value));
+			System.out.println("Update_Stub"+new UpdateService_Stub().update(userpo));
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -396,6 +404,86 @@ public class ManageBlService_Stub implements ManageService{
 		
 		UpdateState state=UpdateState.SUCCESS;
 		return state;
+	}
+	@Override
+	public UpdateState updateConst(ConstVO constant) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public UpdateState UpdateInstitution(InstitutionVO institution) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public UpdateState updatePayment(SalaryVO salary) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public UpdateState updateReceipt(VO receipt) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public UpdateState updateStaff(StaffVO staff) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<DistanceVO> getDistance() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public UpdateState updateDistance(DistanceVO distance) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<ArrivalVO> showArrival() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<BalanceVO> showBalance() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<CostVO> showCost() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<DeliveryVO> showDelivery() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<EntruckingVO> showEntrucking() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<GatheringVO> showGathering() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<RemovalVO> showRemoval() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<StorageVO> showStorage() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<TransferVO> showTransfer() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

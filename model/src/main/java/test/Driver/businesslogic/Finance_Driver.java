@@ -72,7 +72,7 @@ public class Finance_Driver {
 		}
 		System.out.println();
 
-		BenefitVO benefit=new BenefitVO(0, 0,"0","0");
+		BenefitVO benefit=null;
 
 		System.out.println(finance.addBenefit(benefit));
 		System.out.println();

@@ -16,13 +16,6 @@ import businesslogic.Impl.Finance.FinanceController;
 
 public class MockFinanceController extends FinanceController{
 	@Override
-	public UpdateState updateAccount(AccountVO account, String field,
-			String value) {
-		// TODO Auto-generated method stub
-		MockAccount accountC=new MockAccount();
-		return accountC.updateAccount(account, field, value);
-	}
-	@Override
 	public ArrayList<TransferVO> getTransfer(String time_start, String time_end) {
 		// TODO Auto-generated method stub
 		MockSundry sundryC=new MockSundry();
@@ -77,12 +70,6 @@ public class MockFinanceController extends FinanceController{
 		// TODO Auto-generated method stub
 		MockCost costC=new MockCost();
 		return costC.addCost(cost);
-	}
-	@Override
-	public AddState addBenefit(BenefitVO benefit) {
-		// TODO Auto-generated method stub
-		MockBenefit benefitC=new MockBenefit();
-		return benefitC.addBenefit(benefit);
 	}
 	@Override
 	public AddState addAccount(AccountVO account) {

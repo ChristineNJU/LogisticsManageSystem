@@ -19,11 +19,8 @@ public class MockBusinessLobbyTester {
 		System.out.println(mockCarMgt.addCar(null));
 		System.out.println(mockCarMgt.deleteCar(null));
 		System.out.println(mockCarMgt.searchCar(null));
-		System.out.println(mockCarMgt.updateCar(null, null, null));
-		System.out.println(mockDriver.AddDriver(null));
 		System.out.println(mockDriver.searchDriver(null));
 		System.out.println(mockDriver.deleteDriver(null));
-		System.out.println(mockDriver.updateDriver(null,null,null));
 		System.out.println(mockEntrucking.entrucking(null));
 		System.out.println(mockGathering.gathering(null));
 		System.out.println(getNeedEntrucking.getNeedEntrucking());

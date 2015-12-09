@@ -7,6 +7,7 @@ import test.Stub.data.AddService_Stub;
 import test.Stub.data.UpdateService_Stub;
 import PO.LogisticsInfoPO;
 import State.AddState;
+import State.CodeState;
 import State.LogisticsType;
 import State.PackingCharge;
 import State.UpdateState;
@@ -42,7 +43,7 @@ public class CourierBlService_Stub implements CourierService{
 		LogisticsInfoPO lvo=new LogisticsInfoPO(null, null, null, null, null, null, null, null, null, null,
 				null, 0, 0, 0, null, null, null, 0, null, null, null, null, null, null);
 		try {
-			System.out.println("Data_Stub "+new UpdateService_Stub().update(lvo,field,value));
+			System.out.println("Data_Stub "+new UpdateService_Stub().update(lvo));
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -70,6 +71,16 @@ public class CourierBlService_Stub implements CourierService{
 	}
 	@Override
 	public UpdateState receiveConfirm(VO logistics_info) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public double getDayLength(String starting, String destination) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public CodeState isLegal(String bar_code) {
 		// TODO Auto-generated method stub
 		return null;
 	}

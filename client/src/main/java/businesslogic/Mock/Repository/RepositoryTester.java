@@ -14,13 +14,5 @@ public class RepositoryTester {
 		MockStockTakingConfirm stockTakingConfirm = new MockStockTakingConfirm();
 		
 		System.out.println(mockAlarm.alarm());
-		System.out.println(mockBalance.balance());
-		System.out.println(getNeedRemoval.getNeedRemoval());
-		System.out.println(getNeedStorage.getNeedStorage());
-		System.out.println(removal.removal(null));
-		System.out.println(see.see(null, null));
-		System.out.println(stockTaking.stockTakingConfirm());
-		System.out.println(stockTakingExcel.stockTakingExcel());
-		System.out.println(stockTakingConfirm.stockTaking());
 	}
 }

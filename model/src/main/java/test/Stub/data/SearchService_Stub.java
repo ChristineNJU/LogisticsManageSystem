@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
 
+import businesslogic.URLHelper.URLHelper;
 import PO.AccountPO;
 import PO.ArrivalPO;
 import PO.BalancePO;
@@ -130,19 +131,6 @@ public class SearchService_Stub implements SearchLogisticsService, SearchGatheri
 		return list;
 	}
 
-	@Override
-	public ArrayList<PeriodPO> searchPeriod(String DB_URL,
-			ArrayList<String> requirement) throws RemoteException {
-		// TODO Auto-generated method stub
-		ArrayList<AccountPO> list_1 = new ArrayList<AccountPO>();
-		AccountPO account = new AccountPO(1, "中国银行", 100000, "account_info");
-		list_1.add(account);
-		
-		PeriodPO period = new PeriodPO(new Date(), 20, 200, 20, 1000, list_1, "period_info");
-		ArrayList<PeriodPO> list = new ArrayList<PeriodPO>();
-		list.add(period);
-		return list;
-	}
 
 	@Override
 	public ArrayList<BenefitPO> searchBenefit(ArrayList<String> requirement)
@@ -323,7 +311,14 @@ public class SearchService_Stub implements SearchLogisticsService, SearchGatheri
 	public ArrayList<DistancePO> searchDistance(ArrayList<String> requirement)
 			throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		ArrayList<DistancePO> list = new ArrayList<DistancePO>();
+		return list;
+	}
+
+	@Override
+	public PeriodPO searchPeriod() throws RemoteException {
+		// TODO Auto-generated method stub
+		return new PeriodPO(null,0, 0, 0, 0, null, URLHelper.getPeriodURL());
 	}
 	
 }

@@ -5,9 +5,4 @@ import businesslogic.Impl.Repository.StockTakingConfirmImpl;
 
 public class MockStockTaking extends StockTakingConfirmImpl{
 
-	@Override
-	public AddState stockTakingConfirm() {
-		// TODO Auto-generated method stub
-		return AddState.SUCCESS;
-	}
 }

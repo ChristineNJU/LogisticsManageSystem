@@ -29,12 +29,12 @@ public class DriverMgt implements DriverMgtService{
 		ArrayList<DriverInfoVO> result=new ArrayList<DriverInfoVO>();
 		try {
 			SearchDriverInfoService searchDriver=(SearchDriverInfoService) Naming.lookup(RMIHelper.SEARCH_DRIVERINFO_IMPL);
-			System.out.println(id+" searchDriver debug "+SystemLog.getInstitutionId());
+//			System.out.println(id+" searchDriver debug "+SystemLog.getInstitutionId());
 			ArrayList<String> requirementId=new ArrayList<String>();
-			requirementId.add("Driver_Number='"+id+"'");
+			requirementId.add("Driver_Number like '"+id+"'");
 			
 			ArrayList<String> requirementName=new ArrayList<String>();
-			requirementName.add("DRiver_Name='"+id+"'");
+			requirementName.add("Driver_Name like '"+id+"'");
 			
 			ArrayList<DriverInfoPO> searchResultId=new ArrayList<DriverInfoPO>();
 			ArrayList<DriverInfoPO> searchResultName=new ArrayList<DriverInfoPO>();
@@ -47,7 +47,7 @@ public class DriverMgt implements DriverMgtService{
 			
 			if(searchResultId.isEmpty()){
 				System.out.println("searchDriver: not found");
-				return null;
+				return result;
 			}
 			
 			else{

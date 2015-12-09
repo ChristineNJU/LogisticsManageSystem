@@ -36,22 +36,7 @@ public class AdminBlService_Stub implements AdminService{
 		AddState state=AddState.SUCCESS;
 		return state;
 	}
-	/*-------------------------------------------
-	 更新数据库中用户数据
-	---------------------------------------------*/
-	public UpdateState updateUser(UserVO user, String field, String value){
-		System.out.println("Logic_Stub "+"更新成功");
-		UserPO upo=new UserPO(user.getId(), "102412412", user.getName(), "男", 30, InstitutionType.BusinessLobby, "南京", 
-				UserRole.courier, "user_info");
-		try {
-			System.out.println("Data_Stub"+new UpdateService_Stub().update(upo, field, value));
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		UpdateState state=UpdateState.SUCCESS;
-		return state;
-	}
+
 	/*-------------------------------------------
 	删除数据库中用户数据
 	---------------------------------------------*/
@@ -91,6 +76,21 @@ public class AdminBlService_Stub implements AdminService{
 		
 		
 		return list;
+	}
+	@Override
+	public UpdateState updateUser(UserVO user) {
+		// TODO Auto-generated method stub
+		System.out.println("Logic_Stub "+"更新成功");
+		UserPO upo=new UserPO(user.getId(), "102412412", user.getName(), "男", 30, InstitutionType.BusinessLobby, "南京", 
+				UserRole.courier, "user_info");
+		try {
+			System.out.println("Data_Stub"+new UpdateService_Stub().update(upo));
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		UpdateState state=UpdateState.SUCCESS;
+		return state;
 	}
 	
 	
