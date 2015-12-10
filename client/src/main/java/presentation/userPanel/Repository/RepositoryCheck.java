@@ -26,6 +26,8 @@ public class RepositoryCheck extends FunctionSearch{
 	public DateChooser dateBeginChooser;
 	public DateChooser dateEndChooser;
 	
+	private ProgressBarPanel pbp = new ProgressBarPanel();
+	
 	RepositoryService service = new RepositoryController();
 	String[] tableH = {"入库记录","   ","   ","   ","   ","  ","   "};
 	
@@ -40,6 +42,8 @@ public class RepositoryCheck extends FunctionSearch{
 	public RepositoryCheck(){
 		confirmSearch = new ButtonConfirm("查看出库入库记录");
 		initUI("查看出库入库记录");
+		
+		panel.add(pbp.getPanel());
 	}
 	
 	@Override
@@ -88,7 +92,6 @@ public class RepositoryCheck extends FunctionSearch{
 			model = new TableModelSearch(getVector(storages),tableH);
 			table.setModel(model);
 			table.repaint();
-			String[] tableH2 = {"付款日期","金额","付款人","付款账户","条目","备注"};
 			model2 = new TableModelSearch(getVector2(removals),tableH2);
 			table2.setModel(model2);
 			table2.repaint();

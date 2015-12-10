@@ -60,8 +60,8 @@ public class MainFrame {
 		frame.setContentPane(panel);
 		panel.setLayout(null);
 
-		inquiry = new Inquiry(this);
-		frame.add(inquiry.getPanel());
+//		inquiry = new Inquiry(this);
+//		frame.add(inquiry.getPanel());
 //		panel.add(inquiry.getPanel());
 
 //		changeToCourier();
@@ -85,7 +85,7 @@ public class MainFrame {
 
 
 //		changeToMediumCenter();
-//		changeToRepository();
+		changeToRepository();
 
 //		changeToMediumCenter();
 //		changeToRepository();
@@ -148,6 +148,7 @@ public class MainFrame {
 	private void changeToCourier(){
 		nav = new NavigationCourier(user);
 		panel.add(nav.getNavPanel());	
+		panel.repaint();
 	}
 	
 	/**
@@ -156,6 +157,7 @@ public class MainFrame {
 	private void changeToBusinesslobby(){
 		nav = new NavigationBusinessLobby(user);
 		panel.add(nav.getNavPanel());
+		panel.repaint();
 	}
 	
 	/**
@@ -164,6 +166,7 @@ public class MainFrame {
 	private void changeToFinance(){
 		nav = new NavigationFinance(user);
 		panel.add(nav.getNavPanel());
+		panel.repaint();
 	}
 	
 	/**
@@ -172,6 +175,7 @@ public class MainFrame {
 	private void changeToManager() {
 		nav = new NavigationManager(user);
 		panel.add(nav.getNavPanel());
+		panel.repaint();
 	}
 	
 	/**
@@ -180,6 +184,7 @@ public class MainFrame {
 	private void changeToMediumCenter(){
 		nav = new NavigationMediumCenter(user);
 		panel.add(nav.getNavPanel());
+		panel.repaint();
 	}
 	
 	/**
@@ -188,6 +193,7 @@ public class MainFrame {
 	private void changeToRepository(){
 		nav = new NavigationRepository(user);
 		panel.add(nav.getNavPanel());
+		panel.repaint();
 	}
 
 	/**
@@ -196,6 +202,7 @@ public class MainFrame {
 	private void changeToAdmin(){
 		nav = new NavigationAdmin(user);
 		panel.add(nav.getNavPanel());
+		panel.repaint();
 	}
 	
 	//

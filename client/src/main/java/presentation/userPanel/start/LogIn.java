@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 
 import presentation.AnimationEasing.AnimationEasing;
 import presentation.components.ButtonCancel;
@@ -35,7 +36,7 @@ public class LogIn{
 	private JLabel idLabel = new JLabel("用户名：");
 	private JLabel passwordLabel = new JLabel("密   码：");
 	private TextField id = new TextField();
-	private TextField password = new TextField();
+	private JPasswordField password = new JPasswordField();
 	private ButtonOk confirm = new ButtonOk("登录");
 	private ButtonCancel cancel = new ButtonCancel();
 	private Listener listener = new Listener();
@@ -155,7 +156,7 @@ public class LogIn{
 			container.add(feedback);
 		}
 		if(state.equals(LoginState.WRONGPW)){
-			password.setError();
+//			password.setError();
 			feedback.setText("密码错误");
 			container.add(feedback);
 		}
@@ -175,7 +176,7 @@ public class LogIn{
 	}
 	
 	public void wrongPW(){
-		password.setError();
+//		password.setError();
 		feedback.setText("密码错误");
 		container.add(feedback);
 		container.repaint();
