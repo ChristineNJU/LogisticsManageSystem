@@ -39,6 +39,7 @@ public class CostImpl implements CostService{
 		} catch (Exception ex){
 			System.out.println(ex.getMessage());
 			ex.printStackTrace();
+			return null;
 		}
 		return Cost;
 	}
@@ -71,7 +72,12 @@ public class CostImpl implements CostService{
 		try{
 			SearchCostService costSearch=(SearchCostService) Naming.lookup(RMIHelper.SEARCH_COST_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("cost_date= '"+time+"'");
+			if(time.equals("%%")){
+				requirement.add("cost_date like '%%'");
+			}
+			else {
+				requirement.add("cost_date= '"+time+"'");
+			}
 			ArrayList<CostPO> costList=costSearch.searchCost(requirement);
 			for(int i=0;i<costList.size();i++){
 				Cost.add(new CostVO(costList.get(i)));
@@ -79,6 +85,7 @@ public class CostImpl implements CostService{
 		} catch (Exception ex){
 			System.out.println(ex.getMessage());
 			ex.printStackTrace();
+			return null;
 		}
 		return Cost;
 	}

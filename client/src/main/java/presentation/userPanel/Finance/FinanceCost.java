@@ -10,21 +10,21 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.table.TableColumnModel;
 
+import State.AddState;
+import State.CostType;
+import State.ErrorState;
+import VO.CostVO;
+import VO.VO;
+import businesslogic.Impl.Finance.FinanceController;
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
 import presentation.components.FlatComboBox;
-import presentation.components.LabelHeader;
+import presentation.frame.MainFrame;
 import presentation.main.FunctionAdd;
 import presentation.main.Translater;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
-import presentation.userPanel.BusinessLb.BusinessLbDelivery.Header;
-import State.CostType;
-import VO.CostVO;
-import VO.VO;
-import businesslogic.Impl.Finance.FinanceController;
-import businesslogic.SystemLog.SystemLog;
 
 public class FinanceCost extends FunctionAdd{
 	SimpleDateFormat sdfs=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -53,11 +53,17 @@ public class FinanceCost extends FunctionAdd{
 		//表格的初始化
 		costs = new ArrayList<CostVO>();
 		
-//		//测试用
+
 //		CostVO cost0 = new CostVO("2015-12-5 19:59:11", 120, "张斯栋","0123456789" ,CostType.reward,"超过预计" );
-//		costs.add(cost0);
-		
-		tableV = getVector(costs);
+		costs=service.searchCost("%%");
+		if(costs==null){
+			super.isConnectError=true;
+			tableV=new Vector<Vector<String>>();
+		}
+		else {
+			tableV = getVector(costs);
+		}
+
 		model = new TableModelAddOnly(tableV,tableH,isCellEditable);
 		table = new TableAddOnly(model);
 		
@@ -99,7 +105,14 @@ public class FinanceCost extends FunctionAdd{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			service.addCost(temp);
+			AddState state=AddState.CONNECTERROR;
+			state=service.addCost(temp);
+			if(state==AddState.CONNECTERROR){
+				showError(ErrorState.CONNECTERROR);
+			}
+			else if(state==AddState.FAIL){
+				showError(ErrorState.ADDERROR);
+			}
 		}
 		
 	}
@@ -132,6 +145,11 @@ public class FinanceCost extends FunctionAdd{
 //			add(businessLobbyID);
 //			add(gatheringId);
 		}
+	}
+
+	@Override
+	public void performCancel() {
+		MainFrame.changeContentPanel(new FinanceCost().getPanel());		
 	}
 	
 }

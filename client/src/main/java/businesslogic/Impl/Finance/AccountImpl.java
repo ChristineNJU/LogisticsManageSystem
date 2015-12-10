@@ -86,6 +86,7 @@ public class AccountImpl implements AccountService{
 		} catch(Exception ex){
 			System.out.println(ex.getMessage());
 			ex.printStackTrace();
+			return null;
 		}
 		}
 		else {
@@ -101,6 +102,7 @@ public class AccountImpl implements AccountService{
 			catch(Exception ex){
 				System.out.println(ex.getMessage());
 				ex.printStackTrace();
+				return null;
 			}
 		}
 		return result;

@@ -27,7 +27,7 @@ import State.ErrorState;
 import VO.VO;
 
 
-public abstract class FunctionADUS {
+public abstract class FunctionADUS extends Function{
 
 	protected Translater trans = new Translater();
 	
@@ -116,13 +116,16 @@ public abstract class FunctionADUS {
 		table.changeSelection(lastIndex, 0, false, false);
 	}
 	
-	
-//	protected abstract Vector<Vector<String>> getVector(ArrayList<VO> voList);
+	public abstract void performCancel();
 	
 	protected abstract VO getVO(Vector<String> vector);
 	
 	public PanelContent getPanel(){
 		return panel;
+	}
+	
+	public boolean isConnectError(){
+		return isConnectError;
 	}
 	
 	public class FuncionListener implements MouseListener{
@@ -139,6 +142,10 @@ public abstract class FunctionADUS {
 			}
 			if(source.equals(search)){
 				showSearchResult(input.getText());
+			}
+			if(source.equals(cancel)){
+				System.out.println("in listener");
+				checkCancel();
 			}
 		}
 
@@ -215,9 +222,8 @@ public abstract class FunctionADUS {
 
 		@Override
 		public void run() {
-			// TODO Auto-generated method stub
 			try {
-				System.out.println("staff error thread");
+//				System.out.println("staff error thread");
 				Thread.sleep(1000);
 				this.setVisible(true);
 //				this.repaint();

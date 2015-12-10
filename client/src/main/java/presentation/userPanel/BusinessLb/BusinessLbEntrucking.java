@@ -12,11 +12,15 @@ import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
 import presentation.components.LabelHeader;
 import presentation.components.TextFieldHeader;
+import presentation.frame.MainFrame;
 import presentation.main.FunctionAdd;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
+import presentation.userPanel.Manager.ManagerInstitutionMgt;
 import presentation.userPanel.Medium.MediumCtEntrucking.Header;
+import State.AddState;
+import State.ErrorState;
 import VO.EntruckingVO;
 import VO.GatheringVO;
 import VO.VO;
@@ -102,8 +106,15 @@ public class BusinessLbEntrucking extends FunctionAdd{
 		double tempamount = Double.valueOf(costInput.getText());
 		String temptransfer = idInput.getText();
 		EntruckingVO tempEntrucking = new EntruckingVO(tempdate, temptransfer, tempdestination,tempcarnumber,tempname, tempsupercargo,tempbarCodeList, tempamount);
+		AddState state=AddState.CONNECTERROR;
 		
-		service.entrucking(tempEntrucking);
+		state=service.entrucking(tempEntrucking);
+		if(state==AddState.CONNECTERROR){
+			showError(ErrorState.CONNECTERROR);
+		}
+		else if(state==AddState.FAIL){
+			showError(ErrorState.ADDERROR);
+		}
 		
 	}
 
@@ -195,5 +206,9 @@ public class BusinessLbEntrucking extends FunctionAdd{
 			
 			
 		}
+	}
+	@Override
+	public void performCancel() {
+		MainFrame.changeContentPanel(new BusinessLbEntrucking().getPanel());		
 	}
 }

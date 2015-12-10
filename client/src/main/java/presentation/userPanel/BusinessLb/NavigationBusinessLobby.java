@@ -1,5 +1,6 @@
 package presentation.userPanel.BusinessLb;
 
+import State.ErrorState;
 import VO.UserVO;
 import presentation.components.ButtonNav;
 import presentation.frame.MainFrame;
@@ -66,27 +67,51 @@ public class NavigationBusinessLobby extends Navigation{
 	private void changeToArrival(){
 		businessArrival = new BusinessLbArrival();
 		MainFrame.changeContentPanel(businessArrival.getPanel());
+		if(businessArrival.isConnectError()){
+			System.out.println("manager initiate null");
+			businessArrival.showError(ErrorState.CONNECTERROR);
+		}
 	}
 	private void changeToEntrucking(){
 		businessLbEntrucking = new BusinessLbEntrucking();
 		MainFrame.changeContentPanel(businessLbEntrucking.getPanel());
+		if(businessLbEntrucking.isConnectError()){
+			System.out.println("manager initiate null");
+			businessLbEntrucking.showError(ErrorState.CONNECTERROR);
+		}
 	}
 	private void changeToDelivery(){
 		businessLbDelivery = new BusinessLbDelivery();
 		MainFrame.changeContentPanel(businessLbDelivery.getPanel());
+		if(businessLbDelivery.isConnectError()){
+			System.out.println("manager initiate null");
+			businessLbDelivery.showError(ErrorState.CONNECTERROR);
+		}
 	}
 	private void changeToDriverMgt(){
 		 businessLbDriverMgt = new BusinessLbDriverMgt();
 		 MainFrame.changeContentPanel(businessLbDriverMgt.getPanel());
+		 if(businessLbDriverMgt.isConnectError()){
+				System.out.println("manager initiate null");
+				businessLbDriverMgt.showError(ErrorState.CONNECTERROR);
+			}
 	}
 	private void changeToCarMgt(){
 		businessLbCarMgt = new BusinessLbCarMgt();
 //		System.out.println("in method nav");
 		MainFrame.changeContentPanel(businessLbCarMgt.getPanel());
+		 if(businessLbCarMgt.isConnectError()){
+				System.out.println("manager initiate null");
+				businessLbCarMgt.showError(ErrorState.CONNECTERROR);
+			}
 	}
 	private void changeToGathering(){
 		businessLbGathering = new BusinessLbGathering();
 		MainFrame.changeContentPanel(businessLbGathering.getPanel());
+		 if(businessLbGathering.isConnectError()){
+				System.out.println("manager initiate null");
+				businessLbGathering.showError(ErrorState.CONNECTERROR);
+			}
 //		MainFrame.getMainPanel().add(businessLbGathering.getPanel());
 //		MainFrame.getMainPanel().repaint();
 	}

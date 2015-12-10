@@ -55,16 +55,16 @@ public class NavigationRepository extends Navigation{
 		
 	}
 	private void changeToStorage(){
-		repositoryStorage = new RepositoryStorage(this);
+		repositoryStorage = new RepositoryStorage();
 //		MainFrame.getMainPanel().remove(comp);
 		MainFrame.changeContentPanel(repositoryStorage.getPanel());
 	}
 	private void changeToRemoval(){
-		repositoryRemoval = new RepositoryRemoval(this);
+		repositoryRemoval = new RepositoryRemoval();
 		MainFrame.changeContentPanel(repositoryRemoval.getPanel());
 	}
 	private void changeToBalance(){
-		repositoryBalance = new RepositoryBalance(this);
+		repositoryBalance = new RepositoryBalance();
 		MainFrame.changeContentPanel(repositoryBalance.getPanel());
 	}
 	private void changeToStockTaking(){

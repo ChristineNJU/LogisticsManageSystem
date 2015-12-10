@@ -96,23 +96,29 @@ public class CarMgt implements CarMgtService{
 			SearchCarInfoService searchCar=(SearchCarInfoService) Naming.lookup(RMIHelper.SEARCH_CARINFO_IMPL);
 			
 			ArrayList<String> requirementId=new ArrayList<String>();
-			requirementId.add("CAR_NUMBER='"+id+"'");
-			
-			ArrayList<String> requirementName=new ArrayList<String>();
-			requirementName.add("Car_License='"+id+"'");
-			
 			ArrayList<CarInfoPO> searchResultId=new ArrayList<CarInfoPO>();
-			ArrayList<CarInfoPO> searchResultName=new ArrayList<CarInfoPO>();
-			
-			searchResultId=searchCar.searchCarInfo(URLHelper.getCarInfoURL(SystemLog.getInstitutionId()), requirementId);
-			searchResultName=searchCar.searchCarInfo(URLHelper.getCarInfoURL(SystemLog.getInstitutionId()), requirementName);
-			
-			for(int i=0;i<searchResultName.size();i++)
-				searchResultId.add(searchResultName.get(i));
-			
+			if(!id.equals("%%")){
+				requirementId.add("CAR_NUMBER='"+id+"'");
+				
+				ArrayList<String> requirementName=new ArrayList<String>();
+				requirementName.add("Car_License='"+id+"'");
+				
+				
+				ArrayList<CarInfoPO> searchResultName=new ArrayList<CarInfoPO>();
+				
+				searchResultId=searchCar.searchCarInfo(URLHelper.getCarInfoURL(SystemLog.getInstitutionId()), requirementId);
+				searchResultName=searchCar.searchCarInfo(URLHelper.getCarInfoURL(SystemLog.getInstitutionId()), requirementName);
+				
+				for(int i=0;i<searchResultName.size();i++)
+					searchResultId.add(searchResultName.get(i));
+			}
+			else {
+				requirementId.add("car_number like '%%'");
+				searchResultId=searchCar.searchCarInfo(URLHelper.getCarInfoURL(SystemLog.getInstitutionId()), requirementId);
+			}
 			if(searchResultId.isEmpty()){
 				System.out.println("not found");
-				return null;
+				return result;
 			}
 			
 			else{
@@ -125,6 +131,7 @@ public class CarMgt implements CarMgtService{
 			// TODO Auto-generated catch block
 			System.out.println("error");
 			e.printStackTrace();
+			return null;
 		}
 		return result;
 	}

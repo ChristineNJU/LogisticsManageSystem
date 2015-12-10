@@ -18,6 +18,8 @@ import businesslogic.Impl.Businesslobby.BusinessLobbyController;
 import businesslogic.Impl.MediumCenter.MediumCenterController;
 import businesslogic.Service.BusinessLobby.BsLbService;
 import businesslogic.SystemLog.SystemLog;
+import State.AddState;
+import State.ErrorState;
 import State.LogisticsState;
 import VO.ArrivalVO;
 import VO.VO;
@@ -26,12 +28,14 @@ import presentation.components.ButtonNew;
 import presentation.components.FlatComboBox;
 import presentation.components.LabelHeader;
 import presentation.components.TextFieldHeader;
+import presentation.frame.MainFrame;
 import presentation.main.FunctionAdd;
 import presentation.main.Translater;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
 import presentation.userPanel.BusinessLb.BusinessLbEntrucking.Header;
+import presentation.userPanel.Manager.ManagerInstitutionMgt;
 
 /**
  * 营业厅到达单的列表
@@ -113,13 +117,19 @@ public class BusinessLbArrival extends FunctionAdd{
 	@Override
 	protected void confirmAll() {
 		//提交所有更新
+		AddState state=AddState.CONNECTERROR;
 		ArrayList<ArrivalVO> temps = new ArrayList<ArrivalVO>();
 		for(Vector<String> vector:tableV){
 			ArrivalVO temp = (ArrivalVO)this.getVO(vector);
 			temps.add(temp);
-			
 		}
-		service.arrival(temps);
+		state=service.arrival(temps);
+		if(state==AddState.CONNECTERROR){
+			showError(ErrorState.CONNECTERROR);
+		}
+		else if(state==AddState.FAIL){
+			showError(ErrorState.ADDERROR);
+		}
 	}
 
 	@Override
@@ -156,6 +166,13 @@ public class BusinessLbArrival extends FunctionAdd{
 			add(dateInput);
 			add(listIdIuput);
 		}
+	}
+	
+	
+
+	@Override
+	public void performCancel() {
+		MainFrame.changeContentPanel(new BusinessLbArrival().getPanel());		
 	}
 
 }

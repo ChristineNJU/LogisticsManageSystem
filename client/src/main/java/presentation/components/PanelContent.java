@@ -21,6 +21,7 @@ public class PanelContent extends JPanel {
 //		setBounds(220,0,980,800);
 		setBounds(220,0,980,1200);
 		setPreferredSize(new Dimension(980,800));
+		setLayout(null);
 		title = new LabelTitle(s);
 		add(title);
 	}

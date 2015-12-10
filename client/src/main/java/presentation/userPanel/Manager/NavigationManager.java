@@ -1,10 +1,11 @@
 package presentation.userPanel.Manager;
 
-import presentation.components.ButtonNav;
-import presentation.frame.MainFrame;
-import presentation.main.Navigation;
 import State.ErrorState;
 import VO.UserVO;
+import presentation.components.ButtonNav;
+import presentation.frame.MainFrame;
+import presentation.main.Home;
+import presentation.main.Navigation;
 
 public class NavigationManager extends Navigation{
 
@@ -19,6 +20,8 @@ public class NavigationManager extends Navigation{
 	private ButtonNav consts = new ButtonNav("manager","consts");
 	private ButtonNav system = new ButtonNav("manager","system");
 	
+	
+	public Home homepage;
 	public ManagerConst con;
 	public ManagerStaffMgt staffM;
 	public ManagerInstitutionMgt institutionM;
@@ -33,6 +36,7 @@ public class NavigationManager extends Navigation{
 		super(user);
 		initNavButtonArray();
 		addNavButtons();
+		changeToHome();
 	}
 
 	protected void initNavButtonArray(){
@@ -73,7 +77,8 @@ public class NavigationManager extends Navigation{
 		}
 	}
 	private void changeToHome(){
-		
+		homepage = new Home(user);
+		MainFrame.changeContentPanel(homepage);
 	}
 	
 	private void changeToJudge(){
@@ -84,7 +89,7 @@ public class NavigationManager extends Navigation{
 	
 	private void changeToStaff(){
 
-		staffM = new ManagerStaffMgt(this);
+		staffM = new ManagerStaffMgt();
 		MainFrame.changeContentPanel(staffM.getPanel());
 		MainFrame.getMainPanel().repaint();
 		if(staffM.isConnectError()){
@@ -102,13 +107,20 @@ public class NavigationManager extends Navigation{
 	}
 	
 	private void changeToInstitution(){
-		institutionM=new ManagerInstitutionMgt(this);
+		institutionM=new ManagerInstitutionMgt();
 		MainFrame.changeContentPanel(institutionM.getPanel());
 		MainFrame.getMainPanel().repaint();
+
+		if(institutionM.isConnectError()){
+			institutionM.showError(ErrorState.CONNECTERROR);
+		}
+		
+		
+
 	}
 	
 	private void changeToManager(){
-		staffM = new ManagerStaffMgt(this);
+		staffM = new ManagerStaffMgt();
 		MainFrame.changeContentPanel(staffM.getPanel());
 		MainFrame.getMainPanel().repaint();
 

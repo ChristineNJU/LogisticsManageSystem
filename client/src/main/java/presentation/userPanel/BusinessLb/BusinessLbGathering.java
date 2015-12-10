@@ -9,21 +9,21 @@ import java.util.Vector;
 
 import javax.swing.JLabel;
 
+import State.AddState;
+import State.ErrorState;
+import VO.GatheringVO;
+import VO.VO;
+import businesslogic.Impl.Businesslobby.BusinessLobbyController;
+import businesslogic.Service.BusinessLobby.BsLbService;
+import businesslogic.SystemLog.SystemLog;
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
 import presentation.components.LabelHeader;
-import presentation.components.TextFieldHeader;
+import presentation.frame.MainFrame;
 import presentation.main.FunctionAdd;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
-import VO.GatheringVO;
-import VO.VO;
-import businesslogic.Impl.Businesslobby.BusinessLobbyController;
-import businesslogic.Impl.Businesslobby.GetNeedGatheringImpl;
-import businesslogic.Service.BusinessLobby.BsLbService;
-import businesslogic.Service.BusinessLobby.GetNeedGatheringService;
-import businesslogic.SystemLog.SystemLog;
 
 public class BusinessLbGathering extends FunctionAdd{
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -102,7 +102,15 @@ public class BusinessLbGathering extends FunctionAdd{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			service.gathering(temp);
+			AddState state=AddState.CONNECTERROR;
+			state=service.gathering(temp);
+			if(state==AddState.CONNECTERROR){
+				showError(ErrorState.CONNECTERROR);
+			}
+			else if(state==AddState.FAIL){
+				showError(ErrorState.ADDERROR);
+			}
+			
 	}		
 		
 	}
@@ -152,5 +160,10 @@ public class BusinessLbGathering extends FunctionAdd{
 			add(businessLobbyIDInput);
 //			add(gatheringIdInput);
 		}
+	}
+
+	@Override
+	public void performCancel() {
+		MainFrame.changeContentPanel(new BusinessLbGathering().getPanel());		
 	}
 }
