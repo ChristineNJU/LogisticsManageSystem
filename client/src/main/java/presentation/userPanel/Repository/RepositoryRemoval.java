@@ -22,11 +22,6 @@ import presentation.main.Translater;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
-<<<<<<< HEAD
-=======
-import presentation.userPanel.BusinessLb.BusinessLbDelivery.Header;
-import presentation.userPanel.Manager.ManagerInstitutionMgt;
->>>>>>> 762a2276fdaf72110fdbf3a21f81bb07ff226910
 import State.TransferType;
 import VO.RemovalVO;
 import VO.VO;

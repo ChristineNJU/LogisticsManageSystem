@@ -60,7 +60,7 @@ public class NavigationRepository extends Navigation{
 		MainFrame.changeContentPanel(repositoryStorage.getPanel());
 	}
 	private void changeToRemoval(){
-		repositoryRemoval = new RepositoryRemoval();
+		repositoryRemoval = new RepositoryRemoval(this);
 		MainFrame.changeContentPanel(repositoryRemoval.getPanel());
 	}
 	private void changeToBalance(){
