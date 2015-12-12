@@ -200,6 +200,8 @@ public class ManagerStaffMgt extends FunctionADUS{
 			vRow.add(temp.getName());
 			vRow.add(temp.getSex());
 			vRow.add(String.valueOf(temp.getAge()));
+//			System.out.println(temp.getInsitution());
+			
 			vRow.add(Translater.getChineseForInstitution(temp.getInsitution()));
 //			vRow.add("businesslobby");
 			vRow.add(Translater.getChineseForUserRole(temp.getPosition()));

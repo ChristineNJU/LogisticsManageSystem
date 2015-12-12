@@ -93,4 +93,10 @@ public static final String ADD_IMPL = URL+"AddImpl";
 	
 	/** The Constant TABLE_OPERATION_IMPL. */
 	public static final String TABLE_OPERATION_IMPL = URL+"TableOperationImpl";
+	
+	/** The Constant INSTITUTION_STORAGE_IMPL. */
+	public static final String INSTITUTION_STORAGE_IMPL = URL+"InstitutionStorageImpl";
+	
+	/** The Constant GATHERING_STORAGE_IMPL. */
+	public static final String GATHERING_STORAGE_IMPL = URL+"GatheringStorageImpl";
 }

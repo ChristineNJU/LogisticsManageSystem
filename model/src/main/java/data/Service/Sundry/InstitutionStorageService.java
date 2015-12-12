@@ -5,6 +5,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import PO.InstitutionStoragePO;
 import State.AddState;
 import State.DeleteState;
 
@@ -24,7 +25,7 @@ public interface InstitutionStorageService extends Remote {
 	 * @return 当前临时存储的快递 ArrayList<String>类型
 	 * @throws RemoteException the remote exception
 	 */
-	public ArrayList<String> getInstitutionStorage(String DB_URL) throws RemoteException;
+	public ArrayList<InstitutionStoragePO> getInstitutionStorage(String DB_URL) throws RemoteException;
 	
 	/**
 	 * 添加当前机构临时存储的快递
@@ -34,7 +35,7 @@ public interface InstitutionStorageService extends Remote {
 	 * @return the adds 添加状态Font.BOLD
 	 * @throws RemoteException the remote exception
 	 */
-	public AddState addInstitutionStorage(String bar_code, String DB_URL) throws RemoteException;
+	public AddState addInstitutionStorage(String bar_code, boolean isOut, String DB_URL) throws RemoteException;
 	
 	/**
 	 * 删除当前机构临时存储的快递
