@@ -121,7 +121,6 @@ public class ManagerStaffMgt extends FunctionADUS{
 			deleteState=service.DeleteStaff(deleteItems.get(i));
 			if(deleteState==DeleteState.FAIL){
 				showError(ErrorState.DELETEERROR);
-				break;
 			}
 			else if(deleteState==DeleteState.CONNECTERROR){
 				showError(ErrorState.CONNECTERROR);
@@ -140,7 +139,6 @@ public class ManagerStaffMgt extends FunctionADUS{
 			updateState=service.updateStaff(updateItems.get(i));
 			if(updateState==UpdateState.NOTFOUND){
 				showError(ErrorState.UPDATEERROR);
-				break;
 			}
 			else if(updateState==UpdateState.CONNECTERROR){
 				showError(ErrorState.CONNECTERROR);
@@ -159,7 +157,6 @@ public class ManagerStaffMgt extends FunctionADUS{
 			addState=service.addStaff(addItems.get(i));
 			if(addState==AddState.FAIL){
 				showError(ErrorState.ADDERROR);
-				break;
 			}
 			else if(addState==AddState.CONNECTERROR){
 				showError(ErrorState.CONNECTERROR);

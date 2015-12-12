@@ -24,7 +24,7 @@ public class FinanceAccount extends FunctionADUS{
 	
 	ArrayList<AccountVO> accounts;
 	String[] tableH={"账户名称","账户余额"};
-	boolean[] isCellEditable={true,true};
+	boolean[] isCellEditable={true,false};
 	
 	ArrayList<AccountVO> addItems=new ArrayList<AccountVO>();
 	ArrayList<AccountVO> deleteItems=new ArrayList<AccountVO>();

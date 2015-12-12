@@ -3,12 +3,20 @@ package presentation.userPanel.Manager;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import presentation.components.ButtonNew;
+import presentation.main.FunctionADUS;
+import presentation.table.ScrollPaneTable;
+import presentation.table.TableADUS;
+import presentation.table.TableModelADUS;
+import State.ErrorState;
 import State.SalaryType;
 import State.UpdateState;
 import State.UserRole;
 import VO.SalaryVO;
 import businesslogic.Impl.Manage.ManageController;
 import businesslogic.Service.Manage.ManageService;
+<<<<<<< HEAD
+=======
 import presentation.components.ButtonNew;
 import presentation.frame.MainFrame;
 import presentation.main.FunctionADUS;
@@ -16,6 +24,7 @@ import presentation.table.ScrollPaneTable;
 import presentation.table.TableADUS;
 import presentation.table.TableModelADUS;
 import presentation.userPanel.BusinessLb.BusinessLbCarMgt;
+
 
 public class ManagerSalary extends FunctionADUS{
 
@@ -33,7 +42,17 @@ public class ManagerSalary extends FunctionADUS{
 	@Override
 	protected void initTable() {
 		salary = service.showSalary();
-		tableV = getVector(salary);
+		if(salary==null){
+			super.isConnectError=true;
+			tableV=new Vector<Vector<String>>();
+		}
+		else if(salary.isEmpty()){
+			showError(ErrorState.SEARCHERROR);
+			tableV=getVector(salary);
+		}
+		else {
+			tableV = getVector(salary);
+		}
 		model = new TableModelADUS(tableV,tableH,isCellEditable);
 		table = new TableADUS(model);
 		table.addMouseListener(tableListener);
@@ -58,6 +77,11 @@ public class ManagerSalary extends FunctionADUS{
 			UpdateState state = service.updatePayment(temp);
 			if(state == UpdateState.CONNECTERROR){
 //				showError("连接错误");
+				showError(ErrorState.CONNECTERROR);
+				break;
+			}
+			else if(state==UpdateState.NOTFOUND){
+				showError(ErrorState.UPDATEERROR);
 			}
 		}
 		

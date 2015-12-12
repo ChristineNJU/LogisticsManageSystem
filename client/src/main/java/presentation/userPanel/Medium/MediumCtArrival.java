@@ -15,6 +15,8 @@ import businesslogic.Impl.Businesslobby.BusinessLobbyController;
 import businesslogic.Impl.MediumCenter.MediumCenterController;
 import businesslogic.Service.BusinessLobby.BsLbService;
 import businesslogic.SystemLog.SystemLog;
+import State.AddState;
+import State.ErrorState;
 import State.LogisticsState;
 import VO.ArrivalVO;
 import VO.VO;
@@ -102,7 +104,14 @@ public class MediumCtArrival extends FunctionAdd{
 			temps.add(temp);
 			
 		}
-		service.arrival(temps);
+		AddState state=AddState.CONNECTERROR;
+		state=service.arrival(temps);
+		if(state==AddState.FAIL){
+			showError(ErrorState.ADDERROR);
+		}
+		else if(state==AddState.CONNECTERROR){
+			showError(ErrorState.CONNECTERROR);
+		}
 	}
 
 	@Override

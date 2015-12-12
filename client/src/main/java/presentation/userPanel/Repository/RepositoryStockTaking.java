@@ -1,5 +1,7 @@
 package presentation.userPanel.Repository;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -7,17 +9,19 @@ import java.util.Vector;
 
 import javax.swing.JLabel;
 
-import businesslogic.Impl.Repository.BlWareHouseImpl;
-import businesslogic.Service.Repository.BlWareHouseService;
-import State.AddState;
-import State.StorageArea;
-import VO.StockTakingVO;
-import VO.WareHouseVO;
 import presentation.components.ButtonConfirm;
 import presentation.components.LabelHeader;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableModelSearch;
 import presentation.table.TableSearch;
+import State.AddState;
+import State.StorageArea;
+import VO.StockTakingVO;
+import VO.WareHouseVO;
+import businesslogic.Impl.Repository.BlWareHouseImpl;
+import businesslogic.Impl.Repository.StockTakingExcelImpl;
+import businesslogic.Service.Repository.BlWareHouseService;
+import businesslogic.Service.Repository.StockTakingExcelService;
 
 public class RepositoryStockTaking extends RepositoryCheck{
 
@@ -44,10 +48,53 @@ public class RepositoryStockTaking extends RepositoryCheck{
 	protected TableModelSearch model3;
 	protected TableSearch table3;
 	
+	private ButtonConfirm output = new ButtonConfirm("导出excel表格");
+	private StockTakingExcelService excelService = new StockTakingExcelImpl();
+	
+	private ProgressBarPanel pbp = new ProgressBarPanel();
+	
 	public RepositoryStockTaking(){
 		confirmSearch = new ButtonConfirm("提交库存盘点");
 		initUI("库存盘点");
 		init();
+		
+		panel.add(pbp.getPanel());
+		
+		output.setBounds(508, 110, 180, 30);
+		output.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				excelService.stockTakingExcel(stockTaking);
+			}
+		});
+		
+		panel.add(output);
 	}
 	
 	private void init() {

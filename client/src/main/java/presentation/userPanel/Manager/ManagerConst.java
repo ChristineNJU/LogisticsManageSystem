@@ -17,6 +17,7 @@ import presentation.main.ColorPallet;
 import presentation.main.FontSet;
 import presentation.table.TableADUS;
 import presentation.table.TableModelADUS;
+import State.ErrorState;
 import State.UpdateState;
 import VO.ConstVO;
 import VO.DistanceVO;
@@ -66,6 +67,11 @@ public class ManagerConst {
 				UpdateState state = UpdateState.SUCCESS;
 				for(int i=0;i<updateConst.size();i++){
 					state = ms.updateConst(updateConst.get(i));
+					if(state==UpdateState.CONNECTERROR){
+						
+						break;
+					}
+					
 				}
 				for(int i=0;i<updateDistance.size();i++){
 					state = ms.updateDistance(updateDistance.get(i));

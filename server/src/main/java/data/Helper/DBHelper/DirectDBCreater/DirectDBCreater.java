@@ -123,7 +123,12 @@ public class DirectDBCreater {
 				
 //				createTable_WareHouse("02500");
 //				insert_WareHouse("02500");
-//				deleteTable(URLHelper.getWareHouseURL("02500"));				
+//				deleteTable(URLHelper.getWareHouseURL("02500"));	
+				
+				createTable_InstitutionStorage("0250");
+				createTable_InstitutionStorage("025000");
+//				deleteTable(URLHelper.getInstitutionStorage("0250"));
+//				deleteTable(URLHelper.getInstitutionStorage("025000"));
 				
 			} catch (InstantiationException | IllegalAccessException
 					| ClassNotFoundException | SQLException e) {
@@ -907,6 +912,20 @@ public class DirectDBCreater {
 			e.printStackTrace();
 		}		
 	}
+
+	public static void createTable_InstitutionStorage(String URL) {
+		String table_name = URLHelper.getInstitutionStorage(URL);
+		
+		try {
+			s = conn.createStatement();
+			s.execute("CREATE TABLE "+table_name+" (bar_code varchar(20) PRIMARY key)");
+			
+			System.out.println("create table "+table_name);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	public static void createType() {
 		String type_name = null;
@@ -921,4 +940,5 @@ public class DirectDBCreater {
 			e.printStackTrace();
 		}
 	}
+	
 }
