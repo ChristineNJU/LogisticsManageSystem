@@ -79,7 +79,7 @@ public class ManagerInstitutionMgt extends FunctionADUS{
 	}
 
 	@Override
-	protected void confirmRevise() {
+	public void performConfirm() {
 		// TODO Auto-generated method stub
 		deleteItems=new ArrayList<InstitutionVO>();
 		for(int i=0;i<tableV.size();i++){

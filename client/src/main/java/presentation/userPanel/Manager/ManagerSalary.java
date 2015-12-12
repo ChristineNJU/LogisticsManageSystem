@@ -47,7 +47,7 @@ public class ManagerSalary extends FunctionADUS{
 	}
 
 	@Override
-	protected void confirmRevise() {
+	public void performConfirm() {
 		ArrayList<SalaryVO> revisedSalary = new ArrayList<SalaryVO>();
 		for(int i = 0;i < tableV.size();i++){
 			if(model.isUpdate(i)){

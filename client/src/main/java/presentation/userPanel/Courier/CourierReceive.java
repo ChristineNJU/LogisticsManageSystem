@@ -81,7 +81,7 @@ public class CourierReceive  extends FunctionAdd{
 	}
 
 	@Override
-	protected void confirmAll() {
+	public void performConfirm() {
 		// TODO Auto-generated method stub
 		if(table.getRowCount()==0){
 			info.setText("空的提交信息");

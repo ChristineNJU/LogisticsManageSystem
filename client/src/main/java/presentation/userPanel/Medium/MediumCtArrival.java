@@ -94,7 +94,7 @@ public class MediumCtArrival extends FunctionAdd{
 	}
 
 	@Override
-	protected void confirmAll() {
+	public void performConfirm() {
 		//提交所有更新
 		ArrayList<ArrivalVO> temps = new ArrayList<ArrivalVO>();
 		for(Vector<String> vector:tableV){
