@@ -6,6 +6,7 @@ import java.util.Vector;
 
 import javax.swing.JLabel;
 
+import State.ErrorState;
 import VO.RemovalVO;
 import VO.StorageVO;
 import businesslogic.Impl.Repository.RepositoryController;
@@ -81,10 +82,20 @@ public class RepositoryCheck extends FunctionSearch{
 		String timeBegin = dateBeginChooser.getTime();
 		String timeEnd = dateEndChooser.getTime();
 		if(timeBegin.compareTo(timeEnd) >= 0){
-			showError("开始时间需要在结束时间之前");
+//			showError("开始时间需要在结束时间之前");
 		}else{
 			storages = service.seeStorage(timeBegin, timeEnd);
 			removals = service.seeRemoval(timeBegin, timeEnd);
+			if(storages==null||removals==null){
+				showError(ErrorState.CONNECTERROR);
+				storages=new ArrayList<StorageVO>();
+				removals=new ArrayList<RemovalVO>();
+			}
+			else{
+				if(storages.isEmpty()||removals.isEmpty()){
+					showError(ErrorState.SEARCHERROR);
+				}
+			}
 			model = new TableModelSearch(getVector(storages),tableH);
 			table.setModel(model);
 			table.repaint();

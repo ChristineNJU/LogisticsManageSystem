@@ -17,6 +17,8 @@ import presentation.main.FunctionAdd;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
+import State.AddState;
+import State.ErrorState;
 import VO.EntruckingVO;
 import VO.VO;
 import businesslogic.Impl.MediumCenter.MediumCenterController;
@@ -100,8 +102,14 @@ public class MediumCtEntrucking extends FunctionAdd{
 		String temptransfer = idInput.getText();
 		EntruckingVO tempEntrucking = new EntruckingVO(tempdate, temptransfer, tempdestination,tempcarnumber,tempname, tempsupercargo,tempbarCodeList, tempamount);
 		
-		service.entrucking(tempEntrucking);
-		
+		AddState state=AddState.CONNECTERROR;
+		state=service.entrucking(tempEntrucking);
+		if(state==AddState.CONNECTERROR){
+			showError(ErrorState.CONNECTERROR);
+		}
+		else if(state==AddState.FAIL){
+			showError(ErrorState.ADDERROR);
+		}
 	}
 
 	@Override

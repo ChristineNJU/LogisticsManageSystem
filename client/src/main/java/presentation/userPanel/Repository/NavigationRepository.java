@@ -1,5 +1,6 @@
 package presentation.userPanel.Repository;
 
+import State.ErrorState;
 import VO.UserVO;
 import presentation.components.ButtonNav;
 import presentation.frame.MainFrame;
@@ -58,21 +59,41 @@ public class NavigationRepository extends Navigation{
 		repositoryStorage = new RepositoryStorage(this);
 //		MainFrame.getMainPanel().remove(comp);
 		MainFrame.changeContentPanel(repositoryStorage.getPanel());
+		if(repositoryStorage.isConnectError()){
+			System.out.println("manager initiate null");
+			repositoryStorage.showError(ErrorState.CONNECTERROR);
+		}
 	}
 	private void changeToRemoval(){
 		repositoryRemoval = new RepositoryRemoval(this);
 		MainFrame.changeContentPanel(repositoryRemoval.getPanel());
+		if(repositoryRemoval.isConnectError()){
+			System.out.println("manager initiate null");
+			repositoryRemoval.showError(ErrorState.CONNECTERROR);
+		}
 	}
 	private void changeToBalance(){
 		repositoryBalance = new RepositoryBalance(this);
 		MainFrame.changeContentPanel(repositoryBalance.getPanel());
+		if(repositoryBalance.isConnectError()){
+			System.out.println("manager initiate null");
+			repositoryBalance.showError(ErrorState.CONNECTERROR);
+		}
 	}
 	private void changeToStockTaking(){
 		repositoryStockTaking = new RepositoryStockTaking();
 		MainFrame.changeContentPanel(repositoryStockTaking.getPanel());
+		if(repositoryStockTaking.isConnectError()){
+			System.out.println("manager initiate null");
+			repositoryStockTaking.showError(ErrorState.CONNECTERROR);
+		}
 	}
 	private void changeToSee(){
 		repositoryCheck = new RepositoryCheck();
 		MainFrame.changeContentPanel(repositoryCheck.getPanel());
+		if(repositoryCheck.isConnectError()){
+			System.out.println("manager initiate null");
+			repositoryCheck.showError(ErrorState.CONNECTERROR);
+		}
 	}
 }

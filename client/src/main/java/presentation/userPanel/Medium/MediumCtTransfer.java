@@ -15,6 +15,8 @@ import presentation.main.FunctionAdd;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
+import State.AddState;
+import State.ErrorState;
 import VO.TransferVO;
 import VO.VO;
 import businesslogic.Impl.MediumCenter.MediumCenterController;
@@ -103,7 +105,15 @@ public class MediumCtTransfer extends FunctionAdd{
 		String tempguardname = superCarGoInput.getText();
 		double tempamount = Double.valueOf(costInput.getText());
 		TransferVO tempTransfer = new TransferVO(tempdate, templistId, temptransferId, tempsdeparture, tempdestination, tempcontainnumber, tempguardname, barCodeList, tempamount);
-		service.transfer(tempTransfer);
+		AddState state=AddState.CONNECTERROR;
+		
+		state=service.transfer(tempTransfer);
+		if(state==AddState.CONNECTERROR){
+			showError(ErrorState.CONNECTERROR);
+		}
+		else if(state==AddState.FAIL){
+			showError(ErrorState.ADDERROR);
+		}
 	}
 
 	@Override
