@@ -21,6 +21,9 @@ public class URLHelper {
 	/** The Constant DB_BsLb_DriverInfo. */
 	private static final String DB_BsLb_DriverInfo = "BsLb_DriverInfo_info_";
 	
+	/** The Constant Institution_Storage. */
+	private static final String Institution_Storage = "Institution_Storage_";
+	
 	/** The Constant DB_Arrival. */
 	private static final String DB_Arrival = "Arrival_info_";
 	
@@ -102,6 +105,16 @@ public class URLHelper {
 	 */
 	public static String getDeliveryURL(String institution_id) {
 		return DB_BsLb_Delivery + institution_id;
+	}
+	
+	/**
+	 * Gets the institution storage.
+	 *
+	 * @param institution_id the institution_id
+	 * @return the institution storage
+	 */
+	public static String getInstitutionStorage(String institution_id) {
+		return Institution_Storage + institution_id;
 	}
 	
 	/**

@@ -16,12 +16,14 @@ import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
 import presentation.components.FlatComboBox;
 import presentation.components.LabelHeader;
+import presentation.frame.MainFrame;
 import presentation.main.FontSet;
 import presentation.main.FunctionAdd;
 import presentation.main.Translater;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
+import presentation.userPanel.Manager.ManagerInstitutionMgt;
 import State.AddState;
 import State.ErrorState;
 import State.StorageArea;
@@ -63,12 +65,12 @@ public class RepositoryBalance extends FunctionAdd {
 	
 	NavigationRepository nav;
 	
-	public RepositoryBalance(NavigationRepository navigationRepository) {
+	public RepositoryBalance() {
 		// TODO Auto-generated constructor stub
 		super.buttonNew = new ButtonNew("新增调整");
 		super.confirm = new ButtonConfirm("提交调整");
 		
-		nav = navigationRepository;
+//		nav = navigationRepository;
 		
 		initUI("库区调整");
 		init();
@@ -319,5 +321,10 @@ public class RepositoryBalance extends FunctionAdd {
 			}
 		}
 		
+	}
+
+	@Override
+	public void performCancel() {
+		MainFrame.changeContentPanel(new RepositoryBalance().getPanel());		
 	}
 }

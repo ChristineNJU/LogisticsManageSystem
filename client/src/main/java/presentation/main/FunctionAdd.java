@@ -24,7 +24,7 @@ import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
 
-public abstract class FunctionAdd {
+public abstract class FunctionAdd extends Function{
 
 	protected Translater trans = new Translater();
 	
@@ -78,6 +78,8 @@ public abstract class FunctionAdd {
 	protected abstract void initTable();
 	
 	protected abstract void confirmAll();
+	
+	public abstract void performCancel();
 	
 	protected void removeError(){
 		panel.remove(attention);
@@ -228,6 +230,9 @@ public abstract class FunctionAdd {
 				if(confirm.isEnabled()){
 					confirmAll();
 				}
+			}
+			if(source.equals(cancel)){
+				performCancel();
 			}
 		}
 

@@ -10,23 +10,21 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.table.TableColumnModel;
 
-import presentation.components.ButtonConfirm;
-import presentation.components.ButtonNew;
-import presentation.components.FlatComboBox;
-import presentation.components.LabelHeader;
-import presentation.main.FunctionAdd;
-import presentation.main.Translater;
-import presentation.table.ScrollPaneTable;
-import presentation.table.TableAddOnly;
-import presentation.table.TableModelAddOnly;
-import presentation.userPanel.BusinessLb.BusinessLbDelivery.Header;
 import State.AddState;
 import State.CostType;
 import State.ErrorState;
 import VO.CostVO;
 import VO.VO;
 import businesslogic.Impl.Finance.FinanceController;
-import businesslogic.SystemLog.SystemLog;
+import presentation.components.ButtonConfirm;
+import presentation.components.ButtonNew;
+import presentation.components.FlatComboBox;
+import presentation.frame.MainFrame;
+import presentation.main.FunctionAdd;
+import presentation.main.Translater;
+import presentation.table.ScrollPaneTable;
+import presentation.table.TableAddOnly;
+import presentation.table.TableModelAddOnly;
 
 public class FinanceCost extends FunctionAdd{
 	SimpleDateFormat sdfs=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -147,6 +145,11 @@ public class FinanceCost extends FunctionAdd{
 //			add(businessLobbyID);
 //			add(gatheringId);
 		}
+	}
+
+	@Override
+	public void performCancel() {
+		MainFrame.changeContentPanel(new FinanceCost().getPanel());		
 	}
 	
 }

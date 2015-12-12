@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import PO.UserPO;
 import State.ResetState;
+import businesslogic.Service.User.ResetPasswordService;
 import data.RMIHelper.RMIHelper;
 import data.Service.Search.SearchUserService;
 import data.Service.Update.UpdateService;
@@ -16,7 +17,7 @@ import data.Service.Update.UpdateService;
  * @author 张晨剑
  * @version 1.0.0
  */
-public class ResetPasswordImpl {
+public class ResetPasswordImpl implements ResetPasswordService{
 	
 	/**
 	 * 密码的修改方法,包括密码的比对和修改.

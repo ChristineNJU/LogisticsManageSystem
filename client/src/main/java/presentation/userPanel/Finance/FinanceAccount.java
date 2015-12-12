@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import presentation.components.ButtonNew;
+import presentation.frame.MainFrame;
 import presentation.main.FunctionADUS;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableADUS;
 import presentation.table.TableModelADUS;
+import presentation.userPanel.Manager.ManagerStaffMgt;
 import State.AddState;
 import State.DeleteState;
 import State.ErrorState;
@@ -22,7 +24,7 @@ public class FinanceAccount extends FunctionADUS{
 	
 	ArrayList<AccountVO> accounts;
 	String[] tableH={"账户名称","账户余额"};
-	boolean[] isCellEditable={true,true};
+	boolean[] isCellEditable={true,false};
 	
 	ArrayList<AccountVO> addItems=new ArrayList<AccountVO>();
 	ArrayList<AccountVO> deleteItems=new ArrayList<AccountVO>();
@@ -156,6 +158,11 @@ public class FinanceAccount extends FunctionADUS{
 		}
 		
 		return result;
+	}
+
+	@Override
+	public void performCancel() {
+		MainFrame.changeContentPanel(new FinanceAccount().getPanel());		
 	}
  
 }

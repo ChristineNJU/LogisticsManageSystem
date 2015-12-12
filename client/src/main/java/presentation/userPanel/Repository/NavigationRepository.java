@@ -56,7 +56,7 @@ public class NavigationRepository extends Navigation{
 		
 	}
 	private void changeToStorage(){
-		repositoryStorage = new RepositoryStorage(this);
+		repositoryStorage = new RepositoryStorage();
 //		MainFrame.getMainPanel().remove(comp);
 		MainFrame.changeContentPanel(repositoryStorage.getPanel());
 		if(repositoryStorage.isConnectError()){
@@ -73,7 +73,7 @@ public class NavigationRepository extends Navigation{
 		}
 	}
 	private void changeToBalance(){
-		repositoryBalance = new RepositoryBalance(this);
+		repositoryBalance = new RepositoryBalance();
 		MainFrame.changeContentPanel(repositoryBalance.getPanel());
 		if(repositoryBalance.isConnectError()){
 			System.out.println("manager initiate null");

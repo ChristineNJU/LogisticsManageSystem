@@ -20,7 +20,7 @@ import presentation.table.ScrollPaneTable;
 import presentation.table.TableModelSearch;
 import presentation.table.TableSearch;
 
-public abstract class FunctionSearch {
+public abstract class FunctionSearch extends Function{
 
 	protected Translater trans = new Translater();
 	

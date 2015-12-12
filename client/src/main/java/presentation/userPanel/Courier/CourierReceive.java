@@ -12,11 +12,13 @@ import javax.swing.event.TableModelListener;
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
 import presentation.components.LabelHeader;
+import presentation.frame.MainFrame;
 import presentation.main.FontSet;
 import presentation.main.FunctionAdd;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
+import presentation.userPanel.Manager.ManagerInstitutionMgt;
 import State.UpdateState;
 import VO.LogisticsHistoryVO;
 import VO.LogisticsInputVO;
@@ -41,11 +43,11 @@ public class CourierReceive  extends FunctionAdd{
 	JLabel info = new JLabel();
 	
 	NavigationCourier nav;
-	public CourierReceive(NavigationCourier nav) {
+	public CourierReceive() {
 		super.buttonNew = new ButtonNew("新增收件");
 		super.confirm = new ButtonConfirm("确认收件");
 		
-		this.nav = nav;
+//		this.nav = nav;
 		
 		initUI("收件信息输入");
 		init();
@@ -168,5 +170,10 @@ public class CourierReceive  extends FunctionAdd{
 			}
 		}
 		return true;
+	}
+
+	@Override
+	public void performCancel() {
+		MainFrame.changeContentPanel(new CourierReceive().getPanel());		
 	}
 }

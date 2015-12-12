@@ -13,12 +13,17 @@ import presentation.components.ButtonNew;
 import presentation.components.LabelHeader;
 import presentation.components.TextField;
 import presentation.components.TextFieldHeader;
+import presentation.frame.MainFrame;
 import presentation.main.FunctionAdd;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
+
 import State.AddState;
 import State.ErrorState;
+
+import presentation.userPanel.Manager.ManagerInstitutionMgt;
+
 import VO.EntruckingVO;
 import VO.VO;
 import businesslogic.Impl.MediumCenter.MediumCenterController;
@@ -200,5 +205,9 @@ public class MediumCtEntrucking extends FunctionAdd{
 			
 			
 		}
+	}
+	@Override
+	public void performCancel() {
+		MainFrame.changeContentPanel(new MediumCtEntrucking().getPanel());		
 	}
 }

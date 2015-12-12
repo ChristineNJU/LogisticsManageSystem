@@ -16,12 +16,14 @@ import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
 import presentation.components.FlatComboBox;
 import presentation.components.LabelHeader;
+import presentation.frame.MainFrame;
 import presentation.main.FontSet;
 import presentation.main.FunctionAdd;
 import presentation.main.Translater;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
+import presentation.userPanel.Manager.ManagerInstitutionMgt;
 import State.StateSwitch;
 import State.StorageState;
 import VO.StorageVO;
@@ -51,11 +53,11 @@ public class RepositoryStorage extends FunctionAdd {
 	
 	NavigationRepository nav;
 	
-	public RepositoryStorage(NavigationRepository nav) {
+	public RepositoryStorage() {
 		super.buttonNew = new ButtonNew("新增入库单");
 		super.confirm = new ButtonConfirm("提交入库单");
 		
-		this.nav = nav;
+//		this.nav = nav;
 		
 		initUI("入库");
 		init();
@@ -271,5 +273,10 @@ public class RepositoryStorage extends FunctionAdd {
 			date.setBounds(0, 0, 400, 30);
 			add(date);
 		}
+	}
+
+	@Override
+	public void performCancel() {
+		MainFrame.changeContentPanel(new RepositoryStorage().getPanel());		
 	}
 }

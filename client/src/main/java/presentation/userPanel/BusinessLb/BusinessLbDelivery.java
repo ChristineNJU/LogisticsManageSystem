@@ -1,6 +1,5 @@
 package presentation.userPanel.BusinessLb;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -9,21 +8,19 @@ import java.util.Vector;
 
 import javax.swing.JLabel;
 
+import State.AddState;
+import State.ErrorState;
+import VO.DeliveryVO;
+import VO.VO;
+import businesslogic.Impl.Businesslobby.BusinessLobbyController;
+import businesslogic.Service.BusinessLobby.BsLbService;
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
-import presentation.components.LabelHeader;
+import presentation.frame.MainFrame;
 import presentation.main.FunctionAdd;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
-import State.AddState;
-import State.ErrorState;
-import VO.DeliveryVO;
-import VO.EntruckingVO;
-import VO.VO;
-import businesslogic.Impl.Businesslobby.BusinessLobbyController;
-import businesslogic.Service.BusinessLobby.BsLbService;
-import businesslogic.SystemLog.SystemLog;
 
 public class BusinessLbDelivery extends FunctionAdd{
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -133,5 +130,9 @@ public class BusinessLbDelivery extends FunctionAdd{
 //			add(businessLobbyID);
 //			add(gatheringId);
 		}
+	}
+	@Override
+	public void performCancel() {
+		MainFrame.changeContentPanel(new BusinessLbDelivery().getPanel());
 	}
 }
