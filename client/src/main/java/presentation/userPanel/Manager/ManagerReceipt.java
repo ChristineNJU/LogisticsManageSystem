@@ -20,6 +20,7 @@ import presentation.main.FunctionSearch;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableModelSearch;
 import presentation.table.TableSearch;
+import State.ErrorState;
 import State.UpdateState;
 import VO.ArrivalVO;
 import VO.BalanceVO;
@@ -121,6 +122,12 @@ public class ManagerReceipt extends FunctionSearch{
 					break;
 				}
 				
+				if(state==UpdateState.NOTFOUND){
+					showError(ErrorState.UPDATEERROR);
+				}
+				else if(state==UpdateState.CONNECTERROR){
+					showError(ErrorState.CONNECTERROR);
+				}
 				
 			}
 

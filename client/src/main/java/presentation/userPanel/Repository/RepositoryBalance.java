@@ -25,7 +25,9 @@ import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
 import presentation.userPanel.Manager.ManagerInstitutionMgt;
 import State.AddState;
+import State.ErrorState;
 import State.StorageArea;
+import State.UpdateState;
 import VO.BalanceVO;
 import VO.VO;
 import VO.WareHouseVO;
@@ -82,13 +84,22 @@ public class RepositoryBalance extends FunctionAdd {
 		panel.add(pbp.getPanel());
 		
 		total = wareHouse.getWareHouse();
-		for(int i=0;i<total.size();i++){
-			if(total.get(i).getArea_code()==StorageArea.AIR_TRANSPORTATION){
-				air.add(total.get(i));
-			}else if(total.get(i).getArea_code()==StorageArea.CAR_TRANSPORTATION){
-				car.add(total.get(i));
-			}else if(total.get(i).getArea_code()==StorageArea.RAILWAY_TRANSPORTATION){
-				rail.add(total.get(i));
+		
+		if(total==null){
+			showError(ErrorState.CONNECTERROR);
+		}
+		else {
+			if(total.isEmpty()){
+				showError(ErrorState.SEARCHERROR);
+			}
+			for(int i=0;i<total.size();i++){
+				if(total.get(i).getArea_code()==StorageArea.AIR_TRANSPORTATION){
+					air.add(total.get(i));
+				}else if(total.get(i).getArea_code()==StorageArea.CAR_TRANSPORTATION){
+					car.add(total.get(i));
+				}else if(total.get(i).getArea_code()==StorageArea.RAILWAY_TRANSPORTATION){
+					rail.add(total.get(i));
+				}
 			}
 		}
 	}
@@ -197,7 +208,14 @@ public class RepositoryBalance extends FunctionAdd {
 		}
 		
 		for(int i=0;i<change.size();i++){
-			wareHouse.updateWareHouse(change.get(i));
+			UpdateState state=wareHouse.updateWareHouse(change.get(i));
+			if(state==UpdateState.CONNECTERROR){
+				showError(ErrorState.CONNECTERROR);
+				break;
+			}
+			else if(state==UpdateState.NOTFOUND){
+				showError(ErrorState.UPDATEERROR);
+			}
 		}
 		
 		AddState state = repository.addBalance(balance);
@@ -206,6 +224,12 @@ public class RepositoryBalance extends FunctionAdd {
 			nav.changeTask(3);
 			nav.repositoryBalance.info.setText("保存成功");
 		}else{
+			if(state==AddState.CONNECTERROR){
+				showError(ErrorState.CONNECTERROR);
+			}
+			else if(state==AddState.FAIL){
+				showError(ErrorState.ADDERROR);
+			}
 			info.setText("保存失败");
 		}
 	}

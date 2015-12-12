@@ -18,6 +18,7 @@ import presentation.table.TableModelADUS;
 import presentation.userPanel.BusinessLb.BusinessLbCarMgt;
 import State.AddState;
 import State.DeleteState;
+import State.ErrorState;
 import State.UpdateState;
 import VO.InstitutionVO;
 import VO.StaffVO;
@@ -50,7 +51,18 @@ public class ManagerInstitutionMgt extends FunctionADUS{
 		// TODO Auto-generated method stub
 		institutions=new ArrayList<InstitutionVO>();
 		institutions=service.searchInstitution("%%");
-		tableV = getVector(institutions);
+		if(institutions==null){
+			super.isConnectError=true;
+			tableV=new Vector<Vector<String>>();
+		}
+		else if(institutions.isEmpty()){
+			showError(ErrorState.SEARCHERROR);
+			tableV=getVector(institutions);
+			
+		}
+		else{
+			tableV = getVector(institutions);
+		}
 		model = new TableModelADUS(tableV, tableH,isCellEditable);
 		table = new TableADUS(model);
 		
@@ -93,9 +105,11 @@ public class ManagerInstitutionMgt extends FunctionADUS{
 		for(int i=0;i<deleteItems.size();i++){
 			deleteState=service.deleteInstitution(deleteItems.get(i));
 			if(deleteState==DeleteState.FAIL){
+				showError(ErrorState.DELETEERROR);
 				break;
 			}
 			else if(deleteState==DeleteState.CONNECTERROR){
+				showError(ErrorState.CONNECTERROR);
 				break;
 			}
 		}
@@ -109,9 +123,11 @@ public class ManagerInstitutionMgt extends FunctionADUS{
 		for(int i=0;i<updateItems.size();i++){
 			updateState=service.UpdateInstitution(updateItems.get(i));
 			if(updateState==UpdateState.NOTFOUND){
+				showError(ErrorState.UPDATEERROR);
 				break;
 			}
 			else if(updateState==UpdateState.CONNECTERROR){
+				showError(ErrorState.CONNECTERROR);
 				break;
 			}
 		}
@@ -126,9 +142,11 @@ public class ManagerInstitutionMgt extends FunctionADUS{
 		for(int i=0;i<addItems.size();i++){
 			addState=service.addInstitution(addItems.get(i));
 			if(addState==AddState.FAIL){
+				showError(ErrorState.ADDERROR);
 				break;
 			}
 			else if(addState==AddState.CONNECTERROR){
+				showError(ErrorState.CONNECTERROR);
 				break;
 			}
 		}
