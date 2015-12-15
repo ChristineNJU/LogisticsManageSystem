@@ -32,9 +32,9 @@ public class GetNeedEntruckingImpl implements GetNeedEntruckingService{
 		try {
 			SearchEntruckingService searchEntrucking=(SearchEntruckingService) Naming.lookup(RMIHelper.SEARCH_ENTRUCKING_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("TRANSFER_NUMBER like '%%'");
+			requirement.add("bar_code like '%%'");
 			
-			ArrayList<EntruckingPO> searchResult=searchEntrucking.searchEntrucking(URLHelper.getEntruckingURL(SystemLog.getInstitutionId()), requirement);
+			ArrayList<EntruckingPO> searchResult=searchEntrucking.searchEntrucking(URLHelper.getInstitutionStorage(SystemLog.getInstitutionId()), requirement);
 			
 			if(searchResult.isEmpty()){
 				System.out.println("not found");

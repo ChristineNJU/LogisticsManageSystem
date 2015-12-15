@@ -32,9 +32,9 @@ public class GetNeedGatheringImpl implements GetNeedGatheringService{
 		try {
 			SearchGatheringService searchGathering=(SearchGatheringService) Naming.lookup(RMIHelper.SEARCH_GATHERING_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("date like '%%'");
+			requirement.add("bar_code like '%%'");
 			
-			ArrayList<GatheringPO> searchResult=searchGathering.searchGathering(URLHelper.getGatheringURL(SystemLog.getInstitutionId()), requirement);
+			ArrayList<GatheringPO> searchResult=searchGathering.searchGathering(URLHelper.getInstitutionStorage(SystemLog.getInstitutionId()), requirement);
 			
 			if(searchResult.isEmpty()){
 				System.out.println("not found");
