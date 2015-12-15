@@ -18,7 +18,12 @@ import presentation.main.FunctionAdd;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
+
+import State.AddState;
+import State.ErrorState;
+
 import presentation.userPanel.Manager.ManagerInstitutionMgt;
+
 import VO.EntruckingVO;
 import VO.VO;
 import businesslogic.Impl.MediumCenter.MediumCenterController;
@@ -63,17 +68,6 @@ public class MediumCtEntrucking extends FunctionAdd{
 		needEntrucking = new ArrayList<EntruckingVO>();
 		
 //		needEntrucking = service.getNeedEntrucking();
-	
-		//测试用
-		
-		try {ArrayList<String> barCodeList = new ArrayList<String>();
-			barCodeList.add("0000000001");
-			EntruckingVO entrucking0 = new EntruckingVO(sdfs.parse("2015-12-03 18:45:20"), "02502015112300000","南京", "苏A 12345", "张斯栋", "张斯栋",barCodeList, 12 );
-			needEntrucking.add(entrucking0);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 		tableV = getVector(needEntrucking);
 		
@@ -102,8 +96,14 @@ public class MediumCtEntrucking extends FunctionAdd{
 		String temptransfer = idInput.getText();
 		EntruckingVO tempEntrucking = new EntruckingVO(tempdate, temptransfer, tempdestination,tempcarnumber,tempname, tempsupercargo,tempbarCodeList, tempamount);
 		
-		service.entrucking(tempEntrucking);
-		
+		AddState state=AddState.CONNECTERROR;
+		state=service.entrucking(tempEntrucking);
+		if(state==AddState.CONNECTERROR){
+			showError(ErrorState.CONNECTERROR);
+		}
+		else if(state==AddState.FAIL){
+			showError(ErrorState.ADDERROR);
+		}
 	}
 
 	@Override

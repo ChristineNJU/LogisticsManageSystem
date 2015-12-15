@@ -60,12 +60,12 @@ public class MainFrame {
 		frame.setContentPane(panel);
 		panel.setLayout(null);
 
-//		inquiry = new Inquiry(this);
-//		frame.add(inquiry.getPanel());
+		inquiry = new Inquiry(this);
+		frame.add(inquiry.getPanel());
 //		panel.add(inquiry.getPanel());
 
 //		changeToCourier();
-		changeToBusinesslobby();
+//		changeToBusinesslobby();
 //		changeToFinance();
 //		changeToCourier()
 
@@ -85,7 +85,7 @@ public class MainFrame {
 
 
 //		changeToMediumCenter();
-		changeToRepository();
+//		changeToRepository();
 
 //		changeToMediumCenter();
 //		changeToRepository();

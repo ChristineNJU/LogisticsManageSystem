@@ -22,6 +22,10 @@ import presentation.main.Translater;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
+
+import State.AddState;
+import State.ErrorState;
+
 import State.TransferType;
 import VO.RemovalVO;
 import VO.VO;
@@ -155,7 +159,13 @@ public class RepositoryRemoval extends FunctionAdd{
 			reomvals.add(temp);
 			
 		}
-		service.addRemoval(reomvals);
+		AddState state=service.addRemoval(reomvals);
+		if(state==AddState.CONNECTERROR){
+			showError(ErrorState.CONNECTERROR);
+		}
+		else if(state==AddState.FAIL){
+			showError(ErrorState.ADDERROR);
+		}
 	}
 
 	@Override

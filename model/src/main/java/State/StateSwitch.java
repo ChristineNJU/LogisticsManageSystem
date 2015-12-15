@@ -201,7 +201,8 @@ public class StateSwitch {
 		case "BusinessLobby": type=InstitutionType.BusinessLobby; break;
 		case "MediumCenter": type=InstitutionType.MediumCenter; break;
 		case "Repository": type=InstitutionType.Repository; break;
-		case "Other": type=InstitutionType.Repository; break;
+		case "Other": type=InstitutionType.Other; break;
+		default: type = InstitutionType.Other;break;
 		}
 		
 		return type;

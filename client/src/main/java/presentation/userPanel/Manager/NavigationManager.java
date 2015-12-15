@@ -107,7 +107,7 @@ public class NavigationManager extends Navigation{
 	}
 	
 	private void changeToInstitution(){
-		institutionM=new ManagerInstitutionMgt();
+		institutionM=new ManagerInstitutionMgt(this);
 		MainFrame.changeContentPanel(institutionM.getPanel());
 		MainFrame.getMainPanel().repaint();
 
