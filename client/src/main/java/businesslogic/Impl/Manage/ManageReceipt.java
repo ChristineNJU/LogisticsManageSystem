@@ -120,8 +120,9 @@ public class ManageReceipt implements UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					ArrivalPO temp=new ArrivalPO((ArrivalVO)receipt,institutionid);
+					ArrivalPO temp=searchResult.get(0);
 					temp.setApproved(true);
+//					System.out.println("here");
 					result=updateService.update(temp);
 				}
 			}
@@ -146,7 +147,7 @@ public class ManageReceipt implements UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					BalancePO temp=new BalancePO((BalanceVO)receipt, institutionid);
+					BalancePO temp=searchResult.get(0);
 					temp.setApproved(true);
 					result=updateService.update(temp);
 					
@@ -165,7 +166,7 @@ public class ManageReceipt implements UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					CostPO temp=new CostPO((CostVO) receipt);
+					CostPO temp=searchResult.get(0);
 					temp.setApproved(true);
 					result=updateService.update(temp);
 					
@@ -176,8 +177,12 @@ public class ManageReceipt implements UpdateReceiptService{
 				requireBenefit.add("date like '%%'");
 				ArrayList<BenefitPO> searchResultBenefit=searchBenefit.searchBenefit(requireBenefit);
 				AddService addService=(AddService) Naming.lookup(RMIHelper.ADD_IMPL);
-				BenefitPO benefit=new BenefitPO(cost, searchResultBenefit.get(searchResultBenefit.size()));
-				addService.add(benefit);
+				if(searchResultBenefit.isEmpty()){
+					
+				}else{
+					BenefitPO benefit=new BenefitPO(cost, searchResultBenefit.get(searchResultBenefit.size()-1));
+					addService.add(benefit);
+				}
 			}
 			
 			//Delivery 
@@ -203,7 +208,7 @@ public class ManageReceipt implements UpdateReceiptService{
 				}
 				else{
 					
-					DeliveryPO temp=new DeliveryPO((DeliveryVO)receipt,institutionid);
+					DeliveryPO temp=searchResult.get(0);
 					temp.setApproved(true);
 					result=updateService.update(temp);
 					
@@ -239,7 +244,7 @@ public class ManageReceipt implements UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					EntruckingPO temp=new EntruckingPO((EntruckingVO)receipt, institutionid);
+					EntruckingPO temp=searchResult.get(0);
 					temp.setApproved(true);;
 					result=updateService.update(temp);
 					
@@ -265,7 +270,7 @@ public class ManageReceipt implements UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					GatheringPO temp=new GatheringPO((GatheringVO)receipt,institutionid);
+					GatheringPO temp=searchResult.get(0);
 					temp.setApproved(true);
 					result=updateService.update(temp);
 					
@@ -302,7 +307,7 @@ public class ManageReceipt implements UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					RemovalPO temp=new RemovalPO((RemovalVO)receipt,institutionid);
+					RemovalPO temp=searchResult.get(0);
 					temp.setApproved(true);
 					result=updateService.update(temp);
 					
@@ -331,7 +336,7 @@ public class ManageReceipt implements UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					StoragePO temp=new StoragePO((StorageVO)receipt,institutionid);
+					StoragePO temp=searchResult.get(0);
 					temp.setApproved(true);
 					result=updateService.update(temp);
 					
@@ -360,7 +365,7 @@ public class ManageReceipt implements UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					TransferPO temp=new TransferPO((TransferVO)receipt,institutionid);
+					TransferPO temp=searchResult.get(0);
 					temp.setApproved(true);
 					result=updateService.update(temp);
 					
