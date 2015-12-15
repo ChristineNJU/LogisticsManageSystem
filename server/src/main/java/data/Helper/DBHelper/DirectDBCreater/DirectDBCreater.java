@@ -90,11 +90,11 @@ public class DirectDBCreater {
 				
 //				createTable_Balance("02500");
 //				insert_Balance("02500");
-//				deleteTable(URLHelper.getBalanceURL("02500"));
+//				deleteTable(URLHelper.getBalanceURL("0250"));
 				
 //				createTable_StockTaking("02500");
 //				insert_StockingTaking("02500");
-//				deleteTable(URLHelper.getStockTakingURL("02500"));
+//				deleteTable(URLHelper.getStockTakingURL("0250"));
 				
 //				createTable_Storage("02500");
 //				insert_Storage("02500");
@@ -123,12 +123,15 @@ public class DirectDBCreater {
 				
 //				createTable_WareHouse("02500");
 //				insert_WareHouse("02500");
-//				deleteTable(URLHelper.getWareHouseURL("02500"));	
+//				deleteTable(URLHelper.getWareHouseURL("0250"));	
 				
-				createTable_InstitutionStorage("0250");
-				createTable_InstitutionStorage("025000");
-//				deleteTable(URLHelper.getInstitutionStorage("0250"));
+//				createTable_InstitutionStorage("0250");
+//				createTable_InstitutionStorage("025000");
+//				deleteTable(URLHelper.getInstitutionStorage("025001"));
 //				deleteTable(URLHelper.getInstitutionStorage("025000"));
+				
+//				createTable_BsLbGathering("025000");
+//				deleteTable(URLHelper.getGatheringStorage("025000"));
 				
 			} catch (InstantiationException | IllegalAccessException
 					| ClassNotFoundException | SQLException e) {
@@ -918,7 +921,24 @@ public class DirectDBCreater {
 		
 		try {
 			s = conn.createStatement();
-			s.execute("CREATE TABLE "+table_name+" (bar_code varchar(20) PRIMARY key)");
+			s.execute("CREATE TABLE "+table_name+" (bar_code varchar(20) PRIMARY key, isOut varchar(10))");
+			conn.commit();
+			
+			System.out.println("create table "+table_name);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void createTable_BsLbGathering(String URL) {
+		String table_name = URLHelper.getGatheringStorage(URL);
+		
+		try {
+			s = conn.createStatement();
+			s.execute("CREATE TABLE "+table_name+" (bar_code varchar(20) PRIMARY key, amount double, courier varchar(50), "
+					+ "date varchar(50))");
+			conn.commit();
 			
 			System.out.println("create table "+table_name);
 		} catch (SQLException e) {

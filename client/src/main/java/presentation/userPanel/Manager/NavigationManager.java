@@ -89,7 +89,7 @@ public class NavigationManager extends Navigation{
 	
 	private void changeToStaff(){
 
-		staffM = new ManagerStaffMgt();
+		staffM = new ManagerStaffMgt(this);
 		MainFrame.changeContentPanel(staffM.getPanel());
 		MainFrame.getMainPanel().repaint();
 		if(staffM.isConnectError()){
@@ -107,7 +107,7 @@ public class NavigationManager extends Navigation{
 	}
 	
 	private void changeToInstitution(){
-		institutionM=new ManagerInstitutionMgt();
+		institutionM=new ManagerInstitutionMgt(this);
 		MainFrame.changeContentPanel(institutionM.getPanel());
 		MainFrame.getMainPanel().repaint();
 
@@ -120,7 +120,7 @@ public class NavigationManager extends Navigation{
 	}
 	
 	private void changeToManager(){
-		staffM = new ManagerStaffMgt();
+		staffM = new ManagerStaffMgt(this);
 		MainFrame.changeContentPanel(staffM.getPanel());
 		MainFrame.getMainPanel().repaint();
 

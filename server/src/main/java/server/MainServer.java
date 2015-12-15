@@ -6,6 +6,8 @@ import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 
+import javax.management.remote.rmi.RMIConnectionImpl;
+
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Impl.Add.AddImpl;
 import data.Impl.Delete.DeleteImpl;
@@ -31,9 +33,12 @@ import data.Impl.Search.SearchStockTakingImpl;
 import data.Impl.Search.SearchStorageImpl;
 import data.Impl.Search.SearchTransferImpl;
 import data.Impl.Search.SearchUserImpl;
+import data.Impl.Sundry.GatheringStorageImpl;
+import data.Impl.Sundry.InstitutionStorageImpl;
 import data.Impl.Sundry.TableOperationImpl;
 import data.Impl.Sundry.WareHouseImpl;
 import data.Impl.Update.UpdateImpl;
+import data.RMIHelper.RMIConnectionService;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
 import data.Service.Delete.DeleteService;
@@ -59,6 +64,8 @@ import data.Service.Search.SearchStockTakingService;
 import data.Service.Search.SearchStorageService;
 import data.Service.Search.SearchTransferService;
 import data.Service.Search.SearchUserService;
+import data.Service.Sundry.GatheringStorageService;
+import data.Service.Sundry.InstitutionStorageService;
 import data.Service.Sundry.TableOperationService;
 import data.Service.Sundry.WareHouseService;
 import data.Service.Update.UpdateService;
@@ -101,6 +108,10 @@ public class MainServer {
 		
 		WareHouseService ware_house_service = null;
 		TableOperationService table_operation_service = null;
+		InstitutionStorageService institution_storage_service = null;
+		GatheringStorageService gathering_storage_service = null;
+		
+		RMIConnectionService RMI_connection_service = null;
 		try {
 			add_service = new AddImpl();
 			delete_service = new DeleteImpl();
@@ -131,6 +142,10 @@ public class MainServer {
 			
 			ware_house_service = new WareHouseImpl();
 			table_operation_service = new TableOperationImpl();
+			institution_storage_service = new InstitutionStorageImpl();
+			gathering_storage_service = new GatheringStorageImpl();
+			
+			RMI_connection_service = new data.Impl.Sundry.RMIConnectionImpl();
 		} catch (RemoteException e1) {
 			// TODO Auto-generated catch block
 			System.out.println("接口实现创建失败");
@@ -194,6 +209,12 @@ public class MainServer {
 			print("WareHouseImpl");
 			Naming.bind(RMIHelper.TABLE_OPERATION_IMPL, table_operation_service);
 			print("TableOperationImpl");
+			Naming.bind(RMIHelper.INSTITUTION_STORAGE_IMPL, institution_storage_service);
+			print("InstitutionStorageImpl");
+			Naming.bind(RMIHelper.GATHERING_STORAGE_IMPL, gathering_storage_service);
+			print("GatheringStorageImpl");
+			Naming.bind(RMIHelper.RMI_CONNECTION_IMPL, RMI_connection_service);
+			print("RMIConnectionImpl");
 		} catch (RemoteException | MalformedURLException | AlreadyBoundException e) {
 			// TODO Auto-generated catch block
 			System.out.println("RMI远程端口绑定失败");

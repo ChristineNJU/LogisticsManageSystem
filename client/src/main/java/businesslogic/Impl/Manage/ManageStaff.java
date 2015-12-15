@@ -75,8 +75,8 @@ public class ManageStaff implements ManageStaffService{
 			
 			//show when id==null
 			if(!id.equals("%%")){
-				requirementId.add("id='"+id+"'");
-				requirementName.add("name='"+id+"'");
+				requirementId.add("id like '%"+id+"%'");
+				requirementName.add("name like '%"+id+"%'");
 			}else{
 				requirementId.add("id like '%%'");
 			}

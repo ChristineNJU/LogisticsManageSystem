@@ -120,8 +120,9 @@ public class ManageReceipt implements UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					ArrivalPO temp=new ArrivalPO((ArrivalVO)receipt,institutionid);
+					ArrivalPO temp=searchResult.get(0);
 					temp.setApproved(true);
+//					System.out.println("here");
 					result=updateService.update(temp);
 				}
 			}
@@ -146,7 +147,7 @@ public class ManageReceipt implements UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					BalancePO temp=new BalancePO((BalanceVO)receipt, institutionid);
+					BalancePO temp=searchResult.get(0);
 					temp.setApproved(true);
 					result=updateService.update(temp);
 					
@@ -165,7 +166,7 @@ public class ManageReceipt implements UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					CostPO temp=new CostPO((CostVO) receipt);
+					CostPO temp=searchResult.get(0);
 					temp.setApproved(true);
 					result=updateService.update(temp);
 					
@@ -176,8 +177,12 @@ public class ManageReceipt implements UpdateReceiptService{
 				requireBenefit.add("date like '%%'");
 				ArrayList<BenefitPO> searchResultBenefit=searchBenefit.searchBenefit(requireBenefit);
 				AddService addService=(AddService) Naming.lookup(RMIHelper.ADD_IMPL);
-				BenefitPO benefit=new BenefitPO(cost, searchResultBenefit.get(searchResultBenefit.size()));
-				addService.add(benefit);
+				if(searchResultBenefit.isEmpty()){
+					
+				}else{
+					BenefitPO benefit=new BenefitPO(cost, searchResultBenefit.get(searchResultBenefit.size()-1));
+					addService.add(benefit);
+				}
 			}
 			
 			//Delivery 
@@ -203,7 +208,7 @@ public class ManageReceipt implements UpdateReceiptService{
 				}
 				else{
 					
-					DeliveryPO temp=new DeliveryPO((DeliveryVO)receipt,institutionid);
+					DeliveryPO temp=searchResult.get(0);
 					temp.setApproved(true);
 					result=updateService.update(temp);
 					
@@ -239,7 +244,7 @@ public class ManageReceipt implements UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					EntruckingPO temp=new EntruckingPO((EntruckingVO)receipt, institutionid);
+					EntruckingPO temp=searchResult.get(0);
 					temp.setApproved(true);;
 					result=updateService.update(temp);
 					
@@ -265,7 +270,7 @@ public class ManageReceipt implements UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					GatheringPO temp=new GatheringPO((GatheringVO)receipt,institutionid);
+					GatheringPO temp=searchResult.get(0);
 					temp.setApproved(true);
 					result=updateService.update(temp);
 					
@@ -302,7 +307,7 @@ public class ManageReceipt implements UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					RemovalPO temp=new RemovalPO((RemovalVO)receipt,institutionid);
+					RemovalPO temp=searchResult.get(0);
 					temp.setApproved(true);
 					result=updateService.update(temp);
 					
@@ -331,7 +336,7 @@ public class ManageReceipt implements UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					StoragePO temp=new StoragePO((StorageVO)receipt,institutionid);
+					StoragePO temp=searchResult.get(0);
 					temp.setApproved(true);
 					result=updateService.update(temp);
 					
@@ -360,7 +365,7 @@ public class ManageReceipt implements UpdateReceiptService{
 					return UpdateState.NOTFOUND;
 				}
 				else{
-					TransferPO temp=new TransferPO((TransferVO)receipt,institutionid);
+					TransferPO temp=searchResult.get(0);
 					temp.setApproved(true);
 					result=updateService.update(temp);
 					
@@ -395,7 +400,11 @@ public class ManageReceipt implements UpdateReceiptService{
 			SearchLogisticsService service=(SearchLogisticsService) Naming.lookup(RMIHelper.SEARCH_LOGISTICS_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
 			requirement.add("bar_code='"+arrival.getBarCode()+"'");
-			LogisticsInfoPO logistic=service.searchLogisticsInfo(requirement).get(0);
+			ArrayList<LogisticsInfoPO> list = service.searchLogisticsInfo(requirement);
+			if(list.isEmpty()){
+				return;
+			}
+			LogisticsInfoPO logistic=list.get(0);
 			logistic.addHistory(institution.getInstitutionName()+"已收件,"+sdf.format(arrival.getDate()));
 		
 			UpdateService updateservice=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
@@ -422,7 +431,11 @@ public class ManageReceipt implements UpdateReceiptService{
 			for(String s:delivery.getBarCodeList()){
 				ArrayList<String> requirement=new ArrayList<String>();
 				requirement.add("bar_code='"+s+"'");
-				LogisticsInfoPO logistic=service.searchLogisticsInfo(requirement).get(0);
+				ArrayList<LogisticsInfoPO> list = service.searchLogisticsInfo(requirement);
+				if(list.isEmpty()){
+					return;
+				}
+				LogisticsInfoPO logistic=list.get(0);
 				logistic.addHistory(institution.getInstitutionName()+"正在派件,"+sdf.format(delivery.getArrivalDate()));
 				
 				UpdateService updateservice=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
@@ -448,7 +461,11 @@ public class ManageReceipt implements UpdateReceiptService{
 			for(String s:entrucking.getBarCodeList()){
 				ArrayList<String> requirement=new ArrayList<String>();
 				requirement.add("bar_code='"+s+"'");
-				LogisticsInfoPO logistic=service.searchLogisticsInfo(requirement).get(0);
+				ArrayList<LogisticsInfoPO> list = service.searchLogisticsInfo(requirement);
+				if(list.isEmpty()){
+					return;
+				}
+				LogisticsInfoPO logistic=list.get(0);
 				logistic.addHistory(institution.getInstitutionName()+"正在扫描装车,"+sdf.format(entrucking.getDate()));
 			
 				UpdateService updateservice=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
@@ -475,7 +492,11 @@ public class ManageReceipt implements UpdateReceiptService{
 			SearchLogisticsService service=(SearchLogisticsService) Naming.lookup(RMIHelper.SEARCH_LOGISTICS_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
 			requirement.add("bar_code='"+removal.getBarCode()+"'");
-			LogisticsInfoPO logistic=service.searchLogisticsInfo(requirement).get(0);
+			ArrayList<LogisticsInfoPO> list = service.searchLogisticsInfo(requirement);
+			if(list.isEmpty()){
+				return;
+			}
+			LogisticsInfoPO logistic=list.get(0);
 			logistic.addHistory(institution.getInstitutionName()+"正在出库,"+sdf.format(removal.getOutDate()));
 			
 			UpdateService updateservice=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
@@ -499,7 +520,11 @@ public class ManageReceipt implements UpdateReceiptService{
 			SearchLogisticsService service=(SearchLogisticsService) Naming.lookup(RMIHelper.SEARCH_LOGISTICS_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
 			requirement.add("bar_code='"+storage.getBarCode()+"'");
-			LogisticsInfoPO logistic=service.searchLogisticsInfo(requirement).get(0);
+			ArrayList<LogisticsInfoPO> list = service.searchLogisticsInfo(requirement);
+			if(list.isEmpty()){
+				return;
+			}
+			LogisticsInfoPO logistic=list.get(0);
 			logistic.addHistory(institution.getInstitutionName()+"正在入库,"+sdf.format(storage.getStorageDate()));
 			
 			UpdateService updateservice=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
@@ -524,7 +549,11 @@ public class ManageReceipt implements UpdateReceiptService{
 			for(String s:transfer.getItemId()){
 				ArrayList<String> requirement=new ArrayList<String>();
 				requirement.add("bar_code='"+s+"'");
-				LogisticsInfoPO logistic=service.searchLogisticsInfo(requirement).get(0);
+				ArrayList<LogisticsInfoPO> list = service.searchLogisticsInfo(requirement);
+				if(list.isEmpty()){
+					return;
+				}
+				LogisticsInfoPO logistic=list.get(0);
 				logistic.addHistory(institution.getInstitutionName()+"正在中转发送,"+sdf.format(transfer.getDate()));
 				
 				UpdateService updateservice=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);

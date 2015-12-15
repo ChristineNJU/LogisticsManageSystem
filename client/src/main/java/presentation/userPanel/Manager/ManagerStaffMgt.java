@@ -15,7 +15,6 @@ import presentation.main.Translater;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableADUS;
 import presentation.table.TableModelADUS;
-import presentation.userPanel.BusinessLb.BusinessLbCarMgt;
 import State.AddState;
 import State.DeleteState;
 import State.ErrorState;
@@ -38,9 +37,11 @@ public class ManagerStaffMgt extends FunctionADUS{
 			
 	NavigationManager nav;
 	
-	public ManagerStaffMgt(){
+	public ManagerStaffMgt(NavigationManager nav){
 //		nav = navigationManager;
 		buttonNew = new ButtonNew("新增员工");
+		
+		this.nav = nav;
 		initUI("员工管理");
 	}
 	
@@ -197,6 +198,8 @@ public class ManagerStaffMgt extends FunctionADUS{
 			vRow.add(temp.getName());
 			vRow.add(temp.getSex());
 			vRow.add(String.valueOf(temp.getAge()));
+//			System.out.println(temp.getInsitution());
+			
 			vRow.add(Translater.getChineseForInstitution(temp.getInsitution()));
 //			vRow.add("businesslobby");
 			vRow.add(Translater.getChineseForUserRole(temp.getPosition()));
@@ -210,7 +213,7 @@ public class ManagerStaffMgt extends FunctionADUS{
 	@Override
 	public void performCancel() {
 		System.out.println("in managerStaffMgt");
-		MainFrame.changeContentPanel(new ManagerStaffMgt().getPanel());
+		MainFrame.changeContentPanel(new ManagerStaffMgt(nav).getPanel());
 		
 	}
 

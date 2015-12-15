@@ -38,10 +38,12 @@ public class ManagerInstitutionMgt extends FunctionADUS{
 	
 	NavigationManager nav;
 	
-	public ManagerInstitutionMgt(){
+	public ManagerInstitutionMgt(NavigationManager nav){
 //		nav = navigationManager;
 		buttonNew = new ButtonNew("新增机构");
 		initUI("机构管理");
+		
+		this.nav = nav;
 	}
 
 	@Override
@@ -187,7 +189,7 @@ public class ManagerInstitutionMgt extends FunctionADUS{
 
 	@Override
 	public void performCancel() {
-		MainFrame.changeContentPanel(new ManagerInstitutionMgt().getPanel());
+		MainFrame.changeContentPanel(new ManagerInstitutionMgt(nav).getPanel());
 		
 	}
 
