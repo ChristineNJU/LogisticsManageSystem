@@ -7,17 +7,19 @@ import java.awt.RenderingHints;
 
 import javax.swing.JPanel;
 
+import presentation.main.ColorPallet;
+
 public class AnimationPanel extends JPanel implements Runnable {
 
-	int size = 5;
+	int size = 6;
 	private double[] ang = new double[size];
 	private double[] t = new double[size];
 	private int[] isPaint = new int[size];
 	
-	private static final int s_r = 15;
-	private static final int core_r = 50;
-	private static final int core_x = 80;
-	private static final int core_y = 80;
+	private static final int s_r = 10;
+	private static final int core_r = 30;
+	private static final int core_x = 46;
+	private static final int core_y = 46;
 	
 	double a = 0.125;
 	double v = 0.08;
@@ -29,10 +31,10 @@ public class AnimationPanel extends JPanel implements Runnable {
 		
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		
-		g2d.setColor(Color.white);
+		g2d.setColor(ColorPallet.GrayDark);
 		g2d.fillRect(0, 0, 200, 200);
 		
-		g2d.setColor(Color.gray);
+		g2d.setColor(Color.white);
 		
 		for(int i=0;i<ang.length;i++){
 			if(isPaint[i]<=3&&isPaint[i]>=1){

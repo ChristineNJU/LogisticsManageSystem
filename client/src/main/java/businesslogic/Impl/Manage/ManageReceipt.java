@@ -395,7 +395,11 @@ public class ManageReceipt implements UpdateReceiptService{
 			SearchLogisticsService service=(SearchLogisticsService) Naming.lookup(RMIHelper.SEARCH_LOGISTICS_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
 			requirement.add("bar_code='"+arrival.getBarCode()+"'");
-			LogisticsInfoPO logistic=service.searchLogisticsInfo(requirement).get(0);
+			ArrayList<LogisticsInfoPO> list = service.searchLogisticsInfo(requirement);
+			if(list.isEmpty()){
+				return;
+			}
+			LogisticsInfoPO logistic=list.get(0);
 			logistic.addHistory(institution.getInstitutionName()+"已收件,"+sdf.format(arrival.getDate()));
 		
 			UpdateService updateservice=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
@@ -422,7 +426,11 @@ public class ManageReceipt implements UpdateReceiptService{
 			for(String s:delivery.getBarCodeList()){
 				ArrayList<String> requirement=new ArrayList<String>();
 				requirement.add("bar_code='"+s+"'");
-				LogisticsInfoPO logistic=service.searchLogisticsInfo(requirement).get(0);
+				ArrayList<LogisticsInfoPO> list = service.searchLogisticsInfo(requirement);
+				if(list.isEmpty()){
+					return;
+				}
+				LogisticsInfoPO logistic=list.get(0);
 				logistic.addHistory(institution.getInstitutionName()+"正在派件,"+sdf.format(delivery.getArrivalDate()));
 				
 				UpdateService updateservice=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
@@ -448,7 +456,11 @@ public class ManageReceipt implements UpdateReceiptService{
 			for(String s:entrucking.getBarCodeList()){
 				ArrayList<String> requirement=new ArrayList<String>();
 				requirement.add("bar_code='"+s+"'");
-				LogisticsInfoPO logistic=service.searchLogisticsInfo(requirement).get(0);
+				ArrayList<LogisticsInfoPO> list = service.searchLogisticsInfo(requirement);
+				if(list.isEmpty()){
+					return;
+				}
+				LogisticsInfoPO logistic=list.get(0);
 				logistic.addHistory(institution.getInstitutionName()+"正在扫描装车,"+sdf.format(entrucking.getDate()));
 			
 				UpdateService updateservice=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
@@ -475,7 +487,11 @@ public class ManageReceipt implements UpdateReceiptService{
 			SearchLogisticsService service=(SearchLogisticsService) Naming.lookup(RMIHelper.SEARCH_LOGISTICS_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
 			requirement.add("bar_code='"+removal.getBarCode()+"'");
-			LogisticsInfoPO logistic=service.searchLogisticsInfo(requirement).get(0);
+			ArrayList<LogisticsInfoPO> list = service.searchLogisticsInfo(requirement);
+			if(list.isEmpty()){
+				return;
+			}
+			LogisticsInfoPO logistic=list.get(0);
 			logistic.addHistory(institution.getInstitutionName()+"正在出库,"+sdf.format(removal.getOutDate()));
 			
 			UpdateService updateservice=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
@@ -499,7 +515,11 @@ public class ManageReceipt implements UpdateReceiptService{
 			SearchLogisticsService service=(SearchLogisticsService) Naming.lookup(RMIHelper.SEARCH_LOGISTICS_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
 			requirement.add("bar_code='"+storage.getBarCode()+"'");
-			LogisticsInfoPO logistic=service.searchLogisticsInfo(requirement).get(0);
+			ArrayList<LogisticsInfoPO> list = service.searchLogisticsInfo(requirement);
+			if(list.isEmpty()){
+				return;
+			}
+			LogisticsInfoPO logistic=list.get(0);
 			logistic.addHistory(institution.getInstitutionName()+"正在入库,"+sdf.format(storage.getStorageDate()));
 			
 			UpdateService updateservice=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
@@ -524,7 +544,11 @@ public class ManageReceipt implements UpdateReceiptService{
 			for(String s:transfer.getItemId()){
 				ArrayList<String> requirement=new ArrayList<String>();
 				requirement.add("bar_code='"+s+"'");
-				LogisticsInfoPO logistic=service.searchLogisticsInfo(requirement).get(0);
+				ArrayList<LogisticsInfoPO> list = service.searchLogisticsInfo(requirement);
+				if(list.isEmpty()){
+					return;
+				}
+				LogisticsInfoPO logistic=list.get(0);
 				logistic.addHistory(institution.getInstitutionName()+"正在中转发送,"+sdf.format(transfer.getDate()));
 				
 				UpdateService updateservice=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
