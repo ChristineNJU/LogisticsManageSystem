@@ -90,7 +90,7 @@ public class BusinessLbGathering extends FunctionAdd{
 	}
 
 	@Override
-	protected void confirmAll() {
+	public void performConfirm() {
 		// 提交所有更新
 		for(Vector<String> vector: tableV ){
 			

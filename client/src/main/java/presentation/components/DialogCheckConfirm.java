@@ -10,17 +10,17 @@ import javax.swing.JPanel;
 import presentation.frame.MainFrame;
 import presentation.main.Function;
 
-public class DialogConfirmAgain {
+public class DialogCheckConfirm {
 
 	JDialog dialog = new JDialog();
 	JPanel pane = new JPanel();
-	LabelHeader label = new LabelHeader("你确定放弃所有操作吗？");
+	LabelHeader label = new LabelHeader("你确定提交所有操作吗？");
 	ButtonOk ok = new ButtonOk("确定");
 	ButtonCancel cancel = new ButtonCancel();
 	
 	Function function = new Function();
 	
-	public DialogConfirmAgain(final Function function){
+	public DialogCheckConfirm(final Function function){
 		this.function = function;
 		dialog.setBounds(MainFrame.FRAME_X +  MainFrame.FRAME_WIDTH/2,
 				MainFrame.FRAME_Y + MainFrame.FRAME_HEIGHT/2,350,200);
@@ -36,25 +36,25 @@ public class DialogConfirmAgain {
 		pane.add(ok);
 		pane.add(cancel);
 		
+		ok.addMouseListener(new MouseAdapter(){
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				function.performConfirm();
+				dialog.dispose();
+			}
+			
+		});
+		
+		cancel.addMouseListener(new MouseAdapter(){
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dialog.dispose();
+			}
+			
+		});
+		
 		dialog.setVisible(true);
-		
-		ok.addMouseListener(new MouseAdapter(){
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				function.performCancel();
-				dialog.dispose();
-			}
-			
-		});
-		
-		ok.addMouseListener(new MouseAdapter(){
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				dialog.dispose();
-			}
-			
-		});
 	}
 }

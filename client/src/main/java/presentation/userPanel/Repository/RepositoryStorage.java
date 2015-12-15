@@ -1,8 +1,8 @@
 package presentation.userPanel.Repository;
 
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -12,6 +12,12 @@ import javax.swing.DefaultCellEditor;
 import javax.swing.JLabel;
 import javax.swing.table.TableColumnModel;
 
+import State.StorageState;
+import VO.StorageVO;
+import businesslogic.Impl.Courier.CourierImpl;
+import businesslogic.Impl.Repository.RepositoryController;
+import businesslogic.Service.Courier.CourierService;
+import businesslogic.Service.Repository.RepositoryService;
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
 import presentation.components.FlatComboBox;
@@ -23,15 +29,6 @@ import presentation.main.Translater;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
-import presentation.userPanel.Manager.ManagerInstitutionMgt;
-import State.StateSwitch;
-import State.StorageState;
-import VO.StorageVO;
-import businesslogic.Impl.Courier.CourierImpl;
-import businesslogic.Impl.Repository.RepositoryController;
-import businesslogic.Service.Courier.CourierService;
-import businesslogic.Service.Courier.GetCityService;
-import businesslogic.Service.Repository.RepositoryService;
 
 public class RepositoryStorage extends FunctionAdd {
 
@@ -65,38 +62,13 @@ public class RepositoryStorage extends FunctionAdd {
 	
 	private void init() {
 		
-		confirm.addMouseListener(new MouseListener() {
+		confirm.addMouseListener(new MouseAdapter() {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
 				if(confirm.isEnabled()){
 					nav.changeTask(1);
 				}
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
 			}
 			
 		});
@@ -110,14 +82,12 @@ public class RepositoryStorage extends FunctionAdd {
 	
 	@Override
 	protected void initHeader() {
-		// TODO Auto-generated method stub
 		header = new Header();
 		panel.add(header);
 	}
 
 	@Override
 	protected void initTable() {
-		// TODO Auto-generated method stub
 		model = new TableModelAddOnly(vector, tableH, isCellEditable);
 		table = new TableAddOnly(model);
 		
@@ -160,8 +130,7 @@ public class RepositoryStorage extends FunctionAdd {
 	}
 
 	@Override
-	protected void confirmAll() {
-		// TODO Auto-generated method stub
+	public void performConfirm() {
 		
 		if(isSaved){
 			info.setText("已保存");

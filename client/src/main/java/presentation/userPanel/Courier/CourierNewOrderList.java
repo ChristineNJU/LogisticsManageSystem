@@ -175,7 +175,7 @@ public class CourierNewOrderList extends FunctionAdd{
 	}
 
 	@Override
-	protected void confirmAll() {
+	public void performConfirm() {
 		// TODO Auto-generated method stub
 		
 	}

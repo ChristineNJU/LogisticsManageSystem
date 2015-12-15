@@ -91,7 +91,7 @@ public class BusinessLbEntrucking extends FunctionAdd{
 	}
 
 	@Override
-	protected void confirmAll() {
+	public void performConfirm() {
 		// 提交所有更新
 		ArrayList<String> tempbarCodeList = new ArrayList<String>();
 		for(Vector<String> vector:tableV){

@@ -95,7 +95,7 @@ public class FinanceCost extends FunctionAdd{
 		return result;
 	}
 	@Override
-	protected void confirmAll() {
+	public void performConfirm() {
 		// 提交所有更新
 		for(Vector<String> vector:tableV){
 			CostVO temp = (CostVO)this.getVO(vector);
