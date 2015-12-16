@@ -117,7 +117,7 @@ public class AdminUserAccount extends FunctionADUS{
 	
 	
 	
-	protected void confirmRevise(){
+	public void performConfirm(){
 //		removeError();
 		DeleteState deleteState=DeleteState.CONNECTERROR;
 		deleteItems = new ArrayList<UserVO>();

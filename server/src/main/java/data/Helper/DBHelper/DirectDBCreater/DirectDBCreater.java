@@ -938,7 +938,8 @@ public class DirectDBCreater {
 		
 		try {
 			s = conn.createStatement();
-			s.execute("CREATE TABLE "+table_name+" (bar_code varchar(20) PRIMARY key, amount double)");
+			s.execute("CREATE TABLE "+table_name+" (bar_code varchar(20) PRIMARY key, amount double, courier varchar(50), "
+					+ "date varchar(50))");
 			conn.commit();
 			
 			System.out.println("create table "+table_name);

@@ -6,7 +6,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import PO.GatheringStoragePO;
 import State.AddState;
@@ -41,8 +45,17 @@ public class GatheringStorageImpl extends UnicastRemoteObject implements
 				
 				String bar_code = rs.getString(1);
 				double amount = rs.getDouble(2);
+				String courier = rs.getString(3);
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				Date d = Calendar.getInstance().getTime();
+				try {
+					d = sdf.parse(rs.getString(4));
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
-				GatheringStoragePO po = new GatheringStoragePO(bar_code, amount, DB_URL);
+				GatheringStoragePO po = new GatheringStoragePO(bar_code, amount, courier, d,DB_URL);
 				
 				result.add(po);
 			}

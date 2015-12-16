@@ -3,12 +3,6 @@ package presentation.userPanel.Manager;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import presentation.components.ButtonNew;
-import presentation.frame.MainFrame;
-import presentation.main.FunctionADUS;
-import presentation.table.ScrollPaneTable;
-import presentation.table.TableADUS;
-import presentation.table.TableModelADUS;
 import State.ErrorState;
 import State.SalaryType;
 import State.UpdateState;
@@ -16,6 +10,12 @@ import State.UserRole;
 import VO.SalaryVO;
 import businesslogic.Impl.Manage.ManageController;
 import businesslogic.Service.Manage.ManageService;
+import presentation.components.ButtonNew;
+import presentation.frame.MainFrame;
+import presentation.main.FunctionADUS;
+import presentation.table.ScrollPaneTable;
+import presentation.table.TableADUS;
+import presentation.table.TableModelADUS;
 
 
 public class ManagerSalary extends FunctionADUS{
@@ -58,7 +58,7 @@ public class ManagerSalary extends FunctionADUS{
 	}
 
 	@Override
-	protected void confirmRevise() {
+	public void performConfirm() {
 		ArrayList<SalaryVO> revisedSalary = new ArrayList<SalaryVO>();
 		for(int i = 0;i < tableV.size();i++){
 			if(model.isUpdate(i)){
