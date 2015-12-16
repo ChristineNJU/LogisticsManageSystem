@@ -2,6 +2,8 @@ package VO;
 
 import java.util.Date;
 
+import PO.ArrivalPO;
+import PO.InstitutionStoragePO;
 import PO.StoragePO;
 import State.StorageArea;
 
@@ -68,7 +70,15 @@ public class StorageVO extends VO {
 		this.shelf = po.getShelf();
 		this.position = po.getPosition();
 	}
-	
+	/**
+	 * Instantiates a new storage vo.
+	 *
+	 * @param po the ArrivalPO
+	 */
+	public StorageVO(InstitutionStoragePO po){
+		
+		this.barCode=po.getBar_code();
+	}
 	/**
 	 * Gets the bar code.
 	 *

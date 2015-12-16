@@ -16,5 +16,5 @@ public interface GetNeedStorageService {
 	 * @param destination the destination
 	 * @return the need storage
 	 */
-	public ArrayList<StorageVO> getNeedStorage(String destination);
+	public ArrayList<StorageVO> getNeedStorage();
 }

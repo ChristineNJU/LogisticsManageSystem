@@ -3,6 +3,7 @@ package VO;
 import java.util.ArrayList;
 import java.util.Date;
 
+import PO.RemovalPO;
 import PO.TransferPO;
 
 // TODO: Auto-generated Javadoc
@@ -80,7 +81,16 @@ public class TransferVO extends VO {
 		this.itemId = po.getBarCodeList();
 		this.transferCharge = po.getAmount();
 	}
-	
+	/**
+	 * Instantiates a new transfer vo.
+	 *
+	 * @param po the po
+	 */
+	public TransferVO(RemovalPO po){
+		this.date=new Date();
+		this.listId=po.getBarCode();
+		
+	}
 	/**
 	 * Gets the date.
 	 *

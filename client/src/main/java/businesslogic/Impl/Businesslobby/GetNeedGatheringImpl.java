@@ -7,12 +7,13 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import PO.GatheringPO;
+import PO.GatheringStoragePO;
 import VO.GatheringVO;
 import businesslogic.Service.BusinessLobby.GetNeedGatheringService;
 import businesslogic.SystemLog.SystemLog;
 import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
-import data.Service.Search.SearchGatheringService;
+import data.Service.Sundry.GatheringStorageService;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -30,12 +31,12 @@ public class GetNeedGatheringImpl implements GetNeedGatheringService{
 		// TODO Auto-generated method stub
 		ArrayList<GatheringVO> result=new ArrayList<GatheringVO>();
 		try {
-			SearchGatheringService searchGathering=(SearchGatheringService) Naming.lookup(RMIHelper.SEARCH_GATHERING_IMPL);
+			GatheringStorageService searchGathering=(GatheringStorageService) Naming.lookup(RMIHelper.GATHERING_STORAGE_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
 			requirement.add("bar_code like '%%'");
 			
-			ArrayList<GatheringPO> searchResult=searchGathering.searchGathering(URLHelper.getInstitutionStorage(SystemLog.getInstitutionId()), requirement);
-			
+			ArrayList<GatheringStoragePO> searchResult=searchGathering.getGatheringStorage(URLHelper.getGatheringStorage(SystemLog.getInstitutionId()));
+					
 			if(searchResult.isEmpty()){
 				System.out.println("not found");
 				return null;
