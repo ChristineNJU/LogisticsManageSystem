@@ -161,26 +161,6 @@ public class AdminUserAccount extends FunctionADUS{
 				showError(ErrorState.SEARCHERROR);
 			}
 		}
-		//TODO 全部提交之后更新界面
-//		for(UserVO temp:addUsers){
-//			AddState state = service.addUser(temp);
-//			
-//			if(state != AddState.SUCCESS){
-//				//TODO 
-//				showError()
-//			}
-//			
-//		}
-//		for(UserVO temp:deleteUsers){
-//			DeleteState state = service.deleteUser(temp);
-//			if(state != DeleteState.SUCCESS){
-//				//TODO
-//				showError()
-//			}
-//		}
-//		for(UserVO temp:updateUsers){
-//		
-//		}
 	}
 	
 
