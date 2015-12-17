@@ -89,7 +89,7 @@ public class MainFrame {
 
 
 //		changeToMediumCenter();
-		changeToRepository();
+//		changeToRepository();
 
 //		changeToMediumCenter();
 //		changeToRepository();

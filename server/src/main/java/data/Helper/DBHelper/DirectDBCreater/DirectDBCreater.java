@@ -125,8 +125,8 @@ public class DirectDBCreater {
 //				insert_WareHouse("02500");
 //				deleteTable(URLHelper.getWareHouseURL("0250"));	
 				
-				createTable_InstitutionStorage("0250");
-				createTable_InstitutionStorage("025000");
+//				createTable_InstitutionStorage("0250");
+//				createTable_InstitutionStorage("025000");
 				
 //				deleteTable(URLHelper.getInstitutionStorage("0250"));
 

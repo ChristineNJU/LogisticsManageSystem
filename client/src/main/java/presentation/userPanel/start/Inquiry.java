@@ -149,16 +149,21 @@ public class Inquiry{
 		}
 		history = info.getHistory();		
 		
-		scrollPane.setBounds(300, 320, 441, 260);
+		scrollPane.setBounds(300, 280, 441, 400);
 		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-		scrollPane.setOpaque(false);
+//		scrollPane.setOpaque(0.5);
+		Color bg = new Color(255,255,255,150);
+		scrollPane.setBackground(bg);
 		scrollPane.getViewport().setOpaque(false);
+//		scrollPane.getViewport().setBackground(bg);
 		scrollPane.setBorder(new LineBorder(Color.black, 0));
 		scrollPanePanel.setLayout(null);
 		scrollPanePanel.setOpaque(false);
 		
 		Dimension d = new Dimension(441, 66*history.size());
+		
+		((HistoryPanel)scrollPanePanel).size = history.size();
 		
 		scrollPanePanel.setPreferredSize(d);
 		inquiryPanel.add(scrollPane);
@@ -187,7 +192,9 @@ public class Inquiry{
 			scrollPanePanel.setSize(w, h);
 		}
 //		inquiryPanel.repaint();
+		scrollPanePanel.repaint();
 		scrollPane.repaint();
+		MainFrame.getMainPanel().repaint();
 	}
 	
 	private void showLogIn(){
@@ -248,6 +255,8 @@ public class Inquiry{
 	
 	class HistoryPanel extends JPanel {
 		
+		int size = 0;
+		
 		public void paint(Graphics g) {
 			Color oldColor = g.getColor();
 			
@@ -261,8 +270,8 @@ public class Inquiry{
 			
 			int h = 40;
 			
-			for(int i=0;i<this.getHeight()/66-1;i++){
-				g2d.drawLine(15, h, 15, h+26+10);
+			for(int i=0;i<size-1;i++){
+				g2d.drawLine(35, h+15, 35, h+26+10+15);
 				h = h+66;
 			}
 			
@@ -304,7 +313,7 @@ public class Inquiry{
 			this.add(timeL);
 			this.add(node);
 //			setBounds(300,320+i*66,450,66);
-			setBounds(0, i*66, 450, 66);
+			setBounds(20, i*66+15, 450, 66);
 		}
 
 	}

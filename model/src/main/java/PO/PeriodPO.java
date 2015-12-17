@@ -7,7 +7,7 @@ import java.util.Date;
 /**
  * 用来保存期初建账的持久化数据格式
  * 
- * @author HermC
+ * @author 尹子越
  * @version 1.0.0
  * */
 public class PeriodPO extends PO {

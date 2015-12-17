@@ -7,7 +7,7 @@ import VO.InstitutionVO;
 /**
  * 用来保存机构信息的持久化数据格式
  * 
- * @author HermC
+ * @author 尹子越
  * @version 1.0.0
  * */
 public class InstitutionPO extends PO {
