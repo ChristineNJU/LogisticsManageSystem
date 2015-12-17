@@ -9,6 +9,6 @@ public class TestGetNeedStorage extends TestCase {
 		
 		RepositoryController rc = new RepositoryController();
 		
-		assertEquals(null, rc.getNeedStorage(null));
+		assertEquals(null, rc.getNeedStorage());
 	}
 }

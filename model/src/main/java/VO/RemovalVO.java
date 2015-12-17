@@ -57,7 +57,7 @@ public class RemovalVO extends VO {
 		this.transferCode = po.getTransferNumber();
 		this.transferWay = po.getType();
 	}
-	/
+	
 	
 	
 	/**
