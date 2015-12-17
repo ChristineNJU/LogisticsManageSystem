@@ -16,6 +16,6 @@ public interface GetNeedRemovalService {
 	 * @param destination the destination
 	 * @return the need removal
 	 */
-	public ArrayList<RemovalVO> getNeedRemoval(String destination);
+	public ArrayList<RemovalVO> getNeedRemoval();
 	
 }

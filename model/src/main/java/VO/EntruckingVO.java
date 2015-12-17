@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import PO.EntruckingPO;
+import PO.InstitutionStoragePO;
+import PO.RemovalPO;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -73,7 +75,26 @@ public class EntruckingVO extends VO {
 		this.barCodeList = po.getBarCodeList();
 		this.amount = po.getAmount();
 	}
+	/**
+	 * Instantiates a new entrucking vo.
+	 *
+	 * @param po the po
+	 */
+	public EntruckingVO(InstitutionStoragePO po){
+		this.date=new Date();
+		this.barCodeList.add(po.getBar_code());
+		
+	}
 	
+	/**
+	 * Instantiates a new entrucking vo.
+	 *
+	 * @param po the po
+	 */
+	public EntruckingVO(RemovalPO po){
+		this.date=new Date();
+		this.barCodeList.add(po.getBarCode());
+	}
 	/**
 	 * Gets the date.
 	 *

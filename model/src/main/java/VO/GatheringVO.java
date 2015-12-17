@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import PO.GatheringPO;
+import PO.GatheringStoragePO;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -49,7 +50,17 @@ public class GatheringVO extends VO {
 		this.name = po.getCourier();
 		this.barCodeList = po.getBarCodeList();
 	}
-	
+	/**
+	 * Instantiates a new gathering vo.
+	 *
+	 * @param po the po
+	 */
+	public GatheringVO(GatheringStoragePO po){
+		this.date=new Date();
+		this.money=po.getAmount();
+		this.barCodeList.add(po.getBar_code());
+		this.name=po.getCourier();
+	}
 	/**
 	 * Gets the date.
 	 *

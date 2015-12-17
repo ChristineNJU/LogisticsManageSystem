@@ -6,12 +6,14 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import PO.RemovalPO;
 import PO.TransferPO;
 import VO.TransferVO;
 import businesslogic.Service.MediumCenter.GetNeedTransferService;
 import businesslogic.SystemLog.SystemLog;
 import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
+import data.Service.Search.SearchRemovalService;
 import data.Service.Search.SearchTransferService;
 
 // TODO: Auto-generated Javadoc
@@ -28,11 +30,13 @@ public class GetNeedTransferImpl implements GetNeedTransferService{
 		// TODO Auto-generated method stub
 		ArrayList<TransferVO> result=new ArrayList<TransferVO>();
 		try {
-			SearchTransferService searchTransfer=(SearchTransferService) Naming.lookup(RMIHelper.SEARCH_GATHERING_IMPL);
+			SearchRemovalService removalSearch=(SearchRemovalService) Naming.lookup(RMIHelper.SEARCH_REMOVAL_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("TRANSFER_NUMBER like '%%'");
+			requirement.add("bar_code like '%%'");
+			requirement.add("type = 'AIR'");
 			
-			ArrayList<TransferPO> searchResult=searchTransfer.searchTransfer(URLHelper.getTransferURL(SystemLog.getInstitutionId()), requirement);
+			
+			ArrayList<RemovalPO> searchResult=removalSearch.searchRemoval(URLHelper.getRemovalURL(SystemLog.getInstitutionId()+"0"), requirement);
 			
 			if(searchResult.isEmpty()){
 				System.out.println("not found");
