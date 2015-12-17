@@ -71,7 +71,7 @@ public class BusinessLbDelivery extends FunctionAdd{
 	}
 
 	@Override
-	protected void confirmAll() {
+	public void performConfirm() {
 		//提交所有更新
 		for(Vector<String> vector:tableV){
 			DeliveryVO temp = (DeliveryVO) this.getVO(vector);

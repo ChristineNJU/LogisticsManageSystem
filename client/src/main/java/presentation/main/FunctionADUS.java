@@ -92,7 +92,7 @@ public abstract class FunctionADUS extends Function{
 	
 	protected abstract void showSearchResult(String s);
 	
-	protected abstract void confirmRevise();
+	public abstract void performConfirm();
 	
 	public void removeError(){
 //		panel.remove(attention);
@@ -138,7 +138,7 @@ public abstract class FunctionADUS extends Function{
 				newItem();
 			}
 			if(source.equals(confirm)){
-				confirmRevise();
+				performConfirm();
 			}
 			if(source.equals(search)){
 				showSearchResult(input.getText());

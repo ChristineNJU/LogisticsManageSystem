@@ -69,10 +69,10 @@ public class RepositoryController implements RepositoryService{
 	 * @see businesslogic.Service.Repository.RepositoryService#getNeedStorage(java.lang.String)
 	 */
 	@Override
-	public ArrayList<StorageVO> getNeedStorage(String destination) {
+	public ArrayList<StorageVO> getNeedStorage() {
 		// TODO Auto-generated method stub
 		GetNeedStorageImpl getNeedStorage=new GetNeedStorageImpl();
-		return getNeedStorage.getNeedStorage(destination);
+		return getNeedStorage.getNeedStorage();
 	}
 
 	/**
@@ -144,10 +144,10 @@ public class RepositoryController implements RepositoryService{
 	 * @see businesslogic.Service.Repository.RepositoryService#getNeedRemoval(java.lang.String)
 	 */
 	@Override
-	public ArrayList<RemovalVO> getNeedRemoval(String destination) {
+	public ArrayList<RemovalVO> getNeedRemoval() {
 		// TODO Auto-generated method stub
 		GetNeedRemovalImpl gnr = new GetNeedRemovalImpl();
-		return gnr.getNeedRemoval(destination);
+		return gnr.getNeedRemoval();
 	}
 
 	/**

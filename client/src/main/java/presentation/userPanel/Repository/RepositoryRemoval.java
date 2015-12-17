@@ -151,7 +151,7 @@ public class RepositoryRemoval extends FunctionAdd{
 	}
 	
 	@Override
-	protected void confirmAll() {
+	public void performConfirm() {
 		// 提交所有更新
 		ArrayList<RemovalVO> reomvals = new ArrayList<RemovalVO>();
 		for(Vector<String> vector:tableV){

@@ -9,13 +9,13 @@ public class ButtonFrame extends JButton {
 		setBorderPainted(false);
 		setContentAreaFilled(false);
 		setFocusPainted(false);
-		setIcon(new ImageIcon("src/graphics/Button/"+type+"1.jpg"));
-		setRolloverIcon(new ImageIcon("src/graphics/Button/"+type+"2.jpg"));
-		setPressedIcon(new ImageIcon("src/graphics/Button/"+type+"2.jpg"));
+		setIcon(new ImageIcon("src/graphics/Button/"+type+"1.png"));
+		setRolloverIcon(new ImageIcon("src/graphics/Button/"+type+"2.png"));
+		setPressedIcon(new ImageIcon("src/graphics/Button/"+type+"2.png"));
 		if(type.equals("mini"))
-			this.setBounds(66,0,36,23);
+			this.setBounds(64,0,37,23);
 		else
-			this.setBounds(108,0,36,23);;
+			this.setBounds(108,0,37,23);;
 	}
 	
 }

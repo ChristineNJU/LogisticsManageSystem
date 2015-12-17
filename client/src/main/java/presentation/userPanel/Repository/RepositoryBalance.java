@@ -156,7 +156,7 @@ public class RepositoryBalance extends FunctionAdd {
 	}
 
 	@Override
-	protected void confirmAll() {
+	public void performConfirm() {
 		// TODO Auto-generated method stub
 		
 		if(table.getRowCount()==0){

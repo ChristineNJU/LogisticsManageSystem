@@ -87,7 +87,7 @@ public class BusinessLbCarMgt  extends FunctionADUS{
 	
 
 	@Override
-	protected void confirmRevise() {
+	public void performConfirm() {
 		DeleteState deleteState=DeleteState.CONNECTERROR;
 		deleteCar=new ArrayList<CarInfoVO>();
 		for(int i=0;i<tableV.size();i++){

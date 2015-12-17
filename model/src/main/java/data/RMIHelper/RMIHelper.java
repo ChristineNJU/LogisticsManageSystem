@@ -10,11 +10,10 @@ public class RMIHelper {
 	public static final int REGISTRY = 8888;
 	
 	/** The Constant URL. */
-	public static final String URL = "rmi://127.0.0.1:"+REGISTRY+"/";
-//	public static final String URL = "rmi://127.0.0.1:"
+	public static final String URL = "rmi://192.168.191.1:"+REGISTRY+"/";
 	
 	/** The Constant ADD_IMPL. */
-public static final String ADD_IMPL = URL+"AddImpl";
+	public static final String ADD_IMPL = URL+"AddImpl";
 	
 	/** The Constant UPDATE_IMPL. */
 	public static final String UPDATE_IMPL = URL+"UpdateImpl";
@@ -93,4 +92,13 @@ public static final String ADD_IMPL = URL+"AddImpl";
 	
 	/** The Constant TABLE_OPERATION_IMPL. */
 	public static final String TABLE_OPERATION_IMPL = URL+"TableOperationImpl";
+	
+	/** The Constant INSTITUTION_STORAGE_IMPL. */
+	public static final String INSTITUTION_STORAGE_IMPL = URL+"InstitutionStorageImpl";
+	
+	/** The Constant GATHERING_STORAGE_IMPL. */
+	public static final String GATHERING_STORAGE_IMPL = URL+"GatheringStorageImpl";
+	
+	/** The Constant RMI_CONNECTION_IMPL. */
+	public static final String RMI_CONNECTION_IMPL = URL+"RMIConnectionImpl";
 }

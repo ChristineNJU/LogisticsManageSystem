@@ -68,17 +68,6 @@ public class MediumCtEntrucking extends FunctionAdd{
 		needEntrucking = new ArrayList<EntruckingVO>();
 		
 //		needEntrucking = service.getNeedEntrucking();
-	
-		//测试用
-		
-		try {ArrayList<String> barCodeList = new ArrayList<String>();
-			barCodeList.add("0000000001");
-			EntruckingVO entrucking0 = new EntruckingVO(sdfs.parse("2015-12-03 18:45:20"), "02502015112300000","南京", "苏A 12345", "张斯栋", "张斯栋",barCodeList, 12 );
-			needEntrucking.add(entrucking0);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 		tableV = getVector(needEntrucking);
 		
@@ -91,7 +80,7 @@ public class MediumCtEntrucking extends FunctionAdd{
 	}
 
 	@Override
-	protected void confirmAll() {
+	public void performConfirm() {
 		// 提交所有更新
 		ArrayList<String> tempbarCodeList = new ArrayList<String>();
 		for(Vector<String> vector:tableV){

@@ -76,6 +76,7 @@ public class ManagerReceipt extends FunctionSearch{
 				case 0:
 					for(int i=0;i<arrival.size();i++){
 						state = service.updateReceipt(arrival.get(i));
+						System.out.println(state);
 					}
 					break;
 				case 1:

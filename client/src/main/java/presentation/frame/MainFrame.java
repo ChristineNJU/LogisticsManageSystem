@@ -38,6 +38,8 @@ public class MainFrame {
 	private static JPanel panel = new JPanel();
 	private static JPanel contentPanel = new PanelContent("");
 	
+	private ConnectionFrame connectionFrame = new ConnectionFrame();
+	
 	private Inquiry inquiry;
 	
 	private UserVO user = new UserVO("141250181", "黄勇", UserRole.businessAgent);
@@ -56,16 +58,18 @@ public class MainFrame {
 		frame.setUndecorated(true);
 		frame.setLocation(FRAME_X,FRAME_Y);
 		
-
+		Thread t = new Thread(connectionFrame);
+		t.start();
+		
 		frame.setContentPane(panel);
 		panel.setLayout(null);
 
-//		inquiry = new Inquiry(this);
-//		frame.add(inquiry.getPanel());
+		inquiry = new Inquiry(this);
+		frame.add(inquiry.getPanel());
 //		panel.add(inquiry.getPanel());
 
 //		changeToCourier();
-		changeToBusinesslobby();
+//		changeToBusinesslobby();
 //		changeToFinance();
 //		changeToCourier()
 

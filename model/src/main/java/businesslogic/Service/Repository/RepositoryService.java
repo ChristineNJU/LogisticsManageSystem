@@ -42,7 +42,7 @@ public interface RepositoryService {
 	 * @param destination 去向
 	 * @return RemovalVO的ArrayList
 	 */
-	public ArrayList<RemovalVO> getNeedRemoval(String destination);
+	public ArrayList<RemovalVO> getNeedRemoval();
 	
 	/**
 	 * 获取需要入库的快递.
@@ -50,7 +50,7 @@ public interface RepositoryService {
 	 * @param destination 去向
 	 * @return StorageVO的ArrayList
 	 */
-	public ArrayList<StorageVO> getNeedStorage(String destination);
+	public ArrayList<StorageVO> getNeedStorage();
 	
 	/**
 	 * 添加出库单.

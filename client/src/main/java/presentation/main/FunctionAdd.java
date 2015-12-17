@@ -77,7 +77,7 @@ public abstract class FunctionAdd extends Function{
 	
 	protected abstract void initTable();
 	
-	protected abstract void confirmAll();
+	public abstract void performConfirm();
 	
 	public abstract void performCancel();
 	
@@ -228,7 +228,7 @@ public abstract class FunctionAdd extends Function{
 			if(source.equals(confirm)){
 //				System.out.println("in listener");
 				if(confirm.isEnabled()){
-					confirmAll();
+					performConfirm();
 				}
 			}
 			if(source.equals(cancel)){

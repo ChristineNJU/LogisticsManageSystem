@@ -3,13 +3,16 @@ package businesslogic.Impl.Repository;
 import java.rmi.Naming;
 import java.util.ArrayList;
 
+import PO.ArrivalPO;
+import PO.InstitutionStoragePO;
 import PO.StoragePO;
 import VO.StorageVO;
 import businesslogic.Service.Repository.GetNeedStorageService;
 import businesslogic.SystemLog.SystemLog;
 import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
-import data.Service.Search.SearchStorageService;
+import data.Service.Search.SearchArrivalService;
+import data.Service.Sundry.InstitutionStorageService;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -21,17 +24,20 @@ public class GetNeedStorageImpl implements GetNeedStorageService {
 	 * @see businesslogic.Service.Repository.GetNeedStorageService#getNeedStorage(java.lang.String)
 	 */
 	@Override
-	public ArrayList<StorageVO> getNeedStorage(String destination) {
+	public ArrayList<StorageVO> getNeedStorage() {
 		// TODO Auto-generated method stub
 		ArrayList<StorageVO> storage=new ArrayList<StorageVO>();
 		try{
-			SearchStorageService storageSearch=(SearchStorageService) Naming.lookup(RMIHelper.SEARCH_STORAGE_IMPL);
-			ArrayList<StoragePO> storageList=new ArrayList<StoragePO>();
+			InstitutionStorageService istoragreService=(InstitutionStorageService) Naming.lookup(RMIHelper.INSTITUTION_STORAGE_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("destination='"+destination+"'");
-			storageList=storageSearch.searchStorage(URLHelper.getStorageURL(SystemLog.getInstitutionId()), requirement);
-			for(int i=0;i<storageList.size();i++){
-				storage.add(new StorageVO(storageList.get(i)));
+			requirement.add("bar_code like '%%'");
+			
+			
+			ArrayList<InstitutionStoragePO> searchResult=istoragreService.getInstitutionStorage(URLHelper.getInstitutionStorage(SystemLog.getInstitutionId()));
+			
+			
+			for(int i=0;i<searchResult.size();i++){
+				storage.add(new StorageVO(searchResult.get(i)));
 			}
 			
 		} catch(Exception ex){

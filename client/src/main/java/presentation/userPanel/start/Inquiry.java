@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Stroke;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,22 +23,22 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
+import VO.LogisticsHistoryVO;
+import businesslogic.Impl.Inquiry.InquiryController;
+import businesslogic.Service.Inquiry.InquiryService;
 import presentation.AnimationEasing.AnimationEasing;
 import presentation.components.ButtonFrame;
 import presentation.components.FlatScrollPane;
 import presentation.frame.MainFrame;
 import presentation.main.ColorPallet;
 import presentation.main.FontSet;
-import VO.LogisticsHistoryVO;
-import businesslogic.Impl.Inquiry.InquiryController;
-import businesslogic.Service.Inquiry.InquiryService;
 
 public class Inquiry{
 
 	private LogIn logInDialog;
 	
 	private MainFrame mainFrame;
-	private JPanel inquiryPanel;
+	private PanelInquiry inquiryPanel;
 	
 	private JScrollPane scrollPane;
 	private JPanel scrollPanePanel;
@@ -72,8 +73,9 @@ public class Inquiry{
 		initComponents();
 	}
 
+	
 	private void componentsInstantiation(){
-		inquiryPanel = new JPanel();
+		inquiryPanel = new PanelInquiry();
 		scrollPanePanel = new HistoryPanel();
 		scrollPane = new FlatScrollPane(scrollPanePanel);
 		mini = new ButtonFrame("mini");
@@ -379,5 +381,14 @@ public class Inquiry{
 		}
 	}
 
+	private class PanelInquiry extends JPanel{
+		
+		Image image = new ImageIcon("src/graphics/inquirybackground.png").getImage();
+		
+		@Override
+		public void paintComponent(Graphics g){
+			g.drawImage(image,0,0,null);
+		}
+	}
 
 }

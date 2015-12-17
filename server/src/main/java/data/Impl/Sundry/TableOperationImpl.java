@@ -73,6 +73,17 @@ public class TableOperationImpl extends UnicastRemoteObject implements TableOper
 						+ "courier varchar(20), bar_code_list varchar(1000), isApproved varchar(10))");
 				conn.commit();
 				System.out.println("创建营业厅收款单信息表");
+				
+				table_name = URLHelper.getInstitutionStorage(institution_id);
+				s.execute("CREATE TABLE "+table_name+" (bar_code varchar(20) PRIMARY key)");
+				conn.commit();
+				System.out.println("创建营业厅虚拟存储");
+				
+				table_name = URLHelper.getGatheringStorage(institution_id);
+				s.execute("CREATE TABLE "+table_name+" (bar_code varchar(20) PRIMARY key, amount double, courier varchar(50), "
+						+ "date varchar(50))");
+				conn.commit();
+				System.out.println("创建营业厅收款存储");
 			}else if(type==InstitutionType.MediumCenter){
 				table_name = URLHelper.getTransferURL(institution_id);
 				s.execute("CREATE TABLE "+table_name+" (date varchar(20), transfer_number varchar(20) PRIMARY key, "
@@ -95,6 +106,11 @@ public class TableOperationImpl extends UnicastRemoteObject implements TableOper
 						+ "isApproved varchar(10))");
 				conn.commit();
 				System.out.println("创建中转中心到达单信息表");
+				
+				table_name = URLHelper.getInstitutionStorage(institution_id);
+				s.execute("CREATE TABLE "+table_name+" (bar_code varchar(20) PRIMARY key)");
+				conn.commit();
+				System.out.println("创建中转中心虚拟存储");
 			}else if(type==InstitutionType.Repository){
 				table_name = URLHelper.getStockTakingURL(institution_id);
 				s.execute("CREATE TABLE "+table_name+" (bar_code varchar(20) PRIMARY key, storage_date varchar(20), "
@@ -181,6 +197,16 @@ public class TableOperationImpl extends UnicastRemoteObject implements TableOper
 				s.execute("DROP TABLE "+table_name);
 				conn.commit();
 				System.out.println("删除营业厅收款单信息表");
+				
+				table_name = URLHelper.getInstitutionStorage(institution_id);
+				s.execute("DROP TABLE "+table_name);
+				conn.commit();
+				System.out.println("删除营业厅虚拟存储");
+				
+				table_name = URLHelper.getGatheringStorage(institution_id);
+				s.execute("DROP TABLE "+table_name);
+				conn.commit();
+				System.out.println("删除营业厅收款存储");
 			}else if(type==InstitutionType.MediumCenter){
 				table_name = URLHelper.getTransferURL(institution_id);
 				s.execute("DROP TABLE "+table_name);
@@ -196,6 +222,11 @@ public class TableOperationImpl extends UnicastRemoteObject implements TableOper
 				s.execute("DROP TABLE "+table_name);
 				conn.commit();
 				System.out.println("删除中转中心到达单信息表");
+				
+				table_name = URLHelper.getInstitutionStorage(institution_id);
+				s.execute("DROP TABLE "+table_name);
+				conn.commit();
+				System.out.println("删除中转中心虚拟存储");
 			}else if(type==InstitutionType.Repository){
 				table_name = URLHelper.getStockTakingURL(institution_id);
 				s.execute("DROP TABLE "+table_name);

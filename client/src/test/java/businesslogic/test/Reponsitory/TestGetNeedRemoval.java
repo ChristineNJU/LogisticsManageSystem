@@ -9,6 +9,6 @@ public class TestGetNeedRemoval extends TestCase {
 		
 		RepositoryController rc = new RepositoryController();
 		
-		assertEquals(null, rc.getNeedRemoval(null));
+		assertEquals(null, rc.getNeedRemoval());
 	}
 }
