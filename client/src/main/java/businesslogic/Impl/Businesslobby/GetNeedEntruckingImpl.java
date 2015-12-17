@@ -7,12 +7,13 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import PO.EntruckingPO;
+import PO.InstitutionStoragePO;
 import VO.EntruckingVO;
 import businesslogic.Service.BusinessLobby.GetNeedEntruckingService;
 import businesslogic.SystemLog.SystemLog;
 import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
-import data.Service.Search.SearchEntruckingService;
+import data.Service.Sundry.InstitutionStorageService;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -30,11 +31,12 @@ public class GetNeedEntruckingImpl implements GetNeedEntruckingService{
 		// TODO Auto-generated method stub
 		ArrayList<EntruckingVO> result=new ArrayList<EntruckingVO>();
 		try {
-			SearchEntruckingService searchEntrucking=(SearchEntruckingService) Naming.lookup(RMIHelper.SEARCH_ENTRUCKING_IMPL);
+			InstitutionStorageService istoragreService=(InstitutionStorageService) Naming.lookup(RMIHelper.INSTITUTION_STORAGE_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("TRANSFER_NUMBER like '%%'");
-			
-			ArrayList<EntruckingPO> searchResult=searchEntrucking.searchEntrucking(URLHelper.getEntruckingURL(SystemLog.getInstitutionId()), requirement);
+			requirement.add("bar_code like '%%'");
+			requirement.add("isout = 'true'");
+		
+			ArrayList<InstitutionStoragePO> searchResult=istoragreService.getInstitutionStorage(URLHelper.getInstitutionStorage(SystemLog.getInstitutionId()));
 			
 			if(searchResult.isEmpty()){
 				System.out.println("not found");

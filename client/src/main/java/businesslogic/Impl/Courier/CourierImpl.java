@@ -20,11 +20,15 @@ import State.UpdateState;
 import VO.LogisticsInputVO;
 import VO.VO;
 import businesslogic.Service.Courier.CourierService;
+import businesslogic.SystemLog.SystemLog;
+import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
 import data.Service.Search.SearchConstService;
 import data.Service.Search.SearchDistanceService;
 import data.Service.Search.SearchLogisticsService;
+import data.Service.Sundry.GatheringStorageService;
+import data.Service.Sundry.InstitutionStorageService;
 import data.Service.Update.UpdateService;
 
 // TODO: Auto-generated Javadoc
@@ -190,6 +194,9 @@ public class CourierImpl implements CourierService{
 			LogisticsInfoPO result = new LogisticsInfoPO((LogisticsInputVO)logistics_info);
 			result.addHistory("快递员收件");
 			state=addService.add(result);
+			GatheringStorageService gstorageService=(GatheringStorageService) Naming.lookup(RMIHelper.GATHERING_STORAGE_IMPL);
+			gstorageService.addGatheringStorage(result.getBarCode(), result.getTotalCost(),URLHelper.getInstitutionStorage(SystemLog.getInstitutionId()));
+			
 			//AddState is depended in the data level. Can not give all AddStates here;
 			
 		} catch(Exception ex){
