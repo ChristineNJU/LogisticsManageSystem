@@ -7,9 +7,11 @@ import State.AddState;
 import VO.EntruckingVO;
 import businesslogic.Service.BusinessLobby.EntruckingService;
 import businesslogic.SystemLog.SystemLog;
+import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
 import data.Service.Delete.DeleteService;
+import data.Service.Sundry.InstitutionStorageService;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -31,6 +33,11 @@ public class EntruckingImpl implements EntruckingService{
 			AddService entruckingAdd=(AddService) Naming.lookup(RMIHelper.ADD_IMPL);
 		
 			state=entruckingAdd.add(new EntruckingPO(entrucking, SystemLog.getInstitutionId()));
+			
+			InstitutionStorageService institutionService=(InstitutionStorageService) Naming.lookup(RMIHelper.INSTITUTION_STORAGE_IMPL);
+			for(int i=0;i<entrucking.getBarCodeList().size();i++){
+				institutionService.deleteInstitutionStorage(entrucking.getBarCodeList().get(i),URLHelper.getInstitutionStorage(SystemLog.getInstitutionId()));
+			}
 			
 		} catch(Exception ex){
 			state=AddState.CONNECTERROR;

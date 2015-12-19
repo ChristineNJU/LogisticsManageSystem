@@ -11,9 +11,12 @@ import VO.GatheringVO;
 import businesslogic.Service.BusinessLobby.GatheringService;
 import businesslogic.Service.Finance.UpdateAccountService;
 import businesslogic.SystemLog.SystemLog;
+import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
 import data.Service.Search.SearchAccountService;
+import data.Service.Sundry.GatheringStorageService;
+import data.Service.Sundry.InstitutionStorageService;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -36,9 +39,21 @@ public class GatheringImpl implements GatheringService{
 		
 			state=gatheringAdd.add(new GatheringPO(gathering, SystemLog.getInstitutionId()));
 			
+			InstitutionStorageService istorageService=(InstitutionStorageService) Naming.lookup(RMIHelper.INSTITUTION_STORAGE_IMPL);
+			
+			for(int i=0;i<gathering.id().size();i++){
+				istorageService.addInstitutionStorage(gathering.id().get(i), true, URLHelper.getInstitutionStorage(SystemLog.getInstitutionId()));
+			}
+			
+			GatheringStorageService gatheringStorageService=(GatheringStorageService) Naming.lookup(RMIHelper.GATHERING_STORAGE_IMPL);
+			
+			for(int i=0;i<gathering.id().size();i++){
+				gatheringStorageService.deleteGatheringStorage(gathering.id().get(i), URLHelper.getGatheringStorage(SystemLog.getInstitutionId()));
+			}
+			
 			SearchAccountService searchAccount=(SearchAccountService) Naming.lookup(RMIHelper.SEARCH_ACCOUNT_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("account_name like '%%'");
+			requirement.add("%%");
 			AccountPO account=searchAccount.searchAccount(requirement).get(0);
 			UpdateAccountService updateAccount=(UpdateAccountService) Naming.lookup(RMIHelper.UPDATE_IMPL);
 			account.setAmount(account.getAmount()+gathering.getMoney());

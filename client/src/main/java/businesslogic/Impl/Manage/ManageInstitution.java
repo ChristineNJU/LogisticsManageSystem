@@ -12,10 +12,12 @@ import State.DeleteState;
 import State.UpdateState;
 import VO.InstitutionVO;
 import businesslogic.Service.Manage.ManageInstitutionService;
+import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
 import data.Service.Delete.DeleteService;
 import data.Service.Search.SearchInstitutionInfoService;
+import data.Service.Sundry.InstitutionStorageService;
 import data.Service.Sundry.TableOperationService;
 import data.Service.Update.UpdateService;
 
@@ -158,6 +160,7 @@ public class ManageInstitution implements ManageInstitutionService{
 			InstitutionPO requirement=new InstitutionPO(institution);
 			result=addService.add(requirement);
 			operationInstitution.createInstitutionTable(institution.getCode(), institution.getType());
+	        	
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
 			result=AddState.FAIL;
