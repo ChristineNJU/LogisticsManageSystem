@@ -11,9 +11,11 @@ import VO.GatheringVO;
 import businesslogic.Service.BusinessLobby.GatheringService;
 import businesslogic.Service.Finance.UpdateAccountService;
 import businesslogic.SystemLog.SystemLog;
+import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
 import data.Service.Search.SearchAccountService;
+import data.Service.Sundry.InstitutionStorageService;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -35,6 +37,14 @@ public class GatheringImpl implements GatheringService{
 			AddService gatheringAdd=(AddService) Naming.lookup(RMIHelper.ADD_IMPL);
 		
 			state=gatheringAdd.add(new GatheringPO(gathering, SystemLog.getInstitutionId()));
+		
+			//添加到营业厅暂存
+			InstitutionStorageService istorageservice=(InstitutionStorageService) Naming.lookup(RMIHelper.INSTITUTION_STORAGE_IMPL);
+			for(String bar_code:gathering.id()){
+				istorageservice.addInstitutionStorage(bar_code, true, URLHelper.getInstitutionStorage(SystemLog.getInstitutionId()));
+				
+			}
+			
 			
 			SearchAccountService searchAccount=(SearchAccountService) Naming.lookup(RMIHelper.SEARCH_ACCOUNT_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
