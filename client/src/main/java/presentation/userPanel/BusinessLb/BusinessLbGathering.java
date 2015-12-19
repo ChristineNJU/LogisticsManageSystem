@@ -56,28 +56,28 @@ public class BusinessLbGathering extends FunctionAdd{
 		// TODO Auto-generated method stub
 		//首先获得needGathering
 		
-		Gathering = new ArrayList<GatheringVO>();
+//		Gathering = new ArrayList<GatheringVO>();
 
-//		Gathering = Service.getNeedGathering();
+		Gathering = service.getNeedGathering();
 		
 		
 		// 测试用
-		try {ArrayList<String> barCodeList = new ArrayList<String>();
-			barCodeList.add("0000000004");
-			GatheringVO gathering1 = new GatheringVO(sdf.parse("2015-12-3 10:15:13"),20,"张斯栋是二货",barCodeList);
+//		try {ArrayList<String> barCodeList = new ArrayList<String>();
+//			barCodeList.add("0000000004");
+//			GatheringVO gathering1 = new GatheringVO(sdf.parse("2015-12-3 10:15:13"),20,"张斯栋是二货",barCodeList);
 //			GatheringVO gathering2 = new GatheringVO(sdf.parse("2015-12-3 10:20:20"),20,"张斯栋是傻逼",barCodeList);
 //			GatheringVO gathering3 = new GatheringVO(sdf.parse("2015-12-3 10:20:20"),20,"张斯栋是二货",barCodeList);
 //			GatheringVO gathering4 = new GatheringVO(sdf.parse("2015-12-3 10:20:20"),20,"张斯栋是二货",barCodeList);
 //			GatheringVO gathering5 = new GatheringVO(sdf.parse("2015-12-3 10:20:20"),20,"张斯栋是二货",barCodeList);
-			Gathering.add(gathering1);
+//			Gathering.add(gathering1);
 //			Gathering.add(gathering2);
 //			Gathering.add(gathering3);
 //			Gathering.add(gathering4);
 //			Gathering.add(gathering5);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} 
 		
 		tableV = getVector(Gathering);
 		

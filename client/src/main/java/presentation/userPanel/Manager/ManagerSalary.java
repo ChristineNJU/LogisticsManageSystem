@@ -3,15 +3,13 @@ package presentation.userPanel.Manager;
 import java.util.ArrayList;
 import java.util.Vector;
 
-<<<<<<< HEAD
+
 import presentation.components.ButtonNew;
 import presentation.frame.MainFrame;
 import presentation.main.FunctionADUS;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableADUS;
 import presentation.table.TableModelADUS;
-=======
->>>>>>> b6726d955a57d85466d1a5eb7129eeb4742d833a
 import State.ErrorState;
 import State.SalaryType;
 import State.UpdateState;
@@ -19,15 +17,7 @@ import State.UserRole;
 import VO.SalaryVO;
 import businesslogic.Impl.Manage.ManageController;
 import businesslogic.Service.Manage.ManageService;
-<<<<<<< HEAD
-=======
-import presentation.components.ButtonNew;
-import presentation.frame.MainFrame;
-import presentation.main.FunctionADUS;
-import presentation.table.ScrollPaneTable;
-import presentation.table.TableADUS;
-import presentation.table.TableModelADUS;
->>>>>>> b6726d955a57d85466d1a5eb7129eeb4742d833a
+
 
 
 public class ManagerSalary extends FunctionADUS{

@@ -65,9 +65,9 @@ public class MediumCtEntrucking extends FunctionAdd{
 	protected void initTable() {
 		// 表格的初始化
 		
-		needEntrucking = new ArrayList<EntruckingVO>();
+//		needEntrucking = new ArrayList<EntruckingVO>();
 		
-//		needEntrucking = service.getNeedEntrucking();
+		needEntrucking = service.getNeedEntrucking();
 		
 		tableV = getVector(needEntrucking);
 		
