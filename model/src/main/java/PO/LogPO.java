@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * 系统日志的持久化数据格式
  * 
- * @author HermC
+ * @author 尹子越
  * @version 1.0.0
  * */
 public class LogPO extends PO {

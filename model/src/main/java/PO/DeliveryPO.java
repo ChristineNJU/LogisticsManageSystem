@@ -10,7 +10,7 @@ import VO.DeliveryVO;
 /**
  * 用来保存派送信息的持久化数据格式
  * 
- * @author HermC
+ * @author 尹子越
  * @version 1.0.0
  * */
 

@@ -8,7 +8,7 @@ import VO.SalaryVO;
 /**
  * 用来保存薪水信息的持久化数据格式
  * 
- * @author HermC
+ * @author 尹子越
  * @version 1.0.0
  * */
 public class SalaryPO extends PO {
