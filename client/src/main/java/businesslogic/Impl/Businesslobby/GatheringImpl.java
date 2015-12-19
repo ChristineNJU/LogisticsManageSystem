@@ -41,7 +41,7 @@ public class GatheringImpl implements GatheringService{
 			//添加到营业厅暂存
 			InstitutionStorageService istorageservice=(InstitutionStorageService) Naming.lookup(RMIHelper.INSTITUTION_STORAGE_IMPL);
 			for(String bar_code:gathering.id()){
-				istorageservice.addInstitutionStorage(bar_code, true, URLHelper.getInstitutionStorage(SystemLog.getInstitutionId()));
+				istorageservice.addInstitutionStorage(bar_code, true, URLHelper.getInstitutionStorage(SystemLog.getInstitutionId()),true);
 				
 			}
 			
