@@ -102,6 +102,7 @@ public class CourierImpl implements CourierService{
 					city.add(temp2);
 				
 			}
+			
 		} catch(Exception ex){
 			System.out.println(ex.getMessage());
 			ex.printStackTrace();

@@ -1,9 +1,5 @@
 package presentation.userPanel.BusinessLb;
 
-import java.awt.Point;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,15 +10,6 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.table.TableColumnModel;
 
-import businesslogic.Impl.Businesslobby.BusinessLobbyController;
-import businesslogic.Impl.MediumCenter.MediumCenterController;
-import businesslogic.Service.BusinessLobby.BsLbService;
-import businesslogic.SystemLog.SystemLog;
-import State.AddState;
-import State.ErrorState;
-import State.LogisticsState;
-import VO.ArrivalVO;
-import VO.VO;
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
 import presentation.components.FlatComboBox;
@@ -34,8 +21,14 @@ import presentation.main.Translater;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
-import presentation.userPanel.BusinessLb.BusinessLbEntrucking.Header;
-import presentation.userPanel.Manager.ManagerInstitutionMgt;
+import State.AddState;
+import State.ErrorState;
+import State.LogisticsState;
+import VO.ArrivalVO;
+import VO.VO;
+import businesslogic.Impl.Businesslobby.BusinessLobbyController;
+import businesslogic.Impl.Courier.CourierController;
+import businesslogic.Service.Courier.CourierService;
 
 /**
  * 营业厅到达单的列表
@@ -48,6 +41,8 @@ public class BusinessLbArrival extends FunctionAdd{
 	SimpleDateFormat sdfd=new SimpleDateFormat("yyyy-MM-dd");
 	
 	BusinessLobbyController service = new BusinessLobbyController();
+	CourierService getCity = new CourierController();
+	
 	ArrayList<ArrivalVO> arrivals;
 	
 	String[] tableH={"快递单号","出发地","快递状态","到达单编号",""};
@@ -66,15 +61,6 @@ public class BusinessLbArrival extends FunctionAdd{
 		
 		arrivals = new ArrayList<ArrivalVO>();
 		
-//		//测试用
-//		try {
-//			ArrivalVO arrival0 = new ArrivalVO("0000001001", sdfs.parse("2015-12-03 10:30:10"), "0210210201021020102102", "南京", LogisticsState.INTACT);
-//			arrivals.add(arrival0);
-//		} catch (ParseException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
 		tableV = getVector(arrivals);
 		
 		model = new TableModelAddOnly(tableV,tableH,isCellEditable);
@@ -87,8 +73,16 @@ public class BusinessLbArrival extends FunctionAdd{
 		TableColumnModel tcm = table.getColumnModel(); 
 	    String[] gender = {"完整","丢失","损坏"}; 
 	    JComboBox  genderC = new FlatComboBox(gender);  
+	    
+	    JComboBox getcity = new FlatComboBox();
+	    ArrayList<String> city = getCity.getCity();
+	    
+	    for(int i=0;i<city.size();i++){
+	    	getcity.addItem(city.get(i));
+	    }
+	    
 	    tcm.getColumn(2).setCellEditor(new DefaultCellEditor(genderC)); 
-		
+		tcm.getColumn(1).setCellEditor(new DefaultCellEditor(getcity));
 	}
 	
 	private Vector<Vector<String>> getVector(ArrayList<ArrivalVO> vo) {
