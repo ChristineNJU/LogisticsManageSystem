@@ -15,18 +15,41 @@ public class InstitutionStoragePO extends PO {
 	/** The is out. */
 	private boolean isOut;
 	
+	/** The is transfer. */
+	private boolean isTransfer;
+	
 	/**
 	 * Instantiates a new institution storage po.
 	 *
 	 * @param bar_code the bar_code
 	 * @param isOut the is out
+	 * @param isTransfer the is transfer
 	 * @param DB_URL the db url
 	 */
-	public InstitutionStoragePO(String bar_code, boolean isOut, String DB_URL) {
+	public InstitutionStoragePO(String bar_code, boolean isOut, boolean isTransfer, String DB_URL) {
 		super(DB_URL);
 		// TODO Auto-generated constructor stub
 		this.bar_code = bar_code;
 		this.isOut = isOut;
+		this.isTransfer = isTransfer;
+	}
+
+	/**
+	 * Checks if is transfer.
+	 *
+	 * @return true, if is transfer
+	 */
+	public boolean isTransfer() {
+		return isTransfer;
+	}
+
+	/**
+	 * Sets the transfer.
+	 *
+	 * @param isTransfer the new transfer
+	 */
+	public void setTransfer(boolean isTransfer) {
+		this.isTransfer = isTransfer;
 	}
 
 	/**
@@ -75,7 +98,8 @@ public class InstitutionStoragePO extends PO {
 		String result = "";
 		
 		result = result+"'"+bar_code+"', ";
-		result = result+"'"+isOut+"'";
+		result = result+"'"+isOut+"', ";
+		result = result+"'"+isTransfer+"'";
 		
 		System.out.println(result);
 		

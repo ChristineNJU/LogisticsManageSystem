@@ -129,7 +129,6 @@ public class DirectDBCreater {
 //				createTable_InstitutionStorage("025000");
 				
 //				deleteTable(URLHelper.getInstitutionStorage("0250"));
-
 //				deleteTable(URLHelper.getInstitutionStorage("025000"));
 				
 //				createTable_BsLbGathering("025000");
@@ -923,7 +922,7 @@ public class DirectDBCreater {
 		
 		try {
 			s = conn.createStatement();
-			s.execute("CREATE TABLE "+table_name+" (bar_code varchar(20) PRIMARY key, isOut varchar(10))");
+			s.execute("CREATE TABLE "+table_name+" (bar_code varchar(20) PRIMARY key, isOut varchar(20), isTransfer varchar(20))");
 			conn.commit();
 			
 			System.out.println("create table "+table_name);
