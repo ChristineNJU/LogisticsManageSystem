@@ -11,7 +11,7 @@ import businesslogic.URLHelper.URLHelper;
 /**
  * 用来保存库存盘点的持久化数据格式
  * 
- * @author HermC
+ * @author 尹子越
  * @version 1.0.0
  * */
 public class StockTakingPO extends PO {

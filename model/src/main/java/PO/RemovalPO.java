@@ -13,7 +13,7 @@ import VO.RemovalVO;
 /**
  * 用来保存出库单的持久化数据格式
  * 
- * @author HermC
+ * @author 尹子越
  * @version 1.0.0
  * */
 public class RemovalPO extends PO {

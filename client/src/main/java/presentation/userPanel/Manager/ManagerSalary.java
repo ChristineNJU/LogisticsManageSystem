@@ -3,7 +3,6 @@ package presentation.userPanel.Manager;
 import java.util.ArrayList;
 import java.util.Vector;
 
-
 import presentation.components.ButtonNew;
 import presentation.frame.MainFrame;
 import presentation.main.FunctionADUS;
@@ -17,8 +16,6 @@ import State.UserRole;
 import VO.SalaryVO;
 import businesslogic.Impl.Manage.ManageController;
 import businesslogic.Service.Manage.ManageService;
-
-
 
 public class ManagerSalary extends FunctionADUS{
 

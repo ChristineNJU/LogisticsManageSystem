@@ -40,8 +40,9 @@ public class InstitutionStorageImpl extends UnicastRemoteObject implements Insti
 				
 				String bar_code = rs.getString(1);
 				boolean isOut = rs.getString(2).equals("true");
+				boolean isTransfer = rs.getString(3).equals("true");
 				
-				InstitutionStoragePO in = new InstitutionStoragePO(bar_code, isOut, DB_URL);
+				InstitutionStoragePO in = new InstitutionStoragePO(bar_code, isOut, isTransfer, DB_URL);
 				
 				result.add(in);
 			}

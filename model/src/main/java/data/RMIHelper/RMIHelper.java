@@ -1,5 +1,10 @@
 package data.RMIHelper;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 // TODO: Auto-generated Javadoc
 /**
  * The Class RMIHelper.
@@ -9,96 +14,143 @@ public class RMIHelper {
 	/** The Constant REGISTRY. */
 	public static final int REGISTRY = 8888;
 	
-	/** The Constant URL. */
-	public static final String URL = "rmi://192.168.191.1:"+REGISTRY+"/";
+	/** The url. */
+	public static String URL = "rmi://192.168.191.1:"+REGISTRY+"/";
 	
-	/** The Constant ADD_IMPL. */
-	public static final String ADD_IMPL = URL+"AddImpl";
+	/** The add impl. */
+	public static String ADD_IMPL = URL+"AddImpl";
 	
-	/** The Constant UPDATE_IMPL. */
-	public static final String UPDATE_IMPL = URL+"UpdateImpl";
+	/** The update impl. */
+	public static String UPDATE_IMPL = URL+"UpdateImpl";
 	
-	/** The Constant DELETE_IMPL. */
-	public static final String DELETE_IMPL = URL+"DeleteImpl";
+	/** The delete impl. */
+	public static String DELETE_IMPL = URL+"DeleteImpl";
 	
-	/** The Constant SEARCH_ACCOUNT_IMPL. */
-	public static final String SEARCH_ACCOUNT_IMPL = URL+"ServiceAccountImpl";
+	/** The search account impl. */
+	public static String SEARCH_ACCOUNT_IMPL = URL+"ServiceAccountImpl";
 	
-	/** The Constant SEARCH_ARRIVAL_IMPL. */
-	public static final String SEARCH_ARRIVAL_IMPL = URL+"ServiceArrivalImpl";
+	/** The search arrival impl. */
+	public static String SEARCH_ARRIVAL_IMPL = URL+"ServiceArrivalImpl";
 	
-	/** The Constant SEARCH_BALANCE_IMPL. */
-	public static final String SEARCH_BALANCE_IMPL = URL+"ServiceBalanceImpl";
+	/** The search balance impl. */
+	public static String SEARCH_BALANCE_IMPL = URL+"ServiceBalanceImpl";
 	
-	/** The Constant SEARCH_BENEFIT_IMPL. */
-	public static final String SEARCH_BENEFIT_IMPL = URL+"ServiceBenefitImpl";
+	/** The search benefit impl. */
+	public static String SEARCH_BENEFIT_IMPL = URL+"ServiceBenefitImpl";
 	
-	/** The Constant SEARCH_CARINFO_IMPL. */
-	public static final String SEARCH_CARINFO_IMPL = URL+"ServiceCarInfoImpl";
+	/** The search carinfo impl. */
+	public static String SEARCH_CARINFO_IMPL = URL+"ServiceCarInfoImpl";
 	
-	/** The Constant SEARCH_CONST_IMPL. */
-	public static final String SEARCH_CONST_IMPL = URL+"ServiceConstImpl";
+	/** The search const impl. */
+	public static String SEARCH_CONST_IMPL = URL+"ServiceConstImpl";
 	
-	/** The Constant SEARCH_COST_IMPL. */
-	public static final String SEARCH_COST_IMPL = URL+"ServiceCostImpl";
+	/** The search cost impl. */
+	public static String SEARCH_COST_IMPL = URL+"ServiceCostImpl";
 	
-	/** The Constant SEARCH_DELIVERY_SERVICE. */
-	public static final String SEARCH_DELIVERY_SERVICE = URL+"ServiceDeliveryImpl";
+	/** The search delivery service. */
+	public static String SEARCH_DELIVERY_SERVICE = URL+"ServiceDeliveryImpl";
 	
-	/** The Constant SEARCH_DISTANCE_IMPL. */
-	public static final String SEARCH_DISTANCE_IMPL = URL+"ServiceDistanceImpl";
+	/** The search distance impl. */
+	public static String SEARCH_DISTANCE_IMPL = URL+"ServiceDistanceImpl";
 	
-	/** The Constant SEARCH_DRIVERINFO_IMPL. */
-	public static final String SEARCH_DRIVERINFO_IMPL = URL+"ServiceDriverInfoImpl";
+	/** The search driverinfo impl. */
+	public static String SEARCH_DRIVERINFO_IMPL = URL+"ServiceDriverInfoImpl";
 	
-	/** The Constant SEARCH_ENTRUCKING_IMPL. */
-	public static final String SEARCH_ENTRUCKING_IMPL = URL+"ServiceEntrucknigImpl";
+	/** The search entrucking impl. */
+	public static String SEARCH_ENTRUCKING_IMPL = URL+"ServiceEntrucknigImpl";
 	
-	/** The Constant SEARCH_GATHERING_IMPL. */
-	public static final String SEARCH_GATHERING_IMPL = URL+"ServiceGatheringImpl";
+	/** The search gathering impl. */
+	public static String SEARCH_GATHERING_IMPL = URL+"ServiceGatheringImpl";
 	
-	/** The Constant SEARCH_INSTITUTION_IMPL. */
-	public static final String SEARCH_INSTITUTION_IMPL = URL+"ServiceInstitutionImpl";
+	/** The search institution impl. */
+	public static String SEARCH_INSTITUTION_IMPL = URL+"ServiceInstitutionImpl";
 	
-	/** The Constant SEARCH_LOGISTICS_IMPL. */
-	public static final String SEARCH_LOGISTICS_IMPL = URL+"ServiceLogisticsImpl";
+	/** The search logistics impl. */
+	public static String SEARCH_LOGISTICS_IMPL = URL+"ServiceLogisticsImpl";
 	
-	/** The Constant SEARCH_LOG_IMPL. */
-	public static final String SEARCH_LOG_IMPL = URL+"ServiceLogImpl";
+	/** The search log impl. */
+	public static String SEARCH_LOG_IMPL = URL+"ServiceLogImpl";
 	
-	/** The Constant SEARCH_PERIOD_IMPL. */
-	public static final String SEARCH_PERIOD_IMPL = URL+"ServicePeriodImpl";
+	/** The search period impl. */
+	public static String SEARCH_PERIOD_IMPL = URL+"ServicePeriodImpl";
 	
-	/** The Constant SEARCH_REMOVAL_IMPL. */
-	public static final String SEARCH_REMOVAL_IMPL = URL+"ServiceRemovalImpl";
+	/** The search removal impl. */
+	public static String SEARCH_REMOVAL_IMPL = URL+"ServiceRemovalImpl";
 	
-	/** The Constant SEARCH_SALARY_IMPL. */
-	public static final String SEARCH_SALARY_IMPL = URL+"ServiceSalaryImpl";
+	/** The search salary impl. */
+	public static String SEARCH_SALARY_IMPL = URL+"ServiceSalaryImpl";
 	
-	/** The Constant SEARCH_STOCKTAKING_IMPL. */
-	public static final String SEARCH_STOCKTAKING_IMPL = URL+"ServiceStockTakingImpl";
+	/** The search stocktaking impl. */
+	public static String SEARCH_STOCKTAKING_IMPL = URL+"ServiceStockTakingImpl";
 	
-	/** The Constant SEARCH_STORAGE_IMPL. */
-	public static final String SEARCH_STORAGE_IMPL = URL+"ServiceStorageImpl";
+	/** The search storage impl. */
+	public static String SEARCH_STORAGE_IMPL = URL+"ServiceStorageImpl";
 	
-	/** The Constant SEARCH_TRANSFER_IMPL. */
-	public static final String SEARCH_TRANSFER_IMPL = URL+"ServiceTransferImpl";
+	/** The search transfer impl. */
+	public static String SEARCH_TRANSFER_IMPL = URL+"ServiceTransferImpl";
 	
-	/** The Constant SEARCH_USER_IMPL. */
-	public static final String SEARCH_USER_IMPL = URL+"ServiceUserImpl";
+	/** The search user impl. */
+	public static String SEARCH_USER_IMPL = URL+"ServiceUserImpl";
 
-	/** The Constant WAREHOUSE_IMPL. */
-	public static final String WAREHOUSE_IMPL = URL+"WareHouseImpl";
+	/** The warehouse impl. */
+	public static String WAREHOUSE_IMPL = URL+"WareHouseImpl";
 	
-	/** The Constant TABLE_OPERATION_IMPL. */
-	public static final String TABLE_OPERATION_IMPL = URL+"TableOperationImpl";
+	/** The table operation impl. */
+	public static String TABLE_OPERATION_IMPL = URL+"TableOperationImpl";
 	
-	/** The Constant INSTITUTION_STORAGE_IMPL. */
-	public static final String INSTITUTION_STORAGE_IMPL = URL+"InstitutionStorageImpl";
+	/** The institution storage impl. */
+	public static String INSTITUTION_STORAGE_IMPL = URL+"InstitutionStorageImpl";
 	
-	/** The Constant GATHERING_STORAGE_IMPL. */
-	public static final String GATHERING_STORAGE_IMPL = URL+"GatheringStorageImpl";
+	/** The gathering storage impl. */
+	public static String GATHERING_STORAGE_IMPL = URL+"GatheringStorageImpl";
 	
-	/** The Constant RMI_CONNECTION_IMPL. */
-	public static final String RMI_CONNECTION_IMPL = URL+"RMIConnectionImpl";
+	/** The rmi connection impl. */
+	public static String RMI_CONNECTION_IMPL = URL+"RMIConnectionImpl";
+
+	/**
+	 * Instantiates a new RMI helper.
+	 */
+	public RMIHelper() {
+		try {
+			BufferedReader br = new BufferedReader(new FileReader("IPConfig.txt"));
+			String ip = br.readLine();
+			
+			URL = "rmi://"+ip+":"+REGISTRY+"/";
+			ADD_IMPL = URL+"AddImpl";
+			UPDATE_IMPL = URL+"UpdateImpl";
+			DELETE_IMPL = URL+"DeleteImpl";
+			SEARCH_ACCOUNT_IMPL = URL+"ServiceAccountImpl";
+			SEARCH_ARRIVAL_IMPL = URL+"ServiceArrivalImpl";
+			SEARCH_BALANCE_IMPL = URL+"ServiceBalanceImpl";
+			SEARCH_BENEFIT_IMPL = URL+"ServiceBenefitImpl";
+			SEARCH_CARINFO_IMPL = URL+"ServiceCarInfoImpl";
+			SEARCH_CONST_IMPL = URL+"ServiceConstImpl";
+			SEARCH_COST_IMPL = URL+"ServiceCostImpl";
+			SEARCH_DELIVERY_SERVICE = URL+"ServiceDeliveryImpl";
+			SEARCH_DISTANCE_IMPL = URL+"ServiceDistanceImpl";
+			SEARCH_DRIVERINFO_IMPL = URL+"ServiceDriverInfoImpl";
+			SEARCH_ENTRUCKING_IMPL = URL+"ServiceEntrucknigImpl";
+			SEARCH_GATHERING_IMPL = URL+"ServiceGatheringImpl";
+			SEARCH_INSTITUTION_IMPL = URL+"ServiceInstitutionImpl";
+			SEARCH_LOGISTICS_IMPL = URL+"ServiceLogisticsImpl";
+			SEARCH_LOG_IMPL = URL+"ServiceLogImpl";
+			SEARCH_PERIOD_IMPL = URL+"ServicePeriodImpl";
+			SEARCH_PERIOD_IMPL = URL+"ServicePeriodImpl";
+			SEARCH_REMOVAL_IMPL = URL+"ServiceRemovalImpl";
+			SEARCH_SALARY_IMPL = URL+"ServiceSalaryImpl";
+			SEARCH_STOCKTAKING_IMPL = URL+"ServiceStockTakingImpl";
+			SEARCH_STORAGE_IMPL = URL+"ServiceStorageImpl";
+			SEARCH_TRANSFER_IMPL = URL+"ServiceTransferImpl";
+			SEARCH_USER_IMPL = URL+"ServiceUserImpl";
+			WAREHOUSE_IMPL = URL+"WareHouseImpl";
+			TABLE_OPERATION_IMPL = URL+"TableOperationImpl";
+			INSTITUTION_STORAGE_IMPL = URL+"InstitutionStorageImpl";
+			GATHERING_STORAGE_IMPL = URL+"GatheringStorageImpl";
+			RMI_CONNECTION_IMPL = URL+"RMIConnectionImpl";
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
