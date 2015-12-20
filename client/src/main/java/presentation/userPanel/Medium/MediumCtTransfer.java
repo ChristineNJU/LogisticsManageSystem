@@ -11,6 +11,8 @@ import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
 import presentation.components.LabelHeader;
 import presentation.components.TextFieldHeader;
+import presentation.factory.TableFactory;
+import presentation.factory.TableModelFactory;
 import presentation.frame.MainFrame;
 import presentation.main.FunctionAdd;
 import presentation.table.ScrollPaneTable;
@@ -34,9 +36,6 @@ public class MediumCtTransfer extends FunctionAdd{
 	
 	MediumCenterController service = new MediumCenterController();
 	ArrayList<TransferVO> needTransfer;
-	
-	String[] tableH = {"快递单号",""};
-	boolean[] isCellEditable = {false};
 	
 	public TextFieldHeader idInput  = new TextFieldHeader();
 	public TextFieldHeader planeIdInput = new TextFieldHeader();
@@ -90,8 +89,8 @@ public class MediumCtTransfer extends FunctionAdd{
 		
 		tableV = getVector(needTransfer);
 		
-		model = new TableModelAddOnly(tableV,tableH,isCellEditable);
-		table = new TableAddOnly(model);
+		model = TableModelFactory.getEntruckingModel(tableV);
+		table = TableFactory.getEntrucking(model);
 		
 		sPanel = new ScrollPaneTable(table);
 		sPanel.setLocation(sPanel.getX(),header.getHeight()+120);

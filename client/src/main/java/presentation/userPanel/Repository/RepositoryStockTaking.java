@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 
 import presentation.components.ButtonConfirm;
 import presentation.components.LabelHeader;
+import presentation.factory.TableFactory;
+import presentation.factory.TableModelFactory;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableModelSearch;
 import presentation.table.TableSearch;
@@ -27,9 +29,6 @@ public class RepositoryStockTaking extends RepositoryCheck{
 
 	BlWareHouseService wareHouse = new BlWareHouseImpl();
 	
-	private String[] tableH = {"航空区","   ","   ","   ","   ","   "};
-	private String[] tableH2 = {"火车区","   ","   ","   ","   ","   "};
-	private String[] tableH3 = {"汽运区","   ","   ","   ","   ","   "};
 	
 	ArrayList<StockTakingVO> stockTaking = new ArrayList<StockTakingVO>();
 	
@@ -110,19 +109,19 @@ public class RepositoryStockTaking extends RepositoryCheck{
 		}
 		
 		tableV = getWareHouseVector(air);
-		tableV2 = getWareHouseVector(car);
-		tableV3 = getWareHouseVector(rail);
+		tableV2 = getWareHouseVector(rail);
+		tableV3 = getWareHouseVector(car);
 		
-		model = new TableModelSearch(tableV,tableH);
+		model = TableModelFactory.getStockTakingAir(tableV);
 		table.setModel(model);
 		table.repaint();
 		
-		model2 = new TableModelSearch(tableV2, tableH2);
+		model2 = TableModelFactory.getStockTakingRailway(tableV2);
 		table2.setModel(model2);
 		table2.repaint();
 		
-		model3 = new TableModelSearch(tableV3, tableH3);
-		table3.setModel(model3);
+		model3 = TableModelFactory.getStockTakingBus(tableV3);
+		table.setModel(model3);
 		table3.repaint();
 	}
 	
@@ -134,27 +133,23 @@ public class RepositoryStockTaking extends RepositoryCheck{
 
 	@Override
 	protected void initTable() {
-
-		String[] tableH = {"航空区","   ","   ","   ","   ","   "};
-		String[] tableH2 = {"火车区","   ","   ","   ","   ","   "};
-		String[] tableH3 = {"汽运区","   ","   ","   ","   ","   "};
 		
-		model = new TableModelSearch(tableV,tableH);
-		table = new TableSearch(model);
+		model = TableModelFactory.getStockTakingAir(tableV);
+		table = TableFactory.getStockTakingAir(model);
 		sPanel = new ScrollPaneTable(table);
 		sPanel.setLocation(sPanel.getX(),header.getHeight()+120);
 		sPanel.setSize(sPanel.getWidth(),170);
 		panel.add(sPanel);
 		
-		model2 = new TableModelSearch(tableV2,tableH2);
-		table2 = new TableSearch(model2);
+		model2 = TableModelFactory.getStockTakingRailway(tableV2);
+		table2 = TableFactory.getStockTakingRailway(model2);
 		sPanel2 = new ScrollPaneTable(table2);
 		sPanel2.setLocation(sPanel.getX(),sPanel.getHeight()+header.getHeight()+140);
 		sPanel2.setSize(sPanel.getWidth(),170);
 		panel.add(sPanel2);
 		
-		model3 = new TableModelSearch(tableV3,tableH3);
-		table3 = new TableSearch(model3);
+		model3 = TableModelFactory.getStockTakingBus(tableV3);
+		table3 = TableFactory.getStockTakingBus(model3);
 		sPanel3 = new ScrollPaneTable(table3);
 		sPanel3.setLocation(sPanel.getX(),sPanel.getHeight()+sPanel2.getHeight()+header.getHeight()+170);
 		sPanel3.setSize(sPanel.getWidth(),170);

@@ -17,29 +17,20 @@ public class RollListener implements MouseListener {
 		if(source.isEnabled()){
 			source.click();
 		}
-//		System.out.println("in listener");
 
 	}
-
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-
 	}
-
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-
 	}
-
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		if(source.isEnabled()){			
 			source.rolled();
 		}
 	}
-
 	@Override
 	public void mouseExited(MouseEvent e) {
 		if(source.isEnabled()){			

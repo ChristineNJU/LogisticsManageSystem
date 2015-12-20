@@ -64,37 +64,23 @@ public class MainFrame {
 		frame.setContentPane(panel);
 		panel.setLayout(null);
 
-		inquiry = new Inquiry(this);
-		frame.add(inquiry.getPanel());
+//		inquiry = new Inquiry(this);
+//		frame.add(inquiry.getPanel());
 //		panel.add(inquiry.getPanel());
 
-//		changeToCourier();
+
 //		changeToBusinesslobby();
 //		changeToFinance();
-//		changeToCourier()
-
-//		changeToFinance();
+		changeToCourier();
 //		changeToManager();
 
-//		changeToFinance();
-//		changeToManager();
-
-//	changeToManager();
-
-//		changeToFinance();
-//		changeToCourier();
-//		changeToFinance();
-//		changeToManager();
 //	changeToManager();
 
 
 //		changeToMediumCenter();
 //		changeToRepository();
 
-//		changeToMediumCenter();
-//		changeToRepository();
-//
-//		changeToAdmin();
+
 	
 		
 	}	

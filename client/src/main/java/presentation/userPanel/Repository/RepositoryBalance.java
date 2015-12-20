@@ -16,6 +16,8 @@ import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
 import presentation.components.FlatComboBox;
 import presentation.components.LabelHeader;
+import presentation.factory.TableFactory;
+import presentation.factory.TableModelFactory;
 import presentation.frame.MainFrame;
 import presentation.main.FontSet;
 import presentation.main.FunctionAdd;
@@ -42,9 +44,6 @@ public class RepositoryBalance extends FunctionAdd {
 	RepositoryService repository = new RepositoryController();
 	
 	private ProgressBarPanel pbp = new ProgressBarPanel();
-	
-	String[] tableH = {"原区号", "快递编号", "新区号", "排号", "架号", "位号", ""};
-	boolean[] isCellEditable = {true, true, true, true, true, false};
 	
 	Vector<Vector<String>> vector = new Vector<Vector<String>>();
 	
@@ -114,44 +113,11 @@ public class RepositoryBalance extends FunctionAdd {
 	@Override
 	protected void initTable() {
 		// TODO Auto-generated method stub
-		model = new TableModelAddOnly(vector, tableH, isCellEditable);
-		table = new TableAddOnly(model);
+		model = TableModelFactory.getBalanceModel(vector);
+		table = TableFactory.getBalanceTable(model);
 		
 		model.addTableModelListener(listener);
-		
-		FlatComboBox old_area = new FlatComboBox();
-		old_area.addItem("航空区");
-		old_area.addItem("汽运区");
-		old_area.addItem("铁路区");
-		
-		FlatComboBox bar_code = new FlatComboBox();
-		
-		FlatComboBox new_area = new FlatComboBox();
-		new_area.addItem("航空区");
-		new_area.addItem("汽运区");
-		new_area.addItem("铁路区");
-		new_area.addItem("机动区");
-		
-		FlatComboBox row = new FlatComboBox();
-		FlatComboBox shelf = new FlatComboBox();
-		FlatComboBox position = new FlatComboBox();
-		for(int i=1;i<=10;i++){
-			row.addItem(i+"");
-			shelf.addItem(i+"");
-			position.addItem(i+"");
-		}
-		
-		TableColumnModel tcm = table.getColumnModel();
-		tcm.getColumn(0).setCellEditor(new DefaultCellEditor(old_area));
-		tcm.getColumn(1).setCellEditor(new DefaultCellEditor(bar_code));
-		
-		tcm.getColumn(2).setCellEditor(new DefaultCellEditor(new_area));
-		tcm.getColumn(3).setCellEditor(new DefaultCellEditor(row));
-		tcm.getColumn(4).setCellEditor(new DefaultCellEditor(shelf));
-		tcm.getColumn(5).setCellEditor(new DefaultCellEditor(position));
-		
 		sPanel = new ScrollPaneTable(table);
-		
 		panel.add(sPanel);
 	}
 

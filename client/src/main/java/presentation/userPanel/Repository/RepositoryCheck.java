@@ -14,6 +14,8 @@ import businesslogic.Service.Repository.RepositoryService;
 import presentation.components.ButtonConfirm;
 import presentation.components.DateChooser;
 import presentation.components.LabelHeader;
+import presentation.factory.TableFactory;
+import presentation.factory.TableModelFactory;
 import presentation.main.FunctionSearch;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableModelSearch;
@@ -30,9 +32,7 @@ public class RepositoryCheck extends FunctionSearch{
 	private ProgressBarPanel pbp = new ProgressBarPanel();
 	
 	RepositoryService service = new RepositoryController();
-	String[] tableH = {"入库记录","   ","   ","   ","   ","  ","   "};
 	
-	String[] tableH2 = {"出库记录","   ","   ","   ","   "};
 	protected ScrollPaneTable sPanel2;
 	protected Vector<Vector<String>> tableV2 = new Vector<Vector<String>>();
 	protected TableModelSearch model2;
@@ -60,17 +60,17 @@ public class RepositoryCheck extends FunctionSearch{
 
 	@Override
 	protected void initTable() {
-		tableV = new Vector<Vector<String>>();
-		model = new TableModelSearch(tableV,tableH);
-		table = new TableSearch(model);
+		tableV = getVector(storages);
+		model = TableModelFactory.getRemovalSearchModel(tableV);
+		table = TableFactory.getRemovalSearchTable(model);
 		sPanel = new ScrollPaneTable(table);
 		sPanel.setLocation(sPanel.getX(),header.getHeight()+120);
 		sPanel.setSize(sPanel.getWidth(),250);
 		panel.add(sPanel);
 		
-		tableV2 = new Vector<Vector<String>>();
-		model2 = new TableModelSearch(tableV2,tableH2);
-		table2 = new TableSearch(model2);
+		tableV2 = getVector2(removals);
+		model2 = TableModelFactory.getStorageSearchModel(tableV2);
+		table2 = TableFactory.getStorageSearchTable(model2);
 		sPanel2 = new ScrollPaneTable(table2);
 		sPanel2.setLocation(sPanel.getX(),sPanel.getHeight()+header.getHeight()+150);
 		sPanel2.setSize(sPanel.getWidth(),300);
@@ -108,10 +108,10 @@ public class RepositoryCheck extends FunctionSearch{
 					showError(ErrorState.SEARCHERROR);
 				}
 			}
-			model = new TableModelSearch(getVector(storages),tableH);
+			model = TableModelFactory.getRemovalSearchModel(getVector(storages));
 			table.setModel(model);
 			table.repaint();
-			model2 = new TableModelSearch(getVector2(removals),tableH2);
+			model2 = TableModelFactory.getStorageSearchModel(getVector2(removals));
 			table2.setModel(model2);
 			table2.repaint();
 		}

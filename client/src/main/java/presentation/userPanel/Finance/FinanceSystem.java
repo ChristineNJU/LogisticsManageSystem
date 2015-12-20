@@ -6,24 +6,24 @@ import java.util.Vector;
 
 import javax.swing.JLabel;
 
-import presentation.components.ButtonConfirm;
-import presentation.components.DateChooser;
-import presentation.components.LabelHeader;
-import presentation.main.FunctionSearch;
-import presentation.table.ScrollPaneTable;
-import presentation.table.TableModelSearch;
-import presentation.table.TableSearch;
 import State.ErrorState;
 import VO.LogVO;
 import businesslogic.Impl.Finance.FinanceController;
 import businesslogic.Service.Finance.FinanceService;
+import presentation.components.ButtonConfirm;
+import presentation.components.DateChooser;
+import presentation.components.LabelHeader;
+import presentation.factory.TableFactory;
+import presentation.factory.TableModelFactory;
+import presentation.main.FunctionSearch;
+import presentation.table.ScrollPaneTable;
+import presentation.table.TableModelSearch;
 
 public class FinanceSystem extends FunctionSearch{
 
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
 	FinanceService service = new FinanceController();
-	String[] tableH = {"操作日期","操作类型","操作人员"};
 	
 	ArrayList<LogVO> logs;
 	
@@ -47,8 +47,8 @@ public class FinanceSystem extends FunctionSearch{
 	@Override
 	protected void initTable() {
 		tableV = new Vector<Vector<String>>();
-		model = new TableModelSearch(tableV,tableH);
-		table = new TableSearch(model);
+		model = TableModelFactory.getSystemModel(tableV);
+		table = TableFactory.getSystemTable(model);
 		sPanel = new ScrollPaneTable(table);
 		panel.add(sPanel);
 		
@@ -77,7 +77,7 @@ public class FinanceSystem extends FunctionSearch{
 			tableV = getVector(logs);
 		}
 		
-		model = new TableModelSearch(tableV,tableH);
+		model = TableModelFactory.getSystemModel(tableV);
 		table.setModel(model);
 		table.repaint();
 		

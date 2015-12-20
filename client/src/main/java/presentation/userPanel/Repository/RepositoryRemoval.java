@@ -11,21 +11,8 @@ import javax.swing.DefaultCellEditor;
 import javax.swing.JLabel;
 import javax.swing.table.TableColumnModel;
 
-import presentation.components.ButtonConfirm;
-import presentation.components.ButtonNew;
-import presentation.components.FlatComboBox;
-import presentation.components.LabelHeader;
-import presentation.components.TextFieldHeader;
-import presentation.frame.MainFrame;
-import presentation.main.FunctionAdd;
-import presentation.main.Translater;
-import presentation.table.ScrollPaneTable;
-import presentation.table.TableAddOnly;
-import presentation.table.TableModelAddOnly;
-
 import State.AddState;
 import State.ErrorState;
-
 import State.TransferType;
 import VO.RemovalVO;
 import VO.VO;
@@ -34,6 +21,19 @@ import businesslogic.Impl.Repository.BlWareHouseImpl;
 import businesslogic.Impl.Repository.RepositoryController;
 import businesslogic.Service.Repository.BlWareHouseService;
 import businesslogic.SystemLog.SystemLog;
+import presentation.components.ButtonConfirm;
+import presentation.components.ButtonNew;
+import presentation.components.FlatComboBox;
+import presentation.components.LabelHeader;
+import presentation.components.TextFieldHeader;
+import presentation.factory.TableFactory;
+import presentation.factory.TableModelFactory;
+import presentation.frame.MainFrame;
+import presentation.main.FunctionAdd;
+import presentation.main.Translater;
+import presentation.table.ScrollPaneTable;
+import presentation.table.TableAddOnly;
+import presentation.table.TableModelAddOnly;
 
 public class RepositoryRemoval extends FunctionAdd{
 
@@ -45,8 +45,7 @@ public class RepositoryRemoval extends FunctionAdd{
 	RepositoryController service = new RepositoryController();
 //	ArrayList<RemovalVO> needRemoval;
 	
-	String[]  tableH = {"快递编号",""};
-	boolean[] isCellEditable = {false, false};
+
 	
 	ArrayList<WareHouseVO> total = new ArrayList<WareHouseVO>();
 	
@@ -92,8 +91,8 @@ public class RepositoryRemoval extends FunctionAdd{
 				// TODO Auto-generated method stub
 				tableV = new Vector<Vector<String>>();
 				
-				model = new TableModelAddOnly(tableV,tableH,isCellEditable);
-				table.setModel(model);
+				model = TableModelFactory.getSorageModel(tableV);
+				table = TableFactory.getStorageTable(model);
 				
 				TableColumnModel tcm = table.getColumnModel();
 				tcm.getColumn(0).setCellEditor(new DefaultCellEditor(getComboBox()));
@@ -119,7 +118,7 @@ public class RepositoryRemoval extends FunctionAdd{
 //		tableV = getVector(needRemoval);
 		tableV = new Vector<Vector<String>>();
 		
-		model = new TableModelAddOnly(tableV,tableH,isCellEditable);
+		model = TableModelFactory.getSorageModel(tableV);
 		table = new TableAddOnly(model);
 
 		TableColumnModel tcm = table.getColumnModel();

@@ -3,33 +3,25 @@ package presentation.userPanel.Manager;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import javax.swing.DefaultCellEditor;
-import javax.swing.JComboBox;
-import javax.swing.table.TableColumnModel;
-
-import presentation.components.ButtonNew;
-import presentation.components.FlatComboBox;
-import presentation.frame.MainFrame;
-import presentation.main.FunctionADUS;
-import presentation.main.Translater;
-import presentation.table.ScrollPaneTable;
-import presentation.table.TableADUS;
-import presentation.table.TableModelADUS;
-import presentation.userPanel.BusinessLb.BusinessLbCarMgt;
 import State.AddState;
 import State.DeleteState;
 import State.ErrorState;
 import State.UpdateState;
 import VO.InstitutionVO;
-import VO.StaffVO;
-import VO.VO;
 import businesslogic.Impl.Manage.ManageController;
+import presentation.components.ButtonNew;
+import presentation.factory.TableFactory;
+import presentation.factory.TableModelFactory;
+import presentation.frame.MainFrame;
+import presentation.main.FunctionADUS;
+import presentation.main.Translater;
+import presentation.table.ScrollPaneTable;
+import presentation.table.TableModelADUS;
 
 public class ManagerInstitutionMgt extends FunctionADUS{
 	ManageController service=new ManageController();
 	ArrayList<InstitutionVO> institutions;
-	String[] tableH = {"机构ID","机构名称","机构类型","机构所在地"};
-	boolean[] isCellEditable = {false,true,true,true};
+	
 	
 	ArrayList<InstitutionVO> addItems=new ArrayList<InstitutionVO>();
 	ArrayList<InstitutionVO> deleteItems=new ArrayList<InstitutionVO>();
@@ -63,20 +55,9 @@ public class ManagerInstitutionMgt extends FunctionADUS{
 		else{
 			tableV = getVector(institutions);
 		}
-		model = new TableModelADUS(tableV, tableH,isCellEditable);
-		table = new TableADUS(model);
+		model = TableModelFactory.getInstitutionModel(tableV);
+		table = TableFactory.getInstutionTable(model);
 		
-		TableColumnModel tcm = table.getColumnModel(); 
-		String[] institution = {"营业厅","中转中心","仓库","总部"};
-		JComboBox institutionC = new FlatComboBox(institution);  
-        tcm.getColumn(2).setCellEditor(new DefaultCellEditor(institutionC));
-        
-        String[] city = {"南京","北京","上海","广州"};
- 	    JComboBox  cityC = new FlatComboBox(city);  
-        tcm.getColumn(3).setCellEditor(new DefaultCellEditor(cityC));
-        
-        addDeleteColumn();
-	    
  	    table.addMouseListener(tableListener);
  	    sPanel = new ScrollPaneTable(table);
  	    panel.add(sPanel);
@@ -87,7 +68,7 @@ public class ManagerInstitutionMgt extends FunctionADUS{
 		// TODO Auto-generated method stub
 		institutions=new ArrayList<InstitutionVO>();
 		searchItems=service.searchInstitution(s);
-		model = new TableModelADUS(getVector(searchItems),tableH,isCellEditable);
+		model = TableModelFactory.getInstitutionModel(tableV);
 		table.setModel(model);
 		table.repaint();
 	}
