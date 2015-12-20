@@ -52,13 +52,13 @@ public class CourierNewOrderList extends FunctionAdd{
 	
 	NavigationCourier nav;
 	
-	public CourierNewOrderList(){
+	public CourierNewOrderList(NavigationCourier navigationCourier){
 		
 		super.buttonNew = new ButtonNew("新增快递");
 		super.confirm = new ButtonConfirm("提交所有订单");
 		super.cancel = new ButtonCancel();
 
-//		this.nav = nav;
+		this.nav = navigationCourier;
 		
 		oldTableModelAddOnly = model;
 		
@@ -247,7 +247,8 @@ public class CourierNewOrderList extends FunctionAdd{
 
 	@Override
 	public void performCancel() {
-		MainFrame.changeContentPanel(new CourierNewOrderList().getPanel());		
+//		MainFrame.changeContentPanel(new CourierNewOrderList().getPanel());
+		nav.changeTask(1);
 	}
 	
 //	class InfomationPanel extends JPanel implements Runnable {

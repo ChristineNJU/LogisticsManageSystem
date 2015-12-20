@@ -50,9 +50,14 @@ public class BusinessLbArrival extends FunctionAdd{
 	
 	public TextFieldHeader listIdIuput = new TextFieldHeader();
 	
-	public BusinessLbArrival(){
+	NavigationBusinessLobby nav;
+	
+	public BusinessLbArrival(NavigationBusinessLobby navigationBusinessLobby){
 		super.buttonNew = new ButtonNew("新增到达单");
 		super.confirm = new ButtonConfirm("提交所有到达单");
+		
+		nav = navigationBusinessLobby;
+		
 		initUI("中转接收");
 	}
 	

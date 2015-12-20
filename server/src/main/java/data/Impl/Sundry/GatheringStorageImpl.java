@@ -68,7 +68,7 @@ public class GatheringStorageImpl extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public AddState addGatheringStorage(String bar_code, double amount,
+	public AddState addGatheringStorage(String bar_code, double amount, String courier, String date,
 			String DB_URL) throws RemoteException {
 		// TODO Auto-generated method stub
 		if(bar_code==null){
@@ -79,7 +79,11 @@ public class GatheringStorageImpl extends UnicastRemoteObject implements
 		try {
 			Statement s = conn.createStatement();
 			
-			boolean mark = s.execute("INSERT INTO "+DB_URL+" VALUES('"+bar_code+"', "+amount+")");
+			System.out.println("INSERT INTO "+DB_URL+" VALUES('"+bar_code+"', "+amount+", '"+courier+"', "
+					+ "'"+date+"')");
+			
+			boolean mark = s.execute("INSERT INTO "+DB_URL+" VALUES('"+bar_code+"', "+amount+", '"+courier+"', "
+					+ "'"+date+"')");
 		
 			conn.commit();
 		} catch (SQLException e) {

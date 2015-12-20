@@ -60,7 +60,7 @@ public class NavigationCourier extends Navigation{
 	private void changeToNewLogistics(){
 //		MainFrame.getMainPanel().repaint();
 //		courierNewOrder = new CourierNewOrderList();
-		courierNewOrder = new CourierNewOrderList();
+		courierNewOrder = new CourierNewOrderList(this);
 		MainFrame.changeContentPanel(courierNewOrder.getPanel());
 		if(courierNewOrder.isConnectError()){
 			System.out.println("manager initiate null");

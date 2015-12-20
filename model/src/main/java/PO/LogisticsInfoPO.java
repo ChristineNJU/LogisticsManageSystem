@@ -2,6 +2,7 @@ package PO;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import businesslogic.URLHelper.URLHelper;
@@ -449,6 +450,8 @@ public class LogisticsInfoPO extends PO {
 	 * @param node 新历史轨迹
 	 * */
 	public void addHistory(String node) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		node = node+","+sdf.format(Calendar.getInstance().getTime());
 		this.history.add(node);
 	}
 

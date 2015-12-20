@@ -6,10 +6,8 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import PO.DeliveryPO;
 import PO.InstitutionStoragePO;
 import VO.DeliveryVO;
-import VO.EntruckingVO;
 import businesslogic.Service.BusinessLobby.getNeedDeliveryService;
 import businesslogic.SystemLog.SystemLog;
 import businesslogic.URLHelper.URLHelper;
@@ -33,10 +31,13 @@ public class getNeedDeliveryImpl implements getNeedDeliveryService{
 			}
 			
 			else{
+				System.out.println(searchResult.size());
 				for(int i=0;i<searchResult.size();i++){
-					if(!searchResult.get(i).isOut())
+					if(!searchResult.get(i).isOut()){
+						System.out.println(searchResult.get(i));
 						result.add(new DeliveryVO(searchResult.get(i)));
 					}
+				}
 					
 			}
 		

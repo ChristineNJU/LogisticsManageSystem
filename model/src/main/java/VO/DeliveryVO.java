@@ -19,7 +19,7 @@ public class DeliveryVO extends VO {
 	private Date arrivalDate = null;
 	
 	/** The bar code list. */
-	private ArrayList<String> barCodeList = null;
+	private ArrayList<String> barCodeList = new ArrayList<String>();
 	
 	/** The people. */
 	private String people = null;

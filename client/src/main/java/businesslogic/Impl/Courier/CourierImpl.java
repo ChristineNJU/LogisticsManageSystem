@@ -43,6 +43,8 @@ import data.Service.Update.UpdateService;
  */
 public class CourierImpl implements CourierService{
 
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	
 	/* (non-Javadoc)
 	 * @see businesslogic.Service.Courier.CourierService#receiveConfirm(VO.VO)
 	 */
@@ -196,7 +198,8 @@ public class CourierImpl implements CourierService{
 			result.addHistory("快递员收件");
 			state=addService.add(result);
 			GatheringStorageService gstorageService=(GatheringStorageService) Naming.lookup(RMIHelper.GATHERING_STORAGE_IMPL);
-			gstorageService.addGatheringStorage(result.getBarCode(), result.getTotalCost(),URLHelper.getInstitutionStorage(SystemLog.getInstitutionId()));
+			gstorageService.addGatheringStorage(result.getBarCode(), result.getTotalCost(), SystemLog.getOperatorID(), 
+					sdf.format(Calendar.getInstance().getTime()), URLHelper.getGatheringStorage(SystemLog.getInstitutionId()));
 			
 			//AddState is depended in the data level. Can not give all AddStates here;
 			
