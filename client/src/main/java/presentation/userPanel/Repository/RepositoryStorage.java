@@ -40,6 +40,8 @@ public class RepositoryStorage extends FunctionAdd {
 	
 	private ProgressBarPanel pbp = new ProgressBarPanel();
 	
+	ArrayList<String> getNeed = new ArrayList<String>();
+	
 	ArrayList<StorageVO> storage = new ArrayList<StorageVO>();
 	
 	Vector<Vector<String>> vector = new Vector<Vector<String>>();
@@ -50,11 +52,11 @@ public class RepositoryStorage extends FunctionAdd {
 	
 	NavigationRepository nav;
 	
-	public RepositoryStorage() {
+	public RepositoryStorage(NavigationRepository navigationRepository) {
 		super.buttonNew = new ButtonNew("新增入库单");
 		super.confirm = new ButtonConfirm("提交入库单");
 		
-//		this.nav = nav;
+		this.nav = navigationRepository;
 		
 		initUI("入库");
 		init();
@@ -103,6 +105,16 @@ public class RepositoryStorage extends FunctionAdd {
 			city.addItem(city_actual.get(i));
 		}
 		
+		ArrayList<StorageVO> tmp = service.getNeedStorage();
+		for(StorageVO vo:tmp){
+			getNeed.add(vo.getBarCode());
+		}
+		
+		FlatComboBox barCode = new FlatComboBox();
+		for(String t:getNeed){
+			barCode.addItem(t);
+		}
+		
 		FlatComboBox area = new FlatComboBox();
 		area.addItem("航空区");
 		area.addItem("汽运区");
@@ -118,6 +130,7 @@ public class RepositoryStorage extends FunctionAdd {
 			position.addItem(i+"");
 		}
 		
+		tcm.getColumn(0).setCellEditor(new DefaultCellEditor(barCode));
 		tcm.getColumn(1).setCellEditor(new DefaultCellEditor(city));
 		tcm.getColumn(2).setCellEditor(new DefaultCellEditor(area));
 		
@@ -246,6 +259,7 @@ public class RepositoryStorage extends FunctionAdd {
 
 	@Override
 	public void performCancel() {
-		MainFrame.changeContentPanel(new RepositoryStorage().getPanel());		
+//		MainFrame.changeContentPanel(new RepositoryStorage().getPanel());
+		nav.changeTask(1);
 	}
 }
