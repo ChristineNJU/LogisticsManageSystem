@@ -1,6 +1,5 @@
 package presentation.userPanel.Medium;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,19 +10,15 @@ import javax.swing.JLabel;
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
 import presentation.components.LabelHeader;
-import presentation.components.TextField;
 import presentation.components.TextFieldHeader;
+import presentation.components.FlatComboBox;
 import presentation.frame.MainFrame;
 import presentation.main.FunctionAdd;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
-
 import State.AddState;
 import State.ErrorState;
-
-import presentation.userPanel.Manager.ManagerInstitutionMgt;
-
 import VO.EntruckingVO;
 import VO.VO;
 import businesslogic.Impl.MediumCenter.MediumCenterController;
@@ -44,11 +39,12 @@ public class MediumCtEntrucking extends FunctionAdd{
 	public TextFieldHeader carIdInput = new TextFieldHeader();
 	public TextFieldHeader superCarGoInput = new TextFieldHeader();
 	public TextFieldHeader guardInput = new TextFieldHeader();
-	public TextFieldHeader destinationInput = new TextFieldHeader();
+	public FlatComboBox destinationInput = new FlatComboBox();
 	public TextFieldHeader costInput = new TextFieldHeader();
 	
 	public MediumCtEntrucking(){
 		super.buttonNew = new ButtonNew("新增装运快递");
+		buttonNew.setVisible(false);
 		super.confirm = new ButtonConfirm("提交装运单");
 		initUI("装运发送");
 	}
@@ -88,7 +84,7 @@ public class MediumCtEntrucking extends FunctionAdd{
 			tempbarCodeList.add(vector.get(0));
 		}
 		Date tempdate = new Date();
-		String tempdestination = destinationInput.getText();
+		String tempdestination = destinationInput.getSelectedItem().toString();
 		String tempcarnumber = carIdInput.getText();
 		String tempname = guardInput.getText();
 		String tempsupercargo = superCarGoInput.getText();

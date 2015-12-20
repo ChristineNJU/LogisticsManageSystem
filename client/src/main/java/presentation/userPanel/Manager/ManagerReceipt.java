@@ -59,11 +59,15 @@ public class ManagerReceipt extends FunctionSearch{
 	
 	ButtonConfirm confirm = new ButtonConfirm("确认审批");
 	
-	public ManagerReceipt() {
+	NavigationManager nav;
+	
+	public ManagerReceipt(NavigationManager navigationManager) {
 		super.confirmSearch = new ButtonConfirm("查看单据");
 		confirmSearch.setVisible(false);
 		initTableHead();
 		initUI("审批单据");
+		
+		nav = navigationManager;
 		
 		confirm.setLocation(120,175+sPanel.getHeight());
 		confirm.addMouseListener(new MouseListener(){
@@ -128,6 +132,8 @@ public class ManagerReceipt extends FunctionSearch{
 				}
 				else if(state==UpdateState.CONNECTERROR){
 					showError(ErrorState.CONNECTERROR);
+				}else{
+					nav.changeTask(1);
 				}
 				
 			}

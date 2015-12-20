@@ -55,7 +55,7 @@ public class FinanceCost extends FunctionAdd{
 		
 
 //		CostVO cost0 = new CostVO("2015-12-5 19:59:11", 120, "张斯栋","0123456789" ,CostType.reward,"超过预计" );
-		costs=service.searchCost("%%");
+//		costs=service.searchCost("%%");
 		if(costs==null){
 			super.isConnectError=true;
 			tableV=new Vector<Vector<String>>();

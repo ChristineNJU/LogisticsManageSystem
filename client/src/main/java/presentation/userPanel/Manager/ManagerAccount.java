@@ -19,7 +19,7 @@ public class ManagerAccount extends FunctionSearch{
 	FinanceService service = new FinanceController();
 //	ManageService service = new ManageController();
 	ArrayList<AccountVO> accounts;
-	String[] tableH = {"收款日期","收款金额(￥)","收款快递员","快递单号"};
+	String[] tableH={"账户名称","账户余额"};
 	
 	public ManagerAccount(){
 		confirmSearch = new ButtonConfirm("");
