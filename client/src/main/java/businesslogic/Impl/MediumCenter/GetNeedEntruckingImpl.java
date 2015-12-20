@@ -29,7 +29,6 @@ public class GetNeedEntruckingImpl implements GetNeedEntruckingService{
 		// TODO Auto-generated method stub
 		ArrayList<EntruckingVO> result=new ArrayList<EntruckingVO>();
 		try {
-			SearchRemovalService removalSearch=(SearchRemovalService) Naming.lookup(RMIHelper.SEARCH_REMOVAL_IMPL);
 			InstitutionStorageService istorageservice=(InstitutionStorageService) Naming.lookup(RMIHelper.INSTITUTION_STORAGE_IMPL);
 			ArrayList<String> requirement1=new ArrayList<String>();
 			requirement1.add("bar_code like '%%'");
@@ -45,7 +44,8 @@ public class GetNeedEntruckingImpl implements GetNeedEntruckingService{
 			
 			else{
 				for(int i=0;i<searchResult1.size();i++)
-					result.add(new EntruckingVO(searchResult1.get(i)));
+					if(searchResult1.get(i).isOut()&&searchResult1.get(i).isTransfer())
+						result.add(new EntruckingVO(searchResult1.get(i)));
 			}
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
