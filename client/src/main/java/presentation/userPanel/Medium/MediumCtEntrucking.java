@@ -47,9 +47,14 @@ public class MediumCtEntrucking extends FunctionAdd{
 	public TextFieldHeader destinationInput = new TextFieldHeader();
 	public TextFieldHeader costInput = new TextFieldHeader();
 	
-	public MediumCtEntrucking(){
+	NavigationMediumCenter nav;
+	
+	public MediumCtEntrucking(NavigationMediumCenter navigationMediumCenter){
 		super.buttonNew = new ButtonNew("新增装运快递");
 		super.confirm = new ButtonConfirm("提交装运单");
+		
+		nav = navigationMediumCenter;
+		
 		initUI("装运发送");
 	}
 	
@@ -103,6 +108,8 @@ public class MediumCtEntrucking extends FunctionAdd{
 		}
 		else if(state==AddState.FAIL){
 			showError(ErrorState.ADDERROR);
+		}else{
+			nav.changeTask(2);
 		}
 	}
 
@@ -197,6 +204,7 @@ public class MediumCtEntrucking extends FunctionAdd{
 	}
 	@Override
 	public void performCancel() {
-		MainFrame.changeContentPanel(new MediumCtEntrucking().getPanel());		
+//		MainFrame.changeContentPanel(new MediumCtEntrucking().getPanel());	
+		nav.changeTask(2);
 	}
 }

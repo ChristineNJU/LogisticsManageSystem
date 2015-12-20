@@ -46,9 +46,14 @@ public class MediumCtArrival extends FunctionAdd{
 	
 	public TextFieldHeader listIdIuput = new TextFieldHeader();
 	
-	public MediumCtArrival(){
+	NavigationMediumCenter nav;
+	
+	public MediumCtArrival(NavigationMediumCenter navigationMediumCenter){
 		super.buttonNew = new ButtonNew("新增到达快递");
 		super.confirm = new ButtonConfirm("提交到达单");
+	
+		nav = navigationMediumCenter;
+		
 		initUI("中转接收");
 	}
 	
@@ -111,6 +116,8 @@ public class MediumCtArrival extends FunctionAdd{
 		}
 		else if(state==AddState.CONNECTERROR){
 			showError(ErrorState.CONNECTERROR);
+		}else{
+			nav.changeTask(2);
 		}
 	}
 
@@ -152,7 +159,8 @@ public class MediumCtArrival extends FunctionAdd{
 
 	@Override
 	public void performCancel() {
-		MainFrame.changeContentPanel(new MediumCtArrival().getPanel());		
+//		MainFrame.changeContentPanel(new MediumCtArrival(nav).getPanel());	
+		nav.changeTask(1);
 	}
 
 }

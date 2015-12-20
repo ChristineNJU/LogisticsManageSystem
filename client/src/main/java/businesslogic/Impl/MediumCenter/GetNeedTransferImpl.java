@@ -34,11 +34,6 @@ public class GetNeedTransferImpl implements GetNeedTransferService{
 		try {
 			InstitutionStorageService istorageservice=(InstitutionStorageService) Naming.lookup(RMIHelper.INSTITUTION_STORAGE_IMPL);
 			
-			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("bar_code like '%%'");
-			requirement.add("isout = 'true'");
-			requirement.add("istransfer ='false'");
-			
 			ArrayList<InstitutionStoragePO> searchResult=istorageservice.getInstitutionStorage(URLHelper.getInstitutionStorage(SystemLog.getInstitutionId()));
 			
 			if(searchResult.isEmpty()){
@@ -49,9 +44,8 @@ public class GetNeedTransferImpl implements GetNeedTransferService{
 			else{
 				for(int i=0;i<searchResult.size();i++)
 					if(searchResult.get(i).isOut()&&!searchResult.get(i).isTransfer()){
-						
 						result.add(new TransferVO(searchResult.get(i)));
-						}
+					}
 			}
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block

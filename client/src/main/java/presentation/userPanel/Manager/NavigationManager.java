@@ -82,7 +82,7 @@ public class NavigationManager extends Navigation{
 	}
 	
 	private void changeToJudge(){
-		rec = new ManagerReceipt();
+		rec = new ManagerReceipt(this);
 		MainFrame.changeContentPanel(rec.getPanel());
 		MainFrame.getMainPanel().repaint();
 	}

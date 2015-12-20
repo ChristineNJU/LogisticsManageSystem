@@ -46,9 +46,14 @@ public class MediumCtTransfer extends FunctionAdd{
 	public TextFieldHeader destinationInput = new TextFieldHeader();
 	public TextFieldHeader costInput = new TextFieldHeader();
 	
-	public  MediumCtTransfer() {
+	NavigationMediumCenter nav;
+	
+	public  MediumCtTransfer(NavigationMediumCenter navigationMediumCenter) {
 		super.buttonNew = new ButtonNew("新增中转快递");
 		super.confirm = new ButtonConfirm("提交中转单");
+		
+		nav = navigationMediumCenter;
+		
 		initUI("中转发送");
 		confirm.setLocation(confirm.getX(), confirm.getY()+45);
 		cancel.setLocation(cancel.getX(),cancel.getY()+45);
@@ -70,7 +75,6 @@ public class MediumCtTransfer extends FunctionAdd{
 //		needTransfer = new ArrayList<TransferVO>();
 		
 		needTransfer = service.getNeedTransfer();
-		
 		
 		//测试用
 		
@@ -121,6 +125,8 @@ public class MediumCtTransfer extends FunctionAdd{
 		}
 		else if(state==AddState.FAIL){
 			showError(ErrorState.ADDERROR);
+		}else{
+			nav.changeTask(3);
 		}
 	}
 
@@ -133,9 +139,9 @@ public class MediumCtTransfer extends FunctionAdd{
 		Vector<Vector<String>> result = new Vector<Vector<String>>();
 		for(TransferVO temp:vo){
 			for(String s:temp.getItemId()){
-			Vector<String> vRow = new Vector<String>();
-			vRow.add(s);
-			result.add(vRow);
+				Vector<String> vRow = new Vector<String>();
+				vRow.add(s);
+				result.add(vRow);
 			}
 		}
 		return result;
@@ -206,14 +212,11 @@ public class MediumCtTransfer extends FunctionAdd{
 			add(departureInput);
 			add(destinationInput);
 			add(costInput);
-			
-			
-			
-			
 		}
 	}
 	@Override
 	public void performCancel() {
-		MainFrame.changeContentPanel(new MediumCtTransfer().getPanel());		
+//		MainFrame.changeContentPanel(new MediumCtTransfer().getPanel());	
+		nav.changeTask(3);
 	}
 }
