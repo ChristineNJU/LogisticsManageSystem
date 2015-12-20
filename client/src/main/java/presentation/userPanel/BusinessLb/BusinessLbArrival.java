@@ -45,7 +45,7 @@ public class BusinessLbArrival extends FunctionAdd{
 	
 	ArrayList<ArrivalVO> arrivals;
 	
-	String[] tableH={"快递单号","出发地","快递状态","到达单编号",""};
+	String[] tableH={"快递单号","出发地","快递状态",""};
 	boolean[] isCellEditable = {false,false,false,false};
 	
 	public TextFieldHeader listIdIuput = new TextFieldHeader();

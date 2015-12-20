@@ -24,14 +24,12 @@ public class getNeedDeliveryImpl implements getNeedDeliveryService{
 		ArrayList<DeliveryVO> result = new ArrayList<DeliveryVO>();
 		try {
 			InstitutionStorageService istorageService = (InstitutionStorageService) Naming.lookup(RMIHelper.INSTITUTION_STORAGE_IMPL);
-			ArrayList<String> requirement = new ArrayList<String>();
-			requirement.add("isout = 'false'");
 		
 			ArrayList<InstitutionStoragePO> searchResult = istorageService.getInstitutionStorage(URLHelper.getInstitutionStorage(SystemLog.getInstitutionId()));
 			
 			if(searchResult.isEmpty()){
 				System.out.println("not found");
-				return null;
+				return result;
 			}
 			
 			else{

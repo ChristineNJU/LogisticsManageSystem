@@ -39,7 +39,7 @@ public class GetNeedGatheringImpl implements GetNeedGatheringService{
 					
 			if(searchResult.isEmpty()){
 				System.out.println("not found");
-				return null;
+				return result;
 			}
 			
 			else{
