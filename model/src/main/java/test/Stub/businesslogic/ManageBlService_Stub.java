@@ -35,25 +35,7 @@ import VO.StaffVO;
 import VO.StorageVO;
 import VO.TransferVO;
 import VO.VO;
-import businesslogic.Service.Finance.GetCostService;
-import businesslogic.Service.Manage.AddConstService;
-import businesslogic.Service.Manage.AddInstitutionService;
-import businesslogic.Service.Manage.AddStaffService;
-import businesslogic.Service.Manage.DeleteInstitutionService;
-import businesslogic.Service.Manage.DeleteStaffService;
 import businesslogic.Service.Manage.ManageService;
-import businesslogic.Service.Manage.GetBenefitService;
-import businesslogic.Service.Manage.GetGatheringService;
-import businesslogic.Service.Manage.GetInstitutionService;
-import businesslogic.Service.Manage.GetStaffService;
-import businesslogic.Service.Manage.ShowConstService;
-import businesslogic.Service.Manage.ShowReceiptService;
-import businesslogic.Service.Manage.ShowSalaryService;
-import businesslogic.Service.Manage.UpdateConstService;
-import businesslogic.Service.Manage.UpdateInstitutionService;
-import businesslogic.Service.Manage.UpdatePaymentService;
-import businesslogic.Service.Manage.UpdateReceiptService;
-import businesslogic.Service.Manage.UpdateStaffService;
 
 public class ManageBlService_Stub implements ManageService{
 	/*-------------------------------------------

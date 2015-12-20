@@ -18,6 +18,8 @@ public class TestAddDriver extends TestCase {
 				" 320586199612202123", "13040832064", "男", 5);
 			//System.out.println(new DriverInfoPO(driver).toString());
 			assertEquals(AddState.SUCCESS,businessLobbyController.AddDriver(driver));
+			assertEquals(AddState.FAIL,businessLobbyController.AddDriver(driver));
+			businessLobbyController.deleteDriver(driver);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -1,10 +1,10 @@
 package PO;
 
-import businesslogic.URLHelper.URLHelper;
 import State.SalaryType;
 import State.StateSwitch;
 import State.UserRole;
 import VO.SalaryVO;
+import businesslogic.URLHelper.URLHelper;
 /**
  * 用来保存薪水信息的持久化数据格式
  * 

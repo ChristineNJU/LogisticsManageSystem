@@ -12,5 +12,6 @@ public class TestAddConst extends TestCase {
 		
 		ConstVO constvo=new ConstVO("上海到南京的距离", 200);
 		assertEquals(AddState.SUCCESS,manageController.addConst(constvo));
+		
 	}
 }

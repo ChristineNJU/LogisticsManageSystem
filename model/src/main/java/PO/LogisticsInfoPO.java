@@ -4,12 +4,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import businesslogic.URLHelper.URLHelper;
 import State.LogisticsState;
 import State.LogisticsType;
 import State.PackingCharge;
 import State.StateSwitch;
 import VO.LogisticsInputVO;
+import businesslogic.URLHelper.URLHelper;
 
 /**
  * 用来保存快递信息的持久化数据格式

@@ -2,7 +2,6 @@ package businesslogic.Service.Repository;
 
 import java.util.ArrayList;
 
-import PO.WareHousePO;
 import VO.StockTakingVO;
 
 // TODO: Auto-generated Javadoc

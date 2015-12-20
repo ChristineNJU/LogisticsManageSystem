@@ -4,8 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import businesslogic.URLHelper.URLHelper;
 import VO.DeliveryVO;
+import businesslogic.URLHelper.URLHelper;
 
 /**
  * 用来保存派送信息的持久化数据格式

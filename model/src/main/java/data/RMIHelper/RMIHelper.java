@@ -1,7 +1,6 @@
 package data.RMIHelper;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -15,7 +14,7 @@ public class RMIHelper {
 	public static final int REGISTRY = 8888;
 	
 	/** The url. */
-	public static String URL = "rmi://192.168.191.1:"+REGISTRY+"/";
+	public static String URL = "rmi://127.0.0.8:"+REGISTRY+"/";
 	
 	/** The add impl. */
 	public static String ADD_IMPL = URL+"AddImpl";

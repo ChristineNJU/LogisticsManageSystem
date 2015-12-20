@@ -2,6 +2,7 @@ package businesslogic.test.Manage;
 
 import junit.framework.TestCase;
 import State.AddState;
+import State.DeleteState;
 import State.InstitutionType;
 import State.UserRole;
 import VO.StaffVO;
@@ -29,8 +30,8 @@ public class TestAddStaff extends TestCase {
 		
 		StaffVO staff5=new StaffVO("知识点","男",20,InstitutionType.Repository,UserRole.repository,"02500012","南京","12345");
 		assertEquals(AddState.SUCCESS,manageController.addStaff(staff5));
-		
-		
+		assertEquals(AddState.FAIL,manageController.addStaff(staff5));
+		assertEquals(DeleteState.SUCCESS,manageController.DeleteStaff(staff5));
 		
 	}
 }

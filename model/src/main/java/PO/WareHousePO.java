@@ -5,7 +5,6 @@ import State.StorageArea;
 import VO.RemovalVO;
 import VO.StorageVO;
 import VO.WareHouseVO;
-import VO.WareHouseVO;
 /**
  * 用来保存仓库的持久化数据格式
  * 
