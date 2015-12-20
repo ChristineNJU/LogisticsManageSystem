@@ -24,6 +24,10 @@ import businesslogic.SystemLog.SystemLog;
 public class BusinessLobbyController implements BsLbService{
 	
 	/**
+	 * Update driver.
+	 *
+	 * @param driver the driver
+	 * @return the update state
 	 * @see DriverMgt
 	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.BusinessLobby.BsLbService#updateDriver(VO.DriverInfoVO)
@@ -40,6 +44,10 @@ public class BusinessLobbyController implements BsLbService{
 	}
 	
 	/**
+	 * Update car.
+	 *
+	 * @param car the car
+	 * @return the update state
 	 * @see CarMgt
 	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.BusinessLobby.BsLbService#updateCar(VO.CarInfoVO)
@@ -56,6 +64,10 @@ public class BusinessLobbyController implements BsLbService{
 	}
 	
 	/**
+	 * Search driver.
+	 *
+	 * @param id the id
+	 * @return the array list
 	 * @see DriverMgt
 	 * @see businesslogic.Service.BusinessLobby.BsLbService#searchDriver(java.lang.String)
 	 */
@@ -67,6 +79,10 @@ public class BusinessLobbyController implements BsLbService{
 	}
 	
 	/**
+	 * Search car.
+	 *
+	 * @param id the id
+	 * @return the array list
 	 * @see CarMgt
 	 * @see businesslogic.Service.BusinessLobby.BsLbService#searchCar(java.lang.String)
 	 */
@@ -78,6 +94,9 @@ public class BusinessLobbyController implements BsLbService{
 	}
 	
 	/**
+	 * Gets the need gathering.
+	 *
+	 * @return the need gathering
 	 * @see GetNeedGatheringImpl
 	 * @see businesslogic.Service.BusinessLobby.BsLbService#getNeedGathering()
 	 */
@@ -89,6 +108,9 @@ public class BusinessLobbyController implements BsLbService{
 	}
 	
 	/**
+	 * Gets the need entrucking.
+	 *
+	 * @return the need entrucking
 	 * @see GetNeedEntruckingImpl
 	 * @see businesslogic.Service.BusinessLobby.BsLbService#getNeedEntrucking()
 	 */
@@ -100,6 +122,10 @@ public class BusinessLobbyController implements BsLbService{
 	}
 	
 	/**
+	 * Gathering.
+	 *
+	 * @param gathering the gathering
+	 * @return the adds the state
 	 * @see GatheringImpl
 	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.BusinessLobby.BsLbService#gathering(VO.GatheringVO)
@@ -116,6 +142,10 @@ public class BusinessLobbyController implements BsLbService{
 	}
 	
 	/**
+	 * Entrucking.
+	 *
+	 * @param entrucking the entrucking
+	 * @return the adds the state
 	 * @see EntruckingImpl
 	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.BusinessLobby.BsLbService#entrucking(VO.EntruckingVO)
@@ -132,6 +162,10 @@ public class BusinessLobbyController implements BsLbService{
 	}
 	
 	/**
+	 * Delete car.
+	 *
+	 * @param car the car
+	 * @return the delete state
 	 * @see CarMgt
 	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.BusinessLobby.BsLbService#deleteCar(VO.CarInfoVO)
@@ -148,6 +182,10 @@ public class BusinessLobbyController implements BsLbService{
 	}
 	
 	/**
+	 * Arrival.
+	 *
+	 * @param arrival the arrival
+	 * @return the adds the state
 	 * @see ArrivalImpl
 	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.BusinessLobby.BsLbService#arrival(java.util.ArrayList)
@@ -164,6 +202,10 @@ public class BusinessLobbyController implements BsLbService{
 	}
 	
 	/**
+	 * Adds the driver.
+	 *
+	 * @param driver the driver
+	 * @return the adds the state
 	 * @see DriverMgt
 	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.BusinessLobby.BsLbService#AddDriver(VO.DriverInfoVO)
@@ -180,6 +222,10 @@ public class BusinessLobbyController implements BsLbService{
 	}
 	
 	/**
+	 * Adds the car.
+	 *
+	 * @param car the car
+	 * @return the adds the state
 	 * @see CarMgt
 	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.BusinessLobby.BsLbService#addCar(VO.CarInfoVO)
@@ -196,6 +242,10 @@ public class BusinessLobbyController implements BsLbService{
 	}
 
 	/**
+	 * Delete driver.
+	 *
+	 * @param driver the driver
+	 * @return the delete state
 	 * @see DriverMgt
 	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.BusinessLobby.BsLbService#deleteDriver(VO.DriverInfoVO)
@@ -212,6 +262,10 @@ public class BusinessLobbyController implements BsLbService{
 	}
 
 	/**
+	 * Delivery.
+	 *
+	 * @param delivery the delivery
+	 * @return the adds the state
 	 * @see DeliveryImpl
 	 * @see SystemLog#addLog(String)
 	 * @see businesslogic.Service.BusinessLobby.BsLbService#delivery(VO.DeliveryVO)
@@ -225,6 +279,18 @@ public class BusinessLobbyController implements BsLbService{
 			SystemLog.addLog("添加派件信息");
 		}
 		return state;
+	}
+
+	/** (non-Javadoc)
+	 * Delivery
+	 * @see businesslogic.Service.BusinessLobby.BsLbService#getNeedDelivery()
+	 */
+	@Override
+	public ArrayList<DeliveryVO> getNeedDelivery() {
+		// TODO Auto-generated method stub
+		getNeedDeliveryImpl needDelivery=new getNeedDeliveryImpl();
+		
+		return needDelivery.getNeedDelivery();
 	}
 	
 	

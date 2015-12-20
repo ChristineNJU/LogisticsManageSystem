@@ -34,18 +34,20 @@ public class GetNeedEntruckingImpl implements GetNeedEntruckingService{
 			InstitutionStorageService istoragreService=(InstitutionStorageService) Naming.lookup(RMIHelper.INSTITUTION_STORAGE_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
 			requirement.add("bar_code like '%%'");
-			requirement.add("isout = 'true'");
 		
 			ArrayList<InstitutionStoragePO> searchResult=istoragreService.getInstitutionStorage(URLHelper.getInstitutionStorage(SystemLog.getInstitutionId()));
 			
 			if(searchResult.isEmpty()){
 				System.out.println("not found");
-				return null;
+				return result;
 			}
 			
 			else{
-				for(int i=0;i<searchResult.size();i++)
-					result.add(new EntruckingVO(searchResult.get(i)));
+				for(int i=0;i<searchResult.size();i++){
+					if(searchResult.get(i).isOut())
+						result.add(new EntruckingVO(searchResult.get(i)));
+					}
+					
 			}
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block

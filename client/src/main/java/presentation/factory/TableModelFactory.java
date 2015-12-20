@@ -136,7 +136,51 @@ public class TableModelFactory {
 		String[] tableH = {"原区号", "快递编号", "新区号", "排号", "架号", "位号", ""};
 		boolean[] isCellEditable = {true, true, true, true, true, false};
 		
-		TableModelADUS model = new TableModelADUS(tableV,tableH,isCellEditable);
+		TableModelAddOnly model = new TableModelAddOnly(tableV,tableH,isCellEditable);
 		return model;
+	}
+	
+	public static TableModelSearch getStorageSearchModel(Vector<Vector<String>> tableV){
+		String[] tableH = {"入库记录","   ","   ","   ","   ","  ","   "};
+		TableModelSearch model = new TableModelSearch(tableV,tableH);
+		return model;
+	}
+	
+	public static TableModelSearch getRemovalSearchModel(Vector<Vector<String>> tableV){
+		String[] tableH = {"出库记录","   ","   ","   ","   "};
+		TableModelSearch model = new TableModelSearch(tableV,tableH);
+		return model;
+	}
+	
+	public static TableModelAddOnly getSorageModel(Vector<Vector<String>> tableV){
+		String[]  tableH = {"快递编号",""};
+		boolean[] isCellEditable = {false, false};
+		TableModelAddOnly table = new TableModelAddOnly(tableV,tableH,isCellEditable);
+		return table;
+	}
+	
+	public static TableModelAddOnly getStorageModel(Vector<Vector<String>> tableV){
+		String[] tableH = {"快递编号", "到达地", "区号", "排号", "架号", "位号", ""};
+		boolean[] isCellEditable = {true, true, true, true, true, true, false};
+		TableModelAddOnly table = new TableModelAddOnly(tableV,tableH,isCellEditable);
+		return table;
+	}
+	
+	public static TableModelSearch getStockTakingAir(Vector<Vector<String>> tableV){
+		String[] tableH = {"航空区","   ","   ","   ","   ","   "};
+		TableModelSearch table = new TableModelSearch(tableV,tableH);
+		return table;
+	}
+	
+	public static TableModelSearch getStockTakingRailway(Vector<Vector<String>> tableV){
+		String[] tableH = {"火车区","   ","   ","   ","   ","   "};
+		TableModelSearch table = new TableModelSearch(tableV,tableH);
+		return table;
+	}
+	
+	public static TableModelSearch getStockTakingBus(Vector<Vector<String>> tableV){
+		String[] tableH = {"汽运区","   ","   ","   ","   ","   "};
+		TableModelSearch table = new TableModelSearch(tableV,tableH);
+		return table;
 	}
 }

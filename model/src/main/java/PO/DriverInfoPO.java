@@ -10,7 +10,7 @@ import businesslogic.URLHelper.URLHelper;
 /**
  * 用来保存司机信息的持久化数据格式
  * 
- * @author HermC
+ * @author 尹子越
  * @version 1.0.0
  * */
 public class DriverInfoPO extends PO {

@@ -1,13 +1,14 @@
 package server;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.AlreadyBoundException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
+import java.rmi.server.RMISocketFactory;
 
-import javax.management.remote.rmi.RMIConnectionImpl;
-
+import server.frame.ServerFrame;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Impl.Add.AddImpl;
 import data.Impl.Delete.DeleteImpl;
@@ -40,6 +41,7 @@ import data.Impl.Sundry.WareHouseImpl;
 import data.Impl.Update.UpdateImpl;
 import data.RMIHelper.RMIConnectionService;
 import data.RMIHelper.RMIHelper;
+import data.RMIHelper.SMRMISocket;
 import data.Service.Add.AddService;
 import data.Service.Delete.DeleteService;
 import data.Service.Search.SearchAccountService;
@@ -79,6 +81,11 @@ import data.Service.Update.UpdateService;
 public class MainServer {
 		
 	public static void main(String[] args) {
+		
+		ServerFrame sf = new ServerFrame();
+		
+		RMIHelper rmi = new RMIHelper();
+		
 		AddService add_service = null;
 		DeleteService delete_service = null;
 		UpdateService update_service = null;
@@ -112,6 +119,14 @@ public class MainServer {
 		GatheringStorageService gathering_storage_service = null;
 		
 		RMIConnectionService RMI_connection_service = null;
+		
+		try {
+			RMISocketFactory.setSocketFactory(new SMRMISocket());
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		
 		try {
 			add_service = new AddImpl();
 			delete_service = new DeleteImpl();
@@ -231,5 +246,6 @@ public class MainServer {
 	 * */
 	private static void print(String object_name) {
 		System.out.println(">>>>>>远程"+object_name+"对象绑定成功！");
+		ServerFrame.addInfo(">>>>>>远程"+object_name+"对象绑定成功！");
 	}
 }

@@ -3,12 +3,16 @@ package businesslogic.Impl.Finance;
 import java.rmi.Naming;
 import java.util.ArrayList;
 
-import businesslogic.Service.Finance.CostService;
+import PO.AccountPO;
 import PO.CostPO;
 import State.AddState;
+import VO.AccountVO;
 import VO.CostVO;
+import businesslogic.Service.Finance.CostService;
+import businesslogic.Service.Finance.UpdateAccountService;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
+import data.Service.Search.SearchAccountService;
 import data.Service.Search.SearchCostService;
 
 // TODO: Auto-generated Javadoc
@@ -54,6 +58,14 @@ public class CostImpl implements CostService{
 		try{
 			AddService costAdd=(AddService) Naming.lookup(RMIHelper.ADD_IMPL);
 			state=costAdd.add(new CostPO(cost));
+			double amount=cost.getAmount();
+			SearchAccountService searchAccount=(SearchAccountService) Naming.lookup(RMIHelper.SEARCH_ACCOUNT_IMPL);	
+			ArrayList<String> requirement=new ArrayList<String>();
+			requirement.add(cost.getPayerAccount());
+			AccountPO account=searchAccount.searchAccount(requirement).get(0);
+			account.setAmount(account.getAmount()-amount);
+			UpdateAccountService updateAccount=(UpdateAccountService) Naming.lookup(RMIHelper.UPDATE_IMPL);
+			updateAccount.updateAccount(new AccountVO(account));
 		} catch (Exception ex){
 			state=AddState.CONNECTERROR;
 			System.out.println(ex.getMessage());

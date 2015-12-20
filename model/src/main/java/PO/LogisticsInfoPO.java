@@ -2,6 +2,7 @@ package PO;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import businesslogic.URLHelper.URLHelper;
@@ -14,7 +15,7 @@ import VO.LogisticsInputVO;
 /**
  * 用来保存快递信息的持久化数据格式
  * 
- * @author HermC
+ * @author 尹子越
  * @version 1.0.0
  * */
 public class LogisticsInfoPO extends PO {
@@ -449,6 +450,8 @@ public class LogisticsInfoPO extends PO {
 	 * @param node 新历史轨迹
 	 * */
 	public void addHistory(String node) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		node = node+","+sdf.format(Calendar.getInstance().getTime());
 		this.history.add(node);
 	}
 

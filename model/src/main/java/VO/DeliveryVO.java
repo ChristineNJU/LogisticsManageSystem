@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import PO.DeliveryPO;
+import PO.InstitutionStoragePO;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -18,7 +19,7 @@ public class DeliveryVO extends VO {
 	private Date arrivalDate = null;
 	
 	/** The bar code list. */
-	private ArrayList<String> barCodeList = null;
+	private ArrayList<String> barCodeList = new ArrayList<String>();
 	
 	/** The people. */
 	private String people = null;
@@ -46,7 +47,16 @@ public class DeliveryVO extends VO {
 		this.barCodeList = po.getBarCodeList();
 		this.people = po.getCourier();
 	}
-	
+	/**
+	 * Instantiates a new delivery vo.
+	 *
+	 * @param po the po
+	 */
+	public DeliveryVO(InstitutionStoragePO po){
+		this.arrivalDate = new Date();
+		this.barCodeList.add(po.getBar_code());
+		
+	}
 	/**
 	 * Gets the arrival date.
 	 *

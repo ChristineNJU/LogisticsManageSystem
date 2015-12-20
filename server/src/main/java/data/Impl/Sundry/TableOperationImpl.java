@@ -75,7 +75,7 @@ public class TableOperationImpl extends UnicastRemoteObject implements TableOper
 				System.out.println("创建营业厅收款单信息表");
 				
 				table_name = URLHelper.getInstitutionStorage(institution_id);
-				s.execute("CREATE TABLE "+table_name+" (bar_code varchar(20) PRIMARY key)");
+				s.execute("CREATE TABLE "+table_name+" (bar_code varchar(20) PRIMARY key, isOut varchar(20), isTransfer varchar(20))");
 				conn.commit();
 				System.out.println("创建营业厅虚拟存储");
 				
@@ -108,7 +108,7 @@ public class TableOperationImpl extends UnicastRemoteObject implements TableOper
 				System.out.println("创建中转中心到达单信息表");
 				
 				table_name = URLHelper.getInstitutionStorage(institution_id);
-				s.execute("CREATE TABLE "+table_name+" (bar_code varchar(20) PRIMARY key)");
+				s.execute("CREATE TABLE "+table_name+" (bar_code varchar(20) PRIMARY key, isOut varchar(20), isTransfer varchar(20))");
 				conn.commit();
 				System.out.println("创建中转中心虚拟存储");
 			}else if(type==InstitutionType.Repository){

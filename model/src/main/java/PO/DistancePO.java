@@ -5,7 +5,7 @@ import VO.DistanceVO;
 /**
  * 用来保存距离的持久化数据格式
  * 
- * @author HermC
+ * @author 尹子越
  * @version 1.0.0
  * */
 public class DistancePO extends PO {

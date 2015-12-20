@@ -11,6 +11,7 @@ import businesslogic.SystemLog.SystemLog;
 import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
+import data.Service.Delete.DeleteService;
 import data.Service.Sundry.InstitutionStorageService;
 
 // TODO: Auto-generated Javadoc
@@ -32,8 +33,9 @@ public class ArrivalImpl implements ArrivalService{
 			
 			for(int i=0;i<arrival.size();i++){
 				state=arrivalAdd.add(new ArrivalPO(arrival.get(i), SystemLog.getInstitutionId()));
-				istorageService.addInstitutionStorage(arrival.get(i).getBarCode(), false, URLHelper.getInstitutionStorage(SystemLog.getInstitutionId()));
+				istorageService.addInstitutionStorage(arrival.get(i).getBarCode(), false,true, URLHelper.getInstitutionStorage(SystemLog.getInstitutionId()));
 			} 
+			
 			
 		} catch(Exception ex){
 			state=AddState.CONNECTERROR;

@@ -49,4 +49,30 @@ public class ComboxFactory {
 		FlatComboBox  costTypeC = new FlatComboBox(costType);  
 		return costTypeC;
 	}
+	
+	public static FlatComboBox getOldArea(){
+		FlatComboBox old_area = new FlatComboBox();
+		old_area.addItem("航空区");
+		old_area.addItem("汽运区");
+		old_area.addItem("铁路区");
+		return old_area;
+	}
+
+	public static FlatComboBox getNewArea(){
+		FlatComboBox new_area = new FlatComboBox();
+		new_area.addItem("航空区");
+		new_area.addItem("汽运区");
+		new_area.addItem("铁路区");
+		new_area.addItem("机动区");
+		return new_area;
+	}
+	
+	public static FlatComboBox getPosition(){
+		FlatComboBox position = new FlatComboBox();
+		for(int i=1;i<=10;i++){
+			position.addItem(i+"");
+		}
+		return position;
+	}
 }
+

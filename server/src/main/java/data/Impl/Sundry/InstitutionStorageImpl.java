@@ -40,8 +40,9 @@ public class InstitutionStorageImpl extends UnicastRemoteObject implements Insti
 				
 				String bar_code = rs.getString(1);
 				boolean isOut = rs.getString(2).equals("true");
+				boolean isTransfer = rs.getString(3).equals("true");
 				
-				InstitutionStoragePO in = new InstitutionStoragePO(bar_code, isOut, DB_URL);
+				InstitutionStoragePO in = new InstitutionStoragePO(bar_code, isOut, isTransfer, DB_URL);
 				
 				result.add(in);
 			}
@@ -54,7 +55,7 @@ public class InstitutionStorageImpl extends UnicastRemoteObject implements Insti
 	}
 
 	@Override
-	public AddState addInstitutionStorage(String bar_code, boolean isOut, String DB_URL)
+	public AddState addInstitutionStorage(String bar_code, boolean isOut, boolean isTransfer, String DB_URL)
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		
@@ -66,7 +67,7 @@ public class InstitutionStorageImpl extends UnicastRemoteObject implements Insti
 		try {
 			Statement s = conn.createStatement();
 			
-			boolean mark = s.execute("INSERT INTO "+DB_URL+" VALUES('"+bar_code+"', '"+isOut+"')");
+			boolean mark = s.execute("INSERT INTO "+DB_URL+" VALUES('"+bar_code+"', '"+isOut+"', '"+isTransfer+"')");
 			
 			conn.commit();
 		} catch (SQLException e) {

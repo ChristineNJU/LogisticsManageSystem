@@ -10,8 +10,10 @@ import State.AddState;
 import VO.DeliveryVO;
 import businesslogic.Service.BusinessLobby.DeliveryService;
 import businesslogic.SystemLog.SystemLog;
+import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
+import data.Service.Sundry.InstitutionStorageService;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -30,7 +32,10 @@ public class DeliveryImpl implements DeliveryService{
 			AddService addService=(AddService) Naming.lookup(RMIHelper.ADD_IMPL);
 			DeliveryPO requirement=new DeliveryPO(delivery,SystemLog.getInstitutionId());
 			result=addService.add(requirement);
-			
+			InstitutionStorageService institutionService=(InstitutionStorageService) Naming.lookup(RMIHelper.INSTITUTION_STORAGE_IMPL);
+			for(int i=0;i<delivery.getBarCodeList().size();i++){
+				institutionService.deleteInstitutionStorage(delivery.getBarCodeList().get(i),URLHelper.getInstitutionStorage(SystemLog.getInstitutionId()));
+			}
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

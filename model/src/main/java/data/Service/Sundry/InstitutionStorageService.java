@@ -28,17 +28,19 @@ public interface InstitutionStorageService extends Remote {
 	public ArrayList<InstitutionStoragePO> getInstitutionStorage(String DB_URL) throws RemoteException;
 	
 	/**
-	 * 添加当前机构临时存储的快递
+	 * 添加当前机构临时存储的快递.
 	 *
 	 * @param bar_code 快递条形码
+	 * @param isOut 方向
+	 * @param isTransfer 是否经过中转
 	 * @param DB_URL the 数据库连接
 	 * @return the adds 添加状态Font.BOLD
 	 * @throws RemoteException the remote exception
 	 */
-	public AddState addInstitutionStorage(String bar_code, boolean isOut, String DB_URL) throws RemoteException;
+	public AddState addInstitutionStorage(String bar_code, boolean isOut, boolean isTransfer, String DB_URL) throws RemoteException;
 	
 	/**
-	 * 删除当前机构临时存储的快递
+	 * 删除当前机构临时存储的快递.
 	 *
 	 * @param bar_code the bar_code
 	 * @param DB_URL the db url

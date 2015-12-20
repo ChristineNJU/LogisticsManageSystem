@@ -1,5 +1,7 @@
 package presentation.factory;
 
+import java.util.ArrayList;
+
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
 import javax.swing.table.TableColumn;
@@ -145,4 +147,63 @@ public class TableFactory {
 		TableADUS table = new TableADUS(model);
 		return table;
 	}
+	
+	public static TableAddOnly getBalanceTable(TableModelAddOnly model){
+		TableAddOnly table = new TableAddOnly(model);
+		
+		TableColumnModel tcm = table.getColumnModel();
+		tcm.getColumn(0).setCellEditor(new DefaultCellEditor(ComboxFactory.getOldArea()));
+		tcm.getColumn(2).setCellEditor(new DefaultCellEditor(ComboxFactory.getNewArea()));
+		tcm.getColumn(3).setCellEditor(new DefaultCellEditor(ComboxFactory.getPosition()));
+		tcm.getColumn(4).setCellEditor(new DefaultCellEditor(ComboxFactory.getPosition()));
+		tcm.getColumn(5).setCellEditor(new DefaultCellEditor(ComboxFactory.getPosition()));
+		
+		return table;
+	}
+	
+	public static TableSearch getStorageSearchTable(TableModelSearch model){
+		TableSearch table = new TableSearch(model);
+		return table;
+	}
+	
+	public static TableSearch getRemovalSearchTable(TableModelSearch model){
+		TableSearch table = new TableSearch(model);
+		return table;
+	}
+	
+	public static TableAddOnly getRemovalTable(TableModelAddOnly model){
+		TableAddOnly table = new TableAddOnly(model);
+		return table;
+	}
+	
+	public static TableAddOnly getStorageTable(TableModelAddOnly model){
+		TableAddOnly table = new TableAddOnly(model);
+		
+		TableColumnModel tcm = table.getColumnModel();
+		
+		tcm.getColumn(1).setCellEditor(new DefaultCellEditor(ComboxFactory.getCityComboBox()));
+		tcm.getColumn(2).setCellEditor(new DefaultCellEditor(ComboxFactory.getOldArea()));
+		
+		tcm.getColumn(3).setCellEditor(new DefaultCellEditor(ComboxFactory.getPosition()));
+		tcm.getColumn(4).setCellEditor(new DefaultCellEditor(ComboxFactory.getPosition()));
+		tcm.getColumn(5).setCellEditor(new DefaultCellEditor(ComboxFactory.getPosition()));
+		
+		return table;
+	}
+	
+	public static TableSearch getStockTakingAir(TableModelSearch model){
+		TableSearch table = new TableSearch(model);
+		return table;
+	}
+	
+	public static TableSearch getStockTakingRailway(TableModelSearch model){
+		TableSearch table = new TableSearch(model);
+		return table;
+	}
+	
+	public static TableSearch getStockTakingBus(TableModelSearch model){
+		TableSearch table = new TableSearch(model);
+		return table;
+	}
+	
 }
