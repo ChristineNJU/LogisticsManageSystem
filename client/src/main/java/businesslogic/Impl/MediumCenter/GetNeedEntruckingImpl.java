@@ -6,13 +6,14 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import PO.RemovalPO;
+import PO.InstitutionStoragePO;
 import VO.EntruckingVO;
 import businesslogic.Service.MediumCenter.GetNeedEntruckingService;
 import businesslogic.SystemLog.SystemLog;
 import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
 import data.Service.Search.SearchRemovalService;
+import data.Service.Sundry.InstitutionStorageService;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -29,16 +30,17 @@ public class GetNeedEntruckingImpl implements GetNeedEntruckingService{
 		ArrayList<EntruckingVO> result=new ArrayList<EntruckingVO>();
 		try {
 			SearchRemovalService removalSearch=(SearchRemovalService) Naming.lookup(RMIHelper.SEARCH_REMOVAL_IMPL);
+			InstitutionStorageService istorageservice=(InstitutionStorageService) Naming.lookup(RMIHelper.INSTITUTION_STORAGE_IMPL);
 			ArrayList<String> requirement1=new ArrayList<String>();
 			requirement1.add("bar_code like '%%'");
 			requirement1.add("isout='true'");
 			requirement1.add("istransfer = 'true'");
 		
-			ArrayList<RemovalPO> searchResult1=removalSearch.searchRemoval(URLHelper.getRemovalURL(SystemLog.getInstitutionId()+"0"), requirement1);
+			ArrayList<InstitutionStoragePO> searchResult1=istorageservice.getInstitutionStorage(URLHelper.getInstitutionStorage(SystemLog.getInstitutionId()));
 			
 			if(searchResult1.isEmpty()){
 				System.out.println("not found");
-				return null;
+				return result;
 			}
 			
 			else{
