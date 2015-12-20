@@ -288,7 +288,9 @@ public class BusinessLobbyController implements BsLbService{
 	@Override
 	public ArrayList<DeliveryVO> getNeedDelivery() {
 		// TODO Auto-generated method stub
-		return null;
+		getNeedDeliveryImpl needDelivery=new getNeedDeliveryImpl();
+		
+		return needDelivery.getNeedDelivery();
 	}
 	
 	

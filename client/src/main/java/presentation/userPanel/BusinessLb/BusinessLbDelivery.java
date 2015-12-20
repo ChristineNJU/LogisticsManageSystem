@@ -108,7 +108,7 @@ public class BusinessLbDelivery extends FunctionAdd{
 		for(DeliveryVO temp:vo){
 			Vector<String> vRow = new Vector<String>();
 			vRow.add(temp.getBarCodeList().get(0));
-			vRow.add(sdf.format(temp.getArrivalDate()));
+			vRow.add(sdf.format(new Date()));
 //			vRow.add(temp.getPeople());
 			result.add(vRow);
 		}
