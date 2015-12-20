@@ -19,12 +19,13 @@ import businesslogic.Impl.Finance.FinanceController;
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
 import presentation.components.FlatComboBox;
+import presentation.factory.TableFactory;
+import presentation.factory.TableModelFactory;
 import presentation.frame.MainFrame;
 import presentation.main.FunctionAdd;
 import presentation.main.Translater;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
-import presentation.table.TableModelAddOnly;
 
 public class FinanceCost extends FunctionAdd{
 	SimpleDateFormat sdfs=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -32,9 +33,6 @@ public class FinanceCost extends FunctionAdd{
 	
 	FinanceController service = new FinanceController();
 	ArrayList<CostVO> costs;
-	
-	String[] tableH = {"付款日期","金额","付款人","付款账目","条目","备注",""};
-	boolean[] isCellEditable = {false,false,false,false,false,false};
 	
 	public FinanceCost(){
 		super.buttonNew = new ButtonNew("新增支出项");
@@ -64,17 +62,12 @@ public class FinanceCost extends FunctionAdd{
 			tableV = getVector(costs);
 		}
 
-		model = new TableModelAddOnly(tableV,tableH,isCellEditable);
-		table = new TableAddOnly(model);
+		model = TableModelFactory.getCostModel(tableV);
+		table = TableFactory.getCost(model);
 		
 		sPanel = new ScrollPaneTable(table);
 		sPanel.setLocation(sPanel.getX(),header.getHeight()+120);
 		panel.add(sPanel);
-		
-		TableColumnModel tcm = table.getColumnModel(); 
-	    String[] gender = {"租金","运费","薪水","奖金"}; 
-	    JComboBox  genderC = new FlatComboBox(gender);  
-	    tcm.getColumn(4).setCellEditor(new DefaultCellEditor(genderC)); 
 		
 	}
 	

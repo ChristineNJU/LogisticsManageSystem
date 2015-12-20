@@ -11,6 +11,8 @@ import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
 import presentation.components.LabelHeader;
 import presentation.components.TextFieldHeader;
+import presentation.factory.TableFactory;
+import presentation.factory.TableModelFactory;
 import presentation.frame.MainFrame;
 import presentation.main.FunctionAdd;
 import presentation.table.ScrollPaneTable;
@@ -35,9 +37,6 @@ public class MediumCtTransfer extends FunctionAdd{
 	MediumCenterController service = new MediumCenterController();
 	ArrayList<TransferVO> needTransfer;
 	
-	String[] tableH = {"快递单号",""};
-	boolean[] isCellEditable = {false};
-	
 	public TextFieldHeader idInput  = new TextFieldHeader();
 	public TextFieldHeader planeIdInput = new TextFieldHeader();
 	public TextFieldHeader superCarGoInput = new TextFieldHeader();
@@ -46,9 +45,14 @@ public class MediumCtTransfer extends FunctionAdd{
 	public TextFieldHeader destinationInput = new TextFieldHeader();
 	public TextFieldHeader costInput = new TextFieldHeader();
 	
-	public  MediumCtTransfer() {
+	NavigationMediumCenter nav;
+	
+	public  MediumCtTransfer(NavigationMediumCenter navigationMediumCenter) {
 		super.buttonNew = new ButtonNew("新增中转快递");
 		super.confirm = new ButtonConfirm("提交中转单");
+		
+		nav = navigationMediumCenter;
+		
 		initUI("中转发送");
 		confirm.setLocation(confirm.getX(), confirm.getY()+45);
 		cancel.setLocation(cancel.getX(),cancel.getY()+45);
@@ -71,7 +75,6 @@ public class MediumCtTransfer extends FunctionAdd{
 		
 		needTransfer = service.getNeedTransfer();
 		
-		
 		//测试用
 		
 //		try {
@@ -86,8 +89,8 @@ public class MediumCtTransfer extends FunctionAdd{
 		
 		tableV = getVector(needTransfer);
 		
-		model = new TableModelAddOnly(tableV,tableH,isCellEditable);
-		table = new TableAddOnly(model);
+		model = TableModelFactory.getEntruckingModel(tableV);
+		table = TableFactory.getEntrucking(model);
 		
 		sPanel = new ScrollPaneTable(table);
 		sPanel.setLocation(sPanel.getX(),header.getHeight()+120);
@@ -121,6 +124,8 @@ public class MediumCtTransfer extends FunctionAdd{
 		}
 		else if(state==AddState.FAIL){
 			showError(ErrorState.ADDERROR);
+		}else{
+			nav.changeTask(3);
 		}
 	}
 
@@ -133,9 +138,9 @@ public class MediumCtTransfer extends FunctionAdd{
 		Vector<Vector<String>> result = new Vector<Vector<String>>();
 		for(TransferVO temp:vo){
 			for(String s:temp.getItemId()){
-			Vector<String> vRow = new Vector<String>();
-			vRow.add(s);
-			result.add(vRow);
+				Vector<String> vRow = new Vector<String>();
+				vRow.add(s);
+				result.add(vRow);
 			}
 		}
 		return result;
@@ -206,14 +211,11 @@ public class MediumCtTransfer extends FunctionAdd{
 			add(departureInput);
 			add(destinationInput);
 			add(costInput);
-			
-			
-			
-			
 		}
 	}
 	@Override
 	public void performCancel() {
-		MainFrame.changeContentPanel(new MediumCtTransfer().getPanel());		
+//		MainFrame.changeContentPanel(new MediumCtTransfer().getPanel());	
+		nav.changeTask(3);
 	}
 }

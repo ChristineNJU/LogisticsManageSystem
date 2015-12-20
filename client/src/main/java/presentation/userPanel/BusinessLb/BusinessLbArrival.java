@@ -1,9 +1,5 @@
 package presentation.userPanel.BusinessLb;
 
-import java.awt.Point;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,28 +10,27 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.table.TableColumnModel;
 
-import businesslogic.Impl.Businesslobby.BusinessLobbyController;
-import businesslogic.Impl.MediumCenter.MediumCenterController;
-import businesslogic.Service.BusinessLobby.BsLbService;
-import businesslogic.SystemLog.SystemLog;
-import State.AddState;
-import State.ErrorState;
-import State.LogisticsState;
-import VO.ArrivalVO;
-import VO.VO;
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
 import presentation.components.FlatComboBox;
 import presentation.components.LabelHeader;
 import presentation.components.TextFieldHeader;
+import presentation.factory.TableFactory;
+import presentation.factory.TableModelFactory;
 import presentation.frame.MainFrame;
 import presentation.main.FunctionAdd;
 import presentation.main.Translater;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
-import presentation.userPanel.BusinessLb.BusinessLbEntrucking.Header;
-import presentation.userPanel.Manager.ManagerInstitutionMgt;
+import State.AddState;
+import State.ErrorState;
+import State.LogisticsState;
+import VO.ArrivalVO;
+import VO.VO;
+import businesslogic.Impl.Businesslobby.BusinessLobbyController;
+import businesslogic.Impl.Courier.CourierController;
+import businesslogic.Service.Courier.CourierService;
 
 /**
  * 营业厅到达单的列表
@@ -48,16 +43,21 @@ public class BusinessLbArrival extends FunctionAdd{
 	SimpleDateFormat sdfd=new SimpleDateFormat("yyyy-MM-dd");
 	
 	BusinessLobbyController service = new BusinessLobbyController();
+	CourierService getCity = new CourierController();
+	
 	ArrayList<ArrivalVO> arrivals;
 	
-	String[] tableH={"快递单号","出发地","快递状态","到达单编号",""};
-	boolean[] isCellEditable = {false,false,false,false};
 	
 	public TextFieldHeader listIdIuput = new TextFieldHeader();
 	
-	public BusinessLbArrival(){
+	NavigationBusinessLobby nav;
+	
+	public BusinessLbArrival(NavigationBusinessLobby navigationBusinessLobby){
 		super.buttonNew = new ButtonNew("新增到达单");
 		super.confirm = new ButtonConfirm("提交所有到达单");
+		
+		nav = navigationBusinessLobby;
+		
 		initUI("中转接收");
 	}
 	
@@ -66,28 +66,14 @@ public class BusinessLbArrival extends FunctionAdd{
 		
 		arrivals = new ArrayList<ArrivalVO>();
 		
-//		//测试用
-//		try {
-//			ArrivalVO arrival0 = new ArrivalVO("0000001001", sdfs.parse("2015-12-03 10:30:10"), "0210210201021020102102", "南京", LogisticsState.INTACT);
-//			arrivals.add(arrival0);
-//		} catch (ParseException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
 		tableV = getVector(arrivals);
 		
-		model = new TableModelAddOnly(tableV,tableH,isCellEditable);
-		table = new TableAddOnly(model);
+		model = TableModelFactory.getArrivalModel(tableV);
+		table = TableFactory.getArrivalTable(model);
 		
 		sPanel = new ScrollPaneTable(table);
 		sPanel.setLocation(sPanel.getX(),header.getHeight()+120);
 		panel.add(sPanel);
-		
-		TableColumnModel tcm = table.getColumnModel(); 
-	    String[] gender = {"完整","丢失","损坏"}; 
-	    JComboBox  genderC = new FlatComboBox(gender);  
-	    tcm.getColumn(2).setCellEditor(new DefaultCellEditor(genderC)); 
 		
 	}
 	
@@ -129,6 +115,9 @@ public class BusinessLbArrival extends FunctionAdd{
 		}
 		else if(state==AddState.FAIL){
 			showError(ErrorState.ADDERROR);
+		}
+		else{
+			nav.changeTask(1);
 		}
 	}
 
@@ -172,7 +161,8 @@ public class BusinessLbArrival extends FunctionAdd{
 
 	@Override
 	public void performCancel() {
-		MainFrame.changeContentPanel(new BusinessLbArrival().getPanel());		
+//		MainFrame.changeContentPanel(new BusinessLbArrival(nav).getPanel());
+		nav.changeTask(1);
 	}
 
 }

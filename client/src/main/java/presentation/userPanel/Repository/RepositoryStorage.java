@@ -22,6 +22,8 @@ import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
 import presentation.components.FlatComboBox;
 import presentation.components.LabelHeader;
+import presentation.factory.TableFactory;
+import presentation.factory.TableModelFactory;
 import presentation.frame.MainFrame;
 import presentation.main.FontSet;
 import presentation.main.FunctionAdd;
@@ -35,10 +37,10 @@ public class RepositoryStorage extends FunctionAdd {
 	RepositoryService service = new RepositoryController();
 	CourierService getCity = new CourierImpl();
 	
-	String[] tableH = {"快递编号", "到达地", "区号", "排号", "架号", "位号", ""};
-	boolean[] isCellEditable = {true, true, true, true, true, true, false};
 	
 	private ProgressBarPanel pbp = new ProgressBarPanel();
+	
+	ArrayList<String> getNeed = new ArrayList<String>();
 	
 	ArrayList<StorageVO> storage = new ArrayList<StorageVO>();
 	
@@ -50,11 +52,11 @@ public class RepositoryStorage extends FunctionAdd {
 	
 	NavigationRepository nav;
 	
-	public RepositoryStorage() {
+	public RepositoryStorage(NavigationRepository navigationRepository) {
 		super.buttonNew = new ButtonNew("新增入库单");
 		super.confirm = new ButtonConfirm("提交入库单");
 		
-//		this.nav = nav;
+		this.nav = navigationRepository;
 		
 		initUI("入库");
 		init();
@@ -88,43 +90,8 @@ public class RepositoryStorage extends FunctionAdd {
 
 	@Override
 	protected void initTable() {
-		model = new TableModelAddOnly(vector, tableH, isCellEditable);
-		table = new TableAddOnly(model);
-		
-		TableColumnModel tcm = table.getColumnModel();
-///		tcm.getColumn(tcm.getColumnCount()-1).setCellRenderer(new RendererDelete());
-//		tcm.getColumn(tcm.getColumnCount()-1).setCellEditor(new ));
-		
-		ArrayList<String> city_actual = getCity.getCity();
-		
-		FlatComboBox city = new FlatComboBox();
-		
-		for(int i=0;i<city_actual.size();i++){
-			city.addItem(city_actual.get(i));
-		}
-		
-		FlatComboBox area = new FlatComboBox();
-		area.addItem("航空区");
-		area.addItem("汽运区");
-		area.addItem("铁路区");
-		area.addItem("机动区");
-		
-		FlatComboBox row = new FlatComboBox();
-		FlatComboBox shelf = new FlatComboBox();
-		FlatComboBox position = new FlatComboBox();
-		for(int i=1;i<=10;i++){
-			row.addItem(i+"");
-			shelf.addItem(i+"");
-			position.addItem(i+"");
-		}
-		
-		tcm.getColumn(1).setCellEditor(new DefaultCellEditor(city));
-		tcm.getColumn(2).setCellEditor(new DefaultCellEditor(area));
-		
-		tcm.getColumn(3).setCellEditor(new DefaultCellEditor(row));
-		tcm.getColumn(4).setCellEditor(new DefaultCellEditor(shelf));
-		tcm.getColumn(5).setCellEditor(new DefaultCellEditor(position));
-		
+		model = TableModelFactory.getStorageModel(tableV);
+		table = TableFactory.getStorageTable(model);
 		sPanel = new ScrollPaneTable(table);
 		panel.add(sPanel);
 	}
@@ -246,6 +213,7 @@ public class RepositoryStorage extends FunctionAdd {
 
 	@Override
 	public void performCancel() {
-		MainFrame.changeContentPanel(new RepositoryStorage().getPanel());		
+//		MainFrame.changeContentPanel(new RepositoryStorage().getPanel());
+		nav.changeTask(1);
 	}
 }

@@ -7,8 +7,10 @@ import State.AddState;
 import VO.TransferVO;
 import businesslogic.Service.MediumCenter.TransferService;
 import businesslogic.SystemLog.SystemLog;
+import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
+import data.Service.Sundry.InstitutionStorageService;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -25,9 +27,10 @@ public class TransferImpl implements TransferService{
 		AddState state=AddState.SUCCESS;
 		try{
 			AddService transferAdd=(AddService) Naming.lookup(RMIHelper.ADD_IMPL);
-		
+			InstitutionStorageService istorageservice=(InstitutionStorageService) Naming.lookup(RMIHelper.INSTITUTION_STORAGE_IMPL);
 			state=transferAdd.add(new TransferPO(transfer, SystemLog.getInstitutionId()));
-			
+			for(String bar_code:transfer.getItemId())
+				istorageservice.deleteInstitutionStorage(bar_code, URLHelper.getInstitutionStorage(SystemLog.getInstitutionId()));
 		} catch(Exception ex){
 			state=AddState.CONNECTERROR;
 			System.out.println(ex.getMessage());

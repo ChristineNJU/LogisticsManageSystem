@@ -15,6 +15,7 @@ import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
 import data.Service.Search.SearchAccountService;
+import data.Service.Sundry.GatheringStorageService;
 import data.Service.Sundry.InstitutionStorageService;
 
 // TODO: Auto-generated Javadoc
@@ -40,9 +41,11 @@ public class GatheringImpl implements GatheringService{
 		
 			//添加到营业厅暂存
 			InstitutionStorageService istorageservice=(InstitutionStorageService) Naming.lookup(RMIHelper.INSTITUTION_STORAGE_IMPL);
+			GatheringStorageService gstorageservice=(GatheringStorageService) Naming.lookup(RMIHelper.GATHERING_STORAGE_IMPL);
+			
 			for(String bar_code:gathering.id()){
 				istorageservice.addInstitutionStorage(bar_code, true,true, URLHelper.getInstitutionStorage(SystemLog.getInstitutionId()));
-				
+				gstorageservice.deleteGatheringStorage(bar_code, URLHelper.getGatheringStorage(SystemLog.getInstitutionId()));
 			}
 			
 			

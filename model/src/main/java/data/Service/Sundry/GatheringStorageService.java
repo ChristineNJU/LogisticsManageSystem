@@ -35,7 +35,7 @@ public interface GatheringStorageService extends Remote {
 	 * @return 添加状态
 	 * @throws RemoteException the remote exception
 	 */
-	public AddState addGatheringStorage(String bar_code, double amount, String DB_URL) throws RemoteException;
+	public AddState addGatheringStorage(String bar_code, double amount, String courier, String date, String DB_URL) throws RemoteException;
 	
 	/**
 	 * 删除需要建立收款单的快递

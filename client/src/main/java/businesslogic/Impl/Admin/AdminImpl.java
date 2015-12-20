@@ -67,7 +67,7 @@ public class AdminImpl implements AdminUserService{
 			if(!requirement.get(0).equals("%%")){
 				ArrayList<String> requirementName=new ArrayList<String>();
 				for(int i=0;i<requirement.size();i++){
-					requirementID.add("id like '%"+requirement.get(i)+"%'");
+					requirementID.add("id = '"+requirement.get(i)+"'");
 					requirementName.add("name like '%"+requirement.get(i)+"%'");
 				}
 				System.out.println(requirementID.get(0)+" "+requirementName.get(0));

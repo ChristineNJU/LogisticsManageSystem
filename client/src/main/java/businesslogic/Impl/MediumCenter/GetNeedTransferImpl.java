@@ -6,6 +6,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import PO.InstitutionStoragePO;
 import PO.RemovalPO;
 import PO.TransferPO;
 import VO.TransferVO;
@@ -15,6 +16,7 @@ import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
 import data.Service.Search.SearchRemovalService;
 import data.Service.Search.SearchTransferService;
+import data.Service.Sundry.InstitutionStorageService;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -30,22 +32,20 @@ public class GetNeedTransferImpl implements GetNeedTransferService{
 		// TODO Auto-generated method stub
 		ArrayList<TransferVO> result=new ArrayList<TransferVO>();
 		try {
-			SearchRemovalService removalSearch=(SearchRemovalService) Naming.lookup(RMIHelper.SEARCH_REMOVAL_IMPL);
-			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("bar_code like '%%'");
-			requirement.add("type = 'AIR'");
+			InstitutionStorageService istorageservice=(InstitutionStorageService) Naming.lookup(RMIHelper.INSTITUTION_STORAGE_IMPL);
 			
-			
-			ArrayList<RemovalPO> searchResult=removalSearch.searchRemoval(URLHelper.getRemovalURL(SystemLog.getInstitutionId()+"0"), requirement);
+			ArrayList<InstitutionStoragePO> searchResult=istorageservice.getInstitutionStorage(URLHelper.getInstitutionStorage(SystemLog.getInstitutionId()));
 			
 			if(searchResult.isEmpty()){
 				System.out.println("not found");
-				return null;
+				return result;
 			}
 			
 			else{
 				for(int i=0;i<searchResult.size();i++)
-					result.add(new TransferVO(searchResult.get(i)));
+					if(searchResult.get(i).isOut()&&!searchResult.get(i).isTransfer()){
+						result.add(new TransferVO(searchResult.get(i)));
+					}
 			}
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block

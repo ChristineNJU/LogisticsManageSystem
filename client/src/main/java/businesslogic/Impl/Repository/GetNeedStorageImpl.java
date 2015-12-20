@@ -31,9 +31,9 @@ public class GetNeedStorageImpl implements GetNeedStorageService {
 			InstitutionStorageService istoragreService=(InstitutionStorageService) Naming.lookup(RMIHelper.INSTITUTION_STORAGE_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
 			requirement.add("bar_code like '%%'");
+			requirement.add("isout='false'");
 			
-			
-			ArrayList<InstitutionStoragePO> searchResult=istoragreService.getInstitutionStorage(URLHelper.getInstitutionStorage(SystemLog.getInstitutionId()));
+			ArrayList<InstitutionStoragePO> searchResult=istoragreService.getInstitutionStorage(URLHelper.getInstitutionStorage(SystemLog.getInstitutionId().substring(0,4)));
 			
 			
 			for(int i=0;i<searchResult.size();i++){

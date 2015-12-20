@@ -9,6 +9,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumnModel;
 
 import presentation.components.EditorGeneral;
 import presentation.main.ColorPallet;
@@ -29,6 +30,8 @@ public class TableADUS extends JTable {
         this.setDefaultRenderer(getColumnClass(0), new RendererGeneral());
         this.setDefaultEditor(getColumnClass(0), new DefaultCellEditor(editor));
         
+        TableColumnModel tcm = this.getColumnModel();
+		tcm.getColumn(tcm.getColumnCount()-1).setCellRenderer(new RendererDelete());
 	}
 	
 	@Override

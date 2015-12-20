@@ -16,6 +16,8 @@ import presentation.components.ButtonCancel;
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
 import presentation.components.LabelHeader;
+import presentation.factory.TableFactory;
+import presentation.factory.TableModelFactory;
 import presentation.frame.MainFrame;
 import presentation.main.ColorPallet;
 import presentation.main.FontSet;
@@ -39,8 +41,6 @@ public class CourierNewOrderList extends FunctionAdd{
 	
 	ArrayList<LogisticsInputVO> failedLogistics = new ArrayList<LogisticsInputVO>();
 	
-	String[] tableH = {"快递单号","出发地","目的地","内件品名","体积","重量","费用合计"};
-	boolean[] isCellEditable = {false,false,false,false,false,false,false};
 	
 	Vector<Vector<String>> result = new Vector<Vector<String>>();
 	
@@ -52,13 +52,13 @@ public class CourierNewOrderList extends FunctionAdd{
 	
 	NavigationCourier nav;
 	
-	public CourierNewOrderList(){
+	public CourierNewOrderList(NavigationCourier navigationCourier){
 		
 		super.buttonNew = new ButtonNew("新增快递");
 		super.confirm = new ButtonConfirm("提交所有订单");
 		super.cancel = new ButtonCancel();
 
-//		this.nav = nav;
+		this.nav = navigationCourier;
 		
 		oldTableModelAddOnly = model;
 		
@@ -98,7 +98,7 @@ public class CourierNewOrderList extends FunctionAdd{
 						result.add(getVector(logistics.get(i)));
 					}
 					
-					table.setModel(new TableModelAddOnly(result, tableH, isCellEditable));
+					table.setModel(TableModelFactory.getLogisticsModel(result));
 				
 					MainFrame.getMainPanel().repaint();
 				}
@@ -154,21 +154,8 @@ public class CourierNewOrderList extends FunctionAdd{
 
 	@Override
 	protected void initTable() {
-//		tableV 
-		
-		model = new TableModelAddOnly(tableV,tableH,isCellEditable);
-		table = new TableAddOnly(model);
-		
-		TableColumnModel tcm = table.getColumnModel();
-		
-		tcm.addColumn(new TableColumn());
-		tcm.getColumn(tcm.getColumnCount()-1).setCellRenderer(new RendererReviseLogistics());
-//		tcm.getColumn(tcm.getColumnCount()-1).setPreferredWidth(40);
-		
-		tcm.addColumn(new TableColumn());
-		tcm.getColumn(tcm.getColumnCount()-1).setCellRenderer(new RendererDelete());
-		tcm.getColumn(tcm.getColumnCount()-1).setPreferredWidth(40);
-		
+		model = TableModelFactory.getLogisticsModel(tableV);
+		table = TableFactory.getLogistics(model);
 		table.addMouseListener(tableListener);
 		sPanel = new ScrollPaneTable(table);
 		panel.add(sPanel);
@@ -215,7 +202,7 @@ public class CourierNewOrderList extends FunctionAdd{
 			logistics.add(vo);
 			Vector<String> v = getVector(vo);
 			result.add(v);
-			table.setModel(new TableModelAddOnly(result, tableH, isCellEditable));
+			table.setModel(TableModelFactory.getLogisticsModel(result));
 		}else{
 			
 		}
@@ -247,7 +234,8 @@ public class CourierNewOrderList extends FunctionAdd{
 
 	@Override
 	public void performCancel() {
-		MainFrame.changeContentPanel(new CourierNewOrderList().getPanel());		
+//		MainFrame.changeContentPanel(new CourierNewOrderList().getPanel());
+		nav.changeTask(1);
 	}
 	
 //	class InfomationPanel extends JPanel implements Runnable {

@@ -16,11 +16,11 @@ import businesslogic.Impl.Businesslobby.BusinessLobbyController;
 import businesslogic.Service.BusinessLobby.BsLbService;
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
+import presentation.factory.TableFactory;
+import presentation.factory.TableModelFactory;
 import presentation.frame.MainFrame;
 import presentation.main.FunctionAdd;
 import presentation.table.ScrollPaneTable;
-import presentation.table.TableAddOnly;
-import presentation.table.TableModelAddOnly;
 
 public class BusinessLbDelivery extends FunctionAdd{
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -28,8 +28,7 @@ public class BusinessLbDelivery extends FunctionAdd{
 	BsLbService service = new BusinessLobbyController();
 	ArrayList<DeliveryVO> needDelivery;
 	
-	String[] tableH = {"快递单号","日期","派件人",""};
-	boolean[] isCellEditable = {false,false,false};
+	
 	
 	public  BusinessLbDelivery() {
 		super.buttonNew = new ButtonNew("新增派件单");
@@ -48,7 +47,7 @@ public class BusinessLbDelivery extends FunctionAdd{
 	@Override
 	protected void initTable() {
 		// 表格的初始化
-		needDelivery = new ArrayList<DeliveryVO>();
+		needDelivery = service.getNeedDelivery();
 		
 //		//测试用
 //		try {
@@ -62,8 +61,8 @@ public class BusinessLbDelivery extends FunctionAdd{
 //		}
 		
 		tableV = getVector(needDelivery);
-		model = new TableModelAddOnly(tableV,tableH,isCellEditable);
-		table = new TableAddOnly(model);
+		model = TableModelFactory.getDeliveryModel(tableV);
+		table = TableFactory.getDelivery(model);
 		
 		sPanel = new ScrollPaneTable(table);
 		sPanel.setLocation(sPanel.getX(),header.getHeight()+120);
@@ -108,7 +107,7 @@ public class BusinessLbDelivery extends FunctionAdd{
 		for(DeliveryVO temp:vo){
 			Vector<String> vRow = new Vector<String>();
 			vRow.add(temp.getBarCodeList().get(0));
-			vRow.add(sdf.format(temp.getArrivalDate()));
+			vRow.add(sdf.format(new Date()));
 //			vRow.add(temp.getPeople());
 			result.add(vRow);
 		}

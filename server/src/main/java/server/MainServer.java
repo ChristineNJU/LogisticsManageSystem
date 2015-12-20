@@ -8,6 +8,8 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.server.RMISocketFactory;
 
+import server.frame.ServerFrame;
+
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Impl.Add.AddImpl;
 import data.Impl.Delete.DeleteImpl;
@@ -80,6 +82,8 @@ import data.Service.Update.UpdateService;
 public class MainServer {
 		
 	public static void main(String[] args) {
+		
+		ServerFrame sf = new ServerFrame();
 		
 		RMIHelper rmi = new RMIHelper();
 		
@@ -243,5 +247,6 @@ public class MainServer {
 	 * */
 	private static void print(String object_name) {
 		System.out.println(">>>>>>远程"+object_name+"对象绑定成功！");
+		ServerFrame.addInfo(">>>>>>远程"+object_name+"对象绑定成功！");
 	}
 }

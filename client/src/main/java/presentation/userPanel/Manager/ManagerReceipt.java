@@ -59,11 +59,15 @@ public class ManagerReceipt extends FunctionSearch{
 	
 	ButtonConfirm confirm = new ButtonConfirm("确认审批");
 	
-	public ManagerReceipt() {
+	NavigationManager nav;
+	
+	public ManagerReceipt(NavigationManager navigationManager) {
 		super.confirmSearch = new ButtonConfirm("查看单据");
 		confirmSearch.setVisible(false);
 		initTableHead();
 		initUI("审批单据");
+		
+		nav = navigationManager;
 		
 		confirm.setLocation(120,175+sPanel.getHeight());
 		confirm.addMouseListener(new MouseListener(){
@@ -129,7 +133,9 @@ public class ManagerReceipt extends FunctionSearch{
 				else if(state==UpdateState.CONNECTERROR){
 					showError(ErrorState.CONNECTERROR);
 				}
-				
+				else{
+					nav.changeTask(1);
+				}
 			}
 
 			@Override
@@ -202,7 +208,15 @@ public class ManagerReceipt extends FunctionSearch{
 		storage = service.showStorage();
 		transfer = service.showTransfer();
 		
-		System.out.println(balance.size());
+//		System.out.println(arrival.size());
+//		System.out.println(balance.size());
+//		System.out.println(cost.size());
+//		System.out.println(delivery.size());
+//		System.out.println(entrucking.size());
+//		System.out.println(gathering.size());
+		System.out.println(removal.size());
+//		System.out.println(storage.size());
+//		System.out.println(transfer.size());
 		
 		model = new TableModelSearch(tableV, tableH);
 		table = new TableSearch(model);

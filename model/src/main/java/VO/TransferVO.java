@@ -3,7 +3,7 @@ package VO;
 import java.util.ArrayList;
 import java.util.Date;
 
-import PO.RemovalPO;
+import PO.InstitutionStoragePO;
 import PO.TransferPO;
 
 // TODO: Auto-generated Javadoc
@@ -34,7 +34,7 @@ public class TransferVO extends VO {
 	private String guardName = null;
 	
 	/** The item id. */
-	private ArrayList<String> itemId = null;
+	private ArrayList<String> itemId = new ArrayList<String>();
 	
 	/** The transfer charge. */
 	private double transferCharge = 0;
@@ -86,9 +86,9 @@ public class TransferVO extends VO {
 	 *
 	 * @param po the po
 	 */
-	public TransferVO(RemovalPO po){
+	public TransferVO(InstitutionStoragePO po){
 		this.date=new Date();
-		this.listId=po.getBarCode();
+		this.itemId.add(po.getBar_code());
 		
 	}
 	/**

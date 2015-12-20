@@ -13,6 +13,8 @@ import presentation.components.ButtonNew;
 import presentation.components.LabelHeader;
 import presentation.components.TextField;
 import presentation.components.TextFieldHeader;
+import presentation.factory.TableFactory;
+import presentation.factory.TableModelFactory;
 import presentation.frame.MainFrame;
 import presentation.main.FunctionAdd;
 import presentation.table.ScrollPaneTable;
@@ -36,10 +38,6 @@ public class MediumCtEntrucking extends FunctionAdd{
 	MediumCenterController service = new MediumCenterController();
 	ArrayList<EntruckingVO> needEntrucking;
 	
-	
-	String[] tableH = {"快递单号","   "};
-	boolean[] isCellEditable = {false};
-	
 	public TextFieldHeader idInput  = new TextFieldHeader();
 	public TextFieldHeader carIdInput = new TextFieldHeader();
 	public TextFieldHeader superCarGoInput = new TextFieldHeader();
@@ -47,9 +45,14 @@ public class MediumCtEntrucking extends FunctionAdd{
 	public TextFieldHeader destinationInput = new TextFieldHeader();
 	public TextFieldHeader costInput = new TextFieldHeader();
 	
-	public MediumCtEntrucking(){
+	NavigationMediumCenter nav;
+	
+	public MediumCtEntrucking(NavigationMediumCenter navigationMediumCenter){
 		super.buttonNew = new ButtonNew("新增装运快递");
 		super.confirm = new ButtonConfirm("提交装运单");
+		
+		nav = navigationMediumCenter;
+		
 		initUI("装运发送");
 	}
 	
@@ -71,8 +74,8 @@ public class MediumCtEntrucking extends FunctionAdd{
 		
 		tableV = getVector(needEntrucking);
 		
-		model = new TableModelAddOnly(tableV,tableH,isCellEditable);
-		table = new TableAddOnly(model);
+		model = TableModelFactory.getEntruckingModel(tableV);
+		table = TableFactory.getEntrucking(model);
 		
 		sPanel = new ScrollPaneTable(table);
 		sPanel.setLocation(sPanel.getX(),header.getHeight()+120);
@@ -103,6 +106,8 @@ public class MediumCtEntrucking extends FunctionAdd{
 		}
 		else if(state==AddState.FAIL){
 			showError(ErrorState.ADDERROR);
+		}else{
+			nav.changeTask(2);
 		}
 	}
 
@@ -197,6 +202,7 @@ public class MediumCtEntrucking extends FunctionAdd{
 	}
 	@Override
 	public void performCancel() {
-		MainFrame.changeContentPanel(new MediumCtEntrucking().getPanel());		
+//		MainFrame.changeContentPanel(new MediumCtEntrucking().getPanel());	
+		nav.changeTask(2);
 	}
 }

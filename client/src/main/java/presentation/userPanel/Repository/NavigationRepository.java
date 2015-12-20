@@ -56,7 +56,7 @@ public class NavigationRepository extends Navigation{
 		
 	}
 	private void changeToStorage(){
-		repositoryStorage = new RepositoryStorage();
+		repositoryStorage = new RepositoryStorage(this);
 //		MainFrame.getMainPanel().remove(comp);
 		MainFrame.changeContentPanel(repositoryStorage.getPanel());
 		if(repositoryStorage.isConnectError()){
