@@ -15,7 +15,6 @@ import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
 import data.Service.Search.SearchAccountService;
-import data.Service.Sundry.GatheringStorageService;
 import data.Service.Sundry.InstitutionStorageService;
 
 // TODO: Auto-generated Javadoc
@@ -38,22 +37,18 @@ public class GatheringImpl implements GatheringService{
 			AddService gatheringAdd=(AddService) Naming.lookup(RMIHelper.ADD_IMPL);
 		
 			state=gatheringAdd.add(new GatheringPO(gathering, SystemLog.getInstitutionId()));
-			
-			InstitutionStorageService istorageService=(InstitutionStorageService) Naming.lookup(RMIHelper.INSTITUTION_STORAGE_IMPL);
-			
-			for(int i=0;i<gathering.id().size();i++){
-				istorageService.addInstitutionStorage(gathering.id().get(i), true, URLHelper.getInstitutionStorage(SystemLog.getInstitutionId()));
+		
+			//添加到营业厅暂存
+			InstitutionStorageService istorageservice=(InstitutionStorageService) Naming.lookup(RMIHelper.INSTITUTION_STORAGE_IMPL);
+			for(String bar_code:gathering.id()){
+				istorageservice.addInstitutionStorage(bar_code, true,true, URLHelper.getInstitutionStorage(SystemLog.getInstitutionId()));
+				
 			}
 			
-			GatheringStorageService gatheringStorageService=(GatheringStorageService) Naming.lookup(RMIHelper.GATHERING_STORAGE_IMPL);
-			
-			for(int i=0;i<gathering.id().size();i++){
-				gatheringStorageService.deleteGatheringStorage(gathering.id().get(i), URLHelper.getGatheringStorage(SystemLog.getInstitutionId()));
-			}
 			
 			SearchAccountService searchAccount=(SearchAccountService) Naming.lookup(RMIHelper.SEARCH_ACCOUNT_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("%%");
+			requirement.add("account_name like '%%'");
 			AccountPO account=searchAccount.searchAccount(requirement).get(0);
 			UpdateAccountService updateAccount=(UpdateAccountService) Naming.lookup(RMIHelper.UPDATE_IMPL);
 			account.setAmount(account.getAmount()+gathering.getMoney());

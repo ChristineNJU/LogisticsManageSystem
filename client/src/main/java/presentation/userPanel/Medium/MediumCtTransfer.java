@@ -67,19 +67,22 @@ public class MediumCtTransfer extends FunctionAdd{
 	@Override
 	protected void initTable() {
 		// TODO Auto-generated method stub
-		needTransfer = new ArrayList<TransferVO>();
+//		needTransfer = new ArrayList<TransferVO>();
+		
+		needTransfer = service.getNeedTransfer();
+		
 		
 		//测试用
 		
-		try {
-			ArrayList<String> itemID = new ArrayList<String>();
-			itemID.add("0000000001");
-			TransferVO transfer0 = new TransferVO(sdfs.parse("2015-12-4 16:44:44"), "02502015112300300", "D0324", "上海", "南京", "0123", "张斯栋", itemID, 12);
-			needTransfer.add(transfer0);
-			} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			ArrayList<String> itemID = new ArrayList<String>();
+//			itemID.add("0000000001");
+//			TransferVO transfer0 = new TransferVO(sdfs.parse("2015-12-4 16:44:44"), "02502015112300300", "D0324", "上海", "南京", "0123", "张斯栋", itemID, 12);
+//			needTransfer.add(transfer0);
+//			} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		tableV = getVector(needTransfer);
 		

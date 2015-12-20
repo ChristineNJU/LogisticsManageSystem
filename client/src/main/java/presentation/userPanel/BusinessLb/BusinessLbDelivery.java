@@ -48,7 +48,7 @@ public class BusinessLbDelivery extends FunctionAdd{
 	@Override
 	protected void initTable() {
 		// 表格的初始化
-		needDelivery = new ArrayList<DeliveryVO>();
+		needDelivery = service.getNeedDelivery();
 		
 //		//测试用
 //		try {
@@ -109,7 +109,7 @@ public class BusinessLbDelivery extends FunctionAdd{
 			Vector<String> vRow = new Vector<String>();
 			vRow.add(temp.getBarCodeList().get(0));
 			vRow.add(sdf.format(temp.getArrivalDate()));
-			vRow.add(temp.getPeople());
+//			vRow.add(temp.getPeople());
 			result.add(vRow);
 		}
 		

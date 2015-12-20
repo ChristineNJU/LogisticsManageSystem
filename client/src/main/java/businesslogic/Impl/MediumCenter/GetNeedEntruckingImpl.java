@@ -31,18 +31,10 @@ public class GetNeedEntruckingImpl implements GetNeedEntruckingService{
 			SearchRemovalService removalSearch=(SearchRemovalService) Naming.lookup(RMIHelper.SEARCH_REMOVAL_IMPL);
 			ArrayList<String> requirement1=new ArrayList<String>();
 			requirement1.add("bar_code like '%%'");
-			requirement1.add("type = 'Railway'");
-			
-			ArrayList<String> requirement2=new ArrayList<String>();
-			requirement2.add("bar_code like '%%'");
-			requirement2.add("type = 'car'");
-			
+			requirement1.add("isout='true'");
+			requirement1.add("istransfer = 'true'");
+		
 			ArrayList<RemovalPO> searchResult1=removalSearch.searchRemoval(URLHelper.getRemovalURL(SystemLog.getInstitutionId()+"0"), requirement1);
-			ArrayList<RemovalPO> searchResult2=removalSearch.searchRemoval(URLHelper.getRemovalURL(SystemLog.getInstitutionId()+"0"), requirement2);
-			
-			for(RemovalPO temp:searchResult2){
-				searchResult1.add(temp);
-			}
 			
 			if(searchResult1.isEmpty()){
 				System.out.println("not found");

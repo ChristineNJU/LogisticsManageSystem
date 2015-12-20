@@ -33,7 +33,8 @@ public class GetNeedTransferImpl implements GetNeedTransferService{
 			SearchRemovalService removalSearch=(SearchRemovalService) Naming.lookup(RMIHelper.SEARCH_REMOVAL_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
 			requirement.add("bar_code like '%%'");
-			requirement.add("type = 'AIR'");
+			requirement.add("isout = 'true'");
+			requirement.add("istransfer ='false'");
 			
 			
 			ArrayList<RemovalPO> searchResult=removalSearch.searchRemoval(URLHelper.getRemovalURL(SystemLog.getInstitutionId()+"0"), requirement);

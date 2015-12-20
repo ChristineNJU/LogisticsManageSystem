@@ -17,7 +17,6 @@ import VO.SalaryVO;
 import businesslogic.Impl.Manage.ManageController;
 import businesslogic.Service.Manage.ManageService;
 
-
 public class ManagerSalary extends FunctionADUS{
 
 	ManageService service = new ManageController();

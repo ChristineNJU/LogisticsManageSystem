@@ -130,4 +130,10 @@ public interface BsLbService {
 	 * @return 更新状态
 	 */
 	public UpdateState updateDriver(DriverInfoVO driver);
+	/**
+	 * 获取派件信息
+	 *
+	 * @return 派件单
+	 */
+	public ArrayList<DeliveryVO> getNeedDelivery();
 }
