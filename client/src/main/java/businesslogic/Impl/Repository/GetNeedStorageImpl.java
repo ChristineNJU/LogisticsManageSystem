@@ -33,7 +33,7 @@ public class GetNeedStorageImpl implements GetNeedStorageService {
 			requirement.add("bar_code like '%%'");
 			requirement.add("isout='false'");
 			
-			ArrayList<InstitutionStoragePO> searchResult=istoragreService.getInstitutionStorage(URLHelper.getInstitutionStorage(SystemLog.getInstitutionId()));
+			ArrayList<InstitutionStoragePO> searchResult=istoragreService.getInstitutionStorage(URLHelper.getInstitutionStorage(SystemLog.getInstitutionId().substring(0,4)));
 			
 			
 			for(int i=0;i<searchResult.size();i++){
