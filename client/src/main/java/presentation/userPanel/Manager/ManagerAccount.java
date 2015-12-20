@@ -9,6 +9,8 @@ import VO.GatheringVO;
 import businesslogic.Impl.Finance.FinanceController;
 import businesslogic.Service.Finance.FinanceService;
 import presentation.components.ButtonConfirm;
+import presentation.factory.TableFactory;
+import presentation.factory.TableModelFactory;
 import presentation.main.FunctionSearch;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableModelSearch;
@@ -19,7 +21,6 @@ public class ManagerAccount extends FunctionSearch{
 	FinanceService service = new FinanceController();
 //	ManageService service = new ManageController();
 	ArrayList<AccountVO> accounts;
-	String[] tableH = {"收款日期","收款金额(￥)","收款快递员","快递单号"};
 	
 	public ManagerAccount(){
 		confirmSearch = new ButtonConfirm("");
@@ -46,8 +47,8 @@ public class ManagerAccount extends FunctionSearch{
 			tableV=getVector(accounts);
 		}
 		tableV = getVector(accounts);
-		model = new TableModelSearch(tableV,tableH);
-		table = new TableSearch(model);
+		model = TableModelFactory.getIncome(tableV);
+		table = TableFactory.getIncome(model);
 		sPanel = new ScrollPaneTable(table);
 		panel.add(sPanel);
 		

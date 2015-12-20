@@ -9,16 +9,6 @@ import javax.swing.JLabel;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 
-import presentation.components.ButtonConfirm;
-import presentation.components.ButtonNew;
-import presentation.components.LabelHeader;
-import presentation.frame.MainFrame;
-import presentation.main.FontSet;
-import presentation.main.FunctionAdd;
-import presentation.table.ScrollPaneTable;
-import presentation.table.TableAddOnly;
-import presentation.table.TableModelAddOnly;
-import presentation.userPanel.Manager.ManagerInstitutionMgt;
 import State.UpdateState;
 import VO.LogisticsHistoryVO;
 import VO.LogisticsInputVO;
@@ -27,6 +17,15 @@ import businesslogic.Impl.Courier.CourierController;
 import businesslogic.Impl.Inquiry.InquiryController;
 import businesslogic.Service.Courier.CourierService;
 import businesslogic.Service.Inquiry.InquiryService;
+import presentation.components.ButtonConfirm;
+import presentation.components.ButtonNew;
+import presentation.components.LabelHeader;
+import presentation.factory.TableFactory;
+import presentation.factory.TableModelFactory;
+import presentation.frame.MainFrame;
+import presentation.main.FontSet;
+import presentation.main.FunctionAdd;
+import presentation.table.ScrollPaneTable;
 
 public class CourierReceive  extends FunctionAdd{
 	
@@ -34,9 +33,6 @@ public class CourierReceive  extends FunctionAdd{
 	CourierService service = new CourierController();
 	
 	Listener listener = new Listener();
-	
-	String[] tableH = {"收件编号", "收件人", ""};
-	boolean[] isCellEditable = {true, true, false};
 	
 	Vector<Vector<String>> result = new Vector<Vector<String>>();
 		
@@ -70,8 +66,8 @@ public class CourierReceive  extends FunctionAdd{
 	@Override
 	protected void initTable() {
 		// TODO Auto-generated method stub
-		model = new TableModelAddOnly(result, tableH, isCellEditable);
-		table = new TableAddOnly(model);
+		model = TableModelFactory.getReceiveModel(result);
+		table = TableFactory.getReceive(model);
 		
 		model.addTableModelListener(listener);
 		

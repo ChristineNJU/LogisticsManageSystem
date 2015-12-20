@@ -15,6 +15,8 @@ import presentation.components.DateChooser;
 import presentation.components.FlatComboBox;
 import presentation.components.LabelHeader;
 import presentation.components.TextField;
+import presentation.factory.TableFactory;
+import presentation.factory.TableModelFactory;
 import presentation.main.ColorPallet;
 import presentation.main.FontSet;
 import presentation.main.FunctionSearch;
@@ -27,7 +29,6 @@ public class FinanceIncome extends FunctionSearch{
 	
 	FinanceService service = new FinanceController();
 	ArrayList<GatheringVO> incomes;
-	String[] tableH = {"收款日期","收款金额(￥)","收款快递员","快递单号"};
 	
 	public DateChooser dateBeginChooser;
 	public DateChooser dateEndChooser;
@@ -56,8 +57,8 @@ public class FinanceIncome extends FunctionSearch{
 //		costs = service.searchGathering(date, businesslobby);
 //		tableV = getVector(costs);
 		tableV = new Vector<Vector<String>>();
-		model = new TableModelSearch(tableV,tableH);
-		table = new TableSearch(model);
+		model = TableModelFactory.getIncome(tableV);
+		table = TableFactory.getIncome(model);
 		sPanel = new ScrollPaneTable(table);
 		sPanel.setLocation(sPanel.getX(),header.getHeight()+120);
 		panel.add(sPanel);
@@ -104,7 +105,7 @@ public class FinanceIncome extends FunctionSearch{
 		}
 		
 //		tableV = service.searchGathering(/, endDate, businesslobby)
-		model = new TableModelSearch(tableV,tableH);
+		model = TableModelFactory.getIncome(tableV);
 		table.setModel(model);
 		table.repaint();
 		foot.setText("合计："+getTotalIncome()+"￥");

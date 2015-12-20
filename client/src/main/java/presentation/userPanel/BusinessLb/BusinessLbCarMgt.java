@@ -11,6 +11,8 @@ import VO.CarInfoVO;
 import businesslogic.Impl.Businesslobby.CarMgt;
 import presentation.components.ButtonNew;
 import presentation.components.PanelContent;
+import presentation.factory.TableFactory;
+import presentation.factory.TableModelFactory;
 import presentation.frame.MainFrame;
 import presentation.main.FunctionADUS;
 import presentation.table.ScrollPaneTable;
@@ -21,8 +23,7 @@ public class BusinessLbCarMgt  extends FunctionADUS{
 	CarMgt service=new CarMgt();
 	ArrayList<CarInfoVO> cars;
 	
-	String[] tableH = {"车辆编号","车辆牌照","运营时间"};
-	boolean[] isCellEditable = {true,true,true};
+	
 	
 	private ArrayList<CarInfoVO> addCar=new ArrayList<CarInfoVO>();
 	private ArrayList<CarInfoVO> deleteCar=new ArrayList<CarInfoVO>();
@@ -57,10 +58,8 @@ public class BusinessLbCarMgt  extends FunctionADUS{
 //		cars.add(car3);
 //		tableV = getVector(cars);
         
-        model = new TableModelADUS(tableV, tableH,isCellEditable);
-		table = new TableADUS(model);
-		
-		addDeleteColumn();
+        model = TableModelFactory.getCarMgtModel(tableV);
+		table = TableFactory.getCarMgtTable(model);
 	    
 	    table.addMouseListener(tableListener);
 		sPanel = new ScrollPaneTable(table);
@@ -73,13 +72,13 @@ public class BusinessLbCarMgt  extends FunctionADUS{
 		
 		searchCar = service.searchCar(s);
 		if(searchCar!=null){
-			model = new TableModelADUS(getVector(searchCar),tableH,isCellEditable);
+			model = TableModelFactory.getCarMgtModel(getVector(searchCar));
 			table.setModel(model);
 		}
 		else {
 			showError(ErrorState.CONNECTERROR);
 			searchCar=new ArrayList<CarInfoVO>();
-			model = new TableModelADUS(getVector(searchCar),tableH,isCellEditable);
+			model =TableModelFactory.getCarMgtModel(getVector(searchCar));
 			table.setModel(model);
 		}
 	}

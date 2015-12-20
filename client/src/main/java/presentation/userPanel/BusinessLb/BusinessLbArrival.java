@@ -28,6 +28,8 @@ import presentation.components.ButtonNew;
 import presentation.components.FlatComboBox;
 import presentation.components.LabelHeader;
 import presentation.components.TextFieldHeader;
+import presentation.factory.TableFactory;
+import presentation.factory.TableModelFactory;
 import presentation.frame.MainFrame;
 import presentation.main.FunctionAdd;
 import presentation.main.Translater;
@@ -50,8 +52,6 @@ public class BusinessLbArrival extends FunctionAdd{
 	BusinessLobbyController service = new BusinessLobbyController();
 	ArrayList<ArrivalVO> arrivals;
 	
-	String[] tableH={"快递单号","出发地","快递状态","到达单编号",""};
-	boolean[] isCellEditable = {false,false,false,false};
 	
 	public TextFieldHeader listIdIuput = new TextFieldHeader();
 	
@@ -77,17 +77,12 @@ public class BusinessLbArrival extends FunctionAdd{
 		
 		tableV = getVector(arrivals);
 		
-		model = new TableModelAddOnly(tableV,tableH,isCellEditable);
-		table = new TableAddOnly(model);
+		model = TableModelFactory.getArrivalModel(tableV);
+		table = TableFactory.getArrivalTable(model);
 		
 		sPanel = new ScrollPaneTable(table);
 		sPanel.setLocation(sPanel.getX(),header.getHeight()+120);
 		panel.add(sPanel);
-		
-		TableColumnModel tcm = table.getColumnModel(); 
-	    String[] gender = {"完整","丢失","损坏"}; 
-	    JComboBox  genderC = new FlatComboBox(gender);  
-	    tcm.getColumn(2).setCellEditor(new DefaultCellEditor(genderC)); 
 		
 	}
 	

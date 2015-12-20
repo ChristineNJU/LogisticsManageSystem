@@ -43,9 +43,6 @@ public class RepositoryBalance extends FunctionAdd {
 	
 	private ProgressBarPanel pbp = new ProgressBarPanel();
 	
-	String[] tableH = {"原区号", "快递编号", "新区号", "排号", "架号", "位号", ""};
-	boolean[] isCellEditable = {true, true, true, true, true, false};
-	
 	Vector<Vector<String>> vector = new Vector<Vector<String>>();
 	
 	JLabel info = new JLabel();

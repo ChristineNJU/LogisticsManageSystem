@@ -21,6 +21,9 @@ import businesslogic.Service.Admin.AdminService;
  */
 import presentation.components.ButtonNew;
 import presentation.components.FlatComboBox;
+import presentation.factory.ComboxFactory;
+import presentation.factory.TableFactory;
+import presentation.factory.TableModelFactory;
 import presentation.frame.MainFrame;
 import presentation.main.FunctionADUS;
 import presentation.table.RendererDelete;
@@ -35,9 +38,7 @@ public class AdminUserAccount extends FunctionADUS{
 	AdminService service = new AdminController();
 	ArrayList<UserVO> users;
 	
-	String[] tableH = {"员工编号","姓名","职务","性别","年龄","城市","所属机构"};
-	boolean[] isCellEditable = {false,true,true,true,true,true,true};
-	
+
 	protected ArrayList<UserVO> addItems = new ArrayList<UserVO>();
 	protected ArrayList<UserVO> deleteItems ;
 	protected ArrayList<UserVO> updateItems = new ArrayList<UserVO>();
@@ -67,36 +68,8 @@ public class AdminUserAccount extends FunctionADUS{
 		}
 		tableV = getVector(users);
 		
-		model = new TableModelADUS(tableV, tableH,isCellEditable);
-		table = new TableADUS(model);
-        
-        TableColumnModel tcm = table.getColumnModel(); 
-        String[] position = {"管理员","营业厅业务员","快递员","财务人员","总经理","中转中心业务员","仓库管理员"}; 
-		JComboBox positionC = new FlatComboBox(position);  
-        tcm.getColumn(2).setCellEditor(new DefaultCellEditor(positionC)); 
-        
-        String[] gender = {"男","女"}; 
-        JComboBox  genderC = new FlatComboBox(gender);  
-        tcm.getColumn(3).setCellEditor(new DefaultCellEditor(genderC)); 
-        
-
-		String[] city = {"南京","北京","上海","广州"};
-		JComboBox  cityC = new FlatComboBox(city);  
-        tcm.getColumn(5).setCellEditor(new DefaultCellEditor(cityC));
-        
-		String[] age = new String[42];
-		 for(int i = 0;i < age.length;i++)
-	        	age[i] = i+18+"";
-        JComboBox ageC = new FlatComboBox(age);  
-        tcm.getColumn(4).setCellEditor(new DefaultCellEditor(ageC));
-	        
-		String[] institution = {"营业厅","中转中心","仓库","总部"};
-		JComboBox institutionC = new FlatComboBox(institution);  
-        tcm.getColumn(6).setCellEditor(new DefaultCellEditor(institutionC));
-        
-        tcm.addColumn(new TableColumn());
-        tcm.getColumn(7).setCellRenderer(new RendererDelete());
-        tcm.getColumn(7).setPreferredWidth(40);
+		model = TableModelFactory.getUserAccountModel(tableV);
+		table = TableFactory.getUserAccountTable(model);
         
         
 		table.addMouseListener(tableListener);
@@ -110,7 +83,7 @@ public class AdminUserAccount extends FunctionADUS{
 		require.add(s);
 		searchItems = service.searchUser(require);
 		System.out.println(searchItems.size());
-		model = new TableModelADUS(getVector(searchItems),tableH,isCellEditable);
+		model = TableModelFactory.getUserAccountModel(getVector(searchItems));
 		table.setModel(model);
 		table.repaint();
 	}

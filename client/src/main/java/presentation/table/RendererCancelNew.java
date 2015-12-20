@@ -3,6 +3,7 @@ package presentation.table;
 import java.awt.Component;
 
 import javax.swing.BorderFactory;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
@@ -15,6 +16,7 @@ public class RendererCancelNew extends DefaultTableCellRenderer{
 			int row, int column) {
 		Component cell = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
+		this.setHorizontalAlignment(JLabel.CENTER);
 		setOpaque(false);
 		setForeground(ColorPallet.Purple);
 		setFont(FontSet.fourteen);

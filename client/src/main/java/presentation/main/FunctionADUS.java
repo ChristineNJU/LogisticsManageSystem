@@ -86,7 +86,7 @@ public abstract class FunctionADUS extends Function{
 	protected void addDeleteColumn(){
 		TableColumnModel tcm = table.getColumnModel(); 
 		tcm.addColumn(new TableColumn());
-		tcm.getColumn(tcm.getColumnCount()-1).setCellRenderer(new RendererDelete());
+//		tcm.getColumn(tcm.getColumnCount()-1).setCellRenderer(new RendererDelete());
 	    tcm.getColumn(tcm.getColumnCount()-1).setWidth(40);
 	}
 	

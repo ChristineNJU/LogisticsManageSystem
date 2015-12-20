@@ -18,6 +18,8 @@ import businesslogic.Impl.Businesslobby.DriverMgt;
 import businesslogic.Service.BusinessLobby.DriverMgtService;
 import presentation.components.ButtonNew;
 import presentation.components.FlatComboBox;
+import presentation.factory.TableFactory;
+import presentation.factory.TableModelFactory;
 import presentation.frame.MainFrame;
 import presentation.main.FunctionADUS;
 import presentation.table.ScrollPaneTable;
@@ -28,9 +30,6 @@ public class BusinessLbDriverMgt extends FunctionADUS{
 	DriverMgtService service=new DriverMgt();
 	
 	ArrayList<DriverInfoVO> drivers;
-	
-	String[] tableH = {"司机ID","司机姓名","司机生日","身份证号","司机手机","司机性别","雇佣时间"};
-	boolean[] isCellEditable = {false,true,true,true,true,true};
 	
 	ArrayList<DriverInfoVO> addItems=new ArrayList<DriverInfoVO>();
 	ArrayList<DriverInfoVO> deleteItems=new ArrayList<DriverInfoVO>();
@@ -59,15 +58,9 @@ public class BusinessLbDriverMgt extends FunctionADUS{
 			tableV=new Vector<Vector<String>>();
 			super.isConnectError=true;
 		}
-        model = new TableModelADUS(tableV, tableH,isCellEditable);
-		table = new TableADUS(model);
-		TableColumnModel tcm = table.getColumnModel(); 
-	    String[] gender = {"男","女"}; 
-	    JComboBox  genderC = new FlatComboBox(gender);  
-	    tcm.getColumn(5).setCellEditor(new DefaultCellEditor(genderC)); 
+        model = TableModelFactory.getDriverMgtModel(tableV);
+		table = TableFactory.getDriverMgtTable(model);
 		
-		addDeleteColumn();
-	    
 	    table.addMouseListener(tableListener);
 		sPanel = new ScrollPaneTable(table);
 		panel.add(sPanel);
@@ -81,7 +74,7 @@ public class BusinessLbDriverMgt extends FunctionADUS{
 		searchItems = service.searchDriver(s);
 //		System.out.println("arraylist size"+searchItems.size());
 //		System.out.println("   "+getVector(searchItems).size());
-		model = new TableModelADUS(getVector(searchItems),tableH,isCellEditable);
+		model = TableModelFactory.getDriverMgtModel(getVector(searchItems));
 		table.setModel(model);
 		table.repaint();
 	}

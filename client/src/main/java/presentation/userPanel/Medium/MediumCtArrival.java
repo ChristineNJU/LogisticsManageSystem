@@ -1,6 +1,5 @@
 package presentation.userPanel.Medium;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,28 +10,24 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.table.TableColumnModel;
 
-import businesslogic.Impl.Businesslobby.BusinessLobbyController;
-import businesslogic.Impl.MediumCenter.MediumCenterController;
-import businesslogic.Service.BusinessLobby.BsLbService;
-import businesslogic.SystemLog.SystemLog;
 import State.AddState;
 import State.ErrorState;
 import State.LogisticsState;
 import VO.ArrivalVO;
 import VO.VO;
+import businesslogic.Impl.MediumCenter.MediumCenterController;
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
 import presentation.components.FlatComboBox;
 import presentation.components.LabelHeader;
 import presentation.components.TextFieldHeader;
+import presentation.factory.TableFactory;
+import presentation.factory.TableModelFactory;
 import presentation.frame.MainFrame;
 import presentation.main.FunctionAdd;
 import presentation.main.Translater;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
-import presentation.table.TableModelAddOnly;
-import presentation.userPanel.BusinessLb.BusinessLbArrival.Header;
-import presentation.userPanel.Manager.ManagerInstitutionMgt;
 
 public class MediumCtArrival extends FunctionAdd{
 	SimpleDateFormat sdfs=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -40,9 +35,6 @@ public class MediumCtArrival extends FunctionAdd{
 	
 	MediumCenterController service = new MediumCenterController();
 	ArrayList<ArrivalVO> arrivals;
-	
-	String[] tableH={"快递单号","出发地","快递状态",""};
-	boolean[] isCellEditable = {false,false,false,};
 	
 	public TextFieldHeader listIdIuput = new TextFieldHeader();
 	
@@ -58,8 +50,8 @@ public class MediumCtArrival extends FunctionAdd{
 		arrivals = new ArrayList<ArrivalVO>();		
 		tableV = getVector(arrivals);
 		
-		model = new TableModelAddOnly(tableV,tableH,isCellEditable);
-		table = new TableAddOnly(model);
+		model = TableModelFactory.getArrivalModel(tableV);
+		table = TableFactory.getArrivalTable(model);
 		
 		sPanel = new ScrollPaneTable(table);
 		sPanel.setLocation(sPanel.getX(),header.getHeight()+120);

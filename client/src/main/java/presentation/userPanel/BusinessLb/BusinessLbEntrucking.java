@@ -8,26 +8,21 @@ import java.util.Vector;
 
 import javax.swing.JLabel;
 
+import State.AddState;
+import State.ErrorState;
+import VO.EntruckingVO;
+import VO.VO;
+import businesslogic.Impl.Businesslobby.BusinessLobbyController;
+import businesslogic.SystemLog.SystemLog;
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
 import presentation.components.LabelHeader;
 import presentation.components.TextFieldHeader;
+import presentation.factory.TableFactory;
+import presentation.factory.TableModelFactory;
 import presentation.frame.MainFrame;
 import presentation.main.FunctionAdd;
 import presentation.table.ScrollPaneTable;
-import presentation.table.TableAddOnly;
-import presentation.table.TableModelAddOnly;
-import presentation.userPanel.Manager.ManagerInstitutionMgt;
-import presentation.userPanel.Medium.MediumCtEntrucking.Header;
-import State.AddState;
-import State.ErrorState;
-import VO.EntruckingVO;
-import VO.GatheringVO;
-import VO.VO;
-import businesslogic.Impl.Businesslobby.BusinessLobbyController;
-import businesslogic.Impl.MediumCenter.MediumCenterController;
-import businesslogic.Service.BusinessLobby.BsLbService;
-import businesslogic.SystemLog.SystemLog;
 
 public class BusinessLbEntrucking extends FunctionAdd{
 	SimpleDateFormat sdfs=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -82,8 +77,8 @@ public class BusinessLbEntrucking extends FunctionAdd{
 		
 		tableV = getVector(needEntrucking);
 		
-		model = new TableModelAddOnly(tableV,tableH,isCellEditable);
-		table = new TableAddOnly(model);
+		model = TableModelFactory.getEntruckingModel(tableV);
+		table = TableFactory.getEntrucking(model);
 		
 		sPanel = new ScrollPaneTable(table);
 		sPanel.setLocation(sPanel.getX(),header.getHeight()+120);
