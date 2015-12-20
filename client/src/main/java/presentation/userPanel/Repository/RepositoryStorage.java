@@ -90,6 +90,20 @@ public class RepositoryStorage extends FunctionAdd {
 
 	@Override
 	protected void initTable() {
+		
+		ArrayList<StorageVO> needStorage = service.getNeedStorage();
+		
+		for(StorageVO vo:needStorage){
+			Vector<String> tm = new Vector<String>();
+			tm.add(vo.getBarCode());
+			tm.add("");
+			tm.add("");
+			tm.add("");
+			tm.add("");
+			tm.add("");
+			tableV.add(tm);
+		}
+		
 		model = TableModelFactory.getStorageModel(tableV);
 		table = TableFactory.getStorageTable(model);
 		sPanel = new ScrollPaneTable(table);

@@ -109,7 +109,7 @@ public class MediumCtArrival extends FunctionAdd{
 		else if(state==AddState.CONNECTERROR){
 			showError(ErrorState.CONNECTERROR);
 		}else{
-			nav.changeTask(2);
+			nav.changeTask(1);
 		}
 	}
 
