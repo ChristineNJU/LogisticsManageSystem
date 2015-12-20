@@ -88,7 +88,7 @@ public class TransferVO extends VO {
 	 */
 	public TransferVO(InstitutionStoragePO po){
 		this.date=new Date();
-		this.listId=po.getBar_code();
+		this.itemId.add(po.getBar_code());
 		
 	}
 	/**
