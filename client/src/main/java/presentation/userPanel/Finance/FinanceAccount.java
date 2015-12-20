@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import presentation.components.ButtonNew;
+import presentation.factory.TableFactory;
+import presentation.factory.TableModelFactory;
 import presentation.frame.MainFrame;
 import presentation.main.FunctionADUS;
 import presentation.table.ScrollPaneTable;
@@ -23,8 +25,6 @@ public class FinanceAccount extends FunctionADUS{
 	AccountService service=new AccountImpl(); 
 	
 	ArrayList<AccountVO> accounts;
-	String[] tableH={"账户名称","账户余额"};
-	boolean[] isCellEditable={true,false};
 	
 	ArrayList<AccountVO> addItems=new ArrayList<AccountVO>();
 	ArrayList<AccountVO> deleteItems=new ArrayList<AccountVO>();
@@ -50,10 +50,8 @@ public class FinanceAccount extends FunctionADUS{
 			super.isConnectError=true;
 		}
 		
-		model = new TableModelADUS(tableV, tableH,isCellEditable);
-		table = new TableADUS(model);
-		
-		addDeleteColumn();
+		model = TableModelFactory.getFinanceModel(tableV);
+		table = TableFactory.getFinanceTable(model);
 	    
 	    table.addMouseListener(tableListener);
 		sPanel = new ScrollPaneTable(table);
@@ -66,7 +64,7 @@ public class FinanceAccount extends FunctionADUS{
 		// TODO Auto-generated method stub
 		accounts=new ArrayList<AccountVO>();
 		searchItems=service.searchAccount(s);
-		model = new TableModelADUS(getVector(searchItems),tableH,isCellEditable);
+		model = TableModelFactory.getFinanceModel(tableV);
 		table.setModel(model);
 		table.repaint();
 		

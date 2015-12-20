@@ -8,6 +8,8 @@ import javax.swing.JLabel;
 import presentation.components.ButtonConfirm;
 import presentation.components.DateChooser;
 import presentation.components.LabelHeader;
+import presentation.factory.TableFactory;
+import presentation.factory.TableModelFactory;
 import presentation.main.ColorPallet;
 import presentation.main.FontSet;
 import presentation.table.ScrollPaneTable;
@@ -53,16 +55,16 @@ public class FinanceBenefit extends FinanceIncome{
 	@Override
 	protected void initTable() {
 		tableV = new Vector<Vector<String>>();
-		model = new TableModelSearch(tableV,tableH);
-		table = new TableSearch(model);
+		model = TableModelFactory.getIncome(tableV);
+		table = TableFactory.getIncome(model);
 		sPanel = new ScrollPaneTable(table);
 		sPanel.setLocation(sPanel.getX(),header.getHeight()+120);
 		sPanel.setSize(sPanel.getWidth(),200);
 		panel.add(sPanel);
 		
 		tableV2 = new Vector<Vector<String>>();
-		String[] tableH2 = {"付款日期","金额","付款人","付款账户","条目","备注"};
-		model2 = new TableModelSearch(tableV2,tableH2);
+		
+		model2 = TableModelFactory.getCostSearch(tableV2);
 		table2 = new TableSearch(model2);
 		sPanel2 = new ScrollPaneTable(table2);
 		sPanel2.setLocation(sPanel.getX(),sPanel.getHeight()+header.getHeight()+150);
@@ -92,10 +94,10 @@ public class FinanceBenefit extends FinanceIncome{
 			incomes = service.searchGathering(timeBegin, timeEnd, "%%");
 			if(costs==null||incomes==null){
 				showError(ErrorState.CONNECTERROR);
-				model = new TableModelSearch(new Vector<Vector<String>>(),tableH);
+				model = TableModelFactory.getIncome(new Vector<Vector<String>>());
 			}
 			else {
-				model = new TableModelSearch(getVector(incomes),tableH);
+				model = TableModelFactory.getIncome(getVector(incomes));
 			}
 			
 			table.setModel(model);

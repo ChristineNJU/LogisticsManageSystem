@@ -14,6 +14,8 @@ import businesslogic.Service.Finance.FinanceService;
 import presentation.components.ButtonConfirm;
 import presentation.components.DateChooser;
 import presentation.components.LabelHeader;
+import presentation.factory.TableFactory;
+import presentation.factory.TableModelFactory;
 import presentation.main.FontSet;
 import presentation.main.FunctionSearch;
 import presentation.table.ScrollPaneTable;
@@ -24,8 +26,6 @@ public class FinanceIncomeAndOutcome extends FunctionSearch{
 
 	FinanceService service = new FinanceController();
 	ArrayList<BenefitVO> benefits;
-	
-	String[] tableH = {"时间","收入","支出","利润"};
 	
 	public DateChooser dateBeginChooser;
 	public DateChooser dateEndChooser;
@@ -50,8 +50,8 @@ public class FinanceIncomeAndOutcome extends FunctionSearch{
 	@Override
 	protected void initTable() {
 //		tableV = getVector(service.searchBenefit(dateNow));
-		model = new TableModelSearch(tableV,tableH);
-		table = new TableSearch(model);
+		model = TableModelFactory.getIncomeAndOutcomeModel(tableV);
+		table = TableFactory.getOutcomeAndIncomeTable(model);
 		sPanel = new ScrollPaneTable(table);
 		panel.add(sPanel);
 		

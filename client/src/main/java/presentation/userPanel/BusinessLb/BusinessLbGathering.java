@@ -19,6 +19,8 @@ import businesslogic.SystemLog.SystemLog;
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
 import presentation.components.LabelHeader;
+import presentation.factory.TableFactory;
+import presentation.factory.TableModelFactory;
 import presentation.frame.MainFrame;
 import presentation.main.FunctionAdd;
 import presentation.table.ScrollPaneTable;
@@ -32,8 +34,7 @@ public class BusinessLbGathering extends FunctionAdd{
 	ArrayList<GatheringVO> Gathering;
 	
 	
-	String[] tableH = {"快递单号","收款日期","收款金额","收款快递员",""};
-	boolean[] isCellEditable = {false,false,false,false};
+	
 	
 //	public TextFieldHeader gatheringIdInput = new TextFieldHeader();
 	
@@ -81,8 +82,8 @@ public class BusinessLbGathering extends FunctionAdd{
 		
 		tableV = getVector(Gathering);
 		
-		model = new TableModelAddOnly(tableV,tableH,isCellEditable);
-		table = new TableAddOnly(model);
+		model = TableModelFactory.getGatheringModel(tableV);
+		table = TableFactory.getGathering(model);
 
 		sPanel = new ScrollPaneTable(table);
 		sPanel.setLocation(sPanel.getX(),header.getHeight()+120);

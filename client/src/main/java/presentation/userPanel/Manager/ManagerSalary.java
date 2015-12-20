@@ -3,12 +3,6 @@ package presentation.userPanel.Manager;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import presentation.components.ButtonNew;
-import presentation.frame.MainFrame;
-import presentation.main.FunctionADUS;
-import presentation.table.ScrollPaneTable;
-import presentation.table.TableADUS;
-import presentation.table.TableModelADUS;
 import State.ErrorState;
 import State.SalaryType;
 import State.UpdateState;
@@ -16,13 +10,19 @@ import State.UserRole;
 import VO.SalaryVO;
 import businesslogic.Impl.Manage.ManageController;
 import businesslogic.Service.Manage.ManageService;
+import presentation.components.ButtonNew;
+import presentation.factory.TableFactory;
+import presentation.factory.TableModelFactory;
+import presentation.frame.MainFrame;
+import presentation.main.FunctionADUS;
+import presentation.table.ScrollPaneTable;
+
 
 public class ManagerSalary extends FunctionADUS{
 
 	ManageService service = new ManageController();
 	ArrayList<SalaryVO> salary;
-	String[] tableH = {"职位","工资类型","工资"};
-	boolean[] isCellEditable = {false,false,true};
+	
 	
 	public ManagerSalary(){
 		buttonNew = new ButtonNew("新增薪水项");
@@ -44,8 +44,8 @@ public class ManagerSalary extends FunctionADUS{
 		else {
 			tableV = getVector(salary);
 		}
-		model = new TableModelADUS(tableV,tableH,isCellEditable);
-		table = new TableADUS(model);
+		model = TableModelFactory.getSalaryModel(tableV);
+		table = TableFactory.getSalaryTable(model);
 		table.addMouseListener(tableListener);
 		sPanel = new ScrollPaneTable(table);
 		panel.add(sPanel);

@@ -9,6 +9,8 @@ import javax.swing.table.TableColumnModel;
 
 import presentation.components.ButtonNew;
 import presentation.components.FlatComboBox;
+import presentation.factory.TableFactory;
+import presentation.factory.TableModelFactory;
 import presentation.frame.MainFrame;
 import presentation.main.FunctionADUS;
 import presentation.main.Translater;
@@ -27,8 +29,6 @@ public class ManagerStaffMgt extends FunctionADUS{
 	ManageStaffService service=new ManageStaff();
 	ArrayList<StaffVO> staffs;
 	
-	String[] tableH = {"员工ID","员工姓名","员工性别","员工年龄","员工机构","员工职责","员工所在地","员工密码"};
-	boolean[] isCellEditable = {false,true,true,true,true,true,true,true};
 	
 	ArrayList<StaffVO> addItems=new ArrayList<StaffVO>();
 	ArrayList<StaffVO> deleteItems=new ArrayList<StaffVO>();
@@ -59,8 +59,8 @@ public class ManagerStaffMgt extends FunctionADUS{
 			super.isConnectError=true;
 		}
 //      System.out.println(staffs.size());
-        model = new TableModelADUS(tableV, tableH,isCellEditable);
-		table = new TableADUS(model);
+        model = TableModelFactory.getStaffMgtModel(tableV);
+		table = TableFactory.getStaffTable(model);
 		
 		TableColumnModel tcm = table.getColumnModel(); 
 	    String[] gender = {"男","女"}; 
@@ -103,7 +103,7 @@ public class ManagerStaffMgt extends FunctionADUS{
 		// TODO Auto-generated method stub
 		staffs=new ArrayList<StaffVO>();
 		searchItems=service.searchStaff(s);
-		model = new TableModelADUS(getVector(searchItems),tableH,isCellEditable);
+		model = TableModelFactory.getStaffMgtModel(tableV);
 		table.setModel(model);
 		table.repaint();
 	}
