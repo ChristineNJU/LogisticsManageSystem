@@ -202,7 +202,15 @@ public class ManagerReceipt extends FunctionSearch{
 		storage = service.showStorage();
 		transfer = service.showTransfer();
 		
+		System.out.println(arrival.size());
 		System.out.println(balance.size());
+		System.out.println(cost.size());
+		System.out.println(delivery.size());
+		System.out.println(entrucking.size());
+		System.out.println(gathering.size());
+		System.out.println(removal.size());
+		System.out.println(storage.size());
+		System.out.println(transfer.size());
 		
 		model = new TableModelSearch(tableV, tableH);
 		table = new TableSearch(model);

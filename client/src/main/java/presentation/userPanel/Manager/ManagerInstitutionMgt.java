@@ -153,7 +153,7 @@ public class ManagerInstitutionMgt extends FunctionADUS{
 		
 		if(deleteState==DeleteState.SUCCESS&&updateState==UpdateState.SUCCESS
 				&&addState==AddState.SUCCESS){
-			nav.changeTask(2);
+			nav.changeTask(3);
 		}
 	}
 	
