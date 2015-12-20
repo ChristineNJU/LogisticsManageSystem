@@ -2,6 +2,10 @@ package test.Stub.businesslogic;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import test.Stub.data.AddService_Stub;
+import test.Stub.data.DeleteService_Stub;
+import test.Stub.data.SearchService_Stub;
+import test.Stub.data.UpdateService_Stub;
 import PO.ArrivalPO;
 import PO.EntruckingPO;
 import PO.TransferPO;
@@ -9,10 +13,6 @@ import State.AddState;
 import VO.ArrivalVO;
 import VO.EntruckingVO;
 import VO.TransferVO;
-import test.Stub.data.AddService_Stub;
-import test.Stub.data.DeleteService_Stub;
-import test.Stub.data.SearchService_Stub;
-import test.Stub.data.UpdateService_Stub;
 public class MediumCenterBlService_Stub {
 	AddService_Stub addSev = new AddService_Stub();
 	DeleteService_Stub deleteSev = new DeleteService_Stub();

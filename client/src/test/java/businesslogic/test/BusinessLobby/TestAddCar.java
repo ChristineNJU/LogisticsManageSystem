@@ -12,5 +12,8 @@ public class TestAddCar extends TestCase {
 		
 		CarInfoVO car=new CarInfoVO("025000010", "苏A 12346", 2015); 
 		assertEquals(AddState.SUCCESS,businessLobbyController.addCar(car));
+		assertEquals(AddState.FAIL,businessLobbyController.addCar(car));
+		
+		businessLobbyController.deleteCar(car);
 	}
 }

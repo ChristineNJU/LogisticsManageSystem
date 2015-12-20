@@ -12,6 +12,8 @@ public class TestAddAccount extends TestCase{
 		FinanceController finance = new FinanceController();
 		
 		assertEquals(AddState.SUCCESS, finance.addAccount(new AccountVO("中国银行", 1412414.23)));
+//		assertEquals(AddState.FAIL, finance.addAccount(new AccountVO("中国银行", 1412414.23)));
+		finance.deleteAccount(new AccountVO("中国银行", 1412414.23));
 	}
 	
 }

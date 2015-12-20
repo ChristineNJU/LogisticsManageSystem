@@ -3,7 +3,6 @@ package VO;
 import java.util.Date;
 
 import PO.RemovalPO;
-import PO.StoragePO;
 import State.TransferType;
 
 // TODO: Auto-generated Javadoc

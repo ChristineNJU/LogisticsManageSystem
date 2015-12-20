@@ -1,14 +1,22 @@
 package businesslogic.test.Reponsitory;
 
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import junit.framework.TestCase;
+import PO.RemovalPO;
 import State.AddState;
+import State.DeleteState;
 import State.TransferType;
 import VO.RemovalVO;
 import businesslogic.Impl.Repository.RepositoryController;
+import data.RMIHelper.RMIHelper;
+import data.Service.Delete.DeleteService;
 
 public class TestRemoval extends TestCase {
 	
@@ -26,5 +34,15 @@ public class TestRemoval extends TestCase {
 			e.printStackTrace();
 		}
 		assertEquals(AddState.SUCCESS, rc.addRemoval(removal));
+		assertEquals(AddState.FAIL, rc.addRemoval(removal));
+		try {
+			DeleteService deleteRe=(DeleteService) Naming.lookup(RMIHelper.DELETE_IMPL);
+			assertEquals(DeleteState.SUCCESS,deleteRe.delete(new RemovalPO(removal.get(0),"02500")));
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 	}
 }

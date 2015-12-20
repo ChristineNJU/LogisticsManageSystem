@@ -1,7 +1,7 @@
 package PO;
 
-import businesslogic.URLHelper.URLHelper;
 import VO.CarInfoVO;
+import businesslogic.URLHelper.URLHelper;
 
 /**
  * 用来保存车辆信息的持久化数据格式

@@ -17,7 +17,9 @@ public class TestDeleteDriver extends TestCase {
 		try {
 			driver = new DriverInfoVO("025000009", "张斯栋", sdf.parse("1996-12-20"), 
 					" 320586199612202123", "13040832063", "男", 5);
+			businessLobbyController.AddDriver(driver);
 			assertEquals(DeleteState.SUCCESS,businessLobbyController.deleteDriver(driver));
+			assertEquals(DeleteState.FAIL,businessLobbyController.deleteDriver(driver));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
