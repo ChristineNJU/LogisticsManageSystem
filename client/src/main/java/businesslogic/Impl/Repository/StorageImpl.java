@@ -37,7 +37,7 @@ public class StorageImpl implements StorageService {
 			for(int i=0;i<storage.size();i++){
 				tempState=storageAdd.add(new StoragePO(storage.get(i), SystemLog.getInstitutionId()));
 				storageAdd.add(new WareHousePO(storage.get(i), URLHelper.getWareHouseURL(SystemLog.getInstitutionId())));
-				istorageservice.deleteInstitutionStorage(storage.get(i).getBarCode(), URLHelper.getInstitutionStorage(SystemLog.getInstitutionId()));
+				istorageservice.deleteInstitutionStorage(storage.get(i).getBarCode(), URLHelper.getInstitutionStorage(SystemLog.getInstitutionId().substring(0,4)));
 			
 				if(wareManage.getAmount(URLHelper.getWareHouseURL(SystemLog.getInstitutionId()),storage.get(i).getAreaCode())>1000){
 					state=StorageState.ALARM;

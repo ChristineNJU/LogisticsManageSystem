@@ -34,7 +34,7 @@ public class TransferVO extends VO {
 	private String guardName = null;
 	
 	/** The item id. */
-	private ArrayList<String> itemId = null;
+	private ArrayList<String> itemId = new ArrayList<String>();
 	
 	/** The transfer charge. */
 	private double transferCharge = 0;
@@ -88,7 +88,7 @@ public class TransferVO extends VO {
 	 */
 	public TransferVO(InstitutionStoragePO po){
 		this.date=new Date();
-		this.listId=po.getBar_code();
+		this.itemId.add(po.getBar_code());
 		
 	}
 	/**

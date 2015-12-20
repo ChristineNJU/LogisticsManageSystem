@@ -48,7 +48,10 @@ public class GetNeedTransferImpl implements GetNeedTransferService{
 			
 			else{
 				for(int i=0;i<searchResult.size();i++)
-					result.add(new TransferVO(searchResult.get(i)));
+					if(searchResult.get(i).isOut()&&!searchResult.get(i).isTransfer()){
+						
+						result.add(new TransferVO(searchResult.get(i)));
+						}
 			}
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block

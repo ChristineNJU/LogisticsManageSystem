@@ -40,6 +40,8 @@ public class RepositoryStorage extends FunctionAdd {
 	
 	private ProgressBarPanel pbp = new ProgressBarPanel();
 	
+	ArrayList<String> getNeed = new ArrayList<String>();
+	
 	ArrayList<StorageVO> storage = new ArrayList<StorageVO>();
 	
 	Vector<Vector<String>> vector = new Vector<Vector<String>>();
@@ -50,11 +52,11 @@ public class RepositoryStorage extends FunctionAdd {
 	
 	NavigationRepository nav;
 	
-	public RepositoryStorage() {
+	public RepositoryStorage(NavigationRepository navigationRepository) {
 		super.buttonNew = new ButtonNew("新增入库单");
 		super.confirm = new ButtonConfirm("提交入库单");
 		
-//		this.nav = nav;
+		this.nav = navigationRepository;
 		
 		initUI("入库");
 		init();
@@ -90,9 +92,6 @@ public class RepositoryStorage extends FunctionAdd {
 	protected void initTable() {
 		model = TableModelFactory.getStorageModel(tableV);
 		table = TableFactory.getStorageTable(model);
-		
-		
-		
 		sPanel = new ScrollPaneTable(table);
 		panel.add(sPanel);
 	}
@@ -214,6 +213,7 @@ public class RepositoryStorage extends FunctionAdd {
 
 	@Override
 	public void performCancel() {
-		MainFrame.changeContentPanel(new RepositoryStorage().getPanel());		
+//		MainFrame.changeContentPanel(new RepositoryStorage().getPanel());
+		nav.changeTask(1);
 	}
 }
