@@ -124,6 +124,9 @@ public class BusinessLbArrival extends FunctionAdd{
 		else if(state==AddState.FAIL){
 			showError(ErrorState.ADDERROR);
 		}
+		else{
+			nav.changeTask(1);
+		}
 	}
 
 	@Override
@@ -166,7 +169,8 @@ public class BusinessLbArrival extends FunctionAdd{
 
 	@Override
 	public void performCancel() {
-		MainFrame.changeContentPanel(new BusinessLbArrival().getPanel());		
+//		MainFrame.changeContentPanel(new BusinessLbArrival(nav).getPanel());
+		nav.changeTask(1);
 	}
 
 }

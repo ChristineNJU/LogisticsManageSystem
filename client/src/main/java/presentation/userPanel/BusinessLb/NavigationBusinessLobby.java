@@ -65,7 +65,7 @@ public class NavigationBusinessLobby extends Navigation{
 		
 	}
 	private void changeToArrival(){
-		businessArrival = new BusinessLbArrival();
+		businessArrival = new BusinessLbArrival(this);
 		MainFrame.changeContentPanel(businessArrival.getPanel());
 		if(businessArrival.isConnectError()){
 			System.out.println("manager initiate null");
