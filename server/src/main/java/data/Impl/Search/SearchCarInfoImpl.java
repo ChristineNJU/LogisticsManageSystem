@@ -62,7 +62,7 @@ public class SearchCarInfoImpl extends UnicastRemoteObject implements SearchCarI
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-//			e.printStackTrace();
+			e.printStackTrace();
 			System.out.println("从数据库提取CarInfoPO对象失败");
 			return result;
 		}
