@@ -9,9 +9,9 @@ import javax.swing.JLabel;
 
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
+import presentation.components.FlatComboBox;
 import presentation.components.LabelHeader;
 import presentation.components.TextFieldHeader;
-import presentation.components.FlatComboBox;
 import presentation.frame.MainFrame;
 import presentation.main.FunctionAdd;
 import presentation.table.ScrollPaneTable;
@@ -22,6 +22,8 @@ import State.ErrorState;
 import VO.EntruckingVO;
 import VO.VO;
 import businesslogic.Impl.MediumCenter.MediumCenterController;
+import businesslogic.Impl.Courier.CourierController;
+import businesslogic.Service.Courier.CourierService;
 import businesslogic.SystemLog.SystemLog;
 
 public class MediumCtEntrucking extends FunctionAdd{
@@ -31,6 +33,7 @@ public class MediumCtEntrucking extends FunctionAdd{
 	MediumCenterController service = new MediumCenterController();
 	ArrayList<EntruckingVO> needEntrucking;
 	
+	CourierService city = new CourierController();
 	
 	String[] tableH = {"快递单号","   "};
 	boolean[] isCellEditable = {false};
@@ -174,8 +177,10 @@ public class MediumCtEntrucking extends FunctionAdd{
 			carIdInput.setBounds(390,0 , 120, 30);
 			superCarGoInput.setBounds(390, 33, 120,30 );
 			guardInput.setBounds(390,66 , 120, 30);
-			destinationInput.setBounds(650, 0, 120, 30);
+			destinationInput.setBounds(650, 0, 100, 30);
 			costInput.setBounds(650, 33, 120, 30);
+			
+			initComboBox();
 			
 			add(mediumCenterIdInput);
 			add(dateInput);
@@ -185,10 +190,14 @@ public class MediumCtEntrucking extends FunctionAdd{
 			add(guardInput);
 			add(destinationInput);
 			add(costInput);
-			
-			
-			
-			
+		}
+		
+		private void initComboBox() {
+			ArrayList<String> getCity = city.getCity();
+			for(int i=0;i<getCity.size();i++){
+				System.out.println(getCity.get(i));
+				destinationInput.addItem(getCity.get(i));
+			}
 		}
 	}
 	@Override
