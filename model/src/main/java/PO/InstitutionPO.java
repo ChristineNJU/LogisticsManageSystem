@@ -1,9 +1,9 @@
 package PO;
 
-import businesslogic.URLHelper.URLHelper;
 import State.InstitutionType;
 import State.StateSwitch;
 import VO.InstitutionVO;
+import businesslogic.URLHelper.URLHelper;
 /**
  * 用来保存机构信息的持久化数据格式
  * 

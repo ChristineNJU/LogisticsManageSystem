@@ -1,7 +1,6 @@
 package data.RMIHelper;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -14,7 +13,6 @@ public class RMIHelper {
 	/** The Constant REGISTRY. */
 	public static final int REGISTRY = 8888;
 	
-
 	/** The Constant URL. */
 	public static String URL = "rmi://127.0.0.1:"+REGISTRY+"/";
 	

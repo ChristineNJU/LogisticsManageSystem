@@ -47,7 +47,7 @@ public class NavigationMediumCenter extends Navigation{
 		
 	}
 	private void changeToArrival(){
-		mediumCtArrival = new MediumCtArrival();
+		mediumCtArrival = new MediumCtArrival(this);
 		MainFrame.changeContentPanel(mediumCtArrival.getPanel());
 		if(mediumCtArrival.isConnectError()){
 			System.out.println("manager initiate null");
@@ -55,7 +55,7 @@ public class NavigationMediumCenter extends Navigation{
 		}
 	}
 	private void changeToEntrucking(){
-		mediumCtEntrucking = new MediumCtEntrucking();
+		mediumCtEntrucking = new MediumCtEntrucking(this);
 		MainFrame.changeContentPanel(mediumCtEntrucking.getPanel());
 		if(mediumCtEntrucking.isConnectError()){
 			System.out.println("manager initiate null");
@@ -63,7 +63,7 @@ public class NavigationMediumCenter extends Navigation{
 		}
 	}
 	private void changeToTransfer(){
-		mediumCtTransfer = new MediumCtTransfer();
+		mediumCtTransfer = new MediumCtTransfer(this);
 		MainFrame.changeContentPanel(mediumCtTransfer.getPanel());
 		if(mediumCtTransfer.isConnectError()){
 			System.out.println("manager initiate null");

@@ -1,13 +1,22 @@
 package businesslogic.test.Reponsitory;
 
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import junit.framework.TestCase;
+import PO.StockTakingPO;
+import State.AddState;
+import State.DeleteState;
 import State.StorageArea;
 import VO.StockTakingVO;
 import businesslogic.Impl.Repository.RepositoryController;
+import data.RMIHelper.RMIHelper;
+import data.Service.Delete.DeleteService;
 
 public class TestStockTakingConfirm extends TestCase {
 	
@@ -22,6 +31,15 @@ public class TestStockTakingConfirm extends TestCase {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		assertEquals(null, rc.stockTakingConfirm(stock));
+		assertEquals(AddState.SUCCESS, rc.stockTakingConfirm(stock));
+		assertEquals(AddState.FAIL, rc.stockTakingConfirm(stock));
+		try {
+			DeleteService deleteSto=(DeleteService) Naming.lookup(RMIHelper.DELETE_IMPL);
+			assertEquals(DeleteState.SUCCESS, deleteSto.delete(new StockTakingPO(stock.get(0),"02500")));
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }

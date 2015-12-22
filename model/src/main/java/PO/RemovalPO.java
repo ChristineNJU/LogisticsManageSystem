@@ -3,13 +3,10 @@ package PO;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
-import businesslogic.URLHelper.URLHelper;
-
 import State.StateSwitch;
-
 import State.TransferType;
 import VO.RemovalVO;
+import businesslogic.URLHelper.URLHelper;
 /**
  * 用来保存出库单的持久化数据格式
  * 

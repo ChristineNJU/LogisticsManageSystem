@@ -7,8 +7,6 @@ import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.xml.crypto.Data;
-
 import PO.LogPO;
 import State.AddState;
 import businesslogic.URLHelper.URLHelper;

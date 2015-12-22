@@ -105,7 +105,7 @@ public class ManageShowReceipt implements ShowReceiptService{
 			requirement.add("isApproved='"+false+"'");
 			
 			ArrayList<String> requirementReponsitory=new ArrayList<String>();
-			requirementReponsitory.add("institution_type='Reponsitory'");
+			requirementReponsitory.add("institution_type='Repository'");
 			
 			SearchInstitutionInfoService searchInstitution=(SearchInstitutionInfoService) Naming.lookup(RMIHelper.SEARCH_INSTITUTION_IMPL);
 			ArrayList<InstitutionPO> searchResultReponsitory=searchInstitution.searchInstitutionInfo(requirementReponsitory);
@@ -143,7 +143,7 @@ public class ManageShowReceipt implements ShowReceiptService{
 			requirement.add("isApproved='"+false+"'");
 			
 			ArrayList<String> requirementReponsitory=new ArrayList<String>();
-			requirementReponsitory.add("institution_type='Reponsitory'");
+			requirementReponsitory.add("institution_type='Repository'");
 			
 			SearchInstitutionInfoService searchInstitution=(SearchInstitutionInfoService) Naming.lookup(RMIHelper.SEARCH_INSTITUTION_IMPL);
 			ArrayList<InstitutionPO> searchResultReponsitory=searchInstitution.searchInstitutionInfo(requirementReponsitory);

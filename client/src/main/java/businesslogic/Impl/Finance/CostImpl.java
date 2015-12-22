@@ -88,7 +88,7 @@ public class CostImpl implements CostService{
 				requirement.add("cost_date like '%%'");
 			}
 			else {
-				requirement.add("cost_date= '"+time+"'");
+				requirement.add("cost  _date= '"+time+"'");
 			}
 			ArrayList<CostPO> costList=costSearch.searchCost(requirement);
 			for(int i=0;i<costList.size();i++){

@@ -292,10 +292,10 @@ public class DirectDBCreater {
 		try {
 			s = conn.createStatement();
 			boolean mark;
-//			mark = s.execute("INSERT INTO "+table_name+" VALUES('南京市鼓楼营业厅', 'BusinessLobby', "
-//					+ "'南京', '025000')");
-//			mark = s.execute("INSERT INTO "+table_name+" VALUES('南京市中转中心', 'MediumCenter', "
-//					+ "'南京', '0250')");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('南京市鼓楼营业厅', 'BusinessLobby', "
+					+ "'南京', '025000')");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('南京市中转中心', 'MediumCenter', "
+					+ "'南京', '0250')");
 			mark = s.execute("INSERT INTO "+table_name+" VALUES('南京市中转中心仓库', 'Repository', "
 					+ "'南京', '02500')");
 			conn.commit();
@@ -962,4 +962,66 @@ public class DirectDBCreater {
 		}
 	}
 	
+	
+	public static void rebuildDB() {
+		createTable_User();
+		insert_User();
+		
+		createTable_Logistics();
+		
+		createTable_Const();
+		insert_Const();
+		
+		createTable_Institution();
+		insert_Institution();
+		
+		createTable_Account();
+		insert_Account();
+		
+		createTable_Log();
+		
+		createTable_Salary();
+		insert_Salary();
+		
+		createTable_Distance();
+		insert_Distance();
+		
+		createTable_Driver("025000");
+		
+		createTable_Car("025000");
+		
+		createTable_Arrival("025000");
+		createTable_Arrival("0250");
+		
+		createTable_Delivery("025000");
+		
+		createTable_Entrucking("025000");
+		createTable_Entrucking("0250");
+		
+		createTable_Balance("02500");
+		
+		createTable_StockTaking("02500");
+		
+		createTable_Storage("02500");
+		
+		createTable_Removal("02500");
+		
+		createTable_Transfer("0250");
+		
+		createTable_Gathering("025000");
+		
+		createTable_Period();
+		
+		createTable_Benefit();
+		
+		createTable_Cost();
+		
+		createTable_WareHouse("02500");
+		
+		createTable_InstitutionStorage("0250");
+		createTable_InstitutionStorage("025000");
+		
+		createTable_BsLbGathering("025000");
+		
+	}	
 }

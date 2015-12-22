@@ -94,7 +94,12 @@ public class TableModelAddOnly extends AbstractTableModel{
 	public void setValueAt(Object value, int row, int column) {
 //		fireTableCellUpdated(row, column);
 		if(column < getColumnCount()){
-			tableValues.get(row).setElementAt((String) value,column);
+//			System.out.println(row);
+//			System.out.println(column);
+//			System.out.println(getColumnCount());
+//			System.out.println(tableValues.size());
+//			System.out.println(tableValues.get(0).size());
+			tableValues.get(row).setElementAt((String)value,column);
 			System.out.println("set value at   "+row+"   "+column);
 			fireTableCellUpdated(row, column);
 		}

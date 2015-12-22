@@ -1,14 +1,22 @@
 package businesslogic.test.BusinessLobby;
 
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import junit.framework.TestCase;
+import PO.ArrivalPO;
 import State.AddState;
+import State.DeleteState;
 import State.LogisticsState;
 import VO.ArrivalVO;
 import businesslogic.Impl.Businesslobby.BusinessLobbyController;
+import data.RMIHelper.RMIHelper;
+import data.Service.Delete.DeleteService;
 
 public class TestArrival extends TestCase {
 
@@ -25,7 +33,19 @@ public class TestArrival extends TestCase {
 			ArrayList<ArrivalVO> arrivalList=new ArrayList<ArrivalVO>();
 			arrivalList.add(arrival);
 			assertEquals(AddState.SUCCESS,businessLobbyController.arrival(arrivalList));
+			assertEquals(AddState.FAIL,businessLobbyController.arrival(arrivalList));
+			DeleteService deleteAccount=(DeleteService) Naming.lookup(RMIHelper.DELETE_IMPL);
+			assertEquals(DeleteState.SUCCESS,deleteAccount.delete(new ArrivalPO(arrival,"0250")));
 		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NotBoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
