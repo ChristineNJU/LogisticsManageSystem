@@ -153,7 +153,12 @@ public class FinanceBenefit extends FinanceIncome{
 	public double getTotalCost(){
 		double total = 0;
 		for(int i = 0; i < model2.getRowCount();i++){
-			total += Double.valueOf((String)model.getValueAt(i, 1));
+			//TODO
+			//TODO
+			//TODO
+			//TODO
+			//TODO
+			total += Double.valueOf((String)model2.getValueAt(i, 1));
 		}
 		return total;
 	}
@@ -164,6 +169,7 @@ public class FinanceBenefit extends FinanceIncome{
 		double income = super.getTotalIncome();
 		double cost = getTotalCost();
 		double benefit = income - cost;
+
 		BigDecimal b1 = new BigDecimal(income);
 		BigDecimal b2 = new BigDecimal(cost);
 		BigDecimal b3 = new BigDecimal(benefit);
