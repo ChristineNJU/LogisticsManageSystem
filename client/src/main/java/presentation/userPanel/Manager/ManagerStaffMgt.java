@@ -62,34 +62,10 @@ public class ManagerStaffMgt extends FunctionADUS{
         model = TableModelFactory.getStaffMgtModel(tableV);
 		table = TableFactory.getStaffTable(model);
 		
-		TableColumnModel tcm = table.getColumnModel(); 
-	    String[] gender = {"男","女"}; 
-	    JComboBox  genderC = new FlatComboBox(gender); 
-	    tcm.getColumn(2).setCellEditor(new DefaultCellEditor(genderC));
-	    
-	    String[] age = new String[42];
-		 for(int i = 0;i < age.length;i++)
-	        	age[i] = i+18+"";
-       JComboBox ageC = new FlatComboBox(age);  
-       tcm.getColumn(3).setCellEditor(new DefaultCellEditor(ageC));
-       
-       String[] institution = {"营业厅","中转中心","仓库","总部"};
-		JComboBox institutionC = new FlatComboBox(institution);  
-       tcm.getColumn(4).setCellEditor(new DefaultCellEditor(institutionC));
-       
-       String[] position = {"管理员","营业厅业务员","快递员","财务人员","总经理","中转中心业务员","仓库管理员"}; 
-		JComboBox positionC = new FlatComboBox(position);  
-       tcm.getColumn(5).setCellEditor(new DefaultCellEditor(positionC)); 
-
-		String[] city = {"南京","北京","上海","广州"};
-	   JComboBox  cityC = new FlatComboBox(city);  
-       tcm.getColumn(6).setCellEditor(new DefaultCellEditor(cityC));
-       
+	
        table.addMouseListener(tableListener);
 		sPanel = new ScrollPaneTable(table);
 		panel.add(sPanel);
-		
-       addDeleteColumn();
 		
 		
 //		if(staffs.isEmpty()){

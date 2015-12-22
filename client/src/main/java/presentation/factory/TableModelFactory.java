@@ -24,35 +24,35 @@ public class TableModelFactory {
 	
 	public static TableModelAddOnly getArrivalModel(Vector<Vector<String>> tableV){
 		String[] tableH={"快递单号","出发地","快递状态","到达单编号","  "};
-		boolean[] isCellEditable = {false,false,false,false};
+		boolean[] isCellEditable = {false,false,false,false,false};
 		TableModelAddOnly model = new TableModelAddOnly(tableV,tableH,isCellEditable);
 		return model;
 	}
 	
 	public static TableModelADUS getDriverMgtModel(Vector<Vector<String>> tableV){
 		String[] tableH = {"司机ID","司机姓名","司机生日","身份证号","司机手机","司机性别","雇佣时间","  "};
-		boolean[] isCellEditable = {false,true,true,true,true,true};
+		boolean[] isCellEditable = {false,true,true,true,true,true,true,false};
 		TableModelADUS model = new TableModelADUS(tableV,tableH,isCellEditable);
 		return model;
 	}
 	
 	public static TableModelADUS getCarMgtModel(Vector<Vector<String>> tableV){
 		String[] tableH = {"车辆编号","车辆牌照","运营时间","   "};
-		boolean[] isCellEditable = {true,true,true};
+		boolean[] isCellEditable = {true,true,true,false};
 		TableModelADUS model = new TableModelADUS(tableV,tableH,isCellEditable);
 		return model;
 	}
 	
 	public static TableModelAddOnly getDeliveryModel(Vector<Vector<String>> tableV){
 		String[] tableH = {"快递单号","日期","派件人",""};
-		boolean[] isCellEditable = {false,false,false};
+		boolean[] isCellEditable = {false,false,false,false};
 		TableModelAddOnly model = new TableModelAddOnly(tableV,tableH,isCellEditable);
 		return model;
 	}
 	
 	public static TableModelAddOnly getGatheringModel(Vector<Vector<String>> tableV){
 		String[] tableH = {"快递单号","收款日期","收款金额","收款快递员",""};
-		boolean[] isCellEditable = {false,false,false,false};
+		boolean[] isCellEditable = {false,false,false,false,false};
 		TableModelAddOnly model = new TableModelAddOnly(tableV,tableH,isCellEditable);
 		return model;
 	}
@@ -79,7 +79,7 @@ public class TableModelFactory {
 	
 	public static TableModelAddOnly getCostModel(Vector<Vector<String>> tableV){
 		String[] tableH = {"付款日期","金额","付款人","付款账目","条目","备注",""};
-		boolean[] isCellEditable = {false,false,false,false,false,false};
+		boolean[] isCellEditable = {false,false,false,false,false,false,false};
 		TableModelAddOnly model = new TableModelAddOnly(tableV,tableH,isCellEditable);
 		return model;
 	}
@@ -92,7 +92,7 @@ public class TableModelFactory {
 	
 	public static TableModelADUS getFinanceModel(Vector<Vector<String>> tableV){
 		String[] tableH={"账户名称","账户余额","  "};
-		boolean[] isCellEditable={true,false};
+		boolean[] isCellEditable={true,false,false};
 		TableModelADUS model = new TableModelADUS(tableV,tableH,isCellEditable);
 		return model;
 	}
@@ -110,8 +110,8 @@ public class TableModelFactory {
 	}
 	
 	public static TableModelADUS getInstitutionModel(Vector<Vector<String>> tableV){
-		String[] tableH = {"机构ID","机构名称","机构类型","机构所在地"};
-		boolean[] isCellEditable = {false,true,true,true};
+		String[] tableH = {"机构ID","机构名称","机构类型","机构所在地",""};
+		boolean[] isCellEditable = {false,true,true,true,false};
 		
 		TableModelADUS model = new TableModelADUS(tableV,tableH,isCellEditable);
 		return model;
@@ -125,8 +125,8 @@ public class TableModelFactory {
 	}
 	
 	public static TableModelADUS getStaffMgtModel(Vector<Vector<String>> tableV){
-		String[] tableH = {"员工ID","员工姓名","员工性别","员工年龄","员工机构","员工职责","员工所在地","员工密码"};
-		boolean[] isCellEditable = {false,true,true,true,true,true,true,true};
+		String[] tableH = {"ID","姓名","性别","年龄","所在机构","职位","城市","密码","  "};
+		boolean[] isCellEditable = {false,true,true,true,true,true,true,true,false};
 		
 		TableModelADUS model = new TableModelADUS(tableV,tableH,isCellEditable);
 		return model;
@@ -134,7 +134,7 @@ public class TableModelFactory {
 	
 	public static TableModelAddOnly getBalanceModel(Vector<Vector<String>> tableV){
 		String[] tableH = {"原区号", "快递编号", "新区号", "排号", "架号", "位号", ""};
-		boolean[] isCellEditable = {true, true, true, true, true, false};
+		boolean[] isCellEditable = {true, true, true, true, true, false,false};
 		
 		TableModelAddOnly model = new TableModelAddOnly(tableV,tableH,isCellEditable);
 		return model;
@@ -152,7 +152,7 @@ public class TableModelFactory {
 		return model;
 	}
 	
-	public static TableModelAddOnly getSorageModel(Vector<Vector<String>> tableV){
+	public static TableModelAddOnly getRemovalModel(Vector<Vector<String>> tableV){
 		String[]  tableH = {"快递编号",""};
 		boolean[] isCellEditable = {false, false};
 		TableModelAddOnly table = new TableModelAddOnly(tableV,tableH,isCellEditable);
@@ -182,5 +182,11 @@ public class TableModelFactory {
 		String[] tableH = {"汽运区","   ","   ","   ","   ","   "};
 		TableModelSearch table = new TableModelSearch(tableV,tableH);
 		return table;
+	}
+	
+	public static TableModelSearch getBankAccountModel(Vector<Vector<String>> tableV){
+		String[] tableH={"账户名称","账户余额","  "};
+		TableModelSearch model = new TableModelSearch(tableV,tableH);
+		return model;
 	}
 }

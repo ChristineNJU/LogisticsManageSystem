@@ -145,6 +145,15 @@ public class TableFactory {
 	
 	public static TableADUS getStaffTable(TableModelADUS model){
 		TableADUS table = new TableADUS(model);
+		
+		TableColumnModel tcm = table.getColumnModel(); 
+	    tcm.getColumn(2).setCellEditor(new DefaultCellEditor(ComboxFactory.getGenderComboBox()));
+        tcm.getColumn(3).setCellEditor(new DefaultCellEditor(ComboxFactory.getAgeComboBox()));
+        tcm.getColumn(4).setCellEditor(new DefaultCellEditor(ComboxFactory.getInstitutionComboBox()));
+        tcm.getColumn(5).setCellEditor(new DefaultCellEditor(ComboxFactory.getPositionComboBox())); 
+        tcm.getColumn(6).setCellEditor(new DefaultCellEditor(ComboxFactory.getCityComboBox()));
+       
+		
 		return table;
 	}
 	
@@ -202,6 +211,11 @@ public class TableFactory {
 	}
 	
 	public static TableSearch getStockTakingBus(TableModelSearch model){
+		TableSearch table = new TableSearch(model);
+		return table;
+	}
+	
+	public static TableSearch getBankAccountTable(TableModelSearch model){
 		TableSearch table = new TableSearch(model);
 		return table;
 	}

@@ -47,8 +47,8 @@ public class ManagerAccount extends FunctionSearch{
 			tableV=getVector(accounts);
 		}
 		tableV = getVector(accounts);
-		model = TableModelFactory.getIncome(tableV);
-		table = TableFactory.getIncome(model);
+		model = TableModelFactory.getBankAccountModel(tableV);
+		table = TableFactory.getBankAccountTable(model);
 		sPanel = new ScrollPaneTable(table);
 		panel.add(sPanel);
 		

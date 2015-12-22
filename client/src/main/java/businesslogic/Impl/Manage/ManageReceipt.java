@@ -282,7 +282,7 @@ public class ManageReceipt implements UpdateReceiptService{
 				requireBenefit.add("date like '%%'");
 				ArrayList<BenefitPO> searchResultBenefit=searchBenefit.searchBenefit(requireBenefit);
 				AddService addService=(AddService) Naming.lookup(RMIHelper.ADD_IMPL);
-				BenefitPO benefit=new BenefitPO(gathering, searchResultBenefit.get(searchResultBenefit.size()));
+				BenefitPO benefit=new BenefitPO(gathering, searchResultBenefit.get(searchResultBenefit.size()-1));
 				addService.add(benefit);
 			}
 			

@@ -30,7 +30,7 @@ public abstract class FunctionAdd extends Function{
 	
 	protected boolean isConnectError = false;
 	
-	protected PanelContent panel;
+//	protected PanelContent panel;
 	
 	protected JLabel header;
 	protected ButtonNew buttonNew;

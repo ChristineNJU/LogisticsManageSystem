@@ -90,10 +90,20 @@ public class RepositoryRemoval extends FunctionAdd{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				tableV = new Vector<Vector<String>>();
+//				Vector<Vector<String>> temp = new Vector<Vector<String>>();
+//				Vector<String> tmp = new Vector<String>();
+//				tmp.add("");
+//
+//				temp.add(tmp);
+//				
+//				tableV = temp;
 				
-				model = TableModelFactory.getSorageModel(tableV);
-				table = TableFactory.getStorageTable(model);
-				
+				model = TableModelFactory.getRemovalModel(tableV);
+				table = TableFactory.getRemovalTable(model);
+				table.addMouseListener(tableListener);
+				sPanel.setViewportView(table);
+				table.repaint();
+//				table.setModel(model);
 				TableColumnModel tcm = table.getColumnModel();
 				tcm.getColumn(0).setCellEditor(new DefaultCellEditor(getComboBox()));
 				
@@ -116,10 +126,16 @@ public class RepositoryRemoval extends FunctionAdd{
 //		needRemoval = new ArrayList<RemovalVO>();
 //		
 //		tableV = getVector(needRemoval);
+//		Vector<Vector<String>> temp = new Vector<Vector<String>>();
+//		Vector<String> tmp = new Vector<String>();
+//		tmp.add("");
+//
+//		temp.add(tmp);
+//		
+//		tableV = temp;
 		tableV = new Vector<Vector<String>>();
-		
-		model = TableModelFactory.getSorageModel(tableV);
-		table = new TableAddOnly(model);
+		model = TableModelFactory.getRemovalModel(tableV);
+		table = TableFactory.getRemovalTable(model);
 
 		TableColumnModel tcm = table.getColumnModel();
 		tcm.getColumn(0).setCellEditor(new DefaultCellEditor(getComboBox()));

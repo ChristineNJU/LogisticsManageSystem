@@ -64,12 +64,12 @@ public class RepositoryBalance extends FunctionAdd {
 	
 	NavigationRepository nav;
 	
-	public RepositoryBalance() {
+	public RepositoryBalance(NavigationRepository navigationRepository) {
 		// TODO Auto-generated constructor stub
 		super.buttonNew = new ButtonNew("新增调整");
 		super.confirm = new ButtonConfirm("提交调整");
 		
-//		nav = navigationRepository;
+		nav = navigationRepository;
 		
 		initUI("库区调整");
 		init();
@@ -115,6 +115,10 @@ public class RepositoryBalance extends FunctionAdd {
 		// TODO Auto-generated method stub
 		model = TableModelFactory.getBalanceModel(vector);
 		table = TableFactory.getBalanceTable(model);
+		
+		FlatComboBox bar_code = new FlatComboBox();
+		TableColumnModel tcm = table.getColumnModel();
+		tcm.getColumn(1).setCellEditor(new DefaultCellEditor(bar_code));
 		
 		model.addTableModelListener(listener);
 		sPanel = new ScrollPaneTable(table);
@@ -291,6 +295,7 @@ public class RepositoryBalance extends FunctionAdd {
 
 	@Override
 	public void performCancel() {
-		MainFrame.changeContentPanel(new RepositoryBalance().getPanel());		
+//		MainFrame.changeContentPanel(new RepositoryBalance().getPanel());
+		nav.changeTask(3);
 	}
 }

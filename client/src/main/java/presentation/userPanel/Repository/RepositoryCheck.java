@@ -23,8 +23,8 @@ import presentation.table.TableSearch;
 
 public class RepositoryCheck extends FunctionSearch{
 
-	ArrayList<StorageVO> storages;
-	ArrayList<RemovalVO> removals;
+	ArrayList<StorageVO> storages = new ArrayList<StorageVO>();
+	ArrayList<RemovalVO> removals = new ArrayList<RemovalVO>();
 	
 	public DateChooser dateBeginChooser;
 	public DateChooser dateEndChooser;
