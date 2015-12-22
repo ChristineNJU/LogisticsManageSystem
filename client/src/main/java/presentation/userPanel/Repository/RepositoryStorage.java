@@ -91,18 +91,23 @@ public class RepositoryStorage extends FunctionAdd {
 	@Override
 	protected void initTable() {
 		
+
+
+		ArrayList<StorageVO> bar_code = service.getNeedStorage();
+		
+		tableV = getVector(bar_code);
 		ArrayList<StorageVO> needStorage = service.getNeedStorage();
 		
-		for(StorageVO vo:needStorage){
-			Vector<String> tm = new Vector<String>();
-			tm.add(vo.getBarCode());
-			tm.add("");
-			tm.add("");
-			tm.add("");
-			tm.add("");
-			tm.add("");
-			tableV.add(tm);
-		}
+//		for(StorageVO vo:needStorage){
+//			Vector<String> tm = new Vector<String>();
+//			tm.add(vo.getBarCode());
+//			tm.add("");
+//			tm.add("");
+//			tm.add("");
+//			tm.add("");
+//			tm.add("");
+//			tableV.add(tm);
+//		}
 		
 		model = TableModelFactory.getStorageModel(tableV);
 		table = TableFactory.getStorageTable(model);

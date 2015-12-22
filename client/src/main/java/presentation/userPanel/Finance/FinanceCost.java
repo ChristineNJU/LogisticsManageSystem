@@ -5,27 +5,22 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Vector;
 
-import javax.swing.DefaultCellEditor;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.table.TableColumnModel;
 
-import State.AddState;
-import State.CostType;
-import State.ErrorState;
-import VO.CostVO;
-import VO.VO;
-import businesslogic.Impl.Finance.FinanceController;
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
-import presentation.components.FlatComboBox;
 import presentation.factory.TableFactory;
 import presentation.factory.TableModelFactory;
 import presentation.frame.MainFrame;
 import presentation.main.FunctionAdd;
 import presentation.main.Translater;
 import presentation.table.ScrollPaneTable;
-import presentation.table.TableAddOnly;
+import State.AddState;
+import State.CostType;
+import State.ErrorState;
+import VO.CostVO;
+import VO.VO;
+import businesslogic.Impl.Finance.FinanceController;
 
 public class FinanceCost extends FunctionAdd{
 	SimpleDateFormat sdfs=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -34,6 +29,13 @@ public class FinanceCost extends FunctionAdd{
 	FinanceController service = new FinanceController();
 	ArrayList<CostVO> costs;
 	
+//<<<<<<< HEAD
+//=======
+////	String[] tableH = {"付款日期","金额","付款人","付款账目","条目","备注",""};
+//	String[] tableH = {"金额","付款人","付款账目","条目","备注",""};
+//	boolean[] isCellEditable = {false,false,false,false,false};
+//	
+//>>>>>>> master2
 	public FinanceCost(){
 		super.buttonNew = new ButtonNew("新增支出项");
 		super.confirm = new ButtonConfirm("提交支出单");
@@ -53,7 +55,7 @@ public class FinanceCost extends FunctionAdd{
 		
 
 //		CostVO cost0 = new CostVO("2015-12-5 19:59:11", 120, "张斯栋","0123456789" ,CostType.reward,"超过预计" );
-		costs=service.searchCost("%%");
+//		costs=service.searchCost("%%");
 		if(costs==null){
 			super.isConnectError=true;
 			tableV=new Vector<Vector<String>>();
@@ -69,6 +71,23 @@ public class FinanceCost extends FunctionAdd{
 		sPanel.setLocation(sPanel.getX(),header.getHeight()+120);
 		panel.add(sPanel);
 		
+//<<<<<<< HEAD
+//=======
+//		TableColumnModel tcm = table.getColumnModel(); 
+//	    String[] gender = {"租金","运费","薪水","奖金"}; 
+//	    JComboBox  genderC = new FlatComboBox(gender);  
+//	    
+//	    JComboBox accountInfo = new FlatComboBox();
+//	    
+//	    ArrayList<AccountVO> acc = service.searchAccount("%%");
+//	    
+//	    for(int i=0;i<acc.size();i++){
+//	    	accountInfo.addItem(acc.get(i).getName());
+//	    }
+//	    
+//	    tcm.getColumn(3).setCellEditor(new DefaultCellEditor(genderC)); 
+//		tcm.getColumn(2).setCellEditor(new DefaultCellEditor(accountInfo));
+//>>>>>>> master2
 	}
 	
 	
@@ -77,7 +96,7 @@ public class FinanceCost extends FunctionAdd{
 		Vector<Vector<String>> result = new Vector<Vector<String>>();
 		for(CostVO temp:vo){
 			Vector<String> vRow = new Vector<String>();
-			vRow.add(sdfd.format(temp.getDate()));
+//			vRow.add(sdfd.format(temp.getDate()));
 			vRow.add(String.valueOf(temp.getAmount()));
 			vRow.add(temp.getPayer());
 			vRow.add(temp.getPayerAccount());

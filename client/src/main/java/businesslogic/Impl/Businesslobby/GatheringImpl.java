@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import PO.AccountPO;
 import PO.GatheringPO;
 import State.AddState;
-import VO.AccountVO;
 import VO.GatheringVO;
 import businesslogic.Service.BusinessLobby.GatheringService;
 import businesslogic.SystemLog.SystemLog;
