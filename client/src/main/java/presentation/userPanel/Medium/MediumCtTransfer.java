@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
+import presentation.components.FlatComboBox;
 import presentation.components.LabelHeader;
 import presentation.components.TextFieldHeader;
 import presentation.factory.TableFactory;
@@ -18,15 +19,14 @@ import presentation.main.FunctionAdd;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
-
 import State.AddState;
 import State.ErrorState;
-
 import presentation.userPanel.Manager.ManagerInstitutionMgt;
-
 import VO.TransferVO;
 import VO.VO;
+import businesslogic.Impl.Courier.CourierController;
 import businesslogic.Impl.MediumCenter.MediumCenterController;
+import businesslogic.Service.Courier.CourierService;
 import businesslogic.SystemLog.SystemLog;
 
 public class MediumCtTransfer extends FunctionAdd{
@@ -37,12 +37,20 @@ public class MediumCtTransfer extends FunctionAdd{
 	MediumCenterController service = new MediumCenterController();
 	ArrayList<TransferVO> needTransfer;
 	
+//<<<<<<< HEAD
+//=======
+	CourierService city = new CourierController();
+	
+	String[] tableH = {"快递单号",""};
+	boolean[] isCellEditable = {false};
+	
+//>>>>>>> master2
 	public TextFieldHeader idInput  = new TextFieldHeader();
 	public TextFieldHeader planeIdInput = new TextFieldHeader();
 	public TextFieldHeader superCarGoInput = new TextFieldHeader();
 	public TextFieldHeader rowInput = new TextFieldHeader();
 	public TextFieldHeader departureInput = new TextFieldHeader();
-	public TextFieldHeader destinationInput = new TextFieldHeader();
+	public FlatComboBox destinationInput = new FlatComboBox();
 	public TextFieldHeader costInput = new TextFieldHeader();
 	
 	NavigationMediumCenter nav;
@@ -111,7 +119,7 @@ public class MediumCtTransfer extends FunctionAdd{
 		String templistId =  idInput.getText();
 		String temptransferId = planeIdInput.getText();
 		String tempsdeparture = departureInput.getText();
-		String tempdestination = destinationInput.getText();
+		String tempdestination = destinationInput.getSelectedItem().toString();
 		String tempcontainnumber = rowInput.getText();
 		String tempguardname = superCarGoInput.getText();
 		double tempamount = Double.valueOf(costInput.getText());
@@ -199,8 +207,10 @@ public class MediumCtTransfer extends FunctionAdd{
 			superCarGoInput.setBounds(390, 33, 120,30 );
 			rowInput.setBounds(390,66 , 120, 30);
 			departureInput.setBounds(650, 0, 120, 30);
-			destinationInput.setBounds(650, 33, 120, 30);
+			destinationInput.setBounds(650, 33, 80, 30);
 			costInput.setBounds(650, 66, 120, 30);
+			
+			initComboBox();
 			
 			add(mediumCenterIdInput);
 			add(dateInput);
@@ -211,6 +221,14 @@ public class MediumCtTransfer extends FunctionAdd{
 			add(departureInput);
 			add(destinationInput);
 			add(costInput);
+		}
+		
+		private void initComboBox() {
+			ArrayList<String> getCity = city.getCity();
+			for(int i=0;i<getCity.size();i++){
+				System.out.println(getCity.get(i));
+				destinationInput.addItem(getCity.get(i));
+			}
 		}
 	}
 	@Override

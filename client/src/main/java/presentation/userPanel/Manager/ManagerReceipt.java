@@ -132,10 +132,10 @@ public class ManagerReceipt extends FunctionSearch{
 				}
 				else if(state==UpdateState.CONNECTERROR){
 					showError(ErrorState.CONNECTERROR);
-				}
-				else{
+				}else{
 					nav.changeTask(1);
 				}
+				
 			}
 
 			@Override

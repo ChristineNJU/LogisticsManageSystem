@@ -1,6 +1,5 @@
 package presentation.userPanel.Medium;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,8 +9,8 @@ import javax.swing.JLabel;
 
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
+import presentation.components.FlatComboBox;
 import presentation.components.LabelHeader;
-import presentation.components.TextField;
 import presentation.components.TextFieldHeader;
 import presentation.factory.TableFactory;
 import presentation.factory.TableModelFactory;
@@ -20,15 +19,13 @@ import presentation.main.FunctionAdd;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
-
 import State.AddState;
 import State.ErrorState;
-
-import presentation.userPanel.Manager.ManagerInstitutionMgt;
-
 import VO.EntruckingVO;
 import VO.VO;
 import businesslogic.Impl.MediumCenter.MediumCenterController;
+import businesslogic.Impl.Courier.CourierController;
+import businesslogic.Service.Courier.CourierService;
 import businesslogic.SystemLog.SystemLog;
 
 public class MediumCtEntrucking extends FunctionAdd{
@@ -38,17 +35,26 @@ public class MediumCtEntrucking extends FunctionAdd{
 	MediumCenterController service = new MediumCenterController();
 	ArrayList<EntruckingVO> needEntrucking;
 	
+//<<<<<<< HEAD
+//=======
+	CourierService city = new CourierController();
+	
+//	String[] tableH = {"快递单号","   "};
+//	boolean[] isCellEditable = {false};
+//	
+//>>>>>>> master2
 	public TextFieldHeader idInput  = new TextFieldHeader();
 	public TextFieldHeader carIdInput = new TextFieldHeader();
 	public TextFieldHeader superCarGoInput = new TextFieldHeader();
 	public TextFieldHeader guardInput = new TextFieldHeader();
-	public TextFieldHeader destinationInput = new TextFieldHeader();
+	public FlatComboBox destinationInput = new FlatComboBox();
 	public TextFieldHeader costInput = new TextFieldHeader();
 	
 	NavigationMediumCenter nav;
 	
 	public MediumCtEntrucking(NavigationMediumCenter navigationMediumCenter){
 		super.buttonNew = new ButtonNew("新增装运快递");
+		buttonNew.setVisible(false);
 		super.confirm = new ButtonConfirm("提交装运单");
 		
 		nav = navigationMediumCenter;
@@ -91,7 +97,7 @@ public class MediumCtEntrucking extends FunctionAdd{
 			tempbarCodeList.add(vector.get(0));
 		}
 		Date tempdate = new Date();
-		String tempdestination = destinationInput.getText();
+		String tempdestination = destinationInput.getSelectedItem().toString();
 		String tempcarnumber = carIdInput.getText();
 		String tempname = guardInput.getText();
 		String tempsupercargo = superCarGoInput.getText();
@@ -183,8 +189,10 @@ public class MediumCtEntrucking extends FunctionAdd{
 			carIdInput.setBounds(390,0 , 120, 30);
 			superCarGoInput.setBounds(390, 33, 120,30 );
 			guardInput.setBounds(390,66 , 120, 30);
-			destinationInput.setBounds(650, 0, 120, 30);
+			destinationInput.setBounds(650, 0, 80, 30);
 			costInput.setBounds(650, 33, 120, 30);
+			
+			initComboBox();
 			
 			add(mediumCenterIdInput);
 			add(dateInput);
@@ -194,10 +202,14 @@ public class MediumCtEntrucking extends FunctionAdd{
 			add(guardInput);
 			add(destinationInput);
 			add(costInput);
-			
-			
-			
-			
+		}
+		
+		private void initComboBox() {
+			ArrayList<String> getCity = city.getCity();
+			for(int i=0;i<getCity.size();i++){
+				System.out.println(getCity.get(i));
+				destinationInput.addItem(getCity.get(i));
+			}
 		}
 	}
 	@Override
