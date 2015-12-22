@@ -23,8 +23,8 @@ public class TableModelFactory {
 	}
 	
 	public static TableModelAddOnly getArrivalModel(Vector<Vector<String>> tableV){
-		String[] tableH={"快递单号","出发地","快递状态","到达单编号","  "};
-		boolean[] isCellEditable = {false,false,false,false,false};
+		String[] tableH={"快递单号","出发地","快递状态","  "};
+		boolean[] isCellEditable = {false,false,false,false};
 		TableModelAddOnly model = new TableModelAddOnly(tableV,tableH,isCellEditable);
 		return model;
 	}

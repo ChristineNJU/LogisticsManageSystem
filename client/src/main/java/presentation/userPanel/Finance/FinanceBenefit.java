@@ -152,7 +152,12 @@ public class FinanceBenefit extends FinanceIncome{
 	public double getTotalCost(){
 		double total = 0;
 		for(int i = 0; i < model2.getRowCount();i++){
-			total += Double.valueOf((String)model.getValueAt(i, 1));
+			//TODO
+			//TODO
+			//TODO
+			//TODO
+			//TODO
+			total += Double.valueOf((String)model2.getValueAt(i, 1));
 		}
 		return total;
 	}
@@ -161,7 +166,7 @@ public class FinanceBenefit extends FinanceIncome{
 		double income = super.getTotalIncome();
 		double cost = getTotalCost();
 		double benefit = income - cost;
-		return "总收入："+benefit+"    总支出:"+cost+"     总收入:"+income;
+		return "总利润："+benefit+"    总支出:"+cost+"     总收入:"+income;
 	}
 	
 	private class FooterNew extends JLabel{
