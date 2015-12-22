@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
+import presentation.components.FlatComboBox;
 import presentation.components.LabelHeader;
 import presentation.components.TextFieldHeader;
 import presentation.frame.MainFrame;
@@ -25,8 +26,10 @@ import VO.EntruckingVO;
 import VO.GatheringVO;
 import VO.VO;
 import businesslogic.Impl.Businesslobby.BusinessLobbyController;
+import businesslogic.Impl.Courier.CourierController;
 import businesslogic.Impl.MediumCenter.MediumCenterController;
 import businesslogic.Service.BusinessLobby.BsLbService;
+import businesslogic.Service.Courier.CourierService;
 import businesslogic.SystemLog.SystemLog;
 
 public class BusinessLbEntrucking extends FunctionAdd{
@@ -36,6 +39,7 @@ public class BusinessLbEntrucking extends FunctionAdd{
 	BusinessLobbyController service = new BusinessLobbyController();
 	ArrayList<EntruckingVO> needEntrucking;
 	
+	CourierService city = new CourierController();
 	
 	String[] tableH = {"快递单号","   "};
 	boolean[] isCellEditable = {false};
@@ -44,7 +48,7 @@ public class BusinessLbEntrucking extends FunctionAdd{
 	public TextFieldHeader carIdInput = new TextFieldHeader();
 	public TextFieldHeader superCarGoInput = new TextFieldHeader();
 	public TextFieldHeader guardInput = new TextFieldHeader();
-	public TextFieldHeader destinationInput = new TextFieldHeader();
+	public FlatComboBox destinationInput = new FlatComboBox();
 	public TextFieldHeader costInput = new TextFieldHeader();
 	
 	public BusinessLbEntrucking(){
@@ -92,7 +96,7 @@ public class BusinessLbEntrucking extends FunctionAdd{
 			tempbarCodeList.add(vector.get(0));
 		}
 		Date tempdate = new Date();
-		String tempdestination = destinationInput.getText();
+		String tempdestination = destinationInput.getSelectedItem().toString();
 		String tempcarnumber = carIdInput.getText();
 		String tempname = guardInput.getText();
 		String tempsupercargo = superCarGoInput.getText();
@@ -183,8 +187,10 @@ public class BusinessLbEntrucking extends FunctionAdd{
 			carIdInput.setBounds(390,0 , 120, 30);
 			superCarGoInput.setBounds(390, 33, 120,30 );
 			guardInput.setBounds(390,66 , 120, 30);
-			destinationInput.setBounds(650, 0, 120, 30);
+			destinationInput.setBounds(650, 0, 80, 30);
 			costInput.setBounds(650, 33, 120, 30);
+			
+			initComboBox();
 			
 			add(mediumCenterIdInput);
 			add(dateInput);
@@ -194,10 +200,14 @@ public class BusinessLbEntrucking extends FunctionAdd{
 			add(guardInput);
 			add(destinationInput);
 			add(costInput);
-			
-			
-			
-			
+		}
+		
+		private void initComboBox() {
+			ArrayList<String> getCity = city.getCity();
+			for(int i=0;i<getCity.size();i++){
+				System.out.println(getCity.get(i));
+				destinationInput.addItem(getCity.get(i));
+			}
 		}
 	}
 	@Override

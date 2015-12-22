@@ -10,12 +10,6 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.table.TableColumnModel;
 
-import State.AddState;
-import State.CostType;
-import State.ErrorState;
-import VO.CostVO;
-import VO.VO;
-import businesslogic.Impl.Finance.FinanceController;
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
 import presentation.components.FlatComboBox;
@@ -25,6 +19,13 @@ import presentation.main.Translater;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
+import State.AddState;
+import State.CostType;
+import State.ErrorState;
+import VO.AccountVO;
+import VO.CostVO;
+import VO.VO;
+import businesslogic.Impl.Finance.FinanceController;
 
 public class FinanceCost extends FunctionAdd{
 	SimpleDateFormat sdfs=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -33,8 +34,9 @@ public class FinanceCost extends FunctionAdd{
 	FinanceController service = new FinanceController();
 	ArrayList<CostVO> costs;
 	
-	String[] tableH = {"付款日期","金额","付款人","付款账目","条目","备注",""};
-	boolean[] isCellEditable = {false,false,false,false,false,false};
+//	String[] tableH = {"付款日期","金额","付款人","付款账目","条目","备注",""};
+	String[] tableH = {"金额","付款人","付款账目","条目","备注",""};
+	boolean[] isCellEditable = {false,false,false,false,false};
 	
 	public FinanceCost(){
 		super.buttonNew = new ButtonNew("新增支出项");
@@ -74,8 +76,17 @@ public class FinanceCost extends FunctionAdd{
 		TableColumnModel tcm = table.getColumnModel(); 
 	    String[] gender = {"租金","运费","薪水","奖金"}; 
 	    JComboBox  genderC = new FlatComboBox(gender);  
-	    tcm.getColumn(4).setCellEditor(new DefaultCellEditor(genderC)); 
-		
+	    
+	    JComboBox accountInfo = new FlatComboBox();
+	    
+	    ArrayList<AccountVO> acc = service.searchAccount("%%");
+	    
+	    for(int i=0;i<acc.size();i++){
+	    	accountInfo.addItem(acc.get(i).getName());
+	    }
+	    
+	    tcm.getColumn(3).setCellEditor(new DefaultCellEditor(genderC)); 
+		tcm.getColumn(2).setCellEditor(new DefaultCellEditor(accountInfo));
 	}
 	
 	
@@ -84,7 +95,7 @@ public class FinanceCost extends FunctionAdd{
 		Vector<Vector<String>> result = new Vector<Vector<String>>();
 		for(CostVO temp:vo){
 			Vector<String> vRow = new Vector<String>();
-			vRow.add(sdfd.format(temp.getDate()));
+//			vRow.add(sdfd.format(temp.getDate()));
 			vRow.add(String.valueOf(temp.getAmount()));
 			vRow.add(temp.getPayer());
 			vRow.add(temp.getPayerAccount());

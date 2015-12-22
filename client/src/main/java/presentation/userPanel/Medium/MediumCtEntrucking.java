@@ -177,7 +177,7 @@ public class MediumCtEntrucking extends FunctionAdd{
 			carIdInput.setBounds(390,0 , 120, 30);
 			superCarGoInput.setBounds(390, 33, 120,30 );
 			guardInput.setBounds(390,66 , 120, 30);
-			destinationInput.setBounds(650, 0, 100, 30);
+			destinationInput.setBounds(650, 0, 80, 30);
 			costInput.setBounds(650, 33, 120, 30);
 			
 			initComboBox();
