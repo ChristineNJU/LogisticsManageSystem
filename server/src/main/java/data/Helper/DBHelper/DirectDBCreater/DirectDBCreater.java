@@ -39,7 +39,7 @@ public class DirectDBCreater {
 //				deleteTable(URLHelper.getLogisticsURL());
 				
 //				createTable_Const();
-				insert_Const();
+//				insert_Const();
 //				deleteTable(URLHelper.getConstURL());
 				
 //				createTable_Institution();
@@ -59,7 +59,7 @@ public class DirectDBCreater {
 //				deleteTable(URLHelper.getSalaryURL());
 				
 //				createTable_Distance();
-				insert_Distance();
+//				insert_Distance();
 //				deleteTable(URLHelper.getDistanceURL());
 				
 //				createTable_Driver("025000");
