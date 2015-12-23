@@ -34,14 +34,15 @@ public class BusinessLbGathering extends FunctionAdd{
 	ArrayList<GatheringVO> Gathering;
 	
 	
-	
+	NavigationBusinessLobby nav;
 	
 //	public TextFieldHeader gatheringIdInput = new TextFieldHeader();
 	
-	public BusinessLbGathering(){
+	public BusinessLbGathering(NavigationBusinessLobby navigationBusinessLobby){
 		super.buttonNew = new ButtonNew("新增收款单");
 		super.confirm = new ButtonConfirm("提交所有收款单");
 		initUI("收款结算");
+		nav=navigationBusinessLobby;
 	}
 	
 	@Override
@@ -108,8 +109,11 @@ public class BusinessLbGathering extends FunctionAdd{
 			if(state==AddState.CONNECTERROR){
 				showError(ErrorState.CONNECTERROR);
 			}
-			else if(state==AddState.FAIL){
+			else{ if(state==AddState.FAIL){
 				showError(ErrorState.ADDERROR);
+			}else{
+				nav.changeTask(6);
+			}
 			}
 			
 	}		
@@ -165,6 +169,7 @@ public class BusinessLbGathering extends FunctionAdd{
 
 	@Override
 	public void performCancel() {
-		MainFrame.changeContentPanel(new BusinessLbGathering().getPanel());		
+//		MainFrame.changeContentPanel(new BusinessLbGathering().getPanel());	
+		nav.changeTask(6);
 	}
 }

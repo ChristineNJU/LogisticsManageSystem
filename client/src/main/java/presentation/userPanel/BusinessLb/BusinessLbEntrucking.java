@@ -31,6 +31,7 @@ public class BusinessLbEntrucking extends FunctionAdd{
 	BusinessLobbyController service = new BusinessLobbyController();
 	ArrayList<EntruckingVO> needEntrucking;
 	
+	NavigationBusinessLobby nav;
 	
 	String[] tableH = {"快递单号","   "};
 	boolean[] isCellEditable = {false};
@@ -42,10 +43,11 @@ public class BusinessLbEntrucking extends FunctionAdd{
 	public TextFieldHeader destinationInput = new TextFieldHeader();
 	public TextFieldHeader costInput = new TextFieldHeader();
 	
-	public BusinessLbEntrucking(){
+	public BusinessLbEntrucking(NavigationBusinessLobby navigationBusinessLobby){
 		super.buttonNew = new ButtonNew("新增装运单");
 		super.confirm = new ButtonConfirm("提交所有装运单");
 		initUI("装运发送");
+		nav=navigationBusinessLobby;
 	}
 	
 	@Override
@@ -100,10 +102,14 @@ public class BusinessLbEntrucking extends FunctionAdd{
 		if(state==AddState.CONNECTERROR){
 			showError(ErrorState.CONNECTERROR);
 		}
-		else if(state==AddState.FAIL){
+		else {if(state==AddState.FAIL){
 			showError(ErrorState.ADDERROR);
+		}else{
+			nav.changeTask(2);
 		}
+			
 		
+		}
 	}
 
 	@Override
@@ -197,6 +203,7 @@ public class BusinessLbEntrucking extends FunctionAdd{
 	}
 	@Override
 	public void performCancel() {
-		MainFrame.changeContentPanel(new BusinessLbEntrucking().getPanel());		
+//		MainFrame.changeContentPanel(new BusinessLbEntrucking().getPanel());		
+		nav.changeTask(2);
 	}
 }
