@@ -47,12 +47,12 @@ public class MockFinanceController extends FinanceController{
 		MockCost costC=new MockCost();
 		return costC.searchCost(time_start, time_end);
 	}
-	@Override
-	public BenefitVO searchBenefit(String time_end) {
-		// TODO Auto-generated method stub
-		MockBenefit benefitC=new MockBenefit();
-		return benefitC.searchBenefit(time_end);
-	}
+//	@Override
+//	public BenefitVO searchBenefit(String time_end) {
+//		// TODO Auto-generated method stub
+//		MockBenefit benefitC=new MockBenefit();
+//		return benefitC.searchBenefit(time_end);
+//	}
 	@Override
 	public ArrayList<AccountVO> searchAccount(String name) {
 		// TODO Auto-generated method stub

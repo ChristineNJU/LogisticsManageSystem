@@ -2,6 +2,7 @@ package presentation.userPanel.Medium;
 
 import presentation.components.ButtonNav;
 import presentation.frame.MainFrame;
+import presentation.main.Home;
 import presentation.main.Navigation;
 import State.ErrorState;
 import VO.UserVO;
@@ -13,6 +14,7 @@ public class NavigationMediumCenter extends Navigation{
 	private ButtonNav entrucking = new ButtonNav("mediumCenter","entrucking");
 	private ButtonNav transfer = new ButtonNav("mediumCenter","transfer");
 	
+	public Home homepage;
 	private MediumCtArrival mediumCtArrival;
 	private MediumCtEntrucking mediumCtEntrucking;
 	private MediumCtTransfer mediumCtTransfer;
@@ -21,6 +23,7 @@ public class NavigationMediumCenter extends Navigation{
 		super(user);
 		initNavButtonArray();
 		addNavButtons();
+		changeToHome();
 	}
 
 	protected void initNavButtonArray(){
@@ -44,7 +47,9 @@ public class NavigationMediumCenter extends Navigation{
 	}
 	
 	private void changeToHome(){
-		
+		homepage = new Home(user);
+		MainFrame.changeContentPanel(homepage);
+		MainFrame.getMainPanel().repaint();
 	}
 	private void changeToArrival(){
 		mediumCtArrival = new MediumCtArrival(this);

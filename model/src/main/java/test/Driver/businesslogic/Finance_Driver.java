@@ -77,7 +77,7 @@ public class Finance_Driver {
 		System.out.println(finance.addBenefit(benefit));
 		System.out.println();
 		
-		benefit=finance.searchBenefit(null);
+//		benefit=finance.searchBenefit(null);
 		System.out.println(benefit.getBenefit());
 		System.out.println(benefit.getCost());
 		System.out.println(benefit.getIncome());

@@ -2,6 +2,7 @@ package presentation.userPanel.BusinessLb;
 
 import presentation.components.ButtonNav;
 import presentation.frame.MainFrame;
+import presentation.main.Home;
 import presentation.main.Navigation;
 import State.ErrorState;
 import VO.UserVO;
@@ -16,7 +17,7 @@ public class NavigationBusinessLobby extends Navigation{
 	private ButtonNav carMgt = new ButtonNav("businesslobby","carMgt");
 	private ButtonNav gathering = new ButtonNav("businesslobby","gathering");
 	
-	
+	public Home homepage;
 	private BusinessLbArrival businessArrival;
 	private BusinessLbCarMgt businessLbCarMgt;
 	private BusinessLbDelivery businessLbDelivery;
@@ -29,7 +30,8 @@ public class NavigationBusinessLobby extends Navigation{
 		initNavButtonArray();
 		addNavButtons();
 		//Test
-		changeTask(5);
+//		changeTask(5);
+		changeToHome();
 	}
 
 	protected void initNavButtonArray(){
@@ -62,7 +64,9 @@ public class NavigationBusinessLobby extends Navigation{
 	}
 
 	private void changeToHome(){
-		
+		homepage = new Home(user);
+		MainFrame.changeContentPanel(homepage);
+		MainFrame.getMainPanel().repaint();
 	}
 	private void changeToArrival(){
 		businessArrival = new BusinessLbArrival(this);

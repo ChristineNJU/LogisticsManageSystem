@@ -4,6 +4,7 @@ import State.ErrorState;
 import VO.UserVO;
 import presentation.components.ButtonNav;
 import presentation.frame.MainFrame;
+import presentation.main.Home;
 import presentation.main.Navigation;
 
 public class NavigationRepository extends Navigation{
@@ -15,6 +16,7 @@ public class NavigationRepository extends Navigation{
 	private ButtonNav stockTaking = new ButtonNav("repository","stockTaking");
 	private ButtonNav see = new ButtonNav("repository","see");
 	
+	public Home homepage;
 	public RepositoryStorage repositoryStorage;
 	public RepositoryBalance repositoryBalance;
 	public RepositoryRemoval repositoryRemoval;
@@ -25,6 +27,7 @@ public class NavigationRepository extends Navigation{
 		super(user);
 		initNavButtonArray();
 		addNavButtons();
+		changeToHome();
 	}
 
 	protected void initNavButtonArray(){
@@ -53,7 +56,9 @@ public class NavigationRepository extends Navigation{
 		}
 	}
 	private void changeToHome(){
-		
+		homepage = new Home(user);
+		MainFrame.changeContentPanel(homepage);
+		MainFrame.getMainPanel().repaint();
 	}
 	private void changeToStorage(){
 		repositoryStorage = new RepositoryStorage(this);
