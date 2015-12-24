@@ -70,7 +70,7 @@ public interface FinanceService {
 	 * @param time_end 截止日期
 	 * @return BenefitVO
 	 */
-	public BenefitVO searchBenefit(String time_end);
+	public ArrayList<BenefitVO> searchBenefit(String time_end);
 	
 	/**
 	 * 查询出款单.

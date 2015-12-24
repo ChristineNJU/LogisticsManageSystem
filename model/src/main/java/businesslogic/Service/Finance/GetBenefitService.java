@@ -1,5 +1,7 @@
 package businesslogic.Service.Finance;
 
+import java.util.ArrayList;
+
 import VO.BenefitVO;
 
 // TODO: Auto-generated Javadoc
@@ -14,5 +16,5 @@ public interface GetBenefitService {
 	 * @param time_end the time_end
 	 * @return the benefit vo
 	 */
-	public BenefitVO searchBenefit(String time_end);
+	public ArrayList<BenefitVO> searchBenefit(String time_end);
 }

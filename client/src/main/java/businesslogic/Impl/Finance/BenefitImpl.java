@@ -22,19 +22,22 @@ public class BenefitImpl implements GetBenefitService{
 	 * @see businesslogic.Service.Finance.GetBenefitService#searchBenefit(java.lang.String)
 	 */
 	@Override
-	public BenefitVO searchBenefit(String time_end) {
+	public ArrayList<BenefitVO> searchBenefit(String time_end) {
 		// TODO Auto-generated method stub
-		BenefitVO benefit=null;
+		ArrayList<BenefitVO> benefit=new ArrayList<BenefitVO>();
 		try{
 			SearchBenefitService benefitSearch=(SearchBenefitService) Naming.lookup(RMIHelper.SEARCH_BENEFIT_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
 			requirement.add("date<='"+time_end+"'");
 			ArrayList<BenefitPO> benefitList=new ArrayList<BenefitPO>();
 			benefitList=benefitSearch.searchBenefit(requirement);
-			benefit=new BenefitVO(benefitList.get(benefitList.size()-1));
+			for(int i=0;i<benefitList.size();i++){
+				benefit.add(new BenefitVO(benefitList.get(i)));
+			}
 		} catch(Exception ex){
 			System.out.println(ex.getMessage());
 			ex.printStackTrace();
+			return null;
 		}
 		return benefit;
 	}
