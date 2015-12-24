@@ -64,7 +64,7 @@ public class ManageShowReceipt implements ShowReceiptService{
 			requirement.add("isApproved='"+false+"'");
 			
 			ArrayList<String> requirementMediumCenter=new ArrayList<String>();
-			requirementMediumCenter.add("institution_type='Mediuncenter'");
+			requirementMediumCenter.add("institution_type='MediumCenter'");
 			
 			SearchInstitutionInfoService searchInstitution=(SearchInstitutionInfoService) Naming.lookup(RMIHelper.SEARCH_INSTITUTION_IMPL);
 			ArrayList<InstitutionPO> searchResultMediumCenter=searchInstitution.searchInstitutionInfo(requirementMediumCenter);
@@ -224,7 +224,7 @@ public class ManageShowReceipt implements ShowReceiptService{
 			requirementBusinesslobby.add("institution_type='BusinessLobby'");
 			
 			ArrayList<String> requirementMediumCenter=new ArrayList<String>();
-			requirementMediumCenter.add("institution_type='Mediuncenter'");		
+			requirementMediumCenter.add("institution_type='MediumCenter'");		
 		
 			SearchInstitutionInfoService searchInstitution=(SearchInstitutionInfoService) Naming.lookup(RMIHelper.SEARCH_INSTITUTION_IMPL);
 			ArrayList<InstitutionPO> searchResultBusinesslobby=searchInstitution.searchInstitutionInfo(requirementBusinesslobby);
@@ -390,12 +390,14 @@ public class ManageShowReceipt implements ShowReceiptService{
 			requirementBusinesslobby.add("institution_type='BusinessLobby'");
 			
 			ArrayList<String> requirementMediumCenter=new ArrayList<String>();
-			requirementMediumCenter.add("institution_type='Mediuncenter'");
+			requirementMediumCenter.add("institution_type='MediumCenter'");
 			
 			SearchInstitutionInfoService searchInstitution=(SearchInstitutionInfoService) Naming.lookup(RMIHelper.SEARCH_INSTITUTION_IMPL);
 			ArrayList<InstitutionPO> searchResultBusinesslobby=searchInstitution.searchInstitutionInfo(requirementBusinesslobby);
 			ArrayList<InstitutionPO> searchResultMediumCenter=searchInstitution.searchInstitutionInfo(requirementMediumCenter);
 			
+			System.out.println(searchResultBusinesslobby.size());
+			System.out.println(searchResultMediumCenter.size());
 			for(int i=0;i<searchResultBusinesslobby.size();i++){
 				ArrayList<ArrivalPO> arrivalResult=searchArrival.searchArrival(URLHelper.getArrivalURL(searchResultBusinesslobby.get(i).getInstitutionNumber()), requirement);
 				if(!arrivalResult.isEmpty()){
@@ -420,7 +422,7 @@ public class ManageShowReceipt implements ShowReceiptService{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		System.out.println("!!!!!!!!"+result.size());
 		return result;
 	}
 

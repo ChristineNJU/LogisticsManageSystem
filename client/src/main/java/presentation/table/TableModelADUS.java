@@ -20,7 +20,8 @@ public class TableModelADUS extends AbstractTableModel {
 	private int initialRowCount;
 	private int initialColumnCount;
 	private ModelListener listener;
-
+	private Vector<Vector<Boolean>> isLeagel;
+	
 	public TableModelADUS(Vector<Vector<String>> value, String[] head,boolean[] isCellEditable) {
 		super();
 		this.tableValues = value;
@@ -45,10 +46,11 @@ public class TableModelADUS extends AbstractTableModel {
 			for(int j = 0;j < initialColumnCount;j++)
 				isCellUpdate[i][j] = false;
 		}
+		isLeagel = new Vector<Vector<Boolean>>();
 		
 		listener = new ModelListener();
 		this.addTableModelListener(listener);
-		System.out.println("tableValues.size:"+tableValues.size());
+//		System.out.println("tableValues.size:"+tableValues.size());
 	}
 
 	public void delete(int i){
@@ -66,6 +68,40 @@ public class TableModelADUS extends AbstractTableModel {
 		}catch(ArrayIndexOutOfBoundsException e){
 			return false;
 		}
+	}
+	
+	public Boolean isLeagel(int row,int column){
+		try{
+			if(row < initialRowCount || !isCellEditable(row,column))
+				return true;
+			else
+				return isLeagel.get(row-initialRowCount).get(column);
+		}catch(ArrayIndexOutOfBoundsException e){
+			return true;
+		}
+	}
+	
+	public void setLeagel(int row,int column,Boolean isLeagel){
+//		System.out.println(row+" "+column);
+//		System.out.println(initialRowCount);
+//		System.out.println(row-initialRowCount);
+//		System.out.println(this.isLeagel.size());
+		try{
+			this.isLeagel.get(row-initialRowCount).setElementAt(isLeagel,column);
+		}catch(ArrayIndexOutOfBoundsException e){
+			return;
+		}
+	}
+	
+	public boolean allLeagel(){
+		for(int i = 0;i < isLeagel.size();i++){
+			for(int j = 0;j < initialColumnCount-1;j++){
+				if(!isLeagel.get(i).get(j)){
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 	
 	public boolean isUpdate(int row,int column){
@@ -102,26 +138,26 @@ public class TableModelADUS extends AbstractTableModel {
 	
 	public void addEmptyRow(){
 		Vector<String> element = new Vector<String>();
-//		int size = 0;
-//		try {
-//			size = tableValues.get(0).size();
-//		}catch(Exception e){
-//			size = 0;
-//		}
-		for(int i = 0;i < initialColumnCount;i++){
+		Vector<Boolean> tempIsLeagel = new Vector<Boolean>();
+		for(int i = 0;i < initialColumnCount-1;i++){
 			element.add("");
+//			if(i != initialColumnCount-1)
+				tempIsLeagel.add(new Boolean(false));
+//			else
+//				tempIsLeagel.add(new Boolean(true));
 		}
+		isLeagel.add(tempIsLeagel);
 		tableValues.add(element);
 		fireTableRowsInserted(tableValues.size()-1,tableValues.size()-1);
 	}
 
 	@Override
-	public Object getValueAt(int rowIndex, int columnIndex) {
+	public String getValueAt(int rowIndex, int columnIndex) {
 		try {
 //			System.out.println(tableValues.get(rowIndex).get(columnIndex));
 			return tableValues.get(rowIndex).get(columnIndex);
 		} catch (ArrayIndexOutOfBoundsException e) {
-			return null;
+			return "";
 		}
 	}
 
@@ -145,7 +181,7 @@ public class TableModelADUS extends AbstractTableModel {
 //		}
 		if(column < getColumnCount()){
 			tableValues.get(row).setElementAt((String) value,column);
-			System.out.println("set value at   "+row+"   "+column);
+//			System.out.println("set value at   "+row+"   "+column);
 			fireTableCellUpdated(row, column);
 		}else
 			return;

@@ -13,4 +13,5 @@ public class ColorPallet {
 	public static Color Yellow = new Color(255,247,153);
 	public static Color Green = new Color(204,225,152);
 	public static Color Orange = new Color(254,232,190);
+	public static Color error = new Color(235,97,0);
 }

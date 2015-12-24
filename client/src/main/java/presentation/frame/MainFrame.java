@@ -126,6 +126,7 @@ public class MainFrame {
 	 * 切换工作区域的panel
 	 * */
 	public static void changeContentPanel(JPanel p){
+		System.out.println("in frame change panel function");
 		panel.remove(contentPanel);
 		contentPanel = p;
 		panel.add(p);

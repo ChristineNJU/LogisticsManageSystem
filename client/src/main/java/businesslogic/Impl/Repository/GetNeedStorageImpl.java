@@ -37,7 +37,8 @@ public class GetNeedStorageImpl implements GetNeedStorageService {
 			
 			
 			for(int i=0;i<searchResult.size();i++){
-				storage.add(new StorageVO(searchResult.get(i)));
+				if(!searchResult.get(i).isOut())
+					storage.add(new StorageVO(searchResult.get(i)));
 			}
 			
 		} catch(Exception ex){

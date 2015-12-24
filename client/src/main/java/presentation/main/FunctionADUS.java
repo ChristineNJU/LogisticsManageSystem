@@ -138,7 +138,9 @@ public abstract class FunctionADUS extends Function{
 				newItem();
 			}
 			if(source.equals(confirm)){
-				performConfirm();
+				
+				checkConfirm();
+//				performConfirm();
 			}
 			if(source.equals(search)){
 				showSearchResult(input.getText());

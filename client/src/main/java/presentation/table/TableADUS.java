@@ -1,5 +1,6 @@
 package presentation.table;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 
@@ -41,10 +42,12 @@ public class TableADUS extends JTable {
         	comp.setOpaque(true);
         	comp.setBackground(ColorPallet.Green);
         	if(column == getColumnCount() - 1){
-//        		System.out.println("empty renderer "+row);
         		return (JComponent)super.prepareRenderer(new RendererCancelNew(), row, column);
         	}
-//        	System.out.println("!!!!!Not empty renderer "+row);
+        	if(!model.isLeagel(row, column)){
+        		comp.setBackground(ColorPallet.error);
+        		comp.setForeground(Color.white);
+        	}
         	return comp;
         }
         if(model.isDelete(row)){

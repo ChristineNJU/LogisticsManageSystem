@@ -21,10 +21,6 @@ public class ManagerAccount extends FunctionSearch{
 	FinanceService service = new FinanceController();
 //	ManageService service = new ManageController();
 	ArrayList<AccountVO> accounts;
-//<<<<<<< HEAD
-//=======
-//	String[] tableH={"账户名称","账户余额"};
-//>>>>>>> master2
 	
 	public ManagerAccount(){
 		confirmSearch = new ButtonConfirm("");

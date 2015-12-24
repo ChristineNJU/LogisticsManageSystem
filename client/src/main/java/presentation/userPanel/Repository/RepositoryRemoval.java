@@ -62,7 +62,7 @@ public class RepositoryRemoval extends FunctionAdd{
 		super.buttonNew = new ButtonNew("新增出库项");
 		super.confirm = new ButtonConfirm("提交出库单");
 		
-//		nav = navigationRepository;
+		nav = navigationRepository;
 		
 		total = wareHouse.getWareHouse();
 		initDestinationInput();
@@ -178,8 +178,12 @@ public class RepositoryRemoval extends FunctionAdd{
 		if(state==AddState.CONNECTERROR){
 			showError(ErrorState.CONNECTERROR);
 		}
-		else if(state==AddState.FAIL){
+		else{ if(state==AddState.FAIL){
 			showError(ErrorState.ADDERROR);
+		}else{
+			nav.changeTask(2);
+		}
+			
 		}
 	}
 
@@ -187,6 +191,7 @@ public class RepositoryRemoval extends FunctionAdd{
 	protected VO getVO(Vector<String> vector) {
 		// 将表格的一行转换成vo
 		String tempbarCode = vector.get(0);
+		System.out.println("bar_code="+ vector.get(0));
 		Date tempdate = new Date();
 		String tempdestination = (String)destinationInput.getSelectedItem();
 		TransferType temptransferType = Translater.getTransferType(transferWayInput.getText());
