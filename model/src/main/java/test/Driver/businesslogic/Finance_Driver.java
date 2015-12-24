@@ -77,11 +77,11 @@ public class Finance_Driver {
 		System.out.println(finance.addBenefit(benefit));
 		System.out.println();
 		
-		benefit=finance.searchBenefit(null);
-		System.out.println(benefit.getBenefit());
-		System.out.println(benefit.getCost());
-		System.out.println(benefit.getIncome());
-		System.out.println();
+//		benefit=finance.searchBenefit(null);
+//		System.out.println(benefit.getBenefit());
+//		System.out.println(benefit.getCost());
+//		System.out.println(benefit.getIncome());
+//		System.out.println();
 		
 		ArrayList<AccountVO> account=finance.searchAccount(null);
 		for(int i=0;i<account.size();i++){
