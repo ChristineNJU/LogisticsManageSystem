@@ -8,12 +8,6 @@ import java.util.Vector;
 
 import javax.swing.JLabel;
 
-import State.AddState;
-import State.ErrorState;
-import VO.DeliveryVO;
-import VO.VO;
-import businesslogic.Impl.Businesslobby.BusinessLobbyController;
-import businesslogic.Service.BusinessLobby.BsLbService;
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
 import presentation.factory.TableFactory;
@@ -21,6 +15,12 @@ import presentation.factory.TableModelFactory;
 import presentation.frame.MainFrame;
 import presentation.main.FunctionAdd;
 import presentation.table.ScrollPaneTable;
+import State.AddState;
+import State.ErrorState;
+import VO.DeliveryVO;
+import VO.VO;
+import businesslogic.Impl.Businesslobby.BusinessLobbyController;
+import businesslogic.Service.BusinessLobby.BsLbService;
 
 public class BusinessLbDelivery extends FunctionAdd{
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -28,12 +28,14 @@ public class BusinessLbDelivery extends FunctionAdd{
 	BsLbService service = new BusinessLobbyController();
 	ArrayList<DeliveryVO> needDelivery;
 	
+
+	NavigationBusinessLobby nav;
 	
-	
-	public  BusinessLbDelivery() {
+	public  BusinessLbDelivery(NavigationBusinessLobby navigationBusinessLobby) {
 		super.buttonNew = new ButtonNew("新增派件单");
 		super.confirm = new ButtonConfirm("提交所有派件单");
 		initUI("派件管理");
+		nav=navigationBusinessLobby;
 	}
 	
 	@Override
@@ -85,8 +87,11 @@ public class BusinessLbDelivery extends FunctionAdd{
 			if(state==AddState.CONNECTERROR){
 				showError(ErrorState.CONNECTERROR);
 			}
-			else if(state==AddState.FAIL){
+			else {if(state==AddState.FAIL){
 				showError(ErrorState.ADDERROR);
+			}else{
+				nav.changeTask(3);
+				}
 			}
 		}
 		
@@ -132,6 +137,7 @@ public class BusinessLbDelivery extends FunctionAdd{
 	}
 	@Override
 	public void performCancel() {
-		MainFrame.changeContentPanel(new BusinessLbDelivery().getPanel());
+//		MainFrame.changeContentPanel(new BusinessLbDelivery().getPanel());
+		nav.changeTask(3);
 	}
 }

@@ -1,10 +1,10 @@
 package presentation.userPanel.BusinessLb;
 
-import State.ErrorState;
-import VO.UserVO;
 import presentation.components.ButtonNav;
 import presentation.frame.MainFrame;
 import presentation.main.Navigation;
+import State.ErrorState;
+import VO.UserVO;
 
 public class NavigationBusinessLobby extends Navigation{
 
@@ -73,7 +73,7 @@ public class NavigationBusinessLobby extends Navigation{
 		}
 	}
 	private void changeToEntrucking(){
-		businessLbEntrucking = new BusinessLbEntrucking();
+		businessLbEntrucking = new BusinessLbEntrucking(this);
 		MainFrame.changeContentPanel(businessLbEntrucking.getPanel());
 		if(businessLbEntrucking.isConnectError()){
 			System.out.println("manager initiate null");
@@ -81,7 +81,7 @@ public class NavigationBusinessLobby extends Navigation{
 		}
 	}
 	private void changeToDelivery(){
-		businessLbDelivery = new BusinessLbDelivery();
+		businessLbDelivery = new BusinessLbDelivery(this);
 		MainFrame.changeContentPanel(businessLbDelivery.getPanel());
 		if(businessLbDelivery.isConnectError()){
 			System.out.println("manager initiate null");
@@ -106,7 +106,7 @@ public class NavigationBusinessLobby extends Navigation{
 			}
 	}
 	private void changeToGathering(){
-		businessLbGathering = new BusinessLbGathering();
+		businessLbGathering = new BusinessLbGathering(this);
 		MainFrame.changeContentPanel(businessLbGathering.getPanel());
 		 if(businessLbGathering.isConnectError()){
 				System.out.println("manager initiate null");

@@ -103,7 +103,7 @@ public class FinanceController implements FinanceService{
 	 * @see businesslogic.Service.Finance.FinanceService#searchBenefit(java.lang.String)
 	 */
 	@Override
-	public BenefitVO searchBenefit(String time_end) {
+	public ArrayList<BenefitVO> searchBenefit(String time_end) {
 		// TODO Auto-generated method stub
 		BenefitImpl benefitC=new BenefitImpl();
 		return benefitC.searchBenefit(time_end);
