@@ -9,6 +9,6 @@ public class TestGetCity extends TestCase {
 		
 		CourierController courier = new CourierController();
 		
-		assertEquals(null, courier.getCity());
+		System.out.println(courier.getCity());
 	}
 }

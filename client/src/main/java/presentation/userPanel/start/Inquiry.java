@@ -149,6 +149,9 @@ public class Inquiry{
 		}
 		history = info.getHistory();		
 		
+		inquiryPanel.remove(scrollPane);
+		scrollPanePanel = new HistoryPanel();
+		scrollPane = new FlatScrollPane(scrollPanePanel);
 		scrollPane.setBounds(300, 280, 441, 400);
 		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);

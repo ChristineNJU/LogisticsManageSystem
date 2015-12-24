@@ -119,7 +119,7 @@ public class AccountImpl implements AccountService{
 			DeleteService accountDelete=(DeleteService) Naming.lookup(RMIHelper.DELETE_IMPL);
 			SearchAccountService accountSearch=(SearchAccountService) Naming.lookup(RMIHelper.SEARCH_ACCOUNT_IMPL);
 			ArrayList<String> requirement=new ArrayList<String>();
-			requirement.add("account_name='"+account.getName()+"'");
+			requirement.add("account_name='"+account.getName()+"' and amount="+account.getMoney());
 			ArrayList<AccountPO> accountList=accountSearch.searchAccount(requirement);
 			if(accountList.isEmpty()){
 				return DeleteState.FAIL;

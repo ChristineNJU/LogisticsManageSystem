@@ -1,5 +1,6 @@
 package presentation.userPanel.Repository;
 
+import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -23,8 +24,8 @@ import presentation.table.TableSearch;
 
 public class RepositoryCheck extends FunctionSearch{
 
-	ArrayList<StorageVO> storages;
-	ArrayList<RemovalVO> removals;
+	ArrayList<StorageVO> storages = new ArrayList<StorageVO>();
+	ArrayList<RemovalVO> removals = new ArrayList<RemovalVO>();
 	
 	public DateChooser dateBeginChooser;
 	public DateChooser dateEndChooser;
@@ -40,14 +41,15 @@ public class RepositoryCheck extends FunctionSearch{
 	
 	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 	
-	private LabelHeader errorTime = new LabelHeader("开始时间需在结束时间之前");
+	private LabelHeader errorTime = new LabelHeader("开始时间需在结束时间之前!!");
 	
 	public RepositoryCheck(){
 		confirmSearch = new ButtonConfirm("查看出库入库记录");
 		initUI("查看出库入库记录");
 		
 		panel.add(pbp.getPanel());
-		errorTime.setBounds(500,0,200,40);
+		errorTime.setBounds(120,90,300,40);
+		errorTime.setForeground(Color.red);
 	}
 	
 	@Override
@@ -87,6 +89,7 @@ public class RepositoryCheck extends FunctionSearch{
 	@Override
 	protected void showSearch() {
 		panel.remove(errorTime);
+		panel.repaint();
 		String timeBegin = dateBeginChooser.getTime();
 		String timeEnd = dateEndChooser.getTime();
 		if(timeBegin.compareTo(timeEnd) >= 0){
@@ -118,9 +121,8 @@ public class RepositoryCheck extends FunctionSearch{
 	}
 	
 	private void showErrorTime(){
-//		LabelHeader errorTime = new LabelHeader("开始时间需在结束时间之前");
-//		errorTime.setBounds(500,0,200,40);
 		panel.add(errorTime);
+		panel.repaint();
 	}
 	
 	protected Vector<Vector<String>> getVector(ArrayList<StorageVO> storages) {
@@ -129,10 +131,10 @@ public class RepositoryCheck extends FunctionSearch{
         	Vector<String> vRow = new Vector<String>();
         	
         	vRow.add(format.format(temp.getStorageDate()));
-        	vRow.add(temp.getAreaCode()+"");
-        	vRow.add(temp.getShelf()+"");
-        	vRow.add(temp.getRow()+"");
-        	vRow.add(temp.getPosition()+"");
+        	vRow.add(trans.getChineseForStorageArea(temp.getAreaCode()));
+        	vRow.add("架号"+temp.getShelf()+"");
+        	vRow.add("排号"+temp.getRow()+"");
+        	vRow.add("位号"+temp.getPosition()+"");
         	vRow.add(temp.getBarCode());
         	vRow.add(temp.getDestination());
         	
@@ -149,7 +151,7 @@ public class RepositoryCheck extends FunctionSearch{
         	vRow.add(format.format(temp.getOutDate()));
         	vRow.add(temp.getBarCode());
         	vRow.add(temp.getDestination());
-        	vRow.add(temp.getTransferWay()+"");
+        	vRow.add(trans.getChineseTransferType(temp.getTransferWay()));
         	vRow.add(temp.getTransferCode());
         	result.add(vRow);
         }

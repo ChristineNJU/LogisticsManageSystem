@@ -26,7 +26,7 @@ public abstract class FunctionSearch extends Function{
 	
 	protected boolean isConnectError=false;
 	
-	protected PanelContent panel;
+//	protected PanelContent panel;
 	
 	protected JLabel header;
 	protected JLabel foot;

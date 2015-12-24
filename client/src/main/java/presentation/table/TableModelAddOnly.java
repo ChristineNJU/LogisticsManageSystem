@@ -22,6 +22,7 @@ public class TableModelAddOnly extends AbstractTableModel{
 	}
 
 	public void delete(int i) {
+		System.out.println("delete "+i);
 		tableValues.remove(i);
 		fireTableRowsDeleted(i, i);
 	}
@@ -42,6 +43,7 @@ public class TableModelAddOnly extends AbstractTableModel{
 			element.add("");
 		}
 		tableValues.add(element);
+		System.out.println("_________in  model add empty row");
 		fireTableRowsInserted(tableValues.size()-1,tableValues.size()-1);
 	}
 	
@@ -49,7 +51,7 @@ public class TableModelAddOnly extends AbstractTableModel{
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
 //		return isCellEditable[columnIndex];
 		
-		System.out.println("in tablemodeladdonly      "+rowIndex+" "+columnIndex+"   "+head.length);
+//		System.out.println("in tablemodeladdonly      "+rowIndex+" "+columnIndex+"   "+head.length);
 		
 		if(columnIndex==head.length-1){
 			return false;
@@ -92,7 +94,12 @@ public class TableModelAddOnly extends AbstractTableModel{
 	public void setValueAt(Object value, int row, int column) {
 //		fireTableCellUpdated(row, column);
 		if(column < getColumnCount()){
-			tableValues.get(row).setElementAt((String) value,column);
+//			System.out.println(row);
+//			System.out.println(column);
+//			System.out.println(getColumnCount());
+//			System.out.println(tableValues.size());
+//			System.out.println(tableValues.get(0).size());
+			tableValues.get(row).setElementAt((String)value,column);
 			System.out.println("set value at   "+row+"   "+column);
 			fireTableCellUpdated(row, column);
 		}

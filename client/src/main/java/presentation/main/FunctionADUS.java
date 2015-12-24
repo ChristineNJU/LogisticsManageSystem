@@ -31,7 +31,7 @@ public abstract class FunctionADUS extends Function{
 
 	protected Translater trans = new Translater();
 	
-	protected PanelContent panel;
+//	protected PanelContent panel;
 
 	protected TextField input;
 	protected ButtonSearch search;
@@ -83,12 +83,12 @@ public abstract class FunctionADUS extends Function{
 	
 	protected abstract void initTable();
 	
-	protected void addDeleteColumn(){
-		TableColumnModel tcm = table.getColumnModel(); 
-		tcm.addColumn(new TableColumn());
-//		tcm.getColumn(tcm.getColumnCount()-1).setCellRenderer(new RendererDelete());
-	    tcm.getColumn(tcm.getColumnCount()-1).setWidth(40);
-	}
+//	protected void addDeleteColumn(){
+//		TableColumnModel tcm = table.getColumnModel(); 
+//		tcm.addColumn(new TableColumn());
+////		tcm.getColumn(tcm.getColumnCount()-1).setCellRenderer(new RendererDelete());
+//	    tcm.getColumn(tcm.getColumnCount()-1).setWidth(40);
+//	}
 	
 	protected abstract void showSearchResult(String s);
 	
@@ -144,7 +144,7 @@ public abstract class FunctionADUS extends Function{
 				showSearchResult(input.getText());
 			}
 			if(source.equals(cancel)){
-				System.out.println("in listener");
+//				System.out.println("in listener");
 				checkCancel();
 			}
 		}
