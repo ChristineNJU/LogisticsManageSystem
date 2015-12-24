@@ -17,9 +17,9 @@ import presentation.components.ButtonCancel;
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
 import presentation.components.ButtonTotal;
+import presentation.components.LabelError;
 import presentation.components.PanelContent;
 import presentation.frame.MainFrame;
-import presentation.main.FunctionADUS.AttentionFrame;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableAddOnly;
 import presentation.table.TableModelAddOnly;
@@ -47,14 +47,15 @@ public abstract class FunctionAdd extends Function{
 	protected TableModelAddOnly model;
 	protected TableAddOnly table;
 	
+
+	
 	public FunctionAdd(){
-		
 	}
 	
 	protected void initUI(String s){
 		panel = new PanelContent(s);
 		panel.setLayout(null);
-		
+		panel.add(info);
 		initHeader();
 		
 		buttonNew.setLocation(890-buttonNew.getWidth(),100+header.getHeight()-buttonNew.getHeight());
@@ -228,11 +229,13 @@ public abstract class FunctionAdd extends Function{
 			if(source.equals(confirm)){
 //				System.out.println("in listener");
 				if(confirm.isEnabled()){
-					performConfirm();
+//					performConfirm();
+					checkConfirm();
 				}
 			}
 			if(source.equals(cancel)){
-				performCancel();
+				checkCancel();
+//				performCancel();
 			}
 		}
 

@@ -9,7 +9,8 @@ public class Function {
 
 
 	protected PanelContent panel;
-	protected LabelError labelError = new LabelError("");
+	protected LabelError labelError = new LabelError();
+	protected LabelError info = new LabelError();
 	
 	protected void checkCancel(){
 		System.out.println("in function father");
@@ -29,7 +30,7 @@ public class Function {
 	}
 	
 	public void showError(String s){
-		labelError = new LabelError(s);
+		labelError = new LabelError();
 		panel.add(labelError);
 	}
 	

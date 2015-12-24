@@ -39,8 +39,7 @@ public class NavigationAdmin extends Navigation{
 	}
 	protected void changeToUserAccount(){
 		userAccountP = new AdminUserAccount();
-		MainFrame.getMainPanel().add(userAccountP.getPanel());
-		MainFrame.getMainPanel().repaint();
+		MainFrame.changeContentPanel(userAccountP.getPanel());
 		if(userAccountP.isConnectError()){
 			userAccountP.showError(ErrorState.CONNECTERROR);
 		}
