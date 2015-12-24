@@ -55,14 +55,21 @@ public class DriverMgt implements DriverMgtService{
 			searchResultId=searchDriver.searchDriverInfo(URLHelper.getDriverInfoURL(SystemLog.getInstitutionId()), requirementId);
 			searchResultName=searchDriver.searchDriverInfo(URLHelper.getDriverInfoURL(SystemLog.getInstitutionId()), requirementName);
 			
-			for(int i=0;i<searchResultName.size();i++)
-				searchResultId.add(searchResultName.get(i));
+//			for(int i=0;i<searchResultName.size();i++){
+//				if(!searchResultId.contains(searchResultName.get(i))){
+//					searchResultId.add(searchResultName.get(i));
+//				}
+//			}
 			
 			if(searchResultId.isEmpty()){
-				System.out.println("searchDriver: not found");
-				return result;
-			}
-			
+				if(searchResultName.isEmpty()){
+					System.out.println("searchDriver: not found");
+					return result;
+				}else{
+					for(int i=0;i<searchResultName.size();i++)
+						result.add(new DriverInfoVO(searchResultName.get(i)));
+				}
+			}			
 			else{
 				for(int i=0;i<searchResultId.size();i++)
 					result.add(new DriverInfoVO(searchResultId.get(i)));
