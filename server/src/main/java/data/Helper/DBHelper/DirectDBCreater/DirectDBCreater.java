@@ -17,8 +17,8 @@ public class DirectDBCreater {
 	
 	private static final String db_name = "LogisticsManageSystemDataBase";
 	
-	private static Connection conn = null;
-	private static Statement s = null;
+	public static Connection conn = null;
+	public static Statement s = null;
 	
 	public static void main(String[] args) {
 		
@@ -180,6 +180,18 @@ public class DirectDBCreater {
 			s = conn.createStatement();
 			boolean mark = s.execute("INSERT INTO "+table_name+" VALUES('admin', 'admin', '黄勇', '男', 20, "
 					+ "'Other', '南京', 'admin')");
+					mark = s.execute("INSERT INTO "+table_name+" VALUES('025000_000', '025000_000', '黄勇', '男', 20, "
+					+ "'BusinessLobby', '南京', 'courier')");
+					mark = s.execute("INSERT INTO "+table_name+" VALUES('025000_00', '025000_00', '黄勇', '男', 20, "
+							+ "'BusinessLobby', '南京', 'businessAgent')");
+					mark = s.execute("INSERT INTO "+table_name+" VALUES('0250_00', '0250_00', '黄勇', '男', 20, "
+							+ "'MediumCenter', '南京', 'mediumAgent')");
+					mark = s.execute("INSERT INTO "+table_name+" VALUES('02500_00', '02500_00', '黄勇', '男', 20, "
+							+ "'Repository', '南京', 'repository')");
+					mark = s.execute("INSERT INTO "+table_name+" VALUES('finance_00', 'finance_00', '黄勇', '男', 20, "
+							+ "'Other', '南京', 'finance')");
+					mark = s.execute("INSERT INTO "+table_name+" VALUES('manager_00', 'manager_00', '黄勇', '男', 20, "
+							+ "'Other', '南京', 'manager')");
 			conn.commit();
 			System.out.println("insert into "+table_name);
 		} catch (SQLException e) {

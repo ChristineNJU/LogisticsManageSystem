@@ -23,6 +23,8 @@ public class ServerFrame {
 		frame.add(scrollPane);
 		
 		frame.setVisible(true);
+		
+		textArea.append("Server start");
 	}
 	
 	public static void addInfo(String info) {

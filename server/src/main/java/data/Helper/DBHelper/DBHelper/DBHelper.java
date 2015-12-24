@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import data.Helper.DBHelper.DirectDBCreater.DirectDBCreater;
+
 /**
  * 创建数据库链接以及提供Connection对象
  *
@@ -28,14 +30,26 @@ public class DBHelper {
 			Class.forName("org.apache.derby.jdbc.EmbeddedDriver").newInstance();
 			System.out.println("Load the embedded driver");
 			
-			conn = DriverManager.getConnection("jdbc:derby:"+db_name+";create=true");
+			conn = DriverManager.getConnection("jdbc:derby:"+db_name+"");
 			System.out.println("create and connect to "+db_name);
 			conn.setAutoCommit(false);
 		
 		} catch (InstantiationException | IllegalAccessException
 				| ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+//			e.printStackTrace();
+			System.out.println("重新创建数据库");
+			try {
+				conn = DriverManager.getConnection("jdbc:derby:"+db_name+";create=true");
+				System.out.println("create and connect to "+db_name);
+				conn.setAutoCommit(false);
+				
+				DirectDBCreater.conn = conn;
+				DirectDBCreater.rebuildDB();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 	
