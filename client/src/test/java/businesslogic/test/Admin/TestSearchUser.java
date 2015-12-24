@@ -28,6 +28,6 @@ public class TestSearchUser extends TestCase {
 		
 		assertEquals(DeleteState.SUCCESS, admin.deleteUser(new UserVO("025100004", "yh", UserRole.courier,"男" ,10 ,InstitutionType.BusinessLobby, "南京")));
 		
-		assertEquals(null, admin.searchUser(requirement));
+		assertEquals(null, admin.searchUser(requirement).get(0));
 	}
 }
