@@ -3,6 +3,7 @@ package data.RMIHelper;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.rmi.registry.LocateRegistry;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -147,6 +148,8 @@ public class RMIHelper {
 			GATHERING_STORAGE_IMPL = URL+"GatheringStorageImpl";
 			RMI_CONNECTION_IMPL = URL+"RMIConnectionImpl";
 			
+			System.setProperty("java.rmi.server.hostname" , ip);
+//			LocateRegistry.createRegistry(REGISTRY);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

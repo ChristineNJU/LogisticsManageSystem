@@ -52,7 +52,7 @@ public class RepositoryRemoval extends FunctionAdd{
 	public TextFieldHeader transferCodeInput = new TextFieldHeader();
 	public TextFieldHeader dateInput = new TextFieldHeader();
 	public FlatComboBox destinationInput = new FlatComboBox();
-	public TextFieldHeader transferWayInput = new TextFieldHeader();
+	public FlatComboBox transferWayInput = new FlatComboBox();
 	
 	NavigationRepository nav;
 	
@@ -194,7 +194,7 @@ public class RepositoryRemoval extends FunctionAdd{
 		System.out.println("bar_code="+ vector.get(0));
 		Date tempdate = new Date();
 		String tempdestination = (String)destinationInput.getSelectedItem();
-		TransferType temptransferType = Translater.getTransferType(transferWayInput.getText());
+		TransferType temptransferType = Translater.getTransferType(transferWayInput.getSelectedItem().toString());
 		String temptransferCode = transferCodeInput.getText();
 		RemovalVO tempRemoval = new RemovalVO(tempbarCode, tempdate, tempdestination, temptransferType, temptransferCode);
 		return tempRemoval;
@@ -240,7 +240,7 @@ public class RepositoryRemoval extends FunctionAdd{
 			
 			transferCodeInput.setBounds(130, 66, 120, 30);
 			destinationInput.setBounds(390,0 , 60, 30);
-			transferWayInput.setBounds(390, 33, 120,30 );
+			transferWayInput.setBounds(390, 33, 100,30 );
 			
 			
 			add(InstitutionIDIuput);
@@ -249,6 +249,13 @@ public class RepositoryRemoval extends FunctionAdd{
 			add(destinationInput);
 			add(transferWayInput);
 			
+			initComboBox();
+		}
+		
+		private void initComboBox() {
+			transferWayInput.addItem("航空运输");
+			transferWayInput.addItem("铁路运输");
+			transferWayInput.addItem("公路运输");
 		}
 		
 	}
