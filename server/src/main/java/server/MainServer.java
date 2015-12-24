@@ -83,7 +83,7 @@ public class MainServer {
 		
 	public static void main(String[] args) {
 		
-		ServerFrame sf = new ServerFrame();
+//		ServerFrame sf = new ServerFrame();
 		
 		RMIHelper rmi = new RMIHelper();
 		
