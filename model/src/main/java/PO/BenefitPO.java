@@ -174,7 +174,7 @@ public class BenefitPO extends PO {
 		result = result + expend + ", ";
 		result = result + benefit + ", ";
 		
-		result = result + "'" + sdf.format(date) + "', ";
+		result = result + "'" + sdf.format(date) + "' ";
 		System.out.println(result);
 		return result;
 	}
