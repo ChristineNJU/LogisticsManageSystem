@@ -9,20 +9,21 @@ import java.util.Vector;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.table.TableColumnModel;
 
-import presentation.components.ButtonConfirm;
-import presentation.components.FlatScrollPane;
-import presentation.components.PanelContent;
-import presentation.main.ColorPallet;
-import presentation.main.FontSet;
-import presentation.table.TableADUS;
-import presentation.table.TableModelADUS;
-import State.ErrorState;
 import State.UpdateState;
 import VO.ConstVO;
 import VO.DistanceVO;
 import businesslogic.Impl.Manage.ManageController;
 import businesslogic.Service.Manage.ManageService;
+import presentation.components.ButtonConfirm;
+import presentation.components.FlatScrollPane;
+import presentation.components.PanelContent;
+import presentation.main.ColorPallet;
+import presentation.main.FontSet;
+import presentation.table.RendererGeneral;
+import presentation.table.TableADUS;
+import presentation.table.TableModelADUS;
 
 public class ManagerConst {
 	
@@ -153,6 +154,8 @@ public class ManagerConst {
 			}else{				
 				tableModel = new TableModelADUS(getVector(con), title, isCellEditable);
 				table = new TableADUS(tableModel);
+				TableColumnModel tcm = table.getColumnModel();
+				tcm.getColumn(tcm.getColumnCount()-1).setCellRenderer(new RendererGeneral());
 				scrollPane = new FlatScrollPane(table);
 				scrollPane.setBounds(0, 30, 600, 210);
 				add(scrollPane);
@@ -223,6 +226,8 @@ public class ManagerConst {
 			}else{				
 				tableModel = new TableModelADUS(getVector(distance), header, isCellEditable);
 				table = new TableADUS(tableModel);
+				TableColumnModel tcm = table.getColumnModel();
+				tcm.getColumn(tcm.getColumnCount()-1).setCellRenderer(new RendererGeneral());
 				
 				scrollPane = new FlatScrollPane(table);
 				scrollPane.setBounds(0, 30, 600, 210);

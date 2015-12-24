@@ -15,5 +15,6 @@ public class LabelError extends JLabel {
 		this.setBorder(BorderFactory.createLineBorder(Color.red));
 		this.setFont(FontSet.eighteen);
 		this.setSize(s.length()*18+20,30);
+		this.setLocation(120,650);
 	}
 }

@@ -91,18 +91,23 @@ public class RepositoryStorage extends FunctionAdd {
 	@Override
 	protected void initTable() {
 		
+
+
+		ArrayList<StorageVO> bar_code = service.getNeedStorage();
+		
+		tableV = getVector(bar_code);
 		ArrayList<StorageVO> needStorage = service.getNeedStorage();
 		
-		for(StorageVO vo:needStorage){
-			Vector<String> tm = new Vector<String>();
-			tm.add(vo.getBarCode());
-			tm.add("");
-			tm.add("");
-			tm.add("");
-			tm.add("");
-			tm.add("");
-			tableV.add(tm);
-		}
+//		for(StorageVO vo:needStorage){
+//			Vector<String> tm = new Vector<String>();
+//			tm.add(vo.getBarCode());
+//			tm.add("");
+//			tm.add("");
+//			tm.add("");
+//			tm.add("");
+//			tm.add("");
+//			tableV.add(tm);
+//		}
 		
 		model = TableModelFactory.getStorageModel(tableV);
 		table = TableFactory.getStorageTable(model);
@@ -167,14 +172,19 @@ public class RepositoryStorage extends FunctionAdd {
 		return vo;
 	}
 	
-	private Vector<String> getVector(StorageVO vo) {
-		Vector<String> result = new Vector<String>();
-		result.add(vo.getBarCode());
-		result.add(vo.getAreaCode()+"");
-		result.add(vo.getRow()+"");
-		result.add(vo.getShelf()+"");
-		result.add(vo.getPosition()+"");
-		return result;
+	private Vector<Vector<String>> getVector(ArrayList<StorageVO> list) {
+		Vector<Vector<String>> temp = new Vector<Vector<String>>();
+		for(StorageVO vo:list){
+			Vector<String> result = new Vector<String>();
+			result.add(vo.getBarCode());
+			result.add("");
+			result.add("");
+			result.add("");
+			result.add("");
+			result.add("");
+			temp.add(result);
+		}
+		return temp;
 	}
 	
 	private boolean isLegal(Vector<String> v) {

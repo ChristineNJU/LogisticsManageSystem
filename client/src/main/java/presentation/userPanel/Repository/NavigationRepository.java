@@ -73,7 +73,7 @@ public class NavigationRepository extends Navigation{
 		}
 	}
 	private void changeToBalance(){
-		repositoryBalance = new RepositoryBalance();
+		repositoryBalance = new RepositoryBalance(this);
 		MainFrame.changeContentPanel(repositoryBalance.getPanel());
 		if(repositoryBalance.isConnectError()){
 			System.out.println("manager initiate null");

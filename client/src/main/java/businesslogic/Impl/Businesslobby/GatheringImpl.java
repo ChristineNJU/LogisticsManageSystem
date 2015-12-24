@@ -8,11 +8,12 @@ import PO.AccountPO;
 import PO.BenefitPO;
 import PO.GatheringPO;
 import State.AddState;
+
 import VO.AccountVO;
 import VO.BenefitVO;
+
 import VO.GatheringVO;
 import businesslogic.Service.BusinessLobby.GatheringService;
-import businesslogic.Service.Finance.UpdateAccountService;
 import businesslogic.SystemLog.SystemLog;
 import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
@@ -21,6 +22,7 @@ import data.Service.Search.SearchAccountService;
 import data.Service.Search.SearchBenefitService;
 import data.Service.Sundry.GatheringStorageService;
 import data.Service.Sundry.InstitutionStorageService;
+import data.Service.Update.UpdateService;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -57,9 +59,9 @@ public class GatheringImpl implements GatheringService{
 			ArrayList<String> requirement=new ArrayList<String>();
 			requirement.add("account_name like '%%'");
 			AccountPO account=searchAccount.searchAccount(requirement).get(0);
-			UpdateAccountService updateAccount=(UpdateAccountService) Naming.lookup(RMIHelper.UPDATE_IMPL);
+			UpdateService updateAccount=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
 			account.setAmount(account.getAmount()+gathering.getMoney());
-			updateAccount.updateAccount(new AccountVO(account));
+			updateAccount.update(account);
 			
 			SearchBenefitService benefitService=(SearchBenefitService) Naming.lookup(RMIHelper.SEARCH_BENEFIT_IMPL);
 			

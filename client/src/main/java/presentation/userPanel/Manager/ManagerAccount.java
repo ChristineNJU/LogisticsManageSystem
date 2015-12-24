@@ -21,6 +21,10 @@ public class ManagerAccount extends FunctionSearch{
 	FinanceService service = new FinanceController();
 //	ManageService service = new ManageController();
 	ArrayList<AccountVO> accounts;
+//<<<<<<< HEAD
+//=======
+//	String[] tableH={"账户名称","账户余额"};
+//>>>>>>> master2
 	
 	public ManagerAccount(){
 		confirmSearch = new ButtonConfirm("");
@@ -47,8 +51,8 @@ public class ManagerAccount extends FunctionSearch{
 			tableV=getVector(accounts);
 		}
 		tableV = getVector(accounts);
-		model = TableModelFactory.getIncome(tableV);
-		table = TableFactory.getIncome(model);
+		model = TableModelFactory.getBankAccountModel(tableV);
+		table = TableFactory.getBankAccountTable(model);
 		sPanel = new ScrollPaneTable(table);
 		panel.add(sPanel);
 		

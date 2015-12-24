@@ -230,6 +230,21 @@ public class Translater {
  			return StorageArea.MANOEUVERING_AREA;
  		}
  	}
+ 	
+ 	public static String getChineseForStorageArea(StorageArea area){
+ 		switch(area){
+ 		case AIR_TRANSPORTATION:
+ 			return "航空区";
+ 		case CAR_TRANSPORTATION:
+ 			return "汽运区";
+ 		case RAILWAY_TRANSPORTATION:
+ 			return "铁路区";
+ 		case MANOEUVERING_AREA:
+ 			return "机动区";
+ 		default:
+ 			return "机动区";
+ 		}
+ 	}
  	public static SalaryType getSalaryType(String s){
  		switch(s){
 		case "月薪":
