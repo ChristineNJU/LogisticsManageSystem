@@ -5,14 +5,18 @@ import java.util.Vector;
 
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
+import State.AddState;
 import State.DeleteState;
 import State.ErrorState;
 import State.InstitutionType;
 import State.UpdateState;
 import State.UserRole;
+import VO.LogisticsHistoryVO;
 import VO.UserVO;
 import businesslogic.Impl.Admin.AdminController;
 import businesslogic.Service.Admin.AdminService;
@@ -75,6 +79,9 @@ public class AdminUserAccount extends FunctionADUS{
 		table.addMouseListener(tableListener);
 		sPanel = new ScrollPaneTable(table);
 		panel.add(sPanel);
+		
+		ErrorListener errorListener = new ErrorListener();
+		model.addTableModelListener(errorListener);
 	}
 
 	@Override
@@ -94,25 +101,21 @@ public class AdminUserAccount extends FunctionADUS{
 //		removeError();
 		DeleteState deleteState=DeleteState.CONNECTERROR;
 		deleteItems = new ArrayList<UserVO>();
-		System.out.println(tableV.size());
+//		System.out.println(tableV.size());
 		for(int i = 0;i < tableV.size();i++){
 			if(model.isDelete(i)){
 				deleteItems.add(getVO(tableV.get(i)));
 			}
 		}
-		System.out.println("----------------------------deleted users:");
 		for(int i = 0; i < deleteItems.size();i++){
-//			System.out.println(deleteItems.get(i).getId());
 			deleteState=service.deleteUser(deleteItems.get(i));
 			if(deleteState==DeleteState.CONNECTERROR){
 				showError(ErrorState.CONNECTERROR);
-				break;
-			}
-			else if(deleteState==DeleteState.FAIL){
+				return;
+			}else if(deleteState==DeleteState.FAIL){
 				showError(ErrorState.DELETEERROR);
-				break;
+				return;
 			}
-			
 		}
 		
 		UpdateState updateState=UpdateState.CONNECTERROR;
@@ -122,9 +125,8 @@ public class AdminUserAccount extends FunctionADUS{
 				updateItems.add(getVO(tableV.get(i)));
 			}
 		}
-		System.out.println("----------------------------updated users:");
+
 		for(int i = 0; i < updateItems.size();i++){
-//			System.out.println(updateItems.get(i).getId());
 			updateState=service.updateUser(updateItems.get(i));
 			if(updateState==UpdateState.CONNECTERROR){
 				showError(ErrorState.CONNECTERROR);
@@ -134,6 +136,27 @@ public class AdminUserAccount extends FunctionADUS{
 				showError(ErrorState.SEARCHERROR);
 			}
 		}
+		
+		AddState addState = AddState.CONNECTERROR;
+		addItems = new ArrayList<UserVO>();
+		for(int i = 0;i < tableV.size();i++){
+			if(model.isNew(i)){
+				addItems.add(getVO(tableV.get(i)));
+			}
+		}
+
+		for(int i = 0; i < addItems.size();i++){
+			addState = service.addUser(addItems.get(i));
+			if(addState == AddState.CONNECTERROR){
+				showError(ErrorState.CONNECTERROR);
+				break;
+			}
+			else if(addState==AddState.FAIL){
+				showError(ErrorState.ADDERROR);
+			}
+		}
+		
+		MainFrame.changeContentPanel(new AdminUserAccount().getPanel());
 	}
 	
 
@@ -168,10 +191,46 @@ public class AdminUserAccount extends FunctionADUS{
 
 	@Override
 	public void performCancel() {
+//		MainFrame.changeContentPanel(new AdminUserAccount().getPanel());
+//		initTable();
+//		ArrayList<String> requirement = new ArrayList<String>();
+//		requirement.add("%%");
+//		users = service.searchUser(requirement);
+//		if(users!=null){
+//			tableV = getVector(users);
+//		}
+//		else {
+//			tableV=new Vector<Vector<String>>();
+//			super.isConnectError=true;
+//		}
+//		tableV = getVector(users);
+//		model = TableModelFactory.getUserAccountModel(tableV);
+//		table = TableFactory.getUserAccountTable(model);
+//		table.setModel(model);
 		MainFrame.changeContentPanel(new AdminUserAccount().getPanel());
-		
 	}
 
+	class ErrorListener implements TableModelListener {
 
+		@Override
+		public void tableChanged(TableModelEvent e) {
+			int row = e.getLastRow();
+			int column = e.getColumn();
+			boolean isLeagel = true;
+			String content = model.getValueAt(row, column);
+			if(content.equals("")){
+				model.setLeagel(row, column, false);
+				buttonNew.setEnabled(false);
+				confirm.setEnabled(false);
+				return;
+			}else{
+				model.setLeagel(row, column, true);
+			}
+			if(model.allLeagel()){
+				buttonNew.setEnabled(true);
+				confirm.setEnabled(true);
+			}
+		}
+	}
 	
 }

@@ -10,11 +10,14 @@ import presentation.main.FontSet;
 public class LabelError extends JLabel {
 
 	
+	public LabelError(){
+		super();
+		setBounds(480, 590, 300, 50);
+		setForeground(Color.red);
+		setFont(FontSet.twenty);
+	}
 	public LabelError(String s){
-		super(s);
-		this.setBorder(BorderFactory.createLineBorder(Color.red));
-		this.setFont(FontSet.eighteen);
-		this.setSize(s.length()*18+20,30);
-		this.setLocation(120,650);
+		this();
+		this.setText(s);
 	}
 }

@@ -11,4 +11,5 @@ public class FontSet {
 	public static Font twenty = new Font("微软雅黑",Font.PLAIN,20);
 	public static Font eighteen = new Font("微软雅黑",Font.PLAIN,18);
 
+	public static Font twenty_five = new Font("微软雅黑", Font.PLAIN, 25);
 }

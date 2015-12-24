@@ -36,7 +36,7 @@ public class CourierReceive  extends FunctionAdd{
 	
 	Vector<Vector<String>> result = new Vector<Vector<String>>();
 		
-	JLabel info = new JLabel();
+
 	
 	NavigationCourier nav;
 	public CourierReceive() {
@@ -46,15 +46,8 @@ public class CourierReceive  extends FunctionAdd{
 //		this.nav = nav;
 		
 		initUI("收件信息输入");
-		init();
 	}
 	
-	private void init() {
-		info.setBounds(480, 590, 300, 50);
-		info.setForeground(Color.red);
-		info.setFont(FontSet.twenty);
-		panel.add(info);
-	}
 	
 	@Override
 	protected void initHeader() {
@@ -129,11 +122,11 @@ public class CourierReceive  extends FunctionAdd{
 			int row = e.getLastRow();
 			int column = e.getColumn();
 			
-			System.out.println(row+" "+column);
+//			System.out.println(row+" "+column);
 			
 			if(column==0){
 				String bar_code = table.getValueAt(row, 0).toString();
-				System.out.println(bar_code);
+//				System.out.println(bar_code);
 				buttonNew.setEnabled(true);
 				confirm.setEnabled(true);
 				if(isLegal(bar_code)){

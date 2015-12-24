@@ -36,6 +36,7 @@ public class DialogCheckConfirm {
 		pane.add(ok);
 		pane.add(cancel);
 		
+		
 		ok.addMouseListener(new MouseAdapter(){
 
 			@Override
@@ -55,6 +56,7 @@ public class DialogCheckConfirm {
 			
 		});
 		
+		dialog.setAlwaysOnTop(true); 
 		dialog.setVisible(true);
 	}
 }

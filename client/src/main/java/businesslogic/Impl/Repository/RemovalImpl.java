@@ -49,7 +49,7 @@ public class RemovalImpl implements AddRemovalService{
 				System.out.println("requirement"+requirement.get(i));
 				ArrayList<InstitutionPO> temp=institutionsearch.searchInstitutionInfo(requirement);
 				System.out.println("temp"+temp.size());
-				if(temp.get(0).getCity()==re.get(i).getDestination())
+				if(temp.get(0).getCity()!=re.get(i).getDestination())
 					isTransfer=false;
 				istorageservice.addInstitutionStorage(re.get(i).getBarCode(), true, isTransfer, URLHelper.getInstitutionStorage(temp.get(0).getInstitutionNumber()));
 		

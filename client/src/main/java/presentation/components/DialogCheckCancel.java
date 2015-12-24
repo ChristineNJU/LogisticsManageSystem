@@ -36,6 +36,7 @@ public class DialogCheckCancel {
 		pane.add(ok);
 		pane.add(cancel);
 		
+		dialog.setAlwaysOnTop(true); 
 		dialog.setVisible(true);
 		
 		ok.addMouseListener(new MouseAdapter(){

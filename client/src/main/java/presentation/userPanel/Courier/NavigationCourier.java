@@ -4,6 +4,7 @@ import State.ErrorState;
 import VO.UserVO;
 import presentation.components.ButtonNav;
 import presentation.frame.MainFrame;
+import presentation.main.Home;
 import presentation.main.Navigation;
 
 public class NavigationCourier extends Navigation{
@@ -17,6 +18,7 @@ public class NavigationCourier extends Navigation{
 	private ButtonNav receive = new ButtonNav("courier","receive");
 	private ButtonNav inquiry = new ButtonNav("courier","inquiry");
 	
+	public Home homepage;
 	private CourierNewOrderList courierNewOrder;
 	private CourierLogisticsInfoSearch courierInquiry;
 //	private ArrayList<ButtonNav> buttonList = new ArrayList<ButtonNav>();
@@ -30,6 +32,7 @@ public class NavigationCourier extends Navigation{
 		super(user);
 		initNavButtonArray();
 		addNavButtons();
+		changeToHome();
 	
 	}
 	
@@ -54,7 +57,9 @@ public class NavigationCourier extends Navigation{
 	}
 	
 	private void changeToHome(){
-		
+		homepage = new Home(user);
+		MainFrame.changeContentPanel(homepage);
+		MainFrame.getMainPanel().repaint();
 	}
 	
 	private void changeToNewLogistics(){

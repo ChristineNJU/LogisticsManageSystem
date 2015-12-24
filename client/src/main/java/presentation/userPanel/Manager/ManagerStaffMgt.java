@@ -86,7 +86,6 @@ public class ManagerStaffMgt extends FunctionADUS{
 
 	@Override
 	public void performConfirm() {
-		// TODO Auto-generated method stub
 		deleteItems=new ArrayList<StaffVO>();
 		for(int i=0;i<tableV.size();i++){
 			if(model.isDelete(i)){

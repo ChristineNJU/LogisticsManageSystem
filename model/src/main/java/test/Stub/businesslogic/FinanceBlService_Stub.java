@@ -174,7 +174,7 @@ public class FinanceBlService_Stub implements FinanceService{
 //			e.printStackTrace();
 //		}
 //		BenefitVO vo=bvo.get(0);
-////		return vo;
+
 //	}
 	/*-------------------------------------------
 	 返回账目单
