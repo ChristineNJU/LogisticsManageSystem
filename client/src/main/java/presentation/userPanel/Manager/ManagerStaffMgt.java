@@ -5,6 +5,8 @@ import java.util.Vector;
 
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.TableColumnModel;
 
 import presentation.components.ButtonNew;
@@ -17,6 +19,7 @@ import presentation.main.Translater;
 import presentation.table.ScrollPaneTable;
 import presentation.table.TableADUS;
 import presentation.table.TableModelADUS;
+import presentation.userPanel.Manager.ManagerInstitutionMgt.ErrorListener;
 import State.AddState;
 import State.DeleteState;
 import State.ErrorState;
@@ -67,7 +70,8 @@ public class ManagerStaffMgt extends FunctionADUS{
 		sPanel = new ScrollPaneTable(table);
 		panel.add(sPanel);
 		
-		
+		ErrorListener errorListener = new ErrorListener();
+		model.addTableModelListener(errorListener);
 //		if(staffs.isEmpty()){
 //			showError("Connect Error");
 //		}
@@ -190,6 +194,29 @@ public class ManagerStaffMgt extends FunctionADUS{
 		System.out.println("in managerStaffMgt");
 		MainFrame.changeContentPanel(new ManagerStaffMgt(nav).getPanel());
 		
+	}
+	
+	class ErrorListener implements TableModelListener {
+
+		@Override
+		public void tableChanged(TableModelEvent e) {
+			int row = e.getLastRow();
+			int column = e.getColumn();
+			boolean isLeagel = true;
+			String content = model.getValueAt(row, column);
+			if(content.equals("")){
+				model.setLeagel(row, column, false);
+				buttonNew.setEnabled(false);
+				confirm.setEnabled(false);
+				return;
+			}else{
+				model.setLeagel(row, column, true);
+			}
+			if(model.allLeagel()){
+				buttonNew.setEnabled(true);
+				confirm.setEnabled(true);
+			}
+		}
 	}
 
 }

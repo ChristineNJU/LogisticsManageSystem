@@ -3,12 +3,9 @@ package presentation.userPanel.Manager;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import State.AddState;
-import State.DeleteState;
-import State.ErrorState;
-import State.UpdateState;
-import VO.InstitutionVO;
-import businesslogic.Impl.Manage.ManageController;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+
 import presentation.components.ButtonNew;
 import presentation.factory.TableFactory;
 import presentation.factory.TableModelFactory;
@@ -16,7 +13,12 @@ import presentation.frame.MainFrame;
 import presentation.main.FunctionADUS;
 import presentation.main.Translater;
 import presentation.table.ScrollPaneTable;
-import presentation.table.TableModelADUS;
+import State.AddState;
+import State.DeleteState;
+import State.ErrorState;
+import State.UpdateState;
+import VO.InstitutionVO;
+import businesslogic.Impl.Manage.ManageController;
 
 public class ManagerInstitutionMgt extends FunctionADUS{
 	ManageController service=new ManageController();
@@ -61,6 +63,9 @@ public class ManagerInstitutionMgt extends FunctionADUS{
  	    table.addMouseListener(tableListener);
  	    sPanel = new ScrollPaneTable(table);
  	    panel.add(sPanel);
+ 	    
+ 		ErrorListener errorListener = new ErrorListener();
+		model.addTableModelListener(errorListener);
 	}
 
 	@Override
@@ -172,6 +177,29 @@ public class ManagerInstitutionMgt extends FunctionADUS{
 	public void performCancel() {
 		MainFrame.changeContentPanel(new ManagerInstitutionMgt(nav).getPanel());
 		
+	}
+	
+	class ErrorListener implements TableModelListener {
+
+		@Override
+		public void tableChanged(TableModelEvent e) {
+			int row = e.getLastRow();
+			int column = e.getColumn();
+			boolean isLeagel = true;
+			String content = model.getValueAt(row, column);
+			if(content.equals("")){
+				model.setLeagel(row, column, false);
+				buttonNew.setEnabled(false);
+				confirm.setEnabled(false);
+				return;
+			}else{
+				model.setLeagel(row, column, true);
+			}
+			if(model.allLeagel()){
+				buttonNew.setEnabled(true);
+				confirm.setEnabled(true);
+			}
+		}
 	}
 
 }
