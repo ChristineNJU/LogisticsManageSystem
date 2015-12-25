@@ -47,8 +47,6 @@ public abstract class FunctionAdd extends Function{
 	protected TableModelAddOnly model;
 	protected TableAddOnly table;
 	
-
-	
 	public FunctionAdd(){
 	}
 	

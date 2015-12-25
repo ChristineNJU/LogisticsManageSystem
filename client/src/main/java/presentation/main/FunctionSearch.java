@@ -57,17 +57,10 @@ public abstract class FunctionSearch extends Function{
 		confirmSearch.setLocation(888-confirmSearch.getWidth(),110);
 		confirmSearch.addMouseListener(listener);
 		panel.add(confirmSearch);
-//		buttonNew.setLocation(buttonNew.getX(),130+header.HEIGHT);
-//		buttonNew.addMouseListener(functionListener);
-//		panel.add(buttonNew);
 		
 		initTable();
 		
-//		System.out.println("footer constructor in father");
 		initFooter();
-//		cancel.setBounds(confirm.getWidth()+130,200+sPanel.getHeight(),110,30);
-//		cancel.addMouseListener(functionListener);
-//		panel.add(cancel);
 	}
 	
 	protected abstract void initHeader();

@@ -189,4 +189,17 @@ public class TableModelFactory {
 		TableModelSearch model = new TableModelSearch(tableV,tableH);
 		return model;
 	}
+	
+	public static TableModelSearch getInitialInfoModel(Vector<Vector<String>> tableV){
+		String[] tableH = {"项目名称","详细信息"};
+		TableModelSearch model = new TableModelSearch(tableV,tableH);
+		return model;
+	}
+	
+	public static TableModelAddOnly getInitialReviseModel(Vector<Vector<String>> tableV){
+		String[] tableH = {"",""};
+		boolean[] isCellEditable = {false,true};
+		TableModelAddOnly model = new TableModelAddOnly(tableV,tableH,isCellEditable);
+		return model;
+	}
 }

@@ -109,8 +109,11 @@ public class NavigationFinance extends Navigation{
 	}
 	private void changeToInitial(){
 		financeInitial = new FinanceInitial();
-//		MainFrame.changeContentPanel(financeInitial.getPanel());
-		
+		MainFrame.changeContentPanel(financeInitial.getPanel());
+		if(financeSystem.isConnectError()){
+			System.out.println("manager initiate null");
+			financeSystem.showError(ErrorState.CONNECTERROR);
+		}
 	}
 	private void changeToSystem(){
 		financeSystem = new FinanceSystem();
