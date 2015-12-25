@@ -2,6 +2,7 @@ package presentation.userPanel.Finance;
 
 import presentation.components.ButtonNav;
 import presentation.frame.MainFrame;
+import presentation.main.Home;
 import presentation.main.Navigation;
 import State.ErrorState;
 import VO.UserVO;
@@ -17,6 +18,7 @@ public class NavigationFinance extends Navigation{
 	private ButtonNav initial = new ButtonNav("finance","initial");
 	private ButtonNav system = new ButtonNav("finance","system");
 	
+	public Home homepage;
 	private FinanceAccount financeAccount;
 	private FinanceBenefit financeBenefit;
 	private FinanceCost financeCost;
@@ -29,6 +31,7 @@ public class NavigationFinance extends Navigation{
 		super(user);
 		initNavButtonArray();
 		addNavButtons();
+		changeToHome();
 	}
 
 	protected void initNavButtonArray(){
@@ -65,7 +68,9 @@ public class NavigationFinance extends Navigation{
 	}
 	
 	private void changeToHome(){
-		
+		homepage = new Home(user);
+		MainFrame.changeContentPanel(homepage);
+		MainFrame.getMainPanel().repaint();
 	}
 	private void changeToAccount(){
 		financeAccount = new FinanceAccount();

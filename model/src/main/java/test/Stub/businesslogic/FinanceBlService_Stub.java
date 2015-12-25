@@ -159,23 +159,23 @@ public class FinanceBlService_Stub implements FinanceService{
 	/*-------------------------------------------
 	 查看成本收益表
 	---------------------------------------------*/
-	public BenefitVO searchBenefit(String time_end){
-		System.out.println("Logic_Stub "+"查看成功");
-		ArrayList<BenefitVO> bvo=new ArrayList<BenefitVO>();
-		ArrayList<String> requirement=new ArrayList<String>();
-		requirement.add(time_end);
-		try{
-			ArrayList<BenefitPO> bpo=new SearchService_Stub().searchBenefit(requirement);
-			for(int i=0;i<bpo.size();i++){
-				BenefitVO bene=null;
-				bvo.add(bene);
-			}
-		}catch (RemoteException e){
-			e.printStackTrace();
-		}
-		BenefitVO vo=bvo.get(0);
-		return vo;
-	}
+//	public BenefitVO searchBenefit(String time_end){
+//		System.out.println("Logic_Stub "+"查看成功");
+//		ArrayList<BenefitVO> bvo=new ArrayList<BenefitVO>();
+//		ArrayList<String> requirement=new ArrayList<String>();
+//		requirement.add(time_end);
+//		try{
+//			ArrayList<BenefitPO> bpo=new SearchService_Stub().searchBenefit(requirement);
+//			for(int i=0;i<bpo.size();i++){
+//				BenefitVO bene=null;
+//				bvo.add(bene);
+//			}
+//		}catch (RemoteException e){
+//			e.printStackTrace();
+//		}
+//		BenefitVO vo=bvo.get(0);
+
+//	}
 	/*-------------------------------------------
 	 返回账目单
 	---------------------------------------------*/
@@ -290,6 +290,11 @@ public class FinanceBlService_Stub implements FinanceService{
 	}
 	@Override
 	public UpdateState updatePeriod() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<BenefitVO> searchBenefit(String time_end) {
 		// TODO Auto-generated method stub
 		return null;
 	}

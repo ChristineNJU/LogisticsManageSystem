@@ -39,15 +39,15 @@ public class Home extends PanelContent{
 	public Home(UserVO user){
 		this("个人首页");
 		this.user = user;
-		modifyPassword.setBounds(220,250,100,30);
-		modifyPassword.setFont(FontSet.twenty);
-		oldPass.setBounds(220,300,120,30);
-		newPass.setBounds(220,330,120,30);
-		newPassConfirm.setBounds(220,360,120,30);
-		oldPassword.setBounds(350,300,120,28);
-		newPassword.setBounds(350,330,120,28);
-		newPasswordConfirm.setBounds(350,360,120,28);
-		confirm.setLocation(220,390);
+		modifyPassword.setBounds(116,250,200,50);
+		modifyPassword.setFont(FontSet.twenty_five);
+		oldPass.setBounds(116,320,120,30);
+		newPass.setBounds(116,350,120,30);
+		newPassConfirm.setBounds(116,380,120,30);
+		oldPassword.setBounds(236,320,120,28);
+		newPassword.setBounds(236,350,120,28);
+		newPasswordConfirm.setBounds(236,380,120,28);
+		confirm.setLocation(116,430);
 		
 		confirm.addMouseListener(new MouseAdapter(){
 			@Override
@@ -68,17 +68,19 @@ public class Home extends PanelContent{
 
 	private void confirmRevise(){
 		this.remove(error);
-		String oldP = oldPassword.getPassword().toString();
-		String newP = newPassword.getPassword().toString();
-		String newPC = newPasswordConfirm.getPassword().toString();
+		String oldP = oldPassword.getText();
+		String newP = newPassword.getText();
+		String newPC = newPasswordConfirm.getText();
 		
+		System.out.println(newP+" "+newPC);
 		if(newP.equals(newPC)){
+			
 			ResetState state = service.reset(user.getId(), oldP, newP);
 			if(state == ResetState.WRONGPW){
 				showError("原密码错误");
 			}else if(state == ResetState.SUCCESS){
 				showError("修改成功");
-				MainFrame.changeContentPanel(new Home(this.user));
+//				MainFrame.changeContentPanel(new Home(this.user));
 			}
 		}else{
 			showError("两次输入的新密码不一样");
@@ -89,6 +91,7 @@ public class Home extends PanelContent{
 		error = new LabelError(s);
 		error.setBounds(220,200,400,30);
 		this.add(error);
+		this.repaint();
 	}
 	
 }

@@ -3,6 +3,7 @@ package data.RMIHelper;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.rmi.registry.LocateRegistry;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -11,7 +12,7 @@ import java.io.IOException;
 public class RMIHelper {
 	
 	/** The Constant REGISTRY. */
-	public static final int REGISTRY = 8888;
+	public static final int REGISTRY = 8000;
 	
 	/** The Constant URL. */
 	public static String URL = "rmi://127.0.0.1:"+REGISTRY+"/";
@@ -147,6 +148,8 @@ public class RMIHelper {
 			GATHERING_STORAGE_IMPL = URL+"GatheringStorageImpl";
 			RMI_CONNECTION_IMPL = URL+"RMIConnectionImpl";
 			
+			System.setProperty("java.rmi.server.hostname" , ip);
+//			LocateRegistry.createRegistry(REGISTRY);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

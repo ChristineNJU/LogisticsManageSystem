@@ -147,7 +147,7 @@ public abstract class FunctionSearch extends Function{
 				Thread.sleep(1000);
 				this.setVisible(true);
 //				this.repaint();
-				Thread.sleep(500);
+				Thread.sleep(1000);
 				this. setVisible(false);
 //				this.repaint();
 //				System.exit(0);

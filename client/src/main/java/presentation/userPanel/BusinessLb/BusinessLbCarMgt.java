@@ -3,12 +3,9 @@ package presentation.userPanel.BusinessLb;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import State.AddState;
-import State.DeleteState;
-import State.ErrorState;
-import State.UpdateState;
-import VO.CarInfoVO;
-import businesslogic.Impl.Businesslobby.CarMgt;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+
 import presentation.components.ButtonNew;
 import presentation.components.PanelContent;
 import presentation.factory.TableFactory;
@@ -16,8 +13,12 @@ import presentation.factory.TableModelFactory;
 import presentation.frame.MainFrame;
 import presentation.main.FunctionADUS;
 import presentation.table.ScrollPaneTable;
-import presentation.table.TableADUS;
-import presentation.table.TableModelADUS;
+import State.AddState;
+import State.DeleteState;
+import State.ErrorState;
+import State.UpdateState;
+import VO.CarInfoVO;
+import businesslogic.Impl.Businesslobby.CarMgt;
 
 public class BusinessLbCarMgt  extends FunctionADUS{
 	CarMgt service=new CarMgt();
@@ -64,6 +65,9 @@ public class BusinessLbCarMgt  extends FunctionADUS{
 	    table.addMouseListener(tableListener);
 		sPanel = new ScrollPaneTable(table);
 		panel.add(sPanel);
+		
+		ErrorListener errorListener = new ErrorListener();
+		model.addTableModelListener(errorListener);
 	}
 
 	
@@ -144,6 +148,8 @@ public class BusinessLbCarMgt  extends FunctionADUS{
 				break;
 			}
 		}
+		
+		MainFrame.changeContentPanel(new BusinessLbCarMgt().getPanel());
 	}
 
 
@@ -190,5 +196,27 @@ public class BusinessLbCarMgt  extends FunctionADUS{
 	public void performCancel() {
 		MainFrame.changeContentPanel(new BusinessLbCarMgt().getPanel());
 	}
+	
+	class ErrorListener implements TableModelListener {
 
+		@Override
+		public void tableChanged(TableModelEvent e) {
+			int row = e.getLastRow();
+			int column = e.getColumn();
+			boolean isLeagel = true;
+			String content = model.getValueAt(row, column);
+			if(content.equals("")){
+				model.setLeagel(row, column, false);
+				buttonNew.setEnabled(false);
+				confirm.setEnabled(false);
+				return;
+			}else{
+				model.setLeagel(row, column, true);
+			}
+			if(model.allLeagel()){
+				buttonNew.setEnabled(true);
+				confirm.setEnabled(true);
+			}
+		}
+	}
 }
