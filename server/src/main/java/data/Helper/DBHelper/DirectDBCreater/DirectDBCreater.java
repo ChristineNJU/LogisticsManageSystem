@@ -213,7 +213,7 @@ public class DirectDBCreater {
 					+ "size double, internal_name varchar(50), type varchar(20), pack varchar(20), "
 					+ "total_cost double, starting varchar(20), destination varchar(20), "
 					+ "state varchar(20), send_date varchar(25), receive_date varchar(25), "
-					+ "courier varchar(20), isApproved varchar(5), isReceived varchar(5), history varchar(1000))");
+					+ "courier varchar(20), isApproved varchar(5), isReceived varchar(5), history varchar(10000))");
 			conn.commit();
 			
 			System.out.println("create table "+table_name);
