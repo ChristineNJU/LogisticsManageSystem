@@ -64,16 +64,16 @@ public class RepositoryStorage extends FunctionAdd {
 	
 	private void init() {
 		
-		confirm.addMouseListener(new MouseAdapter() {
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(confirm.isEnabled()){
-					nav.changeTask(1);
-				}
-			}
-			
-		});
+//		confirm.addMouseListener(new MouseAdapter() {
+//
+//			@Override
+//			public void mouseClicked(MouseEvent e) {
+//				if(confirm.isEnabled()){
+//					nav.changeTask(1);
+//				}
+//			}
+//			
+//		});
 		
 		info.setBounds(480, 590, 200, 50);
 		info.setForeground(Color.red);

@@ -240,4 +240,12 @@ public class TableFactory {
 		return table;
 	}
 	
+	public static TableSearch getInitialInfoTable(TableModelSearch model){
+		TableSearch table = new TableSearch(model);
+		return table;
+	}
+	public static TableAddOnly getInitialReviseTable(TableModelAddOnly model){
+		TableAddOnly table = new TableAddOnly(model);
+		return table;
+	}
 }

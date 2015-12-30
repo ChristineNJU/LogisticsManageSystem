@@ -70,74 +70,46 @@ public class CourierNewOrderList extends FunctionAdd{
 				newItem();
 			}
 		});
-		confirm.addMouseListener(new MouseAdapter() {
-			
-			public void mouseClicked(MouseEvent e) {
-				for(int i=0;i<logistics.size();i++){
-					AddState state = AddState.SUCCESS;
-					state = service.addLogistics(logistics.get(i));
-					if(state!=AddState.SUCCESS){
-						failedLogistics.add(logistics.get(i));
-					}
-				}
-				
-				if(failedLogistics.isEmpty()){
-//					InfomationPanel info = new InfomationPanel("提交成功");
-//					Thread t = new Thread(info);
-//					t.start();
-					info.setText("提交成功！");
-					nav.changeTask(1);
-				}else{
-					info.setText("提交失败");
-				
-					logistics = failedLogistics;
-					failedLogistics = new ArrayList<LogisticsInputVO>();
-					result = new Vector<Vector<String>>();
-					
-					for(int i=0;i<logistics.size();i++){
-						result.add(getVector(logistics.get(i)));
-					}
-					
-					table.setModel(TableModelFactory.getLogisticsModel(result));
-				
-					MainFrame.getMainPanel().repaint();
-				}
-			}
-		});
+//		confirm.addMouseListener(new MouseAdapter() {
+//			
+//			public void mouseClicked(MouseEvent e) {
+//				
+//			}
+//		});
 		
-		cancel.addMouseListener(new MouseListener() {
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				nav.changeTask(1);
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
+//		cancel.addMouseListener(new MouseListener() {
+//
+//			@Override
+//			public void mouseClicked(MouseEvent e) {
+//				// TODO Auto-generated method stub
+//				nav.changeTask(1);
+//			}
+//
+//			@Override
+//			public void mousePressed(MouseEvent e) {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//
+//			@Override
+//			public void mouseReleased(MouseEvent e) {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//
+//			@Override
+//			public void mouseEntered(MouseEvent e) {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//
+//			@Override
+//			public void mouseExited(MouseEvent e) {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//			
+//		});
 		
 		info.setBounds(500, 590, 100, 50);
 		info.setForeground(ColorPallet.Pink);
@@ -164,7 +136,35 @@ public class CourierNewOrderList extends FunctionAdd{
 	@Override
 	public void performConfirm() {
 		// TODO Auto-generated method stub
+		for(int i=0;i<logistics.size();i++){
+			AddState state = AddState.SUCCESS;
+			state = service.addLogistics(logistics.get(i));
+			if(state!=AddState.SUCCESS){
+				failedLogistics.add(logistics.get(i));
+			}
+		}
 		
+		if(failedLogistics.isEmpty()){
+//			InfomationPanel info = new InfomationPanel("提交成功");
+//			Thread t = new Thread(info);
+//			t.start();
+			info.setText("提交成功！");
+			nav.changeTask(1);
+		}else{
+			info.setText("提交失败");
+		
+			logistics = failedLogistics;
+			failedLogistics = new ArrayList<LogisticsInputVO>();
+			result = new Vector<Vector<String>>();
+			
+			for(int i=0;i<logistics.size();i++){
+				result.add(getVector(logistics.get(i)));
+			}
+			
+			table.setModel(TableModelFactory.getLogisticsModel(result));
+		
+			MainFrame.getMainPanel().repaint();
+		}
 	}
 
 	@Override

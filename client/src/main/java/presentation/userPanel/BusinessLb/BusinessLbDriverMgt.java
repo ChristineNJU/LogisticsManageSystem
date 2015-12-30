@@ -5,10 +5,15 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import javax.swing.DefaultCellEditor;
-import javax.swing.JComboBox;
-import javax.swing.table.TableColumnModel;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 
+import presentation.components.ButtonNew;
+import presentation.factory.TableFactory;
+import presentation.factory.TableModelFactory;
+import presentation.frame.MainFrame;
+import presentation.main.FunctionADUS;
+import presentation.table.ScrollPaneTable;
 import State.AddState;
 import State.DeleteState;
 import State.ErrorState;
@@ -16,15 +21,6 @@ import State.UpdateState;
 import VO.DriverInfoVO;
 import businesslogic.Impl.Businesslobby.DriverMgt;
 import businesslogic.Service.BusinessLobby.DriverMgtService;
-import presentation.components.ButtonNew;
-import presentation.components.FlatComboBox;
-import presentation.factory.TableFactory;
-import presentation.factory.TableModelFactory;
-import presentation.frame.MainFrame;
-import presentation.main.FunctionADUS;
-import presentation.table.ScrollPaneTable;
-import presentation.table.TableADUS;
-import presentation.table.TableModelADUS;
 
 public class BusinessLbDriverMgt extends FunctionADUS{
 	DriverMgtService service=new DriverMgt();
@@ -48,7 +44,9 @@ public class BusinessLbDriverMgt extends FunctionADUS{
 		// TODO Auto-generated method stub
 		drivers=new ArrayList<DriverInfoVO>();
 		
+		
 		drivers=service.searchDriver("%%");
+		System.out.println(drivers.size());
 
 	//need to be changed
 		if(drivers!=null){
@@ -65,6 +63,8 @@ public class BusinessLbDriverMgt extends FunctionADUS{
 		sPanel = new ScrollPaneTable(table);
 		panel.add(sPanel);
 		
+		ErrorListener errorListener = new ErrorListener();
+		model.addTableModelListener(errorListener);
 	}
 
 	@Override
@@ -139,6 +139,7 @@ public class BusinessLbDriverMgt extends FunctionADUS{
 			}
 		}
 		
+		MainFrame.changeContentPanel(new BusinessLbDriverMgt().getPanel());
 	}
 	
 //	protected void solveDelete(int rowUnderMouse) {
@@ -194,5 +195,28 @@ public class BusinessLbDriverMgt extends FunctionADUS{
 	public void performCancel() {
 		MainFrame.changeContentPanel(new BusinessLbDriverMgt().getPanel());
 		
+	}
+	
+	class ErrorListener implements TableModelListener {
+
+		@Override
+		public void tableChanged(TableModelEvent e) {
+			int row = e.getLastRow();
+			int column = e.getColumn();
+			boolean isLeagel = true;
+			String content = model.getValueAt(row, column);
+			if(content.equals("")){
+				model.setLeagel(row, column, false);
+				buttonNew.setEnabled(false);
+				confirm.setEnabled(false);
+				return;
+			}else{
+				model.setLeagel(row, column, true);
+			}
+			if(model.allLeagel()){
+				buttonNew.setEnabled(true);
+				confirm.setEnabled(true);
+			}
+		}
 	}
 }

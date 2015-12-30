@@ -29,7 +29,7 @@ public class FinanceIncomeAndOutcome extends FunctionSearch{
 	
 	public DateChooser dateBeginChooser;
 	public DateChooser dateEndChooser;
-	String dateInitial = Calendar.getInstance().get(Calendar.YEAR)+"-01-01";
+	String dateInitial = Calendar.getInstance().get(Calendar.YEAR)+Calendar.getInstance().get(Calendar.MONTH)+"-01";
 	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 	String dateNow = format.format(Calendar.getInstance().getTime());
 	

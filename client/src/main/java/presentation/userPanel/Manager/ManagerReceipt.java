@@ -345,7 +345,7 @@ public class ManagerReceipt extends FunctionSearch{
 		for(TransferVO vo: voList){
 			Vector<String> tmp = new Vector<String>();
 			tmp.add(sdf.format(vo.getDate()));
-			tmp.add(vo.getTransferId());
+			tmp.add(vo.getList());
 			tmp.add(vo.getDestination());
 			result.add(tmp);
 		}
