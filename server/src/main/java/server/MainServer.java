@@ -88,6 +88,12 @@ public class MainServer {
 		RMIHelper rmi = new RMIHelper();
 		
 		AddService add_service = null;
+		try {
+			LocateRegistry.createRegistry(RMIHelper.REGISTRY);
+		} catch (RemoteException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
 		DeleteService delete_service = null;
 		UpdateService update_service = null;
 		
@@ -169,7 +175,6 @@ public class MainServer {
 		}
 		
 		try {
-			LocateRegistry.createRegistry(RMIHelper.REGISTRY);
 			
 			Naming.bind(RMIHelper.ADD_IMPL, add_service);
 			print("AddImpl");
