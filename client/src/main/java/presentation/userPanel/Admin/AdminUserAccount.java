@@ -48,10 +48,13 @@ public class AdminUserAccount extends FunctionADUS{
 	protected ArrayList<UserVO> updateItems = new ArrayList<UserVO>();
 	protected ArrayList<UserVO> searchItems = new ArrayList<UserVO>();
 
+	NavigationAdmin nav;
 	
-	public AdminUserAccount(){
+	public AdminUserAccount(NavigationAdmin navigationAdmin){
 		buttonNew = new ButtonNew("新增账号");
 		initUI("账号管理");
+		
+		nav = navigationAdmin;
 	}
 	
 	protected void initTable(){
@@ -156,7 +159,9 @@ public class AdminUserAccount extends FunctionADUS{
 			}
 		}
 		
-		MainFrame.changeContentPanel(new AdminUserAccount().getPanel());
+		if(addState==AddState.SUCCESS&&updateState==UpdateState.SUCCESS&&deleteState==DeleteState.SUCCESS){
+			nav.changeTask(1);
+		}
 	}
 	
 
@@ -207,7 +212,7 @@ public class AdminUserAccount extends FunctionADUS{
 //		model = TableModelFactory.getUserAccountModel(tableV);
 //		table = TableFactory.getUserAccountTable(model);
 //		table.setModel(model);
-		MainFrame.changeContentPanel(new AdminUserAccount().getPanel());
+		nav.changeTask(1);
 	}
 
 	class ErrorListener implements TableModelListener {

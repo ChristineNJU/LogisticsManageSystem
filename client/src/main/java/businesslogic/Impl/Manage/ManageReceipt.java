@@ -89,16 +89,22 @@ public class ManageReceipt implements UpdateReceiptService{
 			ArrayList<InstitutionPO> searchResultReponsitory=searchInstitution.searchInstitutionInfo(requirementReponsitory);
 			ArrayList<InstitutionPO> searchResultMediumCenter=searchInstitution.searchInstitutionInfo(requirementMediumCenter);
 			
+			
 			//arrival   
 			if(receipt instanceof ArrivalVO){
 				ArrivalVO arrival=(ArrivalVO) receipt;
 				SearchArrivalService searchArrival=(SearchArrivalService) Naming.lookup(RMIHelper.SEARCH_ARRIVAL_IMPL);
-				requirement.add("bar_code='"+arrival.getBarCode()+"'");
+				requirement.add("bar_code='"+arrival.getBarCode()+"' AND arrival_date = '"+sdf.format(arrival.getDate())+"'");
+								
 				ArrayList<ArrivalPO> searchResult=new ArrayList<ArrivalPO>();
 				for(int i=0;i<searchResultBusinesslobby.size();i++){
 
-					ArrayList<ArrivalPO> arrivalResult=searchArrival.searchArrival(URLHelper.getArrivalURL(searchResultBusinesslobby.get(0).getInstitutionNumber()), requirement);
-
+					ArrayList<ArrivalPO> arrivalResult=searchArrival.searchArrival(URLHelper.getArrivalURL(searchResultBusinesslobby.get(i).getInstitutionNumber()), requirement);
+					
+					System.out.println(URLHelper.getArrivalURL(searchResultBusinesslobby.get(0).getInstitutionNumber()));
+					
+					System.out.println(arrivalResult.size());
+					
 					for(int j=0;j<arrivalResult.size();j++){
 						searchResult.add(arrivalResult.get(j));
 						institutionid=searchResultBusinesslobby.get(i).getInstitutionNumber();

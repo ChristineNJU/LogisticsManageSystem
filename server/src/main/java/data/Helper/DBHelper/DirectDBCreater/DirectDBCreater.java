@@ -240,7 +240,7 @@ public class DirectDBCreater {
 		
 		try {
 			s = conn.createStatement();
-			boolean mark = s.execute("INSERT INTO "+table_name+" VALUES('0000000001', '黄勇', '南京大学仙林校区1B-434-1', '南京大学', "
+			boolean mark = s.execute("INSERT INTO "+table_name+" VALUES('0000000000', '黄勇', '南京大学仙林校区1B-434-1', '南京大学', "
 					+ "'22222222', '13851988941', '张晨剑', '南京大学仙林校区1B-434-2', '南京大学', '22222222', '13851988941', "
 					+ "'张晨剑', 1, 2, 2, 'iPhone 6S Plus', 'ECONOMIC', 'COURISE_BAG', 6, '南京', '南京', 'DAMAGED', "
 					+ "'2015-11-11 12:20:20', '2015-11-19 20:20:20', '刘钦', 'true', 'true', "

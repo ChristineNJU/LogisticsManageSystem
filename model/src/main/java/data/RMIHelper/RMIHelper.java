@@ -15,7 +15,7 @@ public class RMIHelper {
 	public static final int REGISTRY = 1099;
 	
 	/** The Constant URL. */
-	public static String URL = "rmi://192.168.191.1:"+REGISTRY+"/";
+	public static String URL = "rmi://127.0.0.1:"+REGISTRY+"/";
 	
 	/** The add impl. */
 	public static String ADD_IMPL = URL+"AddImpl";
