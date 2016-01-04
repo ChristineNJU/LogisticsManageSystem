@@ -12,7 +12,7 @@ import java.rmi.registry.LocateRegistry;
 public class RMIHelper {
 	
 	/** The Constant REGISTRY. */
-	public static final int REGISTRY = 8000;
+	public static final int REGISTRY = 1099;
 	
 	/** The Constant URL. */
 	public static String URL = "rmi://127.0.0.1:"+REGISTRY+"/";
@@ -116,6 +116,9 @@ public class RMIHelper {
 			String ip = br.readLine();
 			
 			URL = "rmi://"+ip+":"+REGISTRY+"/";
+			
+			System.out.println(URL);
+			
 			ADD_IMPL = URL+"AddImpl";
 			UPDATE_IMPL = URL+"UpdateImpl";
 			DELETE_IMPL = URL+"DeleteImpl";

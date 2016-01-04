@@ -467,6 +467,11 @@ public class ManageBlService_Stub implements ManageService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public AddState addDistance(DistanceVO distance) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 	

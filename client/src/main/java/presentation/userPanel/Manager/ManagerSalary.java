@@ -27,7 +27,7 @@ public class ManagerSalary extends FunctionADUS{
 	public ManagerSalary(){
 		buttonNew = new ButtonNew("新增薪水项");
 		initUI("薪水管理");
-		panel.remove(buttonNew);
+//		panel.remove(buttonNew);
 	}
 	
 	@Override
@@ -94,6 +94,7 @@ public class ManagerSalary extends FunctionADUS{
         	vRow.add(trans.getChineseForUserRole(temp.getRole()));
         	vRow.add(trans.getChineseForSalaryType(temp.getType()));
         	vRow.add(temp.getSalary()+"");
+        	vRow.add("");
         	
         	result.add(vRow);
         }

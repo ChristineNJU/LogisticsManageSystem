@@ -58,6 +58,7 @@ public class TableModelADUS extends AbstractTableModel {
 			isDelete[i] =  !isDelete[i];
 		}else{
 			tableValues.remove(i);
+			isLeagel.remove(i-initialRowCount);
 			fireTableRowsDeleted(i,i);
 		}
 	}
@@ -180,8 +181,8 @@ public class TableModelADUS extends AbstractTableModel {
 //			addEmptyRow();
 //		}
 		if(column < getColumnCount()){
+			System.out.println("set value at   "+row+"   "+column);
 			tableValues.get(row).setElementAt((String) value,column);
-//			System.out.println("set value at   "+row+"   "+column);
 			fireTableCellUpdated(row, column);
 		}else
 			return;

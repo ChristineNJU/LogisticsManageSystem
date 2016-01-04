@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import server.frame.ServerFrame;
 import PO.ConstPO;
 import businesslogic.URLHelper.URLHelper;
 import data.Helper.DBHelper.DBHelper.DBHelper;
@@ -64,6 +65,9 @@ public class SearchConstImpl extends UnicastRemoteObject implements SearchConstS
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("从数据库提取ConstPO对象失败");
+			
+			ServerFrame.addInfo(e.getMessage());
+			
 			return result;
 		}
 		

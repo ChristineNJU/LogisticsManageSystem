@@ -37,7 +37,7 @@ public class BenefitImpl implements GetBenefitService{
 		} catch(Exception ex){
 			System.out.println(ex.getMessage());
 			ex.printStackTrace();
-			return null;
+			return benefit;
 		}
 		return benefit;
 	}

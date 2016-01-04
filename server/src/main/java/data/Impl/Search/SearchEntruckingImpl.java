@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import server.frame.ServerFrame;
 import PO.EntruckingPO;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Search.SearchEntruckingService;
@@ -89,6 +90,9 @@ public class SearchEntruckingImpl extends UnicastRemoteObject implements SearchE
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("从数据库提取EntruckingPO对象失败");
+			
+			ServerFrame.addInfo(e.getMessage());
+			
 			return result;
 		}
 		return result;

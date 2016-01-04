@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import server.frame.ServerFrame;
 import PO.InstitutionStoragePO;
 import State.AddState;
 import State.DeleteState;
@@ -49,6 +50,9 @@ public class InstitutionStorageImpl extends UnicastRemoteObject implements Insti
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
+			ServerFrame.addInfo(e.getMessage());
+			
 			return result;
 		}
 		return result;
@@ -74,6 +78,9 @@ public class InstitutionStorageImpl extends UnicastRemoteObject implements Insti
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("插入虚拟存储失败");
+			
+			ServerFrame.addInfo(e.getMessage());
+			
 			return AddState.FAIL;
 		}
 		return AddState.SUCCESS;
@@ -103,6 +110,8 @@ public class InstitutionStorageImpl extends UnicastRemoteObject implements Insti
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
+			ServerFrame.addInfo(e.getMessage());
 			
 			return DeleteState.FAIL;
 		}

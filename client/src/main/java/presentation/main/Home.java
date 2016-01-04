@@ -19,6 +19,11 @@ public class Home extends PanelContent{
 
 	UserVO user;
 	
+	LabelHeader info = new LabelHeader("个人信息");
+	LabelHeader id;
+	LabelHeader name;
+	LabelHeader staffType;
+	
 	LabelHeader modifyPassword = new LabelHeader("修改密码");
 	LabelHeader oldPass = new LabelHeader("原有密码  ：");
 	LabelHeader newPass = new LabelHeader("新  密  码：");
@@ -39,15 +44,26 @@ public class Home extends PanelContent{
 	public Home(UserVO user){
 		this("个人首页");
 		this.user = user;
-		modifyPassword.setBounds(116,250,200,50);
+		
+		id = new LabelHeader("工号: "+user.getId());
+		name = new LabelHeader("姓名: "+user.getName());
+		staffType = new LabelHeader("身份: "+Translater.getChineseForUserRole(user.getRole()));
+		
+		info.setBounds(116,150,200,50);
+		info.setFont(FontSet.twenty_five);
+		id.setBounds(116, 205, 200, 30);
+		name.setBounds(116, 240, 200, 30);
+		staffType.setBounds(116, 275, 200, 30);
+		
+		modifyPassword.setBounds(116,350,200,50);
 		modifyPassword.setFont(FontSet.twenty_five);
-		oldPass.setBounds(116,320,120,30);
-		newPass.setBounds(116,350,120,30);
-		newPassConfirm.setBounds(116,380,120,30);
-		oldPassword.setBounds(236,320,120,28);
-		newPassword.setBounds(236,350,120,28);
-		newPasswordConfirm.setBounds(236,380,120,28);
-		confirm.setLocation(116,430);
+		oldPass.setBounds(116,420,120,30);
+		newPass.setBounds(116,450,120,30);
+		newPassConfirm.setBounds(116,480,120,30);
+		oldPassword.setBounds(236,420,120,28);
+		newPassword.setBounds(236,450,120,28);
+		newPasswordConfirm.setBounds(236,480,120,28);
+		confirm.setLocation(116,530);
 		
 		confirm.addMouseListener(new MouseAdapter(){
 			@Override
@@ -64,6 +80,11 @@ public class Home extends PanelContent{
 		this.add(newPassword);
 		this.add(newPasswordConfirm);
 		this.add(confirm);
+		
+		this.add(info);
+		this.add(id);
+		this.add(name);
+		this.add(staffType);
 	}
 
 	private void confirmRevise(){
@@ -89,7 +110,7 @@ public class Home extends PanelContent{
 	
 	private void showError(String s){
 		error = new LabelError(s);
-		error.setBounds(220,200,400,30);
+		error.setBounds(420,530,400,30);
 		this.add(error);
 		this.repaint();
 	}

@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import businesslogic.URLHelper.URLHelper;
 
@@ -94,7 +96,7 @@ public class DirectDBCreater {
 				
 //				createTable_StockTaking("02500");
 //				insert_StockingTaking("02500");
-//				deleteTable(URLHelper.getStockTakingURL("0250"));
+//				deleteTable(URLHelper.getStockTakingURL("02500"));
 				
 //				createTable_Storage("02500");
 //				insert_Storage("02500");
@@ -178,7 +180,8 @@ public class DirectDBCreater {
 		
 		try {
 			s = conn.createStatement();
-			boolean mark = s.execute("INSERT INTO "+table_name+" VALUES('admin', 'admin', '黄勇', '男', 20, "
+			boolean mark;
+				    mark = s.execute("INSERT INTO "+table_name+" VALUES('admin', 'admin', '黄勇', '男', 20, "
 					+ "'Other', '南京', 'admin')");
 					mark = s.execute("INSERT INTO "+table_name+" VALUES('025000_000', '025000_000', '黄勇', '男', 20, "
 					+ "'BusinessLobby', '南京', 'courier')");
@@ -192,6 +195,15 @@ public class DirectDBCreater {
 							+ "'Other', '南京', 'finance')");
 					mark = s.execute("INSERT INTO "+table_name+" VALUES('manager_00', 'manager_00', '黄勇', '男', 20, "
 							+ "'Other', '南京', 'manager')");
+					
+					mark = s.execute("INSERT INTO "+table_name+" VALUES('010000_000', '010000_000', '黄勇', '男', 20, "
+							+ "'BusinessLobby', '北京', 'courier')");
+					mark = s.execute("INSERT INTO "+table_name+" VALUES('010000_00', '010000_00', '黄勇', '男', 20, "
+							+ "'BusinessLobby', '北京', 'businessAgent')");
+					mark = s.execute("INSERT INTO "+table_name+" VALUES('0100_00', '0100_00', '黄勇', '男', 20, "
+							+ "'MediumCenter', '北京', 'mediumAgent')");
+					mark = s.execute("INSERT INTO "+table_name+" VALUES('01000_00', '01000_00', '黄勇', '男', 20, "
+							+ "'Repository', '北京', 'repository')");
 			conn.commit();
 			System.out.println("insert into "+table_name);
 		} catch (SQLException e) {
@@ -310,6 +322,13 @@ public class DirectDBCreater {
 					+ "'南京', '0250')");
 			mark = s.execute("INSERT INTO "+table_name+" VALUES('南京市中转中心仓库', 'Repository', "
 					+ "'南京', '02500')");
+			
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('北京市海淀区营业厅', 'BusinessLobby', "
+					+ "'北京', '010000')");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('北京市中转中心', 'MediumCenter', "
+					+ "'北京', '0100')");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('北京市中转中心仓库', 'Repository', "
+					+ "'北京', '01000')");
 			conn.commit();
 			
 			System.out.println("insert into "+table_name);
@@ -340,7 +359,7 @@ public class DirectDBCreater {
 		
 		try {
 			s = conn.createStatement();
-			boolean mark = s.execute("INSERT INTO "+table_name+" VALUES(1, '中国银行南京分行', 2403495.03)");
+			boolean mark = s.execute("INSERT INTO "+table_name+" VALUES(1, '中国银行南京分行', 3000000.00)");
 			conn.commit();
 			
 			System.out.println("insert into "+table_name);
@@ -400,7 +419,15 @@ public class DirectDBCreater {
 		
 		try {
 			s = conn.createStatement();
-			boolean mark = s.execute("INSERT INTO "+table_name+" VALUES('admin', 3000, 'MONTH')");
+			boolean mark;
+//			boolean mark = s.execute("INSERT INTO "+table_name+" VALUES('admin', 3000, 'MONTH')");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('businessAgent', 4000, 'MONTH')");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('courier', 3000, 'MONTH')");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('finance', 7000, 'MONTH')");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('manager', 11000, 'MONTH')");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('mediumAgent', 4000, 'MONTH')");
+			mark = s.execute("INSERT INTO "+table_name+" VALUES('repository', 4000, 'MONTH')");
+			
 			conn.commit();
 			
 			System.out.println("insert into "+table_name);
@@ -644,7 +671,7 @@ public class DirectDBCreater {
 		
 		try {
 			s = conn.createStatement();
-			s.execute("CREATE TABLE "+table_name+" (bar_code varchar(20) PRIMARY key, storage_date varchar(20), "
+			s.execute("CREATE TABLE "+table_name+" (bar_code varchar(20), storage_date varchar(20), "
 					+ "destination varchar(20), area_code varchar(20), row int, shelf int, position int)");
 			conn.commit();
 			
@@ -808,8 +835,8 @@ public class DirectDBCreater {
 		
 		try {
 			s = conn.createStatement();
-			s.execute("CREATE TABLE "+table_name+" (date varchar(20) PRIMARY key, institution_size int, staff_size int, "
-					+ "car_size int, storage_size int, account varchar(1000))");
+			s.execute("CREATE TABLE "+table_name+" (id int, date varchar(20) PRIMARY key, institution_size int, staff_size int, "
+					+ "car_size int, storage_size int, account varchar(5000))");
 			conn.commit();
 			
 			System.out.println("create table "+table_name);
@@ -824,7 +851,9 @@ public class DirectDBCreater {
 		
 		try {
 			s = conn.createStatement();
-			boolean mark = s.execute("INSERT INTO "+table_name+" VALUES()");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			boolean mark = s.execute("INSERT INTO "+table_name+" VALUES(1, '"+sdf.format(Calendar.getInstance().getTime())+"', "
+					+ "3, 7, 0, 0, '1')");
 			conn.commit();
 			
 			System.out.println("insert into "+table_name);
@@ -999,41 +1028,58 @@ public class DirectDBCreater {
 		insert_Distance();
 		
 		createTable_Driver("025000");
+		createTable_Driver("010000");
 		
 		createTable_Car("025000");
+		createTable_Car("010000");
 		
 		createTable_Arrival("025000");
 		createTable_Arrival("0250");
+		createTable_Arrival("010000");
+		createTable_Arrival("0100");
 		
 		createTable_Delivery("025000");
+		createTable_Delivery("010000");
 		
 		createTable_Entrucking("025000");
 		createTable_Entrucking("0250");
+		createTable_Entrucking("010000");
+		createTable_Entrucking("0100");
 		
 		createTable_Balance("02500");
+		createTable_Balance("01000");
 		
 		createTable_StockTaking("02500");
+		createTable_StockTaking("01000");
 		
 		createTable_Storage("02500");
+		createTable_Storage("01000");
 		
 		createTable_Removal("02500");
+		createTable_Removal("01000");
 		
 		createTable_Transfer("0250");
+		createTable_Transfer("0100");
 		
 		createTable_Gathering("025000");
+		createTable_Gathering("010000");
 		
 		createTable_Period();
+		insert_Period();
 		
 		createTable_Benefit();
 		
 		createTable_Cost();
 		
 		createTable_WareHouse("02500");
+		createTable_WareHouse("01000");
 		
 		createTable_InstitutionStorage("0250");
 		createTable_InstitutionStorage("025000");
+		createTable_InstitutionStorage("0100");
+		createTable_InstitutionStorage("010000");
 		
 		createTable_BsLbGathering("025000");
-		
+		createTable_BsLbGathering("010000");
 	}	
 }

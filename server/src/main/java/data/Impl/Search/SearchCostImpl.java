@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import server.frame.ServerFrame;
 import PO.CostPO;
 import State.CostType;
 import State.StateSwitch;
@@ -74,6 +75,9 @@ public class SearchCostImpl extends UnicastRemoteObject implements SearchCostSer
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("从数据库提取CostPO对象失败");
+			
+			ServerFrame.addInfo(e.getMessage());
+			
 			return result;
 		}
 		

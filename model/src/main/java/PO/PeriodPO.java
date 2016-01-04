@@ -4,6 +4,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import VO.AccountVO;
+import VO.PeriodVO;
+import businesslogic.URLHelper.URLHelper;
+
 /**
  * 用来保存期初建账的持久化数据格式
  * 
@@ -13,6 +17,7 @@ import java.util.Date;
 public class PeriodPO extends PO {
 
 	// ----- member variables ---------------------------------------
+	private int id = 1;
 	private Date date;
 	private int institution_size = 0;
 	private int staff_size = 0;
@@ -35,10 +40,21 @@ public class PeriodPO extends PO {
 		this.account = account;
 	}
 	
+	public PeriodPO(PeriodVO vo, ArrayList<AccountPO> account) {
+		// TODO Auto-generated constructor stub
+		super(URLHelper.getPeriodURL());
+		date = vo.getDate();
+		institution_size = vo.getInstitution_size();
+		staff_size = vo.getStaff_size();
+		car_size = vo.getCar_size();
+		storage_size = vo.getStorage_size();
+		this.account = account;
+	}
 	/*===============================================================
 	 * Public方法
 	 * */
 	
+
 	/*---------------------------------------------------------------
 	 * 对PeriodPO的数据进行读取
 	 * */
@@ -142,6 +158,8 @@ public class PeriodPO extends PO {
 		
 		String result = "";
 		
+		result = result + id + ", ";
+		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		result = result + "'" + sdf.format(date) + "', ";
 		result = result + institution_size + ", ";
@@ -166,8 +184,8 @@ public class PeriodPO extends PO {
 	@Override
 	public String getPrimaryKey() {
 		// TODO Auto-generated method stub
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		return "date = '"+sdf.format(date)+"'";
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		return "id = "+id+"";
 	}
 
 }

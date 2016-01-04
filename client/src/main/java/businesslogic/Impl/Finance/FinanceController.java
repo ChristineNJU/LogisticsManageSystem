@@ -180,16 +180,22 @@ public class FinanceController implements FinanceService{
 	@Override
 	public PeriodVO getPeriod() {
 		// TODO Auto-generated method stub
-		return null;
+		PeriodImpl period = new PeriodImpl();
+		return period.getPeriod();
 	}
 	
 	/**
 	 * @see businesslogic.Service.Finance.FinanceService#updatePeriod()
 	 */
 	@Override
-	public UpdateState updatePeriod() {
+	public UpdateState updatePeriod(PeriodVO vo) {
 		// TODO Auto-generated method stub
-		return null;
+		PeriodImpl period = new PeriodImpl();
+		UpdateState state = period.updatePeriod(vo);
+		if(state==UpdateState.SUCCESS){
+			SystemLog.addLog("更新期初信息");
+		}
+		return state;
 	}
 	
 	/**

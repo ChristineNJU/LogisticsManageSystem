@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import server.frame.ServerFrame;
 import PO.CarInfoPO;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Search.SearchCarInfoService;
@@ -64,6 +65,9 @@ public class SearchCarInfoImpl extends UnicastRemoteObject implements SearchCarI
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("从数据库提取CarInfoPO对象失败");
+			
+			ServerFrame.addInfo(e.getMessage());
+			
 			return result;
 		}
 		

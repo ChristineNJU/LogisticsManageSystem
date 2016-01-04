@@ -1,6 +1,9 @@
 package businesslogic.Impl.Finance;
 
+import java.net.MalformedURLException;
 import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -18,13 +21,13 @@ import businesslogic.Service.Finance.PeriodService;
 import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
-import data.Service.Delete.DeleteService;
 import data.Service.Search.SearchAccountService;
 import data.Service.Search.SearchCarInfoService;
 import data.Service.Search.SearchInstitutionInfoService;
 import data.Service.Search.SearchPeriodService;
 import data.Service.Search.SearchStorageService;
 import data.Service.Search.SearchUserService;
+import data.Service.Update.UpdateService;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -36,25 +39,30 @@ public class PeriodImpl implements PeriodService{
 	 * @see businesslogic.Service.Finance.PeriodService#updatePeriod()
 	 */
 	@Override
-	public UpdateState updatePeriod() {
+	public UpdateState updatePeriod(PeriodVO vo) {
 		// TODO Auto-generated method stub
 		UpdateState state=UpdateState.SUCCESS;
-		try{
-			SearchPeriodService periodSearch=(SearchPeriodService) Naming.lookup(RMIHelper.SEARCH_PERIOD_IMPL);
-			PeriodPO period=periodSearch.searchPeriod();
-			DeleteService periodDelete=(DeleteService) Naming.lookup(RMIHelper.DELETE_IMPL);
-			periodDelete.delete(period);
-		} catch (Exception ex) {
-			state=UpdateState.CONNECTERROR;
-			ex.printStackTrace();
+		
+		try {
+			UpdateService service = (UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
+			
+			SearchAccountService acc = (SearchAccountService) Naming.lookup(RMIHelper.SEARCH_ACCOUNT_IMPL);
+			
+			ArrayList<String> requirement = new ArrayList<String>();
+			requirement.add("account_name like '%%'");
+			
+			ArrayList<AccountPO> account = acc.searchAccount(requirement);
+			
+			PeriodPO po = new PeriodPO(vo, account);
+			
+			state = service.update(po);
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+			return UpdateState.CONNECTERROR;
 		}
-		AddState addstate=this.addPeriod();
-		if(addstate==AddState.FAIL)
-			state=UpdateState.NOTFOUND;
-		else if(addstate==AddState.SUCCESS)
-			state=UpdateState.SUCCESS;
-		else 
-			state=UpdateState.CONNECTERROR;
+		
 		return state;
 	}
 
@@ -67,6 +75,9 @@ public class PeriodImpl implements PeriodService{
 		PeriodVO period=null;
 		try{
 			SearchPeriodService periodSearch=(SearchPeriodService) Naming.lookup(RMIHelper.SEARCH_PERIOD_IMPL);
+			
+			System.out.println(periodSearch.searchPeriod()+"hhhhh");
+			
 			period=new PeriodVO(periodSearch.searchPeriod());
 		} catch (Exception ex) {
 			ex.printStackTrace();

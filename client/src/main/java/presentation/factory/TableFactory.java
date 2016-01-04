@@ -124,7 +124,7 @@ public class TableFactory {
 	public static TableAddOnly getCost(TableModelAddOnly model){
 		TableAddOnly table = new TableAddOnly(model);
 		TableColumnModel tcm = table.getColumnModel(); 
-		tcm.getColumn(4).setCellEditor(new DefaultCellEditor(ComboxFactory.getCostTypeComboBox())); 
+		tcm.getColumn(3).setCellEditor(new DefaultCellEditor(ComboxFactory.getCostTypeComboBox())); 
 		tcm.getColumn(tcm.getColumnCount()-1).setPreferredWidth(80);
 		return table;
 	}
@@ -157,6 +157,10 @@ public class TableFactory {
 	
 	public static TableADUS getSalaryTable(TableModelADUS model){
 		TableADUS table = new TableADUS(model);
+		
+		TableColumnModel tcm = table.getColumnModel(); 
+		tcm.getColumn(1).setCellEditor(new DefaultCellEditor(ComboxFactory.getSalaryType()));
+		
 		return table;
 	}
 	

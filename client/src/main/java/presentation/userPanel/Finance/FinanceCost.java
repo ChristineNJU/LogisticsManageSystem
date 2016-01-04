@@ -5,10 +5,13 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Vector;
 
+import javax.swing.DefaultCellEditor;
 import javax.swing.JLabel;
+import javax.swing.table.TableColumnModel;
 
 import presentation.components.ButtonConfirm;
 import presentation.components.ButtonNew;
+import presentation.components.FlatComboBox;
 import presentation.factory.TableFactory;
 import presentation.factory.TableModelFactory;
 import presentation.frame.MainFrame;
@@ -18,15 +21,17 @@ import presentation.table.ScrollPaneTable;
 import State.AddState;
 import State.CostType;
 import State.ErrorState;
+import VO.AccountVO;
 import VO.CostVO;
 import VO.VO;
 import businesslogic.Impl.Finance.FinanceController;
+import businesslogic.Service.Finance.FinanceService;
 
 public class FinanceCost extends FunctionAdd{
 	SimpleDateFormat sdfs=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	SimpleDateFormat sdfd=new SimpleDateFormat("yyyy-MM-dd");
 	
-	FinanceController service = new FinanceController();
+	FinanceService service = new FinanceController();
 	ArrayList<CostVO> costs;
 	
 //<<<<<<< HEAD
@@ -67,6 +72,17 @@ public class FinanceCost extends FunctionAdd{
 		model = TableModelFactory.getCostModel(tableV);
 		table = TableFactory.getCost(model);
 		
+		ArrayList<AccountVO> account = service.searchAccount("%%");
+		
+		FlatComboBox accountBox = new FlatComboBox();
+		
+		for(AccountVO vo: account){
+			accountBox.addItem(vo.getName());
+		}
+		
+		TableColumnModel tcm = table.getColumnModel();
+		tcm.getColumn(2).setCellEditor(new DefaultCellEditor(accountBox));
+		
 		sPanel = new ScrollPaneTable(table);
 		sPanel.setLocation(sPanel.getX(),header.getHeight()+120);
 		panel.add(sPanel);
@@ -102,6 +118,9 @@ public class FinanceCost extends FunctionAdd{
 			vRow.add(temp.getPayerAccount());
 			vRow.add(Translater.getChineseCostType(temp.getType()));
 			vRow.add(temp.getRemark());
+			
+			vRow.add("");
+			
 			result.add(vRow);
 		} 
 		return result;
@@ -133,11 +152,11 @@ public class FinanceCost extends FunctionAdd{
 		//将表格的一行转换成vo
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String tempdate = sdf.format(Calendar.getInstance().getTime());
-		double amount = Double.valueOf(vector.get(1));
-		String temppayer = vector.get(2);
-		String tempaccount = vector.get(3);
-		CostType temptype = Translater.getCostType(vector.get(4));
-		String tempremark = vector.get(5);
+		double amount = Double.valueOf(vector.get(0));
+		String temppayer = vector.get(1);
+		String tempaccount = vector.get(2);
+		CostType temptype = Translater.getCostType(vector.get(3));
+		String tempremark = vector.get(4);
 		CostVO tempcost = new CostVO(tempdate, amount, temppayer, tempaccount, temptype, tempremark);
 		return tempcost;
 	}

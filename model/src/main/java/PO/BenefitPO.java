@@ -41,7 +41,7 @@ public class BenefitPO extends PO {
 			// TODO Auto-generated catch block
 			this.date = null;
 			System.out.println("时间对象创建失败");
-//			e.printStackTrace();
+			e.printStackTrace();
 		}
 	}
 	

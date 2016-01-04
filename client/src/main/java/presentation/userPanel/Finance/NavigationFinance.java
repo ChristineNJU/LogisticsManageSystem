@@ -73,7 +73,7 @@ public class NavigationFinance extends Navigation{
 		MainFrame.getMainPanel().repaint();
 	}
 	private void changeToAccount(){
-		financeAccount = new FinanceAccount();
+		financeAccount = new FinanceAccount(this);
 		MainFrame.changeContentPanel(financeAccount.getPanel());
 		if(financeAccount.isConnectError()){
 			System.out.println("manager initiate null");
@@ -113,12 +113,12 @@ public class NavigationFinance extends Navigation{
 		}
 	}
 	private void changeToInitial(){
-		financeInitial = new FinanceInitial();
+		financeInitial = new FinanceInitial(this);
 		MainFrame.changeContentPanel(financeInitial.getPanel());
-		if(financeSystem.isConnectError()){
-			System.out.println("manager initiate null");
-			financeSystem.showError(ErrorState.CONNECTERROR);
-		}
+//		if(financeInitial.isConnectError()){
+//			System.out.println("manager initiate null");
+//			financeSystem.showError(ErrorState.CONNECTERROR);
+//		}
 	}
 	private void changeToSystem(){
 		financeSystem = new FinanceSystem();

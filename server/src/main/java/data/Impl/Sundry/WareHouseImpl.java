@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import server.frame.ServerFrame;
 import PO.WareHousePO;
 import State.StateSwitch;
 import State.StorageArea;
@@ -49,6 +50,9 @@ public class WareHouseImpl extends UnicastRemoteObject implements WareHouseServi
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("计数失败");
+			
+			ServerFrame.addInfo(e.getMessage());
+			
 			return result;
 		}
 		return result;
@@ -79,6 +83,9 @@ public class WareHouseImpl extends UnicastRemoteObject implements WareHouseServi
 			// TODO Auto-generated catch block
 //			e.printStackTrace();
 			System.out.println("从数据库提取WareHousePO对象失败");
+			
+			ServerFrame.addInfo(e.getMessage());
+			
 			return result;
 		}
 		return result;

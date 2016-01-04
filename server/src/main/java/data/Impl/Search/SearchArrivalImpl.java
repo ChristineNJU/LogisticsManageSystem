@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import server.frame.ServerFrame;
 import PO.ArrivalPO;
 import State.LogisticsState;
 import State.StateSwitch;
@@ -85,6 +86,9 @@ public class SearchArrivalImpl extends UnicastRemoteObject implements SearchArri
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("从数据库提取ArrivalPO对象失败");
+			
+			ServerFrame.addInfo(e.getMessage());
+			
 			return result;
 		}
 		

@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import server.frame.ServerFrame;
 import PO.LogisticsInfoPO;
 import State.LogisticsState;
 import State.LogisticsType;
@@ -127,6 +128,9 @@ public class SearchLogisticsImpl extends UnicastRemoteObject implements SearchLo
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("从数据库提取UserPO对象失败");
+			
+			ServerFrame.addInfo(e.getMessage());
+			
 			return result;
 		}
 		

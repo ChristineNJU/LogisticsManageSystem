@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import server.frame.ServerFrame;
 import PO.LogPO;
 import businesslogic.URLHelper.URLHelper;
 import data.Helper.DBHelper.DBHelper.DBHelper;
@@ -77,6 +78,9 @@ public class SearchLogImpl extends UnicastRemoteObject implements SearchLogServi
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("从数据库提取LogPO对象失败");
+			
+			ServerFrame.addInfo(e.getMessage());
+			
 			return result;
 		}
 		return result;

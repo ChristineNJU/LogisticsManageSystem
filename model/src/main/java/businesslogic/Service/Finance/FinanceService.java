@@ -154,8 +154,9 @@ public interface FinanceService {
 	/**
 	 * 更新期初.
 	 *
+	 * @param PeriodVO vo
 	 * @return 更新状态
 	 */
-	public UpdateState updatePeriod();
+	public UpdateState updatePeriod(PeriodVO vo);
 	
 }

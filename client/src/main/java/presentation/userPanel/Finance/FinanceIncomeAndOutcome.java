@@ -29,7 +29,7 @@ public class FinanceIncomeAndOutcome extends FunctionSearch{
 	
 	public DateChooser dateBeginChooser;
 	public DateChooser dateEndChooser;
-	String dateInitial = Calendar.getInstance().get(Calendar.YEAR)+Calendar.getInstance().get(Calendar.MONTH)+"-01";
+	String dateInitial = Calendar.getInstance().get(Calendar.YEAR)+"-"+(Calendar.getInstance().get(Calendar.MONTH)+1)+"-01";
 	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 	String dateNow = format.format(Calendar.getInstance().getTime());
 	
@@ -50,6 +50,12 @@ public class FinanceIncomeAndOutcome extends FunctionSearch{
 	@Override
 	protected void initTable() {
 //		tableV = getVector(service.searchBenefit(dateNow));
+		Calendar rightNow = Calendar.getInstance();
+		rightNow.add(Calendar.DATE, 1);
+		String searchDate = format.format(rightNow.getTime());
+		ArrayList<BenefitVO> benefit = service.searchBenefit(searchDate);
+		
+		tableV = getVector(benefit);
 		model = TableModelFactory.getIncomeAndOutcomeModel(tableV);
 		table = TableFactory.getOutcomeAndIncomeTable(model);
 		sPanel = new ScrollPaneTable(table);
@@ -61,7 +67,7 @@ public class FinanceIncomeAndOutcome extends FunctionSearch{
 		Vector<Vector<String>> result = new Vector<Vector<String>>();
         for(BenefitVO temp:benefitVO){
         	Vector<String> vRow = new Vector<String>();
-        	vRow.add(temp.getDate()+"");
+        	vRow.add(format.format(temp.getDate())+"");
         	vRow.add(temp.getIncome()+"");
         	vRow.add(temp.getCost()+"");
         	vRow.add(temp.getBenefit()+"");

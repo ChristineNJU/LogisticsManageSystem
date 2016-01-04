@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import server.frame.ServerFrame;
 import PO.InstitutionPO;
 import State.InstitutionType;
 import State.StateSwitch;
@@ -66,6 +67,9 @@ public class SearchInstitutionInfoImpl extends UnicastRemoteObject implements Se
 			// TODO Auto-generated catch block
 //			e.printStackTrace();
 			System.out.println("从数据库提取InstitutionPO对象失败");
+			
+			ServerFrame.addInfo(e.getMessage());
+			
 			return result;
 		}
 		return result;

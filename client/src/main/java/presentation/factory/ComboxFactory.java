@@ -2,7 +2,9 @@ package presentation.factory;
 
 import javax.swing.JComboBox;
 
+import State.SalaryType;
 import presentation.components.FlatComboBox;
+import presentation.main.Translater;
 
 public class ComboxFactory {
 
@@ -73,6 +75,15 @@ public class ComboxFactory {
 			position.addItem(i+"");
 		}
 		return position;
+	}
+	
+	public static FlatComboBox getSalaryType() {
+		FlatComboBox type = new FlatComboBox();
+		type.addItem(Translater.getChineseForSalaryType(SalaryType.MONTH));
+		type.addItem(Translater.getChineseForSalaryType(SalaryType.ONCE));
+		type.addItem(Translater.getChineseForSalaryType(SalaryType.REWARD));
+		
+		return type;
 	}
 }
 

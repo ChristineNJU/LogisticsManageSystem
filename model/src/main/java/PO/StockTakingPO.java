@@ -141,9 +141,9 @@ public class StockTakingPO extends PO {
 		result = result + "'" + sdf.format(storage_date) + "', ";
 		result = result + "'" + destination + "', ";
 		result = result + "'" + StateSwitch.switchToStr(area_code) + "', ";
-		result = result + row + "', ";
-		result = result + shelf + "', ";
-		result = result + position + "'";
+		result = result + row + ", ";
+		result = result + shelf + ", ";
+		result = result + position + "";
 		
 		System.out.println(result);
 		return result;

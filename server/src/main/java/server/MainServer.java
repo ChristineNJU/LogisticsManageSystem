@@ -83,7 +83,7 @@ public class MainServer {
 		
 	public static void main(String[] args) {
 		
-//		ServerFrame sf = new ServerFrame();
+		ServerFrame sf = new ServerFrame();
 		
 		RMIHelper rmi = new RMIHelper();
 		
@@ -126,6 +126,7 @@ public class MainServer {
 		} catch (IOException e2) {
 			// TODO Auto-generated catch block
 			e2.printStackTrace();
+			ServerFrame.addInfo(e2.getMessage());
 		}
 		
 		try {
@@ -166,6 +167,7 @@ public class MainServer {
 			// TODO Auto-generated catch block
 			System.out.println("接口实现创建失败");
 			e1.printStackTrace();
+			ServerFrame.addInfo(e1.getMessage());
 		}
 		
 		try {
@@ -235,9 +237,11 @@ public class MainServer {
 			// TODO Auto-generated catch block
 			System.out.println("RMI远程端口绑定失败");
 			e.printStackTrace();
+			ServerFrame.addInfo(e.getMessage());
 		}
 		
 		DBHelper db_helper = DBHelper.createDBHelper();
+		
 	}
 	
 	/**
@@ -247,6 +251,6 @@ public class MainServer {
 	 * */
 	private static void print(String object_name) {
 		System.out.println(">>>>>>远程"+object_name+"对象绑定成功！");
-		ServerFrame.addInfo(">>>>>>远程"+object_name+"对象绑定成功！");
+//		ServerFrame.addInfo(">>>>>>远程"+object_name+"对象绑定成功！");
 	}
 }

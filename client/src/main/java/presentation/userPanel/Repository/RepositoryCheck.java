@@ -107,7 +107,7 @@ public class RepositoryCheck extends FunctionSearch{
 				removals=new ArrayList<RemovalVO>();
 			}
 			else{
-				if(storages.isEmpty()||removals.isEmpty()){
+				if(storages.isEmpty()&&removals.isEmpty()){
 					showError(ErrorState.SEARCHERROR);
 				}
 			}

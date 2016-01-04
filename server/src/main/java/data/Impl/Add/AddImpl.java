@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import server.frame.ServerFrame;
 import PO.PO;
 import State.AddState;
 import data.Helper.DBHelper.DBHelper.DBHelper;
@@ -41,6 +42,9 @@ public class AddImpl extends UnicastRemoteObject implements AddService {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
+			ServerFrame.addInfo(e.getMessage());
+			
 			System.out.println("插入PO对象失败");
 			
 			if(e.getSQLState().equals("23505")){

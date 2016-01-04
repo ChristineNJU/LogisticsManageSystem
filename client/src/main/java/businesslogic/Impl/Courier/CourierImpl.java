@@ -7,6 +7,7 @@ import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 import PO.ConstPO;
 import PO.DistancePO;
@@ -28,7 +29,6 @@ import data.Service.Search.SearchConstService;
 import data.Service.Search.SearchDistanceService;
 import data.Service.Search.SearchLogisticsService;
 import data.Service.Sundry.GatheringStorageService;
-import data.Service.Sundry.InstitutionStorageService;
 import data.Service.Update.UpdateService;
 
 // TODO: Auto-generated Javadoc
@@ -54,6 +54,8 @@ public class CourierImpl implements CourierService{
 		// TODO Auto-generated method stub
 		try{
 			SearchLogisticsService searchLogistics=(SearchLogisticsService) Naming.lookup(RMIHelper.SEARCH_LOGISTICS_IMPL);
+			SearchDistanceService searchDistance = (SearchDistanceService) Naming.lookup(RMIHelper.SEARCH_DISTANCE_IMPL);
+			
 			ArrayList<String> requirement=new ArrayList<String>();
 			requirement.add("bar_code='"+((LogisticsInputVO)logistics_info).getBar_code()+"'");
 			ArrayList<LogisticsInfoPO> result=searchLogistics.searchLogisticsInfo(requirement);
@@ -73,6 +75,34 @@ public class CourierImpl implements CourierService{
 				result.get(0).addHistory("收件人已收件,"+sdf.format(Calendar.getInstance().getTime()));
 				
 				state = update.update(result.get(0));
+				
+				String city1 = result.get(0).getStarting();
+				String city2 = result.get(0).getDestination();
+				
+				ArrayList<DistancePO> cityList = new ArrayList<DistancePO>();
+				
+				ArrayList<String> distanceRe = new ArrayList<String>();
+				distanceRe.add("city_1 = '"+city1+"' AND city_2 = '"+city2+"'");
+				
+				cityList = searchDistance.searchDistance(distanceRe);
+				
+				if(cityList.isEmpty()){
+					distanceRe = new ArrayList<String>();
+					distanceRe.add("city_1 = '"+city2+"' AND city_2 = '"+city1+"'");
+					
+					cityList = searchDistance.searchDistance(distanceRe);
+				}
+				
+				if(!cityList.isEmpty()){
+					Date date_start = result.get(0).getSendDate();
+					Date date_end = result.get(0).getSendDate();
+					
+					double hour = ((double)(date_end.getTime()-date_start.getTime()))/(1000*60*60);
+					
+					cityList.get(0).setTime(hour);
+					
+					update.update(cityList.get(0));
+				}
 			}
 		} catch(Exception ex){
 			state=UpdateState.CONNECTERROR;

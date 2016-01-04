@@ -78,8 +78,8 @@ public class TableModelFactory {
 	}
 	
 	public static TableModelAddOnly getCostModel(Vector<Vector<String>> tableV){
-		String[] tableH = {"付款日期","金额","付款人","付款账目","条目","备注",""};
-		boolean[] isCellEditable = {false,false,false,false,false,false,false};
+		String[] tableH = {"金额","付款人","付款账目","条目","备注"," "};
+		boolean[] isCellEditable = {false,false,false,false,false,false};
 		TableModelAddOnly model = new TableModelAddOnly(tableV,tableH,isCellEditable);
 		return model;
 	}
@@ -98,7 +98,7 @@ public class TableModelFactory {
 	}
 	
 	public static TableModelSearch getIncomeAndOutcomeModel(Vector<Vector<String>> tableV){
-		String[] tableH = {"时间","收入","支出","利润"};
+		String[] tableH = {"时间","收入累计","支出累计","利润"};
 		TableModelSearch model = new TableModelSearch(tableV,tableH);
 		return model;
 	}
@@ -110,7 +110,7 @@ public class TableModelFactory {
 	}
 	
 	public static TableModelADUS getInstitutionModel(Vector<Vector<String>> tableV){
-		String[] tableH = {"机构ID","机构名称","机构类型","机构所在地",""};
+		String[] tableH = {"机构ID","机构名称","机构类型","机构所在地"," "};
 		boolean[] isCellEditable = {false,true,true,true,false};
 		
 		TableModelADUS model = new TableModelADUS(tableV,tableH,isCellEditable);
@@ -118,8 +118,8 @@ public class TableModelFactory {
 	}
 	
 	public static TableModelADUS getSalaryModel(Vector<Vector<String>> tableV){
-		String[] tableH = {"职位","工资类型","工资"};
-		boolean[] isCellEditable = {false,false,true};
+		String[] tableH = {"职位","工资类型","工资"," "};
+		boolean[] isCellEditable = {false,true,true,true};
 		TableModelADUS model = new TableModelADUS(tableV,tableH,isCellEditable);
 		return model;
 	}

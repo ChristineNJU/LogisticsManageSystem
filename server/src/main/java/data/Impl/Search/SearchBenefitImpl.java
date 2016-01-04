@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import server.frame.ServerFrame;
 import PO.BenefitPO;
 import businesslogic.URLHelper.URLHelper;
 import data.Helper.DBHelper.DBHelper.DBHelper;
@@ -58,7 +59,7 @@ public class SearchBenefitImpl extends UnicastRemoteObject implements SearchBene
 				double income = rs.getDouble(1);
 				double expend = rs.getDouble(2);
 				
-				String date = rs.getString(3);
+				String date = rs.getString(4);
 				
 				BenefitPO benefit = new BenefitPO(income, expend, URLHelper.getBenefitURL(), date);
 				
@@ -68,7 +69,10 @@ public class SearchBenefitImpl extends UnicastRemoteObject implements SearchBene
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 //			e.printStackTrace();
-			System.out.println("从数据库提取BenefitPO对象失败败");
+			System.out.println("从数据库提取BenefitPO对象失败");
+			
+			ServerFrame.addInfo(e.getMessage());
+			
 			return result;
 		}
 		

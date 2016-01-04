@@ -40,6 +40,14 @@ public interface ManageService {
 	public AddState addConst(ConstVO constant);
 	
 	/**
+	 * 添加城市
+	 * 
+	 * @param distance DistanceVO
+	 * @return 添加状态
+	 * */
+	public AddState addDistance(DistanceVO distance);
+	
+	/**
 	 * 添加机构.
 	 *
 	 * @param institution InstitutionVO

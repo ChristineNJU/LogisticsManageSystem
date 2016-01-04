@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import server.frame.ServerFrame;
 import data.Helper.DBHelper.DirectDBCreater.DirectDBCreater;
 
 /**
@@ -33,12 +34,13 @@ public class DBHelper {
 			conn = DriverManager.getConnection("jdbc:derby:"+db_name+"");
 			System.out.println("create and connect to "+db_name);
 			conn.setAutoCommit(false);
-		
+			
+			ServerFrame.addInfo("\n数据库连接成功!");
 		} catch (InstantiationException | IllegalAccessException
 				| ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 //			e.printStackTrace();
-			System.out.println("重新创建数据库");
+			System.out.println("\n重新创建数据库");
 			try {
 				conn = DriverManager.getConnection("jdbc:derby:"+db_name+";create=true");
 				System.out.println("create and connect to "+db_name);
@@ -49,7 +51,9 @@ public class DBHelper {
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+				ServerFrame.addInfo(e1.getMessage());
 			}
+			ServerFrame.addInfo("\n重新创建数据库");
 		}
 	}
 	

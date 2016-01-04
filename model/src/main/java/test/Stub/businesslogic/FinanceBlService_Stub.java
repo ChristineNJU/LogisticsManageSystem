@@ -289,12 +289,12 @@ public class FinanceBlService_Stub implements FinanceService{
 		return null;
 	}
 	@Override
-	public UpdateState updatePeriod() {
+	public ArrayList<BenefitVO> searchBenefit(String time_end) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
-	public ArrayList<BenefitVO> searchBenefit(String time_end) {
+	public UpdateState updatePeriod(PeriodVO vo) {
 		// TODO Auto-generated method stub
 		return null;
 	}

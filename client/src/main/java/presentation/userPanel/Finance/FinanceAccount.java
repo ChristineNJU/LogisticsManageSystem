@@ -3,26 +3,26 @@ package presentation.userPanel.Finance;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+
 import presentation.components.ButtonNew;
 import presentation.factory.TableFactory;
 import presentation.factory.TableModelFactory;
 import presentation.frame.MainFrame;
 import presentation.main.FunctionADUS;
 import presentation.table.ScrollPaneTable;
-import presentation.table.TableADUS;
-import presentation.table.TableModelADUS;
-import presentation.userPanel.Manager.ManagerStaffMgt;
 import State.AddState;
 import State.DeleteState;
 import State.ErrorState;
 import State.UpdateState;
 import VO.AccountVO;
-import businesslogic.Impl.Finance.AccountImpl;
-import businesslogic.Service.Finance.AccountService;
+import businesslogic.Impl.Finance.FinanceController;
+import businesslogic.Service.Finance.FinanceService;
 
 public class FinanceAccount extends FunctionADUS{
 	
-	AccountService service=new AccountImpl(); 
+	FinanceService service=new FinanceController(); 
 	
 	ArrayList<AccountVO> accounts;
 	
@@ -31,9 +31,13 @@ public class FinanceAccount extends FunctionADUS{
 	ArrayList<AccountVO> searchItems=new ArrayList<AccountVO>();
 	ArrayList<AccountVO> updateItems=new ArrayList<AccountVO>();
 	
-	public FinanceAccount(){
+	NavigationFinance nav;
+	
+	public FinanceAccount(NavigationFinance navigationFinance){
 		buttonNew = new ButtonNew("新增账户");
 		initUI("账户管理");
+		
+		nav = navigationFinance;
 	}
 	
 	@Override
@@ -56,6 +60,8 @@ public class FinanceAccount extends FunctionADUS{
 	    table.addMouseListener(tableListener);
 		sPanel = new ScrollPaneTable(table);
 		panel.add(sPanel);
+		
+		model.addTableModelListener(new ErrorListener());
 	}
 	
 
@@ -130,6 +136,9 @@ public class FinanceAccount extends FunctionADUS{
 			}
 		}
 		
+		if(addState==AddState.SUCCESS&&updateState==UpdateState.SUCCESS&&deleteState==DeleteState.SUCCESS){
+			nav.changeTask(1);
+		}
 	}
 	protected void newItem() {
 		model.addEmptyRow();
@@ -151,6 +160,7 @@ public class FinanceAccount extends FunctionADUS{
 			Vector<String> vRow=new Vector<String>();
 			vRow.add(temp.getName());
 			vRow.add(String.valueOf(temp.getMoney()));
+			vRow.add("");
 			
 			result.add(vRow);
 		}
@@ -160,7 +170,35 @@ public class FinanceAccount extends FunctionADUS{
 
 	@Override
 	public void performCancel() {
-		MainFrame.changeContentPanel(new FinanceAccount().getPanel());		
+//		MainFrame.changeContentPanel(new FinanceAccount().getPanel());
+		nav.changeTask(1);
 	}
- 
+	
+	class ErrorListener implements TableModelListener {
+
+		@Override
+		public void tableChanged(TableModelEvent e) {
+			int row = e.getLastRow();
+			int column = e.getColumn();
+			boolean isLeagel = true;
+			if(column==-1){
+				buttonNew.setEnabled(true);
+				confirm.setEnabled(true);
+			}else{				
+				String content = model.getValueAt(row, column);
+				if(content.equals("")){
+					model.setLeagel(row, column, false);
+					buttonNew.setEnabled(false);
+					confirm.setEnabled(false);
+					return;
+				}else{
+					model.setLeagel(row, column, true);
+				}
+				if(model.allLeagel()){
+					buttonNew.setEnabled(true);
+					confirm.setEnabled(true);
+				}
+			}
+		}
+	}
 }

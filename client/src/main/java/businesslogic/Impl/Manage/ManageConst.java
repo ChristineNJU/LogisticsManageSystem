@@ -17,6 +17,7 @@ import businesslogic.Service.Manage.GetDistanceService;
 import businesslogic.Service.Manage.ShowConstService;
 import businesslogic.Service.Manage.UpdateConstService;
 import businesslogic.Service.Manage.UpdateDistanceService;
+import businesslogic.URLHelper.URLHelper;
 import data.RMIHelper.RMIHelper;
 import data.Service.Add.AddService;
 import data.Service.Search.SearchConstService;
@@ -172,6 +173,21 @@ public class ManageConst implements ShowConstService,UpdateConstService,AddConst
 		return state;
 	}
 
-	
+	public AddState addDistance(DistanceVO distance) {
+		AddState state = AddState.SUCCESS;
+		
+		try {
+			AddService service = (AddService) Naming.lookup(RMIHelper.ADD_IMPL);
+			
+			DistancePO result = new DistancePO(distance, 0, URLHelper.getDistanceURL());
+			
+			state = service.add(result);
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return AddState.CONNECTERROR;
+		}
+		return state;
+	}
 	
 }

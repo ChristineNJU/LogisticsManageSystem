@@ -71,12 +71,11 @@ public class CostImpl implements CostService{
 			AccountPO account=searchAccount.searchAccount(requirement).get(0);
 			account.setAmount(account.getAmount()-amount);
 
-			UpdateAccountService updateAccount=(UpdateAccountService) Naming.lookup(RMIHelper.UPDATE_IMPL);
-			updateAccount.updateAccount(new AccountVO(account));
+			UpdateService updateAccount=(UpdateService) Naming.lookup(RMIHelper.UPDATE_IMPL);
+			updateAccount.update(account);
 			
 			SearchBenefitService benefitService=(SearchBenefitService) Naming.lookup(RMIHelper.SEARCH_BENEFIT_IMPL);
 	
-			
 			ArrayList<String> requirementB=new ArrayList<String>();
 			requirementB.add("date like '%%'");
 	

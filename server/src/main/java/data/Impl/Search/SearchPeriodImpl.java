@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import server.frame.ServerFrame;
 import businesslogic.URLHelper.URLHelper;
 import PO.AccountPO;
 import PO.PeriodPO;
@@ -38,14 +39,16 @@ public class SearchPeriodImpl extends UnicastRemoteObject implements SearchPerio
 		try {
 			Statement s = conn.createStatement();
 			
-			String target = "date like '%%'";
+			String target = "id = 1";
 			
 			ResultSet rs = s.executeQuery(DBHelper.SEARCH(URLHelper.getPeriodURL(), target));
-			rs.next();
+			
+			System.out.println(rs.next());
+			
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			Date date;
 			try {
-				date = sdf.parse(rs.getString(1));
+				date = sdf.parse(rs.getString(2));
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 //					e.printStackTrace();
@@ -53,12 +56,12 @@ public class SearchPeriodImpl extends UnicastRemoteObject implements SearchPerio
 				date = null;
 			}
 			
-			int institution_size = rs.getInt(2);
-			int staff_size = rs.getInt(3);
-			int car_size = rs.getInt(4);
-			int storage_size = rs.getInt(5);
+			int institution_size = rs.getInt(3);
+			int staff_size = rs.getInt(4);
+			int car_size = rs.getInt(5);
+			int storage_size = rs.getInt(6);
 			
-			String[] list = rs.getString(6).split(",");
+			String[] list = rs.getString(7).split(",");
 			ArrayList<AccountPO> account = new ArrayList<AccountPO>();
 			for(int i=0;i<list.length;i++){
 				ArrayList<String> r = new ArrayList<String>();
@@ -74,8 +77,11 @@ public class SearchPeriodImpl extends UnicastRemoteObject implements SearchPerio
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-//			e.printStackTrace();
+			e.printStackTrace();
 			System.out.println("从数据库提取PeriodPO对象失败");
+			
+			ServerFrame.addInfo(e.getMessage());
+			
 			return null;
 		}
 		

@@ -150,7 +150,7 @@ public class NavigationManager extends Navigation{
 	}
 	
 	private void changeToConsts(){
-		con = new ManagerConst();
+		con = new ManagerConst(this);
 		MainFrame.changeContentPanel(con.getPanel());
 		MainFrame.getMainPanel().repaint();
 	}

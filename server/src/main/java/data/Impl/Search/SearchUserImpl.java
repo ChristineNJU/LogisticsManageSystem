@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import server.frame.ServerFrame;
 import PO.UserPO;
 import State.InstitutionType;
 import State.StateSwitch;
@@ -75,6 +76,9 @@ public class SearchUserImpl extends UnicastRemoteObject implements SearchUserSer
 			// TODO Auto-generated catch block
 //			e.printStackTrace();
 			System.out.println("从数据库提取UserPO对象失败");
+			
+			ServerFrame.addInfo(e.getMessage());
+			
 			return result;
 		}
 		

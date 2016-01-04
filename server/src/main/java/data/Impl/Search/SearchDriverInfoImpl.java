@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import server.frame.ServerFrame;
 import PO.DriverInfoPO;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Search.SearchDriverInfoService;
@@ -79,6 +80,9 @@ public class SearchDriverInfoImpl extends UnicastRemoteObject implements SearchD
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("从数据库提取DriverInfoPO对象失败");
+			
+			ServerFrame.addInfo(e.getMessage());
+			
 			return result;
 		}
 		return result;

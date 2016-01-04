@@ -135,11 +135,14 @@ public abstract class FunctionADUS extends Function{
 		public void mouseClicked(MouseEvent e) {
 			ButtonTotal source = (ButtonTotal)e.getSource();
 			if(source.equals(buttonNew)){
-				newItem();
+				if(buttonNew.isEnabled()){					
+					newItem();
+				}
 			}
 			if(source.equals(confirm)){
-				
-				checkConfirm();
+				if(confirm.isEnabled()){					
+					checkConfirm();
+				}
 //				performConfirm();
 			}
 			if(source.equals(search)){

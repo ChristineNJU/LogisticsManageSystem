@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import server.frame.ServerFrame;
 import businesslogic.URLHelper.URLHelper;
 import PO.DistancePO;
 import data.Helper.DBHelper.DBHelper.DBHelper;
@@ -65,6 +66,9 @@ public class SearchDistanceImpl extends UnicastRemoteObject implements SearchDis
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("从数据库提取DistancePO对象失败");
+			
+			ServerFrame.addInfo(e.getMessage());
+			
 			return result;
 		}
 		

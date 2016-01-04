@@ -202,20 +202,30 @@ public class ManagerStaffMgt extends FunctionADUS{
 		public void tableChanged(TableModelEvent e) {
 			int row = e.getLastRow();
 			int column = e.getColumn();
+			
+//			System.out.println("tableChanger"+row+" "+column);
+			
 			boolean isLeagel = true;
-			String content = model.getValueAt(row, column);
-			if(content.equals("")){
-				model.setLeagel(row, column, false);
-				buttonNew.setEnabled(false);
-				confirm.setEnabled(false);
-				return;
-			}else{
-				model.setLeagel(row, column, true);
-			}
-			if(model.allLeagel()){
+			
+			if(column==-1){
 				buttonNew.setEnabled(true);
 				confirm.setEnabled(true);
+			}else{				
+				String content = model.getValueAt(row, column);
+				if(content.equals("")){
+					model.setLeagel(row, column, false);
+					buttonNew.setEnabled(false);
+					confirm.setEnabled(false);
+					return;
+				}else{
+					model.setLeagel(row, column, true);
+				}
+				if(model.allLeagel()){
+					buttonNew.setEnabled(true);
+					confirm.setEnabled(true);
+				}
 			}
+			
 		}
 	}
 

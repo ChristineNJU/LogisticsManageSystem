@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import server.frame.ServerFrame;
 import PO.GatheringStoragePO;
 import State.AddState;
 import State.DeleteState;
@@ -62,6 +63,9 @@ public class GatheringStorageImpl extends UnicastRemoteObject implements
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
+			ServerFrame.addInfo(e.getMessage());
+			
 			return result;
 		}
 		return result;
@@ -89,6 +93,9 @@ public class GatheringStorageImpl extends UnicastRemoteObject implements
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
+			ServerFrame.addInfo(e.getMessage());
+			
 			return AddState.FAIL;
 		}
 		return AddState.SUCCESS;
@@ -118,6 +125,9 @@ public class GatheringStorageImpl extends UnicastRemoteObject implements
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
+			ServerFrame.addInfo(e.getMessage());
+			
 			return DeleteState.FAIL;
 		}
 		return DeleteState.SUCCESS;

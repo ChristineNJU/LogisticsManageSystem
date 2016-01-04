@@ -18,13 +18,13 @@ public class ServerFrame {
 		
 		textArea.setBounds(0, 0, 285, 465);
 		scrollPane.setBounds(0, 0, 285, 465);
-		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		frame.add(scrollPane);
 		
 		frame.setVisible(true);
 		
-		textArea.append("Server start");
+		textArea.append("Server start\n");
 	}
 	
 	public static void addInfo(String info) {

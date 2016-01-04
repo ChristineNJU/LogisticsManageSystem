@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import server.frame.ServerFrame;
 import PO.GatheringPO;
 import data.Helper.DBHelper.DBHelper.DBHelper;
 import data.Service.Search.SearchGatheringService;
@@ -87,6 +88,9 @@ public class SearchGatheringImpl extends UnicastRemoteObject implements SearchGa
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("从数据库提取GatheringPO对象失败");
+			
+			ServerFrame.addInfo(e.getMessage());
+			
 			return result;
 		}
 		return result;

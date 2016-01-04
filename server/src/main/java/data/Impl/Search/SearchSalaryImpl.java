@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import server.frame.ServerFrame;
 import PO.SalaryPO;
 import State.SalaryType;
 import State.StateSwitch;
@@ -65,6 +66,9 @@ public class SearchSalaryImpl extends UnicastRemoteObject implements SearchSalar
 			// TODO Auto-generated catch block
 //			e.printStackTrace();
 			System.out.println("从数据库提取SalaryPO对象失败");
+			
+			ServerFrame.addInfo(e.getMessage());
+			
 			return result;
 		}
 		return result;

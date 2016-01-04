@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import server.frame.ServerFrame;
 import businesslogic.URLHelper.URLHelper;
 import State.InstitutionType;
 import data.Helper.DBHelper.DBHelper.DBHelper;
@@ -130,6 +131,7 @@ public class TableOperationImpl extends UnicastRemoteObject implements TableOper
 						+ "destination varchar(20), type varchar(15), transfer_number varchar(20), "
 						+ "isApproved varchar(10))");
 				conn.commit();
+				System.out.println("创建仓库出库信息表");
 				
 				table_name = URLHelper.getBalanceURL(institution_id);
 				s.execute("CREATE TABLE "+table_name+" (bar_code varchar(20) PRIMARY key, storage_date varchar(20), destination varchar(50), "
@@ -148,8 +150,10 @@ public class TableOperationImpl extends UnicastRemoteObject implements TableOper
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-//			e.printStackTrace();
-			System.out.println(e.getMessage());
+			e.printStackTrace();
+			
+			ServerFrame.addInfo(e.getMessage());
+			
 			return false;
 		} 
 		return true;
@@ -257,8 +261,11 @@ public class TableOperationImpl extends UnicastRemoteObject implements TableOper
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-//			e.printStackTrace();
-			System.out.println(e.getMessage());
+			e.printStackTrace();
+//			System.out.println(e.getMessage());
+			
+			ServerFrame.addInfo(e.getMessage());
+			
 			return false;
 		}
 		

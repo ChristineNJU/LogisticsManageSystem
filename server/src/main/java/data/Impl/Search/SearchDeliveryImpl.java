@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import server.frame.ServerFrame;
 import PO.DeliveryPO;
 import businesslogic.URLHelper.URLHelper;
 import data.Helper.DBHelper.DBHelper.DBHelper;
@@ -85,6 +86,9 @@ public class SearchDeliveryImpl extends UnicastRemoteObject implements SearchDel
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("从数据库提取DeliveryPO对象失败");
+			
+			ServerFrame.addInfo(e.getMessage());
+			
 			return result;
 		}
 		return result;

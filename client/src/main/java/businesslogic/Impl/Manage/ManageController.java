@@ -2,6 +2,7 @@ package businesslogic.Impl.Manage;
 
 import java.util.ArrayList;
 
+import presentation.userPanel.Manager.ManagerConst;
 import State.AddState;
 import State.DeleteState;
 import State.UpdateState;
@@ -21,6 +22,7 @@ import VO.StaffVO;
 import VO.StorageVO;
 import VO.TransferVO;
 import VO.VO;
+import businesslogic.Impl.Businesslobby.BusinessLobbyController;
 import businesslogic.Service.Manage.ManageService;
 import businesslogic.SystemLog.SystemLog;
 
@@ -411,6 +413,21 @@ public class ManageController implements ManageService{
 		ManageShowReceipt manageShowReceipt = new ManageShowReceipt();
 		ArrayList<TransferVO> result = manageShowReceipt.showTransfer();
 		return result;
+	}
+	
+	/**
+	 * @see ManageConst
+	 * @see businesslogic.Service.Manage.ManageService#addDistance(DistanceVO)
+	 * */
+	@Override
+	public AddState addDistance(DistanceVO distance) {
+		// TODO Auto-generated method stub
+		ManageConst dist = new ManageConst();
+		AddState state = dist.addDistance(distance);
+		if(state==AddState.SUCCESS){
+			SystemLog.addLog("添加距离信息");
+		}
+		return state;
 	}
 
 }

@@ -126,6 +126,8 @@ public abstract class FunctionSearch extends Function{
 			}
 			else if(state==ErrorState.ADDERROR){
 				Image = new ImageIcon("src/graphics/Tips/addError.png");
+			}else if(state==ErrorState.SUCCESS){
+				Image = new ImageIcon("src/graphics/Tips/success.png");
 			}
 		    JLabel errorNote=new JLabel(Image);
 			this.setUndecorated(true);

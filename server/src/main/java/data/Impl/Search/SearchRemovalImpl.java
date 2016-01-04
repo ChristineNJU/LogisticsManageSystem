@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import server.frame.ServerFrame;
 import PO.RemovalPO;
 import State.StateSwitch;
 import State.TransferType;
@@ -82,6 +83,9 @@ public class SearchRemovalImpl extends UnicastRemoteObject implements SearchRemo
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("从数据库提取RemovalPO对象失败");
+			
+			ServerFrame.addInfo(e.getMessage());
+			
 			return result;
 		}
 		return result;

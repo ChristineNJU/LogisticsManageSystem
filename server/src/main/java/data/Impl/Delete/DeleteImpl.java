@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import server.frame.ServerFrame;
 import PO.PO;
 import State.DeleteState;
 import data.Helper.DBHelper.DBHelper.DBHelper;
@@ -43,6 +44,8 @@ public class DeleteImpl extends UnicastRemoteObject implements DeleteService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("删除PO对象失败");
+			
+			ServerFrame.addInfo(e.getMessage());
 			
 			return DeleteState.FAIL;
 		}

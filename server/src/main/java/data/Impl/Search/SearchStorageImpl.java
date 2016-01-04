@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import server.frame.ServerFrame;
 import PO.StoragePO;
 import State.StateSwitch;
 import State.StorageArea;
@@ -85,6 +86,9 @@ public class SearchStorageImpl extends UnicastRemoteObject implements SearchStor
 			// TODO Auto-generated catch block
 //			e.printStackTrace();
 			System.out.println("从数据库提取StoragePO对象失败");
+			
+			ServerFrame.addInfo(e.getMessage());
+			
 			return result;
 		} 
 		return result;

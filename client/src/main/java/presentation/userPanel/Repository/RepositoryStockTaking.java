@@ -17,6 +17,8 @@ import presentation.table.ScrollPaneTable;
 import presentation.table.TableModelSearch;
 import presentation.table.TableSearch;
 import State.AddState;
+import State.ErrorState;
+import State.OutputState;
 import State.StorageArea;
 import VO.StockTakingVO;
 import VO.WareHouseVO;
@@ -89,7 +91,12 @@ public class RepositoryStockTaking extends RepositoryCheck{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-				excelService.stockTakingExcel(stockTaking);
+				OutputState state = excelService.stockTakingExcel(stockTaking);
+				if(state==OutputState.SUCCESS){					
+					showError(ErrorState.SUCCESS);
+				}else{
+					showError(ErrorState.ADDERROR);
+				}
 			}
 		});
 		
@@ -121,7 +128,7 @@ public class RepositoryStockTaking extends RepositoryCheck{
 		table2.repaint();
 		
 		model3 = TableModelFactory.getStockTakingBus(tableV3);
-		table.setModel(model3);
+		table3.setModel(model3);
 		table3.repaint();
 	}
 	
@@ -189,7 +196,13 @@ public class RepositoryStockTaking extends RepositoryCheck{
 					vo.getDestination(), vo.getArea_code(), vo.getRow(), vo.getShelf(), vo.getPosition());
 			stockTaking.add(tmp);
 		}
-		AddState state = service.stockTakingConfirm(stockTaking);		
+		AddState state = service.stockTakingConfirm(stockTaking);
+		
+		if(state==AddState.SUCCESS){
+			showError(ErrorState.SUCCESS);
+		}else{
+			showError(ErrorState.ADDERROR);
+		}
 	}
 	
 	private Vector<Vector<String>> getWareHouseVector(ArrayList<WareHouseVO> voList){
