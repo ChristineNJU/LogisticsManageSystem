@@ -283,13 +283,13 @@ public class ManageReceipt implements UpdateReceiptService{
 				}
 				
 				
-				SearchBenefitService searchBenefit=(SearchBenefitService) Naming.lookup(RMIHelper.SEARCH_BENEFIT_IMPL);
-				ArrayList<String> requireBenefit=new ArrayList<String>();
-				requireBenefit.add("date like '%%'");
-				ArrayList<BenefitPO> searchResultBenefit=searchBenefit.searchBenefit(requireBenefit);
-				AddService addService=(AddService) Naming.lookup(RMIHelper.ADD_IMPL);
-				BenefitPO benefit=new BenefitPO(gathering, searchResultBenefit.get(searchResultBenefit.size()-1));
-				addService.add(benefit);
+//				SearchBenefitService searchBenefit=(SearchBenefitService) Naming.lookup(RMIHelper.SEARCH_BENEFIT_IMPL);
+//				ArrayList<String> requireBenefit=new ArrayList<String>();
+//				requireBenefit.add("date like '%%'");
+//				ArrayList<BenefitPO> searchResultBenefit=searchBenefit.searchBenefit(requireBenefit);
+//				AddService addService=(AddService) Naming.lookup(RMIHelper.ADD_IMPL);
+//				BenefitPO benefit=new BenefitPO(gathering, searchResultBenefit.get(searchResultBenefit.size()-1));
+//				addService.add(benefit);
 			}
 			
 			
@@ -297,7 +297,7 @@ public class ManageReceipt implements UpdateReceiptService{
 			if(receipt instanceof RemovalVO){
 				RemovalVO removal=(RemovalVO) receipt;
 				SearchRemovalService searchRemoval=(SearchRemovalService) Naming.lookup(RMIHelper.SEARCH_REMOVAL_IMPL);
-				requirement.add("bar_Code='"+removal.getBarCode()+"'");
+				requirement.add("bar_Code='"+removal.getBarCode()+"' AND removal_date = '"+sdf.format(removal.getOutDate())+"'");
 				ArrayList<RemovalPO> searchResult=new ArrayList<RemovalPO>();
 				for(int i=0;i<searchResultReponsitory.size();i++){
 					ArrayList<RemovalPO> removalResult=searchRemoval.searchRemoval(URLHelper.getRemovalURL(searchResultReponsitory.get(i).getInstitutionNumber()), requirement);
@@ -326,7 +326,7 @@ public class ManageReceipt implements UpdateReceiptService{
 			if(receipt instanceof StorageVO){
 				StorageVO storage=(StorageVO) receipt;
 				SearchStorageService searchStorage=(SearchStorageService) Naming.lookup(RMIHelper.SEARCH_STORAGE_IMPL);
-				requirement.add("bar_Code='"+storage.getBarCode()+"'");
+				requirement.add("bar_Code='"+storage.getBarCode()+"' AND storage_date = '"+sdf.format(storage.getStorageDate())+"'");
 				ArrayList<StoragePO> searchResult=new ArrayList<StoragePO>();
 				for(int i=0;i<searchResultReponsitory.size();i++){
 					ArrayList<StoragePO> storageResult=searchStorage.searchStorage(URLHelper.getStorageURL(searchResultReponsitory.get(i).getInstitutionNumber()), requirement);
